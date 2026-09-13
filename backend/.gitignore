@@ -1,0 +1,7 @@
+# Local environment (never commit real secrets)
+.env
+
+# Build output
+/bin/
+/tmp/
+*.exe

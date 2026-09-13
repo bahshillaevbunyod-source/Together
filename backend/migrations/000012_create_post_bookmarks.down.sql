@@ -1,0 +1,5 @@
+BEGIN;
+
+DROP TABLE IF EXISTS post_bookmarks;
+
+COMMIT;

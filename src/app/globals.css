@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  /* Font — clean system sans (matches the reference; no extra dependency) */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+
+  /* Colors */
+  --color-background: #f4f6fa; /* page background */
+  --color-surface: #ffffff; /* cards, header, sidebar */
+  --color-border: #eaecf1; /* subtle card / divider borders */
+
+  --color-primary: #2563eb; /* buttons, active states, links */
+  --color-primary-hover: #1d4ed8;
+  --color-primary-soft: #eef4ff; /* active nav pill, soft blue fills */
+
+  --color-foreground: #0f172a; /* headings / primary text */
+  --color-muted: #64748b; /* secondary text */
+  --color-muted-soft: #94a3b8; /* tertiary text, placeholders */
+
+  /* Radii — generous, rounded card style */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Spacing — base unit driving the whole scale */
+  --spacing: 0.25rem;
+}
