@@ -14,6 +14,7 @@ import {
   UserPlus,
 } from "lucide-react";
 import type { Post } from "@/types/post";
+import { PostMedia } from "@/components/feed/PostMedia";
 import { formatCount, formatTimeAgo } from "@/lib/format";
 import {
   createComment,
@@ -29,15 +30,31 @@ type LocalComment = {
   author: string;
   content: string;
   createdAt: string;
+  translatedContent: string | null;
+  sourceLanguage: string | null;
+  targetLanguage: string | null;
 };
 
 export function PostCard({ post }: { post: Post }) {
   const { author, createdAt, location, content, hashtags, media, stats } = post;
-  const cover = media[0];
 
   const [liked, setLiked] = useState(post.viewerState.liked);
   const [saved, setSaved] = useState(post.viewerState.saved);
   const [likes, setLikes] = useState(stats.likes);
+
+  // Translation display (shows what the backend provided; never translates here).
+  const [showOriginal, setShowOriginal] = useState(false);
+  const translated = post.translatedContent;
+  const hasTranslation =
+    translated != null &&
+    translated.trim().length > 0 &&
+    translated !== content;
+  const primaryText =
+    hasTranslation && !showOriginal ? (translated as string) : content;
+  const langHint =
+    hasTranslation && post.sourceLanguage && post.targetLanguage
+      ? `${post.sourceLanguage.toUpperCase()} → ${post.targetLanguage.toUpperCase()}`
+      : null;
 
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState<LocalComment[]>([]);
@@ -145,6 +162,9 @@ export function PostCard({ post }: { post: Post }) {
               author: c.author.displayName,
               content: c.content,
               createdAt: c.createdAt,
+              translatedContent: c.translatedContent,
+              sourceLanguage: c.sourceLanguage,
+              targetLanguage: c.targetLanguage,
             })),
           );
           setCommentsStatus("ready");
@@ -180,6 +200,9 @@ export function PostCard({ post }: { post: Post }) {
           author: created.author.displayName,
           content: created.content,
           createdAt: created.createdAt,
+          translatedContent: created.translatedContent,
+          sourceLanguage: created.sourceLanguage,
+          targetLanguage: created.targetLanguage,
         },
       ]);
       setCommentCount((c) => c + 1);
@@ -222,7 +245,7 @@ export function PostCard({ post }: { post: Post }) {
 
       {/* Text */}
       <p className="mt-3 text-sm leading-relaxed text-foreground">
-        {content}
+        {primaryText}
         {hashtags && hashtags.length > 0 ? (
           <>
             {" "}
@@ -231,18 +254,21 @@ export function PostCard({ post }: { post: Post }) {
         ) : null}
       </p>
 
-      {/* Photo */}
-      {cover ? (
-        <div className="relative mt-3 aspect-[4/3] overflow-hidden rounded-xl border border-border">
-          <Image
-            src={cover.src}
-            alt={cover.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 620px"
-            className="object-cover"
-          />
+      {hasTranslation ? (
+        <div className="mt-1 flex items-center gap-2 text-xs text-muted-soft">
+          {langHint && !showOriginal ? <span>{langHint}</span> : null}
+          <button
+            type="button"
+            onClick={() => setShowOriginal((v) => !v)}
+            className="text-primary transition-opacity hover:opacity-80"
+          >
+            {showOriginal ? "Show translation" : "Show original"}
+          </button>
         </div>
       ) : null}
+
+      {/* Media (single natural-ratio image, or a carousel for 2+) */}
+      <PostMedia media={media} />
 
       {/* Actions */}
       <div className="mt-3 flex items-center gap-6 text-sm text-muted">
@@ -361,22 +387,7 @@ export function PostCard({ post }: { post: Post }) {
           {comments.length > 0 ? (
             <ul className="mb-3 flex flex-col gap-2">
               {comments.map((comment) => (
-                <li key={comment.id} className="flex gap-2">
-                  <span className="h-8 w-8 shrink-0 rounded-full bg-background" />
-                  <div className="rounded-2xl bg-background px-3 py-2">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-xs font-semibold text-foreground">
-                        {comment.author}
-                      </span>
-                      <span className="text-xs text-muted-soft">
-                        {formatTimeAgo(comment.createdAt)}
-                      </span>
-                    </div>
-                    <div className="text-sm text-foreground">
-                      {comment.content}
-                    </div>
-                  </div>
-                </li>
+                <CommentItem key={comment.id} comment={comment} />
               ))}
             </ul>
           ) : null}
@@ -402,5 +413,53 @@ export function PostCard({ post }: { post: Post }) {
         </div>
       ) : null}
     </article>
+  );
+}
+
+// CommentItem renders one comment. When a translation is present it shows the
+// translated text by default with a per-comment "Show original" toggle. It never
+// translates in the browser — only displays what the backend provided.
+function CommentItem({ comment }: { comment: LocalComment }) {
+  const [showOriginal, setShowOriginal] = useState(false);
+
+  const translated = comment.translatedContent;
+  const hasTranslation =
+    translated != null &&
+    translated.trim().length > 0 &&
+    translated !== comment.content;
+  const primary =
+    hasTranslation && !showOriginal ? (translated as string) : comment.content;
+  const langHint =
+    hasTranslation && comment.sourceLanguage && comment.targetLanguage
+      ? `${comment.sourceLanguage.toUpperCase()} → ${comment.targetLanguage.toUpperCase()}`
+      : null;
+
+  return (
+    <li className="flex gap-2">
+      <span className="h-8 w-8 shrink-0 rounded-full bg-background" />
+      <div className="rounded-2xl bg-background px-3 py-2">
+        <div className="flex items-center gap-1.5">
+          <span className="text-xs font-semibold text-foreground">
+            {comment.author}
+          </span>
+          <span className="text-xs text-muted-soft">
+            {formatTimeAgo(comment.createdAt)}
+          </span>
+        </div>
+        <div className="text-sm text-foreground">{primary}</div>
+        {hasTranslation ? (
+          <div className="mt-0.5 flex items-center gap-2 text-[10px] text-muted-soft">
+            {langHint && !showOriginal ? <span>{langHint}</span> : null}
+            <button
+              type="button"
+              onClick={() => setShowOriginal((v) => !v)}
+              className="text-primary transition-opacity hover:opacity-80"
+            >
+              {showOriginal ? "Show translation" : "Show original"}
+            </button>
+          </div>
+        ) : null}
+      </div>
+    </li>
   );
 }

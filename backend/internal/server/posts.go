@@ -16,7 +16,7 @@ import (
 const (
 	maxPostBodyBytes    = 1 << 20 // 1 MiB
 	maxPostContentRunes = 5000
-	maxPostMedia        = 10
+	maxPostMedia        = 8 // product limit: at most 8 images per post
 )
 
 var validVisibility = map[string]bool{

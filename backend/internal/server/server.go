@@ -220,6 +220,7 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/v1/bookmarks", s.requireAuth(s.handleListBookmarks))
 	mux.HandleFunc("GET /api/v1/ws", s.handleWebSocket)
 	mux.HandleFunc("GET /api/v1/conversations", s.requireAuth(s.handleListConversations))
+	mux.HandleFunc("POST /api/v1/conversations", s.requireAuth(s.csrfProtect(s.handleOpenConversation)))
 	mux.HandleFunc("GET /api/v1/conversations/{id}/messages", s.requireAuth(s.handleListMessages))
 	mux.HandleFunc("POST /api/v1/conversations/{id}/messages", s.requireAuth(s.csrfProtect(s.handleCreateMessage)))
 	mux.HandleFunc("POST /api/v1/conversations/{id}/read", s.requireAuth(s.csrfProtect(s.handleMarkConversationRead)))

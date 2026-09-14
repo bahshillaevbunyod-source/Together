@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import { AppShell } from "@/components/layout/AppShell";
 import { useAuth } from "@/lib/auth-context";
+import { RealtimeProvider } from "@/lib/realtime-context";
 
 export default function AppGroupLayout({
   children,
@@ -41,5 +42,9 @@ export default function AppGroupLayout({
     );
   }
 
-  return <AppShell>{children}</AppShell>;
+  return (
+    <RealtimeProvider>
+      <AppShell>{children}</AppShell>
+    </RealtimeProvider>
+  );
 }

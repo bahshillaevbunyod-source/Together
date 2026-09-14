@@ -5,3 +5,6 @@
 /bin/
 /tmp/
 *.exe
+
+# Local dev backend binary + PID file (see scripts/dev-backend.ps1)
+/.dev-bin/

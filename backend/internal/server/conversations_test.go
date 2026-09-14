@@ -765,14 +765,31 @@ func TestRealtimeRecipientReceivesEvent(t *testing.T) {
 	select {
 	case raw := <-recipient.Send():
 		var ev struct {
-			Type string          `json:"type"`
-			Data messageResponse `json:"data"`
+			Type string `json:"type"`
+			Data struct {
+				ConversationID    string  `json:"conversationId"`
+				ID                string  `json:"id"`
+				SenderID          string  `json:"senderId"`
+				Content           string  `json:"content"`
+				CreatedAt         string  `json:"createdAt"`
+				TranslatedContent *string `json:"translatedContent"`
+				SourceLanguage    *string `json:"sourceLanguage"`
+				TargetLanguage    *string `json:"targetLanguage"`
+			} `json:"data"`
 		}
 		if err := json.Unmarshal(raw, &ev); err != nil {
 			t.Fatalf("invalid event json: %v", err)
 		}
 		if ev.Type != "message.created" {
 			t.Fatalf("unexpected event type: %q", ev.Type)
+		}
+		// New field: conversation id must be present and correct.
+		if ev.Data.ConversationID != validPostID {
+			t.Fatalf("expected conversationId %q, got %q", validPostID, ev.Data.ConversationID)
+		}
+		// Existing fields must remain intact.
+		if ev.Data.ID == "" || ev.Data.CreatedAt == "" {
+			t.Fatalf("missing existing fields: %+v", ev.Data)
 		}
 		if ev.Data.Content != "hi there" || ev.Data.SenderID != "me-id" {
 			t.Fatalf("unexpected event data: %+v", ev.Data)

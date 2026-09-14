@@ -35,8 +35,8 @@ const navItems: NavItem[] = [
   { label: "Explore", icon: Compass },
   { label: "Events", icon: Calendar },
   { label: "Bookmarks", icon: Bookmark },
-  { label: "Profile", icon: User },
-  { label: "Settings", icon: Settings },
+  { label: "Profile", icon: User, href: "/profile" },
+  { label: "Settings", icon: Settings, href: "/settings" },
 ];
 
 export function Sidebar() {

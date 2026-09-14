@@ -46,5 +46,8 @@ export function mapApiPost(api: ApiPost): Post {
       liked: api.likedByMe,
       saved: api.savedByMe,
     },
+    translatedContent: api.translatedContent,
+    sourceLanguage: api.sourceLanguage,
+    targetLanguage: api.targetLanguage,
   };
 }

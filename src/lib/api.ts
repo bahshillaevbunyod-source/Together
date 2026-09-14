@@ -101,6 +101,100 @@ export function login(email: string, password: string): Promise<CurrentUser> {
   });
 }
 
+/** Log out: clears the session server-side and the cookie (200). */
+export function logout(): Promise<void> {
+  return apiFetch<void>("/api/v1/auth/logout", { method: "POST" });
+}
+
+/* ----------------------------- Profile ---------------------------------- */
+
+/** The authenticated user's own profile (GET /api/v1/profile). */
+export interface ProfileResponse {
+  id: string;
+  email: string | null;
+  username: string;
+  displayName: string;
+  bio: string | null;
+  countryCode: string | null;
+  city: string | null;
+  nativeLanguage: string;
+  avatarUrl: string | null;
+  createdAt: string;
+  preferredLanguage: string | null;
+  autoTranslateEnabled: boolean;
+}
+
+/** A user's public profile (GET /api/v1/users/{username}). */
+export interface PublicUserProfile {
+  id: string;
+  username: string;
+  displayName: string;
+  avatarUrl: string | null;
+  bio: string | null;
+  countryCode: string | null;
+  city: string | null;
+  nativeLanguage: string;
+  createdAt: string;
+  followersCount: number;
+  followingCount: number;
+  isFollowing: boolean;
+  isSelf: boolean;
+}
+
+/** A partial profile update. Nullable fields accept null to clear them. */
+export interface UpdateProfileInput {
+  displayName?: string;
+  bio?: string | null;
+  countryCode?: string | null;
+  city?: string | null;
+  nativeLanguage?: string;
+  avatarUrl?: string | null;
+  preferredLanguage?: string | null;
+  autoTranslateEnabled?: boolean;
+}
+
+/** Fetch the authenticated user's own profile. */
+export function getProfile(signal?: AbortSignal): Promise<ProfileResponse> {
+  return apiFetch<ProfileResponse>("/api/v1/profile", { signal });
+}
+
+/** Apply a partial profile update and return the updated profile. */
+export function updateProfile(
+  input: UpdateProfileInput,
+): Promise<ProfileResponse> {
+  return apiFetch<ProfileResponse>("/api/v1/profile", {
+    method: "PATCH",
+    body: input,
+  });
+}
+
+/** Follow a user by username. */
+export function followUser(username: string): Promise<{ following: boolean }> {
+  return apiFetch<{ following: boolean }>(
+    `/api/v1/users/${encodeURIComponent(username)}/follow`,
+    { method: "POST" },
+  );
+}
+
+/** Unfollow a user by username. */
+export function unfollowUser(username: string): Promise<{ following: boolean }> {
+  return apiFetch<{ following: boolean }>(
+    `/api/v1/users/${encodeURIComponent(username)}/follow`,
+    { method: "DELETE" },
+  );
+}
+
+/** Fetch a user's public profile by username. */
+export function getUserProfile(
+  username: string,
+  signal?: AbortSignal,
+): Promise<PublicUserProfile> {
+  return apiFetch<PublicUserProfile>(
+    `/api/v1/users/${encodeURIComponent(username)}`,
+    { signal },
+  );
+}
+
 /** Register a new account. Sets the session cookie; returns the user. */
 export function register(input: {
   email: string;
@@ -146,6 +240,14 @@ export interface ApiConversation {
 export interface ConversationPage {
   items: ApiConversation[];
   nextCursor: string;
+}
+
+/** Open (or return the existing) private conversation with a user by username. */
+export function openConversation(username: string): Promise<ApiConversation> {
+  return apiFetch<ApiConversation>("/api/v1/conversations", {
+    method: "POST",
+    body: { username },
+  });
 }
 
 /** Fetch a page of the current user's conversations (latest activity first). */
@@ -203,6 +305,17 @@ export function markConversationRead(conversationId: string): Promise<void> {
   return apiFetch<void>(`/api/v1/conversations/${conversationId}/read`, {
     method: "POST",
   });
+}
+
+/** Send a message in a conversation and return the stored message. */
+export function sendMessage(
+  conversationId: string,
+  content: string,
+): Promise<ApiMessage> {
+  return apiFetch<ApiMessage>(
+    `/api/v1/conversations/${conversationId}/messages`,
+    { method: "POST", body: { content } },
+  );
 }
 
 /* -------------------------- Notifications -------------------------------- */
@@ -413,4 +526,89 @@ export function getFeed(
   if (params.limit) query.set("limit", String(params.limit));
   const qs = query.toString();
   return apiFetch<FeedPage>(`/api/v1/feed${qs ? `?${qs}` : ""}`, { signal });
+}
+
+/* ------------------------------ Media ----------------------------------- */
+
+/** Ask the backend for a presigned upload URL for one image. */
+export interface MediaUploadUrlInput {
+  type: "image";
+  mimeType: string;
+  sizeBytes: number;
+}
+
+/** Response from POST /api/v1/media/upload-url. */
+export interface MediaUploadUrlResponse {
+  uploadUrl: string;
+  storageKey: string;
+  publicUrl: string;
+  expiresAt: string;
+}
+
+/** Response from POST /api/v1/media/confirm. */
+export interface MediaConfirmResponse {
+  storageKey: string;
+  type: string;
+  mimeType: string;
+  sizeBytes: number;
+  publicUrl: string;
+}
+
+/**
+ * Request a presigned upload URL for one image. The server derives the object
+ * key and validates the type/mime/size; the client only states its intent.
+ */
+export function requestMediaUploadUrl(
+  input: MediaUploadUrlInput,
+): Promise<MediaUploadUrlResponse> {
+  return apiFetch<MediaUploadUrlResponse>("/api/v1/media/upload-url", {
+    method: "POST",
+    body: input,
+  });
+}
+
+/**
+ * Confirm an uploaded object. The server re-derives type/mime/size from storage
+ * (never trusting the client) and returns the confirmed metadata.
+ */
+export function confirmMediaUpload(
+  storageKey: string,
+): Promise<MediaConfirmResponse> {
+  return apiFetch<MediaConfirmResponse>("/api/v1/media/confirm", {
+    method: "POST",
+    body: { storageKey },
+  });
+}
+
+/**
+ * Upload the raw file bytes directly to object storage via a presigned URL.
+ *
+ * This request does NOT go to the Together backend: it is a cross-origin PUT to
+ * the storage provider, so it sends no cookies and no Authorization header — the
+ * presigned URL carries its own authorization. Passing the raw File as the body
+ * lets the browser set Content-Length automatically (it may not be set manually).
+ *
+ * On failure it throws a generic error that never contains the presigned URL,
+ * its query parameters, or the response URL.
+ */
+export async function uploadFileToPresignedUrl(
+  uploadUrl: string,
+  file: File,
+): Promise<void> {
+  let res: Response;
+  try {
+    res = await fetch(uploadUrl, {
+      method: "PUT",
+      body: file,
+      headers: { "Content-Type": file.type },
+      credentials: "omit",
+    });
+  } catch {
+    // Never surface the presigned URL or underlying detail.
+    throw new Error("media upload failed");
+  }
+
+  if (!res.ok) {
+    throw new Error("media upload failed");
+  }
 }

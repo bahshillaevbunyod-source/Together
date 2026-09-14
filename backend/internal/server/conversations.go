@@ -10,6 +10,7 @@ import (
 
 	"together/backend/internal/conversation"
 	"together/backend/internal/translation"
+	"together/backend/internal/user"
 )
 
 const maxMessageBodyBytes = 1 << 20 // 1 MiB
@@ -61,6 +62,93 @@ type conversationResponse struct {
 type conversationListResponse struct {
 	Items      []conversationResponse `json:"items"`
 	NextCursor string                 `json:"nextCursor"`
+}
+
+type openConversationRequest struct {
+	Username string `json:"username"`
+}
+
+// handleOpenConversation opens (or returns the existing) private conversation
+// between the caller and the target user identified by username.
+func (s *Server) handleOpenConversation(w http.ResponseWriter, r *http.Request) {
+	me, ok := CurrentUser(r.Context())
+	if !ok {
+		unauthorized(w)
+		return
+	}
+
+	if ct := r.Header.Get("Content-Type"); !strings.HasPrefix(ct, "application/json") {
+		writeError(w, http.StatusUnsupportedMediaType, "content-type must be application/json")
+		return
+	}
+
+	r.Body = http.MaxBytesReader(w, r.Body, maxMessageBodyBytes)
+	dec := json.NewDecoder(r.Body)
+	dec.DisallowUnknownFields()
+
+	var req openConversationRequest
+	if err := dec.Decode(&req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid request body")
+		return
+	}
+
+	username := strings.ToLower(strings.TrimSpace(req.Username))
+	if username == "" {
+		writeError(w, http.StatusBadRequest, "username is required")
+		return
+	}
+
+	target, err := s.users.GetByUsername(r.Context(), username)
+	if err != nil {
+		if errors.Is(err, user.ErrNotFound) {
+			writeError(w, http.StatusNotFound, "user not found")
+			return
+		}
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+
+	if target.ID == me.ID {
+		writeError(w, http.StatusBadRequest, "cannot open a conversation with yourself")
+		return
+	}
+
+	// A block in either direction forbids opening a conversation. The response
+	// never reveals who blocked whom.
+	blocked, err := s.blocks.HasBlockBetween(r.Context(), me.ID, target.ID)
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+	if blocked {
+		writeError(w, http.StatusForbidden, "interaction not allowed")
+		return
+	}
+
+	conv, err := s.conversations.OpenPrivateConversation(r.Context(), me.ID, target.ID)
+	if err != nil {
+		if errors.Is(err, conversation.ErrSameUser) {
+			writeError(w, http.StatusBadRequest, "cannot open a conversation with yourself")
+			return
+		}
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+
+	// Frontend-friendly shape (matches GET /conversations items). Idempotent:
+	// an existing pair returns that conversation, never a duplicate.
+	writeJSON(w, http.StatusOK, conversationResponse{
+		ID: conv.ID,
+		OtherUser: conversationOtherUser{
+			ID:          target.ID,
+			Username:    target.Username,
+			DisplayName: target.DisplayName,
+			AvatarURL:   target.AvatarURL,
+		},
+		LastMessage: nil,
+		UnreadCount: 0,
+		UpdatedAt:   conv.UpdatedAt.Format(time.RFC3339),
+	})
 }
 
 func (s *Server) handleListConversations(w http.ResponseWriter, r *http.Request) {
@@ -283,7 +371,7 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 	// non-blocking, so a slow or disconnected recipient cannot stall us. Publish
 	// with the untranslated response so the recipient event is translated for
 	// the recipient, not the sender.
-	s.publishMessageCreated(r.Context(), recipientID, resp)
+	s.publishMessageCreated(r.Context(), id, recipientID, resp)
 
 	// Translate the HTTP response for the CURRENT sender/viewer's preferences.
 	if me.AutoTranslateEnabled && me.PreferredLanguage != nil {
@@ -299,18 +387,27 @@ type realtimeEvent struct {
 	Data any    `json:"data"`
 }
 
+// messageCreatedData is the "message.created" payload: the message fields plus
+// the conversation id so the client can route it. Embedding messageResponse
+// flattens its JSON fields alongside conversationId.
+type messageCreatedData struct {
+	ConversationID string `json:"conversationId"`
+	messageResponse
+}
+
 // publishMessageCreated sends a "message.created" event to the recipient only.
 // The event is translated for the recipient when they opted in; the original
 // content is always preserved and no translation (or lookup) failure blocks
 // delivery.
-func (s *Server) publishMessageCreated(ctx context.Context, recipientID string, msg messageResponse) {
+func (s *Server) publishMessageCreated(ctx context.Context, conversationID, recipientID string, msg messageResponse) {
 	// Translate using the RECIPIENT's preferences, loaded server-side.
 	if recipient, err := s.users.GetByID(ctx, recipientID); err == nil &&
 		recipient.AutoTranslateEnabled && recipient.PreferredLanguage != nil {
 		s.applyTranslation(ctx, &msg, msg.Content, *recipient.PreferredLanguage)
 	}
 
-	payload, err := json.Marshal(realtimeEvent{Type: "message.created", Data: msg})
+	data := messageCreatedData{ConversationID: conversationID, messageResponse: msg}
+	payload, err := json.Marshal(realtimeEvent{Type: "message.created", Data: data})
 	if err != nil {
 		return // never fail the request over a serialization problem
 	}

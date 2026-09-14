@@ -4,11 +4,15 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 
 import {
+  ApiError,
   getConversations,
+  openConversation,
   type ApiConversation,
+  type ApiMessage,
 } from "@/lib/api";
 import { formatTimeAgo } from "@/lib/format";
 import { useAuth } from "@/lib/auth-context";
+import { useRealtime } from "@/lib/realtime-context";
 import { ConversationThread } from "@/components/messages/ConversationThread";
 
 type Status = "loading" | "ready" | "error";
@@ -26,6 +30,7 @@ export default function MessagesPage() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const { user } = useAuth();
+  const { subscribeMessageCreated } = useRealtime();
 
   // Zero the unread badge for a conversation once it has been read.
   const clearUnread = useCallback((id: string) => {
@@ -33,6 +38,55 @@ export default function MessagesPage() {
       prev.map((c) => (c.id === id ? { ...c, unreadCount: 0 } : c)),
     );
   }, []);
+
+  // After the viewer sends a message: update that conversation's preview +
+  // activity time and move it to the top. Unread stays unchanged (own send).
+  const applySent = useCallback((id: string, message: ApiMessage) => {
+    setItems((prev) => {
+      const idx = prev.findIndex((c) => c.id === id);
+      if (idx === -1) return prev;
+      const updated: ApiConversation = {
+        ...prev[idx],
+        lastMessage: {
+          id: message.id,
+          senderId: message.senderId,
+          content: message.content,
+          createdAt: message.createdAt,
+        },
+        updatedAt: message.createdAt,
+      };
+      const rest = prev.filter((_, i) => i !== idx);
+      return [updated, ...rest]; // newest activity first
+    });
+  }, []);
+
+  // Realtime: incoming messages update the conversation list (no full refetch).
+  useEffect(() => {
+    const unsubscribe = subscribeMessageCreated((event) => {
+      setItems((prev) => {
+        const idx = prev.findIndex((c) => c.id === event.conversationId);
+        if (idx === -1) return prev; // conversation not in the current list
+        const cur = prev[idx];
+        if (cur.lastMessage?.id === event.id) return prev; // duplicate event
+        const isOpen = selectedId === event.conversationId;
+        const updated: ApiConversation = {
+          ...cur,
+          lastMessage: {
+            id: event.id,
+            senderId: event.senderId,
+            content: event.content,
+            createdAt: event.createdAt,
+          },
+          updatedAt: event.createdAt,
+          // Keep unread at 0 for the open thread (it's being read); otherwise +1.
+          unreadCount: isOpen ? cur.unreadCount : cur.unreadCount + 1,
+        };
+        const rest = prev.filter((_, i) => i !== idx);
+        return [updated, ...rest];
+      });
+    });
+    return unsubscribe;
+  }, [subscribeMessageCreated, selectedId]);
 
   const load = useCallback((signal?: AbortSignal) => {
     setStatus("loading");
@@ -54,6 +108,13 @@ export default function MessagesPage() {
     return () => controller.abort();
   }, [load]);
 
+  // Preselect a conversation passed via ?c=<id> (e.g. from a profile's Message
+  // button). It opens once it appears in the loaded list.
+  useEffect(() => {
+    const c = new URLSearchParams(window.location.search).get("c");
+    if (c) setSelectedId(c);
+  }, []);
+
   const loadMore = () => {
     if (!nextCursor || loadingMore) return;
     setLoadingMore(true);
@@ -70,12 +131,59 @@ export default function MessagesPage() {
 
   const selected = items.find((c) => c.id === selectedId) ?? null;
 
+  // "New conversation" composer state.
+  const [newUsername, setNewUsername] = useState("");
+  const [opening, setOpening] = useState(false);
+  const [openError, setOpenError] = useState<string | null>(null);
+
+  const openNew = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const uname = newUsername.trim();
+    if (!uname || opening) return;
+    setOpening(true);
+    setOpenError(null);
+    try {
+      const conv = await openConversation(uname);
+      // Add only if not already present; move to top and open it either way.
+      setItems((prev) => [conv, ...prev.filter((c) => c.id !== conv.id)]);
+      setSelectedId(conv.id);
+      setNewUsername("");
+    } catch (err) {
+      setOpenError(
+        err instanceof ApiError ? err.message : "Couldn’t open conversation.",
+      );
+    } finally {
+      setOpening(false);
+    }
+  };
+
   return (
     <div className="flex h-[calc(100vh-9rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
       {/* Conversation list */}
       <div className="flex w-full flex-col border-border sm:w-80 sm:border-r">
         <div className="border-b border-border px-4 py-3">
           <h1 className="text-base font-semibold text-foreground">Messages</h1>
+          <form onSubmit={openNew} className="mt-3 flex items-center gap-2">
+            <input
+              type="text"
+              value={newUsername}
+              onChange={(e) => setNewUsername(e.target.value)}
+              placeholder="Start a chat by @username"
+              className="h-9 flex-1 rounded-full bg-background px-3 text-sm text-foreground placeholder:text-muted-soft focus:outline-none"
+            />
+            <button
+              type="submit"
+              disabled={newUsername.trim().length === 0 || opening}
+              className="shrink-0 rounded-full bg-primary px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
+            >
+              {opening ? "…" : "New"}
+            </button>
+          </form>
+          {openError ? (
+            <p className="mt-2 text-xs text-red-500" role="alert">
+              {openError}
+            </p>
+          ) : null}
         </div>
 
         <div className="flex-1 overflow-y-auto">
@@ -191,6 +299,7 @@ export default function MessagesPage() {
               conversationId={selected.id}
               currentUserId={user?.id}
               onRead={clearUnread}
+              onSent={applySent}
             />
           </>
         ) : (

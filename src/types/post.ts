@@ -33,4 +33,8 @@ export type Post = {
   media: PostMedia[];
   stats: PostStats;
   viewerState: PostViewerState;
+  /** Translation of `content` for the viewer (null when none). */
+  translatedContent?: string | null;
+  sourceLanguage?: string | null;
+  targetLanguage?: string | null;
 };

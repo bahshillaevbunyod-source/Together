@@ -183,8 +183,9 @@ func TestCreatePostEmpty(t *testing.T) {
 }
 
 func TestCreatePostTooManyMedia(t *testing.T) {
+	// 9 keys exceeds the product limit of 8.
 	keys := ""
-	for i := 0; i < 11; i++ {
+	for i := 0; i < 9; i++ {
 		if i > 0 {
 			keys += ","
 		}
@@ -193,6 +194,31 @@ func TestCreatePostTooManyMedia(t *testing.T) {
 	rec := createPost(createServer(&fakePostCreate{}, okStorage()), `{"storageKeys":[`+keys+`]}`, true, true)
 	if rec.Code != http.StatusBadRequest {
 		t.Fatalf("expected 400, got %d", rec.Code)
+	}
+}
+
+func TestCreatePostMaxMedia(t *testing.T) {
+	// Exactly 8 distinct keys is the maximum and must be accepted, preserving
+	// selection order as sort_order.
+	pc := &fakePostCreate{}
+	keys := ""
+	for i := 0; i < 8; i++ {
+		if i > 0 {
+			keys += ","
+		}
+		keys += `"users/me-id/uploads/k` + string(rune('a'+i)) + `.png"`
+	}
+	rec := createPost(createServer(pc, okStorage()), `{"storageKeys":[`+keys+`]}`, true, true)
+	if rec.Code != http.StatusCreated {
+		t.Fatalf("expected 201, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if len(pc.lastMedia) != 8 {
+		t.Fatalf("expected 8 media, got %d", len(pc.lastMedia))
+	}
+	for i, m := range pc.lastMedia {
+		if m.SortOrder != i {
+			t.Fatalf("expected sortOrder %d, got %d", i, m.SortOrder)
+		}
 	}
 }
 
