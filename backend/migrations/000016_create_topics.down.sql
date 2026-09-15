@@ -1,0 +1,6 @@
+BEGIN;
+
+DROP TABLE IF EXISTS post_topics;
+DROP TABLE IF EXISTS topics;
+
+COMMIT;
