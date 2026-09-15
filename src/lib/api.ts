@@ -547,6 +547,18 @@ export function getFeed(
   return apiFetch<FeedPage>(`/api/v1/feed${qs ? `?${qs}` : ""}`, { signal });
 }
 
+/** Fetch a page of the authenticated user's saved (bookmarked) posts. */
+export function getBookmarks(
+  params: { cursor?: string; limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<FeedPage> {
+  const query = new URLSearchParams();
+  if (params.cursor) query.set("cursor", params.cursor);
+  if (params.limit) query.set("limit", String(params.limit));
+  const qs = query.toString();
+  return apiFetch<FeedPage>(`/api/v1/bookmarks${qs ? `?${qs}` : ""}`, { signal });
+}
+
 /* ------------------------------ Media ----------------------------------- */
 
 /** Ask the backend for a presigned upload URL for one image. */

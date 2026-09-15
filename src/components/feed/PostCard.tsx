@@ -43,7 +43,18 @@ type LocalComment = {
   targetLanguage: string | null;
 };
 
-export function PostCard({ post }: { post: Post }) {
+export function PostCard({
+  post,
+  onUnsave,
+}: {
+  post: Post;
+  /**
+   * Called after the viewer successfully unsaves this post. Used by the
+   * bookmarks page to drop the card immediately; unset elsewhere (e.g. the
+   * home feed), where unsaving only toggles the bookmark icon.
+   */
+  onUnsave?: (id: string) => void;
+}) {
   const { author, createdAt, location, content, hashtags, media, stats } = post;
 
   const { user } = useAuth();
@@ -228,6 +239,7 @@ export function PostCard({ post }: { post: Post }) {
         await savePost(post.id);
       } else {
         await unsavePost(post.id);
+        onUnsave?.(post.id); // let the bookmarks page drop this card
       }
     } catch {
       // Roll back on failure.

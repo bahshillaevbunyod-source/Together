@@ -9,9 +9,15 @@ import {
   type ReactNode,
 } from "react";
 
-import { getFeed } from "@/lib/api";
+import { getFeed, type FeedPage } from "@/lib/api";
 import { mapApiPost } from "@/lib/map-post";
 import type { Post } from "@/types/post";
+
+/** Fetcher signature shared by the feed and bookmarks list sources. */
+export type FeedPageFetcher = (
+  params: { cursor?: string; limit?: number },
+  signal?: AbortSignal,
+) => Promise<FeedPage>;
 
 export type FeedStatus = "loading" | "ready" | "error";
 
@@ -32,25 +38,35 @@ interface FeedState {
 
 const FeedContext = createContext<FeedState | undefined>(undefined);
 
-export function FeedProvider({ children }: { children: ReactNode }) {
+export function FeedProvider({
+  children,
+  fetchPage = getFeed,
+}: {
+  children: ReactNode;
+  /** Page source; defaults to the home feed. Pass getBookmarks for /bookmarks. */
+  fetchPage?: FeedPageFetcher;
+}) {
   const [posts, setPosts] = useState<Post[]>([]);
   const [status, setStatus] = useState<FeedStatus>("loading");
   const [nextCursor, setNextCursor] = useState("");
   const [loadingMore, setLoadingMore] = useState(false);
 
-  const loadFirstPage = useCallback((signal?: AbortSignal) => {
-    setStatus("loading");
-    getFeed({}, signal)
-      .then((page) => {
-        setPosts(page.items.map(mapApiPost));
-        setNextCursor(page.nextCursor);
-        setStatus("ready");
-      })
-      .catch((err) => {
-        if (err instanceof DOMException && err.name === "AbortError") return;
-        setStatus("error");
-      });
-  }, []);
+  const loadFirstPage = useCallback(
+    (signal?: AbortSignal) => {
+      setStatus("loading");
+      fetchPage({}, signal)
+        .then((page) => {
+          setPosts(page.items.map(mapApiPost));
+          setNextCursor(page.nextCursor);
+          setStatus("ready");
+        })
+        .catch((err) => {
+          if (err instanceof DOMException && err.name === "AbortError") return;
+          setStatus("error");
+        });
+    },
+    [fetchPage],
+  );
 
   useEffect(() => {
     const controller = new AbortController();
@@ -62,7 +78,7 @@ export function FeedProvider({ children }: { children: ReactNode }) {
     setNextCursor((cursor) => {
       if (!cursor) return cursor;
       setLoadingMore(true);
-      getFeed({ cursor })
+      fetchPage({ cursor })
         .then((page) => {
           setPosts((prev) => [...prev, ...page.items.map(mapApiPost)]);
           setNextCursor(page.nextCursor);
@@ -73,7 +89,7 @@ export function FeedProvider({ children }: { children: ReactNode }) {
         .finally(() => setLoadingMore(false));
       return cursor;
     });
-  }, []);
+  }, [fetchPage]);
 
   const prependPost = useCallback((post: Post) => {
     setPosts((prev) => [post, ...prev]);

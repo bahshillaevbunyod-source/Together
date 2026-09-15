@@ -34,7 +34,7 @@ const navItems: NavItem[] = [
   { label: "Groups", icon: Users },
   { label: "Explore", icon: Compass },
   { label: "Events", icon: Calendar },
-  { label: "Bookmarks", icon: Bookmark },
+  { label: "Bookmarks", icon: Bookmark, href: "/bookmarks" },
   { label: "Profile", icon: User, href: "/profile" },
   { label: "Settings", icon: Settings, href: "/settings" },
 ];
