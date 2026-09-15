@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { Bell } from "lucide-react";
 
 import {
@@ -13,6 +15,13 @@ import {
 import { formatTimeAgo } from "@/lib/format";
 
 type Status = "idle" | "loading" | "ready" | "error";
+
+// Neutral fallback avatar (a gray circle) used when an actor has no avatar.
+const FALLBACK_AVATAR =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><circle cx="16" cy="16" r="16" fill="#d4d4d8"/></svg>',
+  );
 
 // Human-readable action text per notification type.
 function actionText(type: string): string {
@@ -64,13 +73,17 @@ export function NotificationsBell() {
       });
   }, []);
 
-  // Load the list the first time the panel opens.
+  // Load the list whenever the panel opens. Keyed on `open` only — never on
+  // `status` — so load()'s own setStatus("loading") cannot re-trigger this
+  // effect and abort (via cleanup) the request it just started. The cleanup
+  // still aborts a genuinely in-flight request when the panel closes or the
+  // component unmounts.
   useEffect(() => {
-    if (!open || status !== "idle") return;
+    if (!open) return;
     const controller = new AbortController();
     load(controller.signal);
     return () => controller.abort();
-  }, [open, status, load]);
+  }, [open, load]);
 
   // Close on outside click.
   useEffect(() => {
@@ -199,22 +212,27 @@ export function NotificationsBell() {
 
             {items.length > 0 ? (
               <ul className="flex flex-col">
-                {items.map((n) => (
-                  <li key={n.id}>
-                    <button
-                      type="button"
-                      role="menuitem"
-                      onClick={() => markRead(n)}
-                      className={`flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-background ${
-                        n.readAt ? "" : "bg-background/60"
-                      }`}
-                    >
-                      <span className="mt-1 h-8 w-8 shrink-0 rounded-full bg-background" />
+                {items.map((n) => {
+                  const actorName = n.actor?.displayName ?? "Someone";
+                  // Follow notifications with a known actor link to that
+                  // profile; other types keep the mark-read-only button.
+                  const canNavigate =
+                    n.type === "follow" && !!n.actor?.username;
+                  const rowClass = `flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-background ${
+                    n.readAt ? "" : "bg-background/60"
+                  }`;
+                  const inner = (
+                    <>
+                      <Image
+                        src={n.actor?.avatarUrl ?? FALLBACK_AVATAR}
+                        alt={actorName}
+                        width={32}
+                        height={32}
+                        className="mt-1 h-8 w-8 shrink-0 rounded-full object-cover"
+                      />
                       <span className="min-w-0 flex-1">
                         <span className="text-sm text-foreground">
-                          <span className="font-semibold">
-                            {n.actor?.displayName ?? "Someone"}
-                          </span>{" "}
+                          <span className="font-semibold">{actorName}</span>{" "}
                           {actionText(n.type)}
                         </span>
                         <span className="mt-0.5 block text-xs text-muted-soft">
@@ -224,9 +242,35 @@ export function NotificationsBell() {
                       {n.readAt ? null : (
                         <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
                       )}
-                    </button>
-                  </li>
-                ))}
+                    </>
+                  );
+
+                  return (
+                    <li key={n.id}>
+                      {canNavigate ? (
+                        <Link
+                          href={`/u/${encodeURIComponent(n.actor!.username)}`}
+                          onClick={() => {
+                            markRead(n);
+                            setOpen(false);
+                          }}
+                          className={rowClass}
+                        >
+                          {inner}
+                        </Link>
+                      ) : (
+                        <button
+                          type="button"
+                          role="menuitem"
+                          onClick={() => markRead(n)}
+                          className={rowClass}
+                        >
+                          {inner}
+                        </button>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             ) : null}
 
