@@ -125,7 +125,7 @@ function Carousel({ media }: { media: PostMediaItem[] }) {
         role="group"
         aria-roledescription="carousel"
         aria-label={`Post images, ${n} total`}
-        className="flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden rounded-xl border border-border outline-none focus-visible:ring-2 focus-visible:ring-primary [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden rounded-xl border border-border [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {media.map((m, i) => (
           <div key={i} className="relative w-full shrink-0 basis-full snap-start">

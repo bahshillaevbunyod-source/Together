@@ -48,7 +48,7 @@ export function SuggestedPeople() {
         <h2 className="text-sm font-semibold text-foreground">Suggested for you</h2>
         <button
           type="button"
-          className="text-xs font-medium text-primary outline-none transition-colors hover:text-primary-hover focus:outline-none focus-visible:outline-none"
+          className="rounded text-xs font-medium text-primary transition-colors hover:text-primary-hover"
         >
           See all
         </button>

@@ -222,7 +222,7 @@ export function ConversationThread({
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Write a message…"
-            className="h-10 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft focus:outline-none"
+            className="h-10 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft"
           />
           <button
             type="submit"

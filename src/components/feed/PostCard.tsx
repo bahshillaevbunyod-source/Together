@@ -580,7 +580,7 @@ export function PostCard({
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               placeholder="Write a comment…"
-              className="h-9 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft focus:outline-none"
+              className="h-9 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft"
             />
             <button
               type="submit"

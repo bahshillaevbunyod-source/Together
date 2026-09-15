@@ -170,7 +170,7 @@ export default function MessagesPage() {
               value={newUsername}
               onChange={(e) => setNewUsername(e.target.value)}
               placeholder="Start a chat by @username"
-              className="h-9 flex-1 rounded-full bg-background px-3 text-sm text-foreground placeholder:text-muted-soft focus:outline-none"
+              className="h-9 flex-1 rounded-full bg-background px-3 text-sm text-foreground placeholder:text-muted-soft"
             />
             <button
               type="submit"

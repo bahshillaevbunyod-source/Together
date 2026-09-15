@@ -272,7 +272,7 @@ export function Composer() {
             if (error) clearError(); // clear the error as the user edits
           }}
           placeholder="What's on your mind?"
-          className="h-11 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft focus:outline-none"
+          className="h-11 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft"
         />
       </div>
 

@@ -29,3 +29,23 @@
   /* Spacing — base unit driving the whole scale */
   --spacing: 0.25rem;
 }
+
+@layer base {
+  /* One global, accessible focus system.
+     - Keyboard / assistive-tech navigation gets a single subtle Together
+       primary outline (:focus-visible).
+     - Mouse / touch focus shows nothing — no ugly user-agent outline.
+     `outline` is used (not a box-shadow ring) so it follows each element's
+     border-radius and is never clipped by overflow. Components may still opt
+     into a local focus-visible style where an outset outline would be clipped
+     (e.g. full-width rows inside an overflow-hidden modal). */
+  :focus-visible {
+    /* Softened primary outline: same Together primary, reduced opacity so it
+       reads as a gentle focus hint rather than an active/selected state. */
+    outline: 2px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+    outline-offset: 2px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}

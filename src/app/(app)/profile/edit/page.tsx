@@ -235,7 +235,7 @@ export default function EditProfilePage() {
               onClick={openPicker}
               disabled={saving}
               aria-label="Change profile photo"
-              className="group relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border bg-background outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed"
+              className="group relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border bg-background disabled:cursor-not-allowed"
             >
               {shownAvatar ? (
                 // eslint-disable-next-line @next/next/no-img-element
