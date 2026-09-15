@@ -28,7 +28,7 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { label: "Home", icon: Home, href: "/" },
-  { label: "Discover", icon: Search },
+  { label: "Discover", icon: Search, href: "/discover" },
   { label: "Messages", icon: MessageCircle, href: "/messages", badge: "3" },
   { label: "Calls", icon: Phone },
   { label: "Groups", icon: Users },

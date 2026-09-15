@@ -290,6 +290,46 @@ export function searchUsers(
   ).then((r) => r.items ?? []);
 }
 
+/** A person-discovery card as returned by GET /api/v1/users/discover. */
+export interface DiscoverUser {
+  id: string;
+  username: string;
+  displayName: string;
+  avatarUrl: string | null;
+  countryCode: string | null;
+  city: string | null;
+  nativeLanguage: string;
+  followerCount: number;
+}
+
+/** One page of discovery results. `nextCursor` is "" when exhausted. */
+export interface DiscoverPage {
+  items: DiscoverUser[];
+  nextCursor: string;
+}
+
+/** Fetch a page of people-discovery results for the given mode. */
+export function getDiscoverUsers(
+  params: {
+    mode?: "for_you" | "world" | "popular";
+    country?: string;
+    limit?: number;
+    cursor?: string;
+  } = {},
+  signal?: AbortSignal,
+): Promise<DiscoverPage> {
+  const q = new URLSearchParams();
+  if (params.mode) q.set("mode", params.mode);
+  if (params.country) q.set("country", params.country);
+  if (params.limit) q.set("limit", String(params.limit));
+  if (params.cursor) q.set("cursor", params.cursor);
+  const qs = q.toString();
+  return apiFetch<DiscoverPage>(
+    `/api/v1/users/discover${qs ? `?${qs}` : ""}`,
+    { signal },
+  );
+}
+
 /** Register a new account. Sets the session cookie; returns the user. */
 export function register(input: {
   email: string;
