@@ -297,6 +297,10 @@ LIMIT $4`, discoverCandidate)
 		if p.After != nil {
 			rank, fc, id = p.After.CountryRank, p.After.FollowerCount, p.After.ID
 		}
+		// Placeholders are contiguous ($1..$7); world does not use viewer language,
+		// so it is not passed (a gap would make Postgres fail to type the param).
+		//   $1 viewer id, $2 viewer country, $3 country filter,
+		//   $4 rank key, $5 follower_count key, $6 id key, $7 limit.
 		query = fmt.Sprintf(`
 SELECT c.id, c.username, c.display_name, c.avatar_url, c.country_code, c.city,
        c.native_language, c.created_at, c.follower_count, 0 AS score,
@@ -304,17 +308,17 @@ SELECT c.id, c.username, c.display_name, c.avatar_url, c.country_code, c.city,
              WHEN c.country_code = $2 THEN 1
              ELSE 0 END) AS country_rank
 FROM (%s) c
-WHERE ($4 = '' OR c.country_code = $4)
-  AND ($5::int IS NULL
+WHERE ($3 = '' OR c.country_code = $3)
+  AND ($4::int IS NULL
        OR (CASE WHEN c.country_code IS NULL THEN 2
-                WHEN c.country_code = $2 THEN 1 ELSE 0 END) > $5
+                WHEN c.country_code = $2 THEN 1 ELSE 0 END) > $4
        OR ((CASE WHEN c.country_code IS NULL THEN 2
-                 WHEN c.country_code = $2 THEN 1 ELSE 0 END) = $5 AND c.follower_count < $6)
+                 WHEN c.country_code = $2 THEN 1 ELSE 0 END) = $4 AND c.follower_count < $5)
        OR ((CASE WHEN c.country_code IS NULL THEN 2
-                 WHEN c.country_code = $2 THEN 1 ELSE 0 END) = $5 AND c.follower_count = $6 AND c.id < $7::uuid))
+                 WHEN c.country_code = $2 THEN 1 ELSE 0 END) = $4 AND c.follower_count = $5 AND c.id < $6::uuid))
 ORDER BY country_rank ASC, c.follower_count DESC, c.id DESC
-LIMIT $8`, discoverCandidate)
-		args = []any{p.ViewerID, p.ViewerCountry, p.ViewerLanguage, p.Country, rank, fc, id, p.Limit}
+LIMIT $7`, discoverCandidate)
+		args = []any{p.ViewerID, p.ViewerCountry, p.Country, rank, fc, id, p.Limit}
 
 	case DiscoverForYou, "":
 		// key: (score DESC, created_at DESC, id DESC), where
