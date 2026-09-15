@@ -50,6 +50,15 @@ func (p ProfileUpdate) HasChanges() bool {
 		p.PreferredLanguage.Set || p.AutoTranslateEnabled != nil
 }
 
+// SearchResult is a public-safe user row returned by SearchUsers. It never
+// carries private fields (email, phone, password hash).
+type SearchResult struct {
+	ID          string
+	Username    string
+	DisplayName string
+	AvatarURL   *string
+}
+
 // Repository abstracts user persistence so handlers never touch SQL.
 type Repository interface {
 	Create(ctx context.Context, in CreateInput) (*User, error)
@@ -61,4 +70,8 @@ type Repository interface {
 	GetByUsername(ctx context.Context, username string) (*User, error)
 	// UpdateProfile applies a partial profile update and returns the row.
 	UpdateProfile(ctx context.Context, id string, in ProfileUpdate) (*User, error)
+	// SearchUsers finds users whose username or display name matches query
+	// (case-insensitive), excluding the viewer and anyone in a block
+	// relationship with them, ranked by match quality and capped at limit.
+	SearchUsers(ctx context.Context, viewerID, query string, limit int) ([]SearchResult, error)
 }

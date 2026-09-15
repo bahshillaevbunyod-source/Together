@@ -198,6 +198,10 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/v1/profile", s.requireAuth(s.handleGetProfile))
 	mux.HandleFunc("PATCH /api/v1/profile", s.requireAuth(s.csrfProtect(s.handleUpdateProfile)))
 
+	// User search (authenticated). The literal "search" segment takes precedence
+	// over the {username} wildcard in the Go 1.22 mux, so it never collides.
+	mux.HandleFunc("GET /api/v1/users/search", s.requireAuth(s.handleUserSearch))
+
 	// Public routes (no auth required).
 	mux.HandleFunc("GET /api/v1/users/{username}", s.handlePublicProfile)
 	mux.HandleFunc("GET /api/v1/users/{username}/followers", s.handleFollowersList)

@@ -178,6 +178,69 @@ func (r *PostgresRepository) GetByUsername(ctx context.Context, username string)
 	return &u, nil
 }
 
+// escapeLike escapes LIKE metacharacters (\ % _) so user input is matched
+// literally. Pairs with the ESCAPE '\' clause in searchUsersQuery.
+func escapeLike(s string) string {
+	s = strings.ReplaceAll(s, `\`, `\\`)
+	s = strings.ReplaceAll(s, "%", `\%`)
+	s = strings.ReplaceAll(s, "_", `\_`)
+	return s
+}
+
+// searchUsersQuery finds users matching a query on username or display name,
+// case-insensitively (usernames are stored lowercase; display_name is lowered
+// in-query). It excludes the viewer ($1) and any user in a block relationship
+// with them (either direction). Ranking: exact username, username prefix,
+// display-name prefix, then any contains match; ties break on username then id
+// for stable, deterministic ordering. Fully parameterized.
+//
+//	$1 = viewer id, $2 = normalized query (trimmed, lowercased),
+//	$3 = $2 with LIKE metacharacters escaped, $4 = limit.
+const searchUsersQuery = `
+SELECT u.id, u.username, u.display_name, u.avatar_url
+FROM users u
+WHERE u.id <> $1
+  AND (
+    u.username LIKE '%' || $3 || '%' ESCAPE '\'
+    OR lower(u.display_name) LIKE '%' || $3 || '%' ESCAPE '\'
+  )
+  AND NOT EXISTS (
+    SELECT 1 FROM blocks bl
+    WHERE (bl.blocker_id = $1 AND bl.blocked_id = u.id)
+       OR (bl.blocker_id = u.id AND bl.blocked_id = $1)
+  )
+ORDER BY
+  CASE
+    WHEN u.username = $2 THEN 0
+    WHEN u.username LIKE $3 || '%' ESCAPE '\' THEN 1
+    WHEN lower(u.display_name) LIKE $3 || '%' ESCAPE '\' THEN 2
+    ELSE 3
+  END,
+  u.username,
+  u.id
+LIMIT $4
+`
+
+// SearchUsers implements Repository.SearchUsers.
+func (r *PostgresRepository) SearchUsers(ctx context.Context, viewerID, query string, limit int) ([]SearchResult, error) {
+	q := strings.ToLower(strings.TrimSpace(query))
+	rows, err := r.pool.Query(ctx, searchUsersQuery, viewerID, q, escapeLike(q), limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var out []SearchResult
+	for rows.Next() {
+		var s SearchResult
+		if err := rows.Scan(&s.ID, &s.Username, &s.DisplayName, &s.AvatarURL); err != nil {
+			return nil, err
+		}
+		out = append(out, s)
+	}
+	return out, rows.Err()
+}
+
 // profileReturningColumns are the safe columns returned after an update
 // (password_hash is intentionally excluded).
 const profileReturningColumns = `id, email, phone, username, display_name,

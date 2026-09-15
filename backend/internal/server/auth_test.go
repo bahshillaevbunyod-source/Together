@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"sort"
 	"strings"
 	"testing"
 	"time"
@@ -34,6 +35,14 @@ type fakeUserRepo struct {
 	usernameUser *user.User
 	usernameErr  error
 	lastUsername string
+
+	// Search test controls.
+	searchPool      []*user.User    // candidate users to match against
+	searchBlocked   map[string]bool // user ids in a block relationship with the viewer
+	searchErr       error
+	lastSearchQuery string
+	lastSearchLimit int
+	searchCalled    bool
 }
 
 func (f *fakeUserRepo) Create(_ context.Context, in user.CreateInput) (*user.User, error) {
@@ -90,6 +99,78 @@ func (f *fakeUserRepo) GetByUsername(_ context.Context, username string) (*user.
 		return nil, user.ErrNotFound
 	}
 	return f.usernameUser, nil
+}
+
+// SearchUsers is a faithful in-memory mirror of the SQL contract in
+// user.PostgresRepository.SearchUsers: case-insensitive substring match on
+// username or display name, excluding the viewer and any blocked user, ranked
+// (exact username, username prefix, display-name prefix, contains) with stable
+// username+id tie-breaks, capped at limit. The parameterized SQL is the source
+// of truth; this lets handler tests exercise the documented behavior.
+func (f *fakeUserRepo) SearchUsers(_ context.Context, viewerID, query string, limit int) ([]user.SearchResult, error) {
+	f.searchCalled = true
+	f.lastSearchQuery = query
+	f.lastSearchLimit = limit
+	if f.searchErr != nil {
+		return nil, f.searchErr
+	}
+
+	q := strings.ToLower(strings.TrimSpace(query))
+
+	type ranked struct {
+		u    *user.User
+		rank int
+	}
+	var matches []ranked
+	for _, u := range f.searchPool {
+		if u.ID == viewerID {
+			continue // never return self
+		}
+		if f.searchBlocked[u.ID] {
+			continue // block relationship in either direction
+		}
+		uname := strings.ToLower(u.Username)
+		dname := strings.ToLower(u.DisplayName)
+		unameMatch := strings.Contains(uname, q)
+		dnameMatch := strings.Contains(dname, q)
+		if !unameMatch && !dnameMatch {
+			continue
+		}
+		rank := 3
+		switch {
+		case uname == q:
+			rank = 0
+		case strings.HasPrefix(uname, q):
+			rank = 1
+		case strings.HasPrefix(dname, q):
+			rank = 2
+		}
+		matches = append(matches, ranked{u: u, rank: rank})
+	}
+
+	sort.SliceStable(matches, func(i, j int) bool {
+		if matches[i].rank != matches[j].rank {
+			return matches[i].rank < matches[j].rank
+		}
+		if matches[i].u.Username != matches[j].u.Username {
+			return matches[i].u.Username < matches[j].u.Username
+		}
+		return matches[i].u.ID < matches[j].u.ID
+	})
+
+	out := make([]user.SearchResult, 0, len(matches))
+	for _, m := range matches {
+		if len(out) >= limit {
+			break
+		}
+		out = append(out, user.SearchResult{
+			ID:          m.u.ID,
+			Username:    m.u.Username,
+			DisplayName: m.u.DisplayName,
+			AvatarURL:   m.u.AvatarURL,
+		})
+	}
+	return out, nil
 }
 
 func (f *fakeUserRepo) UpdateProfile(_ context.Context, _ string, in user.ProfileUpdate) (*user.User, error) {
