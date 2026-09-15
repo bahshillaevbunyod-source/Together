@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 	"errors"
+	"time"
 )
 
 // Repository errors the callers may branch on.
@@ -59,6 +60,66 @@ type SearchResult struct {
 	AvatarURL   *string
 }
 
+// DiscoverResult is a public-safe user row for the discovery surface. It carries
+// the follower count and location/language so the client can render rich cards.
+// Score and CountryRank are the mode-specific sort keys used to build the next
+// keyset cursor (Score for for_you, CountryRank+FollowerCount for world,
+// FollowerCount for popular); CreatedAt is the for_you secondary key.
+type DiscoverResult struct {
+	ID             string
+	Username       string
+	DisplayName    string
+	AvatarURL      *string
+	CountryCode    *string
+	City           *string
+	NativeLanguage string
+	FollowerCount  int64
+	CreatedAt      time.Time
+	Score          int64
+	CountryRank    int
+}
+
+// Discover modes.
+const (
+	DiscoverForYou  = "for_you"
+	DiscoverWorld   = "world"
+	DiscoverPopular = "popular"
+)
+
+// for_you relevance boosts, expressed in follower-equivalent units so they stay
+// LIGHT: a same-country user is nudged up by a few followers' worth, a
+// same-language user slightly less. They never hard-gate — a popular user from
+// another country still outranks a weak same-country user.
+const (
+	ForYouCountryBoost  = 3
+	ForYouLanguageBoost = 2
+)
+
+// DiscoverCursor is the decoded keyset position for the next page. Which fields
+// matter depends on the mode; ID is always the final tie-break.
+type DiscoverCursor struct {
+	Score         int64
+	FollowerCount int64
+	CountryRank   int
+	CreatedAt     time.Time
+	ID            string
+}
+
+// DiscoverParams bundles the inputs for DiscoverUsers. ViewerCountry and
+// ViewerLanguage feed the for_you relevance boost and the world ordering; both
+// may be empty. Country is an optional exact filter used by the world mode.
+// Pagination is keyset-based: After is nil for the first page, otherwise the
+// decoded cursor position; Limit is validated by the caller.
+type DiscoverParams struct {
+	ViewerID       string
+	Mode           string
+	Country        string
+	ViewerCountry  string
+	ViewerLanguage string
+	After          *DiscoverCursor
+	Limit          int
+}
+
 // Repository abstracts user persistence so handlers never touch SQL.
 type Repository interface {
 	Create(ctx context.Context, in CreateInput) (*User, error)
@@ -74,4 +135,8 @@ type Repository interface {
 	// (case-insensitive), excluding the viewer and anyone in a block
 	// relationship with them, ranked by match quality and capped at limit.
 	SearchUsers(ctx context.Context, viewerID, query string, limit int) ([]SearchResult, error)
+	// DiscoverUsers returns people-discovery results for the given mode,
+	// excluding the viewer, blocked relationships (either direction) and users
+	// the viewer already follows. Ranking is deterministic per mode.
+	DiscoverUsers(ctx context.Context, p DiscoverParams) ([]DiscoverResult, error)
 }

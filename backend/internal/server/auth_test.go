@@ -43,6 +43,14 @@ type fakeUserRepo struct {
 	lastSearchQuery string
 	lastSearchLimit int
 	searchCalled    bool
+
+	// Discover test controls.
+	discoverPool   []*user.User     // candidate users
+	followerCounts map[string]int64 // user id -> follower count
+	followedByMe   map[string]bool  // ids the viewer already follows (excluded)
+	discoverErr    error
+	lastDiscover   user.DiscoverParams
+	discoverCalled bool
 }
 
 func (f *fakeUserRepo) Create(_ context.Context, in user.CreateInput) (*user.User, error) {
@@ -171,6 +179,128 @@ func (f *fakeUserRepo) SearchUsers(_ context.Context, viewerID, query string, li
 		})
 	}
 	return out, nil
+}
+
+// DiscoverUsers mirrors the SQL contract in user.PostgresRepository.DiscoverUsers:
+// excludes self, blocked ids and already-followed ids; applies the world country
+// filter; ranks deterministically per mode; then offset/limit paginates. The
+// parameterized SQL is the source of truth; this drives handler tests.
+func (f *fakeUserRepo) DiscoverUsers(_ context.Context, p user.DiscoverParams) ([]user.DiscoverResult, error) {
+	f.discoverCalled = true
+	f.lastDiscover = p
+	if f.discoverErr != nil {
+		return nil, f.discoverErr
+	}
+
+	deref := func(s *string) string {
+		if s == nil {
+			return ""
+		}
+		return *s
+	}
+
+	var cand []*user.User
+	for _, u := range f.discoverPool {
+		if u.ID == p.ViewerID || f.searchBlocked[u.ID] || f.followedByMe[u.ID] {
+			continue
+		}
+		if p.Mode == user.DiscoverWorld && p.Country != "" && deref(u.CountryCode) != p.Country {
+			continue
+		}
+		cand = append(cand, u)
+	}
+
+	fc := func(id string) int64 { return f.followerCounts[id] }
+	// score mirrors the SQL for_you score: follower_count + light boosts.
+	score := func(u *user.User) int64 {
+		s := fc(u.ID)
+		if p.ViewerCountry != "" && deref(u.CountryCode) == p.ViewerCountry {
+			s += user.ForYouCountryBoost
+		}
+		if p.ViewerLanguage != "" && u.NativeLanguage == p.ViewerLanguage {
+			s += user.ForYouLanguageBoost
+		}
+		return s
+	}
+
+	sort.SliceStable(cand, func(i, j int) bool {
+		a, b := cand[i], cand[j]
+		switch p.Mode {
+		case user.DiscoverPopular:
+			if fc(a.ID) != fc(b.ID) {
+				return fc(a.ID) > fc(b.ID)
+			}
+			return a.ID > b.ID
+		case user.DiscoverWorld:
+			ra, rb := worldRank(deref(a.CountryCode), p.ViewerCountry), worldRank(deref(b.CountryCode), p.ViewerCountry)
+			if ra != rb {
+				return ra < rb
+			}
+			if fc(a.ID) != fc(b.ID) {
+				return fc(a.ID) > fc(b.ID)
+			}
+			return a.ID > b.ID
+		default: // for_you
+			if score(a) != score(b) {
+				return score(a) > score(b)
+			}
+			if !a.CreatedAt.Equal(b.CreatedAt) {
+				return a.CreatedAt.After(b.CreatedAt)
+			}
+			return a.ID > b.ID
+		}
+	})
+
+	// Keyset pagination: start strictly after the cursor row (found by id in the
+	// fully-ordered list — the ordering is total, so this equals the SQL keyset).
+	start := 0
+	if p.After != nil {
+		for i, u := range cand {
+			if u.ID == p.After.ID {
+				start = i + 1
+				break
+			}
+		}
+	}
+	if start >= len(cand) {
+		return nil, nil
+	}
+	end := start + p.Limit
+	if end > len(cand) {
+		end = len(cand)
+	}
+	page := cand[start:end]
+
+	out := make([]user.DiscoverResult, 0, len(page))
+	for _, u := range page {
+		out = append(out, user.DiscoverResult{
+			ID:             u.ID,
+			Username:       u.Username,
+			DisplayName:    u.DisplayName,
+			AvatarURL:      u.AvatarURL,
+			CountryCode:    u.CountryCode,
+			City:           u.City,
+			NativeLanguage: u.NativeLanguage,
+			FollowerCount:  fc(u.ID),
+			CreatedAt:      u.CreatedAt,
+			Score:          score(u),
+			CountryRank:    worldRank(deref(u.CountryCode), p.ViewerCountry),
+		})
+	}
+	return out, nil
+}
+
+// worldRank mirrors the world ORDER BY: known-different country first (0), same
+// country (1), unknown country last (2).
+func worldRank(country, viewerCountry string) int {
+	switch {
+	case country == "":
+		return 2
+	case country == viewerCountry:
+		return 1
+	default:
+		return 0
+	}
 }
 
 func (f *fakeUserRepo) UpdateProfile(_ context.Context, _ string, in user.ProfileUpdate) (*user.User, error) {

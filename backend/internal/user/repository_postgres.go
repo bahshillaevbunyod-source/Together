@@ -241,6 +241,131 @@ func (r *PostgresRepository) SearchUsers(ctx context.Context, viewerID, query st
 	return out, rows.Err()
 }
 
+// discoverCandidate is the shared inner SELECT: it excludes the viewer ($1), any
+// block relationship (either direction) and users the viewer already follows,
+// and computes a real follower count per candidate. $2 = viewer country, $3 =
+// viewer language, $4 = optional world country filter (empty string = no filter).
+// The mode-specific outer query adds keyset predicates and ORDER BY.
+const discoverCandidate = `
+SELECT u.id, u.username, u.display_name, u.avatar_url, u.country_code, u.city,
+       u.native_language, u.created_at,
+       (SELECT count(*) FROM follows f WHERE f.following_id = u.id) AS follower_count
+FROM users u
+WHERE u.id <> $1
+  AND NOT EXISTS (
+    SELECT 1 FROM blocks bl
+    WHERE (bl.blocker_id = $1 AND bl.blocked_id = u.id)
+       OR (bl.blocker_id = u.id AND bl.blocked_id = $1)
+  )
+  AND NOT EXISTS (
+    SELECT 1 FROM follows fol
+    WHERE fol.follower_id = $1 AND fol.following_id = u.id
+  )`
+
+// The 11 output columns, in the order every mode selects and Scan reads them.
+// id, username, display_name, avatar_url, country_code, city, native_language,
+// created_at, follower_count, score, country_rank.
+
+// DiscoverUsers implements Repository.DiscoverUsers with opaque keyset
+// pagination. Ordering is deterministic per mode (id is always the final
+// tie-break), so pages never duplicate or skip rows.
+func (r *PostgresRepository) DiscoverUsers(ctx context.Context, p DiscoverParams) ([]DiscoverResult, error) {
+	var query string
+	var args []any
+
+	switch p.Mode {
+	case DiscoverPopular:
+		// key: (follower_count DESC, id DESC)
+		var fc, id any
+		if p.After != nil {
+			fc, id = p.After.FollowerCount, p.After.ID
+		}
+		query = fmt.Sprintf(`
+SELECT c.id, c.username, c.display_name, c.avatar_url, c.country_code, c.city,
+       c.native_language, c.created_at, c.follower_count, 0 AS score, 0 AS country_rank
+FROM (%s) c
+WHERE ($2::bigint IS NULL
+       OR c.follower_count < $2
+       OR (c.follower_count = $2 AND c.id < $3::uuid))
+ORDER BY c.follower_count DESC, c.id DESC
+LIMIT $4`, discoverCandidate)
+		args = []any{p.ViewerID, fc, id, p.Limit}
+
+	case DiscoverWorld:
+		// key: (country_rank ASC, follower_count DESC, id DESC)
+		var rank, fc, id any
+		if p.After != nil {
+			rank, fc, id = p.After.CountryRank, p.After.FollowerCount, p.After.ID
+		}
+		query = fmt.Sprintf(`
+SELECT c.id, c.username, c.display_name, c.avatar_url, c.country_code, c.city,
+       c.native_language, c.created_at, c.follower_count, 0 AS score,
+       (CASE WHEN c.country_code IS NULL THEN 2
+             WHEN c.country_code = $2 THEN 1
+             ELSE 0 END) AS country_rank
+FROM (%s) c
+WHERE ($4 = '' OR c.country_code = $4)
+  AND ($5::int IS NULL
+       OR (CASE WHEN c.country_code IS NULL THEN 2
+                WHEN c.country_code = $2 THEN 1 ELSE 0 END) > $5
+       OR ((CASE WHEN c.country_code IS NULL THEN 2
+                 WHEN c.country_code = $2 THEN 1 ELSE 0 END) = $5 AND c.follower_count < $6)
+       OR ((CASE WHEN c.country_code IS NULL THEN 2
+                 WHEN c.country_code = $2 THEN 1 ELSE 0 END) = $5 AND c.follower_count = $6 AND c.id < $7::uuid))
+ORDER BY country_rank ASC, c.follower_count DESC, c.id DESC
+LIMIT $8`, discoverCandidate)
+		args = []any{p.ViewerID, p.ViewerCountry, p.ViewerLanguage, p.Country, rank, fc, id, p.Limit}
+
+	case DiscoverForYou, "":
+		// key: (score DESC, created_at DESC, id DESC), where
+		// score = follower_count + light country/language boosts.
+		var score, created, id any
+		if p.After != nil {
+			score, created, id = p.After.Score, p.After.CreatedAt, p.After.ID
+		}
+		query = fmt.Sprintf(`
+SELECT s.id, s.username, s.display_name, s.avatar_url, s.country_code, s.city,
+       s.native_language, s.created_at, s.follower_count, s.score, 0 AS country_rank
+FROM (
+  SELECT c.*,
+         (c.follower_count
+          + CASE WHEN c.country_code = $2 THEN %d ELSE 0 END
+          + CASE WHEN c.native_language = $3 THEN %d ELSE 0 END) AS score
+  FROM (%s) c
+) s
+WHERE ($4::bigint IS NULL
+       OR s.score < $4
+       OR (s.score = $4 AND s.created_at < $5::timestamptz)
+       OR (s.score = $4 AND s.created_at = $5 AND s.id < $6::uuid))
+ORDER BY s.score DESC, s.created_at DESC, s.id DESC
+LIMIT $7`, ForYouCountryBoost, ForYouLanguageBoost, discoverCandidate)
+		args = []any{p.ViewerID, p.ViewerCountry, p.ViewerLanguage, score, created, id, p.Limit}
+
+	default:
+		return nil, fmt.Errorf("unknown discover mode %q", p.Mode)
+	}
+
+	rows, err := r.pool.Query(ctx, query, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var out []DiscoverResult
+	for rows.Next() {
+		var d DiscoverResult
+		if err := rows.Scan(
+			&d.ID, &d.Username, &d.DisplayName, &d.AvatarURL,
+			&d.CountryCode, &d.City, &d.NativeLanguage, &d.CreatedAt,
+			&d.FollowerCount, &d.Score, &d.CountryRank,
+		); err != nil {
+			return nil, err
+		}
+		out = append(out, d)
+	}
+	return out, rows.Err()
+}
+
 // profileReturningColumns are the safe columns returned after an update
 // (password_hash is intentionally excluded).
 const profileReturningColumns = `id, email, phone, username, display_name,
