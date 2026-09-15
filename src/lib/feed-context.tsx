@@ -24,6 +24,10 @@ interface FeedState {
   loadMore: () => void;
   /** Insert a freshly created post at the top of the feed (no reload). */
   prependPost: (post: Post) => void;
+  /** Replace an existing post in place (e.g. after an edit). */
+  replacePost: (post: Post) => void;
+  /** Remove a post from the feed (e.g. after a delete). */
+  removePost: (id: string) => void;
 }
 
 const FeedContext = createContext<FeedState | undefined>(undefined);
@@ -75,6 +79,14 @@ export function FeedProvider({ children }: { children: ReactNode }) {
     setPosts((prev) => [post, ...prev]);
   }, []);
 
+  const replacePost = useCallback((post: Post) => {
+    setPosts((prev) => prev.map((p) => (p.id === post.id ? post : p)));
+  }, []);
+
+  const removePost = useCallback((id: string) => {
+    setPosts((prev) => prev.filter((p) => p.id !== id));
+  }, []);
+
   const reload = useCallback(() => loadFirstPage(), [loadFirstPage]);
 
   return (
@@ -87,6 +99,8 @@ export function FeedProvider({ children }: { children: ReactNode }) {
         reload,
         loadMore,
         prependPost,
+        replacePost,
+        removePost,
       }}
     >
       {children}

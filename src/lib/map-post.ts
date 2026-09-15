@@ -30,6 +30,7 @@ export function mapApiPost(api: ApiPost): Post {
   return {
     id: api.id,
     author: {
+      id: api.author.id,
       name: api.author.displayName,
       avatar: api.author.avatarUrl ?? DEFAULT_AVATAR,
     },

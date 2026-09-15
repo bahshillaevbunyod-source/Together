@@ -165,6 +165,10 @@ func buildServerFull(cfg config.Config, users user.Repository, sessions session.
 	return New(cfg, fakePinger{}, users, sessions, follows, blocks, &fakePostRepo{}, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{}, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{follows: follows}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{})
 }
 
+func buildServerWithStorage(cfg config.Config, users user.Repository, sessions session.Repository, storageRepo *fakeStorageRepo) *http.Server {
+	return New(cfg, fakePinger{}, users, sessions, &fakeFollowRepo{}, &fakeBlockRepo{}, &fakePostRepo{}, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, storageRepo, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{})
+}
+
 func buildServerWithPosts(cfg config.Config, users user.Repository, sessions session.Repository, posts post.Repository) *http.Server {
 	return New(cfg, fakePinger{}, users, sessions, &fakeFollowRepo{}, &fakeBlockRepo{}, posts, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{}, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{})
 }

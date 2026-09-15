@@ -24,6 +24,18 @@ func mediaURL(base, storageKey string) string {
 	return strings.TrimRight(base, "/") + "/" + strings.TrimLeft(storageKey, "/")
 }
 
+// storageKeyFromURL is the inverse of mediaURL: it recovers the storage key from
+// a public URL that was produced with the given base. It returns "" when the URL
+// is not one of ours (e.g. an external avatar URL), so callers can safely skip
+// storage cleanup for anything they did not mint.
+func storageKeyFromURL(base, url string) string {
+	prefix := strings.TrimRight(base, "/") + "/"
+	if !strings.HasPrefix(url, prefix) {
+		return ""
+	}
+	return url[len(prefix):]
+}
+
 // toMediaResponses maps media rows to their public shape. It always returns a
 // non-nil slice so JSON serializes an empty list as [] (never null).
 func (s *Server) toMediaResponses(items []media.Media) []mediaResponse {

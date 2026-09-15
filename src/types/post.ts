@@ -1,4 +1,6 @@
 export type PostAuthor = {
+  /** Backend user id, used to detect the viewer's own posts. */
+  id?: string;
   name: string;
   avatar: string;
   /** Optional country flag emoji shown next to the name. */

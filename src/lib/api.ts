@@ -516,6 +516,25 @@ export function createPost(input: {
   return apiFetch<ApiPost>("/api/v1/posts", { method: "POST", body: input });
 }
 
+/**
+ * Update an own post's editable fields (content and/or visibility) and return
+ * the updated post. Existing media is preserved server-side (not editable here).
+ */
+export function updatePost(
+  id: string,
+  input: { content?: string; visibility?: string },
+): Promise<ApiPost> {
+  return apiFetch<ApiPost>(`/api/v1/posts/${id}`, {
+    method: "PATCH",
+    body: input,
+  });
+}
+
+/** Delete an own post (204 No Content). */
+export function deletePost(id: string): Promise<void> {
+  return apiFetch<void>(`/api/v1/posts/${id}`, { method: "DELETE" });
+}
+
 /** Fetch a page of the authenticated user's feed. */
 export function getFeed(
   params: { cursor?: string; limit?: number } = {},
@@ -535,6 +554,11 @@ export interface MediaUploadUrlInput {
   type: "image";
   mimeType: string;
   sizeBytes: number;
+  /**
+   * Storage namespace: "post" (default) -> post media, "avatar" -> profile
+   * photo. Omitting it keeps the existing post-upload behavior.
+   */
+  purpose?: "post" | "avatar";
 }
 
 /** Response from POST /api/v1/media/upload-url. */

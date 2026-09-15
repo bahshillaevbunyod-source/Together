@@ -9,21 +9,29 @@ import {
   Link2,
   MessageCircle,
   MoreHorizontal,
+  Pencil,
   Send,
   Share2,
+  Trash2,
   UserPlus,
 } from "lucide-react";
 import type { Post } from "@/types/post";
 import { PostMedia } from "@/components/feed/PostMedia";
 import { formatCount, formatTimeAgo } from "@/lib/format";
 import {
+  ApiError,
   createComment,
+  deletePost,
   getComments,
   likePost,
   savePost,
   unlikePost,
   unsavePost,
+  updatePost,
 } from "@/lib/api";
+import { mapApiPost } from "@/lib/map-post";
+import { useAuth } from "@/lib/auth-context";
+import { useFeed } from "@/lib/feed-context";
 
 type LocalComment = {
   id: string;
@@ -37,6 +45,21 @@ type LocalComment = {
 
 export function PostCard({ post }: { post: Post }) {
   const { author, createdAt, location, content, hashtags, media, stats } = post;
+
+  const { user } = useAuth();
+  const { replacePost, removePost } = useFeed();
+  const isOwn = !!user?.id && author.id === user.id;
+
+  // Own-post menu + edit + delete state.
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const [editing, setEditing] = useState(false);
+  const [editText, setEditText] = useState(content);
+  const [savingEdit, setSavingEdit] = useState(false);
+  const [editError, setEditError] = useState<string | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   const [liked, setLiked] = useState(post.viewerState.liked);
   const [saved, setSaved] = useState(post.viewerState.saved);
@@ -84,6 +107,71 @@ export function PostCard({ post }: { post: Post }) {
     document.addEventListener("mousedown", onClick);
     return () => document.removeEventListener("mousedown", onClick);
   }, [shareOpen]);
+
+  // Close the own-post menu on outside click.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [menuOpen]);
+
+  const startEdit = () => {
+    setMenuOpen(false);
+    setEditError(null);
+    setEditText(content); // edit the original text, never a translation
+    setEditing(true);
+  };
+
+  const cancelEdit = () => {
+    setEditing(false);
+    setEditError(null);
+  };
+
+  const saveEdit = async () => {
+    const next = editText.trim();
+    if (!next || savingEdit) return;
+    if (next === content.trim()) {
+      cancelEdit(); // no change
+      return;
+    }
+    setSavingEdit(true);
+    setEditError(null);
+    try {
+      const updated = await updatePost(post.id, { content: next });
+      replacePost(mapApiPost(updated)); // media preserved by the backend
+      setEditing(false);
+    } catch (err) {
+      setEditError(
+        err instanceof ApiError && err.status === 401
+          ? "Please sign in to edit."
+          : "Couldn’t save changes. Please try again.",
+      );
+    } finally {
+      setSavingEdit(false);
+    }
+  };
+
+  const confirmDeletePost = async () => {
+    if (deleting) return;
+    setDeleting(true);
+    setDeleteError(null);
+    try {
+      await deletePost(post.id);
+      removePost(post.id); // drop from the feed immediately
+    } catch (err) {
+      setDeleteError(
+        err instanceof ApiError && err.status === 401
+          ? "Please sign in to delete."
+          : "Couldn’t delete post. Please try again.",
+      );
+      setDeleting(false); // keep the dialog open to retry (card still mounted)
+    }
+  };
 
   const handleCopyLink = async () => {
     const url = `${window.location.origin}/post/${post.id}`;
@@ -234,27 +322,108 @@ export function PostCard({ post }: { post: Post }) {
             {formatTimeAgo(createdAt)} · {location}
           </div>
         </div>
-        <button
-          type="button"
-          aria-label="More"
-          className="flex h-8 w-8 items-center justify-center rounded-full text-muted-soft transition-colors hover:bg-background"
-        >
-          <MoreHorizontal className="h-5 w-5" />
-        </button>
+        {isOwn ? (
+          <div className="relative" ref={menuRef}>
+            <button
+              type="button"
+              aria-label="Post options"
+              aria-haspopup="menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-background ${
+                menuOpen ? "text-foreground" : "text-muted-soft"
+              }`}
+            >
+              <MoreHorizontal className="h-5 w-5" />
+            </button>
+            {menuOpen ? (
+              <div
+                role="menu"
+                className="absolute right-0 top-full z-20 mt-2 w-40 overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-lg"
+              >
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={startEdit}
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-background"
+                >
+                  <Pencil className="h-4 w-4 text-muted" />
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setDeleteError(null);
+                    setConfirmDelete(true);
+                  }}
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-red-600 transition-colors hover:bg-red-50"
+                >
+                  <Trash2 className="h-4 w-4" />
+                  Delete
+                </button>
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          <button
+            type="button"
+            aria-label="More"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-muted-soft transition-colors hover:bg-background"
+          >
+            <MoreHorizontal className="h-5 w-5" />
+          </button>
+        )}
       </div>
 
-      {/* Text */}
-      <p className="mt-3 text-sm leading-relaxed text-foreground">
-        {primaryText}
-        {hashtags && hashtags.length > 0 ? (
-          <>
-            {" "}
-            <span className="text-primary">{hashtags.join(" ")}</span>
-          </>
-        ) : null}
-      </p>
+      {/* Text (or inline editor for own posts) */}
+      {editing ? (
+        <div className="mt-3">
+          <textarea
+            value={editText}
+            onChange={(e) => setEditText(e.target.value)}
+            rows={3}
+            autoFocus
+            className="w-full resize-none rounded-xl border border-border bg-background px-3 py-2 text-sm leading-relaxed text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+          {editError ? (
+            <p className="mt-1 text-xs text-red-500" role="alert">
+              {editError}
+            </p>
+          ) : null}
+          <div className="mt-2 flex items-center justify-end gap-2">
+            <button
+              type="button"
+              onClick={cancelEdit}
+              disabled={savingEdit}
+              className="rounded-full px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-background disabled:opacity-50"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={saveEdit}
+              disabled={savingEdit || editText.trim().length === 0}
+              className="rounded-full bg-primary px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
+            >
+              {savingEdit ? "Saving…" : "Save"}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <p className="mt-3 text-sm leading-relaxed text-foreground">
+          {primaryText}
+          {hashtags && hashtags.length > 0 ? (
+            <>
+              {" "}
+              <span className="text-primary">{hashtags.join(" ")}</span>
+            </>
+          ) : null}
+        </p>
+      )}
 
-      {hasTranslation ? (
+      {hasTranslation && !editing ? (
         <div className="mt-1 flex items-center gap-2 text-xs text-muted-soft">
           {langHint && !showOriginal ? <span>{langHint}</span> : null}
           <button
@@ -410,6 +579,54 @@ export function PostCard({ post }: { post: Post }) {
               <Send className="h-4 w-4" />
             </button>
           </form>
+        </div>
+      ) : null}
+
+      {/* Delete confirmation */}
+      {confirmDelete ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Delete post"
+          onClick={() => {
+            if (!deleting) setConfirmDelete(false);
+          }}
+        >
+          <div
+            className="w-full max-w-sm rounded-2xl border border-border bg-surface p-5 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-base font-semibold text-foreground">
+              Delete post?
+            </h2>
+            <p className="mt-1 text-sm text-muted">
+              This can’t be undone. The post and its media will be removed.
+            </p>
+            {deleteError ? (
+              <p className="mt-2 text-xs text-red-500" role="alert">
+                {deleteError}
+              </p>
+            ) : null}
+            <div className="mt-4 flex items-center justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => setConfirmDelete(false)}
+                disabled={deleting}
+                className="rounded-full px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-background disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={confirmDeletePost}
+                disabled={deleting}
+                className="rounded-full bg-red-600 px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {deleting ? "Deleting…" : "Delete"}
+              </button>
+            </div>
+          </div>
         </div>
       ) : null}
     </article>

@@ -34,6 +34,22 @@ type uploadURLRequest struct {
 	Type      string `json:"type"`
 	MimeType  string `json:"mimeType"`
 	SizeBytes int64  `json:"sizeBytes"`
+	// Purpose selects the storage namespace: "" or "post" -> uploads/ (post
+	// media), "avatar" -> avatars/ (profile photos). Kept optional for backward
+	// compatibility (existing post clients send no purpose).
+	Purpose string `json:"purpose"`
+}
+
+// uploadDirForPurpose maps a client purpose to the storage subdirectory.
+func uploadDirForPurpose(purpose string) (string, bool) {
+	switch purpose {
+	case "", "post":
+		return "uploads", true
+	case "avatar":
+		return "avatars", true
+	default:
+		return "", false
+	}
 }
 
 type uploadURLResponse struct {
@@ -78,14 +94,21 @@ func (s *Server) handleCreateUploadURL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	dir, ok := uploadDirForPurpose(req.Purpose)
+	if !ok {
+		writeError(w, http.StatusBadRequest, "invalid purpose")
+		return
+	}
+
 	id, err := newUUIDv4()
 	if err != nil {
 		writeError(w, http.StatusInternalServerError, "internal error")
 		return
 	}
 
-	// Key is fully server-generated: user id from auth context, uuid, safe ext.
-	key := fmt.Sprintf("users/%s/uploads/%s.%s", me.ID, id, ext)
+	// Key is fully server-generated: user id from auth context, namespace dir,
+	// uuid, safe ext.
+	key := fmt.Sprintf("users/%s/%s/%s.%s", me.ID, dir, id, ext)
 
 	upload, err := s.storage.CreateUploadURL(r.Context(), key, req.MimeType, req.SizeBytes)
 	if err != nil {
@@ -135,7 +158,9 @@ func (s *Server) handleConfirmUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	confirmed, err := s.validateUploadedObject(r.Context(), me.ID, req.StorageKey)
+	// Confirm accepts either namespace (post uploads or avatars); the key's dir
+	// determines where it lives.
+	confirmed, err := s.validateUploadedObject(r.Context(), me.ID, req.StorageKey, "uploads", "avatars")
 	if err != nil {
 		switch {
 		case errors.Is(err, errInvalidStorageKey), errors.Is(err, errUnsupportedMedia):

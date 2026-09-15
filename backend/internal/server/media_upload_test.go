@@ -23,6 +23,7 @@ type fakeStorageRepo struct {
 	lastSize  int64
 	url       string
 	deleteErr error
+	deleted   []string
 	headInfo  *storage.ObjectInfo
 	headErr   error
 }
@@ -41,7 +42,10 @@ func (f *fakeStorageRepo) CreateUploadURL(_ context.Context, key, mimeType strin
 	return &storage.PresignedUpload{UploadURL: u, ExpiresAt: time.Now().Add(10 * time.Minute)}, nil
 }
 
-func (f *fakeStorageRepo) DeleteObject(_ context.Context, _ string) error {
+func (f *fakeStorageRepo) DeleteObject(_ context.Context, key string) error {
+	if f.deleteErr == nil {
+		f.deleted = append(f.deleted, key)
+	}
 	return f.deleteErr
 }
 
@@ -77,6 +81,41 @@ func uploadURL(srv *http.Server, body string, withCookie, withOrigin bool) *http
 	rec := httptest.NewRecorder()
 	srv.Handler.ServeHTTP(rec, req)
 	return rec
+}
+
+func TestUploadURLAvatarNamespace(t *testing.T) {
+	sr := &fakeStorageRepo{}
+	rec := uploadURL(uploadServer(sr), `{"type":"image","mimeType":"image/png","sizeBytes":1024,"purpose":"avatar"}`, true, true)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if !strings.HasPrefix(sr.lastKey, "users/me-id/avatars/") {
+		t.Fatalf("avatar upload must use the avatars namespace, got %q", sr.lastKey)
+	}
+	var resp uploadURLResponse
+	_ = json.Unmarshal(rec.Body.Bytes(), &resp)
+	if !strings.HasPrefix(resp.StorageKey, "users/me-id/avatars/") {
+		t.Fatalf("response key must be under avatars, got %q", resp.StorageKey)
+	}
+}
+
+func TestUploadURLPostNamespaceDefault(t *testing.T) {
+	sr := &fakeStorageRepo{}
+	// No purpose -> post uploads namespace (backward compatible).
+	rec := uploadURL(uploadServer(sr), `{"type":"image","mimeType":"image/png","sizeBytes":1024}`, true, true)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if !strings.HasPrefix(sr.lastKey, "users/me-id/uploads/") {
+		t.Fatalf("post upload must use the uploads namespace, got %q", sr.lastKey)
+	}
+}
+
+func TestUploadURLInvalidPurpose(t *testing.T) {
+	rec := uploadURL(uploadServer(&fakeStorageRepo{}), `{"type":"image","mimeType":"image/png","sizeBytes":1024,"purpose":"malware"}`, true, true)
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400 for invalid purpose, got %d", rec.Code)
+	}
 }
 
 func TestUploadURLValidImage(t *testing.T) {

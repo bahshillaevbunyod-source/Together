@@ -154,7 +154,8 @@ func (s *Server) resolveMediaForPost(w http.ResponseWriter, r *http.Request, use
 		}
 		seen[key] = true
 
-		v, err := s.validateUploadedObject(r.Context(), userID, key)
+		// Post media may only come from the uploads/ namespace — never an avatar.
+		v, err := s.validateUploadedObject(r.Context(), userID, key, "uploads")
 		if err != nil {
 			switch {
 			case errors.Is(err, errInvalidStorageKey),

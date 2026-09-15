@@ -3,25 +3,57 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { CalendarDays, Globe, MapPin } from "lucide-react";
 
 import {
   getProfile,
   getUserProfile,
   type ProfileResponse,
 } from "@/lib/api";
+import { LANGUAGES } from "@/lib/languages";
 
 type Status = "loading" | "ready" | "error";
 
 const FALLBACK_AVATAR =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96"><circle cx="48" cy="48" r="48" fill="#d4d4d8"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112"><circle cx="56" cy="56" r="56" fill="#d4d4d8"/></svg>',
   );
 
 function memberSince(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+  return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+}
+
+// Human-readable language name from a code (e.g. "en" -> "English"). Pinned to
+// English so the label is consistent with the rest of the UI.
+function languageName(code: string): string {
+  if (!code) return "";
+  try {
+    const name = new Intl.DisplayNames(["en"], { type: "language" }).of(
+      code.toLowerCase(),
+    );
+    if (name && name.toLowerCase() !== code.toLowerCase()) return name;
+  } catch {
+    // fall through to the static list / raw code
+  }
+  const found = LANGUAGES.find((l) => l.code === code.toLowerCase());
+  return found ? found.label : code;
+}
+
+// Human-readable country name from an ISO code (e.g. "UZ" -> "Uzbekistan").
+function countryName(code: string): string {
+  if (!code) return "";
+  try {
+    const name = new Intl.DisplayNames(["en"], { type: "region" }).of(
+      code.toUpperCase(),
+    );
+    if (name && name !== code.toUpperCase()) return name;
+  } catch {
+    // fall through to the raw code
+  }
+  return code;
 }
 
 export default function ProfilePage() {
@@ -80,48 +112,52 @@ export default function ProfilePage() {
     );
   }
 
-  const location = [profile.city, profile.countryCode]
+  const location = [profile.city, countryName(profile.countryCode ?? "")]
     .filter((v) => v && v.trim().length > 0)
     .join(", ");
   const joined = memberSince(profile.createdAt);
+  const language = languageName(profile.nativeLanguage);
 
   return (
     <div className="mx-auto max-w-2xl">
-      <section className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-        <div className="flex items-start gap-4">
+      <section className="rounded-2xl border border-border bg-surface p-5 shadow-sm sm:p-6">
+        {/* Identity */}
+        <div className="flex items-start gap-4 sm:gap-5">
           <Image
             src={profile.avatarUrl ?? FALLBACK_AVATAR}
             alt={profile.displayName}
-            width={96}
-            height={96}
-            className="h-24 w-24 shrink-0 rounded-full object-cover"
+            width={112}
+            height={112}
+            className="h-24 w-24 shrink-0 rounded-full object-cover sm:h-28 sm:w-28"
           />
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <h1 className="truncate text-xl font-bold tracking-tight text-foreground">
+                <h1 className="truncate text-2xl font-bold leading-tight tracking-tight text-foreground">
                   {profile.displayName}
                 </h1>
-                <div className="text-sm text-muted">@{profile.username}</div>
+                <div className="truncate text-sm text-muted">
+                  @{profile.username}
+                </div>
               </div>
               <Link
                 href="/profile/edit"
-                className="shrink-0 rounded-full border border-border px-4 py-1.5 text-sm text-muted transition-colors hover:bg-background hover:text-foreground"
+                className="shrink-0 rounded-full border border-border px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background"
               >
                 Edit profile
               </Link>
             </div>
 
-            {/* Follower / following counts */}
-            <div className="mt-3 flex items-center gap-5 text-sm">
-              <span className="text-foreground">
-                <span className="font-semibold">
+            {/* Compact stats */}
+            <div className="mt-3 flex items-center gap-6 text-sm">
+              <span>
+                <span className="font-semibold text-foreground">
                   {followers ?? "—"}
                 </span>{" "}
                 <span className="text-muted">Followers</span>
               </span>
-              <span className="text-foreground">
-                <span className="font-semibold">
+              <span>
+                <span className="font-semibold text-foreground">
                   {following ?? "—"}
                 </span>{" "}
                 <span className="text-muted">Following</span>
@@ -130,30 +166,34 @@ export default function ProfilePage() {
           </div>
         </div>
 
+        {/* Bio, directly under identity */}
         {profile.bio ? (
-          <p className="mt-4 text-sm leading-relaxed text-foreground">
+          <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-foreground">
             {profile.bio}
           </p>
         ) : null}
 
-        <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-2 border-t border-border pt-4 text-sm">
+        {/* Secondary info: subtle, compact, single wrapping line */}
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-4 text-sm text-muted">
           {location ? (
-            <div>
-              <dt className="text-muted-soft">Location</dt>
-              <dd className="text-foreground">{location}</dd>
-            </div>
+            <span className="flex items-center gap-1.5">
+              <MapPin className="h-4 w-4 text-muted-soft" aria-hidden />
+              {location}
+            </span>
           ) : null}
-          <div>
-            <dt className="text-muted-soft">Native language</dt>
-            <dd className="text-foreground">{profile.nativeLanguage}</dd>
-          </div>
+          {language ? (
+            <span className="flex items-center gap-1.5">
+              <Globe className="h-4 w-4 text-muted-soft" aria-hidden />
+              {language}
+            </span>
+          ) : null}
           {joined ? (
-            <div>
-              <dt className="text-muted-soft">Member since</dt>
-              <dd className="text-foreground">{joined}</dd>
-            </div>
+            <span className="flex items-center gap-1.5">
+              <CalendarDays className="h-4 w-4 text-muted-soft" aria-hidden />
+              Joined {joined}
+            </span>
           ) : null}
-        </dl>
+        </div>
       </section>
     </div>
   );

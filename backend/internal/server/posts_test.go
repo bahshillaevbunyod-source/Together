@@ -236,6 +236,15 @@ func TestCreatePostForeignKey(t *testing.T) {
 	}
 }
 
+func TestCreatePostRejectsAvatarKey(t *testing.T) {
+	// An avatar-namespace key (even owned by the caller) must never attach to a
+	// post — post media is restricted to the uploads/ namespace.
+	rec := createPost(createServer(&fakePostCreate{}, okStorage()), `{"storageKeys":["users/me-id/avatars/a.png"]}`, true, true)
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400 for avatar key, got %d", rec.Code)
+	}
+}
+
 func TestCreatePostMissingObject(t *testing.T) {
 	sr := &fakeStorageRepo{headErr: storage.ErrObjectNotFound}
 	rec := createPost(createServer(&fakePostCreate{}, sr), `{"storageKeys":["`+mediaKey+`"]}`, true, true)

@@ -46,6 +46,26 @@ $pidFile = Join-Path $devBinDir 'together-api.pid'
 $logOut = Join-Path $env:TEMP 'together-api.log'
 $logErr = "$logOut.err"
 
+# --- Exclusive lock: only one launcher may run at a time --------------------
+# A named mutex prevents two concurrent invocations from racing the stop/start
+# sequence (which previously caused a bind race on :8080). Bounded wait; always
+# released in the finally at the end. This is a local OS primitive, no network.
+$mutexName = 'Local\Together-DevBackend-Launcher'
+$mutex = New-Object System.Threading.Mutex($false, $mutexName)
+$mutexOwned = $false
+try {
+    $mutexOwned = $mutex.WaitOne([TimeSpan]::FromSeconds(5))
+} catch [System.Threading.AbandonedMutexException] {
+    # A previous holder exited without releasing; ownership passes to us.
+    $mutexOwned = $true
+}
+if (-not $mutexOwned) {
+    $mutex.Dispose()
+    throw "Another dev-backend launcher is already running. Try again in a moment."
+}
+
+try {
+
 if (-not (Test-Path $envPath)) {
     throw "backend/.env not found at $envPath. Create it before starting the backend."
 }
@@ -125,6 +145,22 @@ $proc = Start-Process -FilePath $exePath -WorkingDirectory $backendRoot `
     -RedirectStandardOutput $logOut -RedirectStandardError $logErr
 Set-Content -LiteralPath $pidFile -Value ([string]$proc.Id) -Encoding ascii
 
+# --- Startup liveness check (local only; no network) ------------------------
+# A bind failure (e.g. :8080 already held by another instance not in our PID
+# file) makes the backend exit within a few hundred ms. Detect that via the
+# process object and fail loudly instead of falsely reporting success.
+Start-Sleep -Milliseconds 500
+if ($proc.HasExited) {
+    $tail = ''
+    try {
+        $tail = (Get-Content -LiteralPath $logErr -Tail 5 -ErrorAction SilentlyContinue) -join "`n"
+    } catch {}
+    Remove-Item -LiteralPath $pidFile -ErrorAction SilentlyContinue
+    throw ("Backend exited on startup (exit code $($proc.ExitCode)). Port 8080 may be held " +
+        "by another instance. See $logErr" +
+        $(if ($tail) { "`n--- last stderr ---`n$tail" } else { '' }))
+}
+
 # --- Report (names + presence only, never values; no network calls) ---------
 Write-Host ("Backend PID: " + $proc.Id)
 Write-Host ("Loaded env keys: " + ($loadedKeys -join ', '))
@@ -135,3 +171,11 @@ Write-Host ("Translation API key present: " + [bool]$env:TRANSLATION_API_KEY)
 Write-Host ("PID file: " + $pidFile)
 Write-Host ("Logs: " + $logOut + " (stdout), " + $logErr + " (stderr)")
 Write-Host ("Started. Verify readiness with: GET http://localhost:8080/health and /ready")
+
+} finally {
+    # Always release the launcher lock, even on error / early throw.
+    if ($mutexOwned) {
+        try { $mutex.ReleaseMutex() } catch {}
+    }
+    $mutex.Dispose()
+}

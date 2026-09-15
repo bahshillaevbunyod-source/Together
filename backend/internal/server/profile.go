@@ -1,6 +1,7 @@
 package server
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
 	"regexp"
@@ -110,12 +111,63 @@ func (s *Server) handleUpdateProfile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Remember the previous avatar (if the caller is changing it) so we can clean
+	// up the old object only after the DB update commits.
+	_, avatarChanged := raw["avatarUrl"]
+	previousAvatar := u.AvatarURL
+
 	updated, err := s.users.UpdateProfile(r.Context(), u.ID, update)
 	if err != nil {
 		writeError(w, http.StatusInternalServerError, "internal error")
 		return
 	}
+
+	// Best-effort: delete the user's PREVIOUS managed avatar object now that the
+	// new value is persisted. Only touches this user's own /avatars/ objects and
+	// only when the avatar actually changed.
+	if avatarChanged {
+		s.cleanupPreviousAvatar(r.Context(), u.ID, previousAvatar, updated.AvatarURL)
+	}
+
 	writeJSON(w, http.StatusOK, toProfileResponse(updated))
+}
+
+// cleanupPreviousAvatar best-effort deletes the user's previous avatar object
+// from storage after a profile update. It is deliberately conservative: it only
+// deletes an object that (a) is one of ours (public-URL prefix matches), (b)
+// lives under this user's own users/{id}/avatars/ namespace, and (c) differs
+// from the new avatar. It never deletes legacy /uploads/ avatars, external URLs,
+// or other users' objects, and never runs before the DB update has committed.
+// Delete failures are ignored: the database is the source of truth.
+func (s *Server) cleanupPreviousAvatar(ctx context.Context, userID string, oldURL, newURL *string) {
+	if oldURL == nil || *oldURL == "" {
+		return
+	}
+	oldKey := storageKeyFromURL(s.cfg.MediaPublicBaseURL, *oldURL)
+	if oldKey == "" {
+		return // external URL, not managed by us
+	}
+	avatarPrefix := "users/" + userID + "/avatars/"
+	if !strings.HasPrefix(oldKey, avatarPrefix) {
+		return // legacy /uploads/ avatar, another user's key, or unexpected shape
+	}
+	if strings.Contains(oldKey, "..") || strings.Contains(oldKey, `\`) {
+		return
+	}
+	rest := oldKey[len(avatarPrefix):]
+	if rest == "" || strings.Contains(rest, "/") {
+		return // must be a single file segment
+	}
+
+	newKey := ""
+	if newURL != nil {
+		newKey = storageKeyFromURL(s.cfg.MediaPublicBaseURL, *newURL)
+	}
+	if oldKey == newKey {
+		return // unchanged; keep the object
+	}
+
+	_ = s.storage.DeleteObject(ctx, oldKey) // best-effort
 }
 
 // buildProfileUpdate validates raw fields into a ProfileUpdate. ok is false on

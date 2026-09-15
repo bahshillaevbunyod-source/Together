@@ -9,7 +9,7 @@ Current files in C:\Together
 D:\Together-Agent-Test inspected or used:
 NO
 
-Generated: 2026-09-13 23:00 (+05:00); updated 2026-09-14 23:39 (+05:00) for Media V1, realtime inspection, and the PID-file dev launcher.
+Generated: 2026-09-13 23:00 (+05:00); updated 2026-09-14 23:39 (+05:00) for Media V1, realtime inspection, and the PID-file dev launcher; updated 2026-09-15 for post edit/delete UI, premium profile edit + avatar lifecycle, and the race-free (mutex + startup-liveness) dev launcher.
 
 Every factual statement below was re-verified against the current source in `C:\Together`. No application code, database, migrations, credentials, or runtime configuration were modified to produce this document. No secret values are printed. Where something could not be verified it is marked **UNKNOWN**.
 
@@ -212,7 +212,7 @@ Rebuilt from `server.go registerRoutes`. Auth = requires session; CSRF = Origin-
 
 - **FULLY INTEGRATED:** Auth (register/login/logout/me + gate), Feed, Post creation (text + 1–8 images), Image upload (presign→PUT→confirm→attach), Media rendering (single natural-ratio image + 2–8 carousel), Likes, Comments (+translation), Bookmarks (save/unsave action), Notifications (bell), Conversations list, Message history, Message sending, Realtime message delivery, Translation display (posts/comments/messages), Profile (view/edit), Settings (translation prefs), Follow/unfollow, Public profile.
 - **PARTIALLY INTEGRATED:** Bookmarks (no list page).
-- **BACKEND ONLY:** Post edit/delete, Comment edit/delete, Block/unblock, Followers/following lists, Get single post, Bookmarks list endpoint. (Video upload/rendering is out of scope for Media V1.)
+- **BACKEND ONLY:** Comment edit/delete, Block/unblock, Followers/following lists, Get single post, Bookmarks list endpoint. (Post edit/delete now has frontend UI. Video upload/rendering is out of scope for Media V1.)
 - **MOCK / LOCAL:** Stories, Right sidebar (suggested people, world map).
 
 ---
@@ -357,7 +357,7 @@ Resolved since the previous audit (removed): media upload UI (1–8 images), mul
 | Cloudflare R2 | DONE (code + configured + LIVE VERIFIED) |
 | Media upload frontend | DONE (images 1–8; video excluded) |
 | Media rendering | DONE (single natural/clamped ratio + 2–8 carousel; video excluded) |
-| Post edit/delete | PARTIAL (backend DONE, frontend NOT STARTED) |
+| Post edit/delete | DONE (backend + frontend UI; own-post only, foreign posts protected) |
 | Likes | DONE |
 | Comments | DONE |
 | Bookmarks | PARTIAL (action DONE, list page NOT STARTED) |
@@ -370,7 +370,8 @@ Resolved since the previous audit (removed): media upload UI (1–8 images), mul
 | Translation backend | DONE |
 | Translation live provider | DONE (LIVE VERIFIED) |
 | Translation frontend | DONE |
-| Profile/settings | DONE |
+| Profile/settings | DONE (premium Edit Profile + real avatar upload/replace/remove; bio/location persist) |
+| Avatar lifecycle | DONE (avatars/ namespace; previous avatar cleaned up; avatar keys rejected for posts) |
 | Stories | MOCK |
 | RightSidebar | MOCK |
 | Security | DONE |
