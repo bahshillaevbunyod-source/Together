@@ -263,6 +263,33 @@ export function getFollowing(
   return getFollowList("following", username, params, signal);
 }
 
+/** A user row returned by the global people-search endpoint. */
+export interface SearchUserItem {
+  id: string;
+  username: string;
+  displayName: string;
+  avatarUrl: string | null;
+}
+
+/**
+ * Search people by username or display name. Returns [] for queries shorter
+ * than two characters (the backend does too). Pass an AbortSignal to cancel a
+ * stale request as the user keeps typing.
+ */
+export function searchUsers(
+  query: string,
+  params: { limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<SearchUserItem[]> {
+  const q = new URLSearchParams();
+  q.set("q", query);
+  if (params.limit) q.set("limit", String(params.limit));
+  return apiFetch<{ items: SearchUserItem[] }>(
+    `/api/v1/users/search?${q.toString()}`,
+    { signal },
+  ).then((r) => r.items ?? []);
+}
+
 /** Register a new account. Sets the session cookie; returns the user. */
 export function register(input: {
   email: string;

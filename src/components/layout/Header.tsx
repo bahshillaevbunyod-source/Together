@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { Plus, Search } from "lucide-react";
+import { Plus } from "lucide-react";
 import { NotificationsBell } from "./NotificationsBell";
 import { HeaderUser } from "./HeaderUser";
+import { GlobalSearch } from "./GlobalSearch";
 
 export function Header() {
   return (
@@ -26,19 +27,7 @@ export function Header() {
         </div>
 
         {/* Search */}
-        <div className="flex flex-1 justify-center">
-          <div className="relative w-full max-w-[560px]">
-            <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-soft" />
-            <input
-              type="text"
-              placeholder="Search people, places, interests…"
-              className="h-11 w-full rounded-full border border-border bg-background pl-11 pr-16 text-sm text-foreground placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-            />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-border bg-surface px-2 py-0.5 text-xs text-muted-soft">
-              Ctrl K
-            </span>
-          </div>
-        </div>
+        <GlobalSearch />
 
         {/* Actions */}
         <div className="flex shrink-0 items-center gap-3">
