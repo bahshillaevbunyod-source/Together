@@ -682,6 +682,21 @@ export function getFeed(
   return apiFetch<FeedPage>(`/api/v1/feed${qs ? `?${qs}` : ""}`, { signal });
 }
 
+/** Fetch public posts from authors the authenticated viewer does not follow. */
+export function getDiscoverPosts(
+  params: { cursor?: string; limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<FeedPage> {
+  const query = new URLSearchParams();
+  if (params.cursor) query.set("cursor", params.cursor);
+  if (params.limit) query.set("limit", String(params.limit));
+  const qs = query.toString();
+  return apiFetch<FeedPage>(
+    `/api/v1/posts/discover${qs ? `?${qs}` : ""}`,
+    { signal },
+  );
+}
+
 /** Fetch a page of the authenticated user's saved (bookmarked) posts. */
 export function getBookmarks(
   params: { cursor?: string; limit?: number } = {},

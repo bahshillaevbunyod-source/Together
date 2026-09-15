@@ -4,12 +4,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Globe, Loader2, Search, TrendingUp, Users } from "lucide-react";
 
 import {
+  getDiscoverPosts,
   getDiscoverUsers,
   searchUsers,
   type DiscoverUser,
   type SearchUserItem,
 } from "@/lib/api";
 import { PersonCard } from "@/components/discover/PersonCard";
+import { Feed } from "@/components/feed/Feed";
+import { FeedProvider } from "@/lib/feed-context";
 
 type Status = "loading" | "ready" | "error";
 type SearchStatus = "idle" | "loading" | "ready" | "error";
@@ -156,6 +159,18 @@ export default function DiscoverPage() {
             </div>
             <div className="mt-10">
               <PopularSection />
+            </div>
+            <div className="mt-10">
+              <section>
+                <SectionHeading>Discover posts</SectionHeading>
+                <FeedProvider fetchPage={getDiscoverPosts}>
+                  <Feed
+                    loadingMessage="Loading posts…"
+                    errorMessage="Couldn’t load discover posts."
+                    emptyMessage="No new posts to discover right now."
+                  />
+                </FeedProvider>
+              </section>
             </div>
           </>
         )}

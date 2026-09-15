@@ -3,13 +3,23 @@
 import { PostCard } from "./PostCard";
 import { useFeed } from "@/lib/feed-context";
 
-export function Feed() {
+type FeedProps = {
+  loadingMessage?: string;
+  errorMessage?: string;
+  emptyMessage?: string;
+};
+
+export function Feed({
+  loadingMessage = "Loading feed…",
+  errorMessage = "Couldn’t load your feed.",
+  emptyMessage = "Your feed is empty. Follow people to see their posts here.",
+}: FeedProps) {
   const { posts, status, nextCursor, loadingMore, reload, loadMore } = useFeed();
 
   if (status === "loading") {
     return (
       <section className="flex flex-col gap-4">
-        <p className="py-8 text-center text-sm text-muted">Loading feed…</p>
+        <p className="py-8 text-center text-sm text-muted">{loadingMessage}</p>
       </section>
     );
   }
@@ -18,7 +28,7 @@ export function Feed() {
     return (
       <section className="flex flex-col gap-4">
         <div className="rounded-2xl border border-border bg-surface p-6 text-center">
-          <p className="text-sm text-muted">Couldn’t load your feed.</p>
+          <p className="text-sm text-muted">{errorMessage}</p>
           <button
             type="button"
             onClick={reload}
@@ -34,9 +44,7 @@ export function Feed() {
   if (posts.length === 0) {
     return (
       <section className="flex flex-col gap-4">
-        <p className="py-8 text-center text-sm text-muted">
-          Your feed is empty. Follow people to see their posts here.
-        </p>
+        <p className="py-8 text-center text-sm text-muted">{emptyMessage}</p>
       </section>
     );
   }
