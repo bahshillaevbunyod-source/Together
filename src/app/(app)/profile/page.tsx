@@ -11,6 +11,7 @@ import {
   type ProfileResponse,
 } from "@/lib/api";
 import { LANGUAGES } from "@/lib/languages";
+import { FollowListModal } from "@/components/profile/FollowListModal";
 
 type Status = "loading" | "ready" | "error";
 
@@ -61,6 +62,9 @@ export default function ProfilePage() {
   const [followers, setFollowers] = useState<number | null>(null);
   const [following, setFollowing] = useState<number | null>(null);
   const [status, setStatus] = useState<Status>("loading");
+  const [followModal, setFollowModal] = useState<
+    "followers" | "following" | null
+  >(null);
 
   const load = useCallback((signal?: AbortSignal) => {
     setStatus("loading");
@@ -150,18 +154,26 @@ export default function ProfilePage() {
 
             {/* Compact stats */}
             <div className="mt-3 flex items-center gap-6 text-sm">
-              <span>
+              <button
+                type="button"
+                onClick={() => setFollowModal("followers")}
+                className="transition-colors hover:text-primary"
+              >
                 <span className="font-semibold text-foreground">
                   {followers ?? "—"}
                 </span>{" "}
                 <span className="text-muted">Followers</span>
-              </span>
-              <span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setFollowModal("following")}
+                className="transition-colors hover:text-primary"
+              >
                 <span className="font-semibold text-foreground">
                   {following ?? "—"}
                 </span>{" "}
                 <span className="text-muted">Following</span>
-              </span>
+              </button>
             </div>
           </div>
         </div>
@@ -195,6 +207,14 @@ export default function ProfilePage() {
           ) : null}
         </div>
       </section>
+
+      {followModal ? (
+        <FollowListModal
+          username={profile.username}
+          mode={followModal}
+          onClose={() => setFollowModal(null)}
+        />
+      ) : null}
     </div>
   );
 }

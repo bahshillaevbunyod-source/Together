@@ -212,6 +212,57 @@ export function getUserProfile(
   );
 }
 
+/** A user as returned by the followers/following list endpoints. */
+export interface FollowListItem {
+  id: string;
+  username: string;
+  displayName: string;
+  avatarUrl: string | null;
+  countryCode: string | null;
+  city: string | null;
+  nativeLanguage: string;
+}
+
+/** One page of a followers/following list. `nextCursor` is "" when exhausted. */
+export interface FollowListPage {
+  items: FollowListItem[];
+  nextCursor: string;
+}
+
+function getFollowList(
+  kind: "followers" | "following",
+  username: string,
+  params: { cursor?: string; limit?: number },
+  signal?: AbortSignal,
+): Promise<FollowListPage> {
+  const query = new URLSearchParams();
+  if (params.cursor) query.set("cursor", params.cursor);
+  if (params.limit) query.set("limit", String(params.limit));
+  const qs = query.toString();
+  return apiFetch<FollowListPage>(
+    `/api/v1/users/${encodeURIComponent(username)}/${kind}${qs ? `?${qs}` : ""}`,
+    { signal },
+  );
+}
+
+/** Fetch a page of the users who follow `username`. */
+export function getFollowers(
+  username: string,
+  params: { cursor?: string; limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<FollowListPage> {
+  return getFollowList("followers", username, params, signal);
+}
+
+/** Fetch a page of the users `username` follows. */
+export function getFollowing(
+  username: string,
+  params: { cursor?: string; limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<FollowListPage> {
+  return getFollowList("following", username, params, signal);
+}
+
 /** Register a new account. Sets the session cookie; returns the user. */
 export function register(input: {
   email: string;
