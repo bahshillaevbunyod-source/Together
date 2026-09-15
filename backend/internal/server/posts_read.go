@@ -240,7 +240,7 @@ func parseFeedCursor(raw string) (*post.Cursor, bool) {
 		return nil, true
 	}
 	t, id, ok := decodeCursor(raw)
-	if !ok {
+	if !ok || !uuidPattern.MatchString(id) {
 		return nil, false
 	}
 	return &post.Cursor{CreatedAt: t, ID: id}, true

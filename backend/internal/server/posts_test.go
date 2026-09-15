@@ -5,6 +5,7 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"sort"
 	"strings"
 	"testing"
 	"time"
@@ -27,6 +28,13 @@ type fakePostRepo struct {
 	updateErr error
 	deleteErr error
 	deleted   []string
+
+	// Discover test controls.
+	discoverPool      []post.FeedItem
+	discoverFollowed  map[string]bool // author ids the viewer already follows
+	discoverBlocked   map[string]bool // author ids in a block relationship
+	discoverErr       error
+	lastDiscoverLimit int
 }
 
 func (f *fakePostRepo) Update(_ context.Context, id string, in post.PostUpdate) (*post.Post, error) {
@@ -87,6 +95,57 @@ func (f *fakePostRepo) ListFeed(_ context.Context, _ string, _ *post.Cursor, lim
 		return f.feed[:limit], nil
 	}
 	return f.feed, nil
+}
+
+// ListDiscover faithfully mirrors the SQL contract in
+// post.PostgresRepository.ListDiscover: public posts only, excluding the viewer's
+// own posts, already-followed authors and blocked authors; ordered
+// created_at DESC, id DESC; keyset-paginated after cur. The parameterized SQL is
+// the source of truth; this drives handler tests.
+func (f *fakePostRepo) ListDiscover(_ context.Context, viewerID string, cur *post.Cursor, limit int) ([]post.FeedItem, error) {
+	f.lastDiscoverLimit = limit
+	if f.discoverErr != nil {
+		return nil, f.discoverErr
+	}
+
+	var cand []post.FeedItem
+	for _, it := range f.discoverPool {
+		if it.Visibility != "public" {
+			continue
+		}
+		if it.AuthorID == viewerID {
+			continue
+		}
+		if f.discoverFollowed[it.AuthorID] || f.discoverBlocked[it.AuthorID] {
+			continue
+		}
+		cand = append(cand, it)
+	}
+
+	sort.SliceStable(cand, func(i, j int) bool {
+		a, b := cand[i], cand[j]
+		if !a.CreatedAt.Equal(b.CreatedAt) {
+			return a.CreatedAt.After(b.CreatedAt)
+		}
+		return a.ID > b.ID
+	})
+
+	// Keyset: keep rows strictly after the cursor in (created_at DESC, id DESC).
+	if cur != nil {
+		filtered := cand[:0:0]
+		for _, it := range cand {
+			if it.CreatedAt.Before(cur.CreatedAt) ||
+				(it.CreatedAt.Equal(cur.CreatedAt) && it.ID < cur.ID) {
+				filtered = append(filtered, it)
+			}
+		}
+		cand = filtered
+	}
+
+	if len(cand) > limit {
+		cand = cand[:limit]
+	}
+	return cand, nil
 }
 
 // fakePostCreate is a test double for postWithMediaCreator.

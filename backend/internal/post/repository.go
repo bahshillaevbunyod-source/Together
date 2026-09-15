@@ -16,4 +16,9 @@ type Repository interface {
 	// the viewer's own posts plus public/followers posts of users they follow,
 	// excluding posts from users with a block in either direction.
 	ListFeed(ctx context.Context, viewerID string, cur *Cursor, limit int) ([]FeedItem, error)
+	// ListDiscover returns public posts for discovery, keyset-paginated: public
+	// posts from other users the viewer does NOT follow, excluding the viewer's
+	// own posts and any author in a block relationship (either direction).
+	// Newest first (created_at DESC, id DESC).
+	ListDiscover(ctx context.Context, viewerID string, cur *Cursor, limit int) ([]FeedItem, error)
 }

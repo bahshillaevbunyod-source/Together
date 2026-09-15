@@ -175,3 +175,55 @@ func (r *PostgresRepository) ListFeed(ctx context.Context, viewerID string, cur 
 	}
 	return items, rows.Err()
 }
+
+// Discovery timeline: public posts from other users the viewer does not follow,
+// excluding own posts and any block (either direction). Reuses the shared block
+// fragment; ordering matches the feed (created_at DESC, id DESC) for a stable
+// keyset. Same columns/scan as the feed.
+var listDiscoverQuery = `
+SELECT p.id, p.author_id, p.content, p.visibility, p.created_at, p.updated_at,
+       u.username, u.display_name, u.avatar_url,
+       (SELECT count(*) FROM post_likes pl WHERE pl.post_id = p.id) AS likes_count,
+       EXISTS (SELECT 1 FROM post_likes plm WHERE plm.post_id = p.id AND plm.user_id = $1) AS liked_by_me,
+       (SELECT count(*) FROM post_comments pc WHERE pc.post_id = p.id) AS comments_count
+FROM posts p
+JOIN users u ON u.id = p.author_id
+WHERE p.visibility = 'public'
+  AND p.author_id <> $1
+  AND p.author_id NOT IN (SELECT following_id FROM follows WHERE follower_id = $1)
+  AND ` + SQLNotBlocked + `
+  AND ($2::timestamptz IS NULL
+       OR p.created_at < $2
+       OR (p.created_at = $2 AND p.id < $3::uuid))
+ORDER BY p.created_at DESC, p.id DESC
+LIMIT $4
+`
+
+// ListDiscover returns public discovery posts, keyset-paginated.
+func (r *PostgresRepository) ListDiscover(ctx context.Context, viewerID string, cur *Cursor, limit int) ([]FeedItem, error) {
+	var ts, id any
+	if cur != nil {
+		ts = cur.CreatedAt
+		id = cur.ID
+	}
+
+	rows, err := r.pool.Query(ctx, listDiscoverQuery, viewerID, ts, id, limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	items := make([]FeedItem, 0, limit)
+	for rows.Next() {
+		var it FeedItem
+		if err := rows.Scan(
+			&it.ID, &it.AuthorID, &it.Content, &it.Visibility, &it.CreatedAt, &it.UpdatedAt,
+			&it.AuthorUsername, &it.AuthorDisplayName, &it.AuthorAvatarURL,
+			&it.LikesCount, &it.LikedByMe, &it.CommentsCount,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, it)
+	}
+	return items, rows.Err()
+}
