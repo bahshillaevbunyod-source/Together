@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MapPin } from "lucide-react";
 
 import { ApiError, followUser } from "@/lib/api";
+import { formatCount } from "@/lib/format";
 
 export interface PersonCardUser {
   id: string;
@@ -58,9 +59,12 @@ function languageName(code?: string | null): string {
 export function PersonCard({
   user,
   onFollowed,
+  showFollowers = false,
 }: {
   user: PersonCardUser;
   onFollowed?: (id: string) => void;
+  /** Show a subtle follower-count line (used by the Popular section). */
+  showFollowers?: boolean;
 }) {
   const [following, setFollowing] = useState(false);
   const [pending, setPending] = useState(false);
@@ -118,6 +122,14 @@ export function PersonCard({
             ) : null}
             {location && language ? <span aria-hidden>·</span> : null}
             {language ? <span className="truncate">{language}</span> : null}
+          </div>
+        ) : null}
+        {showFollowers &&
+        typeof user.followerCount === "number" &&
+        user.followerCount > 0 ? (
+          <div className="mt-0.5 text-xs text-muted-soft">
+            {formatCount(user.followerCount)}{" "}
+            {user.followerCount === 1 ? "follower" : "followers"}
           </div>
         ) : null}
       </div>

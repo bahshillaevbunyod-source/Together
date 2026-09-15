@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Globe, Loader2, Search, Users } from "lucide-react";
+import { Globe, Loader2, Search, TrendingUp, Users } from "lucide-react";
 
 import {
   getDiscoverUsers,
@@ -153,6 +153,9 @@ export default function DiscoverPage() {
             />
             <div className="mt-10">
               <WorldSection />
+            </div>
+            <div className="mt-10">
+              <PopularSection />
             </div>
           </>
         )}
@@ -435,6 +438,122 @@ function WorldSection() {
           <CardGrid>
             {items.map((u) => (
               <PersonCard key={u.id} user={u} onFollowed={removeFollowed} />
+            ))}
+          </CardGrid>
+          {nextCursor ? (
+            <div className="mt-4 flex justify-center">
+              <button
+                type="button"
+                onClick={loadMore}
+                disabled={loadingMore}
+                className="rounded-full border border-border bg-surface px-5 py-2 text-sm text-muted transition-colors hover:text-foreground disabled:opacity-50"
+              >
+                {loadingMore ? "Loading…" : "Load more"}
+              </button>
+            </div>
+          ) : null}
+        </>
+      ) : null}
+    </section>
+  );
+}
+
+/**
+ * "Popular people" — the most-followed users (backend mode=popular), excluding
+ * self / blocked / already-followed. Shows a subtle follower count for context.
+ */
+function PopularSection() {
+  const [items, setItems] = useState<DiscoverUser[]>([]);
+  const [status, setStatus] = useState<Status>("loading");
+  const [nextCursor, setNextCursor] = useState("");
+  const [loadingMore, setLoadingMore] = useState(false);
+  const seenRef = useRef<Set<string>>(new Set());
+
+  const load = useCallback((signal?: AbortSignal) => {
+    setStatus("loading");
+    seenRef.current = new Set();
+    getDiscoverUsers({ mode: "popular", limit: FOR_YOU_LIMIT }, signal)
+      .then((page) => {
+        setItems(dedupe(page.items, seenRef.current));
+        setNextCursor(page.nextCursor);
+        setStatus("ready");
+      })
+      .catch((err) => {
+        if (isAbort(err)) return;
+        setStatus("error");
+      });
+  }, []);
+
+  useEffect(() => {
+    const c = new AbortController();
+    load(c.signal);
+    return () => c.abort();
+  }, [load]);
+
+  const loadMore = () => {
+    if (!nextCursor || loadingMore) return;
+    setLoadingMore(true);
+    getDiscoverUsers({ mode: "popular", limit: FOR_YOU_LIMIT, cursor: nextCursor })
+      .then((page) => {
+        setItems((prev) => [...prev, ...dedupe(page.items, seenRef.current)]);
+        setNextCursor(page.nextCursor);
+      })
+      .catch(() => {
+        // Keep what we have.
+      })
+      .finally(() => setLoadingMore(false));
+  };
+
+  const removeFollowed = (id: string) =>
+    setItems((prev) => prev.filter((p) => p.id !== id));
+
+  return (
+    <section>
+      <div className="mb-3 flex items-center gap-3">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
+          <TrendingUp className="h-5 w-5" />
+        </span>
+        <div className="min-w-0">
+          <h2 className="text-sm font-semibold text-foreground">
+            Popular people
+          </h2>
+          <p className="truncate text-xs text-muted">
+            The most-followed people on Together.
+          </p>
+        </div>
+      </div>
+
+      {status === "loading" ? <CardSkeletons /> : null}
+
+      {status === "error" ? (
+        <div className="rounded-2xl border border-border bg-surface p-8 text-center">
+          <p className="text-sm text-muted">Couldn’t load popular people.</p>
+          <button
+            type="button"
+            onClick={() => load()}
+            className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
+          >
+            Try again
+          </button>
+        </div>
+      ) : null}
+
+      {status === "ready" && items.length === 0 ? (
+        <div className="rounded-2xl border border-border bg-surface px-6 py-12 text-center">
+          <p className="text-sm text-muted">No popular people to show yet.</p>
+        </div>
+      ) : null}
+
+      {items.length > 0 ? (
+        <>
+          <CardGrid>
+            {items.map((u) => (
+              <PersonCard
+                key={u.id}
+                user={u}
+                onFollowed={removeFollowed}
+                showFollowers
+              />
             ))}
           </CardGrid>
           {nextCursor ? (
