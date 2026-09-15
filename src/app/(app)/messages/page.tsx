@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import {
   ApiError,
@@ -217,26 +218,45 @@ export default function MessagesPage() {
           {items.length > 0 ? (
             <ul className="flex flex-col">
               {items.map((c) => (
-                <li key={c.id}>
+                <li key={c.id} className="relative">
+                  {/* Base click target: a real <button> covering the row,
+                      opening the conversation. It sits BEHIND the content layer
+                      so the avatar/name Links (siblings, not descendants) stay
+                      out of the button — valid nesting and full keyboard access
+                      for both the button and the links. */}
                   <button
                     type="button"
                     onClick={() => setSelectedId(c.id)}
-                    className={`flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-background ${
+                    aria-label={`Open conversation with ${c.otherUser.displayName}`}
+                    className={`absolute inset-0 h-full w-full transition-colors hover:bg-background ${
                       selectedId === c.id ? "bg-background" : ""
                     }`}
-                  >
-                    <Image
-                      src={c.otherUser.avatarUrl ?? FALLBACK_AVATAR}
-                      alt={c.otherUser.displayName}
-                      width={48}
-                      height={48}
-                      className="h-12 w-12 shrink-0 rounded-full object-cover"
-                    />
+                  />
+                  {/* Content layer: transparent to pointer events so clicks fall
+                      through to the button, except the Links (pointer-events
+                      re-enabled) which navigate to the profile. */}
+                  <div className="pointer-events-none relative flex items-center gap-3 px-4 py-3">
+                    <Link
+                      href={`/u/${encodeURIComponent(c.otherUser.username)}`}
+                      aria-label={`View ${c.otherUser.displayName}'s profile`}
+                      className="pointer-events-auto shrink-0 rounded-full"
+                    >
+                      <Image
+                        src={c.otherUser.avatarUrl ?? FALLBACK_AVATAR}
+                        alt={c.otherUser.displayName}
+                        width={48}
+                        height={48}
+                        className="h-12 w-12 shrink-0 rounded-full object-cover"
+                      />
+                    </Link>
                     <span className="min-w-0 flex-1">
                       <span className="flex items-center justify-between gap-2">
-                        <span className="truncate font-semibold text-foreground">
+                        <Link
+                          href={`/u/${encodeURIComponent(c.otherUser.username)}`}
+                          className="pointer-events-auto min-w-0 truncate font-semibold text-foreground hover:underline"
+                        >
                           {c.otherUser.displayName}
-                        </span>
+                        </Link>
                         <span className="shrink-0 text-xs text-muted-soft">
                           {formatTimeAgo(c.updatedAt)}
                         </span>
@@ -254,7 +274,7 @@ export default function MessagesPage() {
                         ) : null}
                       </span>
                     </span>
-                  </button>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -278,21 +298,27 @@ export default function MessagesPage() {
         {selected ? (
           <>
             <div className="flex items-center gap-3 border-b border-border px-5 py-3">
-              <Image
-                src={selected.otherUser.avatarUrl ?? FALLBACK_AVATAR}
-                alt={selected.otherUser.displayName}
-                width={40}
-                height={40}
-                className="h-10 w-10 rounded-full object-cover"
-              />
-              <div className="leading-tight">
-                <div className="font-semibold text-foreground">
-                  {selected.otherUser.displayName}
+              <Link
+                href={`/u/${encodeURIComponent(selected.otherUser.username)}`}
+                aria-label={`View ${selected.otherUser.displayName}'s profile`}
+                className="flex items-center gap-3 rounded-lg transition-colors hover:opacity-80"
+              >
+                <Image
+                  src={selected.otherUser.avatarUrl ?? FALLBACK_AVATAR}
+                  alt={selected.otherUser.displayName}
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounded-full object-cover"
+                />
+                <div className="leading-tight">
+                  <div className="font-semibold text-foreground hover:underline">
+                    {selected.otherUser.displayName}
+                  </div>
+                  <div className="text-xs text-muted">
+                    @{selected.otherUser.username}
+                  </div>
                 </div>
-                <div className="text-xs text-muted">
-                  @{selected.otherUser.username}
-                </div>
-              </div>
+              </Link>
             </div>
             <ConversationThread
               key={selected.id}

@@ -16,13 +16,15 @@ import (
 // fakeBlockRepo is a test double for block.Repository. When onBlock is set it
 // runs on Block, letting tests observe the "remove follows on block" contract.
 type fakeBlockRepo struct {
-	blockErr   error
-	unblockErr error
-	blocked    [][2]string
-	unblocked  [][2]string
-	onBlock    func(blocker, blocked string)
-	hasBetween bool
-	betweenErr error
+	blockErr     error
+	unblockErr   error
+	blocked      [][2]string
+	unblocked    [][2]string
+	onBlock      func(blocker, blocked string)
+	hasBetween   bool
+	betweenErr   error
+	isBlocked    bool
+	isBlockedErr error
 }
 
 func (f *fakeBlockRepo) Block(_ context.Context, a, b string) error {
@@ -45,7 +47,7 @@ func (f *fakeBlockRepo) Unblock(_ context.Context, a, b string) error {
 }
 
 func (f *fakeBlockRepo) IsBlocked(_ context.Context, _, _ string) (bool, error) {
-	return false, nil
+	return f.isBlocked, f.isBlockedErr
 }
 
 func (f *fakeBlockRepo) HasBlockBetween(_ context.Context, _, _ string) (bool, error) {
@@ -159,5 +161,30 @@ func TestBlockRepositoryError(t *testing.T) {
 	rec := blockReq(blockSetup(t, mkUser("target-id", "target_user"), blocks), http.MethodPost, "target_user", true, true)
 	if rec.Code != http.StatusInternalServerError {
 		t.Fatalf("expected 500, got %d", rec.Code)
+	}
+}
+
+// TestPublicProfileReportsBlocked verifies the public profile carries the
+// viewer's block state so the UI can show Unblock and survive a refresh.
+func TestPublicProfileReportsBlocked(t *testing.T) {
+	me := mkUser("me-id", "me_user")
+	target := mkUser("target-id", "target_user")
+	users := &fakeUserRepo{byIDUser: me, usernameUser: target}
+	srv := buildServerFull(
+		config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin},
+		users,
+		&fakeSessionRepo{active: &session.Session{UserID: "me-id", ExpiresAt: time.Now().Add(time.Hour)}},
+		&fakeFollowRepo{},
+		&fakeBlockRepo{isBlocked: true},
+	)
+	req := httptest.NewRequest(http.MethodGet, "/api/v1/users/target_user", nil)
+	req.AddCookie(&http.Cookie{Name: sessionCookieName, Value: "raw"})
+	rec := httptest.NewRecorder()
+	srv.Handler.ServeHTTP(rec, req)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if !strings.Contains(rec.Body.String(), `"isBlocked":true`) {
+		t.Fatalf("expected isBlocked true, got %s", rec.Body.String())
 	}
 }

@@ -24,6 +24,7 @@ type publicUserResponse struct {
 	FollowersCount int64   `json:"followersCount"`
 	FollowingCount int64   `json:"followingCount"`
 	IsFollowing    bool    `json:"isFollowing"`
+	IsBlocked      bool    `json:"isBlocked"`
 	IsSelf         bool    `json:"isSelf"`
 }
 
@@ -84,6 +85,15 @@ func (s *Server) handlePublicProfile(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			resp.IsFollowing = isFollowing
+
+			// Whether the viewer has blocked this user (one direction), so the
+			// profile can show Block vs Unblock and survive a refresh.
+			isBlocked, err := s.blocks.IsBlocked(r.Context(), viewer.ID, u.ID)
+			if err != nil {
+				writeError(w, http.StatusInternalServerError, "internal error")
+				return
+			}
+			resp.IsBlocked = isBlocked
 		}
 	}
 

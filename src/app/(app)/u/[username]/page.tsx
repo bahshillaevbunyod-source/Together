@@ -1,15 +1,18 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { MoreHorizontal, Ban } from "lucide-react";
 
 import {
   ApiError,
+  blockUser,
   followUser,
   getUserProfile,
   openConversation,
+  unblockUser,
   unfollowUser,
   type PublicUserProfile,
 } from "@/lib/api";
@@ -40,6 +43,33 @@ export default function PublicProfilePage() {
   const [followError, setFollowError] = useState<string | null>(null);
   const [messagePending, setMessagePending] = useState(false);
   const [messageError, setMessageError] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const [confirmBlock, setConfirmBlock] = useState(false);
+  const [blockPending, setBlockPending] = useState(false);
+  const [blockError, setBlockError] = useState<string | null>(null);
+
+  // Close the options menu on outside click.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [menuOpen]);
+
+  // Close the block confirmation on Escape (unless a request is in flight).
+  useEffect(() => {
+    if (!confirmBlock) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && !blockPending) setConfirmBlock(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [confirmBlock, blockPending]);
 
   const load = useCallback(
     (signal?: AbortSignal) => {
@@ -70,6 +100,20 @@ export default function PublicProfilePage() {
     load(controller.signal);
     return () => controller.abort();
   }, [load]);
+
+  // Silently refresh the profile with authoritative server state (counts,
+  // isFollowing, isBlocked) after a mutation — no loading flicker, since the
+  // optimistic UI stays until the fresh data replaces it. A failed reconcile
+  // leaves the optimistic state in place (the mutation itself already
+  // succeeded, and a full refresh will correct it).
+  const reconcileProfile = useCallback(async (uname: string) => {
+    try {
+      const fresh = await getUserProfile(uname);
+      setProfile(fresh);
+    } catch {
+      // Keep optimistic state; the next full load/refresh will correct it.
+    }
+  }, []);
 
   const onToggleFollow = async () => {
     if (!profile || followPending) return; // prevent duplicate clicks
@@ -128,6 +172,57 @@ export default function PublicProfilePage() {
         setMessageError("Couldn’t open conversation. Try again.");
       }
       setMessagePending(false); // stay on page to show the error
+    }
+  };
+
+  const friendlyRelError = (err: unknown, fallback: string): string => {
+    if (err instanceof ApiError && err.status === 401) {
+      return "Please sign in first.";
+    }
+    if (err instanceof ApiError && err.status === 403) {
+      return "You can’t do that with this user.";
+    }
+    if (err instanceof ApiError && err.status === 404) {
+      return "This user is no longer available.";
+    }
+    return fallback;
+  };
+
+  const onConfirmBlock = async () => {
+    if (!profile || blockPending) return;
+    setBlockPending(true);
+    setBlockError(null);
+    try {
+      await blockUser(profile.username);
+      // Immediate responsive UI: blocking removes follow edges both ways.
+      setProfile((p) => (p ? { ...p, isBlocked: true, isFollowing: false } : p));
+      setConfirmBlock(false);
+      // Reconcile with authoritative server state (counts, isFollowing,
+      // isBlocked) instead of guessing.
+      await reconcileProfile(profile.username);
+    } catch (err) {
+      setBlockError(friendlyRelError(err, "Couldn’t block this user. Try again."));
+    } finally {
+      setBlockPending(false);
+    }
+  };
+
+  const onUnblock = async () => {
+    if (!profile || blockPending) return;
+    setBlockPending(true);
+    setBlockError(null);
+    try {
+      await unblockUser(profile.username);
+      // Immediate responsive UI; unblocking does not restore prior follow edges.
+      setProfile((p) => (p ? { ...p, isBlocked: false } : p));
+      // Reconcile with authoritative server state.
+      await reconcileProfile(profile.username);
+    } catch (err) {
+      setBlockError(
+        friendlyRelError(err, "Couldn’t unblock this user. Try again."),
+      );
+    } finally {
+      setBlockPending(false);
     }
   };
 
@@ -193,7 +288,7 @@ export default function PublicProfilePage() {
                 </h1>
                 <div className="text-sm text-muted">@{profile.username}</div>
               </div>
-              {!profile.isSelf ? (
+              {!profile.isSelf && !profile.isBlocked ? (
                 <div className="flex shrink-0 items-center gap-2">
                   <button
                     type="button"
@@ -216,6 +311,40 @@ export default function PublicProfilePage() {
                   >
                     {messagePending ? "…" : "Message"}
                   </button>
+                  <div className="relative" ref={menuRef}>
+                    <button
+                      type="button"
+                      aria-label="More options"
+                      aria-haspopup="menu"
+                      aria-expanded={menuOpen}
+                      onClick={() => setMenuOpen((v) => !v)}
+                      className={`flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors hover:bg-background ${
+                        menuOpen ? "text-foreground" : "text-muted"
+                      }`}
+                    >
+                      <MoreHorizontal className="h-5 w-5" />
+                    </button>
+                    {menuOpen ? (
+                      <div
+                        role="menu"
+                        className="absolute right-0 top-full z-20 mt-2 w-40 overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-lg"
+                      >
+                        <button
+                          type="button"
+                          role="menuitem"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setBlockError(null);
+                            setConfirmBlock(true);
+                          }}
+                          className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-red-600 transition-colors hover:bg-red-50"
+                        >
+                          <Ban className="h-4 w-4 shrink-0" />
+                          Block user
+                        </button>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -238,6 +367,37 @@ export default function PublicProfilePage() {
             ) : null}
           </div>
         </div>
+
+        {/* Blocked state: a clean panel with the Unblock action. */}
+        {profile.isBlocked ? (
+          <div className="mt-5 flex items-center gap-3 rounded-xl border border-border bg-background px-4 py-3">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600">
+              <Ban className="h-5 w-5" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-foreground">
+                You blocked @{profile.username}
+              </p>
+              <p className="text-xs text-muted">
+                They can’t follow or message you. Unblock to restore normal
+                interactions.
+              </p>
+              {blockError ? (
+                <p className="mt-1 text-xs text-red-500" role="alert">
+                  {blockError}
+                </p>
+              ) : null}
+            </div>
+            <button
+              type="button"
+              onClick={onUnblock}
+              disabled={blockPending}
+              className="shrink-0 rounded-full border border-border bg-surface px-5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {blockPending ? "Unblocking…" : "Unblock"}
+            </button>
+          </div>
+        ) : null}
 
         {profile.bio ? (
           <p className="mt-4 text-sm leading-relaxed text-foreground">
@@ -264,6 +424,58 @@ export default function PublicProfilePage() {
           ) : null}
         </dl>
       </section>
+
+      {/* Block confirmation */}
+      {confirmBlock ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Block user"
+          onClick={() => {
+            if (!blockPending) setConfirmBlock(false);
+          }}
+        >
+          <div
+            className="w-full max-w-sm rounded-2xl border border-border bg-surface p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600">
+              <Ban className="h-6 w-6" />
+            </span>
+            <h2 className="mt-4 text-lg font-semibold text-foreground">
+              Block @{profile.username}?
+            </h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">
+              They won’t be able to follow or message you, and you’ll unfollow
+              each other. You can unblock them any time.
+            </p>
+            {blockError ? (
+              <p className="mt-2 text-xs text-red-500" role="alert">
+                {blockError}
+              </p>
+            ) : null}
+            <div className="mt-4 flex items-center justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => setConfirmBlock(false)}
+                disabled={blockPending}
+                className="rounded-full px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-background disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={onConfirmBlock}
+                disabled={blockPending}
+                className="rounded-full bg-red-600 px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {blockPending ? "Blocking…" : "Block"}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

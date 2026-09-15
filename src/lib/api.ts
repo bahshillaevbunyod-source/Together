@@ -138,6 +138,7 @@ export interface PublicUserProfile {
   followersCount: number;
   followingCount: number;
   isFollowing: boolean;
+  isBlocked: boolean;
   isSelf: boolean;
 }
 
@@ -180,6 +181,22 @@ export function followUser(username: string): Promise<{ following: boolean }> {
 export function unfollowUser(username: string): Promise<{ following: boolean }> {
   return apiFetch<{ following: boolean }>(
     `/api/v1/users/${encodeURIComponent(username)}/follow`,
+    { method: "DELETE" },
+  );
+}
+
+/** Block a user by username. Removes any follow edges between the two. */
+export function blockUser(username: string): Promise<{ blocked: boolean }> {
+  return apiFetch<{ blocked: boolean }>(
+    `/api/v1/users/${encodeURIComponent(username)}/block`,
+    { method: "POST" },
+  );
+}
+
+/** Unblock a user by username. */
+export function unblockUser(username: string): Promise<{ blocked: boolean }> {
+  return apiFetch<{ blocked: boolean }>(
+    `/api/v1/users/${encodeURIComponent(username)}/block`,
     { method: "DELETE" },
   );
 }
