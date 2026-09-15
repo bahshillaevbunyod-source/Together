@@ -59,7 +59,7 @@ func decodeDiscoverCursor(s string) (discoverCursorPayload, bool) {
 	if err := json.Unmarshal(data, &p); err != nil {
 		return discoverCursorPayload{}, false
 	}
-	if p.Mode == "" || p.ID == "" {
+	if p.Mode == "" || !uuidPattern.MatchString(p.ID) {
 		return discoverCursorPayload{}, false
 	}
 	return p, true

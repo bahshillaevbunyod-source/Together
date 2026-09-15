@@ -209,13 +209,19 @@ func TestDiscoverExcludesBlocked(t *testing.T) {
 func TestDiscoverKeysetPagination(t *testing.T) {
 	viewer := mkDiscoverUser("me-id", "me_user", "UZ", "uz")
 	pool := []*user.User{
-		mkDiscoverUser("u1", "p1", "US", "en"),
-		mkDiscoverUser("u2", "p2", "US", "en"),
-		mkDiscoverUser("u3", "p3", "US", "en"),
-		mkDiscoverUser("u4", "p4", "US", "en"),
-		mkDiscoverUser("u5", "p5", "US", "en"),
+		mkDiscoverUser("00000000-0000-0000-0000-000000000001", "p1", "US", "en"),
+		mkDiscoverUser("00000000-0000-0000-0000-000000000002", "p2", "US", "en"),
+		mkDiscoverUser("00000000-0000-0000-0000-000000000003", "p3", "US", "en"),
+		mkDiscoverUser("00000000-0000-0000-0000-000000000004", "p4", "US", "en"),
+		mkDiscoverUser("00000000-0000-0000-0000-000000000005", "p5", "US", "en"),
 	}
-	fc := map[string]int64{"u1": 5, "u2": 4, "u3": 3, "u4": 2, "u5": 1}
+	fc := map[string]int64{
+		"00000000-0000-0000-0000-000000000001": 5,
+		"00000000-0000-0000-0000-000000000002": 4,
+		"00000000-0000-0000-0000-000000000003": 3,
+		"00000000-0000-0000-0000-000000000004": 2,
+		"00000000-0000-0000-0000-000000000005": 1,
+	}
 	users := &fakeUserRepo{discoverPool: pool, followerCounts: fc}
 	srv := discoverServer(users, viewer)
 
@@ -264,14 +270,30 @@ func TestDiscoverMalformedCursor(t *testing.T) {
 	}
 }
 
+func TestDiscoverRejectsCursorWithInvalidUUID(t *testing.T) {
+	viewer := mkDiscoverUser("me-id", "me_user", "UZ", "uz")
+	cursor := encodeDiscoverCursor(discoverCursorPayload{
+		Mode: user.DiscoverPopular,
+		ID:   "not-a-uuid",
+	})
+	rec := doDiscover(discoverServer(&fakeUserRepo{}, viewer), "?mode=popular&cursor="+cursor, true)
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d", rec.Code)
+	}
+}
+
 func TestDiscoverWorldCursorSameCountry(t *testing.T) {
 	viewer := mkDiscoverUser("me-id", "me_user", "UZ", "uz")
 	pool := []*user.User{
-		mkDiscoverUser("u1", "jp1", "JP", "ja"),
-		mkDiscoverUser("u2", "jp2", "JP", "ja"),
-		mkDiscoverUser("u3", "jp3", "JP", "ja"),
+		mkDiscoverUser("00000000-0000-0000-0000-000000000001", "jp1", "JP", "ja"),
+		mkDiscoverUser("00000000-0000-0000-0000-000000000002", "jp2", "JP", "ja"),
+		mkDiscoverUser("00000000-0000-0000-0000-000000000003", "jp3", "JP", "ja"),
 	}
-	fc := map[string]int64{"u1": 3, "u2": 2, "u3": 1}
+	fc := map[string]int64{
+		"00000000-0000-0000-0000-000000000001": 3,
+		"00000000-0000-0000-0000-000000000002": 2,
+		"00000000-0000-0000-0000-000000000003": 1,
+	}
 	srv := discoverServer(&fakeUserRepo{discoverPool: pool, followerCounts: fc}, viewer)
 
 	page1 := decodeDiscover(t, doDiscover(srv, "?mode=world&country=JP&limit=2", true))
