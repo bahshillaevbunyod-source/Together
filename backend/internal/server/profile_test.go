@@ -11,6 +11,7 @@ import (
 
 	"together/backend/internal/config"
 	"together/backend/internal/session"
+	"together/backend/internal/storage"
 	"together/backend/internal/user"
 )
 
@@ -72,7 +73,7 @@ func TestPatchProfileOneField(t *testing.T) {
 }
 
 func TestPatchProfileSeveralFields(t *testing.T) {
-	body := `{"displayName":"New Name","bio":"hello","countryCode":"US","city":"Tashkent","nativeLanguage":"uz","avatarUrl":"https://x/y.png"}`
+	body := `{"displayName":"New Name","bio":"hello","countryCode":"US","city":"Tashkent","nativeLanguage":"uz"}`
 	rec := patchProfile(profileServer(profileUser(t)), body, true, true)
 	if rec.Code != http.StatusOK {
 		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
@@ -135,6 +136,9 @@ const avatarBase = "https://cdn.example.com/media"
 // avatarCleanupServer builds a profile server with a storage double and a real
 // media public base so avatar URLs round-trip to storage keys.
 func avatarCleanupServer(users *fakeUserRepo, sr *fakeStorageRepo) *http.Server {
+	if sr.headInfo == nil && sr.headErr == nil {
+		sr.headInfo = &storage.ObjectInfo{ContentType: "image/png", SizeBytes: 1000}
+	}
 	return buildServerWithStorage(
 		config.Config{
 			Env:                "test",
@@ -157,6 +161,102 @@ func userWithAvatar(t *testing.T, url *string) *user.User {
 }
 
 func strptr(s string) *string { return &s }
+
+func TestAvatarValidOwnedObjectAcceptedAndCanonicalized(t *testing.T) {
+	key := "users/11111111-1111-1111-1111-111111111111/avatars/new.png"
+	submitted := avatarBase + "/" + key
+	users := profileUser(t)
+	sr := &fakeStorageRepo{headInfo: &storage.ObjectInfo{ContentType: "image/png", SizeBytes: 1000}}
+
+	rec := patchProfile(avatarCleanupServer(users, sr), `{"avatarUrl":"`+submitted+`"}`, true, true)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if !users.lastUpdate.AvatarURL.Set || users.lastUpdate.AvatarURL.Value == nil {
+		t.Fatal("expected avatar update")
+	}
+	want := mediaURL(avatarBase, key)
+	if *users.lastUpdate.AvatarURL.Value != want {
+		t.Fatalf("expected canonical avatar URL %q, got %q", want, *users.lastUpdate.AvatarURL.Value)
+	}
+}
+
+func TestAvatarExternalURLRejected(t *testing.T) {
+	users := profileUser(t)
+	rec := patchProfile(avatarCleanupServer(users, &fakeStorageRepo{}), `{"avatarUrl":"https://external.example/avatar.png"}`, true, true)
+	if rec.Code != http.StatusBadRequest || users.lastUpdate.HasChanges() {
+		t.Fatalf("expected rejected external avatar without persistence, got %d", rec.Code)
+	}
+}
+
+func TestAvatarForeignUserRejected(t *testing.T) {
+	users := profileUser(t)
+	url := avatarBase + "/users/22222222-2222-2222-2222-222222222222/avatars/a.png"
+	rec := patchProfile(avatarCleanupServer(users, &fakeStorageRepo{}), `{"avatarUrl":"`+url+`"}`, true, true)
+	if rec.Code != http.StatusBadRequest || users.lastUpdate.HasChanges() {
+		t.Fatalf("expected rejected foreign avatar without persistence, got %d", rec.Code)
+	}
+}
+
+func TestAvatarPostMediaPathRejected(t *testing.T) {
+	users := profileUser(t)
+	url := avatarBase + "/users/11111111-1111-1111-1111-111111111111/uploads/post.png"
+	rec := patchProfile(avatarCleanupServer(users, &fakeStorageRepo{}), `{"avatarUrl":"`+url+`"}`, true, true)
+	if rec.Code != http.StatusBadRequest || users.lastUpdate.HasChanges() {
+		t.Fatalf("expected rejected post-media avatar without persistence, got %d", rec.Code)
+	}
+}
+
+func TestAvatarMissingObjectRejected(t *testing.T) {
+	users := profileUser(t)
+	sr := &fakeStorageRepo{headErr: storage.ErrObjectNotFound}
+	url := avatarBase + "/users/11111111-1111-1111-1111-111111111111/avatars/missing.png"
+	rec := patchProfile(avatarCleanupServer(users, sr), `{"avatarUrl":"`+url+`"}`, true, true)
+	if rec.Code != http.StatusBadRequest || users.lastUpdate.HasChanges() {
+		t.Fatalf("expected rejected missing avatar without persistence, got %d", rec.Code)
+	}
+}
+
+func TestAvatarInvalidObjectRejected(t *testing.T) {
+	users := profileUser(t)
+	sr := &fakeStorageRepo{headInfo: &storage.ObjectInfo{ContentType: "image/gif", SizeBytes: 1000}}
+	url := avatarBase + "/users/11111111-1111-1111-1111-111111111111/avatars/invalid.gif"
+	rec := patchProfile(avatarCleanupServer(users, sr), `{"avatarUrl":"`+url+`"}`, true, true)
+	if rec.Code != http.StatusBadRequest || users.lastUpdate.HasChanges() {
+		t.Fatalf("expected rejected invalid avatar without persistence, got %d", rec.Code)
+	}
+}
+
+func TestAvatarNonImageRejected(t *testing.T) {
+	users := profileUser(t)
+	sr := &fakeStorageRepo{headInfo: &storage.ObjectInfo{ContentType: "video/mp4", SizeBytes: 1000}}
+	url := avatarBase + "/users/11111111-1111-1111-1111-111111111111/avatars/video.mp4"
+	rec := patchProfile(avatarCleanupServer(users, sr), `{"avatarUrl":"`+url+`"}`, true, true)
+	if rec.Code != http.StatusBadRequest || users.lastUpdate.HasChanges() {
+		t.Fatalf("expected rejected non-image avatar without persistence, got %d", rec.Code)
+	}
+}
+
+func TestAvatarNullRemovesAvatar(t *testing.T) {
+	users := profileUser(t)
+	rec := patchProfile(avatarCleanupServer(users, &fakeStorageRepo{}), `{"avatarUrl":null}`, true, true)
+	if rec.Code != http.StatusOK || !users.lastUpdate.AvatarURL.Set || users.lastUpdate.AvatarURL.Value != nil {
+		t.Fatalf("expected null avatar removal, got %d", rec.Code)
+	}
+}
+
+func TestAvatarOmittedPreservesLegacyAvatar(t *testing.T) {
+	legacy := avatarBase + "/users/11111111-1111-1111-1111-111111111111/uploads/legacy.png"
+	u := userWithAvatar(t, strptr(legacy))
+	users := &fakeUserRepo{byIDUser: u, updateUser: u}
+	rec := patchProfile(avatarCleanupServer(users, &fakeStorageRepo{}), `{"displayName":"New Name"}`, true, true)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if users.lastUpdate.AvatarURL.Set {
+		t.Fatal("omitted avatarUrl must remain unset")
+	}
+}
 
 func TestAvatarReplaceDeletesPrevious(t *testing.T) {
 	oldURL := avatarBase + "/users/11111111-1111-1111-1111-111111111111/avatars/old.png"

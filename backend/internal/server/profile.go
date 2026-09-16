@@ -3,12 +3,14 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"regexp"
 	"strings"
 	"time"
 	"unicode/utf8"
 
+	"together/backend/internal/media"
 	"together/backend/internal/translation"
 	"together/backend/internal/user"
 )
@@ -105,6 +107,35 @@ func (s *Server) handleUpdateProfile(w http.ResponseWriter, r *http.Request) {
 	if !ok {
 		writeError(w, http.StatusBadRequest, "invalid profile fields")
 		return
+	}
+
+	// A new avatar must be one of this user's confirmed objects in the dedicated
+	// avatars namespace. Omitted avatarUrl fields never enter this branch, so
+	// existing legacy /uploads/ avatars remain unchanged. Null still removes it.
+	if update.AvatarURL.Set && update.AvatarURL.Value != nil {
+		key := storageKeyFromURL(s.cfg.MediaPublicBaseURL, *update.AvatarURL.Value)
+		if key == "" {
+			writeError(w, http.StatusBadRequest, "invalid avatar")
+			return
+		}
+		validated, err := s.validateUploadedObject(r.Context(), u.ID, key, "avatars")
+		if err != nil {
+			switch {
+			case errors.Is(err, errInvalidStorageKey),
+				errors.Is(err, errObjectMissing),
+				errors.Is(err, errUnsupportedMedia):
+				writeError(w, http.StatusBadRequest, "invalid avatar")
+			default:
+				writeError(w, http.StatusInternalServerError, "internal error")
+			}
+			return
+		}
+		if validated.Type != media.TypeImage {
+			writeError(w, http.StatusBadRequest, "invalid avatar")
+			return
+		}
+		canonicalURL := mediaURL(s.cfg.MediaPublicBaseURL, validated.StorageKey)
+		update.AvatarURL.Value = &canonicalURL
 	}
 	if !update.HasChanges() {
 		writeError(w, http.StatusBadRequest, "no fields to update")
