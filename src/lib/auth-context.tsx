@@ -29,7 +29,7 @@ function delay(ms: number, signal?: AbortSignal): Promise<void> {
 }
 
 /** Auth lifecycle status. */
-export type AuthStatus = "loading" | "authenticated" | "unauthenticated";
+export type AuthStatus = "loading" | "authenticated" | "unauthenticated" | "error";
 
 interface AuthState {
   status: AuthStatus;
@@ -66,9 +66,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         // Transient (network/status 0, 5xx, timeouts, other): do NOT mark the
         // user unauthenticated. Keep any existing authenticated state; on the
-        // initial load the status simply stays "loading". Retry with backoff.
+        // initial load the status stays "loading" until retries are exhausted.
         if (attempt >= RETRY_DELAYS_MS.length) {
-          // Give up retrying, but never force a logout on a transient error.
+          // Give up retrying without forcing an existing session out. Initial
+          // failures become recoverable instead of leaving the app loading.
+          setStatus(user ? "authenticated" : "error");
           return;
         }
         try {
@@ -86,7 +88,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => controller.abort();
   }, []);
 
-  const refresh = () => load();
+  const refresh = () => {
+    if (!user) setStatus("loading");
+    return load();
+  };
 
   return (
     <AuthContext.Provider value={{ status, user, refresh }}>

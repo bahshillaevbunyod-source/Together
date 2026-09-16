@@ -13,7 +13,7 @@ export default function AppGroupLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { status } = useAuth();
+  const { status, refresh } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -37,7 +37,20 @@ export default function AppGroupLayout({
           priority
           className="h-14 w-14 animate-pulse object-contain"
         />
-        <span className="text-sm text-muted">Loading Together…</span>
+        {status === "error" ? (
+          <>
+            <span className="text-sm text-muted">Together couldn’t connect.</span>
+            <button
+              type="button"
+              onClick={() => void refresh()}
+              className="rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
+            >
+              Retry
+            </button>
+          </>
+        ) : (
+          <span className="text-sm text-muted">Loading Together…</span>
+        )}
       </div>
     );
   }
