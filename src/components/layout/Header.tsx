@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Plus } from "lucide-react";
 import { NotificationsBell } from "./NotificationsBell";
 import { HeaderUser } from "./HeaderUser";
 import { GlobalSearch } from "./GlobalSearch";
@@ -31,14 +30,6 @@ export function Header() {
 
         {/* Actions */}
         <div className="flex shrink-0 items-center gap-3">
-          <button
-            type="button"
-            className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
-          >
-            <Plus className="h-4 w-4" />
-            Create
-          </button>
-
           <NotificationsBell />
 
           <HeaderUser />
