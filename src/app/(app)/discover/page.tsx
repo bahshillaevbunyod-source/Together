@@ -16,6 +16,7 @@ import {
 import { PersonCard } from "@/components/discover/PersonCard";
 import { Feed } from "@/components/feed/Feed";
 import { FeedProvider } from "@/lib/feed-context";
+import { canonicalTopicSlug } from "@/lib/topic";
 
 type Status = "loading" | "ready" | "error";
 type SearchStatus = "idle" | "loading" | "ready" | "error";
@@ -23,6 +24,7 @@ type SearchStatus = "idle" | "loading" | "ready" | "error";
 const FOR_YOU_LIMIT = 12;
 const SEARCH_LIMIT = 20;
 const TOPICS_LIMIT = 12;
+const TOPIC_SEARCH_LIMIT = 50;
 
 function isAbort(err: unknown): boolean {
   return err instanceof DOMException && err.name === "AbortError";
@@ -53,6 +55,10 @@ export default function DiscoverPage() {
   const [results, setResults] = useState<SearchUserItem[]>([]);
   const [searchStatus, setSearchStatus] = useState<SearchStatus>("idle");
   const searchAbort = useRef<AbortController | null>(null);
+  const [topicResults, setTopicResults] = useState<TrendingTopic[]>([]);
+  const [topicSearchStatus, setTopicSearchStatus] =
+    useState<SearchStatus>("idle");
+  const topicSearchAbort = useRef<AbortController | null>(null);
 
   const trimmed = query.trim();
   const searching = trimmed.length >= 2;
@@ -124,6 +130,48 @@ export default function DiscoverPage() {
     return () => window.clearTimeout(id);
   }, [trimmed]);
 
+  // The current API exposes the viewer-visible topic list; filter its canonical
+  // slugs locally while search is active without changing people search.
+  useEffect(() => {
+    if (trimmed.length < 2) {
+      topicSearchAbort.current?.abort();
+      setTopicResults([]);
+      setTopicSearchStatus("idle");
+      return;
+    }
+
+    const id = window.setTimeout(() => {
+      const rawQuery = trimmed.startsWith("#") ? trimmed.slice(1) : trimmed;
+      const normalizedQuery = canonicalTopicSlug(rawQuery);
+      if (!normalizedQuery) {
+        setTopicResults([]);
+        setTopicSearchStatus("ready");
+        return;
+      }
+
+      topicSearchAbort.current?.abort();
+      const c = new AbortController();
+      topicSearchAbort.current = c;
+      setTopicSearchStatus("loading");
+      getTrendingTopics({ limit: TOPIC_SEARCH_LIMIT }, c.signal)
+        .then((response) => {
+          setTopicResults(
+            response.items.filter((item) => item.slug.includes(normalizedQuery)),
+          );
+          setTopicSearchStatus("ready");
+        })
+        .catch((err) => {
+          if (isAbort(err)) return;
+          setTopicSearchStatus("error");
+        });
+    }, 250);
+
+    return () => {
+      window.clearTimeout(id);
+      topicSearchAbort.current?.abort();
+    };
+  }, [trimmed]);
+
   const removeFollowed = (id: string) =>
     setPeople((prev) => prev.filter((p) => p.id !== id));
 
@@ -153,7 +201,13 @@ export default function DiscoverPage() {
 
       <div className="mt-6">
         {searching ? (
-          <SearchSection query={trimmed} status={searchStatus} results={results} />
+          <SearchSection
+            query={trimmed}
+            status={searchStatus}
+            results={results}
+            topicStatus={topicSearchStatus}
+            topics={topicResults}
+          />
         ) : (
           <>
             <ForYouSection
@@ -710,10 +764,14 @@ function SearchSection({
   query,
   status,
   results,
+  topicStatus,
+  topics,
 }: {
   query: string;
   status: SearchStatus;
   results: SearchUserItem[];
+  topicStatus: SearchStatus;
+  topics: TrendingTopic[];
 }) {
   return (
     <section>
@@ -742,6 +800,37 @@ function SearchSection({
             <PersonCard key={u.id} user={u} />
           ))}
         </CardGrid>
+      ) : null}
+
+      {topicStatus === "loading" ? (
+        <div className="mt-6 flex items-center gap-2 text-sm text-muted">
+          <Loader2 className="h-4 w-4 animate-spin" />
+          Searching topics…
+        </div>
+      ) : null}
+
+      {topicStatus === "error" ? (
+        <p className="mt-6 text-sm text-muted">Couldn’t load topics.</p>
+      ) : null}
+
+      {topics.length > 0 ? (
+        <div className="mt-6">
+          <SectionHeading>Topics</SectionHeading>
+          <div className="flex flex-wrap gap-2">
+            {topics.map((topic) => (
+              <Link
+                key={topic.slug}
+                href={`/topic/${encodeURIComponent(topic.slug)}`}
+                className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm text-muted"
+              >
+                #{topic.slug}
+                <span className="ml-1.5 text-xs text-muted-soft">
+                  {topic.postsCount}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
       ) : null}
     </section>
   );
