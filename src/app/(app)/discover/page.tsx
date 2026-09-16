@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Globe, Loader2, Search, TrendingUp, Users } from "lucide-react";
+import Link from "next/link";
 
 import {
   getDiscoverPosts,
@@ -368,15 +369,16 @@ function TrendingTopicsSection() {
       {items.length > 0 ? (
         <div className="flex flex-wrap gap-2">
           {items.map((item) => (
-            <span
+            <Link
               key={item.slug}
+              href={`/topic/${encodeURIComponent(item.slug)}`}
               className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm text-muted"
             >
               #{item.slug}
               <span className="ml-1.5 text-xs text-muted-soft">
                 {item.postsCount}
               </span>
-            </span>
+            </Link>
           ))}
         </div>
       ) : null}
