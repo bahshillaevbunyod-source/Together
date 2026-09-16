@@ -3,6 +3,7 @@ package postservice
 import (
 	"context"
 	"errors"
+	"reflect"
 	"testing"
 	"time"
 
@@ -11,6 +12,7 @@ import (
 
 	"together/backend/internal/media"
 	"together/backend/internal/post"
+	"together/backend/internal/topic"
 )
 
 // fakeTx implements Tx. The service only calls Commit/Rollback directly; Exec /
@@ -74,8 +76,18 @@ func (f *fakeMediaCreator) CreateManyTx(_ context.Context, _ media.DBTX, items [
 	return f.err
 }
 
-func newService(tx *fakeTx, posts *fakePostCreator, mediaC *fakeMediaCreator) *Service {
-	return &Service{db: &fakeBeginner{tx: tx}, posts: posts, media: mediaC}
+type fakeTopicCreator struct {
+	err      error
+	received []string
+}
+
+func (f *fakeTopicCreator) CreatePostTopicsTx(_ context.Context, _ topic.DBTX, _ string, slugs []string) error {
+	f.received = append([]string(nil), slugs...)
+	return f.err
+}
+
+func newService(tx *fakeTx, posts *fakePostCreator, mediaC *fakeMediaCreator, topicC *fakeTopicCreator) *Service {
+	return &Service{db: &fakeBeginner{tx: tx}, posts: posts, media: mediaC, topics: topicC}
 }
 
 func postInput() post.CreateInput {
@@ -85,7 +97,7 @@ func postInput() post.CreateInput {
 
 func TestCreatePostOnlyCommits(t *testing.T) {
 	tx := &fakeTx{}
-	p, err := newService(tx, &fakePostCreator{}, &fakeMediaCreator{}).
+	p, err := newService(tx, &fakePostCreator{}, &fakeMediaCreator{}, &fakeTopicCreator{}).
 		CreatePostWithMedia(context.Background(), postInput(), nil)
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
@@ -95,6 +107,62 @@ func TestCreatePostOnlyCommits(t *testing.T) {
 	}
 }
 
+func TestCreatePostPersistsHashtagsBeforeMedia(t *testing.T) {
+	tx := &fakeTx{}
+	topics := &fakeTopicCreator{}
+	mediaC := &fakeMediaCreator{}
+	content := "Hello #Go #go #Together"
+	in := post.CreateInput{AuthorID: "me-id", Content: &content, Visibility: "public"}
+
+	_, err := newService(tx, &fakePostCreator{}, mediaC, topics).
+		CreatePostWithMedia(context.Background(), in, []media.CreateInput{{StorageKey: "a"}})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if !reflect.DeepEqual(topics.received, []string{"go", "together"}) {
+		t.Fatalf("unexpected topic slugs: %#v", topics.received)
+	}
+	if len(mediaC.received) != 1 || !tx.committed {
+		t.Fatalf("expected media and commit: media=%+v committed=%v", mediaC.received, tx.committed)
+	}
+}
+
+func TestCreatePostWithoutHashtagsSkipsTopicPersistence(t *testing.T) {
+	topics := &fakeTopicCreator{}
+	mediaC := &fakeMediaCreator{}
+	_, err := newService(&fakeTx{}, &fakePostCreator{}, mediaC, topics).
+		CreatePostWithMedia(context.Background(), postInput(), nil)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if topics.received != nil {
+		t.Fatalf("expected no topic persistence, got %#v", topics.received)
+	}
+}
+
+func TestCreatePostTopicErrorRollsBackBeforeMedia(t *testing.T) {
+	tx := &fakeTx{}
+	topics := &fakeTopicCreator{err: errors.New("topic error")}
+	mediaC := &fakeMediaCreator{}
+	_, err := newService(tx, &fakePostCreator{}, mediaC, topics).
+		CreatePostWithMedia(context.Background(), postInputWithHashtag(), mediaItems())
+	if err == nil {
+		t.Fatal("expected topic error")
+	}
+	if tx.committed || !tx.rolledBack || mediaC.received != nil {
+		t.Fatalf("expected rollback before media, committed=%v rolledBack=%v media=%+v", tx.committed, tx.rolledBack, mediaC.received)
+	}
+}
+
+func postInputWithHashtag() post.CreateInput {
+	c := "#topic"
+	return post.CreateInput{AuthorID: "me-id", Content: &c, Visibility: "public"}
+}
+
+func mediaItems() []media.CreateInput {
+	return []media.CreateInput{{StorageKey: "a"}}
+}
+
 func TestCreatePostWithMediaCommits(t *testing.T) {
 	tx := &fakeTx{}
 	mediaC := &fakeMediaCreator{}
@@ -102,7 +170,7 @@ func TestCreatePostWithMediaCommits(t *testing.T) {
 		{Type: media.TypeImage, StorageKey: "a", MimeType: "image/png", SizeBytes: 1, SortOrder: 0},
 		{Type: media.TypeImage, StorageKey: "b", MimeType: "image/png", SizeBytes: 2, SortOrder: 1},
 	}
-	_, err := newService(tx, &fakePostCreator{}, mediaC).
+	_, err := newService(tx, &fakePostCreator{}, mediaC, &fakeTopicCreator{}).
 		CreatePostWithMedia(context.Background(), postInput(), items)
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
@@ -117,7 +185,7 @@ func TestCreatePostWithMediaCommits(t *testing.T) {
 
 func TestPostInsertErrorRollsBack(t *testing.T) {
 	tx := &fakeTx{}
-	_, err := newService(tx, &fakePostCreator{err: errors.New("boom")}, &fakeMediaCreator{}).
+	_, err := newService(tx, &fakePostCreator{err: errors.New("boom")}, &fakeMediaCreator{}, &fakeTopicCreator{}).
 		CreatePostWithMedia(context.Background(), postInput(), nil)
 	if err == nil {
 		t.Fatal("expected error")
@@ -130,7 +198,7 @@ func TestPostInsertErrorRollsBack(t *testing.T) {
 func TestMediaInsertErrorRollsBack(t *testing.T) {
 	tx := &fakeTx{}
 	items := []media.CreateInput{{Type: media.TypeImage, StorageKey: "a", MimeType: "image/png", SizeBytes: 1}}
-	_, err := newService(tx, &fakePostCreator{}, &fakeMediaCreator{err: errors.New("boom")}).
+	_, err := newService(tx, &fakePostCreator{}, &fakeMediaCreator{err: errors.New("boom")}, &fakeTopicCreator{}).
 		CreatePostWithMedia(context.Background(), postInput(), items)
 	if err == nil {
 		t.Fatal("expected error")
@@ -142,7 +210,7 @@ func TestMediaInsertErrorRollsBack(t *testing.T) {
 
 func TestCommitErrorReturnsError(t *testing.T) {
 	tx := &fakeTx{commitErr: errors.New("commit failed")}
-	_, err := newService(tx, &fakePostCreator{}, &fakeMediaCreator{}).
+	_, err := newService(tx, &fakePostCreator{}, &fakeMediaCreator{}, &fakeTopicCreator{}).
 		CreatePostWithMedia(context.Background(), postInput(), nil)
 	if err == nil {
 		t.Fatal("expected commit error")

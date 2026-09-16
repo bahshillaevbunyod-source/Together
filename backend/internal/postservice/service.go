@@ -9,6 +9,7 @@ import (
 
 	"together/backend/internal/media"
 	"together/backend/internal/post"
+	"together/backend/internal/topic"
 )
 
 // Tx is a transaction usable as a query executor for both repositories.
@@ -33,16 +34,22 @@ type MediaCreator interface {
 	CreateManyTx(ctx context.Context, q media.DBTX, items []media.CreateInput) error
 }
 
+// TopicCreator persists topics and post-topic links within a transaction.
+type TopicCreator interface {
+	CreatePostTopicsTx(ctx context.Context, q topic.DBTX, postID string, slugs []string) error
+}
+
 // Service creates posts with media atomically.
 type Service struct {
-	db    Beginner
-	posts PostCreator
-	media MediaCreator
+	db     Beginner
+	posts  PostCreator
+	media  MediaCreator
+	topics TopicCreator
 }
 
 // New builds a Service. The pool is wrapped so its transactions satisfy Tx.
-func New(pool *pgxpool.Pool, posts PostCreator, mediaRepo MediaCreator) *Service {
-	return &Service{db: poolBeginner{pool: pool}, posts: posts, media: mediaRepo}
+func New(pool *pgxpool.Pool, posts PostCreator, mediaRepo MediaCreator, topicRepo TopicCreator) *Service {
+	return &Service{db: poolBeginner{pool: pool}, posts: posts, media: mediaRepo, topics: topicRepo}
 }
 
 // CreatePostWithMedia creates a post and its media in a single transaction.
@@ -59,6 +66,15 @@ func (s *Service) CreatePostWithMedia(ctx context.Context, in post.CreateInput, 
 	p, err := s.posts.CreateTx(ctx, tx, in)
 	if err != nil {
 		return nil, err
+	}
+
+	if in.Content != nil {
+		slugs := topic.ExtractSlugs(*in.Content)
+		if len(slugs) > 0 {
+			if err := s.topics.CreatePostTopicsTx(ctx, tx, p.ID, slugs); err != nil {
+				return nil, err
+			}
+		}
 	}
 
 	items := make([]media.CreateInput, len(mediaItems))

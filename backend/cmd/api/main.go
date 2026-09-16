@@ -29,6 +29,7 @@ import (
 	"together/backend/internal/server"
 	"together/backend/internal/session"
 	"together/backend/internal/storage"
+	"together/backend/internal/topic"
 	"together/backend/internal/user"
 )
 
@@ -63,10 +64,11 @@ func main() {
 	likes := like.NewPostgresRepository(pool)
 	comments := comment.NewPostgresRepository(pool)
 	mediaRepo := media.NewPostgresRepository(pool)
+	topicRepo := topic.NewPostgresRepository(pool)
 	storageRepo := storage.NewS3Repository(cfg)
 	bookmarks := bookmark.NewPostgresRepository(pool)
 	notifications := notification.NewPostgresRepository(pool)
-	postCreator := postservice.New(pool, posts, mediaRepo)
+	postCreator := postservice.New(pool, posts, mediaRepo, topicRepo)
 	followNotifier := followservice.New(pool, follows, notifications)
 	likeNotifier := likeservice.New(pool, likes, notifications)
 	commentNotifier := commentservice.New(pool, comments, notifications)
