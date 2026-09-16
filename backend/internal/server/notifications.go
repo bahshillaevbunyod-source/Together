@@ -158,7 +158,7 @@ func parseNotificationCursor(raw string) (*notification.Cursor, bool) {
 		return nil, true
 	}
 	t, id, ok := decodeCursor(raw)
-	if !ok {
+	if !ok || !uuidPattern.MatchString(id) {
 		return nil, false
 	}
 	return &notification.Cursor{CreatedAt: t, ID: id}, true

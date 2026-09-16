@@ -176,6 +176,14 @@ func TestNotificationsInvalidCursor(t *testing.T) {
 	}
 }
 
+func TestNotificationsRejectsNonUUIDCursorID(t *testing.T) {
+	cursor := encodeCursor(time.Now(), "not-a-uuid")
+	rec := getNotifications(notificationServer(&fakeNotificationRepo{}), "?cursor="+cursor, true)
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d", rec.Code)
+	}
+}
+
 func TestNotificationsInvalidLimit(t *testing.T) {
 	rec := getNotifications(notificationServer(&fakeNotificationRepo{}), "?limit=100", true)
 	if rec.Code != http.StatusBadRequest {

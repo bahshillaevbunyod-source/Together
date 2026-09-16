@@ -78,7 +78,9 @@ func TestFollowingListSuccess(t *testing.T) {
 func TestFollowListPaginationNextCursor(t *testing.T) {
 	// 3 items available, limit 2 -> handler fetches 3, returns 2 + nextCursor.
 	follows := &fakeFollowRepo{followersList: []follow.ListItem{
-		mkListItem("a", "alice"), mkListItem("b", "bob"), mkListItem("c", "carol"),
+		mkListItem("11111111-1111-1111-1111-111111111111", "alice"),
+		mkListItem("22222222-2222-2222-2222-222222222222", "bob"),
+		mkListItem("33333333-3333-3333-3333-333333333333", "carol"),
 	}}
 	rec := getList(listServer(targetUsers(), follows), "/api/v1/users/target_user/followers?limit=2")
 	resp := decodeList(t, rec)
@@ -96,6 +98,14 @@ func TestFollowListPaginationNextCursor(t *testing.T) {
 
 func TestFollowListInvalidCursor(t *testing.T) {
 	rec := getList(listServer(targetUsers(), &fakeFollowRepo{}), "/api/v1/users/target_user/followers?cursor=@@@bad")
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d", rec.Code)
+	}
+}
+
+func TestFollowListRejectsNonUUIDCursorID(t *testing.T) {
+	cursor := encodeCursor(time.Now(), "not-a-uuid")
+	rec := getList(listServer(targetUsers(), &fakeFollowRepo{}), "/api/v1/users/target_user/followers?cursor="+cursor)
 	if rec.Code != http.StatusBadRequest {
 		t.Fatalf("expected 400, got %d", rec.Code)
 	}

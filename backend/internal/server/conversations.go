@@ -422,7 +422,7 @@ func parseMessageCursor(raw string) (*conversation.MessageCursor, bool) {
 		return nil, true
 	}
 	t, id, ok := decodeCursor(raw)
-	if !ok {
+	if !ok || !uuidPattern.MatchString(id) {
 		return nil, false
 	}
 	return &conversation.MessageCursor{CreatedAt: t, ID: id}, true
@@ -434,7 +434,7 @@ func parseConversationCursor(raw string) (*conversation.ConversationCursor, bool
 		return nil, true
 	}
 	t, id, ok := decodeCursor(raw)
-	if !ok {
+	if !ok || !uuidPattern.MatchString(id) {
 		return nil, false
 	}
 	return &conversation.ConversationCursor{UpdatedAt: t, ID: id}, true

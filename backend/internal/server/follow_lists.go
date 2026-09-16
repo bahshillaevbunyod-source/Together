@@ -94,7 +94,7 @@ func parseCursor(raw string) (*follow.Cursor, bool) {
 		return nil, true
 	}
 	t, id, ok := decodeCursor(raw)
-	if !ok {
+	if !ok || !uuidPattern.MatchString(id) {
 		return nil, false
 	}
 	return &follow.Cursor{CreatedAt: t, UserID: id}, true

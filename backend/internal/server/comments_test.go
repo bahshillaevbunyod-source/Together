@@ -255,6 +255,14 @@ func TestListCommentsInvalidCursor(t *testing.T) {
 	}
 }
 
+func TestListCommentsRejectsNonUUIDCursorID(t *testing.T) {
+	cursor := encodeCursor(time.Now(), "not-a-uuid")
+	rec := listComments(commentServer(&fakeCommentRepo{}, publicPost()), "?cursor="+cursor)
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d", rec.Code)
+	}
+}
+
 func TestListCommentsRepositoryError(t *testing.T) {
 	rec := listComments(commentServer(&fakeCommentRepo{listErr: errForTest}, publicPost()), "")
 	if rec.Code != http.StatusInternalServerError {

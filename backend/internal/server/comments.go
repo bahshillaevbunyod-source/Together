@@ -304,7 +304,7 @@ func parseCommentCursor(raw string) (*comment.Cursor, bool) {
 		return nil, true
 	}
 	t, id, ok := decodeCursor(raw)
-	if !ok {
+	if !ok || !uuidPattern.MatchString(id) {
 		return nil, false
 	}
 	return &comment.Cursor{CreatedAt: t, ID: id}, true

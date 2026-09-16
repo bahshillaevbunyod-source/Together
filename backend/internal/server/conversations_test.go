@@ -182,6 +182,14 @@ func TestListMessagesInvalidCursor(t *testing.T) {
 	}
 }
 
+func TestListMessagesRejectsNonUUIDCursorID(t *testing.T) {
+	cursor := encodeCursor(time.Now(), "not-a-uuid")
+	rec := getMessages(convServer(&fakeConversationRepo{}), validPostID, "?cursor="+cursor, true)
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d", rec.Code)
+	}
+}
+
 func TestListMessagesInvalidLimit(t *testing.T) {
 	rec := getMessages(convServer(&fakeConversationRepo{}), validPostID, "?limit=100", true)
 	if rec.Code != http.StatusBadRequest {
@@ -415,9 +423,9 @@ func TestListConversationsEmpty(t *testing.T) {
 
 func TestListConversationsPaginationNextCursor(t *testing.T) {
 	conv := &fakeConversationRepo{convList: []conversation.ListItem{
-		mkConvItem("c3", time.Now(), true),
-		mkConvItem("c2", time.Now().Add(-time.Minute), true),
-		mkConvItem("c1", time.Now().Add(-time.Hour), true),
+		mkConvItem("33333333-3333-3333-3333-333333333333", time.Now(), true),
+		mkConvItem("22222222-2222-2222-2222-222222222222", time.Now().Add(-time.Minute), true),
+		mkConvItem("11111111-1111-1111-1111-111111111111", time.Now().Add(-time.Hour), true),
 	}}
 	rec := getConversations(convServer(conv), "?limit=2", true)
 	if rec.Code != http.StatusOK {
@@ -433,6 +441,14 @@ func TestListConversationsPaginationNextCursor(t *testing.T) {
 	}
 	if _, ok := parseConversationCursor(resp.NextCursor); !ok {
 		t.Fatal("nextCursor not decodable")
+	}
+}
+
+func TestListConversationsRejectsNonUUIDCursorID(t *testing.T) {
+	cursor := encodeCursor(time.Now(), "not-a-uuid")
+	rec := getConversations(convServer(&fakeConversationRepo{}), "?cursor="+cursor, true)
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d", rec.Code)
 	}
 }
 
