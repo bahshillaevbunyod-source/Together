@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"together/backend/internal/config"
+	"together/backend/internal/media"
 	"together/backend/internal/post"
 	"together/backend/internal/user"
 )
@@ -132,6 +133,76 @@ func TestDeleteOwnPost(t *testing.T) {
 	}
 	if len(posts.deleted) != 1 || posts.deleted[0] != validPostID {
 		t.Fatalf("post not deleted: %v", posts.deleted)
+	}
+}
+
+// editDeletePostServerFull injects a media repo and storage double so the
+// deleted-post media cleanup can be observed.
+func editDeletePostServerFull(posts *fakePostRepo, mediaRepo *fakeMediaRepo, sr *fakeStorageRepo) *http.Server {
+	me := mkUser("me-id", "me_user")
+	users := &fakeUserRepo{byID: map[string]*user.User{"me-id": me}}
+	return New(
+		config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin, MediaPublicBaseURL: "https://cdn.example.com/media"},
+		fakePinger{}, users, activeSession("me-id"), &fakeFollowRepo{}, &fakeBlockRepo{},
+		posts, &fakeLikeRepo{}, &fakeCommentRepo{}, mediaRepo, sr, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{},
+	)
+}
+
+func mkPostMedia(key string) media.Media {
+	return media.Media{ID: "m-" + key, PostID: validPostID, Type: media.TypeImage, StorageKey: key, MimeType: "image/webp"}
+}
+
+func TestDeletePostRemovesOwnMedia(t *testing.T) {
+	mediaRepo := &fakeMediaRepo{byPost: []media.Media{
+		mkPostMedia("users/me-id/uploads/a.webp"),
+		mkPostMedia("users/me-id/uploads/b.webp"),
+	}}
+	sr := &fakeStorageRepo{}
+	rec := deletePost(editDeletePostServerFull(&fakePostRepo{getPost: ownPost()}, mediaRepo, sr), true, true)
+	if rec.Code != http.StatusNoContent {
+		t.Fatalf("expected 204, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if len(sr.deleted) != 2 {
+		t.Fatalf("expected both owned objects deleted, got %v", sr.deleted)
+	}
+}
+
+func TestDeletePostSkipsForeignAndAvatarKeys(t *testing.T) {
+	mediaRepo := &fakeMediaRepo{byPost: []media.Media{
+		mkPostMedia("users/other-user/uploads/x.webp"),    // another user's namespace
+		mkPostMedia("users/me-id/avatars/y.webp"),         // avatar namespace (not uploads)
+		mkPostMedia("users/me-id/uploads/../escape.webp"), // traversal-shaped
+		mkPostMedia("users/me-id/uploads/ok.webp"),        // the only deletable one
+	}}
+	sr := &fakeStorageRepo{}
+	deletePost(editDeletePostServerFull(&fakePostRepo{getPost: ownPost()}, mediaRepo, sr), true, true)
+	if len(sr.deleted) != 1 || sr.deleted[0] != "users/me-id/uploads/ok.webp" {
+		t.Fatalf("only the owner's own uploads object should be deleted, got %v", sr.deleted)
+	}
+}
+
+func TestDeletePostStorageErrorStill204(t *testing.T) {
+	mediaRepo := &fakeMediaRepo{byPost: []media.Media{mkPostMedia("users/me-id/uploads/a.webp")}}
+	sr := &fakeStorageRepo{deleteErr: errForTest}
+	rec := deletePost(editDeletePostServerFull(&fakePostRepo{getPost: ownPost()}, mediaRepo, sr), true, true)
+	if rec.Code != http.StatusNoContent {
+		t.Fatalf("storage failure must not fail the delete, got %d", rec.Code)
+	}
+}
+
+func TestDeletePostMediaListErrorStill204(t *testing.T) {
+	mediaRepo := &fakeMediaRepo{listErr: errForTest}
+	sr := &fakeStorageRepo{}
+	posts := &fakePostRepo{getPost: ownPost()}
+	rec := deletePost(editDeletePostServerFull(posts, mediaRepo, sr), true, true)
+	if rec.Code != http.StatusNoContent {
+		t.Fatalf("expected 204, got %d", rec.Code)
+	}
+	if len(posts.deleted) != 1 {
+		t.Fatalf("post must still be deleted when media list fails, got %v", posts.deleted)
+	}
+	if len(sr.deleted) != 0 {
+		t.Fatalf("no storage cleanup when media list failed, got %v", sr.deleted)
 	}
 }
 

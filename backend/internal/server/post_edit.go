@@ -1,12 +1,14 @@
 package server
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"net/http"
 	"strings"
 	"unicode/utf8"
 
+	"together/backend/internal/media"
 	"together/backend/internal/post"
 	"together/backend/internal/user"
 )
@@ -114,12 +116,48 @@ func (s *Server) handleDeletePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Capture the media storage keys BEFORE deletion: the posts FK cascade
+	// removes the media rows, so they are unavailable afterward. A read error
+	// here is non-fatal — the post is still deleted; only cleanup is skipped.
+	mediaItems, mediaErr := s.media.ListByPost(r.Context(), p.ID)
+
 	if err := s.posts.Delete(r.Context(), p.ID); err != nil {
 		writeError(w, http.StatusInternalServerError, "internal error")
 		return
 	}
 
+	// Best-effort storage cleanup AFTER the DB delete (the source of truth).
+	// Only the owner's own confirmed post-upload objects are removed; a storage
+	// failure leaves an orphaned object but never fails the request.
+	if mediaErr == nil {
+		s.cleanupPostMedia(r.Context(), me.ID, mediaItems)
+	}
+
 	w.WriteHeader(http.StatusNoContent)
+}
+
+// cleanupPostMedia best-effort deletes a deleted post's media objects from
+// storage. It only touches keys inside the owner's own confirmed upload
+// namespace (users/{ownerID}/uploads/<file>) — the same namespace enforced at
+// media confirmation — so it can never remove another user's object, an avatar,
+// or an arbitrary key. Deletion errors are ignored (see the endpoint's
+// best-effort contract); keys come from the database, never from the client.
+func (s *Server) cleanupPostMedia(ctx context.Context, ownerID string, items []media.Media) {
+	prefix := "users/" + ownerID + "/uploads/"
+	for _, m := range items {
+		key := m.StorageKey
+		if !strings.HasPrefix(key, prefix) {
+			continue // outside the owner's uploads namespace — never delete
+		}
+		if strings.Contains(key, "..") || strings.Contains(key, `\`) {
+			continue // defense-in-depth against traversal-shaped keys
+		}
+		rest := key[len(prefix):]
+		if rest == "" || strings.Contains(rest, "/") {
+			continue // must be a single file segment
+		}
+		_ = s.storage.DeleteObject(ctx, key) // best-effort; orphan on failure
+	}
 }
 
 // buildPostUpdate validates raw fields into a PostUpdate. ok is false on any
