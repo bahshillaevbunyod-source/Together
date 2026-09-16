@@ -100,6 +100,7 @@ export function PersonCard({
           alt={user.displayName}
           width={56}
           height={56}
+          unoptimized={Boolean(user.avatarUrl)}
           className="h-14 w-14 rounded-full object-cover transition-transform group-hover:scale-[1.03]"
         />
       </Link>

@@ -228,6 +228,7 @@ export function NotificationsBell() {
                         alt={actorName}
                         width={32}
                         height={32}
+                        unoptimized={Boolean(n.actor?.avatarUrl)}
                         className="mt-1 h-8 w-8 shrink-0 rounded-full object-cover"
                       />
                       <span className="min-w-0 flex-1">

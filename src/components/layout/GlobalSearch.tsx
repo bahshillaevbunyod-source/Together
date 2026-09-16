@@ -217,6 +217,7 @@ export function GlobalSearch() {
                           alt={u.displayName}
                           width={40}
                           height={40}
+                          unoptimized={Boolean(u.avatarUrl)}
                           className="h-10 w-10 shrink-0 rounded-full object-cover"
                         />
                         <span className="min-w-0 flex-1">

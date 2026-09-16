@@ -323,6 +323,9 @@ export function PostCard({
           alt={author.name}
           width={44}
           height={44}
+          unoptimized={
+            !author.avatar.startsWith("/") && !author.avatar.startsWith("data:")
+          }
           className="h-11 w-11 rounded-full object-cover"
         />
         <div className="min-w-0 flex-1">

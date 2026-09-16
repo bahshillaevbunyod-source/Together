@@ -246,6 +246,7 @@ export default function MessagesPage() {
                         alt={c.otherUser.displayName}
                         width={48}
                         height={48}
+                        unoptimized={Boolean(c.otherUser.avatarUrl)}
                         className="h-12 w-12 shrink-0 rounded-full object-cover"
                       />
                     </Link>
@@ -308,6 +309,7 @@ export default function MessagesPage() {
                   alt={selected.otherUser.displayName}
                   width={40}
                   height={40}
+                  unoptimized={Boolean(selected.otherUser.avatarUrl)}
                   className="h-10 w-10 rounded-full object-cover"
                 />
                 <div className="leading-tight">

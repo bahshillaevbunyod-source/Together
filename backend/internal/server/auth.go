@@ -36,6 +36,7 @@ type userResponse struct {
 	Email          *string `json:"email"`
 	Username       string  `json:"username"`
 	DisplayName    string  `json:"displayName"`
+	AvatarURL      *string `json:"avatarUrl"`
 	NativeLanguage string  `json:"nativeLanguage"`
 	CreatedAt      string  `json:"createdAt"`
 }
@@ -249,6 +250,7 @@ func toUserResponse(u *user.User) userResponse {
 		Email:          u.Email,
 		Username:       u.Username,
 		DisplayName:    u.DisplayName,
+		AvatarURL:      u.AvatarURL,
 		NativeLanguage: u.NativeLanguage,
 		CreatedAt:      u.CreatedAt.Format(time.RFC3339),
 	}

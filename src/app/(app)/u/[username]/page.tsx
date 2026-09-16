@@ -282,6 +282,7 @@ export default function PublicProfilePage() {
             alt={profile.displayName}
             width={96}
             height={96}
+            unoptimized={Boolean(profile.avatarUrl)}
             className="h-24 w-24 shrink-0 rounded-full object-cover"
           />
           <div className="min-w-0 flex-1">

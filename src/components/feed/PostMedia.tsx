@@ -60,6 +60,9 @@ function SingleImage({ item }: { item: PostMediaItem }) {
         fill
         sizes={SIZES}
         quality={QUALITY}
+        unoptimized={
+          !item.src.startsWith("/") && !item.src.startsWith("data:")
+        }
         onLoad={onLoad}
         className="object-cover"
       />
@@ -136,6 +139,9 @@ function Carousel({ media }: { media: PostMediaItem[] }) {
                 fill
                 sizes={SIZES}
                 quality={QUALITY}
+                unoptimized={
+                  !m.src.startsWith("/") && !m.src.startsWith("data:")
+                }
                 onLoad={i === 0 ? onFirstLoad : undefined}
                 className="object-cover"
               />

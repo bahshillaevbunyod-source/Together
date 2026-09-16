@@ -15,6 +15,7 @@ export interface CurrentUser {
   email: string | null;
   username: string;
   displayName: string;
+  avatarUrl: string | null;
   nativeLanguage: string;
   createdAt: string;
 }
