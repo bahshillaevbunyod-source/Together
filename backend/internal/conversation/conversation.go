@@ -19,6 +19,8 @@ var (
 	ErrEmptyContent = errors.New("conversation: message content is required")
 	// ErrContentTooLong is returned when a message exceeds the length limit.
 	ErrContentTooLong = errors.New("conversation: message content is too long")
+	// ErrBlocked is returned when either participant blocks the other.
+	ErrBlocked = errors.New("conversation: messaging is blocked")
 )
 
 // Conversation mirrors a row in the `conversations` table. Members are stored

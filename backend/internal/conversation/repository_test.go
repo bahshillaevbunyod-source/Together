@@ -28,8 +28,11 @@ type fakeTx struct {
 	execArgs     []any
 	recipient    *string // other-participant lookup result
 	recipientErr error   // fails the other-participant lookup (e.g. pgx.ErrNoRows)
-	scanErr      error   // fails the conversation upsert scan
-	msgScanErr   error   // fails the message insert scan
+	blocked      bool
+	blockErr     error
+	blockArgs    []any
+	scanErr      error // fails the conversation upsert scan
+	msgScanErr   error // fails the message insert scan
 	execErr      error
 	commitErr    error
 	committed    bool
@@ -64,6 +67,17 @@ func (f *fakeTx) QueryRow(_ context.Context, sql string, args ...any) pgx.Row {
 				case *time.Time:
 					*p = vals[i].(time.Time)
 				}
+			}
+			return nil
+		}}
+	case strings.Contains(sql, "FROM blocks"):
+		f.blockArgs = args
+		return fakeRow{scan: func(dest ...any) error {
+			if f.blockErr != nil {
+				return f.blockErr
+			}
+			if p, ok := dest[0].(*bool); ok {
+				*p = f.blocked
 			}
 			return nil
 		}}
@@ -325,6 +339,45 @@ func TestCreateMessageSuccess(t *testing.T) {
 	}
 	if !tx.committed {
 		t.Fatal("expected commit")
+	}
+}
+
+func TestCreateMessageBlockedRollsBackBeforeInsert(t *testing.T) {
+	tx := &fakeTx{recipient: ptr("other-1"), blocked: true}
+	repo, _ := newRepo(tx)
+	if _, _, err := repo.CreateMessage(context.Background(), "conv-1", "sender-1", "hi"); !errors.Is(err, ErrBlocked) {
+		t.Fatalf("expected ErrBlocked, got %v", err)
+	}
+	if tx.msgSQL != "" {
+		t.Fatal("blocked message must not be inserted")
+	}
+	if tx.committed || !tx.rolledBack {
+		t.Fatalf("expected rollback without commit, committed=%v rolledBack=%v", tx.committed, tx.rolledBack)
+	}
+}
+
+func TestCreateMessageChecksBlocksInEitherDirection(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		sender string
+		other  string
+	}{
+		{name: "blocker sends", sender: "a", other: "b"},
+		{name: "blocked user sends", sender: "b", other: "a"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			tx := &fakeTx{recipient: ptr(tc.other), blocked: true}
+			repo, _ := newRepo(tx)
+			if _, _, err := repo.CreateMessage(context.Background(), "conv-1", tc.sender, "hi"); !errors.Is(err, ErrBlocked) {
+				t.Fatalf("expected ErrBlocked, got %v", err)
+			}
+			if len(tx.blockArgs) != 2 || tx.blockArgs[0] != tc.sender || tx.blockArgs[1] != tc.other {
+				t.Fatalf("block check did not receive both participants: %v", tx.blockArgs)
+			}
+			if tx.msgSQL != "" || tx.committed {
+				t.Fatal("blocked message must not be inserted or committed")
+			}
+		})
 	}
 }
 

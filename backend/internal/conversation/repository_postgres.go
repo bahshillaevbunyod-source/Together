@@ -125,6 +125,14 @@ FROM conversations
 WHERE id = $1
 `
 
+const hasBlockBetweenQuery = `
+SELECT EXISTS (
+    SELECT 1 FROM blocks
+    WHERE (blocker_id = $1 AND blocked_id = $2)
+       OR (blocker_id = $2 AND blocked_id = $1)
+)
+`
+
 const insertMessageQuery = `
 INSERT INTO messages (conversation_id, sender_id, content)
 VALUES ($1, $2, $3)
@@ -161,6 +169,14 @@ func (r *PostgresRepository) CreateMessage(ctx context.Context, conversationID, 
 	}
 	if recipient == nil {
 		return nil, "", ErrNotParticipant
+	}
+
+	var blocked bool
+	if err := tx.QueryRow(ctx, hasBlockBetweenQuery, senderID, *recipient).Scan(&blocked); err != nil {
+		return nil, "", err
+	}
+	if blocked {
+		return nil, "", ErrBlocked
 	}
 
 	var m Message

@@ -353,6 +353,8 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 		case errors.Is(err, conversation.ErrNotParticipant):
 			// Non-members must not learn the conversation exists.
 			writeError(w, http.StatusNotFound, "conversation not found")
+		case errors.Is(err, conversation.ErrBlocked):
+			writeError(w, http.StatusForbidden, "interaction not allowed")
 		default:
 			writeError(w, http.StatusInternalServerError, "internal error")
 		}

@@ -592,6 +592,17 @@ func TestCreateMessageSuccess(t *testing.T) {
 	}
 }
 
+func TestCreateMessageBlockedReturnsForbidden(t *testing.T) {
+	conv := &fakeConversationRepo{createErr: conversation.ErrBlocked}
+	rec := postMessage(convServer(conv), validPostID, `{"content":"hello"}`, true, true)
+	if rec.Code != http.StatusForbidden {
+		t.Fatalf("expected 403, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if !strings.Contains(rec.Body.String(), "interaction not allowed") {
+		t.Fatalf("unexpected error body: %s", rec.Body.String())
+	}
+}
+
 func TestCreateMessageTrim(t *testing.T) {
 	conv := &fakeConversationRepo{}
 	rec := postMessage(convServer(conv), validPostID, `{"content":"  hi  "}`, true, true)
@@ -838,6 +849,23 @@ func TestRealtimeNoEventOnPersistenceError(t *testing.T) {
 	select {
 	case <-recipient.Send():
 		t.Fatal("no event must be published when persistence fails")
+	default:
+	}
+}
+
+func TestRealtimeNoEventOnBlockedMessage(t *testing.T) {
+	conv := &fakeConversationRepo{recipientID: "u2", createErr: conversation.ErrBlocked}
+	s := convDeliveryServer(conv)
+
+	recipient := realtime.NewClient("u2", 4)
+	s.hub.Register(recipient)
+
+	if rec := postMessageTo(s, validPostID, `{"content":"hi"}`); rec.Code != http.StatusForbidden {
+		t.Fatalf("expected 403, got %d", rec.Code)
+	}
+	select {
+	case <-recipient.Send():
+		t.Fatal("blocked message must not publish a realtime event")
 	default:
 	}
 }
