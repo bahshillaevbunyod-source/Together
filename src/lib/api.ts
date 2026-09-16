@@ -755,6 +755,12 @@ export interface MediaUploadUrlInput {
    * photo. Omitting it keeps the existing post-upload behavior.
    */
   purpose?: "post" | "avatar";
+  /**
+   * Intended post visibility ("public" (default) | "followers" | "private").
+   * Selects the storage bucket server-side: restricted visibilities upload to
+   * the private bucket. Must match the visibility used when creating the post.
+   */
+  visibility?: string;
 }
 
 /** Response from POST /api/v1/media/upload-url. */

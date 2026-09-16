@@ -4,11 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import {
   AlertCircle,
   BarChart3,
+  Check,
   ChevronDown,
   Globe,
   Image as ImageIcon,
+  Lock,
   Mic,
   Smile,
+  Users,
   Video,
   X,
   type LucideIcon,
@@ -46,9 +49,9 @@ const actions: Action[] = [
 type Visibility = "everyone" | "friends" | "private";
 
 const visibilityLabels: Record<Visibility, string> = {
-  everyone: "Everyone",
-  friends: "Friends",
-  private: "Only me",
+  everyone: "Public",
+  friends: "Followers",
+  private: "Private",
 };
 
 // Map the composer's audience choice to the backend's visibility values.
@@ -57,6 +60,18 @@ const backendVisibility: Record<Visibility, string> = {
   friends: "followers",
   private: "private",
 };
+
+// Audience options in display order, each with its icon and a short hint.
+const visibilityOptions: {
+  value: Visibility;
+  label: string;
+  hint: string;
+  icon: LucideIcon;
+}[] = [
+  { value: "everyone", label: "Public", hint: "Anyone can see this post", icon: Globe },
+  { value: "friends", label: "Followers", hint: "Only your followers", icon: Users },
+  { value: "private", label: "Private", hint: "Only you", icon: Lock },
+];
 
 // One selected image. `storageKey` is set only after a successful R2 PUT, and
 // `confirmed` only after a successful confirm — so a failed submit can be retried
@@ -72,13 +87,15 @@ type SelectedImage = {
 export function Composer() {
   const { prependPost } = useFeed();
   const [content, setContent] = useState("");
-  const [visibility] = useState<Visibility>("everyone");
+  const [visibility, setVisibility] = useState<Visibility>("everyone");
+  const [visibilityOpen, setVisibilityOpen] = useState(false);
   const [images, setImages] = useState<SelectedImage[]>([]);
   const [posting, setPosting] = useState(false);
   const [uploadingIndex, setUploadingIndex] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const visibilityMenuRef = useRef<HTMLDivElement>(null);
   const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Mirror of `images` for unmount cleanup (avoids stale closure over state).
   const imagesRef = useRef<SelectedImage[]>([]);
@@ -117,6 +134,21 @@ export function Composer() {
     },
     [],
   );
+
+  // Close the visibility menu on outside click.
+  useEffect(() => {
+    if (!visibilityOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (
+        visibilityMenuRef.current &&
+        !visibilityMenuRef.current.contains(e.target as Node)
+      ) {
+        setVisibilityOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [visibilityOpen]);
 
   const openImagePicker = () => {
     if (posting) return; // don't start a new selection mid-upload
@@ -209,6 +241,8 @@ export function Composer() {
             type: "image",
             mimeType: im.file.type,
             sizeBytes: im.file.size,
+            // Route the upload to the bucket matching the chosen visibility.
+            visibility: backendVisibility[visibility],
           });
           await uploadFileToPresignedUrl(presign.uploadUrl, im.file);
           im.storageKey = presign.storageKey; // only after PUT succeeds
@@ -340,14 +374,57 @@ export function Composer() {
         ))}
 
         <div className="ml-auto flex items-center gap-2">
-          <button
-            type="button"
-            className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:bg-background"
-          >
-            <Globe className="h-4 w-4" />
-            {visibilityLabels[visibility]}
-            <ChevronDown className="h-4 w-4 text-muted-soft" />
-          </button>
+          <div className="relative" ref={visibilityMenuRef}>
+            <button
+              type="button"
+              onClick={() => setVisibilityOpen((v) => !v)}
+              disabled={posting}
+              aria-haspopup="menu"
+              aria-expanded={visibilityOpen}
+              aria-label={`Post audience: ${visibilityLabels[visibility]}`}
+              className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {(() => {
+                const Icon =
+                  visibilityOptions.find((o) => o.value === visibility)?.icon ??
+                  Globe;
+                return <Icon className="h-4 w-4" />;
+              })()}
+              {visibilityLabels[visibility]}
+              <ChevronDown className="h-4 w-4 text-muted-soft" />
+            </button>
+            {visibilityOpen ? (
+              <div
+                role="menu"
+                className="absolute bottom-full right-0 z-20 mb-2 w-56 overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-lg"
+              >
+                {visibilityOptions.map(({ value, label, hint, icon: Icon }) => (
+                  <button
+                    key={value}
+                    type="button"
+                    role="menuitemradio"
+                    aria-checked={visibility === value}
+                    onClick={() => {
+                      setVisibility(value);
+                      setVisibilityOpen(false);
+                    }}
+                    className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left transition-colors hover:bg-background"
+                  >
+                    <Icon className="h-4 w-4 shrink-0 text-muted" />
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-medium text-foreground">
+                        {label}
+                      </span>
+                      <span className="block text-xs text-muted-soft">{hint}</span>
+                    </span>
+                    {visibility === value ? (
+                      <Check className="h-4 w-4 shrink-0 text-primary" />
+                    ) : null}
+                  </button>
+                ))}
+              </div>
+            ) : null}
+          </div>
           <button
             type="button"
             onClick={submitPost}
