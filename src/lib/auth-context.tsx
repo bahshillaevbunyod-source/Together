@@ -3,7 +3,9 @@
 import {
   createContext,
   useContext,
+  useCallback,
   useEffect,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -43,14 +45,16 @@ const AuthContext = createContext<AuthState | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<AuthStatus>("loading");
   const [user, setUser] = useState<CurrentUser | null>(null);
+  const userRef = useRef<CurrentUser | null>(null);
 
-  async function load(signal?: AbortSignal) {
+  const load = useCallback(async (signal?: AbortSignal) => {
     // Retry transient failures (network / 5xx) with short backoff. A real 401
     // is the only thing that signs the user out; transient failures never
     // downgrade an authenticated session.
     for (let attempt = 0; ; attempt++) {
       try {
         const me = await getMe(signal);
+        userRef.current = me;
         setUser(me);
         setStatus("authenticated");
         return;
@@ -59,6 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         // Genuine "signed out": clear and stop.
         if (err instanceof ApiError && err.status === 401) {
+          userRef.current = null;
           setUser(null);
           setStatus("unauthenticated");
           return;
@@ -70,7 +75,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (attempt >= RETRY_DELAYS_MS.length) {
           // Give up retrying without forcing an existing session out. Initial
           // failures become recoverable instead of leaving the app loading.
-          setStatus(user ? "authenticated" : "error");
+          setStatus(userRef.current ? "authenticated" : "error");
           return;
         }
         try {
@@ -80,18 +85,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       }
     }
-  }
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
     void load(controller.signal);
     return () => controller.abort();
-  }, []);
+  }, [load]);
 
-  const refresh = () => {
-    if (!user) setStatus("loading");
+  const refresh = useCallback(() => {
+    if (!userRef.current) setStatus("loading");
     return load();
-  };
+  }, [load]);
 
   return (
     <AuthContext.Provider value={{ status, user, refresh }}>
