@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { ApiError, getMe, type CurrentUser } from "@/lib/api";
+import { ApiError, getMe, onSessionInvalid, type CurrentUser } from "@/lib/api";
 
 // Short backoff between /auth/me retries on transient failures (network / 5xx).
 const RETRY_DELAYS_MS = [500, 1000, 2000, 4000];
@@ -92,6 +92,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     void load(controller.signal);
     return () => controller.abort();
   }, [load]);
+
+  // A 401 from a protected request after startup is a real session-invalid
+  // signal. Network and server failures never reach this listener.
+  useEffect(() =>
+    onSessionInvalid(() => {
+      userRef.current = null;
+      setUser(null);
+      setStatus("unauthenticated");
+    }), []);
 
   const refresh = useCallback(() => {
     if (!userRef.current) setStatus("loading");

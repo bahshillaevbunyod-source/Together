@@ -146,3 +146,27 @@ func TestCountUnread(t *testing.T) {
 		t.Fatalf("unexpected args: %v", db.lastArgs)
 	}
 }
+
+func TestListQueryFiltersBlockedActors(t *testing.T) {
+	for _, fragment := range []string{
+		"FROM blocks bl",
+		"bl.blocker_id = n.user_id AND bl.blocked_id = n.actor_id",
+		"bl.blocker_id = n.actor_id AND bl.blocked_id = n.user_id",
+	} {
+		if !strings.Contains(listQuery, fragment) {
+			t.Fatalf("notification list query missing bidirectional block filter %q", fragment)
+		}
+	}
+}
+
+func TestUnreadCountQueryFiltersBlockedActors(t *testing.T) {
+	for _, fragment := range []string{
+		"FROM blocks bl",
+		"bl.blocker_id = n.user_id AND bl.blocked_id = n.actor_id",
+		"bl.blocker_id = n.actor_id AND bl.blocked_id = n.user_id",
+	} {
+		if !strings.Contains(countUnreadQuery, fragment) {
+			t.Fatalf("unread count query missing bidirectional block filter %q", fragment)
+		}
+	}
+}

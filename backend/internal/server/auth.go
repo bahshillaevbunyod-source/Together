@@ -59,8 +59,8 @@ func (s *Server) handleRegister(w http.ResponseWriter, r *http.Request) {
 
 	email := strings.ToLower(strings.TrimSpace(req.Email))
 	username := strings.ToLower(strings.TrimSpace(req.Username))
-	displayName := strings.TrimSpace(req.DisplayName)
-	nativeLanguage := strings.TrimSpace(req.NativeLanguage)
+	displayName, displayNameOK := normalizeDisplayName(req.DisplayName)
+	nativeLanguage, nativeLanguageOK := normalizeNativeLanguage(req.NativeLanguage)
 
 	if !isValidEmail(email) {
 		writeError(w, http.StatusBadRequest, "invalid email")
@@ -70,12 +70,12 @@ func (s *Server) handleRegister(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "username must be 3-30 chars of a-z, 0-9, _")
 		return
 	}
-	if displayName == "" {
-		writeError(w, http.StatusBadRequest, "displayName is required")
+	if !displayNameOK {
+		writeError(w, http.StatusBadRequest, "invalid displayName")
 		return
 	}
-	if nativeLanguage == "" {
-		writeError(w, http.StatusBadRequest, "nativeLanguage is required")
+	if !nativeLanguageOK {
+		writeError(w, http.StatusBadRequest, "invalid nativeLanguage")
 		return
 	}
 
@@ -89,13 +89,26 @@ func (s *Server) handleRegister(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	created, err := s.users.Create(r.Context(), user.CreateInput{
+	// Generate the cookie value before opening the registration transaction. No
+	// account is written unless both the user and the hashed session persist.
+	rawToken, err := session.GenerateToken()
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+	expiresAt := time.Now().Add(sessionTTL)
+	if s.registrar == nil {
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+
+	created, err := s.registrar.Register(r.Context(), user.CreateInput{
 		Email:          email,
 		Username:       username,
 		DisplayName:    displayName,
 		NativeLanguage: nativeLanguage,
 		PasswordHash:   hash,
-	})
+	}, session.HashToken(rawToken), expiresAt)
 	if err != nil {
 		switch {
 		case errors.Is(err, user.ErrDuplicateEmail), errors.Is(err, user.ErrDuplicateUsername):
@@ -107,18 +120,8 @@ func (s *Server) handleRegister(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Registration also logs the user in: create a session and set the cookie
-	// exactly like handleLogin, so the client is authenticated immediately.
-	rawToken, err := session.GenerateToken()
-	if err != nil {
-		writeError(w, http.StatusInternalServerError, "internal error")
-		return
-	}
-	expiresAt := time.Now().Add(sessionTTL)
-	if _, err := s.sessions.Create(r.Context(), created.ID, session.HashToken(rawToken), expiresAt); err != nil {
-		writeError(w, http.StatusInternalServerError, "internal error")
-		return
-	}
+	// Registration also logs the user in: the session was persisted in the
+	// same transaction as the account, so it is now safe to set the cookie.
 	s.setSessionCookie(w, rawToken, expiresAt)
 
 	writeJSON(w, http.StatusCreated, toUserResponse(created))

@@ -26,6 +26,7 @@ import (
 	"together/backend/internal/notification"
 	"together/backend/internal/post"
 	"together/backend/internal/postservice"
+	"together/backend/internal/registration"
 	"together/backend/internal/server"
 	"together/backend/internal/session"
 	"together/backend/internal/storage"
@@ -73,7 +74,8 @@ func main() {
 	likeNotifier := likeservice.New(pool, likes, notifications)
 	commentNotifier := commentservice.New(pool, comments, notifications)
 	conversations := conversation.NewPostgresRepository(pool)
-	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations)
+	registrar := registration.New(pool, users, sessions)
+	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, registrar)
 
 	// Start the server in the background.
 	go func() {

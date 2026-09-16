@@ -4,7 +4,16 @@ import (
 	"context"
 	"errors"
 	"time"
+
+	"github.com/jackc/pgx/v5"
 )
+
+// DBTX is the minimal query executor shared by a pgx pool and transaction.
+// It lets registration create the user inside the same transaction as its
+// first session without coupling this package to a service implementation.
+type DBTX interface {
+	QueryRow(ctx context.Context, sql string, args ...any) pgx.Row
+}
 
 // Repository errors the callers may branch on.
 var (

@@ -16,6 +16,7 @@ import (
 	"together/backend/internal/config"
 	"together/backend/internal/follow"
 	"together/backend/internal/post"
+	"together/backend/internal/registration"
 	"together/backend/internal/session"
 	"together/backend/internal/user"
 )
@@ -360,8 +361,26 @@ func registerServer(repo user.Repository) *http.Server {
 	return buildServer(config.Config{Env: "test", Port: "8080"}, repo, &fakeSessionRepo{})
 }
 
+type fakeRegistrationCreator struct {
+	users    user.Repository
+	sessions session.Repository
+}
+
+func (f fakeRegistrationCreator) Register(ctx context.Context, in user.CreateInput, tokenHash string, expiresAt time.Time) (*user.User, error) {
+	created, err := f.users.Create(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	if _, err := f.sessions.Create(ctx, created.ID, tokenHash, expiresAt); err != nil {
+		return nil, err
+	}
+	return created, nil
+}
+
+var _ registration.Creator = fakeRegistrationCreator{}
+
 func buildServer(cfg config.Config, users user.Repository, sessions session.Repository) *http.Server {
-	return New(cfg, fakePinger{}, users, sessions, &fakeFollowRepo{}, &fakeBlockRepo{}, &fakePostRepo{}, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{}, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{})
+	return New(cfg, fakePinger{}, users, sessions, &fakeFollowRepo{}, &fakeBlockRepo{}, &fakePostRepo{}, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{}, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{}, fakeRegistrationCreator{users: users, sessions: sessions})
 }
 
 func buildServerWithFollows(cfg config.Config, users user.Repository, sessions session.Repository, follows follow.Repository) *http.Server {
@@ -703,6 +722,30 @@ func TestRegisterInvalidUsername(t *testing.T) {
 	rec := postRegister(t, registerServer(&fakeUserRepo{}), body)
 	if rec.Code != http.StatusBadRequest {
 		t.Fatalf("expected 400, got %d", rec.Code)
+	}
+}
+
+func TestRegisterProfileFieldsUseProfileValidationLimits(t *testing.T) {
+	tests := []struct {
+		name        string
+		displayName string
+		language    string
+		want        int
+	}{
+		{name: "unicode boundary accepted", displayName: strings.Repeat("界", 80), language: "uz", want: http.StatusCreated},
+		{name: "display name too long", displayName: strings.Repeat("x", 81), language: "en", want: http.StatusBadRequest},
+		{name: "native language too long by runes", displayName: "Alex", language: strings.Repeat("界", 17), want: http.StatusBadRequest},
+		{name: "native language too short", displayName: "Alex", language: "e", want: http.StatusBadRequest},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			body := `{"email":"a@b.com","username":"alex_01","displayName":"` + tc.displayName + `","nativeLanguage":"` + tc.language + `","password":"strongpass"}`
+			rec := postRegister(t, registerServer(&fakeUserRepo{}), body)
+			if rec.Code != tc.want {
+				t.Fatalf("expected %d, got %d (%s)", tc.want, rec.Code, rec.Body.String())
+			}
+		})
 	}
 }
 

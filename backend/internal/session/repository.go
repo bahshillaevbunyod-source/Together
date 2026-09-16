@@ -4,7 +4,14 @@ import (
 	"context"
 	"errors"
 	"time"
+
+	"github.com/jackc/pgx/v5"
 )
+
+// DBTX is the minimal query executor shared by a pgx pool and transaction.
+type DBTX interface {
+	QueryRow(ctx context.Context, sql string, args ...any) pgx.Row
+}
 
 // ErrNotFound is returned when no active session matches.
 var ErrNotFound = errors.New("session not found")

@@ -211,8 +211,9 @@ func buildProfileUpdate(raw map[string]json.RawMessage) (user.ProfileUpdate, boo
 		if err != nil || isNull {
 			return up, false
 		}
-		s = strings.TrimSpace(s)
-		if n := utf8.RuneCountInString(s); n < 1 || n > 80 {
+		var valid bool
+		s, valid = normalizeDisplayName(s)
+		if !valid {
 			return up, false
 		}
 		up.DisplayName = &s
@@ -223,8 +224,9 @@ func buildProfileUpdate(raw map[string]json.RawMessage) (user.ProfileUpdate, boo
 		if err != nil || isNull {
 			return up, false
 		}
-		s = strings.TrimSpace(s)
-		if n := utf8.RuneCountInString(s); n < 2 || n > 16 {
+		var valid bool
+		s, valid = normalizeNativeLanguage(s)
+		if !valid {
 			return up, false
 		}
 		up.NativeLanguage = &s

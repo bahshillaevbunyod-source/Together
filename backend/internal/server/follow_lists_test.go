@@ -174,3 +174,54 @@ func TestFollowListsBlockCheckError(t *testing.T) {
 		t.Fatalf("expected 500, got %d", rec.Code)
 	}
 }
+
+func TestFollowListsFilterBlockedListedUsersForViewer(t *testing.T) {
+	viewer := mkUser("viewer", "viewer_user")
+	target := mkUser("target-id", "target_user")
+	for _, tc := range []struct {
+		name string
+		path string
+	}{
+		{name: "followers", path: "/api/v1/users/target_user/followers"},
+		{name: "following", path: "/api/v1/users/target_user/following"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			follows := &fakeFollowRepo{
+				followersList: []follow.ListItem{mkListItem("allowed", "allowed"), mkListItem("blocked", "blocked")},
+				followingList: []follow.ListItem{mkListItem("allowed", "allowed"), mkListItem("blocked", "blocked")},
+				// The repository owns bidirectional filtering; this fake mirrors
+				// either direction by excluding the blocked listed user.
+				listBlocked: map[string]bool{"blocked": true},
+			}
+			srv := buildServerFull(
+				config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin},
+				&fakeUserRepo{byIDUser: viewer, usernameUser: target},
+				&fakeSessionRepo{active: &session.Session{UserID: viewer.ID, ExpiresAt: time.Now().Add(time.Hour)}},
+				follows, &fakeBlockRepo{},
+			)
+
+			rec := getListAs(srv, tc.path)
+			if rec.Code != http.StatusOK {
+				t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
+			}
+			resp := decodeList(t, rec)
+			if len(resp.Items) != 1 || resp.Items[0].ID != "allowed" {
+				t.Fatalf("blocked listed user leaked: %+v", resp.Items)
+			}
+			if follows.lastListViewer == nil || *follows.lastListViewer != viewer.ID {
+				t.Fatalf("expected authenticated viewer to reach list repository, got %v", follows.lastListViewer)
+			}
+		})
+	}
+}
+
+func TestFollowListsAnonymousBehaviorPassesNoViewerToRepository(t *testing.T) {
+	follows := &fakeFollowRepo{followersList: []follow.ListItem{mkListItem("allowed", "allowed")}}
+	rec := getList(listServer(targetUsers(), follows), "/api/v1/users/target_user/followers")
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", rec.Code)
+	}
+	if follows.lastListViewer != nil {
+		t.Fatalf("anonymous list must not pass a viewer id, got %q", *follows.lastListViewer)
+	}
+}

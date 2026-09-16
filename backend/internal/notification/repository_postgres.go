@@ -66,6 +66,12 @@ SELECT n.id, n.type, n.post_id, n.comment_id, n.read_at, n.created_at,
 FROM notifications n
 LEFT JOIN users u ON u.id = n.actor_id
 WHERE n.user_id = $1
+  AND NOT EXISTS (
+    SELECT 1
+    FROM blocks bl
+    WHERE (bl.blocker_id = n.user_id AND bl.blocked_id = n.actor_id)
+       OR (bl.blocker_id = n.actor_id AND bl.blocked_id = n.user_id)
+  )
   AND ($2::timestamptz IS NULL
        OR n.created_at < $2
        OR (n.created_at = $2 AND n.id < $3::uuid))
@@ -130,7 +136,18 @@ func (r *PostgresRepository) MarkAllRead(ctx context.Context, userID string) err
 	return err
 }
 
-const countUnreadQuery = `SELECT count(*) FROM notifications WHERE user_id = $1 AND read_at IS NULL`
+const countUnreadQuery = `
+SELECT count(*)
+FROM notifications n
+WHERE n.user_id = $1
+  AND n.read_at IS NULL
+  AND NOT EXISTS (
+    SELECT 1
+    FROM blocks bl
+    WHERE (bl.blocker_id = n.user_id AND bl.blocked_id = n.actor_id)
+       OR (bl.blocker_id = n.actor_id AND bl.blocked_id = n.user_id)
+  )
+`
 
 // CountUnread returns the number of unread notifications for a user.
 func (r *PostgresRepository) CountUnread(ctx context.Context, userID string) (int64, error) {

@@ -27,7 +27,7 @@ type followListResponse struct {
 	NextCursor string           `json:"nextCursor"`
 }
 
-type listFunc func(ctx context.Context, userID string, cur *follow.Cursor, limit int) ([]follow.ListItem, error)
+type listFunc func(ctx context.Context, viewerID *string, userID string, cur *follow.Cursor, limit int) ([]follow.ListItem, error)
 
 func (s *Server) handleFollowersList(w http.ResponseWriter, r *http.Request) {
 	s.serveFollowList(w, r, s.follows.ListFollowers)
@@ -38,11 +38,12 @@ func (s *Server) handleFollowingList(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) serveFollowList(w http.ResponseWriter, r *http.Request, list listFunc) {
+	viewer := s.optionalUser(r)
 	target := s.resolveTarget(w, r)
 	if target == nil {
 		return
 	}
-	if s.rejectBlockedTarget(w, r, s.optionalUser(r), target) {
+	if s.rejectBlockedTarget(w, r, viewer, target) {
 		return
 	}
 
@@ -58,7 +59,11 @@ func (s *Server) serveFollowList(w http.ResponseWriter, r *http.Request, list li
 	}
 
 	// Fetch one extra row to detect whether another page exists.
-	rows, err := list(r.Context(), target.ID, cur, limit+1)
+	var viewerID *string
+	if viewer != nil {
+		viewerID = &viewer.ID
+	}
+	rows, err := list(r.Context(), viewerID, target.ID, cur, limit+1)
 	if err != nil {
 		writeError(w, http.StatusInternalServerError, "internal error")
 		return

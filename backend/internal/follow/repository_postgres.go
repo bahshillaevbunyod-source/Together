@@ -13,52 +13,70 @@ type DBTX interface {
 	Exec(ctx context.Context, sql string, args ...any) (pgconn.CommandTag, error)
 }
 
-// listFollowersQuery lists users who follow $1 (keyset paginated).
+// listFollowersQuery lists users who follow $1 (keyset paginated), excluding
+// a listed user when the authenticated viewer ($2, nullable) is blocked in
+// either direction. Keeping that predicate in SQL preserves stable pages and
+// avoids per-row block lookups.
 const listFollowersQuery = `
 SELECT u.id, u.username, u.display_name, u.avatar_url, u.country_code, u.city,
        u.native_language, f.created_at
 FROM follows f
 JOIN users u ON u.id = f.follower_id
 WHERE f.following_id = $1
-  AND ($2::timestamptz IS NULL
-       OR f.created_at < $2
-       OR (f.created_at = $2 AND f.follower_id < $3::uuid))
+  AND ($2::uuid IS NULL OR NOT EXISTS (
+    SELECT 1 FROM blocks bl
+    WHERE (bl.blocker_id = $2::uuid AND bl.blocked_id = u.id)
+       OR (bl.blocker_id = u.id AND bl.blocked_id = $2::uuid)
+  ))
+  AND ($3::timestamptz IS NULL
+       OR f.created_at < $3
+       OR (f.created_at = $3 AND f.follower_id < $4::uuid))
 ORDER BY f.created_at DESC, f.follower_id DESC
-LIMIT $4
+LIMIT $5
 `
 
-// listFollowingQuery lists users that $1 follows (keyset paginated).
+// listFollowingQuery lists users that $1 follows with the same viewer-aware
+// bidirectional block filter as listFollowersQuery.
 const listFollowingQuery = `
 SELECT u.id, u.username, u.display_name, u.avatar_url, u.country_code, u.city,
        u.native_language, f.created_at
 FROM follows f
 JOIN users u ON u.id = f.following_id
 WHERE f.follower_id = $1
-  AND ($2::timestamptz IS NULL
-       OR f.created_at < $2
-       OR (f.created_at = $2 AND f.following_id < $3::uuid))
+  AND ($2::uuid IS NULL OR NOT EXISTS (
+    SELECT 1 FROM blocks bl
+    WHERE (bl.blocker_id = $2::uuid AND bl.blocked_id = u.id)
+       OR (bl.blocker_id = u.id AND bl.blocked_id = $2::uuid)
+  ))
+  AND ($3::timestamptz IS NULL
+       OR f.created_at < $3
+       OR (f.created_at = $3 AND f.following_id < $4::uuid))
 ORDER BY f.created_at DESC, f.following_id DESC
-LIMIT $4
+LIMIT $5
 `
 
 // ListFollowers returns up to `limit` users who follow userID.
-func (r *PostgresRepository) ListFollowers(ctx context.Context, userID string, cur *Cursor, limit int) ([]ListItem, error) {
-	return r.list(ctx, listFollowersQuery, userID, cur, limit)
+func (r *PostgresRepository) ListFollowers(ctx context.Context, viewerID *string, userID string, cur *Cursor, limit int) ([]ListItem, error) {
+	return r.list(ctx, listFollowersQuery, viewerID, userID, cur, limit)
 }
 
 // ListFollowing returns up to `limit` users userID follows.
-func (r *PostgresRepository) ListFollowing(ctx context.Context, userID string, cur *Cursor, limit int) ([]ListItem, error) {
-	return r.list(ctx, listFollowingQuery, userID, cur, limit)
+func (r *PostgresRepository) ListFollowing(ctx context.Context, viewerID *string, userID string, cur *Cursor, limit int) ([]ListItem, error) {
+	return r.list(ctx, listFollowingQuery, viewerID, userID, cur, limit)
 }
 
-func (r *PostgresRepository) list(ctx context.Context, query, userID string, cur *Cursor, limit int) ([]ListItem, error) {
+func (r *PostgresRepository) list(ctx context.Context, query string, viewerID *string, userID string, cur *Cursor, limit int) ([]ListItem, error) {
 	var ts, uid any
 	if cur != nil {
 		ts = cur.CreatedAt
 		uid = cur.UserID
 	}
+	var viewer any
+	if viewerID != nil {
+		viewer = *viewerID
+	}
 
-	rows, err := r.pool.Query(ctx, query, userID, ts, uid, limit)
+	rows, err := r.pool.Query(ctx, query, userID, viewer, ts, uid, limit)
 	if err != nil {
 		return nil, err
 	}

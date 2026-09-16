@@ -41,6 +41,7 @@ export default function DiscoverPage() {
   const [status, setStatus] = useState<Status>("loading");
   const [nextCursor, setNextCursor] = useState("");
   const [loadingMore, setLoadingMore] = useState(false);
+  const loadingMoreRef = useRef(false);
   const seenRef = useRef<Set<string>>(new Set());
 
   // In-page search.
@@ -74,9 +75,12 @@ export default function DiscoverPage() {
   }, [loadForYou]);
 
   const loadMore = () => {
-    if (!nextCursor || loadingMore) return;
+    if (loadingMoreRef.current) return;
+    const cursor = nextCursor;
+    if (!cursor) return;
+    loadingMoreRef.current = true;
     setLoadingMore(true);
-    getDiscoverUsers({ mode: "for_you", limit: FOR_YOU_LIMIT, cursor: nextCursor })
+    getDiscoverUsers({ mode: "for_you", limit: FOR_YOU_LIMIT, cursor })
       .then((page) => {
         setPeople((prev) => [...prev, ...dedupe(page.items, seenRef.current)]);
         setNextCursor(page.nextCursor);
@@ -84,7 +88,10 @@ export default function DiscoverPage() {
       .catch(() => {
         // Keep what we have; the button stays available to retry.
       })
-      .finally(() => setLoadingMore(false));
+      .finally(() => {
+        loadingMoreRef.current = false;
+        setLoadingMore(false);
+      });
   };
 
   // Debounced, abortable search.
@@ -307,6 +314,7 @@ function WorldSection() {
   const [status, setStatus] = useState<Status>("loading");
   const [nextCursor, setNextCursor] = useState("");
   const [loadingMore, setLoadingMore] = useState(false);
+  const loadingMoreRef = useRef(false);
   const [countries, setCountries] = useState<string[]>([]);
   const seenRef = useRef<Set<string>>(new Set());
 
@@ -351,13 +359,16 @@ function WorldSection() {
   }, [activeCountry, load]);
 
   const loadMore = () => {
-    if (!nextCursor || loadingMore) return;
+    if (loadingMoreRef.current) return;
+    const cursor = nextCursor;
+    if (!cursor) return;
+    loadingMoreRef.current = true;
     setLoadingMore(true);
     getDiscoverUsers({
       mode: "world",
       country: activeCountry || undefined,
       limit: FOR_YOU_LIMIT,
-      cursor: nextCursor,
+      cursor,
     })
       .then((page) => {
         setItems((prev) => [...prev, ...dedupe(page.items, seenRef.current)]);
@@ -367,7 +378,10 @@ function WorldSection() {
       .catch(() => {
         // Keep what we have.
       })
-      .finally(() => setLoadingMore(false));
+      .finally(() => {
+        loadingMoreRef.current = false;
+        setLoadingMore(false);
+      });
   };
 
   const removeFollowed = (id: string) =>
@@ -482,6 +496,7 @@ function PopularSection() {
   const [status, setStatus] = useState<Status>("loading");
   const [nextCursor, setNextCursor] = useState("");
   const [loadingMore, setLoadingMore] = useState(false);
+  const loadingMoreRef = useRef(false);
   const seenRef = useRef<Set<string>>(new Set());
 
   const load = useCallback((signal?: AbortSignal) => {
@@ -506,9 +521,12 @@ function PopularSection() {
   }, [load]);
 
   const loadMore = () => {
-    if (!nextCursor || loadingMore) return;
+    if (loadingMoreRef.current) return;
+    const cursor = nextCursor;
+    if (!cursor) return;
+    loadingMoreRef.current = true;
     setLoadingMore(true);
-    getDiscoverUsers({ mode: "popular", limit: FOR_YOU_LIMIT, cursor: nextCursor })
+    getDiscoverUsers({ mode: "popular", limit: FOR_YOU_LIMIT, cursor })
       .then((page) => {
         setItems((prev) => [...prev, ...dedupe(page.items, seenRef.current)]);
         setNextCursor(page.nextCursor);
@@ -516,7 +534,10 @@ function PopularSection() {
       .catch(() => {
         // Keep what we have.
       })
-      .finally(() => setLoadingMore(false));
+      .finally(() => {
+        loadingMoreRef.current = false;
+        setLoadingMore(false);
+      });
   };
 
   const removeFollowed = (id: string) =>

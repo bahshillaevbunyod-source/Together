@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 
 import {
   ApiError,
@@ -29,6 +30,7 @@ export default function MessagesPage() {
   const [status, setStatus] = useState<Status>("loading");
   const [nextCursor, setNextCursor] = useState("");
   const [loadingMore, setLoadingMore] = useState(false);
+  const loadingMoreRef = useRef(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const { user } = useAuth();
   const { subscribeMessageCreated } = useRealtime();
@@ -117,9 +119,12 @@ export default function MessagesPage() {
   }, []);
 
   const loadMore = () => {
-    if (!nextCursor || loadingMore) return;
+    if (loadingMoreRef.current) return;
+    const cursor = nextCursor;
+    if (!cursor) return;
+    loadingMoreRef.current = true;
     setLoadingMore(true);
-    getConversations({ cursor: nextCursor })
+    getConversations({ cursor })
       .then((page) => {
         setItems((prev) => [...prev, ...page.items]);
         setNextCursor(page.nextCursor);
@@ -127,7 +132,10 @@ export default function MessagesPage() {
       .catch(() => {
         // Keep what we have.
       })
-      .finally(() => setLoadingMore(false));
+      .finally(() => {
+        loadingMoreRef.current = false;
+        setLoadingMore(false);
+      });
   };
 
   const selected = items.find((c) => c.id === selectedId) ?? null;
@@ -161,7 +169,7 @@ export default function MessagesPage() {
   return (
     <div className="flex h-[calc(100vh-9rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
       {/* Conversation list */}
-      <div className="flex w-full flex-col border-border sm:w-80 sm:border-r">
+      <div className={`${selected ? "hidden" : "flex"} w-full flex-col border-border sm:flex sm:w-80 sm:border-r`}>
         <div className="border-b border-border px-4 py-3">
           <h1 className="text-base font-semibold text-foreground">Messages</h1>
           <form onSubmit={openNew} className="mt-3 flex items-center gap-2">
@@ -295,10 +303,18 @@ export default function MessagesPage() {
       </div>
 
       {/* Selected conversation */}
-      <div className="hidden flex-1 flex-col sm:flex">
+      <div className={`${selected ? "flex" : "hidden"} flex-1 flex-col sm:flex`}>
         {selected ? (
           <>
             <div className="flex items-center gap-3 border-b border-border px-5 py-3">
+              <button
+                type="button"
+                onClick={() => setSelectedId(null)}
+                aria-label="Back to conversations"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-background sm:hidden"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
               <Link
                 href={`/u/${encodeURIComponent(selected.otherUser.username)}`}
                 aria-label={`View ${selected.otherUser.displayName}'s profile`}

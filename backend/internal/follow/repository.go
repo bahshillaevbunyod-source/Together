@@ -39,8 +39,10 @@ type Repository interface {
 	// CountFollowing returns how many users userID follows.
 	CountFollowing(ctx context.Context, userID string) (int64, error)
 	// ListFollowers returns up to `limit` users who follow userID, ordered by
-	// the keyset cursor. Pass nil cursor for the first page.
-	ListFollowers(ctx context.Context, userID string, cur *Cursor, limit int) ([]ListItem, error)
-	// ListFollowing returns up to `limit` users userID follows.
-	ListFollowing(ctx context.Context, userID string, cur *Cursor, limit int) ([]ListItem, error)
+	// the keyset cursor. viewerID is nil for the public anonymous view; an
+	// authenticated viewer never receives users in a block relationship.
+	ListFollowers(ctx context.Context, viewerID *string, userID string, cur *Cursor, limit int) ([]ListItem, error)
+	// ListFollowing returns up to `limit` users userID follows, with the same
+	// viewer-aware block filtering as ListFollowers.
+	ListFollowing(ctx context.Context, viewerID *string, userID string, cur *Cursor, limit int) ([]ListItem, error)
 }

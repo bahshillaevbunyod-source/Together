@@ -46,6 +46,7 @@ export function ConversationThread({
   const bottomRef = useRef<HTMLDivElement>(null);
   // Tracks message ids currently in the thread, to ignore duplicates.
   const seenIdsRef = useRef<Set<string>>(new Set());
+  const loadingOlderRef = useRef(false);
 
   const scrollToBottom = useCallback(() => {
     requestAnimationFrame(() =>
@@ -85,9 +86,12 @@ export function ConversationThread({
   }, [load]);
 
   const loadOlder = () => {
-    if (!olderCursor || loadingOlder) return;
+    if (loadingOlderRef.current) return;
+    const cursor = olderCursor;
+    if (!cursor) return;
+    loadingOlderRef.current = true;
     setLoadingOlder(true);
-    getMessages(conversationId, { cursor: olderCursor })
+    getMessages(conversationId, { cursor })
       .then((page) => {
         // Older page is also newest-first; reverse and prepend.
         setMessages((prev) => [...page.items.slice().reverse(), ...prev]);
@@ -97,7 +101,10 @@ export function ConversationThread({
       .catch(() => {
         // Keep what we have.
       })
-      .finally(() => setLoadingOlder(false));
+      .finally(() => {
+        loadingOlderRef.current = false;
+        setLoadingOlder(false);
+      });
   };
 
   // Realtime: append incoming messages for THIS conversation only.

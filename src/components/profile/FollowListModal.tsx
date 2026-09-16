@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
@@ -48,6 +48,7 @@ export function FollowListModal({
   const [status, setStatus] = useState<Status>("loading");
   const [nextCursor, setNextCursor] = useState("");
   const [loadingMore, setLoadingMore] = useState(false);
+  const loadingMoreRef = useRef(false);
 
   const fetcher = mode === "followers" ? getFollowers : getFollowing;
 
@@ -84,9 +85,12 @@ export function FollowListModal({
   }, [onClose]);
 
   const loadMore = () => {
-    if (!nextCursor || loadingMore) return;
+    if (loadingMoreRef.current) return;
+    const cursor = nextCursor;
+    if (!cursor) return;
+    loadingMoreRef.current = true;
     setLoadingMore(true);
-    fetcher(username, { cursor: nextCursor })
+    fetcher(username, { cursor })
       .then((page) => {
         setItems((prev) => [...prev, ...page.items]);
         setNextCursor(page.nextCursor);
@@ -94,7 +98,10 @@ export function FollowListModal({
       .catch(() => {
         // Keep what we have; the button stays available to retry.
       })
-      .finally(() => setLoadingMore(false));
+      .finally(() => {
+        loadingMoreRef.current = false;
+        setLoadingMore(false);
+      });
   };
 
   return (

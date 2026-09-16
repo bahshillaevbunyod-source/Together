@@ -21,6 +21,7 @@ import (
 	"together/backend/internal/post"
 	"together/backend/internal/ratelimit"
 	"together/backend/internal/realtime"
+	"together/backend/internal/registration"
 	"together/backend/internal/session"
 	"together/backend/internal/storage"
 	"together/backend/internal/translation"
@@ -53,6 +54,7 @@ type Server struct {
 	likeNotify      likeNotifier
 	commentNotify   commentNotifier
 	conversations   conversation.Repository
+	registrar       registration.Creator
 	translator      translation.Service
 	hub             *realtime.Hub
 	wsUpgrader      websocket.Upgrader
@@ -85,8 +87,8 @@ type commentNotifier interface {
 }
 
 // New builds the HTTP server with sensible timeouts and registered routes.
-func New(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository) *http.Server {
-	s := newServer(cfg, db, users, sessions, follows, blocks, posts, likes, comments, media, storageRepo, bookmarks, notifications, postCreate, followNotify, likeNotify, commentNotify, conversations)
+func New(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository, registrars ...registration.Creator) *http.Server {
+	s := newServer(cfg, db, users, sessions, follows, blocks, posts, likes, comments, media, storageRepo, bookmarks, notifications, postCreate, followNotify, likeNotify, commentNotify, conversations, registrars...)
 
 	return &http.Server{
 		Addr:              ":" + cfg.Port,
@@ -100,7 +102,11 @@ func New(cfg config.Config, db Pinger, users user.Repository, sessions session.R
 
 // newServer assembles the Server with all dependencies. New wraps it to build
 // the *http.Server; tests use it directly for white-box access (e.g. the hub).
-func newServer(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository) *Server {
+func newServer(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository, registrars ...registration.Creator) *Server {
+	var registrar registration.Creator
+	if len(registrars) > 0 {
+		registrar = registrars[0]
+	}
 	s := &Server{
 		cfg:           cfg,
 		db:            db,
@@ -120,6 +126,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		likeNotify:    likeNotify,
 		commentNotify: commentNotify,
 		conversations: conversations,
+		registrar:     registrar,
 		translator:    newTranslator(cfg),
 		hub:           realtime.NewHub(),
 		wsUpgrader: websocket.Upgrader{

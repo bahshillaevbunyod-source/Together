@@ -38,6 +38,26 @@ interface RequestOptions {
   signal?: AbortSignal;
 }
 
+type SessionInvalidListener = () => void;
+
+const sessionInvalidListeners = new Set<SessionInvalidListener>();
+
+/** Subscribe to genuine protected-request session invalidation events. */
+export function onSessionInvalid(listener: SessionInvalidListener): () => void {
+  sessionInvalidListeners.add(listener);
+  return () => sessionInvalidListeners.delete(listener);
+}
+
+function notifySessionInvalid(): void {
+  for (const listener of sessionInvalidListeners) {
+    listener();
+  }
+}
+
+function isAuthEndpoint(path: string): boolean {
+  return path.startsWith("/api/v1/auth/");
+}
+
 /**
  * Perform a request against the API and parse a JSON response. Non-2xx
  * responses reject with an ApiError carrying the status and server message.
@@ -83,7 +103,15 @@ export async function apiFetch<T>(
       (data && typeof data === "object" && "error" in data
         ? String((data as { error: unknown }).error)
         : null) ?? `request failed (${res.status})`;
-    throw new ApiError(res.status, message);
+    const error = new ApiError(res.status, message);
+    // Login, signup, logout, and /auth/me have deliberate local handling.
+    // Any other 401 is a protected API request whose session is no longer
+    // valid, so the auth provider can redirect without treating 5xx/network
+    // failures as logout events.
+    if (error.status === 401 && !isAuthEndpoint(path)) {
+      notifySessionInvalid();
+    }
+    throw error;
   }
 
   return data as T;
@@ -696,6 +724,11 @@ export function getDiscoverPosts(
     `/api/v1/posts/discover${qs ? `?${qs}` : ""}`,
     { signal },
   );
+}
+
+/** Fetch one post through the backend's existing visibility/block checks. */
+export function getPost(id: string, signal?: AbortSignal): Promise<ApiPost> {
+  return apiFetch<ApiPost>(`/api/v1/posts/${encodeURIComponent(id)}`, { signal });
 }
 
 /** Fetch a page of the authenticated user's saved (bookmarked) posts. */

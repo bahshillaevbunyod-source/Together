@@ -34,7 +34,18 @@ RETURNING id, email, phone, username, display_name, avatar_url, bio,
 
 // Create inserts a new user and returns the stored row (without password_hash).
 func (r *PostgresRepository) Create(ctx context.Context, in CreateInput) (*User, error) {
-	row := r.pool.QueryRow(ctx, insertUserQuery,
+	return createUser(ctx, r.pool, in)
+}
+
+// CreateTx creates a user through a caller-owned transaction. It is used for
+// registration so the account and its first session either both commit or both
+// roll back.
+func (r *PostgresRepository) CreateTx(ctx context.Context, q DBTX, in CreateInput) (*User, error) {
+	return createUser(ctx, q, in)
+}
+
+func createUser(ctx context.Context, q DBTX, in CreateInput) (*User, error) {
+	row := q.QueryRow(ctx, insertUserQuery,
 		in.Email, in.Username, in.DisplayName, in.NativeLanguage, in.PasswordHash,
 	)
 

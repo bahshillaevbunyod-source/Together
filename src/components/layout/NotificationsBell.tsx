@@ -46,6 +46,7 @@ export function NotificationsBell() {
   const [unread, setUnread] = useState(0);
 
   const panelRef = useRef<HTMLDivElement>(null);
+  const loadingMoreRef = useRef(false);
 
   // Initial unread count.
   useEffect(() => {
@@ -98,9 +99,12 @@ export function NotificationsBell() {
   }, [open]);
 
   const loadMore = () => {
-    if (!nextCursor || loadingMore) return;
+    if (loadingMoreRef.current) return;
+    const cursor = nextCursor;
+    if (!cursor) return;
+    loadingMoreRef.current = true;
     setLoadingMore(true);
-    getNotifications({ cursor: nextCursor })
+    getNotifications({ cursor })
       .then((page) => {
         setItems((prev) => [...prev, ...page.items]);
         setNextCursor(page.nextCursor);
@@ -108,7 +112,10 @@ export function NotificationsBell() {
       .catch(() => {
         // Keep what we have.
       })
-      .finally(() => setLoadingMore(false));
+      .finally(() => {
+        loadingMoreRef.current = false;
+        setLoadingMore(false);
+      });
   };
 
   const markRead = async (n: ApiNotification) => {

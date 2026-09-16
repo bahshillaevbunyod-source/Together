@@ -53,7 +53,7 @@ export function HeaderUser() {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center gap-2 rounded-full border border-border bg-surface py-1 pl-1 pr-3 transition-colors hover:bg-background"
+        className="flex items-center gap-2 rounded-full border border-border bg-surface py-1 pl-1 pr-1 transition-colors hover:bg-background sm:pr-3"
       >
         {user?.avatarUrl ? (
           <Image
@@ -69,8 +69,8 @@ export function HeaderUser() {
             {initial}
           </span>
         )}
-        <span className="text-sm font-medium text-foreground">{displayName}</span>
-        <ChevronDown className="h-4 w-4 text-muted-soft" />
+        <span className="hidden text-sm font-medium text-foreground sm:inline">{displayName}</span>
+        <ChevronDown className="hidden h-4 w-4 text-muted-soft sm:block" />
       </button>
 
       {open ? (

@@ -135,7 +135,7 @@ export function GlobalSearch() {
   };
 
   return (
-    <div className="flex flex-1 justify-center">
+    <div className="flex min-w-0 flex-1 justify-center">
       <div ref={containerRef} className="relative w-full max-w-[560px]">
         <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-soft" />
         <input

@@ -30,7 +30,16 @@ RETURNING id, user_id, token_hash, expires_at, created_at
 
 // Create stores a new session and returns the stored row.
 func (r *PostgresRepository) Create(ctx context.Context, userID, tokenHash string, expiresAt time.Time) (*Session, error) {
-	row := r.pool.QueryRow(ctx, insertSessionQuery, userID, tokenHash, expiresAt)
+	return createSession(ctx, r.pool, userID, tokenHash, expiresAt)
+}
+
+// CreateTx creates a session through a caller-owned transaction.
+func (r *PostgresRepository) CreateTx(ctx context.Context, q DBTX, userID, tokenHash string, expiresAt time.Time) (*Session, error) {
+	return createSession(ctx, q, userID, tokenHash, expiresAt)
+}
+
+func createSession(ctx context.Context, q DBTX, userID, tokenHash string, expiresAt time.Time) (*Session, error) {
+	row := q.QueryRow(ctx, insertSessionQuery, userID, tokenHash, expiresAt)
 
 	var s Session
 	if err := row.Scan(&s.ID, &s.UserID, &s.TokenHash, &s.ExpiresAt, &s.CreatedAt); err != nil {

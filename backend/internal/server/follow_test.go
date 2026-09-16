@@ -16,26 +16,43 @@ import (
 
 // fakeFollowRepo is a test double for follow.Repository.
 type fakeFollowRepo struct {
-	followErr     error
-	unfollowErr   error
-	isErr         error
-	is            bool
-	followers     int64
-	following     int64
-	countErr      error
-	followersList []follow.ListItem
-	followingList []follow.ListItem
-	listErr       error
-	followed      [][2]string
-	unfollowed    [][2]string
+	followErr      error
+	unfollowErr    error
+	isErr          error
+	is             bool
+	followers      int64
+	following      int64
+	countErr       error
+	followersList  []follow.ListItem
+	followingList  []follow.ListItem
+	listErr        error
+	listBlocked    map[string]bool
+	lastListViewer *string
+	followed       [][2]string
+	unfollowed     [][2]string
 }
 
-func (f *fakeFollowRepo) ListFollowers(_ context.Context, _ string, _ *follow.Cursor, limit int) ([]follow.ListItem, error) {
-	return truncate(f.followersList, f.listErr, limit)
+func (f *fakeFollowRepo) ListFollowers(_ context.Context, viewerID *string, _ string, _ *follow.Cursor, limit int) ([]follow.ListItem, error) {
+	f.lastListViewer = viewerID
+	return truncateFiltered(f.followersList, f.listBlocked, f.listErr, limit)
 }
 
-func (f *fakeFollowRepo) ListFollowing(_ context.Context, _ string, _ *follow.Cursor, limit int) ([]follow.ListItem, error) {
-	return truncate(f.followingList, f.listErr, limit)
+func (f *fakeFollowRepo) ListFollowing(_ context.Context, viewerID *string, _ string, _ *follow.Cursor, limit int) ([]follow.ListItem, error) {
+	f.lastListViewer = viewerID
+	return truncateFiltered(f.followingList, f.listBlocked, f.listErr, limit)
+}
+
+func truncateFiltered(items []follow.ListItem, blocked map[string]bool, err error, limit int) ([]follow.ListItem, error) {
+	if err != nil {
+		return nil, err
+	}
+	filtered := make([]follow.ListItem, 0, len(items))
+	for _, item := range items {
+		if !blocked[item.ID] {
+			filtered = append(filtered, item)
+		}
+	}
+	return truncate(filtered, nil, limit)
 }
 
 func truncate(items []follow.ListItem, err error, limit int) ([]follow.ListItem, error) {
