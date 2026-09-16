@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Bookmark,
   Check,
@@ -32,6 +33,7 @@ import {
 import { mapApiPost } from "@/lib/map-post";
 import { useAuth } from "@/lib/auth-context";
 import { useFeed } from "@/lib/feed-context";
+import { splitTopicText } from "@/lib/topic";
 
 type LocalComment = {
   id: string;
@@ -428,7 +430,19 @@ export function PostCard({
         </div>
       ) : (
         <p className="mt-3 text-sm leading-relaxed text-foreground">
-          {primaryText}
+          {splitTopicText(primaryText).map((segment, index) =>
+            segment.slug ? (
+              <Link
+                key={`${segment.slug}-${index}`}
+                href={`/topic/${encodeURIComponent(segment.slug)}`}
+                className="text-primary transition-opacity hover:opacity-80"
+              >
+                {segment.text}
+              </Link>
+            ) : (
+              segment.text
+            ),
+          )}
           {hashtags && hashtags.length > 0 ? (
             <>
               {" "}
