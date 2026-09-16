@@ -74,3 +74,13 @@ func TestExtractSlugs(t *testing.T) {
 		})
 	}
 }
+
+func TestCanonicalSlugMatchesExtractionRules(t *testing.T) {
+	slug, ok := CanonicalSlug("CafE\u0301_42")
+	if !ok || slug != "caf\u00e9_42" {
+		t.Fatalf("unexpected canonical slug: %q, %v", slug, ok)
+	}
+	if _, ok := CanonicalSlug("not-a-topic"); ok {
+		t.Fatal("punctuation must not be accepted in a canonical topic slug")
+	}
+}

@@ -21,4 +21,8 @@ type Repository interface {
 	// own posts and any author in a block relationship (either direction).
 	// Newest first (created_at DESC, id DESC).
 	ListDiscover(ctx context.Context, viewerID string, cur *Cursor, limit int) ([]FeedItem, error)
+	// ListTopicPosts returns posts associated with topicID which are visible to
+	// viewerID. A nil viewer sees public posts only. Results are keyset-paginated
+	// newest first and exclude blocked relationships in either direction.
+	ListTopicPosts(ctx context.Context, viewerID *string, topicID string, cur *Cursor, limit int) ([]FeedItem, error)
 }

@@ -35,6 +35,12 @@ type fakePostRepo struct {
 	discoverBlocked   map[string]bool // author ids in a block relationship
 	discoverErr       error
 	lastDiscoverLimit int
+
+	// Topic read test controls.
+	topicPosts      []post.FeedItem
+	topicPostsErr   error
+	lastTopicID     string
+	lastTopicViewer *string
 }
 
 func (f *fakePostRepo) Update(_ context.Context, id string, in post.PostUpdate) (*post.Post, error) {
@@ -146,6 +152,29 @@ func (f *fakePostRepo) ListDiscover(_ context.Context, viewerID string, cur *pos
 		cand = cand[:limit]
 	}
 	return cand, nil
+}
+
+func (f *fakePostRepo) ListTopicPosts(_ context.Context, viewerID *string, topicID string, cur *post.Cursor, limit int) ([]post.FeedItem, error) {
+	f.lastTopicID = topicID
+	f.lastTopicViewer = viewerID
+	if f.topicPostsErr != nil {
+		return nil, f.topicPostsErr
+	}
+
+	items := f.topicPosts
+	if cur != nil {
+		filtered := items[:0:0]
+		for _, it := range items {
+			if it.CreatedAt.Before(cur.CreatedAt) || (it.CreatedAt.Equal(cur.CreatedAt) && it.ID < cur.ID) {
+				filtered = append(filtered, it)
+			}
+		}
+		items = filtered
+	}
+	if len(items) > limit {
+		return items[:limit], nil
+	}
+	return items, nil
 }
 
 // fakePostCreate is a test double for postWithMediaCreator.

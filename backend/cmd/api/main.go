@@ -75,7 +75,7 @@ func main() {
 	commentNotifier := commentservice.New(pool, comments, notifications)
 	conversations := conversation.NewPostgresRepository(pool)
 	registrar := registration.New(pool, users, sessions)
-	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, registrar)
+	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, topicRepo, registrar)
 
 	// Start the server in the background.
 	go func() {

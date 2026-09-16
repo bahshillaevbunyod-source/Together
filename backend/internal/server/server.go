@@ -24,6 +24,7 @@ import (
 	"together/backend/internal/registration"
 	"together/backend/internal/session"
 	"together/backend/internal/storage"
+	"together/backend/internal/topic"
 	"together/backend/internal/translation"
 	"together/backend/internal/user"
 )
@@ -43,6 +44,7 @@ type Server struct {
 	follows         follow.Repository
 	blocks          block.Repository
 	posts           post.Repository
+	topics          topic.Repository
 	likes           like.Repository
 	comments        comment.Repository
 	media           media.Repository
@@ -87,8 +89,8 @@ type commentNotifier interface {
 }
 
 // New builds the HTTP server with sensible timeouts and registered routes.
-func New(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository, registrars ...registration.Creator) *http.Server {
-	s := newServer(cfg, db, users, sessions, follows, blocks, posts, likes, comments, media, storageRepo, bookmarks, notifications, postCreate, followNotify, likeNotify, commentNotify, conversations, registrars...)
+func New(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository, dependencies ...any) *http.Server {
+	s := newServer(cfg, db, users, sessions, follows, blocks, posts, likes, comments, media, storageRepo, bookmarks, notifications, postCreate, followNotify, likeNotify, commentNotify, conversations, dependencies...)
 
 	return &http.Server{
 		Addr:              ":" + cfg.Port,
@@ -102,10 +104,16 @@ func New(cfg config.Config, db Pinger, users user.Repository, sessions session.R
 
 // newServer assembles the Server with all dependencies. New wraps it to build
 // the *http.Server; tests use it directly for white-box access (e.g. the hub).
-func newServer(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository, registrars ...registration.Creator) *Server {
+func newServer(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository, dependencies ...any) *Server {
 	var registrar registration.Creator
-	if len(registrars) > 0 {
-		registrar = registrars[0]
+	var topics topic.Repository
+	for _, dependency := range dependencies {
+		switch dependency := dependency.(type) {
+		case registration.Creator:
+			registrar = dependency
+		case topic.Repository:
+			topics = dependency
+		}
 	}
 	s := &Server{
 		cfg:           cfg,
@@ -115,6 +123,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		follows:       follows,
 		blocks:        blocks,
 		posts:         posts,
+		topics:        topics,
 		likes:         likes,
 		comments:      comments,
 		media:         media,
@@ -214,6 +223,13 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/v1/users/{username}", s.handlePublicProfile)
 	mux.HandleFunc("GET /api/v1/users/{username}/followers", s.handleFollowersList)
 	mux.HandleFunc("GET /api/v1/users/{username}/following", s.handleFollowingList)
+
+	// Topics are public reads with optional authentication. An authenticated
+	// viewer receives the same visibility and block filtering as other post
+	// reads; anonymous viewers see public posts only.
+	mux.HandleFunc("GET /api/v1/topics", s.handleListTopics)
+	mux.HandleFunc("GET /api/v1/topics/{slug}", s.handleGetTopic)
+	mux.HandleFunc("GET /api/v1/topics/{slug}/posts", s.handleTopicPosts)
 
 	// Follow graph (authenticated, state-changing).
 	mux.HandleFunc("POST /api/v1/users/{username}/follow", s.requireAuth(s.csrfProtect(s.handleFollow)))

@@ -2,8 +2,12 @@ package topic
 
 import (
 	"context"
+	"errors"
 
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
+
+	"together/backend/internal/post"
 )
 
 // PostgresRepository is the PostgreSQL-backed topic repository.
@@ -44,4 +48,64 @@ func (r *PostgresRepository) CreatePostTopicsTx(ctx context.Context, q DBTX, pos
 		}
 	}
 	return nil
+}
+
+const getBySlugQuery = `
+SELECT id, slug, created_at
+FROM topics
+WHERE slug = $1
+`
+
+// GetBySlug returns the canonical topic row for slug.
+func (r *PostgresRepository) GetBySlug(ctx context.Context, slug string) (*Topic, error) {
+	var t Topic
+	if err := r.pool.QueryRow(ctx, getBySlugQuery, slug).Scan(&t.ID, &t.Slug, &t.CreatedAt); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return nil, ErrNotFound
+		}
+		return nil, err
+	}
+	return &t, nil
+}
+
+// ListTrending returns topics ordered by posts visible to viewer. The same
+// visibility, follow, and block predicates as the feed keep private topic use
+// from affecting an ineligible viewer's result.
+const listTrendingQuery = `
+SELECT t.slug, count(*) AS posts_count
+FROM topics t
+JOIN post_topics pt ON pt.topic_id = t.id
+JOIN posts p ON p.id = pt.post_id
+WHERE (
+        p.visibility = 'public'
+        OR ($1::uuid IS NOT NULL AND p.author_id = $1)
+        OR ($1::uuid IS NOT NULL AND ` + post.SQLFollowsAuthor + ` AND p.visibility = 'followers')
+      )
+  AND ($1::uuid IS NULL OR ` + post.SQLNotBlocked + `)
+GROUP BY t.id, t.slug
+ORDER BY posts_count DESC, t.slug ASC
+LIMIT $2
+`
+
+func (r *PostgresRepository) ListTrending(ctx context.Context, viewerID *string, limit int) ([]TrendingItem, error) {
+	var viewer any
+	if viewerID != nil {
+		viewer = *viewerID
+	}
+
+	rows, err := r.pool.Query(ctx, listTrendingQuery, viewer, limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	items := make([]TrendingItem, 0, limit)
+	for rows.Next() {
+		var item TrendingItem
+		if err := rows.Scan(&item.Slug, &item.PostsCount); err != nil {
+			return nil, err
+		}
+		items = append(items, item)
+	}
+	return items, rows.Err()
 }

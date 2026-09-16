@@ -10,6 +10,26 @@ import (
 
 const maxSlugRunes = 100
 
+// CanonicalSlug validates and canonicalizes a topic slug supplied outside post
+// extraction. It uses the same Unicode alphabet and normalization rules as
+// ExtractSlugs so topic lookups cannot address values that post creation would
+// never persist.
+func CanonicalSlug(raw string) (string, bool) {
+	if raw == "" {
+		return "", false
+	}
+	for _, r := range raw {
+		if !isHashtagRune(r) {
+			return "", false
+		}
+	}
+	slug := strings.ToLower(norm.NFC.String(raw))
+	if slug == "" || len([]rune(slug)) > maxSlugRunes {
+		return "", false
+	}
+	return slug, true
+}
+
 // ExtractSlugs returns distinct canonical hashtag slugs in first-occurrence
 // order. A hashtag begins with # and continues through Unicode letters,
 // digits, combining marks, and underscores.

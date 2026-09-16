@@ -227,3 +227,62 @@ func (r *PostgresRepository) ListDiscover(ctx context.Context, viewerID string, 
 	}
 	return items, rows.Err()
 }
+
+// Topic posts use the same projection, visibility/follow rules, and block
+// predicate as other feed reads. Public access is supported by passing nil for
+// viewerID; an authenticated viewer can additionally see their own private
+// posts and follower-only posts from accounts they follow.
+var listTopicPostsQuery = `
+SELECT p.id, p.author_id, p.content, p.visibility, p.created_at, p.updated_at,
+       u.username, u.display_name, u.avatar_url,
+       (SELECT count(*) FROM post_likes pl WHERE pl.post_id = p.id) AS likes_count,
+       EXISTS (SELECT 1 FROM post_likes plm WHERE plm.post_id = p.id AND plm.user_id = $1) AS liked_by_me,
+       (SELECT count(*) FROM post_comments pc WHERE pc.post_id = p.id) AS comments_count
+FROM post_topics pt
+JOIN posts p ON p.id = pt.post_id
+JOIN users u ON u.id = p.author_id
+WHERE pt.topic_id = $2
+  AND (
+        p.visibility = 'public'
+        OR ($1::uuid IS NOT NULL AND p.author_id = $1)
+        OR ($1::uuid IS NOT NULL AND ` + SQLFollowsAuthor + ` AND p.visibility = 'followers')
+      )
+  AND ($1::uuid IS NULL OR ` + SQLNotBlocked + `)
+  AND ($3::timestamptz IS NULL
+       OR p.created_at < $3
+       OR (p.created_at = $3 AND p.id < $4::uuid))
+ORDER BY p.created_at DESC, p.id DESC
+LIMIT $5
+`
+
+// ListTopicPosts returns visible posts linked to topicID, keyset-paginated.
+func (r *PostgresRepository) ListTopicPosts(ctx context.Context, viewerID *string, topicID string, cur *Cursor, limit int) ([]FeedItem, error) {
+	var viewer, ts, id any
+	if viewerID != nil {
+		viewer = *viewerID
+	}
+	if cur != nil {
+		ts = cur.CreatedAt
+		id = cur.ID
+	}
+
+	rows, err := r.pool.Query(ctx, listTopicPostsQuery, viewer, topicID, ts, id, limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	items := make([]FeedItem, 0, limit)
+	for rows.Next() {
+		var it FeedItem
+		if err := rows.Scan(
+			&it.ID, &it.AuthorID, &it.Content, &it.Visibility, &it.CreatedAt, &it.UpdatedAt,
+			&it.AuthorUsername, &it.AuthorDisplayName, &it.AuthorAvatarURL,
+			&it.LikesCount, &it.LikedByMe, &it.CommentsCount,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, it)
+	}
+	return items, rows.Err()
+}
