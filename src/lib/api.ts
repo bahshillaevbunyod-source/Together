@@ -337,6 +337,31 @@ export interface DiscoverPage {
   nextCursor: string;
 }
 
+/** A topic ranked by the number of posts visible to the current viewer. */
+export interface TrendingTopic {
+  slug: string;
+  postsCount: number;
+}
+
+/** Response from GET /api/v1/topics. */
+export interface TrendingTopicsResponse {
+  items: TrendingTopic[];
+}
+
+/** Fetch real trending topics visible to the current viewer. */
+export function getTrendingTopics(
+  params: { limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<TrendingTopicsResponse> {
+  const query = new URLSearchParams();
+  if (params.limit) query.set("limit", String(params.limit));
+  const qs = query.toString();
+  return apiFetch<TrendingTopicsResponse>(
+    `/api/v1/topics${qs ? `?${qs}` : ""}`,
+    { signal },
+  );
+}
+
 /** Fetch a page of people-discovery results for the given mode. */
 export function getDiscoverUsers(
   params: {

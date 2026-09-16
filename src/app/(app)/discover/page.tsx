@@ -6,9 +6,11 @@ import { Globe, Loader2, Search, TrendingUp, Users } from "lucide-react";
 import {
   getDiscoverPosts,
   getDiscoverUsers,
+  getTrendingTopics,
   searchUsers,
   type DiscoverUser,
   type SearchUserItem,
+  type TrendingTopic,
 } from "@/lib/api";
 import { PersonCard } from "@/components/discover/PersonCard";
 import { Feed } from "@/components/feed/Feed";
@@ -19,6 +21,7 @@ type SearchStatus = "idle" | "loading" | "ready" | "error";
 
 const FOR_YOU_LIMIT = 12;
 const SEARCH_LIMIT = 20;
+const TOPICS_LIMIT = 12;
 
 function isAbort(err: unknown): boolean {
   return err instanceof DOMException && err.name === "AbortError";
@@ -168,6 +171,9 @@ export default function DiscoverPage() {
               <PopularSection />
             </div>
             <div className="mt-10">
+              <TrendingTopicsSection />
+            </div>
+            <div className="mt-10">
               <section>
                 <SectionHeading>Discover posts</SectionHeading>
                 <FeedProvider fetchPage={getDiscoverPosts}>
@@ -285,6 +291,94 @@ function ForYouSection({
             </div>
           ) : null}
         </>
+      ) : null}
+    </section>
+  );
+}
+
+function TrendingTopicsSection() {
+  const [items, setItems] = useState<TrendingTopic[]>([]);
+  const [status, setStatus] = useState<Status>("loading");
+
+  const load = useCallback((signal?: AbortSignal) => {
+    setStatus("loading");
+    getTrendingTopics({ limit: TOPICS_LIMIT }, signal)
+      .then((response) => {
+        setItems(response.items);
+        setStatus("ready");
+      })
+      .catch((err) => {
+        if (isAbort(err)) return;
+        setStatus("error");
+      });
+  }, []);
+
+  useEffect(() => {
+    const c = new AbortController();
+    load(c.signal);
+    return () => c.abort();
+  }, [load]);
+
+  return (
+    <section>
+      <div className="mb-3 flex items-center gap-3">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
+          <TrendingUp className="h-5 w-5" />
+        </span>
+        <div className="min-w-0">
+          <h2 className="text-sm font-semibold text-foreground">
+            Trending topics
+          </h2>
+          <p className="truncate text-xs text-muted">
+            Conversations people are having on Together.
+          </p>
+        </div>
+      </div>
+
+      {status === "loading" ? (
+        <div className="flex flex-wrap gap-2">
+          {[0, 1, 2, 3].map((i) => (
+            <span
+              key={i}
+              className="h-8 w-24 animate-pulse rounded-full bg-background"
+            />
+          ))}
+        </div>
+      ) : null}
+
+      {status === "error" ? (
+        <div className="rounded-2xl border border-border bg-surface p-6 text-center">
+          <p className="text-sm text-muted">Couldn’t load trending topics.</p>
+          <button
+            type="button"
+            onClick={() => load()}
+            className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
+          >
+            Try again
+          </button>
+        </div>
+      ) : null}
+
+      {status === "ready" && items.length === 0 ? (
+        <div className="rounded-2xl border border-border bg-surface px-6 py-10 text-center">
+          <p className="text-sm text-muted">No trending topics to show yet.</p>
+        </div>
+      ) : null}
+
+      {items.length > 0 ? (
+        <div className="flex flex-wrap gap-2">
+          {items.map((item) => (
+            <span
+              key={item.slug}
+              className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm text-muted"
+            >
+              #{item.slug}
+              <span className="ml-1.5 text-xs text-muted-soft">
+                {item.postsCount}
+              </span>
+            </span>
+          ))}
+        </div>
       ) : null}
     </section>
   );
