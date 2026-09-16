@@ -42,6 +42,24 @@ func toPublicUserResponse(u *user.User) publicUserResponse {
 	}
 }
 
+// rejectBlockedTarget hides a target from an authenticated viewer when either
+// user has blocked the other. Anonymous access remains public.
+func (s *Server) rejectBlockedTarget(w http.ResponseWriter, r *http.Request, viewer, target *user.User) bool {
+	if viewer == nil || viewer.ID == target.ID {
+		return false
+	}
+	blocked, err := s.blocks.HasBlockBetween(r.Context(), viewer.ID, target.ID)
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return true
+	}
+	if blocked {
+		writeError(w, http.StatusNotFound, "user not found")
+		return true
+	}
+	return false
+}
+
 // handlePublicProfile serves a public user profile by username. No auth needed.
 func (s *Server) handlePublicProfile(w http.ResponseWriter, r *http.Request) {
 	username := strings.ToLower(strings.TrimSpace(r.PathValue("username")))
@@ -57,6 +75,9 @@ func (s *Server) handlePublicProfile(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+	if s.rejectBlockedTarget(w, r, s.optionalUser(r), u) {
 		return
 	}
 

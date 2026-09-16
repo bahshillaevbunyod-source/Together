@@ -10,6 +10,7 @@ import (
 
 	"together/backend/internal/config"
 	"together/backend/internal/follow"
+	"together/backend/internal/session"
 )
 
 func listServer(users *fakeUserRepo, follows *fakeFollowRepo) *http.Server {
@@ -18,6 +19,14 @@ func listServer(users *fakeUserRepo, follows *fakeFollowRepo) *http.Server {
 
 func getList(srv *http.Server, path string) *httptest.ResponseRecorder {
 	req := httptest.NewRequest(http.MethodGet, path, nil)
+	rec := httptest.NewRecorder()
+	srv.Handler.ServeHTTP(rec, req)
+	return rec
+}
+
+func getListAs(srv *http.Server, path string) *httptest.ResponseRecorder {
+	req := httptest.NewRequest(http.MethodGet, path, nil)
+	req.AddCookie(&http.Cookie{Name: sessionCookieName, Value: "raw"})
 	rec := httptest.NewRecorder()
 	srv.Handler.ServeHTTP(rec, req)
 	return rec
@@ -123,5 +132,35 @@ func TestFollowListHidesPrivateFields(t *testing.T) {
 		if strings.Contains(body, forbidden) {
 			t.Fatalf("list leaked %q: %s", forbidden, body)
 		}
+	}
+}
+
+func blockedListServer(blocks *fakeBlockRepo, follows *fakeFollowRepo) *http.Server {
+	viewer := mkUser("viewer", "viewer_user")
+	target := mkUser("target-id", "target_user")
+	return buildServerFull(
+		config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin},
+		&fakeUserRepo{byIDUser: viewer, usernameUser: target},
+		&fakeSessionRepo{active: &session.Session{UserID: viewer.ID, ExpiresAt: time.Now().Add(time.Hour)}},
+		follows, blocks,
+	)
+}
+
+func TestFollowListsBlockedReturnNotFound(t *testing.T) {
+	for _, path := range []string{
+		"/api/v1/users/target_user/followers",
+		"/api/v1/users/target_user/following",
+	} {
+		rec := getListAs(blockedListServer(&fakeBlockRepo{hasBetween: true}, &fakeFollowRepo{}), path)
+		if rec.Code != http.StatusNotFound || !strings.Contains(rec.Body.String(), "user not found") {
+			t.Fatalf("%s: expected hidden target 404, got %d (%s)", path, rec.Code, rec.Body.String())
+		}
+	}
+}
+
+func TestFollowListsBlockCheckError(t *testing.T) {
+	rec := getListAs(blockedListServer(&fakeBlockRepo{betweenErr: errForTest}, &fakeFollowRepo{}), "/api/v1/users/target_user/followers")
+	if rec.Code != http.StatusInternalServerError {
+		t.Fatalf("expected 500, got %d", rec.Code)
 	}
 }

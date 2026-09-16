@@ -164,9 +164,7 @@ func TestBlockRepositoryError(t *testing.T) {
 	}
 }
 
-// TestPublicProfileReportsBlocked verifies the public profile carries the
-// viewer's block state so the UI can show Unblock and survive a refresh.
-func TestPublicProfileReportsBlocked(t *testing.T) {
+func TestPublicProfileBlockedIsHidden(t *testing.T) {
 	me := mkUser("me-id", "me_user")
 	target := mkUser("target-id", "target_user")
 	users := &fakeUserRepo{byIDUser: me, usernameUser: target}
@@ -175,16 +173,13 @@ func TestPublicProfileReportsBlocked(t *testing.T) {
 		users,
 		&fakeSessionRepo{active: &session.Session{UserID: "me-id", ExpiresAt: time.Now().Add(time.Hour)}},
 		&fakeFollowRepo{},
-		&fakeBlockRepo{isBlocked: true},
+		&fakeBlockRepo{hasBetween: true},
 	)
 	req := httptest.NewRequest(http.MethodGet, "/api/v1/users/target_user", nil)
 	req.AddCookie(&http.Cookie{Name: sessionCookieName, Value: "raw"})
 	rec := httptest.NewRecorder()
 	srv.Handler.ServeHTTP(rec, req)
-	if rec.Code != http.StatusOK {
-		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
-	}
-	if !strings.Contains(rec.Body.String(), `"isBlocked":true`) {
-		t.Fatalf("expected isBlocked true, got %s", rec.Body.String())
+	if rec.Code != http.StatusNotFound || !strings.Contains(rec.Body.String(), "user not found") {
+		t.Fatalf("expected hidden profile 404, got %d (%s)", rec.Code, rec.Body.String())
 	}
 }

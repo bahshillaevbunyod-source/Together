@@ -42,6 +42,9 @@ func (s *Server) serveFollowList(w http.ResponseWriter, r *http.Request, list li
 	if target == nil {
 		return
 	}
+	if s.rejectBlockedTarget(w, r, s.optionalUser(r), target) {
+		return
+	}
 
 	limit, ok := parseListLimit(r.URL.Query().Get("limit"))
 	if !ok {
