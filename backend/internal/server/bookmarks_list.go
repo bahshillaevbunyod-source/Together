@@ -57,7 +57,7 @@ func (s *Server) handleListBookmarks(w http.ResponseWriter, r *http.Request) {
 	items := make([]postResponse, 0, len(rows))
 	for _, it := range rows {
 		resp := feedItemToResponse(it.FeedItem)
-		resp.Media = s.toMediaResponses(mediaByPost[it.ID])
+		resp.Media = s.toMediaResponses(r.Context(), mediaByPost[it.ID])
 		resp.SavedByMe = true // every item here is bookmarked by the viewer
 		items = append(items, resp)
 	}

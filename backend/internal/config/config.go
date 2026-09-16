@@ -19,12 +19,21 @@ type Config struct {
 	AppOrigin          string
 	MediaPublicBaseURL string
 
-	// Storage (S3/R2) — configuration only for now; no SDK/client yet.
+	// Storage (S3/R2). The public bucket serves avatars + public post media at a
+	// permanent public URL. The private bucket serves followers-only / private
+	// post media (no public URL; read via presigned GET). Endpoint/region are
+	// shared across buckets in the same account.
 	StorageEndpoint        string
 	StorageRegion          string
 	StorageBucket          string
 	StorageAccessKeyID     string
 	StorageSecretAccessKey string
+
+	// Private post-media bucket (optional; when unset, private storage is not
+	// available and private uploads/reads are rejected).
+	StoragePrivateBucket          string
+	StoragePrivateAccessKeyID     string
+	StoragePrivateSecretAccessKey string
 
 	// Translation provider selection. Provider is "stub" (default; no external
 	// calls) or a real provider like "google". Credentials live only in env and
@@ -50,6 +59,10 @@ func Load() (Config, error) {
 		StorageBucket:          os.Getenv("STORAGE_BUCKET"),
 		StorageAccessKeyID:     os.Getenv("STORAGE_ACCESS_KEY_ID"),
 		StorageSecretAccessKey: os.Getenv("STORAGE_SECRET_ACCESS_KEY"),
+
+		StoragePrivateBucket:          os.Getenv("STORAGE_PRIVATE_BUCKET"),
+		StoragePrivateAccessKeyID:     os.Getenv("STORAGE_PRIVATE_ACCESS_KEY_ID"),
+		StoragePrivateSecretAccessKey: os.Getenv("STORAGE_PRIVATE_SECRET_ACCESS_KEY"),
 
 		TranslationProvider: getEnv("TRANSLATION_PROVIDER", "stub"),
 		TranslationAPIKey:   os.Getenv("TRANSLATION_API_KEY"),

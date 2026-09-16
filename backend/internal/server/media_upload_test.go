@@ -15,23 +15,30 @@ import (
 	"together/backend/internal/user"
 )
 
-// fakeStorageRepo is a test double for storage.Repository.
+// fakeStorageRepo is a test double for storage.Repository. It records the class
+// of each operation so tests can assert correct bucket selection.
 type fakeStorageRepo struct {
-	createErr error
-	lastKey   string
-	lastMime  string
-	lastSize  int64
-	url       string
-	deleteErr error
-	deleted   []string
-	headInfo  *storage.ObjectInfo
-	headErr   error
+	createErr        error
+	lastKey          string
+	lastMime         string
+	lastSize         int64
+	lastCreateClass  storage.Class
+	url              string
+	deleteErr        error
+	deleted          []string
+	deletedClasses   []storage.Class
+	headInfo         *storage.ObjectInfo
+	headErr          error
+	presignErr       error
+	lastPresignClass storage.Class
+	privateOff       bool // when true, Configured(ClassPrivate) is false
 }
 
-func (f *fakeStorageRepo) CreateUploadURL(_ context.Context, key, mimeType string, sizeBytes int64) (*storage.PresignedUpload, error) {
+func (f *fakeStorageRepo) CreateUploadURL(_ context.Context, class storage.Class, key, mimeType string, sizeBytes int64) (*storage.PresignedUpload, error) {
 	f.lastKey = key
 	f.lastMime = mimeType
 	f.lastSize = sizeBytes
+	f.lastCreateClass = class
 	if f.createErr != nil {
 		return nil, f.createErr
 	}
@@ -42,14 +49,23 @@ func (f *fakeStorageRepo) CreateUploadURL(_ context.Context, key, mimeType strin
 	return &storage.PresignedUpload{UploadURL: u, ExpiresAt: time.Now().Add(10 * time.Minute)}, nil
 }
 
-func (f *fakeStorageRepo) DeleteObject(_ context.Context, key string) error {
+func (f *fakeStorageRepo) PresignGetURL(_ context.Context, class storage.Class, key string, _ time.Duration) (string, error) {
+	f.lastPresignClass = class
+	if f.presignErr != nil {
+		return "", f.presignErr
+	}
+	return "https://signed.example.com/" + string(class) + "/" + key + "?sig=test", nil
+}
+
+func (f *fakeStorageRepo) DeleteObject(_ context.Context, class storage.Class, key string) error {
 	if f.deleteErr == nil {
 		f.deleted = append(f.deleted, key)
+		f.deletedClasses = append(f.deletedClasses, class)
 	}
 	return f.deleteErr
 }
 
-func (f *fakeStorageRepo) HeadObject(_ context.Context, _ string) (*storage.ObjectInfo, error) {
+func (f *fakeStorageRepo) HeadObject(_ context.Context, _ storage.Class, _ string) (*storage.ObjectInfo, error) {
 	if f.headErr != nil {
 		return nil, f.headErr
 	}
@@ -57,6 +73,13 @@ func (f *fakeStorageRepo) HeadObject(_ context.Context, _ string) (*storage.Obje
 		return f.headInfo, nil
 	}
 	return &storage.ObjectInfo{}, nil
+}
+
+func (f *fakeStorageRepo) Configured(class storage.Class) bool {
+	if class == storage.ClassPrivate {
+		return !f.privateOff
+	}
+	return true
 }
 
 func uploadServer(storageRepo *fakeStorageRepo) *http.Server {

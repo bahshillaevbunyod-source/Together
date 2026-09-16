@@ -25,7 +25,9 @@ func (f fakeS3) HeadObject(context.Context, *s3.HeadObjectInput, ...func(*s3.Opt
 }
 
 func newTestRepo(c s3Client) *S3Repository {
-	return &S3Repository{client: c, bucket: "test-bucket"}
+	return &S3Repository{buckets: map[Class]*bucketClient{
+		ClassPublic: {client: c, bucket: "test-bucket"},
+	}}
 }
 
 func TestHeadObjectSuccess(t *testing.T) {
@@ -34,7 +36,7 @@ func TestHeadObjectSuccess(t *testing.T) {
 		ContentLength: aws.Int64(1234),
 	}})
 
-	info, err := repo.HeadObject(context.Background(), "users/u/uploads/x.png")
+	info, err := repo.HeadObject(context.Background(), ClassPublic, "users/u/uploads/x.png")
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
@@ -46,7 +48,7 @@ func TestHeadObjectSuccess(t *testing.T) {
 func TestHeadObjectNotFound(t *testing.T) {
 	repo := newTestRepo(fakeS3{headErr: &types.NotFound{}})
 
-	_, err := repo.HeadObject(context.Background(), "missing")
+	_, err := repo.HeadObject(context.Background(), ClassPublic, "missing")
 	if !errors.Is(err, ErrObjectNotFound) {
 		t.Fatalf("expected ErrObjectNotFound, got %v", err)
 	}
@@ -56,7 +58,7 @@ func TestHeadObjectStorageError(t *testing.T) {
 	boom := errors.New("boom")
 	repo := newTestRepo(fakeS3{headErr: boom})
 
-	_, err := repo.HeadObject(context.Background(), "x")
+	_, err := repo.HeadObject(context.Background(), ClassPublic, "x")
 	if err == nil || errors.Is(err, ErrObjectNotFound) {
 		t.Fatalf("expected a non-notfound error, got %v", err)
 	}

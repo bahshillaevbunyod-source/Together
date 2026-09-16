@@ -87,6 +87,24 @@ func (s *Server) handleUpdatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// A visibility change that crosses storage classes (public <-> restricted)
+	// would strand this post's media in the wrong bucket — e.g. a public object
+	// staying permanently public after the post becomes followers-only. Media
+	// cannot be moved across buckets here (separate credentials), so reject the
+	// change when the post has media. Text-only posts change freely.
+	if update.Visibility != nil &&
+		storageClassForVisibility(*update.Visibility) != storageClassForVisibility(p.Visibility) {
+		existing, err := s.media.ListByPost(r.Context(), p.ID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, "internal error")
+			return
+		}
+		if len(existing) > 0 {
+			writeError(w, http.StatusConflict, "cannot change visibility of a post with media")
+			return
+		}
+	}
+
 	updated, err := s.posts.Update(r.Context(), p.ID, update)
 	if err != nil {
 		if errors.Is(err, post.ErrNotFound) {
@@ -143,11 +161,18 @@ func (s *Server) handleDeletePost(w http.ResponseWriter, r *http.Request) {
 // or an arbitrary key. Deletion errors are ignored (see the endpoint's
 // best-effort contract); keys come from the database, never from the client.
 func (s *Server) cleanupPostMedia(ctx context.Context, ownerID string, items []media.Media) {
-	prefix := "users/" + ownerID + "/uploads/"
+	uploadsPrefix := "users/" + ownerID + "/uploads/" // public bucket
+	privatePrefix := "users/" + ownerID + "/private/" // private bucket
 	for _, m := range items {
 		key := m.StorageKey
-		if !strings.HasPrefix(key, prefix) {
-			continue // outside the owner's uploads namespace — never delete
+		var prefix string
+		switch {
+		case strings.HasPrefix(key, uploadsPrefix):
+			prefix = uploadsPrefix
+		case strings.HasPrefix(key, privatePrefix):
+			prefix = privatePrefix
+		default:
+			continue // outside the owner's post-media namespaces (e.g. avatar) — never delete
 		}
 		if strings.Contains(key, "..") || strings.Contains(key, `\`) {
 			continue // defense-in-depth against traversal-shaped keys
@@ -156,7 +181,8 @@ func (s *Server) cleanupPostMedia(ctx context.Context, ownerID string, items []m
 		if rest == "" || strings.Contains(rest, "/") {
 			continue // must be a single file segment
 		}
-		_ = s.storage.DeleteObject(ctx, key) // best-effort; orphan on failure
+		// Delete from the bucket the key belongs to (public vs private).
+		_ = s.storage.DeleteObject(ctx, storageClassForKey(key), key) // best-effort; orphan on failure
 	}
 }
 

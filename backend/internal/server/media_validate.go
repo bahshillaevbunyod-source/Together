@@ -63,7 +63,10 @@ func (s *Server) validateUploadedObject(ctx context.Context, userID, storageKey 
 		return nil, errInvalidStorageKey
 	}
 
-	info, err := s.storage.HeadObject(ctx, storageKey)
+	// The dir encodes the storage class, so HeadObject targets the correct
+	// bucket (private/ -> private bucket; uploads//avatars/ -> public bucket).
+	class := storageClassForKey(storageKey)
+	info, err := s.storage.HeadObject(ctx, class, storageKey)
 	if err != nil {
 		if errors.Is(err, storage.ErrObjectNotFound) {
 			return nil, errObjectMissing

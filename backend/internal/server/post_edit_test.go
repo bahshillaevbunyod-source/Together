@@ -206,6 +206,23 @@ func TestDeletePostMediaListErrorStill204(t *testing.T) {
 	}
 }
 
+func TestEditVisibilityBlockedWhenPostHasMedia(t *testing.T) {
+	posts := &fakePostRepo{getPost: ownPost()} // public post owned by me-id
+	mediaRepo := &fakeMediaRepo{byPost: []media.Media{mkPostMedia("users/me-id/uploads/a.webp")}}
+	rec := editPost(editDeletePostServerFull(posts, mediaRepo, &fakeStorageRepo{}), `{"visibility":"followers"}`, true, true)
+	if rec.Code != http.StatusConflict {
+		t.Fatalf("changing visibility class of a post with media must be rejected, got %d (%s)", rec.Code, rec.Body.String())
+	}
+}
+
+func TestEditVisibilityAllowedWhenNoMedia(t *testing.T) {
+	posts := &fakePostRepo{getPost: ownPost()}
+	rec := editPost(editDeletePostServerFull(posts, &fakeMediaRepo{}, &fakeStorageRepo{}), `{"visibility":"followers"}`, true, true)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("a text-only visibility change should succeed, got %d (%s)", rec.Code, rec.Body.String())
+	}
+}
+
 func TestDeleteOthersPost404(t *testing.T) {
 	p := ownPost()
 	p.AuthorID = "someone-else"

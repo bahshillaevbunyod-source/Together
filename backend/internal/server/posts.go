@@ -10,6 +10,7 @@ import (
 
 	"together/backend/internal/media"
 	"together/backend/internal/post"
+	"together/backend/internal/storage"
 	"together/backend/internal/user"
 )
 
@@ -23,6 +24,16 @@ var validVisibility = map[string]bool{
 	post.VisibilityPublic:    true,
 	post.VisibilityFollowers: true,
 	post.VisibilityPrivate:   true,
+}
+
+// storageClassForVisibility maps a post visibility to the storage class its
+// media must live in: public posts use the public bucket; followers-only and
+// private posts use the private bucket.
+func storageClassForVisibility(visibility string) storage.Class {
+	if visibility == post.VisibilityPublic {
+		return storage.ClassPublic
+	}
+	return storage.ClassPrivate
 }
 
 type createPostRequest struct {
@@ -80,9 +91,21 @@ func (s *Server) handleCreatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	visibility := req.Visibility
+	if visibility == "" {
+		visibility = post.VisibilityPublic
+	}
+	if !validVisibility[visibility] {
+		writeError(w, http.StatusBadRequest, "invalid visibility")
+		return
+	}
+
 	// Resolve media from confirmed uploads. type/mime/size/sortOrder are decided
-	// by the backend — the client only supplies storage keys.
-	mediaItems, ok := s.resolveMediaForPost(w, r, me.ID, req.StorageKeys)
+	// by the backend — the client only supplies storage keys. Media must live in
+	// the storage class that matches the post's visibility (public post -> public
+	// bucket; followers/private -> private bucket), so a restricted post can never
+	// attach a permanently-public object and vice versa.
+	mediaItems, ok := s.resolveMediaForPost(w, r, me.ID, req.StorageKeys, visibility)
 	if !ok {
 		return
 	}
@@ -95,15 +118,6 @@ func (s *Server) handleCreatePost(w http.ResponseWriter, r *http.Request) {
 	}
 	if !hasText && len(mediaItems) == 0 {
 		writeError(w, http.StatusBadRequest, "post must have text or media")
-		return
-	}
-
-	visibility := req.Visibility
-	if visibility == "" {
-		visibility = post.VisibilityPublic
-	}
-	if !validVisibility[visibility] {
-		writeError(w, http.StatusBadRequest, "invalid visibility")
 		return
 	}
 
@@ -139,11 +153,14 @@ func (s *Server) handleCreatePost(w http.ResponseWriter, r *http.Request) {
 // the count limit, rejects duplicates, and confirms each object via
 // validateUploadedObject. On any failure it writes the response and returns
 // ok=false. sortOrder follows the array order.
-func (s *Server) resolveMediaForPost(w http.ResponseWriter, r *http.Request, userID string, keys []string) ([]media.CreateInput, bool) {
+func (s *Server) resolveMediaForPost(w http.ResponseWriter, r *http.Request, userID string, keys []string, visibility string) ([]media.CreateInput, bool) {
 	if len(keys) > maxPostMedia {
 		writeError(w, http.StatusBadRequest, "too many media")
 		return nil, false
 	}
+
+	// The post's visibility dictates which storage class its media must live in.
+	wantClass := storageClassForVisibility(visibility)
 
 	seen := make(map[string]bool, len(keys))
 	items := make([]media.CreateInput, 0, len(keys))
@@ -154,8 +171,9 @@ func (s *Server) resolveMediaForPost(w http.ResponseWriter, r *http.Request, use
 		}
 		seen[key] = true
 
-		// Post media may only come from the uploads/ namespace — never an avatar.
-		v, err := s.validateUploadedObject(r.Context(), userID, key, "uploads")
+		// Post media may only come from the uploads/ (public) or private/
+		// namespaces — never an avatar.
+		v, err := s.validateUploadedObject(r.Context(), userID, key, "uploads", "private")
 		if err != nil {
 			switch {
 			case errors.Is(err, errInvalidStorageKey),
@@ -165,6 +183,14 @@ func (s *Server) resolveMediaForPost(w http.ResponseWriter, r *http.Request, use
 			default:
 				writeError(w, http.StatusInternalServerError, "internal error")
 			}
+			return nil, false
+		}
+
+		// Enforce that the object's storage class matches the post visibility so
+		// restricted posts never carry a public-bucket object (which would be
+		// permanently reachable) and public posts never carry a private object.
+		if storageClassForKey(v.StorageKey) != wantClass {
+			writeError(w, http.StatusBadRequest, "media does not match post visibility")
 			return nil, false
 		}
 

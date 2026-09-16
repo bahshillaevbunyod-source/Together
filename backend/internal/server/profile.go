@@ -11,6 +11,7 @@ import (
 	"unicode/utf8"
 
 	"together/backend/internal/media"
+	"together/backend/internal/storage"
 	"together/backend/internal/translation"
 	"together/backend/internal/user"
 )
@@ -198,7 +199,7 @@ func (s *Server) cleanupPreviousAvatar(ctx context.Context, userID string, oldUR
 		return // unchanged; keep the object
 	}
 
-	_ = s.storage.DeleteObject(ctx, oldKey) // best-effort
+	_ = s.storage.DeleteObject(ctx, storage.ClassPublic, oldKey) // best-effort; avatars are public
 }
 
 // buildProfileUpdate validates raw fields into a ProfileUpdate. ok is false on

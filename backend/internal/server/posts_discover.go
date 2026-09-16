@@ -81,7 +81,7 @@ func (s *Server) handleDiscoverPosts(w http.ResponseWriter, r *http.Request) {
 	items := make([]postResponse, 0, len(rows))
 	for _, it := range rows {
 		resp := feedItemToResponse(it)
-		resp.Media = s.toMediaResponses(mediaByPost[it.ID])
+		resp.Media = s.toMediaResponses(r.Context(), mediaByPost[it.ID])
 		resp.SavedByMe = savedByPost[it.ID]
 		s.applyPostTranslation(r.Context(), &resp, me)
 		items = append(items, resp)

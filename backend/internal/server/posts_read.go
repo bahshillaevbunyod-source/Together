@@ -80,7 +80,7 @@ func (s *Server) buildPostResponse(ctx context.Context, p *post.Post, author *us
 	if err != nil {
 		return resp, err
 	}
-	resp.Media = s.toMediaResponses(mediaItems)
+	resp.Media = s.toMediaResponses(ctx, mediaItems)
 
 	s.applyPostTranslation(ctx, &resp, viewer)
 
@@ -199,7 +199,7 @@ func (s *Server) handleFeed(w http.ResponseWriter, r *http.Request) {
 	items := make([]postResponse, 0, len(rows))
 	for _, it := range rows {
 		resp := feedItemToResponse(it)
-		resp.Media = s.toMediaResponses(mediaByPost[it.ID])
+		resp.Media = s.toMediaResponses(r.Context(), mediaByPost[it.ID])
 		resp.SavedByMe = savedByPost[it.ID]
 		// Each feed item is translated independently for the viewer.
 		s.applyPostTranslation(r.Context(), &resp, me)

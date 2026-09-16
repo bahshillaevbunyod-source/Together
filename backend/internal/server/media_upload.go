@@ -10,6 +10,8 @@ import (
 	"time"
 
 	"together/backend/internal/media"
+	"together/backend/internal/post"
+	"together/backend/internal/storage"
 )
 
 const (
@@ -34,21 +36,36 @@ type uploadURLRequest struct {
 	Type      string `json:"type"`
 	MimeType  string `json:"mimeType"`
 	SizeBytes int64  `json:"sizeBytes"`
-	// Purpose selects the storage namespace: "" or "post" -> uploads/ (post
-	// media), "avatar" -> avatars/ (profile photos). Kept optional for backward
+	// Purpose selects the storage namespace: "" or "post" -> post media,
+	// "avatar" -> avatars/ (profile photos). Kept optional for backward
 	// compatibility (existing post clients send no purpose).
 	Purpose string `json:"purpose"`
+	// Visibility is the intended post visibility for post uploads. It selects
+	// the storage class/bucket: "" or "public" -> public bucket (uploads/);
+	// "followers"/"private" -> private bucket (private/). Ignored for avatars
+	// (always public). Optional for backward compatibility (defaults public).
+	Visibility string `json:"visibility"`
 }
 
-// uploadDirForPurpose maps a client purpose to the storage subdirectory.
-func uploadDirForPurpose(purpose string) (string, bool) {
+// uploadTarget resolves where an upload lives: its storage subdirectory (which
+// also encodes the class) and the storage class/bucket. Server-controlled — the
+// client only hints intended purpose/visibility; it never picks the bucket.
+func uploadTarget(purpose, visibility string) (dir string, class storage.Class, ok bool) {
 	switch purpose {
-	case "", "post":
-		return "uploads", true
 	case "avatar":
-		return "avatars", true
+		// Avatars are always public and unaffected by post visibility.
+		return "avatars", storage.ClassPublic, true
+	case "", "post":
+		switch visibility {
+		case "", post.VisibilityPublic:
+			return "uploads", storage.ClassPublic, true
+		case post.VisibilityFollowers, post.VisibilityPrivate:
+			return "private", storage.ClassPrivate, true
+		default:
+			return "", "", false
+		}
 	default:
-		return "", false
+		return "", "", false
 	}
 }
 
@@ -94,9 +111,13 @@ func (s *Server) handleCreateUploadURL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	dir, ok := uploadDirForPurpose(req.Purpose)
+	dir, class, ok := uploadTarget(req.Purpose, req.Visibility)
 	if !ok {
-		writeError(w, http.StatusBadRequest, "invalid purpose")
+		writeError(w, http.StatusBadRequest, "invalid purpose or visibility")
+		return
+	}
+	if !s.storage.Configured(class) {
+		writeError(w, http.StatusServiceUnavailable, "storage not available")
 		return
 	}
 
@@ -106,20 +127,27 @@ func (s *Server) handleCreateUploadURL(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Key is fully server-generated: user id from auth context, namespace dir,
-	// uuid, safe ext.
+	// Key is fully server-generated: user id from auth context, namespace dir
+	// (which encodes the storage class), uuid, safe ext.
 	key := fmt.Sprintf("users/%s/%s/%s.%s", me.ID, dir, id, ext)
 
-	upload, err := s.storage.CreateUploadURL(r.Context(), key, req.MimeType, req.SizeBytes)
+	upload, err := s.storage.CreateUploadURL(r.Context(), class, key, req.MimeType, req.SizeBytes)
 	if err != nil {
 		writeError(w, http.StatusInternalServerError, "internal error")
 		return
 	}
 
+	// Private media has no permanent public URL; it is read only via presigned
+	// GET after authorization. Only public media exposes a stable public URL.
+	publicURL := ""
+	if class == storage.ClassPublic {
+		publicURL = mediaURL(s.cfg.MediaPublicBaseURL, key)
+	}
+
 	writeJSON(w, http.StatusOK, uploadURLResponse{
 		UploadURL:  upload.UploadURL,
 		StorageKey: key,
-		PublicURL:  mediaURL(s.cfg.MediaPublicBaseURL, key),
+		PublicURL:  publicURL,
 		ExpiresAt:  upload.ExpiresAt.Format(time.RFC3339),
 	})
 }
@@ -158,9 +186,9 @@ func (s *Server) handleConfirmUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Confirm accepts either namespace (post uploads or avatars); the key's dir
-	// determines where it lives.
-	confirmed, err := s.validateUploadedObject(r.Context(), me.ID, req.StorageKey, "uploads", "avatars")
+	// Confirm accepts any post/avatar namespace (public uploads, private post
+	// media, or avatars); the key's dir determines the bucket.
+	confirmed, err := s.validateUploadedObject(r.Context(), me.ID, req.StorageKey, "uploads", "private", "avatars")
 	if err != nil {
 		switch {
 		case errors.Is(err, errInvalidStorageKey), errors.Is(err, errUnsupportedMedia):
@@ -173,12 +201,18 @@ func (s *Server) handleConfirmUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Private media has no permanent public URL.
+	publicURL := ""
+	if storageClassForKey(confirmed.StorageKey) == storage.ClassPublic {
+		publicURL = mediaURL(s.cfg.MediaPublicBaseURL, confirmed.StorageKey)
+	}
+
 	writeJSON(w, http.StatusOK, confirmUploadResponse{
 		StorageKey: confirmed.StorageKey,
 		Type:       confirmed.Type,
 		MimeType:   confirmed.MimeType,
 		SizeBytes:  confirmed.SizeBytes,
-		PublicURL:  mediaURL(s.cfg.MediaPublicBaseURL, confirmed.StorageKey),
+		PublicURL:  publicURL,
 	})
 }
 
