@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -50,6 +51,7 @@ export function FeedProvider({
   const [status, setStatus] = useState<FeedStatus>("loading");
   const [nextCursor, setNextCursor] = useState("");
   const [loadingMore, setLoadingMore] = useState(false);
+  const loadingMoreRef = useRef(false);
 
   const loadFirstPage = useCallback(
     (signal?: AbortSignal) => {
@@ -75,21 +77,29 @@ export function FeedProvider({
   }, [loadFirstPage]);
 
   const loadMore = useCallback(() => {
-    setNextCursor((cursor) => {
-      if (!cursor) return cursor;
-      setLoadingMore(true);
-      fetchPage({ cursor })
-        .then((page) => {
-          setPosts((prev) => [...prev, ...page.items.map(mapApiPost)]);
-          setNextCursor(page.nextCursor);
-        })
-        .catch(() => {
-          // Keep what we have; the button stays available to retry.
-        })
-        .finally(() => setLoadingMore(false));
-      return cursor;
-    });
-  }, [fetchPage]);
+    if (loadingMoreRef.current) return;
+    loadingMoreRef.current = true;
+
+    const cursor = nextCursor;
+    if (!cursor) {
+      loadingMoreRef.current = false;
+      return;
+    }
+
+    setLoadingMore(true);
+    fetchPage({ cursor })
+      .then((page) => {
+        setPosts((prev) => [...prev, ...page.items.map(mapApiPost)]);
+        setNextCursor(page.nextCursor);
+      })
+      .catch(() => {
+        // Keep what we have; the button stays available to retry.
+      })
+      .finally(() => {
+        loadingMoreRef.current = false;
+        setLoadingMore(false);
+      });
+  }, [fetchPage, nextCursor]);
 
   const prependPost = useCallback((post: Post) => {
     setPosts((prev) => [post, ...prev]);
