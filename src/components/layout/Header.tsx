@@ -1,9 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import { NotificationsBell } from "./NotificationsBell";
 import { HeaderUser } from "./HeaderUser";
 import { GlobalSearch } from "./GlobalSearch";
+import { useLanguage } from "@/lib/language-context";
 
 export function Header() {
+  const { t } = useLanguage();
+
   return (
     <header className="sticky top-0 z-30 h-16 w-full border-b border-border bg-surface">
       <div className="mx-auto flex h-16 max-w-[1536px] items-center gap-2 px-4 sm:gap-4 sm:px-6">
@@ -21,7 +26,7 @@ export function Header() {
             <div className="text-lg font-bold tracking-tight text-foreground">
               Together
             </div>
-            <div className="text-xs text-muted">Different people. One world.</div>
+            <div className="text-xs text-muted">{t("header.tagline")}</div>
           </div>
         </div>
 

@@ -6,11 +6,13 @@ import { ChevronDown, LogOut } from "lucide-react";
 
 import { logout } from "@/lib/api";
 import { useAuth } from "@/lib/auth-context";
+import { useLanguage } from "@/lib/language-context";
 
 export function HeaderUser() {
   const { user, refresh } = useAuth();
+  const { t } = useLanguage();
 
-  const displayName = user?.displayName?.trim() || "Guest";
+  const displayName = user?.displayName?.trim() || t("user.guest");
   const initial = displayName.charAt(0).toUpperCase() || "?";
 
   const [open, setOpen] = useState(false);
@@ -40,7 +42,7 @@ export function HeaderUser() {
       // Re-check auth; the (app) gate redirects to /login when unauthenticated.
       await refresh();
     } catch {
-      setError("Couldn’t log out. Try again.");
+      setError(t("user.logoutError"));
     } finally {
       setLoggingOut(false);
     }
@@ -103,7 +105,7 @@ export function HeaderUser() {
             className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
           >
             <LogOut className="h-4 w-4 text-muted" />
-            {loggingOut ? "Logging out…" : "Log out"}
+            {loggingOut ? t("user.loggingOut") : t("user.logout")}
           </button>
         </div>
       ) : null}

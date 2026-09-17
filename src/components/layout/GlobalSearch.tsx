@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, Search } from "lucide-react";
 
 import { searchUsers, type SearchUserItem } from "@/lib/api";
+import { useLanguage } from "@/lib/language-context";
 
 type Status = "idle" | "loading" | "ready" | "error";
 
@@ -21,6 +22,7 @@ const FALLBACK_AVATAR =
 
 export function GlobalSearch() {
   const router = useRouter();
+  const { t } = useLanguage();
 
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchUserItem[]>([]);
@@ -149,6 +151,7 @@ export function GlobalSearch() {
           onFocus={() => setOpen(true)}
           onKeyDown={onKeyDown}
           role="combobox"
+          aria-label={t("search.ariaLabel")}
           aria-expanded={showDropdown}
           aria-controls="global-search-listbox"
           aria-autocomplete="list"
@@ -157,11 +160,11 @@ export function GlobalSearch() {
               ? `global-search-option-${activeIndex}`
               : undefined
           }
-          placeholder="Search people…"
+          placeholder={t("search.placeholder")}
           className="h-11 w-full rounded-full border border-border bg-background pl-11 pr-16 text-sm text-foreground placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
         <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-md border border-border bg-surface px-2 py-0.5 text-xs text-muted-soft sm:block">
-          Ctrl K
+          {t("search.shortcut")}
         </span>
 
         {showDropdown ? (
@@ -174,26 +177,26 @@ export function GlobalSearch() {
               {status === "loading" ? (
                 <div className="flex items-center gap-2 px-4 py-6 text-sm text-muted">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Searching…
+                  {t("search.searching")}
                 </div>
               ) : null}
 
               {status === "error" ? (
                 <div className="px-4 py-6 text-center text-sm">
-                  <p className="text-muted">Couldn’t run search.</p>
+                  <p className="text-muted">{t("search.error")}</p>
                   <button
                     type="button"
                     onClick={() => runSearch(trimmed)}
                     className="mt-1 rounded text-primary hover:underline"
                   >
-                    Try again
+                    {t("search.tryAgain")}
                   </button>
                 </div>
               ) : null}
 
               {status === "ready" && results.length === 0 ? (
                 <div className="px-4 py-6 text-center text-sm text-muted-soft">
-                  No people found for “{trimmed}”.
+                {t("search.emptyPrefix")}{trimmed}{t("search.emptySuffix")}
                 </div>
               ) : null}
 
