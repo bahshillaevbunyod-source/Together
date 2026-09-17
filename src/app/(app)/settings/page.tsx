@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ApiError, getProfile, updateProfile } from "@/lib/api";
-import { useLanguage } from "@/lib/language-context";
 import { LANGUAGES } from "@/lib/languages";
 
 type Status = "loading" | "ready" | "error";
@@ -22,7 +21,6 @@ function friendlySettingsError(err: unknown): string {
 }
 
 export default function SettingsPage() {
-  const { setLanguage } = useLanguage();
   const [status, setStatus] = useState<Status>("loading");
   const [preferredLanguage, setPreferredLanguage] = useState<string>(NATIVE_VALUE);
   const [autoTranslate, setAutoTranslate] = useState(false);
@@ -81,7 +79,6 @@ export default function SettingsPage() {
       setPreferredLanguage(updated.preferredLanguage ?? NATIVE_VALUE);
       setAutoTranslate(updated.autoTranslateEnabled);
       setNativeLanguage(updated.nativeLanguage);
-      setLanguage(updated.preferredLanguage);
       setSaved(true);
     } catch (err) {
       setError(friendlySettingsError(err)); // keep entered values

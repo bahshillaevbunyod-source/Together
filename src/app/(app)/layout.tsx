@@ -20,13 +20,13 @@ export default function AppGroupLayout({
   const { status, refresh } = useAuth();
   const router = useRouter();
   const [profileStatus, setProfileStatus] = useState<ProfileStatus>("loading");
-  const [preferredLanguage, setPreferredLanguage] = useState<string | null>(null);
+  const [platformLanguage, setPlatformLanguage] = useState<string | null>(null);
 
   const loadProfile = useCallback(async (signal?: AbortSignal) => {
     setProfileStatus("loading");
     try {
       const profile = await getProfile(signal);
-      setPreferredLanguage(profile.preferredLanguage);
+      setPlatformLanguage(profile.platformLanguage);
       setProfileStatus("ready");
     } catch (err) {
       if (err instanceof DOMException && err.name === "AbortError") return;
@@ -50,10 +50,10 @@ export default function AppGroupLayout({
   }, [loadProfile, status]);
 
   useEffect(() => {
-    if (status === "authenticated" && profileStatus === "ready" && preferredLanguage === null) {
+    if (status === "authenticated" && profileStatus === "ready" && platformLanguage === null) {
       router.replace("/language");
     }
-  }, [preferredLanguage, profileStatus, router, status]);
+  }, [platformLanguage, profileStatus, router, status]);
 
   // While loading, or during the redirect for an unauthenticated user, don't
   // render the app shell (avoids flashing protected UI).
@@ -101,7 +101,7 @@ export default function AppGroupLayout({
     );
   }
 
-  if (profileStatus !== "ready" || preferredLanguage === null) {
+  if (profileStatus !== "ready" || platformLanguage === null) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <span className="text-sm text-muted">Loading Together…</span>
@@ -110,7 +110,7 @@ export default function AppGroupLayout({
   }
 
   return (
-    <LanguageProvider preferredLanguage={preferredLanguage}>
+    <LanguageProvider platformLanguage={platformLanguage}>
       <RealtimeProvider>
         <AppShell>{children}</AppShell>
       </RealtimeProvider>

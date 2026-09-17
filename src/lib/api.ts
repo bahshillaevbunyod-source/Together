@@ -149,6 +149,7 @@ export interface ProfileResponse {
   nativeLanguage: string;
   avatarUrl: string | null;
   createdAt: string;
+  platformLanguage: string | null;
   preferredLanguage: string | null;
   autoTranslateEnabled: boolean;
 }
@@ -179,6 +180,7 @@ export interface UpdateProfileInput {
   city?: string | null;
   nativeLanguage?: string;
   avatarUrl?: string | null;
+  platformLanguage?: string | null;
   preferredLanguage?: string | null;
   autoTranslateEnabled?: boolean;
 }

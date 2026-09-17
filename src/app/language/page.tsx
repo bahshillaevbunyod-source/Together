@@ -14,7 +14,7 @@ export default function LanguagePage() {
   const { status, refresh } = useAuth();
   const router = useRouter();
   const [profileStatus, setProfileStatus] = useState<ProfileStatus>("loading");
-  const [preferredLanguage, setPreferredLanguage] = useState<string | null>(null);
+  const [platformLanguage, setPlatformLanguage] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [saving, setSaving] = useState(false);
@@ -24,7 +24,7 @@ export default function LanguagePage() {
     setProfileStatus("loading");
     try {
       const profile = await getProfile(signal);
-      setPreferredLanguage(profile.preferredLanguage);
+      setPlatformLanguage(profile.platformLanguage);
       setProfileStatus("ready");
     } catch (err) {
       if (err instanceof DOMException && err.name === "AbortError") return;
@@ -46,10 +46,10 @@ export default function LanguagePage() {
   }, [router, status]);
 
   useEffect(() => {
-    if (status === "authenticated" && profileStatus === "ready" && preferredLanguage !== null) {
+    if (status === "authenticated" && profileStatus === "ready" && platformLanguage !== null) {
       router.replace("/");
     }
-  }, [preferredLanguage, profileStatus, router, status]);
+  }, [platformLanguage, profileStatus, router, status]);
 
   const languages = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -67,7 +67,7 @@ export default function LanguagePage() {
     setSaveError(null);
     try {
       await updateProfile({
-        preferredLanguage: selectedLanguage,
+        platformLanguage: selectedLanguage,
         autoTranslateEnabled: true,
       });
       router.replace("/");
@@ -111,7 +111,7 @@ export default function LanguagePage() {
     );
   }
 
-  if (profileStatus === "loading" || preferredLanguage !== null) {
+  if (profileStatus === "loading" || platformLanguage !== null) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <span className="text-sm text-muted">Loading Together…</span>

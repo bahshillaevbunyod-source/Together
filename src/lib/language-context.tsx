@@ -75,26 +75,26 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
-function normalizeLocale(preferredLanguage: string | null): string {
-  const normalized = preferredLanguage?.trim().toLowerCase();
+function normalizeLocale(platformLanguage: string | null): string {
+  const normalized = platformLanguage?.trim().toLowerCase();
   return normalized || "en";
 }
 
 export function LanguageProvider({
-  preferredLanguage,
+  platformLanguage,
   children,
 }: {
-  preferredLanguage: string | null;
+  platformLanguage: string | null;
   children: ReactNode;
 }) {
-  const [locale, setLocale] = useState(() => normalizeLocale(preferredLanguage));
+  const [locale, setLocale] = useState(() => normalizeLocale(platformLanguage));
 
   useEffect(() => {
-    const nextLocale = normalizeLocale(preferredLanguage);
+    const nextLocale = normalizeLocale(platformLanguage);
     setLocale((currentLocale) =>
       currentLocale === nextLocale ? currentLocale : nextLocale,
     );
-  }, [preferredLanguage]);
+  }, [platformLanguage]);
 
   const setLanguage = useCallback((language: string | null) => {
     setLocale(normalizeLocale(language));
