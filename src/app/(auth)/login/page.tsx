@@ -59,7 +59,11 @@ export default function LoginPage() {
         });
       }
       await refresh();
-      router.push("/");
+      if (mode === "register") {
+        router.replace("/language");
+      } else {
+        router.push("/");
+      }
     } catch (err) {
       // Show the backend's safe message, or a generic fallback.
       setError(err instanceof ApiError ? err.message : "Something went wrong.");
