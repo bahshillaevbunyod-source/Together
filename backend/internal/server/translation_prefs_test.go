@@ -25,6 +25,9 @@ func TestProfileLanguagePrefsDefaults(t *testing.T) {
 	if p.PreferredLanguage != nil {
 		t.Fatalf("expected nil preferredLanguage by default, got %v", *p.PreferredLanguage)
 	}
+	if p.PlatformLanguage != nil {
+		t.Fatalf("expected nil platformLanguage by default, got %v", *p.PlatformLanguage)
+	}
 	if p.AutoTranslateEnabled {
 		t.Fatal("expected autoTranslateEnabled=false by default")
 	}
@@ -34,11 +37,15 @@ func TestProfileReturnsStoredLanguagePrefs(t *testing.T) {
 	u := userWithPassword(t, "strongpass")
 	lang := "es"
 	u.PreferredLanguage = &lang
+	u.PlatformLanguage = &lang
 	u.AutoTranslateEnabled = true
 	rec := getProfile(profileServer(&fakeUserRepo{byIDUser: u}), true)
 	p := decodeProfileResp(t, rec)
 	if p.PreferredLanguage == nil || *p.PreferredLanguage != "es" {
 		t.Fatalf("preferredLanguage not returned: %+v", p.PreferredLanguage)
+	}
+	if p.PlatformLanguage == nil || *p.PlatformLanguage != "es" {
+		t.Fatalf("platformLanguage not returned: %+v", p.PlatformLanguage)
 	}
 	if !p.AutoTranslateEnabled {
 		t.Fatal("autoTranslateEnabled not returned")
@@ -47,12 +54,15 @@ func TestProfileReturnsStoredLanguagePrefs(t *testing.T) {
 
 func TestPatchLanguagePrefs(t *testing.T) {
 	users := profileUser(t)
-	rec := patchProfile(profileServer(users), `{"preferredLanguage":"es","autoTranslateEnabled":true}`, true, true)
+	rec := patchProfile(profileServer(users), `{"platformLanguage":"ru","preferredLanguage":"es","autoTranslateEnabled":true}`, true, true)
 	if rec.Code != http.StatusOK {
 		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
 	}
 	if !users.lastUpdate.PreferredLanguage.Set || users.lastUpdate.PreferredLanguage.Value == nil || *users.lastUpdate.PreferredLanguage.Value != "es" {
 		t.Fatalf("preferredLanguage not persisted: %+v", users.lastUpdate.PreferredLanguage)
+	}
+	if !users.lastUpdate.PlatformLanguage.Set || users.lastUpdate.PlatformLanguage.Value == nil || *users.lastUpdate.PlatformLanguage.Value != "ru" {
+		t.Fatalf("platformLanguage not persisted: %+v", users.lastUpdate.PlatformLanguage)
 	}
 	if users.lastUpdate.AutoTranslateEnabled == nil || !*users.lastUpdate.AutoTranslateEnabled {
 		t.Fatalf("autoTranslateEnabled not persisted: %v", users.lastUpdate.AutoTranslateEnabled)

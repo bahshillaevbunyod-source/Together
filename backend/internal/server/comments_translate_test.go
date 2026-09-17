@@ -33,10 +33,10 @@ func commentTranslateServer(me *user.User, comments *fakeCommentRepo, tr transla
 	return s
 }
 
-func viewerPrefs(enabled bool, preferred *string) *user.User {
+func viewerPrefs(enabled bool, platform *string) *user.User {
 	u := mkUser("me-id", "me_user")
 	u.AutoTranslateEnabled = enabled
-	u.PreferredLanguage = preferred
+	u.PlatformLanguage = platform
 	return u
 }
 
@@ -88,10 +88,10 @@ func TestCreateCommentTranslated(t *testing.T) {
 	}
 }
 
-func TestCreateCommentTranslateNoPreferredLanguage(t *testing.T) {
+func TestCreateCommentTranslateNoPlatformLanguage(t *testing.T) {
 	s := commentTranslateServer(viewerPrefs(true, nil), &fakeCommentRepo{}, &fakeTranslator{})
 	if createCommentResp(t, s).TranslatedContent != nil {
-		t.Fatal("no preferred language: expected no translation")
+		t.Fatal("no platform language: expected no translation")
 	}
 }
 

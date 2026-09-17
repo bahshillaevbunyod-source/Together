@@ -253,8 +253,8 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 
 	// Translate only when the viewer opted in and has a target language.
 	targetLang := ""
-	if me.AutoTranslateEnabled && me.PreferredLanguage != nil {
-		targetLang = *me.PreferredLanguage
+	if me.AutoTranslateEnabled && me.PlatformLanguage != nil {
+		targetLang = *me.PlatformLanguage
 	}
 
 	items := make([]messageResponse, 0, len(rows))
@@ -376,8 +376,8 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 	s.publishMessageCreated(r.Context(), id, recipientID, resp)
 
 	// Translate the HTTP response for the CURRENT sender/viewer's preferences.
-	if me.AutoTranslateEnabled && me.PreferredLanguage != nil {
-		s.applyTranslation(r.Context(), &resp, resp.Content, *me.PreferredLanguage)
+	if me.AutoTranslateEnabled && me.PlatformLanguage != nil {
+		s.applyTranslation(r.Context(), &resp, resp.Content, *me.PlatformLanguage)
 	}
 
 	writeJSON(w, http.StatusCreated, resp)
@@ -404,8 +404,8 @@ type messageCreatedData struct {
 func (s *Server) publishMessageCreated(ctx context.Context, conversationID, recipientID string, msg messageResponse) {
 	// Translate using the RECIPIENT's preferences, loaded server-side.
 	if recipient, err := s.users.GetByID(ctx, recipientID); err == nil &&
-		recipient.AutoTranslateEnabled && recipient.PreferredLanguage != nil {
-		s.applyTranslation(ctx, &msg, msg.Content, *recipient.PreferredLanguage)
+		recipient.AutoTranslateEnabled && recipient.PlatformLanguage != nil {
+		s.applyTranslation(ctx, &msg, msg.Content, *recipient.PlatformLanguage)
 	}
 
 	data := messageCreatedData{ConversationID: conversationID, messageResponse: msg}

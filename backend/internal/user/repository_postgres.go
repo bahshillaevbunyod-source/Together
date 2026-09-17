@@ -29,7 +29,7 @@ INSERT INTO users (email, username, display_name, native_language, password_hash
 VALUES ($1, $2, $3, $4, $5)
 RETURNING id, email, phone, username, display_name, avatar_url, bio,
           country_code, city, native_language, created_at, updated_at,
-          preferred_language, auto_translate_enabled
+          platform_language, preferred_language, auto_translate_enabled
 `
 
 // Create inserts a new user and returns the stored row (without password_hash).
@@ -63,6 +63,7 @@ func createUser(ctx context.Context, q DBTX, in CreateInput) (*User, error) {
 		&u.NativeLanguage,
 		&u.CreatedAt,
 		&u.UpdatedAt,
+		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
 	); err != nil {
@@ -75,7 +76,7 @@ func createUser(ctx context.Context, q DBTX, in CreateInput) (*User, error) {
 const getUserByEmailQuery = `
 SELECT id, email, phone, username, display_name, avatar_url, bio,
        country_code, city, native_language, password_hash, created_at, updated_at,
-       preferred_language, auto_translate_enabled
+       platform_language, preferred_language, auto_translate_enabled
 FROM users
 WHERE email = $1
 `
@@ -100,6 +101,7 @@ func (r *PostgresRepository) GetByEmail(ctx context.Context, email string) (*Use
 		&u.PasswordHash,
 		&u.CreatedAt,
 		&u.UpdatedAt,
+		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
 	); err != nil {
@@ -115,7 +117,7 @@ func (r *PostgresRepository) GetByEmail(ctx context.Context, email string) (*Use
 const getUserByIDQuery = `
 SELECT id, email, phone, username, display_name, avatar_url, bio,
        country_code, city, native_language, password_hash, created_at, updated_at,
-       preferred_language, auto_translate_enabled
+       platform_language, preferred_language, auto_translate_enabled
 FROM users
 WHERE id = $1
 `
@@ -139,6 +141,7 @@ func (r *PostgresRepository) GetByID(ctx context.Context, id string) (*User, err
 		&u.PasswordHash,
 		&u.CreatedAt,
 		&u.UpdatedAt,
+		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
 	); err != nil {
@@ -153,7 +156,7 @@ func (r *PostgresRepository) GetByID(ctx context.Context, id string) (*User, err
 const getUserByUsernameQuery = `
 SELECT id, email, phone, username, display_name, avatar_url, bio,
        country_code, city, native_language, password_hash, created_at, updated_at,
-       preferred_language, auto_translate_enabled
+       platform_language, preferred_language, auto_translate_enabled
 FROM users
 WHERE username = $1
 `
@@ -178,6 +181,7 @@ func (r *PostgresRepository) GetByUsername(ctx context.Context, username string)
 		&u.PasswordHash,
 		&u.CreatedAt,
 		&u.UpdatedAt,
+		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
 	); err != nil {
@@ -385,7 +389,7 @@ LIMIT $7`, ForYouCountryBoost, ForYouLanguageBoost, discoverCandidate)
 // (password_hash is intentionally excluded).
 const profileReturningColumns = `id, email, phone, username, display_name,
 	avatar_url, bio, country_code, city, native_language, created_at, updated_at,
-	preferred_language, auto_translate_enabled`
+	platform_language, preferred_language, auto_translate_enabled`
 
 // UpdateProfile applies a partial update to the editable profile columns and
 // returns the updated row. Only provided fields are written. Returns
@@ -421,6 +425,9 @@ func (r *PostgresRepository) UpdateProfile(ctx context.Context, id string, in Pr
 	if in.PreferredLanguage.Set {
 		add("preferred_language", in.PreferredLanguage.Value)
 	}
+	if in.PlatformLanguage.Set {
+		add("platform_language", in.PlatformLanguage.Value)
+	}
 	if in.AutoTranslateEnabled != nil {
 		add("auto_translate_enabled", *in.AutoTranslateEnabled)
 	}
@@ -446,6 +453,7 @@ func (r *PostgresRepository) UpdateProfile(ctx context.Context, id string, in Pr
 		&u.NativeLanguage,
 		&u.CreatedAt,
 		&u.UpdatedAt,
+		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
 	); err != nil {

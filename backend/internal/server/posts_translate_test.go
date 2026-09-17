@@ -30,10 +30,10 @@ func postTranslateServer(me *user.User, posts *fakePostRepo, tr translation.Serv
 	return s
 }
 
-func viewerWithTranslate(enabled bool, preferred *string) *user.User {
+func viewerWithTranslate(enabled bool, platform *string) *user.User {
 	u := mkUser("me-id", "me_user")
 	u.AutoTranslateEnabled = enabled
-	u.PreferredLanguage = preferred
+	u.PlatformLanguage = platform
 	return u
 }
 
@@ -87,10 +87,21 @@ func TestGetPostTranslated(t *testing.T) {
 	}
 }
 
-func TestGetPostTranslateNoPreferredLanguage(t *testing.T) {
+func TestGetPostTranslateNoPlatformLanguage(t *testing.T) {
 	s := postTranslateServer(viewerWithTranslate(true, nil), publicPostRepo(), &fakeTranslator{})
 	if getPostResp(t, s).TranslatedContent != nil {
-		t.Fatal("no preferred language: expected no translation")
+		t.Fatal("no platform language: expected no translation")
+	}
+}
+
+func TestGetPostUsesPlatformLanguage(t *testing.T) {
+	preferred := "fr"
+	platform := "es"
+	me := viewerWithTranslate(true, &platform)
+	me.PreferredLanguage = &preferred
+	resp := getPostResp(t, postTranslateServer(me, publicPostRepo(), &fakeTranslator{}))
+	if resp.TargetLanguage == nil || *resp.TargetLanguage != "es" {
+		t.Fatalf("expected platform language target, got %v", resp.TargetLanguage)
 	}
 }
 

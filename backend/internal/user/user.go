@@ -21,7 +21,8 @@ type User struct {
 	CreatedAt      time.Time // set by DB default now()
 	UpdatedAt      time.Time // set by DB default now()
 
-	// Translation preferences.
-	PreferredLanguage    *string // nullable; nil == fall back to NativeLanguage
+	// Language preferences.
+	PlatformLanguage     *string // nullable until onboarding; UI and translation target
+	PreferredLanguage    *string // nullable; independent translation preference
 	AutoTranslateEnabled bool    // default false
 }

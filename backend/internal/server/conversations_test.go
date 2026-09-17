@@ -267,10 +267,10 @@ func getMessagesFrom(s *Server, withCookie bool) messageListResponse {
 	return resp
 }
 
-func userWithTranslate(enabled bool, preferred *string) *user.User {
+func userWithTranslate(enabled bool, platform *string) *user.User {
 	u := mkUser("me-id", "me_user")
 	u.AutoTranslateEnabled = enabled
-	u.PreferredLanguage = preferred
+	u.PlatformLanguage = platform
 	return u
 }
 
@@ -294,12 +294,12 @@ func TestMessagesTranslateDisabled(t *testing.T) {
 	}
 }
 
-func TestMessagesTranslateNoPreferredLanguage(t *testing.T) {
+func TestMessagesTranslateNoPlatformLanguage(t *testing.T) {
 	me := userWithTranslate(true, nil) // enabled but no target language
 	s := msgTranslateServer(oneMessageConv(), me, &fakeTranslator{})
 	resp := getMessagesFrom(s, true)
 	if resp.Items[0].TranslatedContent != nil {
-		t.Fatal("no preferred language: expected no translation")
+		t.Fatal("no platform language: expected no translation")
 	}
 }
 
@@ -731,11 +731,11 @@ func TestCreateMessageResponseTranslated(t *testing.T) {
 	}
 }
 
-func TestCreateMessageResponseNoPreferredLanguage(t *testing.T) {
+func TestCreateMessageResponseNoPlatformLanguage(t *testing.T) {
 	s := msgTranslateServer(&fakeConversationRepo{recipientID: "u2"}, userWithTranslate(true, nil), &fakeTranslator{})
 	resp := postMessageResp(t, s)
 	if resp.TranslatedContent != nil {
-		t.Fatal("no preferred language: expected no translation")
+		t.Fatal("no platform language: expected no translation")
 	}
 }
 
@@ -919,10 +919,10 @@ func convDeliveryServerWith(conv *fakeConversationRepo, recipient *user.User, tr
 	return s
 }
 
-func recipientUser(id string, enabled bool, preferred *string) *user.User {
+func recipientUser(id string, enabled bool, platform *string) *user.User {
 	u := mkUser(id, id+"_user")
 	u.AutoTranslateEnabled = enabled
-	u.PreferredLanguage = preferred
+	u.PlatformLanguage = platform
 	return u
 }
 
@@ -982,11 +982,11 @@ func TestRealtimeEventTranslated(t *testing.T) {
 	}
 }
 
-func TestRealtimeEventNoPreferredLanguage(t *testing.T) {
+func TestRealtimeEventNoPlatformLanguage(t *testing.T) {
 	s := convDeliveryServerWith(&fakeConversationRepo{recipientID: "u2"}, recipientUser("u2", true, nil), &fakeTranslator{})
 	ev := publishAndRead(t, s)
 	if ev.Data.TranslatedContent != nil {
-		t.Fatal("no preferred language: expected no translation")
+		t.Fatal("no platform language: expected no translation")
 	}
 }
 

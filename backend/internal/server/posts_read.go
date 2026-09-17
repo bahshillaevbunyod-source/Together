@@ -89,16 +89,16 @@ func (s *Server) buildPostResponse(ctx context.Context, p *post.Post, author *us
 
 // applyPostTranslation fills the translation fields of resp using the viewer's
 // preferences. It is a no-op when the viewer is anonymous, opted out, has no
-// preferred language, or the post has no text. A translation failure is
+// platform language, or the post has no text. A translation failure is
 // swallowed so the post/feed response still succeeds with the original content.
 func (s *Server) applyPostTranslation(ctx context.Context, resp *postResponse, viewer *user.User) {
-	if viewer == nil || !viewer.AutoTranslateEnabled || viewer.PreferredLanguage == nil {
+	if viewer == nil || !viewer.AutoTranslateEnabled || viewer.PlatformLanguage == nil {
 		return
 	}
 	if resp.Content == nil || *resp.Content == "" {
 		return
 	}
-	res, err := s.translator.Translate(ctx, translation.Request{Text: *resp.Content, TargetLang: *viewer.PreferredLanguage})
+	res, err := s.translator.Translate(ctx, translation.Request{Text: *resp.Content, TargetLang: *viewer.PlatformLanguage})
 	if err != nil {
 		return
 	}

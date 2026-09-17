@@ -28,6 +28,7 @@ var editableProfileFields = map[string]bool{
 	"city":                 true,
 	"nativeLanguage":       true,
 	"avatarUrl":            true,
+	"platformLanguage":     true,
 	"preferredLanguage":    true,
 	"autoTranslateEnabled": true,
 }
@@ -45,6 +46,7 @@ type profileResponse struct {
 	AvatarURL      *string `json:"avatarUrl"`
 	CreatedAt      string  `json:"createdAt"`
 
+	PlatformLanguage     *string `json:"platformLanguage"`
 	PreferredLanguage    *string `json:"preferredLanguage"`
 	AutoTranslateEnabled bool    `json:"autoTranslateEnabled"`
 }
@@ -61,6 +63,7 @@ func toProfileResponse(u *user.User) profileResponse {
 		NativeLanguage:       u.NativeLanguage,
 		AvatarURL:            u.AvatarURL,
 		CreatedAt:            u.CreatedAt.Format(time.RFC3339),
+		PlatformLanguage:     u.PlatformLanguage,
 		PreferredLanguage:    u.PreferredLanguage,
 		AutoTranslateEnabled: u.AutoTranslateEnabled,
 	}
@@ -275,6 +278,16 @@ func buildProfileUpdate(raw map[string]json.RawMessage) (user.ProfileUpdate, boo
 			return up, false
 		}
 		up.PreferredLanguage = opt
+	}
+
+	if v, present := raw["platformLanguage"]; present {
+		// Nullable: null / "" clears it until onboarding selects a platform
+		// language. Non-empty values use the same language-code validation.
+		opt, ok := decodeNullable(v, 16, translation.ValidLanguage)
+		if !ok {
+			return up, false
+		}
+		up.PlatformLanguage = opt
 	}
 
 	if v, present := raw["autoTranslateEnabled"]; present {

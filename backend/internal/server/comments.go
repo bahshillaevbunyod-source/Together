@@ -45,17 +45,17 @@ type commentResponse struct {
 }
 
 // applyCommentTranslation fills the translation fields of resp using the
-// viewer's preferences. No-op for anonymous / opted-out / no preferred language
+// viewer's preferences. No-op for anonymous / opted-out / no platform language
 // / empty content. A translation failure is swallowed so the response still
 // succeeds with the original content.
 func (s *Server) applyCommentTranslation(ctx context.Context, resp *commentResponse, viewer *user.User) {
-	if viewer == nil || !viewer.AutoTranslateEnabled || viewer.PreferredLanguage == nil {
+	if viewer == nil || !viewer.AutoTranslateEnabled || viewer.PlatformLanguage == nil {
 		return
 	}
 	if resp.Content == "" {
 		return
 	}
-	res, err := s.translator.Translate(ctx, translation.Request{Text: resp.Content, TargetLang: *viewer.PreferredLanguage})
+	res, err := s.translator.Translate(ctx, translation.Request{Text: resp.Content, TargetLang: *viewer.PlatformLanguage})
 	if err != nil {
 		return
 	}
