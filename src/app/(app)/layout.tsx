@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { AppShell } from "@/components/layout/AppShell";
 import { useAuth } from "@/lib/auth-context";
 import { getProfile } from "@/lib/api";
+import { LanguageProvider } from "@/lib/language-context";
 import { RealtimeProvider } from "@/lib/realtime-context";
 
 type ProfileStatus = "loading" | "ready" | "error";
@@ -109,8 +110,10 @@ export default function AppGroupLayout({
   }
 
   return (
-    <RealtimeProvider>
-      <AppShell>{children}</AppShell>
-    </RealtimeProvider>
+    <LanguageProvider preferredLanguage={preferredLanguage}>
+      <RealtimeProvider>
+        <AppShell>{children}</AppShell>
+      </RealtimeProvider>
+    </LanguageProvider>
   );
 }
