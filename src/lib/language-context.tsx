@@ -9,63 +9,14 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import {
+  getDirection,
+  locales,
+  resolveLocale,
+  type TranslationKey,
+} from "@/lib/i18n";
 
-const messages = {
-  en: {
-    "navigation.home": "Home",
-    "navigation.discover": "Discover",
-    "navigation.messages": "Messages",
-    "navigation.calls": "Calls",
-    "navigation.groups": "Groups",
-    "navigation.explore": "Explore",
-    "navigation.events": "Events",
-    "navigation.bookmarks": "Bookmarks",
-    "navigation.profile": "Profile",
-    "navigation.settings": "Settings",
-    "navigation.primary": "Primary navigation",
-    "header.tagline": "Different people. One world.",
-    "search.ariaLabel": "Search people",
-    "search.placeholder": "Search people…",
-    "search.shortcut": "Ctrl K",
-    "search.searching": "Searching…",
-    "search.error": "Couldn’t run search.",
-    "search.tryAgain": "Try again",
-    "search.emptyPrefix": "No people found for “",
-    "search.emptySuffix": "”.",
-    "user.guest": "Guest",
-    "user.logout": "Log out",
-    "user.loggingOut": "Logging out…",
-    "user.logoutError": "Couldn’t log out. Try again.",
-  },
-  ru: {
-    "navigation.home": "Главная",
-    "navigation.discover": "Интересное",
-    "navigation.messages": "Сообщения",
-    "navigation.calls": "Звонки",
-    "navigation.groups": "Группы",
-    "navigation.explore": "Обзор",
-    "navigation.events": "События",
-    "navigation.bookmarks": "Закладки",
-    "navigation.profile": "Профиль",
-    "navigation.settings": "Настройки",
-    "navigation.primary": "Основная навигация",
-    "header.tagline": "Разные люди. Один мир.",
-    "search.ariaLabel": "Поиск людей",
-    "search.placeholder": "Поиск людей…",
-    "search.shortcut": "Ctrl K",
-    "search.searching": "Поиск…",
-    "search.error": "Не удалось выполнить поиск.",
-    "search.tryAgain": "Повторить",
-    "search.emptyPrefix": "По запросу «",
-    "search.emptySuffix": "» ничего не найдено.",
-    "user.guest": "Гость",
-    "user.logout": "Выйти",
-    "user.loggingOut": "Выход…",
-    "user.logoutError": "Не удалось выйти. Попробуйте ещё раз.",
-  },
-} as const;
-
-export type TranslationKey = keyof (typeof messages)["en"];
+export type { TranslationKey };
 
 interface LanguageContextValue {
   locale: string;
@@ -75,11 +26,6 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
-function normalizeLocale(platformLanguage: string | null): string {
-  const normalized = platformLanguage?.trim().toLowerCase();
-  return normalized || "en";
-}
-
 export function LanguageProvider({
   platformLanguage,
   children,
@@ -87,25 +33,29 @@ export function LanguageProvider({
   platformLanguage: string | null;
   children: ReactNode;
 }) {
-  const [locale, setLocale] = useState(() => normalizeLocale(platformLanguage));
+  const [locale, setLocale] = useState(() => resolveLocale(platformLanguage));
 
   useEffect(() => {
-    const nextLocale = normalizeLocale(platformLanguage);
+    const nextLocale = resolveLocale(platformLanguage);
     setLocale((currentLocale) =>
       currentLocale === nextLocale ? currentLocale : nextLocale,
     );
   }, [platformLanguage]);
 
+  useEffect(() => {
+    document.documentElement.dir = getDirection(locale);
+  }, [locale]);
+
   const setLanguage = useCallback((language: string | null) => {
-    setLocale(normalizeLocale(language));
+    setLocale(resolveLocale(language));
   }, []);
 
   const value = useMemo<LanguageContextValue>(() => {
-    const dictionary = messages[locale as keyof typeof messages] ?? messages.en;
+    const dictionary = locales[locale];
 
     return {
       locale,
-      t: (key) => dictionary[key] ?? messages.en[key],
+      t: (key) => dictionary[key] ?? locales.en[key],
       setLanguage,
     };
   }, [locale, setLanguage]);
