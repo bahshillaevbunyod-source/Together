@@ -8,6 +8,8 @@ import (
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
+
+	"together/backend/internal/post"
 )
 
 type fakeRow struct {
@@ -127,5 +129,14 @@ func TestCreatePostTopicsTxEmptySlugsExecutesNoSQL(t *testing.T) {
 	}
 	if len(db.querySQL) != 0 || len(db.execSQL) != 0 {
 		t.Fatalf("empty slug list must not execute SQL: queries=%v execs=%v", db.querySQL, db.execSQL)
+	}
+}
+
+func TestSearchTopicsQueryIsParameterizedAndVisibilitySafe(t *testing.T) {
+	if !strings.Contains(searchTopicsQuery, "position($2 in t.slug)") || !strings.Contains(searchTopicsQuery, "LIMIT $3") {
+		t.Fatalf("search query must parameterize its input and limit: %s", searchTopicsQuery)
+	}
+	if !strings.Contains(searchTopicsQuery, post.SQLFollowsAuthor) || !strings.Contains(searchTopicsQuery, post.SQLNotBlocked) {
+		t.Fatalf("search query must reuse visibility and block predicates: %s", searchTopicsQuery)
 	}
 }

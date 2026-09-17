@@ -16,13 +16,18 @@ import (
 )
 
 type fakeTopicRepo struct {
-	bySlug       map[string]*topic.Topic
-	getErr       error
-	trending     []topic.TrendingItem
-	trendingErr  error
-	lastSlug     string
-	lastViewerID *string
-	lastLimit    int
+	bySlug             map[string]*topic.Topic
+	getErr             error
+	trending           []topic.TrendingItem
+	trendingErr        error
+	search             []topic.TrendingItem
+	searchErr          error
+	lastSlug           string
+	lastViewerID       *string
+	lastLimit          int
+	lastSearchQuery    string
+	lastSearchViewerID *string
+	lastSearchLimit    int
 }
 
 func (f *fakeTopicRepo) CreatePostTopicsTx(context.Context, topic.DBTX, string, []string) error {
@@ -51,6 +56,19 @@ func (f *fakeTopicRepo) ListTrending(_ context.Context, viewerID *string, limit 
 		return f.trending[:limit], nil
 	}
 	return f.trending, nil
+}
+
+func (f *fakeTopicRepo) Search(_ context.Context, viewerID *string, query string, limit int) ([]topic.TrendingItem, error) {
+	f.lastSearchViewerID = viewerID
+	f.lastSearchQuery = query
+	f.lastSearchLimit = limit
+	if f.searchErr != nil {
+		return nil, f.searchErr
+	}
+	if len(f.search) > limit {
+		return f.search[:limit], nil
+	}
+	return f.search, nil
 }
 
 func topicsServer(topics *fakeTopicRepo, posts *fakePostRepo, sessions *fakeSessionRepo) *http.Server {
@@ -92,6 +110,34 @@ func TestListTopicsReturnsTrendingForAnonymousViewer(t *testing.T) {
 	}
 	if len(response.Items) != 1 || response.Items[0].Slug != "travel" || response.Items[0].PostsCount != 8 {
 		t.Fatalf("unexpected response: %+v", response)
+	}
+}
+
+func TestSearchTopicsCanonicalizesQueryAndUsesSmallLimit(t *testing.T) {
+	topics := &fakeTopicRepo{search: []topic.TrendingItem{{Slug: "travel", PostsCount: 8}}}
+	rec := doTopicsRequest(topicsServer(topics, &fakePostRepo{}, &fakeSessionRepo{}), "/api/v1/topics/search?q=%23TRAVEL", false)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if topics.lastSearchQuery != "travel" || topics.lastSearchViewerID != nil || topics.lastSearchLimit != topicSearchLimit {
+		t.Fatalf("unexpected search call: query=%q viewer=%v limit=%d", topics.lastSearchQuery, topics.lastSearchViewerID, topics.lastSearchLimit)
+	}
+	var response trendingTopicsResponse
+	if err := json.Unmarshal(rec.Body.Bytes(), &response); err != nil {
+		t.Fatalf("invalid response: %v", err)
+	}
+	if len(response.Items) != 1 || response.Items[0].Slug != "travel" {
+		t.Fatalf("unexpected response: %+v", response)
+	}
+}
+
+func TestSearchTopicsRejectsInvalidQueryAndHandlesRepositoryError(t *testing.T) {
+	if rec := doTopicsRequest(topicsServer(&fakeTopicRepo{}, &fakePostRepo{}, &fakeSessionRepo{}), "/api/v1/topics/search?q=", false); rec.Code != http.StatusBadRequest {
+		t.Fatalf("empty query: expected 400, got %d", rec.Code)
+	}
+	topics := &fakeTopicRepo{searchErr: errors.New("boom")}
+	if rec := doTopicsRequest(topicsServer(topics, &fakePostRepo{}, &fakeSessionRepo{}), "/api/v1/topics/search?q=travel", false); rec.Code != http.StatusInternalServerError {
+		t.Fatalf("repository error: expected 500, got %d", rec.Code)
 	}
 }
 

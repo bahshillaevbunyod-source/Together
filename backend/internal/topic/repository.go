@@ -36,4 +36,5 @@ type Repository interface {
 	CreatePostTopicsTx(ctx context.Context, q DBTX, postID string, slugs []string) error
 	GetBySlug(ctx context.Context, slug string) (*Topic, error)
 	ListTrending(ctx context.Context, viewerID *string, limit int) ([]TrendingItem, error)
+	Search(ctx context.Context, viewerID *string, query string, limit int) ([]TrendingItem, error)
 }

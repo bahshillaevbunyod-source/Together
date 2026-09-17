@@ -3,6 +3,7 @@ package server
 import (
 	"errors"
 	"net/http"
+	"strings"
 
 	"together/backend/internal/media"
 	"together/backend/internal/post"
@@ -23,6 +24,8 @@ type trendingTopicsResponse struct {
 	Items []trendingTopicResponse `json:"items"`
 }
 
+const topicSearchLimit = 10
+
 // handleListTopics returns a simple popularity ranking. The repository counts
 // only posts visible to the optional viewer, including block filtering.
 func (s *Server) handleListTopics(w http.ResponseWriter, r *http.Request) {
@@ -42,6 +45,39 @@ func (s *Server) handleListTopics(w http.ResponseWriter, r *http.Request) {
 		viewerID = &viewer.ID
 	}
 	items, err := s.topics.ListTrending(r.Context(), viewerID, limit)
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+
+	response := make([]trendingTopicResponse, 0, len(items))
+	for _, item := range items {
+		response = append(response, trendingTopicResponse{Slug: item.Slug, PostsCount: item.PostsCount})
+	}
+	writeJSON(w, http.StatusOK, trendingTopicsResponse{Items: response})
+}
+
+// handleSearchTopics searches canonical slugs within the set of topics whose
+// posts are visible to the optional viewer. It intentionally has a small fixed
+// limit because this endpoint backs type-ahead search.
+func (s *Server) handleSearchTopics(w http.ResponseWriter, r *http.Request) {
+	if s.topics == nil {
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+
+	rawQuery := strings.TrimPrefix(r.URL.Query().Get("q"), "#")
+	query, ok := topic.CanonicalSlug(rawQuery)
+	if !ok {
+		writeError(w, http.StatusBadRequest, "invalid query")
+		return
+	}
+
+	var viewerID *string
+	if viewer := s.optionalUser(r); viewer != nil {
+		viewerID = &viewer.ID
+	}
+	items, err := s.topics.Search(r.Context(), viewerID, query, topicSearchLimit)
 	if err != nil {
 		writeError(w, http.StatusInternalServerError, "internal error")
 		return

@@ -228,6 +228,7 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	// viewer receives the same visibility and block filtering as other post
 	// reads; anonymous viewers see public posts only.
 	mux.HandleFunc("GET /api/v1/topics", s.handleListTopics)
+	mux.HandleFunc("GET /api/v1/topics/search", s.handleSearchTopics)
 	mux.HandleFunc("GET /api/v1/topics/{slug}", s.handleGetTopic)
 	mux.HandleFunc("GET /api/v1/topics/{slug}/posts", s.handleTopicPosts)
 
