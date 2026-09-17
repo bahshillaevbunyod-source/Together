@@ -16,6 +16,7 @@ import {
 import { PersonCard } from "@/components/discover/PersonCard";
 import { Feed } from "@/components/feed/Feed";
 import { FeedProvider } from "@/lib/feed-context";
+import { useLanguage } from "@/lib/language-context";
 import { canonicalTopicSlug } from "@/lib/topic";
 
 type Status = "loading" | "ready" | "error";
@@ -42,6 +43,7 @@ function dedupe(items: DiscoverUser[], seen: Set<string>): DiscoverUser[] {
 }
 
 export default function DiscoverPage() {
+  const { t } = useLanguage();
   // For You feed.
   const [people, setPeople] = useState<DiscoverUser[]>([]);
   const [status, setStatus] = useState<Status>("loading");
@@ -233,9 +235,9 @@ export default function DiscoverPage() {
                 <SectionHeading>Discover posts</SectionHeading>
                 <FeedProvider fetchPage={getDiscoverPosts}>
                   <Feed
-                    loadingMessage="Loading posts…"
-                    errorMessage="Couldn’t load discover posts."
-                    emptyMessage="No new posts to discover right now."
+                    loadingMessage={t("feed.discoverLoading")}
+                    errorMessage={t("feed.discoverError")}
+                    emptyMessage={t("feed.discoverEmpty")}
                   />
                 </FeedProvider>
               </section>

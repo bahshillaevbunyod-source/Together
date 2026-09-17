@@ -33,6 +33,7 @@ import {
 import { mapApiPost } from "@/lib/map-post";
 import { useAuth } from "@/lib/auth-context";
 import { useFeed } from "@/lib/feed-context";
+import { useLanguage } from "@/lib/language-context";
 import { splitTopicText } from "@/lib/topic";
 
 type LocalComment = {
@@ -61,6 +62,7 @@ export function PostCard({
 
   const { user } = useAuth();
   const { replacePost, removePost } = useFeed();
+  const { t } = useLanguage();
   const isOwn = !!user?.id && author.id === user.id;
 
   // Own-post menu + edit + delete state.
@@ -161,8 +163,8 @@ export function PostCard({
     } catch (err) {
       setEditError(
         err instanceof ApiError && err.status === 401
-          ? "Please sign in to edit."
-          : "Couldn’t save changes. Please try again.",
+          ? t("post.editSignIn")
+          : t("post.editFailed"),
       );
     } finally {
       setSavingEdit(false);
@@ -179,8 +181,8 @@ export function PostCard({
     } catch (err) {
       setDeleteError(
         err instanceof ApiError && err.status === 401
-          ? "Please sign in to delete."
-          : "Couldn’t delete post. Please try again.",
+          ? t("post.deleteSignIn")
+          : t("post.deleteFailed"),
       );
       setDeleting(false); // keep the dialog open to retry (card still mounted)
     }
@@ -343,7 +345,7 @@ export function PostCard({
           <div className="relative" ref={menuRef}>
             <button
               type="button"
-              aria-label="Post options"
+              aria-label={t("post.options")}
               aria-haspopup="menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((v) => !v)}
@@ -365,7 +367,7 @@ export function PostCard({
                   className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-background"
                 >
                   <Pencil className="h-4 w-4 text-muted" />
-                  Edit
+                  {t("post.edit")}
                 </button>
                 <button
                   type="button"
@@ -378,7 +380,7 @@ export function PostCard({
                   className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-red-600 transition-colors hover:bg-red-50"
                 >
                   <Trash2 className="h-4 w-4" />
-                  Delete
+                  {t("post.delete")}
                 </button>
               </div>
             ) : null}
@@ -386,7 +388,7 @@ export function PostCard({
         ) : (
           <button
             type="button"
-            aria-label="More"
+            aria-label={t("post.more")}
             className="flex h-8 w-8 items-center justify-center rounded-full text-muted-soft transition-colors hover:bg-background"
           >
             <MoreHorizontal className="h-5 w-5" />
@@ -416,7 +418,7 @@ export function PostCard({
               disabled={savingEdit}
               className="rounded-full px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-background disabled:opacity-50"
             >
-              Cancel
+              {t("post.cancel")}
             </button>
             <button
               type="button"
@@ -424,7 +426,7 @@ export function PostCard({
               disabled={savingEdit || editText.trim().length === 0}
               className="rounded-full bg-primary px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
             >
-              {savingEdit ? "Saving…" : "Save"}
+              {savingEdit ? t("post.saving") : t("post.save")}
             </button>
           </div>
         </div>
@@ -460,7 +462,7 @@ export function PostCard({
             onClick={() => setShowOriginal((v) => !v)}
             className="text-primary transition-opacity hover:opacity-80"
           >
-            {showOriginal ? "Show translation" : "Show original"}
+            {showOriginal ? t("post.showTranslation") : t("post.showOriginal")}
           </button>
         </div>
       ) : null}
@@ -522,7 +524,7 @@ export function PostCard({
                 ) : (
                   <Link2 className="h-4 w-4 text-muted" />
                 )}
-                {copied ? "Copied" : "Copy link"}
+                {copied ? t("post.copied") : t("post.copyLink")}
               </button>
               <button
                 type="button"
@@ -531,7 +533,7 @@ export function PostCard({
                 className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-background"
               >
                 <Send className="h-4 w-4 text-muted" />
-                Send in message
+                {t("post.sendInMessage")}
               </button>
               <button
                 type="button"
@@ -540,7 +542,7 @@ export function PostCard({
                 className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-background"
               >
                 <UserPlus className="h-4 w-4 text-muted" />
-                Share to profile
+                {t("post.shareToProfile")}
               </button>
             </div>
           ) : null}
@@ -549,7 +551,7 @@ export function PostCard({
           type="button"
           onClick={toggleSave}
           aria-pressed={saved}
-          aria-label="Save"
+          aria-label={t("post.bookmark")}
           className={`ml-auto flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
             saved ? "text-primary" : "hover:text-foreground"
           }`}
@@ -562,24 +564,24 @@ export function PostCard({
       {showComments ? (
         <div className="mt-3 border-t border-border pt-3">
           {commentsStatus === "loading" ? (
-            <p className="mb-3 text-sm text-muted">Loading comments…</p>
+            <p className="mb-3 text-sm text-muted">{t("comment.loading")}</p>
           ) : null}
 
           {commentsStatus === "error" ? (
             <div className="mb-3 flex items-center gap-3">
-              <p className="text-sm text-muted">Couldn’t load comments.</p>
+              <p className="text-sm text-muted">{t("comment.error")}</p>
               <button
                 type="button"
                 onClick={() => loadComments()}
                 className="text-sm text-primary hover:underline"
               >
-                Try again
+                {t("search.tryAgain")}
               </button>
             </div>
           ) : null}
 
           {commentsStatus === "ready" && comments.length === 0 ? (
-            <p className="mb-3 text-sm text-muted-soft">No comments yet.</p>
+            <p className="mb-3 text-sm text-muted-soft">{t("comment.empty")}</p>
           ) : null}
 
           {comments.length > 0 ? (
@@ -596,13 +598,13 @@ export function PostCard({
               type="text"
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
-              placeholder="Write a comment…"
+              placeholder={t("comment.placeholder")}
               className="h-9 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft"
             />
             <button
               type="submit"
               disabled={!canSend}
-              aria-label="Send comment"
+              aria-label={t("comment.send")}
               className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
             >
               <Send className="h-4 w-4" />
@@ -617,7 +619,7 @@ export function PostCard({
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
           role="dialog"
           aria-modal="true"
-          aria-label="Delete post"
+          aria-label={t("post.deleteDialog")}
           onClick={() => {
             if (!deleting) setConfirmDelete(false);
           }}
@@ -627,10 +629,10 @@ export function PostCard({
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className="text-base font-semibold text-foreground">
-              Delete post?
+              {t("post.deleteTitle")}
             </h2>
             <p className="mt-1 text-sm text-muted">
-              This can’t be undone. The post and its media will be removed.
+              {t("post.deleteBody")}
             </p>
             {deleteError ? (
               <p className="mt-2 text-xs text-red-500" role="alert">
@@ -644,7 +646,7 @@ export function PostCard({
                 disabled={deleting}
                 className="rounded-full px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-background disabled:opacity-50"
               >
-                Cancel
+                {t("post.cancel")}
               </button>
               <button
                 type="button"
@@ -652,7 +654,7 @@ export function PostCard({
                 disabled={deleting}
                 className="rounded-full bg-red-600 px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {deleting ? "Deleting…" : "Delete"}
+                {deleting ? t("post.deleting") : t("post.delete")}
               </button>
             </div>
           </div>
@@ -666,6 +668,7 @@ export function PostCard({
 // translated text by default with a per-comment "Show original" toggle. It never
 // translates in the browser — only displays what the backend provided.
 function CommentItem({ comment }: { comment: LocalComment }) {
+  const { t } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
 
   const translated = comment.translatedContent;
@@ -701,7 +704,7 @@ function CommentItem({ comment }: { comment: LocalComment }) {
               onClick={() => setShowOriginal((v) => !v)}
               className="text-primary transition-opacity hover:opacity-80"
             >
-              {showOriginal ? "Show translation" : "Show original"}
+              {showOriginal ? t("post.showTranslation") : t("post.showOriginal")}
             </button>
           </div>
         ) : null}

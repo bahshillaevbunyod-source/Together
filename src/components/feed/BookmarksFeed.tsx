@@ -4,6 +4,7 @@ import { Bookmark } from "lucide-react";
 
 import { PostCard } from "./PostCard";
 import { useFeed } from "@/lib/feed-context";
+import { useLanguage } from "@/lib/language-context";
 
 /**
  * Renders the viewer's saved posts using the shared feed context (backed by
@@ -13,6 +14,7 @@ import { useFeed } from "@/lib/feed-context";
 export function BookmarksFeed() {
   const { posts, status, nextCursor, loadingMore, reload, loadMore, removePost } =
     useFeed();
+  const { t } = useLanguage();
 
   if (status === "loading") {
     return (
@@ -43,13 +45,13 @@ export function BookmarksFeed() {
     return (
       <section className="flex flex-col gap-4">
         <div className="rounded-2xl border border-border bg-surface p-6 text-center">
-          <p className="text-sm text-muted">Couldn’t load your bookmarks.</p>
+          <p className="text-sm text-muted">{t("bookmarks.error")}</p>
           <button
             type="button"
             onClick={reload}
             className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
           >
-            Try again
+            {t("search.tryAgain")}
           </button>
         </div>
       </section>
@@ -64,10 +66,10 @@ export function BookmarksFeed() {
             <Bookmark className="h-7 w-7" />
           </span>
           <h2 className="mt-4 text-base font-semibold text-foreground">
-            No bookmarks yet
+            {t("bookmarks.emptyTitle")}
           </h2>
           <p className="mt-1 max-w-sm text-sm text-muted">
-            Tap the bookmark icon on any post to save it here for later.
+            {t("bookmarks.emptyBody")}
           </p>
         </div>
       </section>
@@ -87,7 +89,7 @@ export function BookmarksFeed() {
           disabled={loadingMore}
           className="mx-auto rounded-full border border-border bg-surface px-5 py-2 text-sm text-muted transition-colors hover:text-foreground disabled:opacity-50"
         >
-          {loadingMore ? "Loading…" : "Load more"}
+          {loadingMore ? t("feed.loadingMore") : t("feed.loadMore")}
         </button>
       ) : null}
     </section>

@@ -6,8 +6,10 @@ import { useParams } from "next/navigation";
 import { Feed } from "@/components/feed/Feed";
 import { FeedProvider, type FeedPageFetcher } from "@/lib/feed-context";
 import { getPost } from "@/lib/api";
+import { useLanguage } from "@/lib/language-context";
 
 export default function PostPermalinkPage() {
+  const { t } = useLanguage();
   const params = useParams<{ id: string }>();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
@@ -29,9 +31,9 @@ export default function PostPermalinkPage() {
       </header>
       <FeedProvider fetchPage={fetchPage}>
         <Feed
-          loadingMessage="Loading post…"
-          errorMessage="This post isn’t available."
-          emptyMessage="This post isn’t available."
+          loadingMessage={t("feed.postLoading")}
+          errorMessage={t("feed.postUnavailable")}
+          emptyMessage={t("feed.postUnavailable")}
         />
       </FeedProvider>
     </div>

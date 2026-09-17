@@ -7,8 +7,10 @@ import { useParams } from "next/navigation";
 import { Feed } from "@/components/feed/Feed";
 import { FeedProvider, type FeedPageFetcher } from "@/lib/feed-context";
 import { getTopicPosts } from "@/lib/api";
+import { useLanguage } from "@/lib/language-context";
 
 export default function TopicPage() {
+  const { t } = useLanguage();
   const params = useParams<{ slug: string }>();
   const slug = params.slug;
 
@@ -34,9 +36,9 @@ export default function TopicPage() {
 
       <FeedProvider key={slug} fetchPage={fetchPage}>
         <Feed
-          loadingMessage="Loading topic posts…"
-          errorMessage="Couldn’t load posts for this topic."
-          emptyMessage="No posts in this topic yet."
+          loadingMessage={t("feed.topicLoading")}
+          errorMessage={t("feed.topicError")}
+          emptyMessage={t("feed.topicEmpty")}
         />
       </FeedProvider>
     </div>

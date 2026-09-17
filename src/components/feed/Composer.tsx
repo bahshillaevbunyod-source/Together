@@ -25,6 +25,7 @@ import {
 } from "@/lib/api";
 import { mapApiPost } from "@/lib/map-post";
 import { useFeed } from "@/lib/feed-context";
+import { useLanguage, type TranslationKey } from "@/lib/language-context";
 
 // Client-side image constraints, mirroring the backend media policy. The picker
 // validates against these directly (never trusting the input `accept` alone).
@@ -33,25 +34,32 @@ const MAX_IMAGE_BYTES = 15 * 1024 * 1024; // 15 MiB
 const MAX_IMAGES = 8; // product limit: at most 8 images per post
 
 type Action = {
-  label: string;
+  id: "photo" | "video" | "voice" | "poll" | "feeling";
+  labelKey: TranslationKey;
   icon: LucideIcon;
   color: string;
 };
 
 const actions: Action[] = [
-  { label: "Photo", icon: ImageIcon, color: "text-emerald-500" },
-  { label: "Video", icon: Video, color: "text-rose-500" },
-  { label: "Voice", icon: Mic, color: "text-violet-500" },
-  { label: "Poll", icon: BarChart3, color: "text-sky-500" },
-  { label: "Feeling", icon: Smile, color: "text-amber-500" },
+  { id: "photo", labelKey: "composer.action.photo", icon: ImageIcon, color: "text-emerald-500" },
+  { id: "video", labelKey: "composer.action.video", icon: Video, color: "text-rose-500" },
+  { id: "voice", labelKey: "composer.action.voice", icon: Mic, color: "text-violet-500" },
+  { id: "poll", labelKey: "composer.action.poll", icon: BarChart3, color: "text-sky-500" },
+  { id: "feeling", labelKey: "composer.action.feeling", icon: Smile, color: "text-amber-500" },
 ];
 
 type Visibility = "everyone" | "friends" | "private";
 
-const visibilityLabels: Record<Visibility, string> = {
-  everyone: "Public",
-  friends: "Followers",
-  private: "Private",
+// Translation keys for each audience choice's label and hint.
+const visibilityLabelKey: Record<Visibility, TranslationKey> = {
+  everyone: "composer.visibility.public",
+  friends: "composer.visibility.followers",
+  private: "composer.visibility.private",
+};
+const visibilityHintKey: Record<Visibility, TranslationKey> = {
+  everyone: "composer.visibility.publicHint",
+  friends: "composer.visibility.followersHint",
+  private: "composer.visibility.privateHint",
 };
 
 // Map the composer's audience choice to the backend's visibility values.
@@ -61,16 +69,12 @@ const backendVisibility: Record<Visibility, string> = {
   private: "private",
 };
 
-// Audience options in display order, each with its icon and a short hint.
-const visibilityOptions: {
-  value: Visibility;
-  label: string;
-  hint: string;
-  icon: LucideIcon;
-}[] = [
-  { value: "everyone", label: "Public", hint: "Anyone can see this post", icon: Globe },
-  { value: "friends", label: "Followers", hint: "Only your followers", icon: Users },
-  { value: "private", label: "Private", hint: "Only you", icon: Lock },
+// Audience options in display order, each with its icon. Labels/hints are
+// resolved from the i18n dictionary at render time.
+const visibilityOptions: { value: Visibility; icon: LucideIcon }[] = [
+  { value: "everyone", icon: Globe },
+  { value: "friends", icon: Users },
+  { value: "private", icon: Lock },
 ];
 
 // One selected image. `storageKey` is set only after a successful R2 PUT, and
@@ -86,6 +90,7 @@ type SelectedImage = {
 
 export function Composer() {
   const { prependPost } = useFeed();
+  const { t } = useLanguage();
   const [content, setContent] = useState("");
   const [visibility, setVisibility] = useState<Visibility>("everyone");
   const [visibilityOpen, setVisibilityOpen] = useState(false);
@@ -163,7 +168,7 @@ export function Composer() {
 
     const remaining = MAX_IMAGES - images.length;
     if (remaining <= 0) {
-      showError(`You can add up to ${MAX_IMAGES} photos.`);
+      showError(t("composer.tooManyPhotos"));
       return;
     }
 
@@ -194,9 +199,9 @@ export function Composer() {
 
     // Feedback priority: invalid types/sizes first, then the count cap.
     if (hadInvalid) {
-      showError("Use JPG, PNG, or WebP images up to 15 MB each.");
+      showError(t("composer.invalidImages"));
     } else if (truncated) {
-      showError(`You can add up to ${MAX_IMAGES} photos.`);
+      showError(t("composer.tooManyPhotos"));
     } else if (accepted.length > 0) {
       clearError();
     }
@@ -276,11 +281,11 @@ export function Composer() {
       // Preserve text, previews, and every completed storageKey/confirmed flag so
       // a retry continues where it left off. Never delete R2 objects on failure.
       if (err instanceof ApiError && err.status === 401) {
-        showError("Please sign in to post.");
+        showError(t("composer.signIn"));
       } else if (!reachedCreatePost) {
-        showError("Couldn’t upload images. Please try again.");
+        showError(t("composer.uploadFailed"));
       } else {
-        showError("Couldn’t create post. Please try again.");
+        showError(t("composer.createFailed"));
       }
     } finally {
       setPosting(false);
@@ -290,9 +295,9 @@ export function Composer() {
 
   const postLabel = posting
     ? uploadingIndex !== null && images.length > 0
-      ? `Uploading ${uploadingIndex + 1} of ${images.length}…`
-      : "Posting…"
-    : "Post";
+      ? t("composer.uploading", { current: uploadingIndex + 1, total: images.length })
+      : t("composer.posting")
+    : t("composer.post");
 
   return (
     <section className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
@@ -305,7 +310,7 @@ export function Composer() {
             setContent(e.target.value);
             if (error) clearError(); // clear the error as the user edits
           }}
-          placeholder="What's on your mind?"
+          placeholder={t("composer.placeholder")}
           className="h-11 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft"
         />
       </div>
@@ -332,14 +337,14 @@ export function Composer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={im.previewUrl}
-                alt={`Selected image ${i + 1}`}
+                alt={t("composer.selectedImage", { index: i + 1 })}
                 className="h-full w-full object-cover"
               />
               <button
                 type="button"
                 onClick={() => removeImage(im.id)}
                 disabled={posting}
-                aria-label={`Remove image ${i + 1}`}
+                aria-label={t("composer.removeImage", { index: i + 1 })}
                 className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-foreground/70 text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <X className="h-3.5 w-3.5" />
@@ -360,16 +365,16 @@ export function Composer() {
       />
 
       <div className="mt-4 flex flex-wrap items-center gap-1 border-t border-border pt-3">
-        {actions.map(({ label, icon: Icon, color }) => (
+        {actions.map(({ id, labelKey, icon: Icon, color }) => (
           <button
-            key={label}
+            key={id}
             type="button"
-            onClick={label === "Photo" ? openImagePicker : undefined}
-            disabled={label === "Photo" && posting}
+            onClick={id === "photo" ? openImagePicker : undefined}
+            disabled={id === "photo" && posting}
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Icon className={`h-4 w-4 ${color}`} />
-            {label}
+            {t(labelKey)}
           </button>
         ))}
 
@@ -381,7 +386,9 @@ export function Composer() {
               disabled={posting}
               aria-haspopup="menu"
               aria-expanded={visibilityOpen}
-              aria-label={`Post audience: ${visibilityLabels[visibility]}`}
+              aria-label={t("composer.audience", {
+                audience: t(visibilityLabelKey[visibility]),
+              })}
               className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
             >
               {(() => {
@@ -390,7 +397,7 @@ export function Composer() {
                   Globe;
                 return <Icon className="h-4 w-4" />;
               })()}
-              {visibilityLabels[visibility]}
+              {t(visibilityLabelKey[visibility])}
               <ChevronDown className="h-4 w-4 text-muted-soft" />
             </button>
             {visibilityOpen ? (
@@ -398,7 +405,7 @@ export function Composer() {
                 role="menu"
                 className="absolute bottom-full right-0 z-20 mb-2 w-56 overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-lg"
               >
-                {visibilityOptions.map(({ value, label, hint, icon: Icon }) => (
+                {visibilityOptions.map(({ value, icon: Icon }) => (
                   <button
                     key={value}
                     type="button"
@@ -413,9 +420,11 @@ export function Composer() {
                     <Icon className="h-4 w-4 shrink-0 text-muted" />
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-medium text-foreground">
-                        {label}
+                        {t(visibilityLabelKey[value])}
                       </span>
-                      <span className="block text-xs text-muted-soft">{hint}</span>
+                      <span className="block text-xs text-muted-soft">
+                        {t(visibilityHintKey[value])}
+                      </span>
                     </span>
                     {visibility === value ? (
                       <Check className="h-4 w-4 shrink-0 text-primary" />

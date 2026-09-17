@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 
 import type { PostMedia as PostMediaItem } from "@/types/post";
+import { useLanguage } from "@/lib/language-context";
 
 // Real rendered media width (measured): ~640px on desktop, ~full width on
 // mobile. A little headroom keeps DPR 2/3 screens sharp.
@@ -74,6 +75,7 @@ function SingleImage({ item }: { item: PostMediaItem }) {
 // index pill, and dot/progress indicators. All slides share one frame aspect
 // (from the first image, clamped) so the track height is stable.
 function Carousel({ media }: { media: PostMediaItem[] }) {
+  const { t } = useLanguage();
   const n = media.length;
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
@@ -127,7 +129,7 @@ function Carousel({ media }: { media: PostMediaItem[] }) {
         tabIndex={0}
         role="group"
         aria-roledescription="carousel"
-        aria-label={`Post images, ${n} total`}
+        aria-label={t("media.imagesLabel", { total: n })}
         className="flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden rounded-xl border border-border [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {media.map((m, i) => (
@@ -135,7 +137,7 @@ function Carousel({ media }: { media: PostMediaItem[] }) {
             <div className="relative w-full bg-background" style={{ aspectRatio: ratio }}>
               <Image
                 src={m.src}
-                alt={`${m.alt} (${i + 1} of ${n})`}
+                alt={`${m.alt} ${t("media.imageIndex", { index: i + 1, total: n })}`}
                 fill
                 sizes={SIZES}
                 quality={QUALITY}
@@ -158,7 +160,7 @@ function Carousel({ media }: { media: PostMediaItem[] }) {
             <button
               key={i}
               type="button"
-              aria-label={`Go to image ${i + 1}`}
+              aria-label={t("media.goToImage", { index: i + 1 })}
               onClick={() => goTo(i)}
               className={`pointer-events-auto h-1.5 rounded-full transition-all ${
                 i === active ? "w-4 bg-white" : "w-1.5 bg-white/70 hover:bg-white"
