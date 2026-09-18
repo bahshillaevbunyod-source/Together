@@ -14,6 +14,7 @@ import {
   uploadFileToPresignedUrl,
 } from "@/lib/api";
 import { LANGUAGES } from "@/lib/languages";
+import { useLanguage, type TranslationKey } from "@/lib/language-context";
 
 type Status = "loading" | "ready" | "error";
 
@@ -21,23 +22,25 @@ type Status = "loading" | "ready" | "error";
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const MAX_IMAGE_BYTES = 15 * 1024 * 1024; // 15 MiB
 
-// Map backend failures to safe, friendly text (never surface raw error detail).
-function friendlyProfileError(err: unknown): string {
+// Map backend failures to a safe, friendly translation key (keyed on the stable
+// HTTP status, never on English copy). The caller resolves it via t().
+function friendlyProfileErrorKey(err: unknown): TranslationKey {
   if (err instanceof ApiError) {
     switch (err.status) {
       case 400:
-        return "Please check the profile fields and try again.";
+        return "edit.error400";
       case 401:
-        return "Your session has expired. Please sign in again.";
+        return "edit.sessionExpired";
       case 409:
-        return "Some of those details are already in use.";
+        return "edit.error409";
     }
   }
-  return "Couldn’t update your profile. Try again.";
+  return "edit.errorGeneric";
 }
 
 export default function EditProfilePage() {
   const router = useRouter();
+  const { t } = useLanguage();
 
   const [status, setStatus] = useState<Status>("loading");
   const [displayName, setDisplayName] = useState("");
@@ -105,7 +108,7 @@ export default function EditProfilePage() {
     if (!file || saving) return;
 
     if (!ALLOWED_IMAGE_TYPES.includes(file.type) || file.size > MAX_IMAGE_BYTES) {
-      setAvatarError("Use a JPG, PNG, or WebP image up to 15 MB.");
+      setAvatarError(t("edit.avatarInvalid"));
       return;
     }
     setAvatarError(null);
@@ -129,11 +132,11 @@ export default function EditProfilePage() {
     const name = displayName.trim();
     const lang = nativeLanguage.trim();
     if (!name) {
-      setError("Display name is required.");
+      setError(t("edit.displayNameRequired"));
       return;
     }
     if (lang.length < 2) {
-      setError("Native language is required.");
+      setError(t("edit.nativeLanguageRequired"));
       return;
     }
 
@@ -156,7 +159,7 @@ export default function EditProfilePage() {
           const confirmed = await confirmMediaUpload(presign.storageKey);
           avatarField = { avatarUrl: confirmed.publicUrl };
         } catch {
-          setAvatarError("Couldn’t upload photo. Please try again.");
+          setAvatarError(t("edit.avatarUploadError"));
           setSaving(false);
           return;
         }
@@ -175,7 +178,7 @@ export default function EditProfilePage() {
       });
       router.push("/profile");
     } catch (err) {
-      setError(friendlyProfileError(err)); // keep entered values on failure
+      setError(t(friendlyProfileErrorKey(err))); // keep entered values on failure
       setSaving(false);
     }
   };
@@ -202,13 +205,13 @@ export default function EditProfilePage() {
   if (status === "error") {
     return (
       <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-8 text-center shadow-sm">
-        <p className="text-sm text-muted">Couldn’t load your profile.</p>
+        <p className="text-sm text-muted">{t("profile.loadError")}</p>
         <button
           type="button"
           onClick={() => load()}
           className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
         >
-          Try again
+          {t("search.tryAgain")}
         </button>
       </div>
     );
@@ -220,10 +223,10 @@ export default function EditProfilePage() {
         {/* Header */}
         <div className="border-b border-border px-6 py-5">
           <h1 className="text-lg font-bold tracking-tight text-foreground">
-            Edit profile
+            {t("profile.edit")}
           </h1>
           <p className="mt-0.5 text-sm text-muted">
-            Update how others see you across Together.
+            {t("edit.subtitle", { brand: "Together" })}
           </p>
         </div>
 
@@ -234,14 +237,14 @@ export default function EditProfilePage() {
               type="button"
               onClick={openPicker}
               disabled={saving}
-              aria-label="Change profile photo"
+              aria-label={t("edit.changePhotoAria")}
               className="group relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-border bg-background disabled:cursor-not-allowed"
             >
               {shownAvatar ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={shownAvatar}
-                  alt="Profile photo"
+                  alt={t("edit.photoAlt")}
                   className="h-full w-full object-cover"
                 />
               ) : (
@@ -263,7 +266,7 @@ export default function EditProfilePage() {
                   disabled={saving}
                   className="rounded-full border border-border px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:opacity-50"
                 >
-                  Change photo
+                  {t("edit.changePhoto")}
                 </button>
                 {shownAvatar ? (
                   <button
@@ -272,11 +275,11 @@ export default function EditProfilePage() {
                     disabled={saving}
                     className="rounded-full px-3 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
                   >
-                    Remove
+                    {t("edit.removePhoto")}
                   </button>
                 ) : null}
               </div>
-              <p className="text-xs text-muted-soft">JPG, PNG or WebP · up to 15 MB</p>
+              <p className="text-xs text-muted-soft">{t("edit.photoConstraints")}</p>
               {avatarError ? (
                 <div
                   role="alert"
@@ -301,23 +304,23 @@ export default function EditProfilePage() {
 
           {/* Display name */}
           <label className="flex flex-col gap-1.5">
-            <span className={labelClass}>Display name</span>
+            <span className={labelClass}>{t("edit.displayNameLabel")}</span>
             <input
               className={inputClass}
               type="text"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
-              placeholder="Your name"
+              placeholder={t("edit.displayNamePlaceholder")}
             />
           </label>
 
           {/* Bio */}
           <label className="flex flex-col gap-1.5">
-            <span className={labelClass}>Bio</span>
+            <span className={labelClass}>{t("edit.bioLabel")}</span>
             <textarea
               value={bio}
               onChange={(e) => setBio(e.target.value)}
-              placeholder="Tell people a little about yourself"
+              placeholder={t("edit.bioPlaceholder")}
               rows={3}
               className="w-full resize-none rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-soft transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
             />
@@ -326,17 +329,17 @@ export default function EditProfilePage() {
           {/* City + Country */}
           <div className="flex flex-col gap-4 sm:flex-row">
             <label className="flex flex-1 flex-col gap-1.5">
-              <span className={labelClass}>City</span>
+              <span className={labelClass}>{t("edit.city")}</span>
               <input
                 className={inputClass}
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                placeholder="City"
+                placeholder={t("edit.city")}
               />
             </label>
             <label className="flex flex-col gap-1.5 sm:w-40">
-              <span className={labelClass}>Country</span>
+              <span className={labelClass}>{t("edit.countryLabel")}</span>
               <input
                 className={inputClass}
                 type="text"
@@ -350,14 +353,14 @@ export default function EditProfilePage() {
 
           {/* Native language */}
           <label className="flex flex-col gap-1.5">
-            <span className={labelClass}>Native language</span>
+            <span className={labelClass}>{t("profile.nativeLanguage")}</span>
             <select
               className={inputClass}
               value={nativeLanguage}
               onChange={(e) => setNativeLanguage(e.target.value)}
             >
               {LANGUAGES.some((l) => l.code === nativeLanguage) ? null : (
-                <option value={nativeLanguage}>{nativeLanguage || "Select…"}</option>
+                <option value={nativeLanguage}>{nativeLanguage || t("edit.selectLanguage")}</option>
               )}
               {LANGUAGES.map((l) => (
                 <option key={l.code} value={l.code}>
@@ -383,14 +386,14 @@ export default function EditProfilePage() {
               href="/profile"
               className="rounded-full border border-border px-5 py-2 text-sm font-medium text-muted transition-colors hover:bg-background hover:text-foreground"
             >
-              Cancel
+              {t("post.cancel")}
             </Link>
             <button
               type="submit"
               disabled={saving}
               className="rounded-full bg-primary px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
             >
-              {saving ? "Saving…" : "Save changes"}
+              {saving ? t("post.saving") : t("edit.saveChanges")}
             </button>
           </div>
         </form>
