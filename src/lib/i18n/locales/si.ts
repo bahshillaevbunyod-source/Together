@@ -238,5 +238,18 @@ const d_si = {
   "settings.saved": "සැකසීම් සුරකින ලදී.",
   "settings.error400": "කරුණාකර ඔබගේ පරිවර්තන සැකසීම් පරීක්ෂා කරන්න.",
   "settings.saveError": "සැකසීම් සුරැකීමට නොහැකි විය. නැවත උත්සාහ කරන්න.",
+  "auth.welcomeBack": "නැවත සාදරයෙන් පිළිගනිමු",
+  "auth.createAccountHeading": "ඔබගේ ගිණුම සාදන්න",
+  "auth.login": "ලොග් වෙන්න",
+  "auth.signUp": "ලියාපදිංචි වන්න",
+  "auth.username": "පරිශීලක නාමය",
+  "auth.email": "ඊමේල් කරන්න",
+  "auth.password": "මුරපදය",
+  "auth.nativeLanguagePlaceholder": "මව් භාෂාව (උදා. en)",
+  "auth.emailPasswordRequired": "ඊමේල් සහ මුරපදය අවශ්ය වේ.",
+  "auth.usernameDisplayNameRequired": "පරිශීලක නාමය සහ සංදර්ශක නාමය අවශ්‍ය වේ.",
+  "auth.pleaseWait": "කරුණාකර රැඳී සිටින්න…",
+  "auth.createAccount": "ගිණුමක් සාදන්න",
+  "auth.genericError": "යමක් වැරදී ඇත.",
 } satisfies Record<TranslationKey, string>;
 export default d_si;

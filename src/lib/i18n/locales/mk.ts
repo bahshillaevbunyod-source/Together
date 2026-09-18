@@ -238,5 +238,18 @@ const d_mk = {
   "settings.saved": "Поставките се зачувани.",
   "settings.error400": "Проверете ги поставките за превод.",
   "settings.saveError": "Не може да се зачуваат поставките. Обидете се повторно.",
+  "auth.welcomeBack": "Добредојдовте назад",
+  "auth.createAccountHeading": "Направете ја вашата сметка",
+  "auth.login": "Најавете се",
+  "auth.signUp": "Пријавете се",
+  "auth.username": "Корисничко име",
+  "auth.email": "Е-пошта",
+  "auth.password": "Лозинка",
+  "auth.nativeLanguagePlaceholder": "Мајчин јазик (на пр. en)",
+  "auth.emailPasswordRequired": "Потребни се е-пошта и лозинка.",
+  "auth.usernameDisplayNameRequired": "Корисничко име и име за прикажување се потребни.",
+  "auth.pleaseWait": "Ве молиме почекајте…",
+  "auth.createAccount": "Креирај сметка",
+  "auth.genericError": "Нешто тргна наопаку.",
 } satisfies Record<TranslationKey, string>;
 export default d_mk;

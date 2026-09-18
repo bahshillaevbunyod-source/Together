@@ -238,5 +238,18 @@ const d_sd = {
   "settings.saved": "سيٽنگون محفوظ ڪيون ويون.",
   "settings.error400": "مھرباني ڪري پنھنجي ترجمي جي سيٽنگ چيڪ ڪريو.",
   "settings.saveError": "سيٽنگون محفوظ نه ٿي سگھيون. ٻيهر ڪوشش ڪريو.",
+  "auth.welcomeBack": "ڀليڪار",
+  "auth.createAccountHeading": "پنهنجو کاتو ٺاهيو",
+  "auth.login": "لاگ ان",
+  "auth.signUp": "سائن اپ ڪريو",
+  "auth.username": "يوزر نالو",
+  "auth.email": "اي ميل",
+  "auth.password": "پاسورڊ",
+  "auth.nativeLanguagePlaceholder": "مادري ٻولي (مثال طور en)",
+  "auth.emailPasswordRequired": "اي ميل ۽ پاسورڊ گهربل آهي.",
+  "auth.usernameDisplayNameRequired": "صارف جو نالو ۽ ڊسپلي نالو گھربل آھي.",
+  "auth.pleaseWait": "مهرباني ڪري انتظار ڪريو…",
+  "auth.createAccount": "اڪائونٽ ٺاهيو",
+  "auth.genericError": "ڪجهه غلط ٿيو.",
 } satisfies Record<TranslationKey, string>;
 export default d_sd;

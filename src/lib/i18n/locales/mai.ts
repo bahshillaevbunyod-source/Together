@@ -238,5 +238,18 @@ const d_mai = {
   "settings.saved": "सेटिंग्स सहेजल गेल।",
   "settings.error400": "कृपया अपन अनुवाद सेटिंग्स देखू।",
   "settings.saveError": "सेटिंग्स सेव नहि क’ सकल. फेर कोशिश करू।",
+  "auth.welcomeBack": "अपनेक स्वागत अछि",
+  "auth.createAccountHeading": "अपन खाता बनाउ",
+  "auth.login": "लॉग इन करू",
+  "auth.signUp": "साइन अप करू",
+  "auth.username": "प्रयोक्ता नाम",
+  "auth.email": "ईमेल",
+  "auth.password": "पासवर्ड",
+  "auth.nativeLanguagePlaceholder": "मूल भाषा (जैसे एन) २.",
+  "auth.emailPasswordRequired": "ईमेल आ पासवर्ड आवश्यक अछि।",
+  "auth.usernameDisplayNameRequired": "प्रयोक्ता नाम आ प्रदर्शन नाम आवश्यक अछि.",
+  "auth.pleaseWait": "कृपया प्रतीक्षा करू...",
+  "auth.createAccount": "खाता बनाये",
+  "auth.genericError": "किछु गड़बड़ भ’ गेलै।",
 } satisfies Record<TranslationKey, string>;
 export default d_mai;

@@ -238,5 +238,18 @@ const d_lg = {
   "settings.saved": "Ensengeka ziterekeddwa.",
   "settings.error400": "Nkusaba okebere ensengeka zo ez'okuvvuunula.",
   "settings.saveError": "Teyasobodde kutereka nteekateeka. Gezaako nate.",
+  "auth.welcomeBack": "Mwaniriziddwa okuddayo",
+  "auth.createAccountHeading": "Tonda akawunti yo",
+  "auth.login": "Yingira mu",
+  "auth.signUp": "Wewandiise",
+  "auth.username": "Erinnya ly'omukozesa",
+  "auth.email": "Endagiriro ya email",
+  "auth.password": "Ekigambo ky'okuyita",
+  "auth.nativeLanguagePlaceholder": "Olulimi oluzaaliranwa (e.g. en) .",
+  "auth.emailPasswordRequired": "Email ne password byetaagibwa.",
+  "auth.usernameDisplayNameRequired": "Erinnya ly'omukozesa n'erinnya ly'okulaga byetaagibwa.",
+  "auth.pleaseWait": "Nsaba mulinde...",
+  "auth.createAccount": "Tonda akawunti",
+  "auth.genericError": "Waliwo ekyatambula obubi.",
 } satisfies Record<TranslationKey, string>;
 export default d_lg;

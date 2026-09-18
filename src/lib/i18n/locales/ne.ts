@@ -238,5 +238,18 @@ const d_ne = {
   "settings.saved": "सेटिङहरू सुरक्षित गरियो।",
   "settings.error400": "कृपया आफ्नो अनुवाद सेटिङ जाँच गर्नुहोस्।",
   "settings.saveError": "सेटिङहरू सुरक्षित गर्न सकिएन। पुन: प्रयास गर्नुहोस्।",
+  "auth.welcomeBack": "फेरि स्वागत छ",
+  "auth.createAccountHeading": "आफ्नो खाता सिर्जना गर्नुहोस्",
+  "auth.login": "लग इन गर्नुहोस्",
+  "auth.signUp": "साइन अप गर्नुहोस्",
+  "auth.username": "प्रयोगकर्ता नाम",
+  "auth.email": "इमेल",
+  "auth.password": "पासवर्ड",
+  "auth.nativeLanguagePlaceholder": "मातृभाषा (जस्तै en)",
+  "auth.emailPasswordRequired": "इमेल र पासवर्ड आवश्यक छ।",
+  "auth.usernameDisplayNameRequired": "प्रयोगकर्ता नाम र प्रदर्शन नाम आवश्यक छ।",
+  "auth.pleaseWait": "कृपया प्रतीक्षा गर्नुहोस्...",
+  "auth.createAccount": "खाता सिर्जना गर्नुहोस्",
+  "auth.genericError": "केही गडबड भयो।",
 } satisfies Record<TranslationKey, string>;
 export default d_ne;

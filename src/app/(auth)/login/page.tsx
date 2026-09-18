@@ -6,12 +6,14 @@ import Image from "next/image";
 
 import { ApiError, login, register } from "@/lib/api";
 import { useAuth } from "@/lib/auth-context";
+import { useLanguage } from "@/lib/language-context";
 
 type Mode = "login" | "register";
 
 export default function LoginPage() {
   const router = useRouter();
   const { refresh } = useAuth();
+  const { t } = useLanguage();
 
   const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
@@ -36,11 +38,11 @@ export default function LoginPage() {
 
     // Minimal client-side validation; the backend is the source of truth.
     if (!email.trim() || !password) {
-      setError("Email and password are required.");
+      setError(t("auth.emailPasswordRequired"));
       return;
     }
     if (mode === "register" && (!username.trim() || !displayName.trim())) {
-      setError("Username and display name are required.");
+      setError(t("auth.usernameDisplayNameRequired"));
       return;
     }
 
@@ -66,7 +68,7 @@ export default function LoginPage() {
       }
     } catch (err) {
       // Show the backend's safe message, or a generic fallback.
-      setError(err instanceof ApiError ? err.message : "Something went wrong.");
+      setError(err instanceof ApiError ? err.message : t("auth.genericError"));
     } finally {
       setSubmitting(false);
     }
@@ -84,9 +86,11 @@ export default function LoginPage() {
             className="h-12 w-12 object-contain"
           />
           <h1 className="text-lg font-bold tracking-tight text-foreground">
-            {mode === "login" ? "Welcome back" : "Create your account"}
+            {mode === "login"
+              ? t("auth.welcomeBack")
+              : t("auth.createAccountHeading")}
           </h1>
-          <p className="text-sm text-muted">Different people. One world.</p>
+          <p className="text-sm text-muted">{t("header.tagline")}</p>
         </div>
 
         {/* Mode switch */}
@@ -100,7 +104,7 @@ export default function LoginPage() {
                 : "text-muted hover:text-foreground"
             }`}
           >
-            Log in
+            {t("auth.login")}
           </button>
           <button
             type="button"
@@ -111,7 +115,7 @@ export default function LoginPage() {
                 : "text-muted hover:text-foreground"
             }`}
           >
-            Sign up
+            {t("auth.signUp")}
           </button>
         </div>
 
@@ -123,7 +127,7 @@ export default function LoginPage() {
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="Display name"
+                placeholder={t("edit.displayNameLabel")}
                 autoComplete="name"
               />
               <input
@@ -131,7 +135,7 @@ export default function LoginPage() {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
+                placeholder={t("auth.username")}
                 autoComplete="username"
               />
             </>
@@ -142,7 +146,7 @@ export default function LoginPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            placeholder={t("auth.email")}
             autoComplete="email"
           />
           <input
@@ -150,7 +154,7 @@ export default function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder={t("auth.password")}
             autoComplete={mode === "login" ? "current-password" : "new-password"}
           />
 
@@ -160,7 +164,7 @@ export default function LoginPage() {
               type="text"
               value={nativeLanguage}
               onChange={(e) => setNativeLanguage(e.target.value)}
-              placeholder="Native language (e.g. en)"
+              placeholder={t("auth.nativeLanguagePlaceholder")}
             />
           ) : null}
 
@@ -176,10 +180,10 @@ export default function LoginPage() {
             className="mt-1 h-11 rounded-full bg-primary text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
           >
             {submitting
-              ? "Please wait…"
+              ? t("auth.pleaseWait")
               : mode === "login"
-                ? "Log in"
-                : "Create account"}
+                ? t("auth.login")
+                : t("auth.createAccount")}
           </button>
         </form>
       </div>

@@ -238,5 +238,18 @@ const d_or = {
   "settings.saved": "ସେଟିଂସମୂହ ସଞ୍ଚୟ ହୋଇଛି |",
   "settings.error400": "ଦୟାକରି ଆପଣଙ୍କର ଅନୁବାଦ ସେଟିଂସମୂହ ଯାଞ୍ଚ କରନ୍ତୁ |",
   "settings.saveError": "ସେଟିଂସମୂହ ସଞ୍ଚୟ କରିପାରିଲା ନାହିଁ | ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+  "auth.welcomeBack": "ସ୍ Welcome ାଗତ",
+  "auth.createAccountHeading": "ଆପଣଙ୍କର ଖାତା ସୃଷ୍ଟି କରନ୍ତୁ |",
+  "auth.login": "ଲଗ୍ ଇନ୍ କରନ୍ତୁ |",
+  "auth.signUp": "ସାଇନ୍ ଅପ୍ କରନ୍ତୁ |",
+  "auth.username": "ଉପଯୋଗକର୍ତ୍ତା ନାମ",
+  "auth.email": "ଇମେଲ୍ କରନ୍ତୁ |",
+  "auth.password": "ପାସୱାର୍ଡ",
+  "auth.nativeLanguagePlaceholder": "ଦେଶୀ ଭାଷା (ଯଥା en)",
+  "auth.emailPasswordRequired": "ଇମେଲ୍ ଏବଂ ପାସୱାର୍ଡ ଆବଶ୍ୟକ |",
+  "auth.usernameDisplayNameRequired": "ଉପଯୋଗକର୍ତ୍ତା ନାମ ଏବଂ ପ୍ରଦର୍ଶନ ନାମ ଆବଶ୍ୟକ |",
+  "auth.pleaseWait": "ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ…",
+  "auth.createAccount": "ଖାତା ସୃଷ୍ଟି କରନ୍ତୁ |",
+  "auth.genericError": "କିଛି ଭୁଲ୍ ହୋଇଗଲା |",
 } satisfies Record<TranslationKey, string>;
 export default d_or;

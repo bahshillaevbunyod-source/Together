@@ -238,5 +238,18 @@ const d_fj = {
   "settings.saved": "Vakabulai na ituvatuva.",
   "settings.error400": "Yalovinaka raica na nomu ituvatuva ni vakadewa.",
   "settings.saveError": "E sega ni rawa ni maroroi na ituvatuva. Tovolea tale.",
+  "auth.welcomeBack": "Vinaka vakalevu",
+  "auth.createAccountHeading": "Cakava na nomu akaude",
+  "auth.login": "Vakacuruma",
+  "auth.signUp": "Sainitaka",
+  "auth.username": "Yaca vakayagataki",
+  "auth.email": "Imeli",
+  "auth.password": "Vosanicuru",
+  "auth.nativeLanguagePlaceholder": "Vosa ni vanua (me vaka na en)",
+  "auth.emailPasswordRequired": "E gadrevi na imeli kei na vosanicuru.",
+  "auth.usernameDisplayNameRequired": "E gadrevi na yaca ni vakayagataki kei na yaca ni vakaraitaki.",
+  "auth.pleaseWait": "Kerekere mo waraka mada...",
+  "auth.createAccount": "Cakava na akaude",
+  "auth.genericError": "E dua na ka e cala.",
 } satisfies Record<TranslationKey, string>;
 export default d_fj;

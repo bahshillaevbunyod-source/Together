@@ -238,5 +238,18 @@ const d_ku = {
   "settings.saved": "Mîhengên xilas kirin.",
   "settings.error400": "Ji kerema xwe mîhengên wergera xwe kontrol bikin.",
   "settings.saveError": "Mîhengan nehat tomarkirin. Dubare bixebitin.",
+  "auth.welcomeBack": "bi xêr hatî",
+  "auth.createAccountHeading": "Hesabê xwe çêbikin",
+  "auth.login": "Têkeve",
+  "auth.signUp": "Hesabek nû tomar bikin",
+  "auth.username": "Navê bikarhêner",
+  "auth.email": "Navnîşana e-nameyê",
+  "auth.password": "Şîfre",
+  "auth.nativeLanguagePlaceholder": "Zimanê zikmakî (mînak. en)",
+  "auth.emailPasswordRequired": "E-name û şîfre hewce ne.",
+  "auth.usernameDisplayNameRequired": "Navê bikarhêner û navê xuyangê pêdivî ye.",
+  "auth.pleaseWait": "Ji kerema xwe li bendê bin…",
+  "auth.createAccount": "Hesab biafirîne",
+  "auth.genericError": "Tiştek xelet derket.",
 } satisfies Record<TranslationKey, string>;
 export default d_ku;

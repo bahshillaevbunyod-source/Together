@@ -238,5 +238,18 @@ const d_hu = {
   "settings.saved": "A beállítások mentve.",
   "settings.error400": "Kérjük, ellenőrizze fordítási beállításait.",
   "settings.saveError": "Nem sikerült menteni a beállításokat. Próbáld újra.",
+  "auth.welcomeBack": "Isten hozott újra",
+  "auth.createAccountHeading": "Hozd létre a fiókodat",
+  "auth.login": "Jelentkezzen be",
+  "auth.signUp": "Regisztráljon",
+  "auth.username": "Felhasználónév",
+  "auth.email": "E-mail",
+  "auth.password": "Jelszó",
+  "auth.nativeLanguagePlaceholder": "Anyanyelv (pl. en)",
+  "auth.emailPasswordRequired": "E-mail és jelszó szükséges.",
+  "auth.usernameDisplayNameRequired": "Felhasználónév és megjelenített név kötelező.",
+  "auth.pleaseWait": "Kérjük, várjon…",
+  "auth.createAccount": "Hozzon létre fiókot",
+  "auth.genericError": "Valami elromlott.",
 } satisfies Record<TranslationKey, string>;
 export default d_hu;

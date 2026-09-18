@@ -238,5 +238,18 @@ const d_ktu = {
   "settings.saved": "Baparametre me bumbana.",
   "settings.error400": "Pardo tala baparametre na nge ya kubalula.",
   "settings.saveError": "Kubumba ve baparametre. Meka diaka.",
+  "auth.welcomeBack": "Beno me kwisa mbote",
+  "auth.createAccountHeading": "Sala konti na nge",
+  "auth.login": "Kota",
+  "auth.signUp": "Sonikisa zina",
+  "auth.username": "Zina ya muntu",
+  "auth.email": "Adresi ya e-mail",
+  "auth.password": "Mot de passe",
+  "auth.nativeLanguagePlaceholder": "Ndinga ya kisina (mu mbandu en)",
+  "auth.emailPasswordRequired": "E-mail mpi mot de passe kele mfunu.",
+  "auth.usernameDisplayNameRequired": "Zina ya kusadila mpi zina ya kumonisa kele mfunu.",
+  "auth.pleaseWait": "Pardon vingila...",
+  "auth.createAccount": "Kusala konti",
+  "auth.genericError": "Kima mosi salamaka ve mbote.",
 } satisfies Record<TranslationKey, string>;
 export default d_ktu;

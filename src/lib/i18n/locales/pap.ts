@@ -238,5 +238,18 @@ const d_pap = {
   "settings.saved": "Settingnan wardá.",
   "settings.error400": "Por fabor, kontrolá bo settingnan di tradukshon.",
   "settings.saveError": "No por a warda e settingnan. Purba atrobe.",
+  "auth.welcomeBack": "Bon Bini bek",
+  "auth.createAccountHeading": "Krea bo kuenta",
+  "auth.login": "Drenta na bo kuenta",
+  "auth.signUp": "Inskribí",
+  "auth.username": "Nòmber di usuario",
+  "auth.email": "Adrès di email",
+  "auth.password": "Kontraseña",
+  "auth.nativeLanguagePlaceholder": "Idioma nativo (p.e. en)",
+  "auth.emailPasswordRequired": "Email i kontraseña ta nesesario.",
+  "auth.usernameDisplayNameRequired": "Nòmber di usuario i nòmber di pantaya ta nesesario.",
+  "auth.pleaseWait": "Por fabor warda...",
+  "auth.createAccount": "Krea kuenta",
+  "auth.genericError": "Algu a bai robes.",
 } satisfies Record<TranslationKey, string>;
 export default d_pap;

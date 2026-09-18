@@ -238,5 +238,18 @@ const de = {
   "settings.saved": "Einstellungen gespeichert.",
   "settings.error400": "Bitte überprüfen Sie Ihre Übersetzungseinstellungen.",
   "settings.saveError": "Die Einstellungen konnten nicht gespeichert werden. Versuchen Sie es erneut.",
+  "auth.welcomeBack": "Willkommen zurück",
+  "auth.createAccountHeading": "Erstellen Sie Ihr Konto",
+  "auth.login": "Melden Sie sich an",
+  "auth.signUp": "Melden Sie sich an",
+  "auth.username": "Benutzername",
+  "auth.email": "E-Mail",
+  "auth.password": "Passwort",
+  "auth.nativeLanguagePlaceholder": "Muttersprache (z. B. en)",
+  "auth.emailPasswordRequired": "E-Mail und Passwort sind erforderlich.",
+  "auth.usernameDisplayNameRequired": "Benutzername und Anzeigename sind erforderlich.",
+  "auth.pleaseWait": "Bitte warten…",
+  "auth.createAccount": "Konto erstellen",
+  "auth.genericError": "Etwas ist schief gelaufen.",
 } satisfies Record<TranslationKey, string>;
 export default de;

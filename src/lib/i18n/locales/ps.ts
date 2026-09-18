@@ -238,5 +238,18 @@ const d_ps = {
   "settings.saved": "ترتیبات خوندي شوي.",
   "settings.error400": "مهرباني وکړئ خپل د ژباړې ترتیبات وګورئ.",
   "settings.saveError": "ترتیبات نشي خوندي کولی. بیا هڅه وکړئ.",
+  "auth.welcomeBack": "بیرته ښه راغلاست",
+  "auth.createAccountHeading": "خپل حساب جوړ کړئ",
+  "auth.login": "ننوتل",
+  "auth.signUp": "نوم لیکنه",
+  "auth.username": "کارن نوم",
+  "auth.email": "ایمیل",
+  "auth.password": "پټنوم",
+  "auth.nativeLanguagePlaceholder": "مورنۍ ژبه (د مثال په توګه en)",
+  "auth.emailPasswordRequired": "بریښنالیک او پټنوم اړین دي.",
+  "auth.usernameDisplayNameRequired": "کارن نوم او د ښودلو نوم اړین دی.",
+  "auth.pleaseWait": "مهرباني وکړئ انتظار وکړئ…",
+  "auth.createAccount": "حساب جوړ کړئ",
+  "auth.genericError": "یو څه غلط شو.",
 } satisfies Record<TranslationKey, string>;
 export default d_ps;

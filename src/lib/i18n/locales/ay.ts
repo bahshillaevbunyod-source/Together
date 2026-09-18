@@ -238,5 +238,18 @@ const d_ay = {
   "settings.saved": "Configuración ukanakax imatäxiwa.",
   "settings.error400": "Jaqukipañ tuqit wakichtʼatanakam uñakiptʼañamawa.",
   "settings.saveError": "Janiwa utt’ayatanakaxa qhispiyañjamäkiti. Mayampiw yantʼañama.",
+  "auth.welcomeBack": "Wali sumaw kutt’anipxtaxa",
+  "auth.createAccountHeading": "Uka cuenta lurañamawa",
+  "auth.login": "Ukax mä juk’a pachanakanwa",
+  "auth.signUp": "Uñt’ayasiñataki",
+  "auth.username": "Usuario ukan sutipa",
+  "auth.email": "Correo electrónico tuqi",
+  "auth.password": "Ukax mä contraseña ukhamawa",
+  "auth.nativeLanguagePlaceholder": "Nayra aru (e.g. en) .",
+  "auth.emailPasswordRequired": "Correo electrónico ukat contraseña ukax wakisiwa.",
+  "auth.usernameDisplayNameRequired": "Usuario sutimpi uñacht’ayaña sutimpixa wakisiwa.",
+  "auth.pleaseWait": "Ukhamajj suytʼapjjam...",
+  "auth.createAccount": "Cuenta luraña",
+  "auth.genericError": "Kunas jan waliruw puriwayi.",
 } satisfies Record<TranslationKey, string>;
 export default d_ay;

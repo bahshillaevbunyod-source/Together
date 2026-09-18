@@ -238,5 +238,18 @@ const d_gl = {
   "settings.saved": "Configuración gardada.",
   "settings.error400": "Comproba a túa configuración de tradución.",
   "settings.saveError": "Non se puido gardar a configuración. Téntao de novo.",
+  "auth.welcomeBack": "Benvido de novo",
+  "auth.createAccountHeading": "Crea a túa conta",
+  "auth.login": "Iniciar sesión",
+  "auth.signUp": "Rexístrate",
+  "auth.username": "Nome de usuario",
+  "auth.email": "Correo electrónico",
+  "auth.password": "Contrasinal",
+  "auth.nativeLanguagePlaceholder": "Lingua nativa (por exemplo, en)",
+  "auth.emailPasswordRequired": "O correo electrónico e o contrasinal son necesarios.",
+  "auth.usernameDisplayNameRequired": "O nome de usuario e o nome de visualización son necesarios.",
+  "auth.pleaseWait": "Agarde…",
+  "auth.createAccount": "Crear conta",
+  "auth.genericError": "Algo saíu mal.",
 } satisfies Record<TranslationKey, string>;
 export default d_gl;

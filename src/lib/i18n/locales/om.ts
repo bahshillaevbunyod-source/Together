@@ -238,5 +238,18 @@ const d_om = {
   "settings.saved": "Sajoo qusatameera.",
   "settings.error400": "Mee qindaa'ina hiikkaa keessan ilaalaa.",
   "settings.saveError": "Sajoo qusachuu hin dandeenye. Ammas yaalaa.",
+  "auth.welcomeBack": "Baga nagaan dhuftan",
+  "auth.createAccountHeading": "Akkaawuntii keessan uumi",
+  "auth.login": "Galmaa'aa",
+  "auth.signUp": "Galmaa'i",
+  "auth.username": "Maqaa fayyadamaa",
+  "auth.email": "Imeelii",
+  "auth.password": "Jecha icciitii",
+  "auth.nativeLanguagePlaceholder": "Afaan dhalootaa (fkn. en) .",
+  "auth.emailPasswordRequired": "Email fi password barbaachisa.",
+  "auth.usernameDisplayNameRequired": "Maqaa fayyadamaa fi maqaa agarsiisaa barbaachisa.",
+  "auth.pleaseWait": "Mee eegaa...",
+  "auth.createAccount": "Akkaawuntii uumuu",
+  "auth.genericError": "Waan tokkotu dogoggora ta'e.",
 } satisfies Record<TranslationKey, string>;
 export default d_om;

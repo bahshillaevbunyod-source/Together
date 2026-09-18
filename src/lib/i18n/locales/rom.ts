@@ -238,5 +238,18 @@ const d_rom = {
   "settings.saved": "Le paramètrură garavde.",
   "settings.error400": "Mangav tumen te dikhen tumare paramètrură vaś i translàcia.",
   "settings.saveError": "Nashti te garavav e paramètrură. Zumav pale.",
+  "auth.welcomeBack": "Bahtalo avilan pale",
+  "auth.createAccountHeading": "Keren tumaro konto",
+  "auth.login": "Keren andre",
+  "auth.signUp": "Xramosar tut",
+  "auth.username": "Anav e uźitorosqo",
+  "auth.email": "E-mail adresa",
+  "auth.password": "Paròla",
+  "auth.nativeLanguagePlaceholder": "Dajaki ćhib (eg. en)",
+  "auth.emailPasswordRequired": "E-mail thaj o lav si trubujipe.",
+  "auth.usernameDisplayNameRequired": "O anav e uźitorosqo thaj o anav e sikavipnasqo si trubujipe.",
+  "auth.pleaseWait": "Te rughiv tut te aźukeres…",
+  "auth.createAccount": "Ker konto",
+  "auth.genericError": "Vareso gelo bilačhe.",
 } satisfies Record<TranslationKey, string>;
 export default d_rom;

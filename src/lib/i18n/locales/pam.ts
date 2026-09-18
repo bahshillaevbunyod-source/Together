@@ -238,5 +238,18 @@ const d_pam = {
   "settings.saved": "Naka-itabi la reng kekang setting.",
   "settings.error400": "Pakisuri me ing kekang pamagsalin a setting.",
   "settings.saveError": "Eku agyung itabi ing kekang setting. Subukan meng pasibayu.",
+  "auth.welcomeBack": "Mayap a abak",
+  "auth.createAccountHeading": "gawa kang account",
+  "auth.login": "Lungub ka",
+  "auth.signUp": "Mag sign up",
+  "auth.username": "Lagyung talagamit",
+  "auth.email": "Adres ning email",
+  "auth.password": "Susi ning account",
+  "auth.nativeLanguagePlaceholder": "Katutubung amanu (e.g. en)",
+  "auth.emailPasswordRequired": "Email ampo password ing kailangan.",
+  "auth.usernameDisplayNameRequired": "kailangan ing lagyung talagamit ampo ing lagyung papakit.",
+  "auth.pleaseWait": "Paki manaya...",
+  "auth.createAccount": "gawa kang account",
+  "auth.genericError": "Atin nang mali.",
 } satisfies Record<TranslationKey, string>;
 export default d_pam;

@@ -238,5 +238,18 @@ const d_zu = {
   "settings.saved": "Izilungiselelo zilondoloziwe.",
   "settings.error400": "Sicela uhlole izilungiselelo zakho zokuhumusha.",
   "settings.saveError": "Ayikwazanga ukulondoloza izilungiselelo. Zama futhi.",
+  "auth.welcomeBack": "Siyakwamukela futhi",
+  "auth.createAccountHeading": "Dala i-akhawunti yakho",
+  "auth.login": "Ngena ngemvume",
+  "auth.signUp": "Bhalisa",
+  "auth.username": "Igama lomsebenzisi",
+  "auth.email": "I-imeyili",
+  "auth.password": "Iphasiwedi",
+  "auth.nativeLanguagePlaceholder": "Ulimi lwendabuko (isb. en)",
+  "auth.emailPasswordRequired": "I-imeyili nephasiwedi kuyadingeka.",
+  "auth.usernameDisplayNameRequired": "Igama lomsebenzisi negama lesibonisi liyadingeka.",
+  "auth.pleaseWait": "Sicela ulinde...",
+  "auth.createAccount": "Dala i-akhawunti",
+  "auth.genericError": "Kukhona into engahambanga kahle.",
 } satisfies Record<TranslationKey, string>;
 export default d_zu;

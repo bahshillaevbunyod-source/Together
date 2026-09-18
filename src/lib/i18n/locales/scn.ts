@@ -238,5 +238,18 @@ const d_scn = {
   "settings.saved": "Li paràmitri sarbati.",
   "settings.error400": "Cuntrolla li paràmitri di traduzzioni.",
   "settings.saveError": "Nun si putìa sarbari li paràmitri. Pruva n'autra vota.",
+  "auth.welcomeBack": "Benvenuti n'autra vota",
+  "auth.createAccountHeading": "Crià lu tò cuntu",
+  "auth.login": "Accedi",
+  "auth.signUp": "Iscriviti",
+  "auth.username": "Nomu d'utilizaturi",
+  "auth.email": "E-mail",
+  "auth.password": "Palora d'òrdini",
+  "auth.nativeLanguagePlaceholder": "Lingua matri (p'asempiu en)",
+  "auth.emailPasswordRequired": "Sunnu nicissari l'email e la password.",
+  "auth.usernameDisplayNameRequired": "Sunnu nicissari lu nomu d'utilizaturi e lu nomu di visualizzazzioni.",
+  "auth.pleaseWait": "Aspitta...",
+  "auth.createAccount": "Criàri cuntu",
+  "auth.genericError": "Quarchi cosa sbagghiò.",
 } satisfies Record<TranslationKey, string>;
 export default d_scn;

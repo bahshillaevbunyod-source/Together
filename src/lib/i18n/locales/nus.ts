@@ -238,5 +238,18 @@ const d_nus = {
   "settings.saved": "Kä thɛtiŋni̱ tin ca tɔ̱w.",
   "settings.error400": "Ɣän göörä ɣöö bä ca̱p lucädu guic.",
   "settings.saveError": "/Ka̱n thɛttiŋni̱ luäŋ kɛ ga̱ŋ. Ɣɔ̱n ɛ nyɔk.",
+  "auth.welcomeBack": "Ɣän nyuɔ̱ɔ̱kɛ ji̱",
+  "auth.createAccountHeading": "Ca̱k akaun du",
+  "auth.login": "Gɔ̱ri rɔ rɛy akauntädu",
+  "auth.signUp": "Gɔ̱r ciötdu piny",
+  "auth.username": "Ciöt läätdä",
+  "auth.email": "Imeel",
+  "auth.password": "Pa̱thwɔd",
+  "auth.nativeLanguagePlaceholder": "Thok ji̱ wec (c.d. en)",
+  "auth.emailPasswordRequired": "Email kɛnɛ password tin görkɛ.",
+  "auth.usernameDisplayNameRequired": "Ciöt in lät kɛ jɛ kɛnɛ ciöt in nyoothɛ kɛn tin görkɛ.",
+  "auth.pleaseWait": "Ɣän la̱ŋä ji̱ i̱ li̱pɛ...",
+  "auth.createAccount": "Ca̱k akaun",
+  "auth.genericError": "Tëëkɛ mi cu duer.",
 } satisfies Record<TranslationKey, string>;
 export default d_nus;

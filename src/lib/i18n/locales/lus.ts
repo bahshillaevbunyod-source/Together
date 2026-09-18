@@ -238,5 +238,18 @@ const d_lus = {
   "settings.saved": "Settings te chu save a ni.",
   "settings.error400": "I lehlin settings kha lo en ve teh.",
   "settings.saveError": "Settings a save thei lo. Ti leh teh.",
+  "auth.welcomeBack": "Kan lo lawm leh e",
+  "auth.createAccountHeading": "I account siam rawh",
+  "auth.login": "Log in rawh",
+  "auth.signUp": "Sign up rawh",
+  "auth.username": "Username tih hi a ni",
+  "auth.email": "Email hmanga thawn theih a ni",
+  "auth.password": "Password hmangin thu a sawi",
+  "auth.nativeLanguagePlaceholder": "Hnam ṭawng (e.g. en) .",
+  "auth.emailPasswordRequired": "Email leh password a ngai a ni.",
+  "auth.usernameDisplayNameRequired": "Username leh display name a ngai a ni.",
+  "auth.pleaseWait": "Khawngaihin lo nghak rawh...",
+  "auth.createAccount": "Account siam rawh",
+  "auth.genericError": "Thil engemaw a kal sual a.",
 } satisfies Record<TranslationKey, string>;
 export default d_lus;

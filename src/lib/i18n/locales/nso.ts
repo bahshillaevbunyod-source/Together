@@ -238,5 +238,18 @@ const d_nso = {
   "settings.saved": "Di-setting di bolokilwe.",
   "settings.error400": "Hle hlahloba dipeakanyo tša gago tša phetolelo.",
   "settings.saveError": "Couldn’t go boloka dipeakanyo. Leka gape.",
+  "auth.welcomeBack": "Re a le amogela gape",
+  "auth.createAccountHeading": "Hlama akhaonto ya gago",
+  "auth.login": "Tsena ka gare",
+  "auth.signUp": "Saena",
+  "auth.username": "Leina la mosediriši",
+  "auth.email": "Imeile",
+  "auth.password": "Phasewete",
+  "auth.nativeLanguagePlaceholder": "Polelo ya setlogo (mohlala, en) .",
+  "auth.emailPasswordRequired": "Imeile le phasewete di a nyakega.",
+  "auth.usernameDisplayNameRequired": "Leina la mosediriši le leina la pontšho di a nyakega.",
+  "auth.pleaseWait": "Ke kgopela le emele...",
+  "auth.createAccount": "Theha akhaonto",
+  "auth.genericError": "Se sengwe se ile sa sepela gabotse.",
 } satisfies Record<TranslationKey, string>;
 export default d_nso;

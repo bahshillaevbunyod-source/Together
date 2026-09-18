@@ -238,5 +238,18 @@ const d_cv = {
   "settings.saved": "Настройкӑсем упраннӑ.",
   "settings.error400": "Куҫару настройкисене тӗрӗслӗр.",
   "settings.saveError": "Настройкӑсене упраса хӑварма май килмерӗ. Тепӗр хут тытӑнса пӑхӑр.",
+  "auth.welcomeBack": "Ырӑ сунса кӗтетпӗр",
+  "auth.createAccountHeading": "Хӑвӑрӑн аккаунта йӗркелӗр",
+  "auth.login": "Кӗрӗр",
+  "auth.signUp": "Ҫырӑнӑр",
+  "auth.username": "Пулӑшакан ячӗ",
+  "auth.email": "Электронлӑ почта",
+  "auth.password": "Пароль",
+  "auth.nativeLanguagePlaceholder": "Тӑван чӗлхе (тӗс. en)",
+  "auth.emailPasswordRequired": "Электронлӑ почта тата пароль кирлӗ.",
+  "auth.usernameDisplayNameRequired": "Пулӑшакан ячӗ тата кӑтартмалли ячӗ кирлӗ.",
+  "auth.pleaseWait": "Кӗтӗр-ха...",
+  "auth.createAccount": "Аккаунт йӗркелӗр",
+  "auth.genericError": "Темскер йӑнӑш пулчӗ.",
 } satisfies Record<TranslationKey, string>;
 export default d_cv;

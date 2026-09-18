@@ -238,5 +238,18 @@ const d_crh = {
   "settings.saved": "Параметрлер сакъланды.",
   "settings.error400": "Лютфен, терджиме параметрлеринъизни тешкеринъиз.",
   "settings.saveError": "Параметрлерни сакълап оламады. Кене тырышынъыз.",
+  "auth.welcomeBack": "Хош кельдинъиз .",
+  "auth.createAccountHeading": "Озь эсабыны яратынъыз .",
+  "auth.login": "Кириш",
+  "auth.signUp": "Язылынъыз .",
+  "auth.username": "Къулланыджы ады",
+  "auth.email": "Электрон почта",
+  "auth.password": "Пароль",
+  "auth.nativeLanguagePlaceholder": "Тувгъан тиль (меселя, эн)",
+  "auth.emailPasswordRequired": "Электрон почта ве пароль керек.",
+  "auth.usernameDisplayNameRequired": "Къулланыджы ады ве дисплей ады керек.",
+  "auth.pleaseWait": "Риджа этем, бекленъиз...",
+  "auth.createAccount": "Эсапны яратынъыз .",
+  "auth.genericError": "Бир шейлер ерине кельмеди.",
 } satisfies Record<TranslationKey, string>;
 export default d_crh;

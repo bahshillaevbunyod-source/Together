@@ -238,5 +238,18 @@ const d_sq = {
   "settings.saved": "Cilësimet u ruajtën.",
   "settings.error400": "Ju lutemi kontrolloni cilësimet tuaja të përkthimit.",
   "settings.saveError": "Cilësimet nuk mund të ruheshin. Provo sërish.",
+  "auth.welcomeBack": "Mirë se vini përsëri",
+  "auth.createAccountHeading": "Krijoni llogarinë tuaj",
+  "auth.login": "Identifikohu",
+  "auth.signUp": "Regjistrohu",
+  "auth.username": "Emri i përdoruesit",
+  "auth.email": "Adresa e emailit",
+  "auth.password": "Fjalëkalimi",
+  "auth.nativeLanguagePlaceholder": "Gjuha amtare (p.sh. en.)",
+  "auth.emailPasswordRequired": "Kërkohet email dhe fjalëkalim.",
+  "auth.usernameDisplayNameRequired": "Kërkohet emri i përdoruesit dhe emri i shfaqjes.",
+  "auth.pleaseWait": "Ju lutemi prisni…",
+  "auth.createAccount": "Krijo llogari",
+  "auth.genericError": "Diçka shkoi keq.",
 } satisfies Record<TranslationKey, string>;
 export default d_sq;

@@ -238,5 +238,18 @@ const d_hi = {
   "settings.saved": "सेटिंग्स को सहेजा गया।",
   "settings.error400": "कृपया अपनी अनुवाद सेटिंग जांचें.",
   "settings.saveError": "सेटिंग्स सहेजी नहीं जा सकीं. पुनः प्रयास करें।",
+  "auth.welcomeBack": "पुनः स्वागत है",
+  "auth.createAccountHeading": "अपना खाता बनाएं",
+  "auth.login": "लॉग इन करें",
+  "auth.signUp": "साइन अप करें",
+  "auth.username": "उपयोगकर्ता नाम",
+  "auth.email": "ईमेल",
+  "auth.password": "पासवर्ड",
+  "auth.nativeLanguagePlaceholder": "मूल भाषा (उदा. एन)",
+  "auth.emailPasswordRequired": "ईमेल और पासवर्ड आवश्यक है.",
+  "auth.usernameDisplayNameRequired": "उपयोगकर्ता नाम और प्रदर्शन नाम आवश्यक है.",
+  "auth.pleaseWait": "कृपया प्रतीक्षा करें...",
+  "auth.createAccount": "खाता बनाएं",
+  "auth.genericError": "कुछ गलत हो गया।",
 } satisfies Record<TranslationKey, string>;
 export default d_hi;

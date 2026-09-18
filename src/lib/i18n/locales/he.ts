@@ -238,5 +238,18 @@ const d_he = {
   "settings.saved": "ההגדרות נשמרו.",
   "settings.error400": "אנא בדוק את הגדרות התרגום שלך.",
   "settings.saveError": "לא ניתן לשמור את ההגדרות. נסה שוב.",
+  "auth.welcomeBack": "ברוך שובך",
+  "auth.createAccountHeading": "צור את החשבון שלך",
+  "auth.login": "התחבר",
+  "auth.signUp": "הירשם",
+  "auth.username": "שם משתמש",
+  "auth.email": "דוא\"ל",
+  "auth.password": "סיסמה",
+  "auth.nativeLanguagePlaceholder": "שפת אם (למשל en)",
+  "auth.emailPasswordRequired": "יש צורך באימייל וסיסמה.",
+  "auth.usernameDisplayNameRequired": "נדרשים שם משתמש ושם תצוגה.",
+  "auth.pleaseWait": "אנא המתן...",
+  "auth.createAccount": "צור חשבון",
+  "auth.genericError": "משהו השתבש.",
 } satisfies Record<TranslationKey, string>;
 export default d_he;

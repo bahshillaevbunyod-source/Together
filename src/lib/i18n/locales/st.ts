@@ -238,5 +238,18 @@ const d_st = {
   "settings.saved": "Litlhophiso li bolokiloe.",
   "settings.error400": "Ka kopo, sheba litlhophiso tsa phetolelo ea hau.",
   "settings.saveError": "E hlolehile ho boloka litlhophiso. Leka hape.",
+  "auth.welcomeBack": "Rea u amohela hape",
+  "auth.createAccountHeading": "Theha ak'haonte ea hau",
+  "auth.login": "Kena",
+  "auth.signUp": "Ngodisa",
+  "auth.username": "Lebitso la mosebedisi",
+  "auth.email": "Aterese ea lengolo-tsoibila",
+  "auth.password": "Password ea akhaonto",
+  "auth.nativeLanguagePlaceholder": "Puo ea lehae (mohl. en)",
+  "auth.emailPasswordRequired": "E-mail le password lia hlokahala.",
+  "auth.usernameDisplayNameRequired": "Lebitso la mosebelisi le ponts'o lia hlokahala.",
+  "auth.pleaseWait": "Ke kopa o eme...",
+  "auth.createAccount": "Etsa akhaonto",
+  "auth.genericError": "Ho bile le phoso.",
 } satisfies Record<TranslationKey, string>;
 export default d_st;

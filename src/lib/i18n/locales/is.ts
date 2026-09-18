@@ -238,5 +238,18 @@ const d_is = {
   "settings.saved": "Stillingar vistaðar.",
   "settings.error400": "Athugaðu þýðingarstillingarnar þínar.",
   "settings.saveError": "Ekki tókst að vista stillingar. Reyndu aftur.",
+  "auth.welcomeBack": "Velkominn aftur",
+  "auth.createAccountHeading": "Búðu til reikninginn þinn",
+  "auth.login": "Skráðu þig inn",
+  "auth.signUp": "Skráðu þig",
+  "auth.username": "Notendanafn",
+  "auth.email": "Tölvupóstur",
+  "auth.password": "Lykilorð",
+  "auth.nativeLanguagePlaceholder": "Móðurmál (t.d. en)",
+  "auth.emailPasswordRequired": "Netfang og lykilorð eru nauðsynleg.",
+  "auth.usernameDisplayNameRequired": "Notandanafn og birtingarnafn er krafist.",
+  "auth.pleaseWait": "Vinsamlegast bíddu…",
+  "auth.createAccount": "Búðu til reikning",
+  "auth.genericError": "Eitthvað fór úrskeiðis.",
 } satisfies Record<TranslationKey, string>;
 export default d_is;

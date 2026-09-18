@@ -238,5 +238,18 @@ const d_gd = {
   "settings.saved": "Roghainnean air an sàbhaladh.",
   "settings.error400": "Feuch an toir thu sùil air na roghainnean eadar-theangachaidh agad.",
   "settings.saveError": "Cha b' urrainn dhuinn na roghainnean a shàbhaladh. Feuch ris a-rithist.",
+  "auth.welcomeBack": "Fàilte air ais",
+  "auth.createAccountHeading": "Cruthaich do chunntas",
+  "auth.login": "Log a-steach",
+  "auth.signUp": "Clàraich",
+  "auth.username": "Ainm-cleachdaidh",
+  "auth.email": "Post-d",
+  "auth.password": "Facal-faire",
+  "auth.nativeLanguagePlaceholder": "Cànan dùthchasach (m.e. en)",
+  "auth.emailPasswordRequired": "Tha feum air post-d agus facal-faire.",
+  "auth.usernameDisplayNameRequired": "Tha feum air ainm-cleachdaidh agus ainm taisbeanaidh.",
+  "auth.pleaseWait": "Feuch an fuirich thu…",
+  "auth.createAccount": "Cruthaich cunntas",
+  "auth.genericError": "Chaidh rudeigin ceàrr.",
 } satisfies Record<TranslationKey, string>;
 export default d_gd;

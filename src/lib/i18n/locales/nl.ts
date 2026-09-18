@@ -238,5 +238,18 @@ const d_nl = {
   "settings.saved": "Instellingen opgeslagen.",
   "settings.error400": "Controleer uw vertaalinstellingen.",
   "settings.saveError": "Kan instellingen niet opslaan. Probeer het opnieuw.",
+  "auth.welcomeBack": "Welkom terug",
+  "auth.createAccountHeading": "Maak uw account aan",
+  "auth.login": "Inloggen",
+  "auth.signUp": "Schrijf je in",
+  "auth.username": "Gebruikersnaam",
+  "auth.email": "E-mail",
+  "auth.password": "Wachtwoord",
+  "auth.nativeLanguagePlaceholder": "Moedertaal (bijvoorbeeld en)",
+  "auth.emailPasswordRequired": "E-mailadres en wachtwoord zijn vereist.",
+  "auth.usernameDisplayNameRequired": "Gebruikersnaam en weergavenaam zijn vereist.",
+  "auth.pleaseWait": "Even geduld a.u.b....",
+  "auth.createAccount": "Account aanmaken",
+  "auth.genericError": "Er is iets misgegaan.",
 } satisfies Record<TranslationKey, string>;
 export default d_nl;

@@ -238,5 +238,18 @@ const d_ba = {
   "settings.saved": "Настройки сохранены.",
   "settings.error400": "Зинһар, тәржемә параметрҙарығыҙҙы тикшерегеҙ.",
   "settings.saveError": "Көйләүҙәрҙе һаҡлай алманы. Тағы ла тырышып ҡарағыҙ.",
+  "auth.welcomeBack": "Ҡайтып рәхим итегеҙ",
+  "auth.createAccountHeading": "Үҙегеҙҙең иҫәп яҙмағыҙҙы булдырығыҙ",
+  "auth.login": "Инергә",
+  "auth.signUp": "Яҙылыу",
+  "auth.username": "Ҡулланыусы исеме",
+  "auth.email": "Электрон почта",
+  "auth.password": "Пароль",
+  "auth.nativeLanguagePlaceholder": "Туған тел (мәҫәлән, en)",
+  "auth.emailPasswordRequired": "Электрон почта һәм пароль кәрәк.",
+  "auth.usernameDisplayNameRequired": "Ҡулланыусы исеме һәм күрһәтеү исеме кәрәк.",
+  "auth.pleaseWait": "Зинһар, көтөгөҙ...",
+  "auth.createAccount": "Иҫәп яҙмаһын булдырыу",
+  "auth.genericError": "Нимәлер дөрөҫ булманы.",
 } satisfies Record<TranslationKey, string>;
 export default d_ba;

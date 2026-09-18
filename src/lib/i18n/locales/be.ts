@@ -238,5 +238,18 @@ const d_be = {
   "settings.saved": "Налады захаваны.",
   "settings.error400": "Праверце налады перакладу.",
   "settings.saveError": "Не ўдалося захаваць налады. Паспрабуйце яшчэ раз.",
+  "auth.welcomeBack": "Сардэчна запрашаем назад",
+  "auth.createAccountHeading": "Стварыце свой уліковы запіс",
+  "auth.login": "Увайдзіце ў сістэму",
+  "auth.signUp": "Запісвайцеся",
+  "auth.username": "Імя карыстальніка",
+  "auth.email": "Электронная пошта",
+  "auth.password": "Пароль",
+  "auth.nativeLanguagePlaceholder": "Родная мова (напрыклад, en)",
+  "auth.emailPasswordRequired": "Патрабуецца электронная пошта і пароль.",
+  "auth.usernameDisplayNameRequired": "Патрабуюцца імя карыстальніка і адлюстраванае імя.",
+  "auth.pleaseWait": "Калі ласка, пачакайце...",
+  "auth.createAccount": "Стварыць уліковы запіс",
+  "auth.genericError": "Нешта пайшло не так.",
 } satisfies Record<TranslationKey, string>;
 export default d_be;

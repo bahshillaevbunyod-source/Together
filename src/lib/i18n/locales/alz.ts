@@ -238,5 +238,18 @@ const d_alz = {
   "settings.saved": "Lembe ma jugwoko.",
   "settings.error400": "Kwayu nen kit mi loko dhok peri.",
   "settings.saveError": "Acopo gwoko ngo lembe ma juketho. Tem kendu.",
+  "auth.welcomeBack": "Jolowu kendo",
+  "auth.createAccountHeading": "Yab akaunti peri",
+  "auth.login": "Donj",
+  "auth.signUp": "Kyewo nying",
+  "auth.username": "Nying jatic",
+  "auth.email": "Kabedo mi email",
+  "auth.password": "Lanyuth",
+  "auth.nativeLanguagePlaceholder": "Dho mi thek (e.g. en)",
+  "auth.emailPasswordRequired": "Email ku lanyuth mi dhumo mitere.",
+  "auth.usernameDisplayNameRequired": "Nying tic man nying nyuthu piny mitere.",
+  "auth.pleaseWait": "Kwayo ikur...",
+  "auth.createAccount": "Caku akaunti",
+  "auth.genericError": "Piny moko utime marac.",
 } satisfies Record<TranslationKey, string>;
 export default d_alz;

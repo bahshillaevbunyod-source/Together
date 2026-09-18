@@ -238,5 +238,18 @@ const d_gom = {
   "settings.saved": "सेटिंग्ज जतनाय घेतल्या.",
   "settings.error400": "उपकार करून तुमचीं अणकार मांडावळी तपासात.",
   "settings.saveError": "सेटिंग्ज जतनाय घेवंक शकली ना. परतून यत्न करात.",
+  "auth.welcomeBack": "परत येवकार",
+  "auth.createAccountHeading": "तुमचें खातें तयार करचें",
+  "auth.login": "लॉग इन करात",
+  "auth.signUp": "सायन अप करचें",
+  "auth.username": "वापरप्याचें नांव",
+  "auth.email": "ईमेल करचें",
+  "auth.password": "पासवर्ड",
+  "auth.nativeLanguagePlaceholder": "मूळ भास (देखीक- en)",
+  "auth.emailPasswordRequired": "ईमेल आनी पासवर्ड गरजेचो.",
+  "auth.usernameDisplayNameRequired": "वापरप्याचें नांव आनी प्रदर्शन नांव गरजेचें आसा.",
+  "auth.pleaseWait": "कृपया वाट पळयात...",
+  "auth.createAccount": "खातें तयार करचें",
+  "auth.genericError": "कितें तरी चुकलें.",
 } satisfies Record<TranslationKey, string>;
 export default d_gom;

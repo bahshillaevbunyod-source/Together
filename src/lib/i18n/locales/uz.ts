@@ -238,5 +238,18 @@ const uz = {
   "settings.saved": "Sozlamalar saqlandi.",
   "settings.error400": "Tarjima sozlamalarini tekshiring.",
   "settings.saveError": "Sozlamalarni saqlab bo‘lmadi. Qayta urinib ko'ring.",
+  "auth.welcomeBack": "Xush kelibsiz",
+  "auth.createAccountHeading": "Hisob qaydnomangizni yarating",
+  "auth.login": "Kirish",
+  "auth.signUp": "Roʻyxatdan oʻtish",
+  "auth.username": "Foydalanuvchi nomi",
+  "auth.email": "Elektron pochta",
+  "auth.password": "Parol",
+  "auth.nativeLanguagePlaceholder": "Ona tili (masalan, en)",
+  "auth.emailPasswordRequired": "Elektron pochta va parol talab qilinadi.",
+  "auth.usernameDisplayNameRequired": "Foydalanuvchi nomi va ko'rsatilgan nom talab qilinadi.",
+  "auth.pleaseWait": "Iltimos, kuting…",
+  "auth.createAccount": "Hisob yaratish",
+  "auth.genericError": "Nimadir xato ketdi.",
 } satisfies Record<TranslationKey, string>;
 export default uz;

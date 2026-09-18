@@ -238,5 +238,18 @@ const d_yi = {
   "settings.saved": "סעטטינגס געראטעוועט.",
   "settings.error400": "ביטע טשעק דיין איבערזעצונג סעטטינגס.",
   "settings.saveError": "קען נישט ראַטעווען סעטטינגס. פּרוּווט ווידער.",
+  "auth.welcomeBack": "ברוכים הבאים צוריק",
+  "auth.createAccountHeading": "שאַפֿן דיין חשבון",
+  "auth.login": "קלאָץ אין",
+  "auth.signUp": "צייכן אַרויף",
+  "auth.username": "נאמען",
+  "auth.email": "בליצפּאָסט",
+  "auth.password": "שפּריכוואָרט",
+  "auth.nativeLanguagePlaceholder": "געבוירן שפּראַך (למשל yi)",
+  "auth.emailPasswordRequired": "בליצפּאָסט און פּאַראָל זענען פארלאנגט.",
+  "auth.usernameDisplayNameRequired": "נאמען און ווייַז נאָמען זענען פארלאנגט.",
+  "auth.pleaseWait": "ביטע וואַרטן…",
+  "auth.createAccount": "שאַפֿן אַ חשבון",
+  "auth.genericError": "עפּעס איז פאַלש.",
 } satisfies Record<TranslationKey, string>;
 export default d_yi;

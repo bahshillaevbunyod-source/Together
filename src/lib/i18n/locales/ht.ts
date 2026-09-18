@@ -238,5 +238,18 @@ const d_ht = {
   "settings.saved": "Anviwònman yo sove.",
   "settings.error400": "Tanpri tcheke paramèt tradiksyon ou yo.",
   "settings.saveError": "Pa t 'kapab sove paramèt yo. Eseye ankò.",
+  "auth.welcomeBack": "Byenvini tounen",
+  "auth.createAccountHeading": "Kreye kont ou",
+  "auth.login": "Konekte",
+  "auth.signUp": "Enskri",
+  "auth.username": "Non itilizatè",
+  "auth.email": "Imèl",
+  "auth.password": "Modpas",
+  "auth.nativeLanguagePlaceholder": "Lang natif natal (egzanp en)",
+  "auth.emailPasswordRequired": "Imèl ak modpas obligatwa.",
+  "auth.usernameDisplayNameRequired": "Non itilizatè ak non ekspozisyon yo obligatwa.",
+  "auth.pleaseWait": "Tanpri tann...",
+  "auth.createAccount": "Kreye kont",
+  "auth.genericError": "Yon bagay ale mal.",
 } satisfies Record<TranslationKey, string>;
 export default d_ht;

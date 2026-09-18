@@ -238,5 +238,18 @@ const d_fi = {
   "settings.saved": "Asetukset tallennettu.",
   "settings.error400": "Tarkista käännösasetukset.",
   "settings.saveError": "Asetuksia ei voitu tallentaa. Yritä uudelleen.",
+  "auth.welcomeBack": "Tervetuloa takaisin",
+  "auth.createAccountHeading": "Luo tili",
+  "auth.login": "Kirjaudu sisään",
+  "auth.signUp": "Rekisteröidy",
+  "auth.username": "Käyttäjätunnus",
+  "auth.email": "Sähköposti",
+  "auth.password": "Salasana",
+  "auth.nativeLanguagePlaceholder": "Äidinkieli (esim. fi)",
+  "auth.emailPasswordRequired": "Sähköposti ja salasana vaaditaan.",
+  "auth.usernameDisplayNameRequired": "Käyttäjätunnus ja näyttönimi vaaditaan.",
+  "auth.pleaseWait": "Odota…",
+  "auth.createAccount": "Luo tili",
+  "auth.genericError": "Jotain meni pieleen.",
 } satisfies Record<TranslationKey, string>;
 export default d_fi;

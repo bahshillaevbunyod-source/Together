@@ -238,5 +238,18 @@ const d_tk = {
   "settings.saved": "Sazlamalar saklandy",
   "settings.error400": "Terjime sazlamalaryňyzy barlaň.",
   "settings.saveError": "Sazlamalary ýatda saklap bolmaýar Gaýtadan synanyşyň.",
+  "auth.welcomeBack": "Gaýtadan hoş geldiňiz",
+  "auth.createAccountHeading": "Hasabyňyzy dörediň",
+  "auth.login": "Giriň",
+  "auth.signUp": "Hasaba giriň",
+  "auth.username": "Ulanyjy ady",
+  "auth.email": "E-poçta iberiň",
+  "auth.password": "Parol",
+  "auth.nativeLanguagePlaceholder": "Nativeerli dil (meselem)",
+  "auth.emailPasswordRequired": "E-poçta we parol talap edilýär.",
+  "auth.usernameDisplayNameRequired": "Ulanyjy ady we görkeziliş ady hökmanydyr.",
+  "auth.pleaseWait": "Haýyş ediň ...",
+  "auth.createAccount": "Hasap dörediň",
+  "auth.genericError": "Bir zat nädogry boldy.",
 } satisfies Record<TranslationKey, string>;
 export default d_tk;

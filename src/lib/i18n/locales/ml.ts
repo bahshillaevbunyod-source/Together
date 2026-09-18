@@ -238,5 +238,18 @@ const d_ml = {
   "settings.saved": "ക്രമീകരണങ്ങൾ സംരക്ഷിച്ചു.",
   "settings.error400": "നിങ്ങളുടെ വിവർത്തന ക്രമീകരണങ്ങൾ പരിശോധിക്കുക.",
   "settings.saveError": "ക്രമീകരണങ്ങൾ സംരക്ഷിക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക.",
+  "auth.welcomeBack": "തിരികെ സ്വാഗതം",
+  "auth.createAccountHeading": "നിങ്ങളുടെ അക്കൗണ്ട് സൃഷ്ടിക്കുക",
+  "auth.login": "ലോഗിൻ ചെയ്യുക",
+  "auth.signUp": "സൈൻ അപ്പ് ചെയ്യുക",
+  "auth.username": "ഉപയോക്തൃനാമം",
+  "auth.email": "ഇമെയിൽ",
+  "auth.password": "രഹസ്യവാക്ക്",
+  "auth.nativeLanguagePlaceholder": "മാതൃഭാഷ (ഉദാ. en)",
+  "auth.emailPasswordRequired": "ഇമെയിലും പാസ്‌വേഡും ആവശ്യമാണ്.",
+  "auth.usernameDisplayNameRequired": "ഉപയോക്തൃനാമവും പ്രദർശന നാമവും ആവശ്യമാണ്.",
+  "auth.pleaseWait": "ദയവായി കാത്തിരിക്കൂ...",
+  "auth.createAccount": "അക്കൗണ്ട് സൃഷ്ടിക്കുക",
+  "auth.genericError": "എന്തോ കുഴപ്പം സംഭവിച്ചു.",
 } satisfies Record<TranslationKey, string>;
 export default d_ml;

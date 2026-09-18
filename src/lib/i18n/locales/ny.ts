@@ -238,5 +238,18 @@ const d_ny = {
   "settings.saved": "Zokonda zasungidwa.",
   "settings.error400": "Chonde onani makonda anu omasulira.",
   "settings.saveError": "Sitinathe kusunga zokonda. Yesaninso.",
+  "auth.welcomeBack": "Takulandilaninso",
+  "auth.createAccountHeading": "Pangani akaunti yanu",
+  "auth.login": "Lowani",
+  "auth.signUp": "Lowani",
+  "auth.username": "Dzina lolowera",
+  "auth.email": "Imelo",
+  "auth.password": "Mawu achinsinsi",
+  "auth.nativeLanguagePlaceholder": "Chilankhulo chakubadwa (monga en)",
+  "auth.emailPasswordRequired": "Imelo ndi mawu achinsinsi ndizofunikira.",
+  "auth.usernameDisplayNameRequired": "Dzina lolowera ndi dzina lowonetsera ndizofunikira.",
+  "auth.pleaseWait": "Chonde dikirani…",
+  "auth.createAccount": "Pangani akaunti",
+  "auth.genericError": "Chinachake chalakwika.",
 } satisfies Record<TranslationKey, string>;
 export default d_ny;

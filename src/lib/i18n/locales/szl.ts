@@ -238,5 +238,18 @@ const d_szl = {
   "settings.saved": "Ustawiynia zapisane.",
   "settings.error400": "Proszōm sprawdź ustawiynia przekładu.",
   "settings.saveError": "Niy mōg zapisać ustawiyń. Sprōbuj jeszcze raz.",
+  "auth.welcomeBack": "Witajmy nazod",
+  "auth.createAccountHeading": "Utworz swoje kōnto",
+  "auth.login": "Zalogować sie",
+  "auth.signUp": "Zarejestruj sie",
+  "auth.username": "Miano ôd używocza",
+  "auth.email": "E-mail",
+  "auth.password": "Hasło",
+  "auth.nativeLanguagePlaceholder": "Jynzyk rodzimy (bp. en)",
+  "auth.emailPasswordRequired": "Wymogano je e-mail i hasło.",
+  "auth.usernameDisplayNameRequired": "Wymogane sōm miano ôd używocza i miano wyświytlane.",
+  "auth.pleaseWait": "Proszōm poczkaj...",
+  "auth.createAccount": "Utworz kōnto",
+  "auth.genericError": "Coś poszło nie tak.",
 } satisfies Record<TranslationKey, string>;
 export default d_szl;

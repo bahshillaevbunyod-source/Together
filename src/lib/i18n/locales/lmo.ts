@@ -238,5 +238,18 @@ const d_lmo = {
   "settings.saved": "Impostaziun salvà.",
   "settings.error400": "Per piasé cuntrulà i impostaziun de traduziun.",
   "settings.saveError": "Pudeva minga salvà i impostaziun. Pruva ancamò.",
+  "auth.welcomeBack": "Benvenuti",
+  "auth.createAccountHeading": "Crea el tò conto",
+  "auth.login": "Accedi",
+  "auth.signUp": "Iscriviti",
+  "auth.username": "Nom utente",
+  "auth.email": "E-mail",
+  "auth.password": "Password del cunt",
+  "auth.nativeLanguagePlaceholder": "Lengua nativa (par esempi en)",
+  "auth.emailPasswordRequired": "Sun necessari email e password.",
+  "auth.usernameDisplayNameRequired": "Sun necessari el nomm d’utent e el nomm de visualizaziun.",
+  "auth.pleaseWait": "Per piasér speta...",
+  "auth.createAccount": "Crea cunt",
+  "auth.genericError": "Quaicoss l’è ndad mal.",
 } satisfies Record<TranslationKey, string>;
 export default d_lmo;

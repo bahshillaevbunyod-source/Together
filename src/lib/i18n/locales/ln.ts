@@ -238,5 +238,18 @@ const d_ln = {
   "settings.saved": "Ba paramètres ebombami.",
   "settings.error400": "Tosɛngi yo otala ba paramètres na yo ya libongoli.",
   "settings.saveError": "Ekokaki kobomba ba paramètres te. Meká lisusu.",
+  "auth.welcomeBack": "Boyei malamu lisusu",
+  "auth.createAccountHeading": "Salá kɔnti na yo",
+  "auth.login": "Kota na kati",
+  "auth.signUp": "Bokomisa nkombo",
+  "auth.username": "Nkombo ya mosaleli",
+  "auth.email": "Email na nzela ya email",
+  "auth.password": "Mot ya nzela",
+  "auth.nativeLanguagePlaceholder": "Monoko ya mboka (e.g. en) .",
+  "auth.emailPasswordRequired": "Esengeli kotinda email mpe mot de passe.",
+  "auth.usernameDisplayNameRequired": "Nkombo ya mosaleli mpe nkombo ya kolakisa esengeli.",
+  "auth.pleaseWait": "Svp bozela...",
+  "auth.createAccount": "Bosala compte",
+  "auth.genericError": "Eloko moko ekendeki mabe.",
 } satisfies Record<TranslationKey, string>;
 export default d_ln;

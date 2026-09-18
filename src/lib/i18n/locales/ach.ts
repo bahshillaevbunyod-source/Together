@@ -238,5 +238,18 @@ const d_ach = {
   "settings.saved": "Ki gwoko jami ma ki keto.",
   "settings.error400": "Tim ber inen kit ma ki loko kwede leb ni.",
   "settings.saveError": "Pe twero gwoko jami ma ki keto. Tem doki.",
+  "auth.welcomeBack": "Wa jolo in",
+  "auth.createAccountHeading": "Yab akaunti ni",
+  "auth.login": "Dony iye",
+  "auth.signUp": "Coye",
+  "auth.username": "Nying latic",
+  "auth.email": "Kabedo me email",
+  "auth.password": "Nying me donyo",
+  "auth.nativeLanguagePlaceholder": "Leb ma ki nywalo kwede (e.g. en)",
+  "auth.emailPasswordRequired": "Email ki lok ma ki keto me donyo iye mitte.",
+  "auth.usernameDisplayNameRequired": "Nying latic ki nying ma ki nyutu omyera.",
+  "auth.pleaseWait": "Tim ber ikur...",
+  "auth.createAccount": "Yab akaunti",
+  "auth.genericError": "Gin mo obale.",
 } satisfies Record<TranslationKey, string>;
 export default d_ach;

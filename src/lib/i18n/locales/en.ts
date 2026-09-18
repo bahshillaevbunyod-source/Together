@@ -247,6 +247,20 @@ export const en = {
   "settings.saved": "Settings saved.",
   "settings.error400": "Please check your translation settings.",
   "settings.saveError": "Couldn’t save settings. Try again.",
+
+  "auth.welcomeBack": "Welcome back",
+  "auth.createAccountHeading": "Create your account",
+  "auth.login": "Log in",
+  "auth.signUp": "Sign up",
+  "auth.username": "Username",
+  "auth.email": "Email",
+  "auth.password": "Password",
+  "auth.nativeLanguagePlaceholder": "Native language (e.g. en)",
+  "auth.emailPasswordRequired": "Email and password are required.",
+  "auth.usernameDisplayNameRequired": "Username and display name are required.",
+  "auth.pleaseWait": "Please wait…",
+  "auth.createAccount": "Create account",
+  "auth.genericError": "Something went wrong.",
 } as const;
 
 export type TranslationKey = keyof typeof en;

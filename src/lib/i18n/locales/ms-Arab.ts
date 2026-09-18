@@ -238,5 +238,18 @@ const d_ms_Arab = {
   "settings.saved": "سيتيڠ دسيمڤن.",
   "settings.error400": "سيلا چيك سيتيڠ ترجمهن اندا.",
   "settings.saveError": "تيدق داڤت مڽيمڤن سيتيڠ. چوبا لاڬي.",
+  "auth.welcomeBack": "سلامت داتڠ كمبالي",
+  "auth.createAccountHeading": "بوات اكاءون اندا",
+  "auth.login": "ماسوق",
+  "auth.signUp": "مندفتر",
+  "auth.username": "نام ڤڠڬونا",
+  "auth.email": "اي-ميل",
+  "auth.password": "كات كونچي",
+  "auth.nativeLanguagePlaceholder": "بهاس اصلي (e.g. en)",
+  "auth.emailPasswordRequired": "ايميل دان كات كونچي دڤرلوكن.",
+  "auth.usernameDisplayNameRequired": "نام ڤڠڬونا دان نام ڤاڤن ككونچي دڤرلوكن.",
+  "auth.pleaseWait": "سيلا توڠڬو...",
+  "auth.createAccount": "بوات اكاءون",
+  "auth.genericError": "اد يڠ تيدق كنا.",
 } satisfies Record<TranslationKey, string>;
 export default d_ms_Arab;

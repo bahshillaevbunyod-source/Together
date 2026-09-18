@@ -238,5 +238,18 @@ const es = {
   "settings.saved": "Configuración guardada.",
   "settings.error400": "Por favor verifique su configuración de traducción.",
   "settings.saveError": "No se pudo guardar la configuración. Intentar otra vez.",
+  "auth.welcomeBack": "Bienvenido de nuevo",
+  "auth.createAccountHeading": "Crea tu cuenta",
+  "auth.login": "Iniciar sesión",
+  "auth.signUp": "Regístrate",
+  "auth.username": "Nombre de usuario",
+  "auth.email": "Correo electrónico",
+  "auth.password": "Contraseña",
+  "auth.nativeLanguagePlaceholder": "Idioma nativo (por ejemplo, en)",
+  "auth.emailPasswordRequired": "Se requiere correo electrónico y contraseña.",
+  "auth.usernameDisplayNameRequired": "El nombre de usuario y el nombre para mostrar son obligatorios.",
+  "auth.pleaseWait": "Por favor espera...",
+  "auth.createAccount": "Crear cuenta",
+  "auth.genericError": "Algo salió mal.",
 } satisfies Record<TranslationKey, string>;
 export default es;

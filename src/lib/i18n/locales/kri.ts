@@ -238,5 +238,18 @@ const d_kri = {
   "settings.saved": "Setin dɛn we dɛn dɔn kip.",
   "settings.error400": "Duya chɛk yu transleshɔn sɛtin dɛn.",
   "settings.saveError": "I nɔ bin ebul fɔ sev di sɛtin dɛn. Tray bak.",
+  "auth.welcomeBack": "Welkam bak",
+  "auth.createAccountHeading": "Krio yu akɔn",
+  "auth.login": "Log in fɔ go insay",
+  "auth.signUp": "Sayn ap fɔ yu",
+  "auth.username": "Yuz nem",
+  "auth.email": "Imel fɔ yu",
+  "auth.password": "Paswɔd fɔ yuz",
+  "auth.nativeLanguagePlaceholder": "Nativ langwej (e.g. en) .",
+  "auth.emailPasswordRequired": "Imel ɛn paswɔd nid fɔ de.",
+  "auth.usernameDisplayNameRequired": "Yuznem ɛn displei nem nid fɔ de.",
+  "auth.pleaseWait": "Duya una wet...",
+  "auth.createAccount": "Krio akɔn",
+  "auth.genericError": "Sɔntin bin rɔng.",
 } satisfies Record<TranslationKey, string>;
 export default d_kri;

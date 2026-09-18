@@ -238,5 +238,18 @@ const d_luo = {
   "settings.saved": "Sete oserit.",
   "settings.error400": "Yie mondo irang kaka iketo weche mag loko dhok.",
   "settings.saveError": "Ok nyal kano chenro. Tem kendo.",
+  "auth.welcomeBack": "Orwak kendo",
+  "auth.createAccountHeading": "Los akaunt mari",
+  "auth.login": "Donjo",
+  "auth.signUp": "Ndikri",
+  "auth.username": "Nying jatiyo",
+  "auth.email": "Imel",
+  "auth.password": "Wach mar kadho",
+  "auth.nativeLanguagePlaceholder": "Dhok mar oganda (kaka en)",
+  "auth.emailPasswordRequired": "Email kod paswod dwarore.",
+  "auth.usernameDisplayNameRequired": "Nying’ ma itiyogo kod nying’ ma inyiso dwarore.",
+  "auth.pleaseWait": "Yie irit...",
+  "auth.createAccount": "Los akaunt",
+  "auth.genericError": "Gimoro ne ok odhi maber.",
 } satisfies Record<TranslationKey, string>;
 export default d_luo;

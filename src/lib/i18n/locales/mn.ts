@@ -238,5 +238,18 @@ const d_mn = {
   "settings.saved": "Тохиргоог хадгалсан.",
   "settings.error400": "Орчуулгын тохиргоогоо шалгана уу.",
   "settings.saveError": "Тохиргоог хадгалж чадсангүй. Дахин оролдоно уу.",
+  "auth.welcomeBack": "Эргээд тавтай морил",
+  "auth.createAccountHeading": "Бүртгэлээ үүсгэ",
+  "auth.login": "Нэвтрэх",
+  "auth.signUp": "Бүртгүүлэх",
+  "auth.username": "Хэрэглэгчийн нэр",
+  "auth.email": "Имэйл",
+  "auth.password": "Нууц үг",
+  "auth.nativeLanguagePlaceholder": "Төрөлх хэл (жишээ нь, en)",
+  "auth.emailPasswordRequired": "Имэйл болон нууц үг шаардлагатай.",
+  "auth.usernameDisplayNameRequired": "Хэрэглэгчийн нэр болон дэлгэцийн нэр шаардлагатай.",
+  "auth.pleaseWait": "Хүлээгээрэй...",
+  "auth.createAccount": "Бүртгэл үүсгэх",
+  "auth.genericError": "Ямар нэг алдаа гарлаа.",
 } satisfies Record<TranslationKey, string>;
 export default d_mn;

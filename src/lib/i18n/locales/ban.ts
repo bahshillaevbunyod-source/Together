@@ -238,5 +238,18 @@ const d_ban = {
   "settings.saved": "Setélan sampun kasimpen.",
   "settings.error400": "Cingakin setélan terjemahan Sametoné.",
   "settings.saveError": "Nénten prasida nyimpen setélan. Indayang malih.",
+  "auth.welcomeBack": "Rahajeng mawali",
+  "auth.createAccountHeading": "Karyanin akun Sametoné",
+  "auth.login": "Ngranjing",
+  "auth.signUp": "Ngranjing",
+  "auth.username": "Wastan Pangguna",
+  "auth.email": "Alamat email",
+  "auth.password": "Sandi",
+  "auth.nativeLanguagePlaceholder": "Basa asli (umpami en)",
+  "auth.emailPasswordRequired": "Email lan sandi sané kaperluang.",
+  "auth.usernameDisplayNameRequired": "Wastan panganggé lan wastan tampilan kaperluang.",
+  "auth.pleaseWait": "Antosang...",
+  "auth.createAccount": "Ngaryanin akun",
+  "auth.genericError": "Ada ane iwang.",
 } satisfies Record<TranslationKey, string>;
 export default d_ban;

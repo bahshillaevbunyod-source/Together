@@ -238,5 +238,18 @@ const d_fil = {
   "settings.saved": "Na-save ang mga setting.",
   "settings.error400": "Pakisuri ang iyong mga setting ng pagsasalin.",
   "settings.saveError": "Hindi ma-save ang mga setting. Subukan muli.",
+  "auth.welcomeBack": "Maligayang pagbabalik",
+  "auth.createAccountHeading": "Lumikha ng iyong account",
+  "auth.login": "Mag-log in",
+  "auth.signUp": "Mag-sign up",
+  "auth.username": "Pangalan ng gumagamit",
+  "auth.email": "Tirahan ng email",
+  "auth.password": "Password ng account",
+  "auth.nativeLanguagePlaceholder": "Katutubong wika (hal. en)",
+  "auth.emailPasswordRequired": "Kinakailangan ang email at password.",
+  "auth.usernameDisplayNameRequired": "Kinakailangan ang username at display name.",
+  "auth.pleaseWait": "Mangyaring maghintay…",
+  "auth.createAccount": "Gumawa ng account",
+  "auth.genericError": "Nagkaproblema.",
 } satisfies Record<TranslationKey, string>;
 export default d_fil;

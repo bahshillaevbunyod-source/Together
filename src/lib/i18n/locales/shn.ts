@@ -238,5 +238,18 @@ const d_shn = {
   "settings.saved": "သိမ်းဝႆႉ လွင်ႈတမ်းဝၢင်း။",
   "settings.error400": "ၶႅၼ်းတေႃႈ ထတ်းတူၺ်း လွင်ႈတမ်းဝၢင်း ၵၢၼ်ပိၼ်ႇၽႃႇသႃႇ ၸဝ်ႈၵဝ်ႇသေၵမ်း။",
   "settings.saveError": "ဢမ်ႇၸၢင်ႈသိမ်းဝႆႉ လွင်ႈတမ်းဝၢင်း။ ၶိုၼ်းၶတ်းၸႂ်တူၺ်းလႄႈ။",
+  "auth.welcomeBack": "ႁူမ်ၸူမ်းႁပ်ႉတွၼ်ႈယူႇၶႃႈ",
+  "auth.createAccountHeading": "ႁဵတ်းဢၵွင်ႉၸဝ်ႈၵဝ်ႇ",
+  "auth.login": "ၶဝ်ႈၵႂႃႇ",
+  "auth.signUp": "လူင်းသဵၼ်ႈမၢႆ",
+  "auth.username": "ၸိုဝ်ႈၽူႈၸႂ်ႉတိုဝ်း",
+  "auth.email": "ဢီးမေးလ်",
+  "auth.password": "ၶေႃႈလပ်ႉ",
+  "auth.nativeLanguagePlaceholder": "ၽႃႇသႃႇၵႂၢမ်းလၢတ်ႈမႄႈမိူင်း (တူဝ်ယၢင်ႇ en)",
+  "auth.emailPasswordRequired": "ဢီးမေးလ် လႄႈ မၢႆလပ်ႉ ၸိူဝ်းၼႆႉ။",
+  "auth.usernameDisplayNameRequired": "ၸိုဝ်ႈၽူႈၸႂ်ႉတိုဝ်း လႄႈ ၸိုဝ်ႈၼႄ ၸိူဝ်းၼႆႉ တေလႆႈမီး။",
+  "auth.pleaseWait": "ၶႅၼ်းတေႃႈပႂ်ႉတူၺ်း...",
+  "auth.createAccount": "ႁဵတ်းဢၵွင်ႉ",
+  "auth.genericError": "မီးလွင်ႈၽိတ်းပိူင်ႈၵႂႃႇ။",
 } satisfies Record<TranslationKey, string>;
 export default d_shn;

@@ -238,5 +238,18 @@ const d_ta = {
   "settings.saved": "அமைப்புகள் சேமிக்கப்பட்டன.",
   "settings.error400": "உங்கள் மொழிபெயர்ப்பு அமைப்புகளைச் சரிபார்க்கவும்.",
   "settings.saveError": "அமைப்புகளைச் சேமிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+  "auth.welcomeBack": "மீண்டும் வரவேற்கிறோம்",
+  "auth.createAccountHeading": "உங்கள் கணக்கை உருவாக்கவும்",
+  "auth.login": "உள்நுழையவும்",
+  "auth.signUp": "பதிவு செய்யவும்",
+  "auth.username": "பயனர் பெயர்",
+  "auth.email": "மின்னஞ்சல்",
+  "auth.password": "கடவுச்சொல்",
+  "auth.nativeLanguagePlaceholder": "தாய்மொழி (எ.கா. en)",
+  "auth.emailPasswordRequired": "மின்னஞ்சல் மற்றும் கடவுச்சொல் தேவை.",
+  "auth.usernameDisplayNameRequired": "பயனர் பெயர் மற்றும் காட்சி பெயர் தேவை.",
+  "auth.pleaseWait": "தயவுசெய்து காத்திருங்கள்…",
+  "auth.createAccount": "கணக்கை உருவாக்கவும்",
+  "auth.genericError": "ஏதோ தவறாகிவிட்டது.",
 } satisfies Record<TranslationKey, string>;
 export default d_ta;

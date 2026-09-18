@@ -238,5 +238,18 @@ const ko = {
   "settings.saved": "설정이 저장되었습니다.",
   "settings.error400": "번역 설정을 확인하세요.",
   "settings.saveError": "설정을 저장할 수 없습니다. 다시 시도해 보세요.",
+  "auth.welcomeBack": "돌아온 것을 환영합니다",
+  "auth.createAccountHeading": "계정 만들기",
+  "auth.login": "로그인",
+  "auth.signUp": "가입",
+  "auth.username": "사용자 이름",
+  "auth.email": "이메일",
+  "auth.password": "비밀번호",
+  "auth.nativeLanguagePlaceholder": "모국어(예: en)",
+  "auth.emailPasswordRequired": "이메일과 비밀번호가 필요합니다.",
+  "auth.usernameDisplayNameRequired": "사용자 이름과 표시 이름이 필요합니다.",
+  "auth.pleaseWait": "기다려 주십시오…",
+  "auth.createAccount": "계정 만들기",
+  "auth.genericError": "문제가 발생했습니다.",
 } satisfies Record<TranslationKey, string>;
 export default ko;

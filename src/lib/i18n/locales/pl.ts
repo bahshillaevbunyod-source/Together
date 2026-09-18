@@ -238,5 +238,18 @@ const d_pl = {
   "settings.saved": "Ustawienia zostały zapisane.",
   "settings.error400": "Sprawdź ustawienia tłumaczenia.",
   "settings.saveError": "Nie udało się zapisać ustawień. Spróbuj ponownie.",
+  "auth.welcomeBack": "Witamy z powrotem",
+  "auth.createAccountHeading": "Utwórz swoje konto",
+  "auth.login": "Zaloguj się",
+  "auth.signUp": "Zarejestruj się",
+  "auth.username": "Nazwa użytkownika",
+  "auth.email": "E-mail",
+  "auth.password": "Hasło",
+  "auth.nativeLanguagePlaceholder": "Język ojczysty (np. en)",
+  "auth.emailPasswordRequired": "Wymagany jest adres e-mail i hasło.",
+  "auth.usernameDisplayNameRequired": "Wymagana jest nazwa użytkownika i nazwa wyświetlana.",
+  "auth.pleaseWait": "Proszę czekać…",
+  "auth.createAccount": "Utwórz konto",
+  "auth.genericError": "Coś poszło nie tak.",
 } satisfies Record<TranslationKey, string>;
 export default d_pl;

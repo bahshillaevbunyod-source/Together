@@ -238,5 +238,18 @@ const d_chm = {
   "settings.saved": "Параметр-влак аралалтыт.",
   "settings.error400": "Пожалуйста, кусарыме параметр-влакым тергыза.",
   "settings.saveError": "Настройко-влакым аралаш ок лий. Эше ик гана тӧчен ончо.",
+  "auth.welcomeBack": "Пӧртылташ саламлена",
+  "auth.createAccountHeading": "Шке аккаунтым ыштыза",
+  "auth.login": "Пураш",
+  "auth.signUp": "Регистрироватлалташ",
+  "auth.username": "Пайдаланыше лӱм",
+  "auth.email": "Электрон почто",
+  "auth.password": "Шолыпмут",
+  "auth.nativeLanguagePlaceholder": "Шочмо йылме (мутлан, ru)",
+  "auth.emailPasswordRequired": "Электрон почто да шолыпмут кӱлеш.",
+  "auth.usernameDisplayNameRequired": "Пайдаланыше лӱм да ончыктымо лӱм кӱлеш.",
+  "auth.pleaseWait": "Пожалуйста, вучалте...",
+  "auth.createAccount": "Аккаунтым ышташ",
+  "auth.genericError": "Иктаж-мо уда лийын.",
 } satisfies Record<TranslationKey, string>;
 export default d_chm;

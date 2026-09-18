@@ -238,5 +238,18 @@ const d_ak = {
   "settings.saved": "Nsiesiei ahorow a wɔakora so.",
   "settings.error400": "Yɛsrɛ sɛ hwɛ wo nkyerɛase nhyehyɛe no.",
   "settings.saveError": "Entumi nkora nhyehyɛe ahorow so. Bɔ mmɔden bio.",
+  "auth.welcomeBack": "Yɛma wo akwaaba bio",
+  "auth.createAccountHeading": "Yɛ wo akontaabu no",
+  "auth.login": "Kɔ mu",
+  "auth.signUp": "Kyerɛw wo din",
+  "auth.username": "Edin a ɔde di dwuma",
+  "auth.email": "Email a wɔde mena",
+  "auth.password": "Password a wɔde hyɛ mu",
+  "auth.nativeLanguagePlaceholder": "Kurom kasa (e.g. en) .",
+  "auth.emailPasswordRequired": "Email ne password ho hia.",
+  "auth.usernameDisplayNameRequired": "Edin a ɔde di dwuma ne din a wɔde bɛkyerɛ no na ɛho hia.",
+  "auth.pleaseWait": "Yɛsrɛ sɛ twɛn...",
+  "auth.createAccount": "Yɛ akontaabu",
+  "auth.genericError": "Biribi ankɔ yiye.",
 } satisfies Record<TranslationKey, string>;
 export default d_ak;

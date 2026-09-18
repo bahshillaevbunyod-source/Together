@@ -238,5 +238,18 @@ const d_km = {
   "settings.saved": "ការកំណត់ត្រូវបានរក្សាទុក។",
   "settings.error400": "សូមពិនិត្យមើលការកំណត់ការបកប្រែរបស់អ្នក។",
   "settings.saveError": "មិនអាចរក្សាទុកការកំណត់បានទេ។ ព្យាយាមម្តងទៀត។",
+  "auth.welcomeBack": "សូមស្វាគមន៍ការត្រឡប់មកវិញ",
+  "auth.createAccountHeading": "បង្កើតគណនីរបស់អ្នក។",
+  "auth.login": "ចូល",
+  "auth.signUp": "ចុះឈ្មោះ",
+  "auth.username": "ឈ្មោះអ្នកប្រើប្រាស់",
+  "auth.email": "អ៊ីមែល",
+  "auth.password": "ពាក្យសម្ងាត់",
+  "auth.nativeLanguagePlaceholder": "ភាសាដើម (ឧ.",
+  "auth.emailPasswordRequired": "អ៊ីមែល និងពាក្យសម្ងាត់ត្រូវបានទាមទារ។",
+  "auth.usernameDisplayNameRequired": "ឈ្មោះអ្នកប្រើប្រាស់ និងឈ្មោះបង្ហាញគឺត្រូវបានទាមទារ។",
+  "auth.pleaseWait": "សូមរង់ចាំ…",
+  "auth.createAccount": "បង្កើតគណនី",
+  "auth.genericError": "មានអ្វីមួយខុសប្រក្រតី។",
 } satisfies Record<TranslationKey, string>;
 export default d_km;

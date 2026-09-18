@@ -238,5 +238,18 @@ const d_th = {
   "settings.saved": "บันทึกการตั้งค่าแล้ว",
   "settings.error400": "โปรดตรวจสอบการตั้งค่าการแปลของคุณ",
   "settings.saveError": "ไม่สามารถบันทึกการตั้งค่า ลองอีกครั้ง",
+  "auth.welcomeBack": "ยินดีต้อนรับกลับมา",
+  "auth.createAccountHeading": "สร้างบัญชีของคุณ",
+  "auth.login": "เข้าสู่ระบบ",
+  "auth.signUp": "ลงทะเบียน",
+  "auth.username": "ชื่อผู้ใช้",
+  "auth.email": "อีเมล",
+  "auth.password": "รหัสผ่าน",
+  "auth.nativeLanguagePlaceholder": "ภาษาแม่ (เช่น en)",
+  "auth.emailPasswordRequired": "จำเป็นต้องมีอีเมลและรหัสผ่าน",
+  "auth.usernameDisplayNameRequired": "ชื่อผู้ใช้และชื่อที่แสดงจะต้อง",
+  "auth.pleaseWait": "กรุณารอสักครู่...",
+  "auth.createAccount": "สร้างบัญชี",
+  "auth.genericError": "มีบางอย่างผิดพลาด",
 } satisfies Record<TranslationKey, string>;
 export default d_th;

@@ -238,5 +238,18 @@ const d_am = {
   "settings.saved": "ቅንብሮች ተቀምጠዋል።",
   "settings.error400": "እባክዎ የትርጉም ቅንብሮችዎን ያረጋግጡ።",
   "settings.saveError": "ቅንብሮችን ማስቀመጥ አልተቻለም። እንደገና ይሞክሩ።",
+  "auth.welcomeBack": "እንኳን ደህና መጣችሁ",
+  "auth.createAccountHeading": "መለያዎን ይፍጠሩ",
+  "auth.login": "ግባ",
+  "auth.signUp": "ይመዝገቡ",
+  "auth.username": "የተጠቃሚ ስም",
+  "auth.email": "ኢሜይል",
+  "auth.password": "የይለፍ ቃል",
+  "auth.nativeLanguagePlaceholder": "የአፍ መፍቻ ቋንቋ (ለምሳሌ en)",
+  "auth.emailPasswordRequired": "ኢሜል እና የይለፍ ቃል ያስፈልጋል።",
+  "auth.usernameDisplayNameRequired": "የተጠቃሚ ስም እና የማሳያ ስም ያስፈልጋል።",
+  "auth.pleaseWait": "እባክዎ ይጠብቁ…",
+  "auth.createAccount": "መለያ ይፍጠሩ",
+  "auth.genericError": "የሆነ ችግር ተፈጥሯል።",
 } satisfies Record<TranslationKey, string>;
 export default d_am;

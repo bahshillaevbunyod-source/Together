@@ -238,5 +238,18 @@ const d_cgg = {
   "settings.saved": "Ebitebeekanisiibwe bibiikire.",
   "settings.error400": "Nyabura we reeba oku otebeekaniise okuvunuura.",
   "settings.saveError": "Tikirikubaasa kubiika ebitebeekanisiibwe. Gyezaho ogundi murundi.",
+  "auth.welcomeBack": "Nitubaakira kugaruka",
+  "auth.createAccountHeading": "Taho akawunti yaawe",
+  "auth.login": "Taaha omu",
+  "auth.signUp": "Handikaho",
+  "auth.username": "Eiziina ry'omukozesa",
+  "auth.email": "Emeyiru",
+  "auth.password": "Ekigambo ky'okukingaho",
+  "auth.nativeLanguagePlaceholder": "Orurimi rw'enzaarwa (nk. en)",
+  "auth.emailPasswordRequired": "Email na password nibyetengyesa.",
+  "auth.usernameDisplayNameRequired": "Eiziina ry’omukozesa n’ery’okworeka nibyetengyesa.",
+  "auth.pleaseWait": "Hakyiri rindaho...",
+  "auth.createAccount": "Taho akawunti",
+  "auth.genericError": "Hariho ekyashobya.",
 } satisfies Record<TranslationKey, string>;
 export default d_cgg;

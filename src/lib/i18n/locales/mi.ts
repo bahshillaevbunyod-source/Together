@@ -238,5 +238,18 @@ const d_mi = {
   "settings.saved": "Tautuhinga kua tiakina.",
   "settings.error400": "Tena koa tirohia o tautuhinga whakamaoritanga.",
   "settings.saveError": "Kaore i taea te tiaki i nga tautuhinga. Ngana ano.",
+  "auth.welcomeBack": "Nau mai hoki mai",
+  "auth.createAccountHeading": "Waihangahia to putea",
+  "auth.login": "Takiuru",
+  "auth.signUp": "Waitohu",
+  "auth.username": "Ingoa Kaiwhakamahi",
+  "auth.email": "Īmēra",
+  "auth.password": "Kupuhipa",
+  "auth.nativeLanguagePlaceholder": "Te reo Maori (hei tauira en)",
+  "auth.emailPasswordRequired": "Kei te hiahiatia te imeera me te kupuhipa.",
+  "auth.usernameDisplayNameRequired": "Ko te ingoa kaiwhakamahi me te ingoa whakaatu e hiahiatia ana.",
+  "auth.pleaseWait": "Taihoa koa…",
+  "auth.createAccount": "Waihanga pūkete",
+  "auth.genericError": "Kua he tetahi.",
 } satisfies Record<TranslationKey, string>;
 export default d_mi;

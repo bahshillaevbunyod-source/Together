@@ -238,5 +238,18 @@ const d_su = {
   "settings.saved": "Setélan disimpen.",
   "settings.error400": "Mangga parios setélan tarjamahan anjeun.",
   "settings.saveError": "Teu bisa nyimpen setelan. Cobian deui.",
+  "auth.welcomeBack": "Wilujeng sumping deui",
+  "auth.createAccountHeading": "Jieun akun anjeun",
+  "auth.login": "Asup",
+  "auth.signUp": "Ngadaptar",
+  "auth.username": "Ngaran pamaké",
+  "auth.email": "Surélék",
+  "auth.password": "Sandi",
+  "auth.nativeLanguagePlaceholder": "Basa asli (misalna en)",
+  "auth.emailPasswordRequired": "Email sareng kecap akses diperyogikeun.",
+  "auth.usernameDisplayNameRequired": "Ngaran pangguna sareng nami tampilan diperyogikeun.",
+  "auth.pleaseWait": "Mangga antosan…",
+  "auth.createAccount": "Jieun akun",
+  "auth.genericError": "Aya nu lepat.",
 } satisfies Record<TranslationKey, string>;
 export default d_su;

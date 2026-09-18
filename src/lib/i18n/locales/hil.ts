@@ -238,5 +238,18 @@ const d_hil = {
   "settings.saved": "Naluwas ang mga setting.",
   "settings.error400": "Palihog tan-awa ang imo mga setting sa paglubad.",
   "settings.saveError": "Indi ma-save ang mga setting. Tilawi liwat.",
+  "auth.welcomeBack": "Malipayon nga pagbalik",
+  "auth.createAccountHeading": "Maghimo sang imo account",
+  "auth.login": "Mag-log in",
+  "auth.signUp": "Mag-sign up",
+  "auth.username": "Ngalan sang user",
+  "auth.email": "Adres sang email",
+  "auth.password": "Password sang account",
+  "auth.nativeLanguagePlaceholder": "Tumandok nga lenguahe (e.g. en)",
+  "auth.emailPasswordRequired": "Kinahanglan ang email kag password.",
+  "auth.usernameDisplayNameRequired": "Kinahanglan ang username kag display name.",
+  "auth.pleaseWait": "Palihog hulat...",
+  "auth.createAccount": "Maghimo sang account",
+  "auth.genericError": "May naglain.",
 } satisfies Record<TranslationKey, string>;
 export default d_hil;

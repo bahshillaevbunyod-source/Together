@@ -238,5 +238,18 @@ const d_bua = {
   "settings.saved": "Тохиргоонууд хадагалагдаа.",
   "settings.error400": "Оршуулгаяа шалгажа үзэгты.",
   "settings.saveError": "Тохиргоонуудые хадагалжа шадаагүй. Дахин туршагты.",
+  "auth.welcomeBack": "Бусажа угтан абанабди",
+  "auth.createAccountHeading": "Дансаяа нээхэ",
+  "auth.login": "Нэгэ нэбтэрхэ",
+  "auth.signUp": "Бүридхэл",
+  "auth.username": "Хэрэглэгшын нэрэ",
+  "auth.email": "Сахим бэшэг",
+  "auth.password": "Нуурай үгэ",
+  "auth.nativeLanguagePlaceholder": "Түрэл хэлэн (жэшээнь)",
+  "auth.emailPasswordRequired": "Сахим бэшэг ба нууц үгэ хэрэгтэй.",
+  "auth.usernameDisplayNameRequired": "Хэрэглэгшын нэрэ ба харуулха нэрэ хэрэгтэй.",
+  "auth.pleaseWait": "Хүлһэлжэ байгты...",
+  "auth.createAccount": "Данса байгуулха",
+  "auth.genericError": "Нэгэ юумэн буруу болоо.",
 } satisfies Record<TranslationKey, string>;
 export default d_bua;

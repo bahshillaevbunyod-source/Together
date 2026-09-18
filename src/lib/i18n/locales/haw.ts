@@ -238,5 +238,18 @@ const d_haw = {
   "settings.saved": "Mālama ʻia nā ʻōkuhi.",
   "settings.error400": "E ʻoluʻolu e nānā i kāu hoʻonohonoho unuhi.",
   "settings.saveError": "ʻAʻole hiki ke mālama i nā hoʻonohonoho. Hana hou.",
+  "auth.welcomeBack": "Welina mai",
+  "auth.createAccountHeading": "E hana i kāu moʻokāki",
+  "auth.login": "E komo",
+  "auth.signUp": "E kakau inoa",
+  "auth.username": "inoa hoʻohana",
+  "auth.email": "leka uila",
+  "auth.password": "ʻōlelo huna",
+  "auth.nativeLanguagePlaceholder": "ʻŌlelo ʻōiwi (e.g. en)",
+  "auth.emailPasswordRequired": "Pono ka leka uila a me ka ʻōlelo huna.",
+  "auth.usernameDisplayNameRequired": "Pono ka inoa hoʻohana a me ka inoa hōʻike.",
+  "auth.pleaseWait": "E ʻoluʻolu e kali…",
+  "auth.createAccount": "Hana mooolelo",
+  "auth.genericError": "Ua hewa kekahi mea.",
 } satisfies Record<TranslationKey, string>;
 export default d_haw;

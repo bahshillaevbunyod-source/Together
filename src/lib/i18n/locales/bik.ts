@@ -238,5 +238,18 @@ const d_bik = {
   "settings.saved": "Na-save an mga setting.",
   "settings.error400": "Hilingon tabi an saimong mga setting nin pagsasalin.",
   "settings.saveError": "Dai na-save an mga setting. Probaran giraray.",
+  "auth.welcomeBack": "Maogmang pagbalik",
+  "auth.createAccountHeading": "Magmukna nin saimong account",
+  "auth.login": "Maglaog",
+  "auth.signUp": "Magpalista",
+  "auth.username": "Pangaran nin Paragamit",
+  "auth.email": "Adres nin email",
+  "auth.password": "Panlaog kan account",
+  "auth.nativeLanguagePlaceholder": "Katutubong tataramon (halimbawa en)",
+  "auth.emailPasswordRequired": "Kaipuhan an email asin sekretong panlaog.",
+  "auth.usernameDisplayNameRequired": "Kaipuhan an pangaran nin paragamit asin pangaran na ipinapahiling.",
+  "auth.pleaseWait": "Halaton tabi...",
+  "auth.createAccount": "Magmukna nin account",
+  "auth.genericError": "May nangyaring sala.",
 } satisfies Record<TranslationKey, string>;
 export default d_bik;

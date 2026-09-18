@@ -238,5 +238,18 @@ const d_eu = {
   "settings.saved": "Ezarpenak gorde dira.",
   "settings.error400": "Mesedez, egiaztatu itzulpen-ezarpenak.",
   "settings.saveError": "Ezin izan dira gorde ezarpenak. Saiatu berriro.",
+  "auth.welcomeBack": "Ongi etorri berriro",
+  "auth.createAccountHeading": "Sortu zure kontua",
+  "auth.login": "Hasi saioa",
+  "auth.signUp": "Izena eman",
+  "auth.username": "Erabiltzaile izena",
+  "auth.email": "Posta elektronikoa",
+  "auth.password": "Pasahitza",
+  "auth.nativeLanguagePlaceholder": "Jatorrizko hizkuntza (adibidez, eu)",
+  "auth.emailPasswordRequired": "Posta elektronikoa eta pasahitza beharrezkoak dira.",
+  "auth.usernameDisplayNameRequired": "Erabiltzaile izena eta bistaratzeko izena beharrezkoak dira.",
+  "auth.pleaseWait": "Mesedez, itxaron...",
+  "auth.createAccount": "Sortu kontua",
+  "auth.genericError": "Zerbait gaizki joan da.",
 } satisfies Record<TranslationKey, string>;
 export default d_eu;

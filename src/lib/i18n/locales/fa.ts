@@ -238,5 +238,18 @@ const d_fa = {
   "settings.saved": "تنظیمات ذخیره شد.",
   "settings.error400": "لطفا تنظیمات ترجمه خود را بررسی کنید.",
   "settings.saveError": "تنظیمات ذخیره نشد. دوباره امتحان کنید.",
+  "auth.welcomeBack": "خوش آمدید",
+  "auth.createAccountHeading": "حساب کاربری خود را ایجاد کنید",
+  "auth.login": "وارد شوید",
+  "auth.signUp": "ثبت نام کنید",
+  "auth.username": "نام کاربری",
+  "auth.email": "ایمیل",
+  "auth.password": "رمز عبور",
+  "auth.nativeLanguagePlaceholder": "زبان مادری (به عنوان مثال en)",
+  "auth.emailPasswordRequired": "ایمیل و رمز عبور لازم است.",
+  "auth.usernameDisplayNameRequired": "نام کاربری و نام نمایشی مورد نیاز است.",
+  "auth.pleaseWait": "لطفا صبر کنید…",
+  "auth.createAccount": "ایجاد حساب کاربری",
+  "auth.genericError": "مشکلی پیش آمد.",
 } satisfies Record<TranslationKey, string>;
 export default d_fa;

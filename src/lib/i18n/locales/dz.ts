@@ -238,5 +238,18 @@ const d_dz = {
   "settings.saved": "སྒྲིག་སྟངས་ཚུ་སྲུང་བཞག་འབད་ཡོདཔ།",
   "settings.error400": "ཁྱོད་རའི་སྐད་སྒྱུར་སྒྲིག་སྟངས་ཚུ་ཞིབ་དཔྱད་འབད་གནང་།",
   "settings.saveError": "སྒྲིག་སྟངས་ཚུ་སྲུང་བཞག་འབད་མ་ཚུགས། ལོག་སྟེ་འབད་རྩོལ་བསྐྱེད།",
+  "auth.welcomeBack": "ཕེབས་བསུ་ཞུ།",
+  "auth.createAccountHeading": "ཁྱོད་རའི་རྩིས་ཐོ་གསར་བསྐྲུན་འབད།",
+  "auth.login": "ནང་བསྐྱོད་འབད།",
+  "auth.signUp": "ཐོ་བཀོད་འབད།",
+  "auth.username": "ལག་ལེན་པའི་མིང་།",
+  "auth.email": "གློག་འཕྲིན།",
+  "auth.password": "གསང་ཚིག།",
+  "auth.nativeLanguagePlaceholder": "ཕ་སྐད་ (e.g. en)",
+  "auth.emailPasswordRequired": "གློག་འཕྲིན་དང་ཆོག་ཡིག་དགོས།",
+  "auth.usernameDisplayNameRequired": "ལག་ལེན་པའི་མིང་དང་བཀྲམ་སྟོན་མིང་ཚུ་དགོཔ་ཨིན།",
+  "auth.pleaseWait": "བསྒུག་གནང་།",
+  "auth.createAccount": "རྩིས་ཐོ་གསར་བསྐྲུན་འབད།",
+  "auth.genericError": "ག་ཅི་ཅིག་འཛོལ་བ་འགྱོ་ཡི།",
 } satisfies Record<TranslationKey, string>;
 export default d_dz;

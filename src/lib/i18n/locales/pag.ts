@@ -238,5 +238,18 @@ const d_pag = {
   "settings.saved": "Naimpake iray pag-aareglo.",
   "settings.error400": "Nengnengen iray pag-aareglo na panagpatalos mo.",
   "settings.saveError": "Agko naimpake iray pag-aareglo mo. Salien lamet.",
+  "auth.welcomeBack": "Masantos ya kabwasan",
+  "auth.createAccountHeading": "Manggawa kay account mo",
+  "auth.login": "Onloob",
+  "auth.signUp": "Manpirma",
+  "auth.username": "Ngaran na manguusar",
+  "auth.email": "Adres na email",
+  "auth.password": "Password na account",
+  "auth.nativeLanguagePlaceholder": "Say lenguahe yo (alimbawa, en)",
+  "auth.emailPasswordRequired": "Kaukolan so email tan password.",
+  "auth.usernameDisplayNameRequired": "Kaukolan so username tan display name.",
+  "auth.pleaseWait": "Manalagar kayo pa...",
+  "auth.createAccount": "Manggawa na account",
+  "auth.genericError": "Walay agawan aliwa.",
 } satisfies Record<TranslationKey, string>;
 export default d_pag;

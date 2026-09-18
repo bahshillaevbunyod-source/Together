@@ -238,5 +238,18 @@ const d_mg = {
   "settings.saved": "Voatahiry ny fika.",
   "settings.error400": "Hamarino azafady ny firafitry ny fandikan-teny.",
   "settings.saveError": "Tsy afaka mitahiry kira. Andramo indray mandeha.",
+  "auth.welcomeBack": "Tongasoa eto",
+  "auth.createAccountHeading": "Mamorona ny kaontinao",
+  "auth.login": "Midira",
+  "auth.signUp": "Misoratra anarana",
+  "auth.username": "Anaran'ny mpampiasa",
+  "auth.email": "mailaka",
+  "auth.password": "Tenimiafina kaonty",
+  "auth.nativeLanguagePlaceholder": "Fiteny teratany (oh. en)",
+  "auth.emailPasswordRequired": "Mila mailaka sy tenimiafina.",
+  "auth.usernameDisplayNameRequired": "Ny mpampiasa sy ny anarana aseho dia ilaina.",
+  "auth.pleaseWait": "Andraso azafady…",
+  "auth.createAccount": "Mamorona kaonty",
+  "auth.genericError": "Nisy zavatra tsy nety.",
 } satisfies Record<TranslationKey, string>;
 export default d_mg;

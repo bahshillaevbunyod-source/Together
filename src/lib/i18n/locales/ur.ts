@@ -238,5 +238,18 @@ const d_ur = {
   "settings.saved": "ترتیبات محفوظ ہو گئیں۔",
   "settings.error400": "براہ کرم اپنی ترجمے کی ترتیبات چیک کریں۔",
   "settings.saveError": "ترتیبات کو محفوظ نہیں کیا جا سکا۔ دوبارہ کوشش کریں۔",
+  "auth.welcomeBack": "دوبارہ خوش آمدید",
+  "auth.createAccountHeading": "اپنا اکاؤنٹ بنائیں",
+  "auth.login": "لاگ ان کریں۔",
+  "auth.signUp": "سائن اپ کریں۔",
+  "auth.username": "صارف نام",
+  "auth.email": "ای میل",
+  "auth.password": "پاس ورڈ",
+  "auth.nativeLanguagePlaceholder": "مقامی زبان (مثلاً en)",
+  "auth.emailPasswordRequired": "ای میل اور پاس ورڈ درکار ہے۔",
+  "auth.usernameDisplayNameRequired": "صارف نام اور ڈسپلے نام درکار ہے۔",
+  "auth.pleaseWait": "براہ کرم انتظار کریں…",
+  "auth.createAccount": "اکاؤنٹ بنائیں",
+  "auth.genericError": "کچھ غلط ہو گیا۔",
 } satisfies Record<TranslationKey, string>;
 export default d_ur;

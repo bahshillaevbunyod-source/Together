@@ -238,5 +238,18 @@ const d_ceb = {
   "settings.saved": "Gitipigan ang mga setting.",
   "settings.error400": "Palihug susiha ang imong mga setting sa paghubad.",
   "settings.saveError": "Dili ma-save ang mga setting. Sulayi pag-usab.",
+  "auth.welcomeBack": "Maayong pagbalik",
+  "auth.createAccountHeading": "Paghimo sa imong account",
+  "auth.login": "Sign in sa imong account",
+  "auth.signUp": "Pagrehistro og bag-ong account",
+  "auth.username": "Ngalan sa tiggamit",
+  "auth.email": "Email adres",
+  "auth.password": "Password sa account",
+  "auth.nativeLanguagePlaceholder": "Lumad nga pinulongan (e.g. en)",
+  "auth.emailPasswordRequired": "Kinahanglan ang email ug password.",
+  "auth.usernameDisplayNameRequired": "Username ug display name gikinahanglan.",
+  "auth.pleaseWait": "Palihug paghulat…",
+  "auth.createAccount": "Paghimo og account",
+  "auth.genericError": "Naay nahitabo.",
 } satisfies Record<TranslationKey, string>;
 export default d_ceb;

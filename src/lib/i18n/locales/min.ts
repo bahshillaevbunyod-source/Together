@@ -238,5 +238,18 @@ const d_min = {
   "settings.saved": "Pangaturan disimpan.",
   "settings.error400": "Tolong pareso pangaturan panarjamahan Sanak.",
   "settings.saveError": "Indak bisa manyimpan pangaturan. Cubolah baliak.",
+  "auth.welcomeBack": "Salamaik datang baliak",
+  "auth.createAccountHeading": "Buek akun sanak",
+  "auth.login": "Masuak",
+  "auth.signUp": "Daftar",
+  "auth.username": "Namo pangguno",
+  "auth.email": "Surek",
+  "auth.password": "Kato sandi",
+  "auth.nativeLanguagePlaceholder": "Bahaso asli (misalnyo en)",
+  "auth.emailPasswordRequired": "Email jo sandi paralu.",
+  "auth.usernameDisplayNameRequired": "Namo pangguno jo namo tampilan diparalukan.",
+  "auth.pleaseWait": "Tolong tunggu...",
+  "auth.createAccount": "Buek akun",
+  "auth.genericError": "Ado nan salah.",
 } satisfies Record<TranslationKey, string>;
 export default d_min;

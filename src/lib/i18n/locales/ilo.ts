@@ -238,5 +238,18 @@ const d_ilo = {
   "settings.saved": "Naidulin dagiti setting.",
   "settings.error400": "Pangngaasiyo ta kitaenyo dagiti setting ti panagipatarusyo.",
   "settings.saveError": "Saan a maka-save kadagiti setting. Padasem manen.",
+  "auth.welcomeBack": "Maikablaawkayo nga agsubli",
+  "auth.createAccountHeading": "Mangaramidka iti account-mo",
+  "auth.login": "Aglog-in",
+  "auth.signUp": "Agpirma",
+  "auth.username": "Nagan ti agar-aramat",
+  "auth.email": "I-email",
+  "auth.password": "Password ti password",
+  "auth.nativeLanguagePlaceholder": "Katutubo a pagsasao (e.g. en) .",
+  "auth.emailPasswordRequired": "Masapul ti email ken password.",
+  "auth.usernameDisplayNameRequired": "Masapul ti username ken display name.",
+  "auth.pleaseWait": "Pangngaasiyo ta aguraykayo...",
+  "auth.createAccount": "Mangaramid iti account",
+  "auth.genericError": "Adda nagbiddut.",
 } satisfies Record<TranslationKey, string>;
 export default d_ilo;

@@ -238,5 +238,18 @@ const d_yo = {
   "settings.saved": "Eto ti a fipamọ.",
   "settings.error400": "Jọwọ ṣayẹwo awọn eto itumọ rẹ.",
   "settings.saveError": "Ko le fi eto pamọ. Gbiyanju lẹẹkansi.",
+  "auth.welcomeBack": "Kaabo pada",
+  "auth.createAccountHeading": "Ṣẹda akọọlẹ rẹ",
+  "auth.login": "Wọle",
+  "auth.signUp": "Forukọsilẹ",
+  "auth.username": "Orukọ olumulo",
+  "auth.email": "Imeeli",
+  "auth.password": "Ọrọigbaniwọle",
+  "auth.nativeLanguagePlaceholder": "Ede abinibi (fun apẹẹrẹ en)",
+  "auth.emailPasswordRequired": "Imeeli ati ọrọigbaniwọle ti wa ni ti beere.",
+  "auth.usernameDisplayNameRequired": "Orukọ olumulo ati orukọ ifihan ni a nilo.",
+  "auth.pleaseWait": "Jọwọ duro…",
+  "auth.createAccount": "Ṣẹda iroyin",
+  "auth.genericError": "Nkankan ti ko tọ.",
 } satisfies Record<TranslationKey, string>;
 export default d_yo;

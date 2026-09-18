@@ -238,5 +238,18 @@ const d_br = {
   "settings.saved": "Arventennoù enrollet.",
   "settings.error400": "Gwiriit ho arventennoù troidigezh mar plij.",
   "settings.saveError": "N'haller ket enrollañ an arventennoù. Klaskit en-dro.",
+  "auth.welcomeBack": "Degemer mat en-dro",
+  "auth.createAccountHeading": "Krouit ho kont",
+  "auth.login": "Kevreañ",
+  "auth.signUp": "En em enskrivañ",
+  "auth.username": "Anv implijer",
+  "auth.email": "Postel",
+  "auth.password": "Ger-tremen",
+  "auth.nativeLanguagePlaceholder": "Yezh orin (da sk. br)",
+  "auth.emailPasswordRequired": "Ret eo kaout ur postel hag ur ger-tremen.",
+  "auth.usernameDisplayNameRequired": "Anv implijer hag anv diskouez a zo rekis.",
+  "auth.pleaseWait": "Gortozit mar plij...",
+  "auth.createAccount": "Krouiñ ur gont",
+  "auth.genericError": "Un dra bennak a zo aet fall.",
 } satisfies Record<TranslationKey, string>;
 export default d_br;

@@ -238,5 +238,18 @@ const d_oc = {
   "settings.saved": "Paramètres enregistrats.",
   "settings.error400": "Mercés de verificar vòstres paramètres de traduccion.",
   "settings.saveError": "Pogut pas enregistrar los paramètres. Ensajatz tornarmai.",
+  "auth.welcomeBack": "Benvenguda de retorn",
+  "auth.createAccountHeading": "Creatz vòstre compte",
+  "auth.login": "Connectatz-vos",
+  "auth.signUp": "Inscrivètz-vos",
+  "auth.username": "Nom d'utilizaire",
+  "auth.email": "Corrièl",
+  "auth.password": "Senhal",
+  "auth.nativeLanguagePlaceholder": "Lenga mairala (p. ex. oc)",
+  "auth.emailPasswordRequired": "Corrièl e senhal son requerits.",
+  "auth.usernameDisplayNameRequired": "Lo nom d'utilizaire e lo nom d'afichatge son obligatòris.",
+  "auth.pleaseWait": "Espèra...",
+  "auth.createAccount": "Crear un compte",
+  "auth.genericError": "Quicòm s'es marrit.",
 } satisfies Record<TranslationKey, string>;
 export default d_oc;

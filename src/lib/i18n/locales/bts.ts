@@ -238,5 +238,18 @@ const d_bts = {
   "settings.saved": "Pengaturan domma isimpan.",
   "settings.error400": "Tolong pareksa nasiam pengaturan terjemahan nasiam.",
   "settings.saveError": "Lang boi isimpan pengaturan. Coba use.",
+  "auth.welcomeBack": "Selamat roh use",
+  "auth.createAccountHeading": "Bahen ma akun nassiam",
+  "auth.login": "Masuk",
+  "auth.signUp": "Mandaftar",
+  "auth.username": "Goran pangguna",
+  "auth.email": "Alamat email",
+  "auth.password": "Sandi",
+  "auth.nativeLanguagePlaceholder": "Bahasa asli (misalni en)",
+  "auth.emailPasswordRequired": "Porlu do email pakon sandi.",
+  "auth.usernameDisplayNameRequired": "Goran pangguna pakon goran tampilan ihaporluhon.",
+  "auth.pleaseWait": "Tolong paima...",
+  "auth.createAccount": "Mambahen akun",
+  "auth.genericError": "Dong na lepak.",
 } satisfies Record<TranslationKey, string>;
 export default d_bts;

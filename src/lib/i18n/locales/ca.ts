@@ -238,5 +238,18 @@ const d_ca = {
   "settings.saved": "S'ha desat la configuració.",
   "settings.error400": "Comproveu la vostra configuració de traducció.",
   "settings.saveError": "No s'ha pogut desar la configuració. Torna-ho a provar.",
+  "auth.welcomeBack": "Benvingut de nou",
+  "auth.createAccountHeading": "Crea el teu compte",
+  "auth.login": "Inicieu sessió",
+  "auth.signUp": "Registra't",
+  "auth.username": "Nom d'usuari",
+  "auth.email": "Correu electrònic",
+  "auth.password": "Contrasenya",
+  "auth.nativeLanguagePlaceholder": "Llengua nativa (p. ex. en)",
+  "auth.emailPasswordRequired": "El correu electrònic i la contrasenya són necessaris.",
+  "auth.usernameDisplayNameRequired": "El nom d'usuari i el nom de visualització són obligatoris.",
+  "auth.pleaseWait": "Si us plau, espereu...",
+  "auth.createAccount": "Crea un compte",
+  "auth.genericError": "Alguna cosa va fallar.",
 } satisfies Record<TranslationKey, string>;
 export default d_ca;

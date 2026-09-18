@@ -238,5 +238,18 @@ const d_btx = {
   "settings.saved": "Pengaturan si isimpan.",
   "settings.error400": "Periksalah pengaturen terjemahenndu.",
   "settings.saveError": "La banci isimpan pengaturen. Cubakenndu mulihi.",
+  "auth.welcomeBack": "Selamat datang mulihken",
+  "auth.createAccountHeading": "Buatlah akunndu .",
+  "auth.login": "Masuk ku bas",
+  "auth.signUp": "Daftarlah",
+  "auth.username": "Gelar Pengguna",
+  "auth.email": "Alamat email",
+  "auth.password": "Kata sandi",
+  "auth.nativeLanguagePlaceholder": "Bahasa asli (misalna en)",
+  "auth.emailPasswordRequired": "Email ras kata sandi si iperluken.",
+  "auth.usernameDisplayNameRequired": "Gelar pengguna ras gelar tampilen si iperluken.",
+  "auth.pleaseWait": "Tolong timai...",
+  "auth.createAccount": "Erbahan akun",
+  "auth.genericError": "Lit si la mehuli si terjadi.",
 } satisfies Record<TranslationKey, string>;
 export default d_btx;

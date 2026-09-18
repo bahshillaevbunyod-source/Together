@@ -238,5 +238,18 @@ const d_ha = {
   "settings.saved": "Ajiye saituna.",
   "settings.error400": "Da fatan za a duba saitunan fassarar ku.",
   "settings.saveError": "An kasa ajiye saituna. Gwada kuma.",
+  "auth.welcomeBack": "Barka da dawowa",
+  "auth.createAccountHeading": "Ƙirƙiri asusun ku",
+  "auth.login": "Shiga",
+  "auth.signUp": "Yi rajista",
+  "auth.username": "Sunan mai amfani",
+  "auth.email": "Imel",
+  "auth.password": "Kalmar wucewa",
+  "auth.nativeLanguagePlaceholder": "Yaren asali (misali en)",
+  "auth.emailPasswordRequired": "Ana buƙatar imel da kalmar wucewa.",
+  "auth.usernameDisplayNameRequired": "Ana buƙatar sunan mai amfani da sunan nuni.",
+  "auth.pleaseWait": "Da fatan za a jira…",
+  "auth.createAccount": "Ƙirƙiri asusu",
+  "auth.genericError": "Wani abu ya faru.",
 } satisfies Record<TranslationKey, string>;
 export default d_ha;

@@ -238,5 +238,18 @@ const it = {
   "settings.saved": "Impostazioni salvate.",
   "settings.error400": "Controlla le impostazioni di traduzione.",
   "settings.saveError": "Impossibile salvare le impostazioni. Riprova.",
+  "auth.welcomeBack": "Bentornato",
+  "auth.createAccountHeading": "Crea il tuo account",
+  "auth.login": "Accedi",
+  "auth.signUp": "Iscriviti",
+  "auth.username": "Nome utente",
+  "auth.email": "E-mail",
+  "auth.password": "Parola d'ordine",
+  "auth.nativeLanguagePlaceholder": "Lingua madre (ad esempio en)",
+  "auth.emailPasswordRequired": "Sono richiesti e-mail e password.",
+  "auth.usernameDisplayNameRequired": "Il nome utente e il nome visualizzato sono obbligatori.",
+  "auth.pleaseWait": "Per favore aspetta...",
+  "auth.createAccount": "Crea un account",
+  "auth.genericError": "Qualcosa è andato storto.",
 } satisfies Record<TranslationKey, string>;
 export default it;

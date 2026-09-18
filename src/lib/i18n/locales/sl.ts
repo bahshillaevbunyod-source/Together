@@ -238,5 +238,18 @@ const d_sl = {
   "settings.saved": "Nastavitve shranjene.",
   "settings.error400": "Preverite nastavitve prevajanja.",
   "settings.saveError": "Nastavitev ni bilo mogoče shraniti. poskusi ponovno",
+  "auth.welcomeBack": "dobrodošli nazaj",
+  "auth.createAccountHeading": "Ustvarite svoj račun",
+  "auth.login": "Prijavite se",
+  "auth.signUp": "Prijavite se",
+  "auth.username": "Uporabniško ime",
+  "auth.email": "E-pošta",
+  "auth.password": "Geslo",
+  "auth.nativeLanguagePlaceholder": "materni jezik (npr. en)",
+  "auth.emailPasswordRequired": "E-pošta in geslo sta obvezna.",
+  "auth.usernameDisplayNameRequired": "Zahtevana sta uporabniško in prikazno ime.",
+  "auth.pleaseWait": "Počakajte prosim ...",
+  "auth.createAccount": "Ustvari račun",
+  "auth.genericError": "Nekaj ​​je šlo narobe.",
 } satisfies Record<TranslationKey, string>;
 export default d_sl;

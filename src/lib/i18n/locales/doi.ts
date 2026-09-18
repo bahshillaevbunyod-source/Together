@@ -238,5 +238,18 @@ const d_doi = {
   "settings.saved": "सेटिंग्स सेव कीती गेई।",
   "settings.error400": "कृपा करियै अपनी अनुवाद सेटिंग्स दी जांच करो।",
   "settings.saveError": "सेटिंग्स गी सेव नेईं करी सकेआ। फिर कोशिश करो।",
+  "auth.welcomeBack": "वापस स्वागत ऐ",
+  "auth.createAccountHeading": "अपना खाता बनाओ",
+  "auth.login": "लॉग इन करो",
+  "auth.signUp": "साइन अप करो",
+  "auth.username": "यूजरनेम",
+  "auth.email": "ईमेल करो",
+  "auth.password": "पासवर्ड",
+  "auth.nativeLanguagePlaceholder": "मूल भाषा (जैसे एन)",
+  "auth.emailPasswordRequired": "ईमेल ते पासवर्ड जरूरी ऐ।",
+  "auth.usernameDisplayNameRequired": "यूजरनेम ते डिस्प्ले दा नांऽ जरूरी ऐ।",
+  "auth.pleaseWait": "कृपया इंतजार करो...",
+  "auth.createAccount": "खाता बनाओ",
+  "auth.genericError": "कुछ गड़बड़ हो गया।",
 } satisfies Record<TranslationKey, string>;
 export default d_doi;

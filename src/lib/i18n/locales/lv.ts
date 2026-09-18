@@ -238,5 +238,18 @@ const d_lv = {
   "settings.saved": "Iestatījumi saglabāti.",
   "settings.error400": "Lūdzu, pārbaudiet savus tulkošanas iestatījumus.",
   "settings.saveError": "Nevarēja saglabāt iestatījumus. Mēģiniet vēlreiz.",
+  "auth.welcomeBack": "Laipni lūdzam atpakaļ",
+  "auth.createAccountHeading": "Izveidojiet savu kontu",
+  "auth.login": "Piesakieties",
+  "auth.signUp": "Pierakstīties",
+  "auth.username": "Lietotājvārds",
+  "auth.email": "E-pasts",
+  "auth.password": "Parole",
+  "auth.nativeLanguagePlaceholder": "Dzimtā valoda (piem., en)",
+  "auth.emailPasswordRequired": "Nepieciešams e-pasts un parole.",
+  "auth.usernameDisplayNameRequired": "Nepieciešams lietotājvārds un parādāmais vārds.",
+  "auth.pleaseWait": "Lūdzu, uzgaidiet…",
+  "auth.createAccount": "Izveidot kontu",
+  "auth.genericError": "Kaut kas nogāja greizi.",
 } satisfies Record<TranslationKey, string>;
 export default d_lv;

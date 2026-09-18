@@ -238,5 +238,18 @@ const d_az = {
   "settings.saved": "Parametrlər yadda saxlandı.",
   "settings.error400": "Tərcümə parametrlərinizi yoxlayın.",
   "settings.saveError": "Parametrləri saxlamaq mümkün olmadı. Yenidən cəhd edin.",
+  "auth.welcomeBack": "Yenidən xoş gəlmisiniz",
+  "auth.createAccountHeading": "Hesabınızı yaradın",
+  "auth.login": "Daxil ol",
+  "auth.signUp": "Qeydiyyatdan keçin",
+  "auth.username": "İstifadəçi adı",
+  "auth.email": "E-poçt",
+  "auth.password": "parol",
+  "auth.nativeLanguagePlaceholder": "Doğma dil (məsələn, az)",
+  "auth.emailPasswordRequired": "E-poçt və parol tələb olunur.",
+  "auth.usernameDisplayNameRequired": "İstifadəçi adı və ekran adı tələb olunur.",
+  "auth.pleaseWait": "Zəhmət olmasa gözləyin...",
+  "auth.createAccount": "Hesab yaradın",
+  "auth.genericError": "Nəsə xəta baş verdi.",
 } satisfies Record<TranslationKey, string>;
 export default d_az;

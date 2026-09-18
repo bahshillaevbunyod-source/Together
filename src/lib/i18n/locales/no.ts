@@ -238,5 +238,18 @@ const d_no = {
   "settings.saved": "Innstillinger lagret.",
   "settings.error400": "Vennligst sjekk oversettelsesinnstillingene dine.",
   "settings.saveError": "Kunne ikke lagre innstillingene. Prøv igjen.",
+  "auth.welcomeBack": "Velkommen tilbake",
+  "auth.createAccountHeading": "Opprett kontoen din",
+  "auth.login": "Logg inn",
+  "auth.signUp": "Registrer deg",
+  "auth.username": "Brukernavn",
+  "auth.email": "E-post",
+  "auth.password": "Passord",
+  "auth.nativeLanguagePlaceholder": "Morsmål (f.eks. no)",
+  "auth.emailPasswordRequired": "E-post og passord kreves.",
+  "auth.usernameDisplayNameRequired": "Brukernavn og visningsnavn kreves.",
+  "auth.pleaseWait": "Vennligst vent...",
+  "auth.createAccount": "Opprett konto",
+  "auth.genericError": "Noe gikk galt.",
 } satisfies Record<TranslationKey, string>;
 export default d_no;

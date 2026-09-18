@@ -238,5 +238,18 @@ const d_my = {
   "settings.saved": "ဆက်တင်များကို သိမ်းဆည်းထားသည်။",
   "settings.error400": "သင်၏ ဘာသာပြန်ဆိုခြင်း ဆက်တင်များကို စစ်ဆေးပါ။",
   "settings.saveError": "ဆက်တင်များကို မသိမ်းဆည်းနိုင်ပါ။ ထပ်ကြိုးစားပါ။",
+  "auth.welcomeBack": "ပြန်လည်ကြိုဆိုပါတယ်။",
+  "auth.createAccountHeading": "သင့်အကောင့်ကိုဖန်တီးပါ။",
+  "auth.login": "လော့ဂ်အင်",
+  "auth.signUp": "စာရင်းသွင်းပါ။",
+  "auth.username": "အသုံးပြုသူအမည်",
+  "auth.email": "အီးမေးလ်",
+  "auth.password": "စကားဝှက်",
+  "auth.nativeLanguagePlaceholder": "မူရင်းဘာသာစကား (ဥပမာ- en)",
+  "auth.emailPasswordRequired": "အီးမေးလ်နှင့် စကားဝှက် လိုအပ်ပါသည်။",
+  "auth.usernameDisplayNameRequired": "အသုံးပြုသူအမည်နှင့် ဖော်ပြမှုအမည် လိုအပ်ပါသည်။",
+  "auth.pleaseWait": "ကျေးဇူးပြု၍ စောင့်ပါ...",
+  "auth.createAccount": "အကောင့်ဖန်တီးပါ။",
+  "auth.genericError": "တစ်ခုခုမှားသွားသည်။",
 } satisfies Record<TranslationKey, string>;
 export default d_my;

@@ -238,5 +238,18 @@ const d_crs = {
   "settings.saved": "bann laranzman in ganny prezerve.",
   "settings.error400": "silvouple tyek ou bann laranzman tradiksyon.",
   "settings.saveError": "pa’n kapab prezerv bann laranzman. esey ankor.",
+  "auth.welcomeBack": "Byenveni",
+  "auth.createAccountHeading": "kree ou kont",
+  "auth.login": "konekte",
+  "auth.signUp": "anrezistre",
+  "auth.username": "non itilizater",
+  "auth.email": "imel",
+  "auth.password": "Modpas",
+  "auth.nativeLanguagePlaceholder": "Langaz maternel (e.g. en)",
+  "auth.emailPasswordRequired": "imel ek mo pas i neseser.",
+  "auth.usernameDisplayNameRequired": "non itilizater ek non prezantasyon i neseser.",
+  "auth.pleaseWait": "silvouple espere...",
+  "auth.createAccount": "kree kont",
+  "auth.genericError": "I annan en keksoz ki'n al mal.",
 } satisfies Record<TranslationKey, string>;
 export default d_crs;

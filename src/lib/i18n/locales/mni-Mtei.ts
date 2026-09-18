@@ -238,5 +238,18 @@ const d_mni_Mtei = {
   "settings.saved": "ꯁꯦꯇꯤꯡꯁꯤꯡ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ꯫",
   "settings.error400": "ꯆꯥꯅꯕꯤꯗꯨꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯍꯟꯗꯣꯀꯄꯒꯤ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯑꯗꯨ ꯆꯦꯛ ꯇꯧꯕꯤꯌꯨ꯫",
   "settings.saveError": "ꯁꯦꯇꯤꯡꯁꯤꯡ ꯁꯦꯚ ꯇꯧꯕꯥ ꯉꯃꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯧ꯫",
+  "auth.welcomeBack": "ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯇꯔꯥꯝꯅꯥ ꯑꯣꯀꯆꯔꯤ꯫",
+  "auth.createAccountHeading": "ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯇ ꯑꯗꯨ ꯁꯦꯝꯃꯨ꯫",
+  "auth.login": "ꯂꯣꯒ ꯏꯟ ꯇꯧꯕꯤꯌꯨ꯫",
+  "auth.signUp": "ꯁꯥꯏꯟ ꯑꯥꯞ ꯇꯧꯕꯥ꯫",
+  "auth.username": "ꯌꯨꯖꯔꯅꯦꯝ꯫",
+  "auth.email": "ꯏꯃꯦꯜ ꯇꯧꯕꯥ꯫",
+  "auth.password": "ꯄꯥꯁꯋꯥꯔꯗ ꯇꯧꯕꯥ꯫",
+  "auth.nativeLanguagePlaceholder": "ꯅꯦꯇꯤꯚ ꯂꯣꯜ (ꯈꯨꯗꯝ ꯑꯣꯏꯅꯥ, ꯑꯦꯟ)",
+  "auth.emailPasswordRequired": "ꯏꯃꯦꯜ ꯑꯃꯁꯨꯡ ꯄꯥꯁꯋꯥꯔꯗ ꯃꯊꯧ ꯇꯥꯏ꯫",
+  "auth.usernameDisplayNameRequired": "ꯌꯨꯖꯔꯅꯦꯝ ꯑꯃꯁꯨꯡ ꯗꯤꯁꯞꯂꯦ ꯅꯦꯝ ꯃꯊꯧ ꯇꯥꯏ꯫",
+  "auth.pleaseWait": "ꯆꯥꯅꯕꯤꯗꯨꯅꯥ ꯉꯥꯏꯕꯤꯌꯨ...",
+  "auth.createAccount": "ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯝꯕꯥ꯫",
+  "auth.genericError": "ꯀꯔꯤꯒꯨꯝꯕꯥ ꯈꯔꯥ ꯑꯁꯣꯌꯕꯥ ꯑꯃꯥ ꯊꯣꯀꯈꯤ꯫",
 } satisfies Record<TranslationKey, string>;
 export default d_mni_Mtei;

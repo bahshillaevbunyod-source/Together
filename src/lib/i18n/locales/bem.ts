@@ -238,5 +238,18 @@ const d_bem = {
   "settings.saved": "Ifipekanishiwe fyasungwa.",
   "settings.error400": "Mukwai moneni imitantikile yenu iya bupilibulo.",
   "settings.saveError": "Teti fisunge ifibikilwepo. Esheni nakabili.",
+  "auth.welcomeBack": "Mwapokelelwe",
+  "auth.createAccountHeading": "Pangeni akaunti yenu",
+  "auth.login": "Ingila",
+  "auth.signUp": "Lembesheni",
+  "auth.username": "Ishina lya kabomfya",
+  "auth.email": "Imeli",
+  "auth.password": "Ishiwi lya kwisalilako",
+  "auth.nativeLanguagePlaceholder": "Ululimi lwa cikaya (eco en)",
+  "auth.emailPasswordRequired": "Imeli ne shiwi lya kwingililapo filafwaikwa.",
+  "auth.usernameDisplayNameRequired": "Ishina lya mubomfi ne shina lya kulanga filafwaikwa.",
+  "auth.pleaseWait": "Mukwai lindilila...",
+  "auth.createAccount": "Panga akaunti",
+  "auth.genericError": "Pali fimo ifyalubene.",
 } satisfies Record<TranslationKey, string>;
 export default d_bem;

@@ -238,5 +238,18 @@ const d_co = {
   "settings.saved": "Paràmetri salvati.",
   "settings.error400": "Per piacè verificate i vostri paràmetri di traduzzione.",
   "settings.saveError": "Ùn pudia micca salvà i paràmetri. Prova dinò.",
+  "auth.welcomeBack": "Benvenuti torna",
+  "auth.createAccountHeading": "Crea u vostru contu",
+  "auth.login": "Entra",
+  "auth.signUp": "Iscriviti",
+  "auth.username": "Nome d'utilizatore",
+  "auth.email": "E-mail",
+  "auth.password": "Password di u contu",
+  "auth.nativeLanguagePlaceholder": "Lingua nativa (p.e. en)",
+  "auth.emailPasswordRequired": "E-mail è password sò richiesti.",
+  "auth.usernameDisplayNameRequired": "U nome d'utilizatore è u nome di visualizazione sò richiesti.",
+  "auth.pleaseWait": "Per piacè aspettate…",
+  "auth.createAccount": "Crea un contu",
+  "auth.genericError": "Qualcosa hè andatu male.",
 } satisfies Record<TranslationKey, string>;
 export default d_co;

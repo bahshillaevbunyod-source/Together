@@ -238,5 +238,18 @@ const d_rn = {
   "settings.saved": "Amagenamiterere yabitswe.",
   "settings.error400": "Urasabwa gusuzuma uko ubuhinduzi bwawe bugenda.",
   "settings.saveError": "Ntiyashobora kubika amagenamiterere. Subira ugerageze.",
+  "auth.welcomeBack": "Ikaze mugarutse",
+  "auth.createAccountHeading": "Rema konti yawe",
+  "auth.login": "Injira",
+  "auth.signUp": "Iyandikishe",
+  "auth.username": "Izina ry'ukoresha",
+  "auth.email": "Imeyili",
+  "auth.password": "Ijambobanga",
+  "auth.nativeLanguagePlaceholder": "Ururimi kavukire (nk'ikirundi)",
+  "auth.emailPasswordRequired": "Email n’ijambobanga birakenewe.",
+  "auth.usernameDisplayNameRequired": "Izina ry'ukoresha n'izina ry'iyerekanwa birakenewe.",
+  "auth.pleaseWait": "Ndagusavye urindire...",
+  "auth.createAccount": "Rema konti",
+  "auth.genericError": "Hari ikintu cabaye nabi.",
 } satisfies Record<TranslationKey, string>;
 export default d_rn;

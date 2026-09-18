@@ -238,5 +238,18 @@ const d_ff = {
   "settings.saved": "Dottaaɗe ɗee ndartinaama.",
   "settings.error400": "Tiiɗno ƴeewto dottaaɗe firo maa.",
   "settings.saveError": "Waawaa hisnude dottaaɗe. Enndu kadi.",
+  "auth.welcomeBack": "On njaaraama",
+  "auth.createAccountHeading": "Sos konte maa",
+  "auth.login": "Naat",
+  "auth.signUp": "Winndito",
+  "auth.username": "Innde kuutortooɗo",
+  "auth.email": "Imeel",
+  "auth.password": "Konngol",
+  "auth.nativeLanguagePlaceholder": "Ɗemngal neeniwal (e.g. en)",
+  "auth.emailPasswordRequired": "Imeel e konngol ina ɗaɓɓiree.",
+  "auth.usernameDisplayNameRequired": "Innde kuutortooɗo e innde hollitoore ina ɗaɓɓiree.",
+  "auth.pleaseWait": "Tiiɗno, ɗaɓɓu...",
+  "auth.createAccount": "Sos konte",
+  "auth.genericError": "Won ko ŋakki.",
 } satisfies Record<TranslationKey, string>;
 export default d_ff;

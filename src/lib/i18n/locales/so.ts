@@ -238,5 +238,18 @@ const d_so = {
   "settings.saved": "Dejinta waa la keydiyay",
   "settings.error400": "Fadlan hubi dejinta tarjumaada",
   "settings.saveError": "Ma kaydin kari waayay dejinta Isku day mar kale",
+  "auth.welcomeBack": "Soo dhawoow dib",
+  "auth.createAccountHeading": "Abuur akoonkaaga",
+  "auth.login": "Soo gal",
+  "auth.signUp": "Isdiiwaangeli",
+  "auth.username": "Magaca isticmaale",
+  "auth.email": "iimaylka",
+  "auth.password": "Furaha",
+  "auth.nativeLanguagePlaceholder": "Afka hooyo ( tusaale en)",
+  "auth.emailPasswordRequired": "Email iyo erayga sirta ah ayaa loo baahan yahay.",
+  "auth.usernameDisplayNameRequired": "Magaca isticmaale iyo magaca bandhiga ayaa loo baahan yahay.",
+  "auth.pleaseWait": "Fadlan sug…",
+  "auth.createAccount": "Akoon samee",
+  "auth.genericError": "Wax baa khaldamay",
 } satisfies Record<TranslationKey, string>;
 export default d_so;

@@ -238,5 +238,18 @@ const tr = {
   "settings.saved": "Ayarlar kaydedildi.",
   "settings.error400": "Lütfen çeviri ayarlarınızı kontrol edin.",
   "settings.saveError": "Ayarlar kaydedilemedi. Tekrar deneyin.",
+  "auth.welcomeBack": "Tekrar hoş geldiniz",
+  "auth.createAccountHeading": "Hesabınızı oluşturun",
+  "auth.login": "Giriş yap",
+  "auth.signUp": "Kayıt ol",
+  "auth.username": "Kullanıcı adı",
+  "auth.email": "E-posta",
+  "auth.password": "Şifre",
+  "auth.nativeLanguagePlaceholder": "Ana dil (ör. en)",
+  "auth.emailPasswordRequired": "E-posta ve şifre gereklidir.",
+  "auth.usernameDisplayNameRequired": "Kullanıcı adı ve görünen ad gereklidir.",
+  "auth.pleaseWait": "Lütfen bekleyin…",
+  "auth.createAccount": "Hesap oluştur",
+  "auth.genericError": "Bir şeyler ters gitti.",
 } satisfies Record<TranslationKey, string>;
 export default tr;

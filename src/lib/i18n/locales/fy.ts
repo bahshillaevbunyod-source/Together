@@ -238,5 +238,18 @@ const d_fy = {
   "settings.saved": "Ynstellings bewarre.",
   "settings.error400": "Kontrolearje asjebleaft jo oersetynstellingen.",
   "settings.saveError": "Koe ynstellings net bewarje. Besykje opnij.",
+  "auth.welcomeBack": "Wolkom werom",
+  "auth.createAccountHeading": "Meitsje dyn akkount",
+  "auth.login": "Oanmelde",
+  "auth.signUp": "Oanmelde",
+  "auth.username": "Brûkersnamme",
+  "auth.email": "E-postadres",
+  "auth.password": "Wachtwurd",
+  "auth.nativeLanguagePlaceholder": "Memmetaal (bgl. en)",
+  "auth.emailPasswordRequired": "E-post en wachtwurd binne fereaske.",
+  "auth.usernameDisplayNameRequired": "Brûkersnamme en werjeftenamme binne ferplicht.",
+  "auth.pleaseWait": "Wachtsje asjebleaft...",
+  "auth.createAccount": "Meitsje akkount",
+  "auth.genericError": "Der gie wat mis.",
 } satisfies Record<TranslationKey, string>;
 export default d_fy;

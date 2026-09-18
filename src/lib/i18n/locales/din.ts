@@ -238,5 +238,18 @@ const d_din = {
   "settings.saved": "Kä cïke tääu thïn acï keek tɔ̈ɔ̈u.",
   "settings.error400": "Tïŋ lööŋkuun ke gɛ̈tgɛ̈t.",
   "settings.saveError": "Acï lëu bï tɔ̈ɔ̈u tɔ̈ɔ̈u. Dhɔ̈l them.",
+  "auth.welcomeBack": "Yïn cï bɛ̈n dhuk",
+  "auth.createAccountHeading": "Loi akɔɔn du",
+  "auth.login": "Lɔ thïn",
+  "auth.signUp": "Gät yï rin",
+  "auth.username": "Rinke luui",
+  "auth.email": "Imeel",
+  "auth.password": "Wɛ̈tde thiaan",
+  "auth.nativeLanguagePlaceholder": "Thoŋ de kɔc thɛɛr (cït mɛn de en)",
+  "auth.emailPasswordRequired": "Email ku lööŋ ë thäät ë thäät ë thäät.",
+  "auth.usernameDisplayNameRequired": "Rin ë luɔi ku rin ë nyuɔɔth aye wïc.",
+  "auth.pleaseWait": "Yïn thiëcku ba tïït...",
+  "auth.createAccount": "Lok akɔɔn",
+  "auth.genericError": "Këdäŋ acï rɛ̈ɛ̈c.",
 } satisfies Record<TranslationKey, string>;
 export default d_din;

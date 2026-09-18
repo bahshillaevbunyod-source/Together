@@ -238,5 +238,18 @@ const d_jv = {
   "settings.saved": "Setelan disimpen.",
   "settings.error400": "Priksa setelan terjemahan sampeyan.",
   "settings.saveError": "Ora bisa nyimpen setelan. Coba maneh.",
+  "auth.welcomeBack": "Sugeng rawuh",
+  "auth.createAccountHeading": "Nggawe akun sampeyan",
+  "auth.login": "mlebu log",
+  "auth.signUp": "Ndaftar",
+  "auth.username": "Jeneng panganggo",
+  "auth.email": "alamat email",
+  "auth.password": "Sandi",
+  "auth.nativeLanguagePlaceholder": "Basa asli (e.g. en)",
+  "auth.emailPasswordRequired": "Email lan sandhi dibutuhake.",
+  "auth.usernameDisplayNameRequired": "Jeneng pangguna lan jeneng tampilan dibutuhake.",
+  "auth.pleaseWait": "Mangga ngenteni…",
+  "auth.createAccount": "Nggawe akun",
+  "auth.genericError": "Ana sing salah.",
 } satisfies Record<TranslationKey, string>;
 export default d_jv;

@@ -238,5 +238,18 @@ const d_bs = {
   "settings.saved": "Postavke su sačuvane.",
   "settings.error400": "Molimo provjerite postavke prijevoda.",
   "settings.saveError": "Nije moguće sačuvati postavke. Pokušajte ponovo.",
+  "auth.welcomeBack": "Dobrodošli nazad",
+  "auth.createAccountHeading": "Kreirajte svoj račun",
+  "auth.login": "Prijavite se",
+  "auth.signUp": "Prijavite se",
+  "auth.username": "Korisničko ime",
+  "auth.email": "Email adresa",
+  "auth.password": "Lozinka",
+  "auth.nativeLanguagePlaceholder": "maternji jezik (npr. en)",
+  "auth.emailPasswordRequired": "Email i lozinka su obavezni.",
+  "auth.usernameDisplayNameRequired": "Korisničko ime i ime za prikaz su obavezni.",
+  "auth.pleaseWait": "Molimo pričekajte…",
+  "auth.createAccount": "Kreirajte nalog",
+  "auth.genericError": "Nešto je pošlo po zlu.",
 } satisfies Record<TranslationKey, string>;
 export default d_bs;

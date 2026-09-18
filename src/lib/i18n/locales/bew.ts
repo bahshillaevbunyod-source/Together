@@ -238,5 +238,18 @@ const d_bew = {
   "settings.saved": "Pengaturan udah disimpan.",
   "settings.error400": "Tolong cek pengaturan terjemahan lu.",
   "settings.saveError": "Gak bisa nyimpen pengaturan. Coba lagi.",
+  "auth.welcomeBack": "Selamat datang kembali",
+  "auth.createAccountHeading": "Bikin akun lu",
+  "auth.login": "Masuk",
+  "auth.signUp": "Daftar",
+  "auth.username": "Nama Pengguna",
+  "auth.email": "Alamat email",
+  "auth.password": "Kata sandi",
+  "auth.nativeLanguagePlaceholder": "Bahasa asli (misalnya)",
+  "auth.emailPasswordRequired": "Email dan kata sandi dibutuhin.",
+  "auth.usernameDisplayNameRequired": "Nama pengguna dan nama tampilan diperlukan.",
+  "auth.pleaseWait": "Tolong tunggu...",
+  "auth.createAccount": "Bikin akun",
+  "auth.genericError": "Ada yang salah.",
 } satisfies Record<TranslationKey, string>;
 export default d_bew;

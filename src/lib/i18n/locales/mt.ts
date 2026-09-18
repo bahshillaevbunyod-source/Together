@@ -238,5 +238,18 @@ const d_mt = {
   "settings.saved": "Settings salvati.",
   "settings.error400": "Jekk jogħġbok iċċekkja s-settings tat-traduzzjoni tiegħek.",
   "settings.saveError": "Ma setgħetx tissejvja s-settings. Erġa' pprova.",
+  "auth.welcomeBack": "Merħba lura",
+  "auth.createAccountHeading": "Oħloq il-kont tiegħek",
+  "auth.login": "Idħol",
+  "auth.signUp": "Irreġistra",
+  "auth.username": "Isem tal-utent",
+  "auth.email": "Indirizz elettroniku",
+  "auth.password": "Password tal-kont",
+  "auth.nativeLanguagePlaceholder": "Lingwa nattiva (eż. en)",
+  "auth.emailPasswordRequired": "L-email u l-password huma meħtieġa.",
+  "auth.usernameDisplayNameRequired": "L-isem tal-utent u l-isem tal-wiri huma meħtieġa.",
+  "auth.pleaseWait": "Jekk jogħġbok stenna...",
+  "auth.createAccount": "Oħloq kont",
+  "auth.genericError": "Xi ħaġa marret ħażin.",
 } satisfies Record<TranslationKey, string>;
 export default d_mt;

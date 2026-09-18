@@ -238,5 +238,18 @@ const d_af = {
   "settings.saved": "Instellings gestoor.",
   "settings.error400": "Gaan asseblief jou vertalinginstellings na.",
   "settings.saveError": "Kon nie instellings stoor nie. Probeer weer.",
+  "auth.welcomeBack": "Welkom terug",
+  "auth.createAccountHeading": "Skep jou rekening",
+  "auth.login": "Meld aan",
+  "auth.signUp": "Teken in",
+  "auth.username": "Gebruikersnaam",
+  "auth.email": "E-pos",
+  "auth.password": "Wagwoord",
+  "auth.nativeLanguagePlaceholder": "Moedertaal (bv. af)",
+  "auth.emailPasswordRequired": "E-pos en wagwoord word vereis.",
+  "auth.usernameDisplayNameRequired": "Gebruikersnaam en vertoonnaam word vereis.",
+  "auth.pleaseWait": "Wag asseblief...",
+  "auth.createAccount": "Skep rekening",
+  "auth.genericError": "Iets het verkeerd geloop.",
 } satisfies Record<TranslationKey, string>;
 export default d_af;

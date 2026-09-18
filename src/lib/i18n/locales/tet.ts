@@ -238,5 +238,18 @@ const d_tet = {
   "settings.saved": "Konfigurasaun sira rai ona.",
   "settings.error400": "Favor verifika ita-boot nia konfigurasaun tradusaun nian.",
   "settings.saveError": "Labele rai konfigurasaun sira. Koko fali.",
+  "auth.welcomeBack": "Bemvindu fila fali",
+  "auth.createAccountHeading": "Kria Ita-boot nia konta",
+  "auth.login": "Tama ba ita-boot nia konta",
+  "auth.signUp": "Rejistu",
+  "auth.username": "Naran Uzuáriu",
+  "auth.email": "Enderesu email",
+  "auth.password": "Liafuan-xave",
+  "auth.nativeLanguagePlaceholder": "Lian materna (n.e. en)",
+  "auth.emailPasswordRequired": "Presiza email no senha.",
+  "auth.usernameDisplayNameRequired": "Naran utilizadór no naran hatudu nian maka presiza.",
+  "auth.pleaseWait": "Favor hein...",
+  "auth.createAccount": "Kria konta",
+  "auth.genericError": "Buat ruma la'o sala.",
 } satisfies Record<TranslationKey, string>;
 export default d_tet;

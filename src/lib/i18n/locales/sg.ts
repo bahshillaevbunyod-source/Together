@@ -238,5 +238,18 @@ const d_sg = {
   "settings.saved": "A bata a-paramètre.",
   "settings.error400": "Zia e bâ a-paramètre ti traduction ti e.",
   "settings.saveError": "A lingbi ti bata a-paramètre ni pëpe. Tara encore.",
+  "auth.welcomeBack": "E yamba e nzoni",
+  "auth.createAccountHeading": "Sara compte ti mo .",
+  "auth.login": "Lo lï na yâ ni",
+  "auth.signUp": "Zia iri ti mo",
+  "auth.username": "Iri ti zo",
+  "auth.email": "Adresse ti e-mail",
+  "auth.password": "Mot de passe",
+  "auth.nativeLanguagePlaceholder": "Yanga ti kodoro (na tapande en)",
+  "auth.emailPasswordRequired": "A hunda ti wara a-email nga na mot de passe.",
+  "auth.usernameDisplayNameRequired": "A hunda iri ti zo ti kua ni nga na iri ti display ni.",
+  "auth.pleaseWait": "Pardon ku...",
+  "auth.createAccount": "Sara mbeni compte",
+  "auth.genericError": "Mbeni ye asi.",
 } satisfies Record<TranslationKey, string>;
 export default d_sg;

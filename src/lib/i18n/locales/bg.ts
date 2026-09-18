@@ -238,5 +238,18 @@ const d_bg = {
   "settings.saved": "Настройките са запазени.",
   "settings.error400": "Моля, проверете настройките си за превод.",
   "settings.saveError": "Настройките не можаха да бъдат запазени. Опитайте отново.",
+  "auth.welcomeBack": "Добре дошъл отново",
+  "auth.createAccountHeading": "Създайте своя акаунт",
+  "auth.login": "влезте",
+  "auth.signUp": "Запишете се",
+  "auth.username": "Потребителско име",
+  "auth.email": "Имейл",
+  "auth.password": "Парола",
+  "auth.nativeLanguagePlaceholder": "Роден език (напр. en)",
+  "auth.emailPasswordRequired": "Изискват се имейл и парола.",
+  "auth.usernameDisplayNameRequired": "Изискват се потребителско име и екранно име.",
+  "auth.pleaseWait": "моля изчакайте...",
+  "auth.createAccount": "Създаване на акаунт",
+  "auth.genericError": "Нещо се обърка.",
 } satisfies Record<TranslationKey, string>;
 export default d_bg;

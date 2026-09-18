@@ -238,5 +238,18 @@ const d_cnh = {
   "settings.saved": "Setting pawl chiah an si.",
   "settings.error400": "Na lehnak setting kha zoh.",
   "settings.saveError": "Setting pawl kha chiah khawh a si lo. I zuam tthan.",
+  "auth.welcomeBack": "Kan in don ṭhan hna",
+  "auth.createAccountHeading": "Na account ser",
+  "auth.login": "Luh",
+  "auth.signUp": "Min pe",
+  "auth.username": "Hmantu min",
+  "auth.email": "Email hmun",
+  "auth.password": "Hmun password",
+  "auth.nativeLanguagePlaceholder": "Ramchung holh (e.g. en)",
+  "auth.emailPasswordRequired": "Email le password a herh.",
+  "auth.usernameDisplayNameRequired": "Hmantu min le langhternak min a herh.",
+  "auth.pleaseWait": "Hngak ko...",
+  "auth.createAccount": "Account ser",
+  "auth.genericError": "Thil pakhatkhat a palh.",
 } satisfies Record<TranslationKey, string>;
 export default d_cnh;

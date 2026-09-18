@@ -238,5 +238,18 @@ const d_hrx = {
   "settings.saved": "Instellunge sin kexpaart.",
   "settings.error400": "Tuu tayn iwersëtsungs instellunge noo kuke.",
   "settings.saveError": "Konnt net ti instellunge xpaare. Proop noch mool.",
+  "auth.welcomeBack": "Wilkommen tsurik",
+  "auth.createAccountHeading": "Tuu tayn kontripuytsioon mache",
+  "auth.login": "Tuu tich in tayn kontripuytsioon aan melde",
+  "auth.signUp": "Sich aanmelde",
+  "auth.username": "Nutsernaam",
+  "auth.email": "E-mail",
+  "auth.password": "Passwort",
+  "auth.nativeLanguagePlaceholder": "Natiif xprooch (z.B. en)",
+  "auth.emailPasswordRequired": "E-mail un pasëyert sin neetich.",
+  "auth.usernameDisplayNameRequired": "Username un displayname sin ferlangt.",
+  "auth.pleaseWait": "Bitte waarte...",
+  "auth.createAccount": "Konto mache",
+  "auth.genericError": "Etwas is ferkheert kang.",
 } satisfies Record<TranslationKey, string>;
 export default d_hrx;

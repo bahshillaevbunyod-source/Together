@@ -238,5 +238,18 @@ const d_lb = {
   "settings.saved": "Astellunge gespäichert.",
   "settings.error400": "Kuckt w.e.g. Är Iwwersetzungsastellungen.",
   "settings.saveError": "Konnt d'Astellunge net späicheren. Probéiert nach eng Kéier.",
+  "auth.welcomeBack": "Wëllkomm zréck",
+  "auth.createAccountHeading": "Schafen Äre Kont",
+  "auth.login": "Mellt Iech un",
+  "auth.signUp": "Umellen",
+  "auth.username": "Benotzernumm",
+  "auth.email": "E-Mail",
+  "auth.password": "Passwuert",
+  "auth.nativeLanguagePlaceholder": "Mammesprooch (z.B. en)",
+  "auth.emailPasswordRequired": "E-Mail a Passwuert sinn néideg.",
+  "auth.usernameDisplayNameRequired": "Benotzernumm an Affichage Numm sinn néideg.",
+  "auth.pleaseWait": "W.e.g. waart ...",
+  "auth.createAccount": "Schafen Kont",
+  "auth.genericError": "Eppes ass falsch gaangen.",
 } satisfies Record<TranslationKey, string>;
 export default d_lb;

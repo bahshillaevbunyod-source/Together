@@ -238,5 +238,18 @@ const d_sr = {
   "settings.saved": "Подешавања су сачувана.",
   "settings.error400": "Проверите подешавања превода.",
   "settings.saveError": "Није могуће сачувати подешавања. Покушајте поново.",
+  "auth.welcomeBack": "Добродошли назад",
+  "auth.createAccountHeading": "Креирајте свој налог",
+  "auth.login": "Пријавите се",
+  "auth.signUp": "Пријавите се",
+  "auth.username": "Корисничко име",
+  "auth.email": "Емаил",
+  "auth.password": "Лозинка",
+  "auth.nativeLanguagePlaceholder": "матерњи језик (нпр. ен)",
+  "auth.emailPasswordRequired": "Е-маил и лозинка су обавезни.",
+  "auth.usernameDisplayNameRequired": "Корисничко име и име за приказ су обавезни.",
+  "auth.pleaseWait": "Молимо сачекајте…",
+  "auth.createAccount": "Креирајте налог",
+  "auth.genericError": "Нешто је пошло по злу.",
 } satisfies Record<TranslationKey, string>;
 export default d_sr;

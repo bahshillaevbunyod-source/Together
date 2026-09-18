@@ -238,5 +238,18 @@ const d_sn = {
   "settings.saved": "Settings dzachengetwa.",
   "settings.error400": "Ndokumbira utarise marongero ako eshanduro.",
   "settings.saveError": "Tatadza kuchengetedza. Edza zvakare.",
+  "auth.welcomeBack": "Titambire zvakare",
+  "auth.createAccountHeading": "Gadzira account yako",
+  "auth.login": "Pinda muakaundi yako",
+  "auth.signUp": "Bhalisa account itsva",
+  "auth.username": "Zita remushandisi",
+  "auth.email": "Kero yeemail",
+  "auth.password": "Password yeakaundi",
+  "auth.nativeLanguagePlaceholder": "Mutauro wemunyika (e.g. en)",
+  "auth.emailPasswordRequired": "Email uye password zvinodiwa.",
+  "auth.usernameDisplayNameRequired": "Username uye zita rekuratidzira rinodiwa.",
+  "auth.pleaseWait": "Mirai henyu...",
+  "auth.createAccount": "Gadzira account",
+  "auth.genericError": "Pane chakaipa.",
 } satisfies Record<TranslationKey, string>;
 export default d_sn;

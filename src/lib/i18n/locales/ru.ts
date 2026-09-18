@@ -238,5 +238,18 @@ const ru = {
   "settings.saved": "Настройки сохранены.",
   "settings.error400": "Пожалуйста, проверьте настройки перевода.",
   "settings.saveError": "Не удалось сохранить настройки. Попробуйте еще раз.",
+  "auth.welcomeBack": "С возвращением",
+  "auth.createAccountHeading": "Создайте свою учетную запись",
+  "auth.login": "Войти",
+  "auth.signUp": "Зарегистрироваться",
+  "auth.username": "Имя пользователя",
+  "auth.email": "электронная почта",
+  "auth.password": "Пароль",
+  "auth.nativeLanguagePlaceholder": "Родной язык (например, en)",
+  "auth.emailPasswordRequired": "Требуется адрес электронной почты и пароль.",
+  "auth.usernameDisplayNameRequired": "Требуется имя пользователя и отображаемое имя.",
+  "auth.pleaseWait": "Пожалуйста, подождите…",
+  "auth.createAccount": "Создать учетную запись",
+  "auth.genericError": "Что-то пошло не так.",
 } satisfies Record<TranslationKey, string>;
 export default ru;

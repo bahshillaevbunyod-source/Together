@@ -238,5 +238,18 @@ const d_bm = {
   "settings.saved": "Settings (labɛnniw) maralen don.",
   "settings.error400": "Aw ye aw ka bamanankan baarakɛcogo lajɛ.",
   "settings.saveError": "A ma se ka settings (daɲɛw) mara. Aw bɛ segin ka a lajɛ.",
+  "auth.welcomeBack": "Aw ni ce ka segin",
+  "auth.createAccountHeading": "Aw ye aw ka jatebɔsɛbɛn dilan",
+  "auth.login": "Aw bɛ don a kɔnɔ",
+  "auth.signUp": "I tɔgɔ sɛbɛn",
+  "auth.username": "Baarakɛla tɔgɔ",
+  "auth.email": "Email (Email) ci",
+  "auth.password": "Password (daɲɛ dogolen).",
+  "auth.nativeLanguagePlaceholder": "Fasokan (misali la, en) .",
+  "auth.emailPasswordRequired": "Email ni password de wajibiyalen don.",
+  "auth.usernameDisplayNameRequired": "Baarakɛla tɔgɔ ni jiracogo tɔgɔ de wajibiyalen don.",
+  "auth.pleaseWait": "Aw ka kɔnɔni kɛ...",
+  "auth.createAccount": "Konte dabɔ",
+  "auth.genericError": "Fɛn dɔ ma ɲɛ.",
 } satisfies Record<TranslationKey, string>;
 export default d_bm;

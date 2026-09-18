@@ -238,5 +238,18 @@ const d_ig = {
   "settings.saved": "echekwara ntọala.",
   "settings.error400": "Biko lelee ntọala ntụgharị asụsụ gị.",
   "settings.saveError": "Enweghị ike ichekwa ntọala. Nwaa ọzọ.",
+  "auth.welcomeBack": "Nnọọ azụ",
+  "auth.createAccountHeading": "Mepụta akaụntụ gị",
+  "auth.login": "Banye",
+  "auth.signUp": "Debanye aha",
+  "auth.username": "Aha njirimara",
+  "auth.email": "Adreesị ozi-e",
+  "auth.password": "Okwuntughe",
+  "auth.nativeLanguagePlaceholder": "Asụsụ obodo (dịka en)",
+  "auth.emailPasswordRequired": "Email na paswọọdụ achọrọ.",
+  "auth.usernameDisplayNameRequired": "Aha njirimara na aha ngosi achọrọ.",
+  "auth.pleaseWait": "Biko chere…",
+  "auth.createAccount": "Mepụta akaụntụ",
+  "auth.genericError": "Ọ nwere ihe adịghị mma.",
 } satisfies Record<TranslationKey, string>;
 export default d_ig;

@@ -238,5 +238,18 @@ const d_dv = {
   "settings.saved": "ސެޓިންގސް ސޭވް ކުރެވިއްޖެއެވެ.",
   "settings.error400": "ތަރުޖަމާ ސެޓިންގސް ޗެކް ކުރައްވާށެވެ.",
   "settings.saveError": "ސެޓިންގްސް ސޭވް ނުކުރެވުނެވެ. އަނެއްކާވެސް މަސައްކަތް ކުރާށެވެ.",
+  "auth.welcomeBack": "އަނބުރާ މަރުހަބާ",
+  "auth.createAccountHeading": "އެކައުންޓް އުފައްދާށެވެ",
+  "auth.login": "ލޮގްއިން ކޮށްލައްވާށެވެ",
+  "auth.signUp": "ސޮއިކުރުން",
+  "auth.username": "ޔޫޒަރނޭމް",
+  "auth.email": "އީމެއިލް",
+  "auth.password": "ޕާސްވޯޑް",
+  "auth.nativeLanguagePlaceholder": "ދިވެހި ބަސް (އެބަހީ އެން)",
+  "auth.emailPasswordRequired": "އީމެއިލް އަދި ޕާސްވޯޑް ބޭނުންވެއެވެ.",
+  "auth.usernameDisplayNameRequired": "ޔޫޒަރނޭމް އަދި ޑިސްޕްލޭ ނަން ބޭނުންވެއެވެ.",
+  "auth.pleaseWait": "މަޑުކޮށްލައްވާ...",
+  "auth.createAccount": "އެކައުންޓް އުފެއްދުން",
+  "auth.genericError": "ކަމެއް ގޯސްވީއެވެ.",
 } satisfies Record<TranslationKey, string>;
 export default d_dv;

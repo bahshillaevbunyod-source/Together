@@ -238,5 +238,18 @@ const d_tt = {
   "settings.saved": "Көйләүләр сакланган.",
   "settings.error400": "Зинһар, тәрҗемә көйләүләрен тикшерегез.",
   "settings.saveError": "Көйләүләрне саклап булмый. Кабатлап карагыз.",
+  "auth.welcomeBack": "Рәхим итегез",
+  "auth.createAccountHeading": "Хисап язмагыз",
+  "auth.login": "Керегез",
+  "auth.signUp": "Керегез",
+  "auth.username": "Кулланучы исеме",
+  "auth.email": "Электрон почта",
+  "auth.password": "Серсүз",
+  "auth.nativeLanguagePlaceholder": "Туган тел (мәс.)",
+  "auth.emailPasswordRequired": "Электрон почта һәм серсүз кирәк.",
+  "auth.usernameDisplayNameRequired": "Кулланучының исеме һәм күрсәтү исеме кирәк.",
+  "auth.pleaseWait": "Зинһар, көтегез ...",
+  "auth.createAccount": "Хисап языгыз",
+  "auth.genericError": "Нәрсәдер дөрес булмаган.",
 } satisfies Record<TranslationKey, string>;
 export default d_tt;

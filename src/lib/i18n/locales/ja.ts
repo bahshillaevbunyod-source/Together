@@ -238,5 +238,18 @@ const ja = {
   "settings.saved": "設定が保存されました。",
   "settings.error400": "翻訳設定を確認してください。",
   "settings.saveError": "設定を保存できませんでした。もう一度やり直してください。",
+  "auth.welcomeBack": "おかえりなさい",
+  "auth.createAccountHeading": "アカウントを作成する",
+  "auth.login": "ログイン",
+  "auth.signUp": "サインアップ",
+  "auth.username": "ユーザー名",
+  "auth.email": "電子メール",
+  "auth.password": "パスワード",
+  "auth.nativeLanguagePlaceholder": "母国語 (例: en)",
+  "auth.emailPasswordRequired": "メールアドレスとパスワードが必要です。",
+  "auth.usernameDisplayNameRequired": "ユーザー名と表示名は必須です。",
+  "auth.pleaseWait": "お待ちください…",
+  "auth.createAccount": "アカウントを作成する",
+  "auth.genericError": "何か問題が発生しました。",
 } satisfies Record<TranslationKey, string>;
 export default ja;

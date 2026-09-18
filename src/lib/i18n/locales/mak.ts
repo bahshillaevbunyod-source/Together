@@ -238,5 +238,18 @@ const d_mak = {
   "settings.saved": "Pangngatoro ni simpan.",
   "settings.error400": "Paressai setting terjemahannu.",
   "settings.saveError": "Tena nakkulle anjagai setting. Cobai pole.",
+  "auth.welcomeBack": "Sallang ammotere",
+  "auth.createAccountHeading": "Paentengi akunnu",
+  "auth.login": "Antama",
+  "auth.signUp": "Daftar",
+  "auth.username": "Areng pangnguppa",
+  "auth.email": "Alamat email",
+  "auth.password": "Kata sandi",
+  "auth.nativeLanguagePlaceholder": "Bahasa asli (e.g. en)",
+  "auth.emailPasswordRequired": "Email siagang kata sandi parallui.",
+  "auth.usernameDisplayNameRequired": "Areng pangnguppa siagang areng pa'piitteang parallui.",
+  "auth.pleaseWait": "Tolong antayangi...",
+  "auth.createAccount": "appareki akun",
+  "auth.genericError": "Nia apa-apa sala.",
 } satisfies Record<TranslationKey, string>;
 export default d_mak;

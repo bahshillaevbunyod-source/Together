@@ -238,5 +238,18 @@ const d_gn = {
   "settings.saved": "Ñemboheko oñeñongatúva.",
   "settings.error400": "Ehechákena ne ñembohasa ñemboheko.",
   "settings.saveError": "Ndaikatúi oñongatu ñemboheko. Eñeha’ã jey.",
+  "auth.welcomeBack": "Peju jey porãite",
+  "auth.createAccountHeading": "Ejapo nde cuenta",
+  "auth.login": "Eike",
+  "auth.signUp": "Ejeregistra",
+  "auth.username": "Pojoapy puruhára réra",
+  "auth.email": "Correo electrónico rehegua",
+  "auth.password": "Ñe’ẽñemi",
+  "auth.nativeLanguagePlaceholder": "Ñe’ẽ tee (e.g. en) .",
+  "auth.emailPasswordRequired": "Oñeikotevẽ correo electrónico ha contraseña.",
+  "auth.usernameDisplayNameRequired": "Oñeikotevẽ puruhára réra ha jehechaukarã réra.",
+  "auth.pleaseWait": "Por favor, eha'arõ...",
+  "auth.createAccount": "Ojapo cuenta",
+  "auth.genericError": "Oĩ mba’e oho vaíva.",
 } satisfies Record<TranslationKey, string>;
 export default d_gn;

@@ -238,5 +238,18 @@ const d_qu = {
   "settings.saved": "Waqaychasqa churasqakuna.",
   "settings.error400": "Ama hina kaspa, tikraypaq churasqaykita qhaway.",
   "settings.saveError": "Mana atirqanchu churaykunata waqaychayta. Hukmanta kallpachakuy.",
+  "auth.welcomeBack": "Allin hamusqaykichik",
+  "auth.createAccountHeading": "Yupaykita ruway",
+  "auth.login": "Yaykuy",
+  "auth.signUp": "Inscribikuy",
+  "auth.username": "Ruraqpa sutin",
+  "auth.email": "Correo electrónico nisqa",
+  "auth.password": "Yaykuna rimay",
+  "auth.nativeLanguagePlaceholder": "Mama simi (e.g. en) .",
+  "auth.emailPasswordRequired": "Correo electrónico, contraseña ima necesitakun.",
+  "auth.usernameDisplayNameRequired": "Ruraqpa sutin, qhaway suti ima necesitakun.",
+  "auth.pleaseWait": "Ama hina kaspa, suyaykuy...",
+  "auth.createAccount": "Cuenta ruway",
+  "auth.genericError": "Imapas mana allintam pasarqa.",
 } satisfies Record<TranslationKey, string>;
 export default d_qu;

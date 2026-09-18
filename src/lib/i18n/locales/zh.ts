@@ -238,5 +238,18 @@ const zh = {
   "settings.saved": "设置已保存。",
   "settings.error400": "请检查您的翻译设置。",
   "settings.saveError": "无法保存设置。再试一次。",
+  "auth.welcomeBack": "欢迎回来",
+  "auth.createAccountHeading": "创建您的帐户",
+  "auth.login": "登录",
+  "auth.signUp": "注册",
+  "auth.username": "用户名",
+  "auth.email": "电子邮件",
+  "auth.password": "密码",
+  "auth.nativeLanguagePlaceholder": "母语（例如 en）",
+  "auth.emailPasswordRequired": "需要电子邮件和密码。",
+  "auth.usernameDisplayNameRequired": "用户名和显示名称是必需的。",
+  "auth.pleaseWait": "请稍等...",
+  "auth.createAccount": "创建帐户",
+  "auth.genericError": "出了点问题。",
 } satisfies Record<TranslationKey, string>;
 export default zh;

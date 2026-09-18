@@ -238,5 +238,18 @@ const d_sk = {
   "settings.saved": "Nastavenia boli uložené.",
   "settings.error400": "Skontrolujte nastavenia prekladu.",
   "settings.saveError": "Nastavenia sa nepodarilo uložiť. Skúste to znova.",
+  "auth.welcomeBack": "Vitajte späť",
+  "auth.createAccountHeading": "Vytvorte si účet",
+  "auth.login": "Prihláste sa",
+  "auth.signUp": "Zaregistrujte sa",
+  "auth.username": "Používateľské meno",
+  "auth.email": "E-mailová adresa",
+  "auth.password": "heslo",
+  "auth.nativeLanguagePlaceholder": "Rodný jazyk (napr. en)",
+  "auth.emailPasswordRequired": "Vyžaduje sa e-mail a heslo.",
+  "auth.usernameDisplayNameRequired": "Vyžaduje sa používateľské meno a zobrazované meno.",
+  "auth.pleaseWait": "Čakajte prosím…",
+  "auth.createAccount": "Vytvoriť účet",
+  "auth.genericError": "Niečo sa pokazilo.",
 } satisfies Record<TranslationKey, string>;
 export default d_sk;

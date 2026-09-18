@@ -238,5 +238,18 @@ const d_yue = {
   "settings.saved": "儲存咗嘅設定。",
   "settings.error400": "請檢查你嘅翻譯設定。",
   "settings.saveError": "儲存唔到設定。再試多次。",
+  "auth.welcomeBack": "歡迎返嚟",
+  "auth.createAccountHeading": "建立你嘅帳戶",
+  "auth.login": "登入",
+  "auth.signUp": "登記",
+  "auth.username": "用戶名",
+  "auth.email": "電郵",
+  "auth.password": "密碼",
+  "auth.nativeLanguagePlaceholder": "母語（例如 en ）",
+  "auth.emailPasswordRequired": "需要電郵同密碼。",
+  "auth.usernameDisplayNameRequired": "需要用戶名同顯示名。",
+  "auth.pleaseWait": "唔該等下 …",
+  "auth.createAccount": "建立帳戶",
+  "auth.genericError": "有啲嘢出錯咗。",
 } satisfies Record<TranslationKey, string>;
 export default d_yue;

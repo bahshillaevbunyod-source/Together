@@ -238,5 +238,18 @@ const d_cy = {
   "settings.saved": "Gosodiadau wedi'u cadw.",
   "settings.error400": "Gwiriwch eich gosodiadau cyfieithu.",
   "settings.saveError": "Methu â chadw gosodiadau. Ceisiwch eto.",
+  "auth.welcomeBack": "Croeso yn ôl",
+  "auth.createAccountHeading": "Creu eich cyfrif",
+  "auth.login": "Mewngofnodi",
+  "auth.signUp": "Cofrestrwch",
+  "auth.username": "Enw defnyddiwr",
+  "auth.email": "Ebost",
+  "auth.password": "Cyfrinair",
+  "auth.nativeLanguagePlaceholder": "Iaith frodorol (e.e. en)",
+  "auth.emailPasswordRequired": "Mae angen e-bost a chyfrinair.",
+  "auth.usernameDisplayNameRequired": "Mae angen enw defnyddiwr ac enw arddangos.",
+  "auth.pleaseWait": "Arhoswch os gwelwch yn dda…",
+  "auth.createAccount": "Creu cyfrif",
+  "auth.genericError": "Aeth rhywbeth o'i le.",
 } satisfies Record<TranslationKey, string>;
 export default d_cy;

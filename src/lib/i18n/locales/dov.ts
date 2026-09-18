@@ -238,5 +238,18 @@ const d_dov = {
   "settings.saved": "Zibikkidwe zyakabambwa.",
   "settings.error400": "Kolanga zyintu zyako zyakusandulula.",
   "settings.saveError": "Tachikonzeka kubamba mabambe. Kosola alimwi.",
+  "auth.welcomeBack": "Mwatambulwa alimwi",
+  "auth.createAccountHeading": "Panga akaunti yako",
+  "auth.login": "Konjila",
+  "auth.signUp": "Lembya",
+  "auth.username": "Izina lyakubelesya",
+  "auth.email": "Imeyili",
+  "auth.password": "Pasiwedi",
+  "auth.nativeLanguagePlaceholder": "Mwaambo wakuzyalwa (c.a. en)",
+  "auth.emailPasswordRequired": "Imeyili a pasiwedi zilayandika.",
+  "auth.usernameDisplayNameRequired": "Izina lyakubelesya azina lyakutondezya zilayandika.",
+  "auth.pleaseWait": "Ndalomba kulindila...",
+  "auth.createAccount": "Panga akaunti",
+  "auth.genericError": "Kuli chintu chakalubide.",
 } satisfies Record<TranslationKey, string>;
 export default d_dov;

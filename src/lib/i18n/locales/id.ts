@@ -238,5 +238,18 @@ const d_id = {
   "settings.saved": "Pengaturan disimpan.",
   "settings.error400": "Silakan periksa pengaturan terjemahan Anda.",
   "settings.saveError": "Tidak dapat menyimpan setelan. Coba lagi.",
+  "auth.welcomeBack": "Selamat datang kembali",
+  "auth.createAccountHeading": "Buat akun Anda",
+  "auth.login": "Masuk",
+  "auth.signUp": "Daftar",
+  "auth.username": "Nama pengguna",
+  "auth.email": "Surel",
+  "auth.password": "Kata sandi",
+  "auth.nativeLanguagePlaceholder": "Bahasa asli (misalnya en)",
+  "auth.emailPasswordRequired": "Email dan kata sandi diperlukan.",
+  "auth.usernameDisplayNameRequired": "Nama pengguna dan nama tampilan diperlukan.",
+  "auth.pleaseWait": "Harap tunggu…",
+  "auth.createAccount": "Buat akun",
+  "auth.genericError": "Ada yang tidak beres.",
 } satisfies Record<TranslationKey, string>;
 export default d_id;

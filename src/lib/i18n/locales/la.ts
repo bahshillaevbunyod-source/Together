@@ -238,5 +238,18 @@ const d_la = {
   "settings.saved": "Occasus servavit.",
   "settings.error400": "Quaeso reprehendo tuum translationem occasus.",
   "settings.saveError": "Optiones tuas non salvas. Iterum tenta.",
+  "auth.welcomeBack": "Receperint retro",
+  "auth.createAccountHeading": "Rationem creatam",
+  "auth.login": "Adi tuum",
+  "auth.signUp": "Novam rationem subcriptio",
+  "auth.username": "User nomen",
+  "auth.email": "Inscriptio electronica",
+  "auth.password": "Ratio password",
+  "auth.nativeLanguagePlaceholder": "Lingua vulgaris (e.g. en)",
+  "auth.emailPasswordRequired": "Inscriptio et password non requiritur.",
+  "auth.usernameDisplayNameRequired": "Nomen usoris et ostentationem non requiritur.",
+  "auth.pleaseWait": "Quaeso exspectare…",
+  "auth.createAccount": "Novam rationem",
+  "auth.genericError": "Aliquid abiit iniuriam.",
 } satisfies Record<TranslationKey, string>;
 export default d_la;

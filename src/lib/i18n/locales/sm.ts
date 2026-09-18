@@ -238,5 +238,18 @@ const d_sm = {
   "settings.saved": "Fa'asaoina tulaga.",
   "settings.error400": "Fa'amolemole siaki au fa'aliliuga tulaga.",
   "settings.saveError": "Le mafai ona sefe fa'atulagaga. Toe taumafai.",
+  "auth.welcomeBack": "Afio maia",
+  "auth.createAccountHeading": "Fausia lau tala",
+  "auth.login": "Ulufale mai",
+  "auth.signUp": "Saini i luga",
+  "auth.username": "Igoa fa'aoga",
+  "auth.email": "imeli",
+  "auth.password": "Fa'amatalaga talatala",
+  "auth.nativeLanguagePlaceholder": "Gagana moni (eg. en)",
+  "auth.emailPasswordRequired": "E mana'omia le imeli ma le password.",
+  "auth.usernameDisplayNameRequired": "E mana'omia le igoa fa'aoga ma le fa'aaliga.",
+  "auth.pleaseWait": "Fa'amolemole fa'atali...",
+  "auth.createAccount": "Fausia tala",
+  "auth.genericError": "Sa i ai se mea na faaletonu.",
 } satisfies Record<TranslationKey, string>;
 export default d_sm;

@@ -238,5 +238,18 @@ const d_sa = {
   "settings.saved": "सेटिंग्स् रक्षितानि।",
   "settings.error400": "कृपया स्वस्य अनुवादसेटिंग्स् पश्यन्तु।",
   "settings.saveError": "सेटिङ्ग्स् रक्षितुं न शक्तवान् । पुनः प्रयासं कुर्वन्तु।",
+  "auth.welcomeBack": "पुनः स्वागतम्",
+  "auth.createAccountHeading": "स्वस्य खातं रचयन्तु",
+  "auth.login": "प्रवेशं कुर्वन्तु",
+  "auth.signUp": "पञ्जीकरणं कुर्वन्तु",
+  "auth.username": "उपयोक्तृनाम",
+  "auth.email": "ईमेल",
+  "auth.password": "गुप्तशब्दः",
+  "auth.nativeLanguagePlaceholder": "देशीभाषा (उदा. en) २.",
+  "auth.emailPasswordRequired": "ईमेल, गुप्तशब्दः च आवश्यकाः सन्ति।",
+  "auth.usernameDisplayNameRequired": "उपयोक्तृनाम प्रदर्शननाम च आवश्यकम् ।",
+  "auth.pleaseWait": "कृपया प्रतीक्षां कुर्वन्तु...",
+  "auth.createAccount": "खाता रचयतु",
+  "auth.genericError": "किमपि भ्रष्टं जातम्।",
 } satisfies Record<TranslationKey, string>;
 export default d_sa;

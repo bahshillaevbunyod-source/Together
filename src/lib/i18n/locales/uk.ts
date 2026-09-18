@@ -238,5 +238,18 @@ const d_uk = {
   "settings.saved": "Налаштування збережено.",
   "settings.error400": "Перевірте налаштування перекладу.",
   "settings.saveError": "Не вдалося зберегти налаштування. Спробуйте знову.",
+  "auth.welcomeBack": "Ласкаво просимо назад",
+  "auth.createAccountHeading": "Створіть свій акаунт",
+  "auth.login": "авторизуватися",
+  "auth.signUp": "Зареєструватися",
+  "auth.username": "Ім'я користувача",
+  "auth.email": "Електронна пошта",
+  "auth.password": "Пароль",
+  "auth.nativeLanguagePlaceholder": "Рідна мова (наприклад, en)",
+  "auth.emailPasswordRequired": "Потрібна електронна адреса та пароль.",
+  "auth.usernameDisplayNameRequired": "Потрібно вказати ім’я користувача та відображуване ім’я.",
+  "auth.pleaseWait": "Зачекайте...",
+  "auth.createAccount": "Створити акаунт",
+  "auth.genericError": "Щось пішло не так.",
 } satisfies Record<TranslationKey, string>;
 export default d_uk;

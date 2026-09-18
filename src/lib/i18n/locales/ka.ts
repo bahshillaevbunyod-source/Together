@@ -238,5 +238,18 @@ const d_ka = {
   "settings.saved": "პარამეტრები შენახულია.",
   "settings.error400": "გთხოვთ, შეამოწმოთ თქვენი თარგმანის პარამეტრები.",
   "settings.saveError": "პარამეტრების შენახვა ვერ მოხერხდა. სცადეთ ხელახლა.",
+  "auth.welcomeBack": "კეთილი იყოს თქვენი მობრძანება",
+  "auth.createAccountHeading": "შექმენით თქვენი ანგარიში",
+  "auth.login": "შესვლა",
+  "auth.signUp": "დარეგისტრირდით",
+  "auth.username": "მომხმარებლის სახელი",
+  "auth.email": "ელფოსტა",
+  "auth.password": "პაროლი",
+  "auth.nativeLanguagePlaceholder": "მშობლიური ენა (მაგ. en)",
+  "auth.emailPasswordRequired": "საჭიროა ელ. ფოსტა და პაროლი.",
+  "auth.usernameDisplayNameRequired": "მომხმარებლის სახელი და საჩვენებელი სახელი აუცილებელია.",
+  "auth.pleaseWait": "გთხოვთ დაელოდოთ…",
+  "auth.createAccount": "ანგარიშის შექმნა",
+  "auth.genericError": "რაღაც შეფერხდა.",
 } satisfies Record<TranslationKey, string>;
 export default d_ka;

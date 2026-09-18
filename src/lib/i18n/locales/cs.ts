@@ -238,5 +238,18 @@ const d_cs = {
   "settings.saved": "Nastavení uloženo.",
   "settings.error400": "Zkontrolujte prosím nastavení překladu.",
   "settings.saveError": "Nastavení se nepodařilo uložit. Zkuste to znovu.",
+  "auth.welcomeBack": "Vítejte zpět",
+  "auth.createAccountHeading": "Vytvořte si účet",
+  "auth.login": "Přihlaste se",
+  "auth.signUp": "Zaregistrujte se",
+  "auth.username": "Uživatelské jméno",
+  "auth.email": "Emailová adresa",
+  "auth.password": "Heslo",
+  "auth.nativeLanguagePlaceholder": "Rodný jazyk (např. en)",
+  "auth.emailPasswordRequired": "E-mail a heslo jsou povinné.",
+  "auth.usernameDisplayNameRequired": "Uživatelské jméno a zobrazované jméno jsou povinné.",
+  "auth.pleaseWait": "Čekejte prosím…",
+  "auth.createAccount": "Vytvořit účet",
+  "auth.genericError": "Něco se pokazilo.",
 } satisfies Record<TranslationKey, string>;
 export default d_cs;

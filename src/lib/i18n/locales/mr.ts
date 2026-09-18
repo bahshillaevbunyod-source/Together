@@ -238,5 +238,18 @@ const d_mr = {
   "settings.saved": "सेटिंग्ज सेव्ह केल्या.",
   "settings.error400": "कृपया तुमची भाषांतर सेटिंग्ज तपासा.",
   "settings.saveError": "सेटिंग्ज सेव्ह करू शकलो नाही. पुन्हा प्रयत्न करा.",
+  "auth.welcomeBack": "परत स्वागत आहे",
+  "auth.createAccountHeading": "तुमचे खाते तयार करा",
+  "auth.login": "लॉग इन करा",
+  "auth.signUp": "साइन अप करा",
+  "auth.username": "वापरकर्तानाव",
+  "auth.email": "ईमेल",
+  "auth.password": "पासवर्ड",
+  "auth.nativeLanguagePlaceholder": "मूळ भाषा (उदा. en)",
+  "auth.emailPasswordRequired": "ईमेल आणि पासवर्ड आवश्यक आहे.",
+  "auth.usernameDisplayNameRequired": "वापरकर्तानाव आणि प्रदर्शन नाव आवश्यक आहे.",
+  "auth.pleaseWait": "कृपया प्रतीक्षा करा...",
+  "auth.createAccount": "खाते तयार करा",
+  "auth.genericError": "काहीतरी चूक झाली.",
 } satisfies Record<TranslationKey, string>;
 export default d_mr;

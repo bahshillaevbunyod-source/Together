@@ -238,5 +238,18 @@ const d_sw = {
   "settings.saved": "Mipangilio imehifadhiwa.",
   "settings.error400": "Tafadhali angalia mipangilio yako ya tafsiri.",
   "settings.saveError": "Haikuweza kuhifadhi mipangilio. Jaribu tena.",
+  "auth.welcomeBack": "Karibu tena",
+  "auth.createAccountHeading": "Fungua akaunti yako",
+  "auth.login": "Ingia",
+  "auth.signUp": "Jisajili",
+  "auth.username": "Jina la mtumiaji",
+  "auth.email": "Barua pepe",
+  "auth.password": "Nenosiri",
+  "auth.nativeLanguagePlaceholder": "Lugha asilia (k.m. sw)",
+  "auth.emailPasswordRequired": "Barua pepe na nenosiri zinahitajika.",
+  "auth.usernameDisplayNameRequired": "Jina la mtumiaji na jina la kuonyesha zinahitajika.",
+  "auth.pleaseWait": "Tafadhali subiri...",
+  "auth.createAccount": "Fungua akaunti",
+  "auth.genericError": "Hitilafu fulani imetokea.",
 } satisfies Record<TranslationKey, string>;
 export default d_sw;

@@ -238,5 +238,18 @@ const d_el = {
   "settings.saved": "Οι ρυθμίσεις αποθηκεύτηκαν.",
   "settings.error400": "Ελέγξτε τις ρυθμίσεις μετάφρασης.",
   "settings.saveError": "Δεν ήταν δυνατή η αποθήκευση των ρυθμίσεων. Προσπαθήστε ξανά.",
+  "auth.welcomeBack": "Καλώς ήρθες πίσω",
+  "auth.createAccountHeading": "Δημιουργήστε τον λογαριασμό σας",
+  "auth.login": "Συνδεθείτε",
+  "auth.signUp": "Εγγραφείτε",
+  "auth.username": "Όνομα χρήστη",
+  "auth.email": "Διεύθυνση ηλεκτρονικού ταχυδρομείου",
+  "auth.password": "Κωδικός πρόσβασης",
+  "auth.nativeLanguagePlaceholder": "Μητρική γλώσσα (π.χ. en)",
+  "auth.emailPasswordRequired": "Απαιτούνται email και κωδικός πρόσβασης.",
+  "auth.usernameDisplayNameRequired": "Απαιτείται όνομα χρήστη και εμφανιζόμενο όνομα.",
+  "auth.pleaseWait": "Παρακαλώ περιμένετε…",
+  "auth.createAccount": "Δημιουργία λογαριασμού",
+  "auth.genericError": "Κάτι πήγε στραβά.",
 } satisfies Record<TranslationKey, string>;
 export default d_el;

@@ -238,5 +238,18 @@ const d_pa = {
   "settings.saved": "ਸੈਟਿੰਗਾਂ ਰੱਖਿਅਤ ਕੀਤੀਆਂ ਗਈਆਂ।",
   "settings.error400": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀਆਂ ਅਨੁਵਾਦ ਸੈਟਿੰਗਾਂ ਦੀ ਜਾਂਚ ਕਰੋ।",
   "settings.saveError": "ਸੈਟਿੰਗਾਂ ਨੂੰ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ.",
+  "auth.welcomeBack": "ਦੁਬਾਰਾ ਸੁਆਗਤ ਹੈ",
+  "auth.createAccountHeading": "ਆਪਣਾ ਖਾਤਾ ਬਣਾਓ",
+  "auth.login": "ਲੌਗ ਇਨ ਕਰੋ",
+  "auth.signUp": "ਸਾਈਨ ਅੱਪ ਕਰੋ",
+  "auth.username": "ਯੂਜ਼ਰਨੇਮ",
+  "auth.email": "ਈਮੇਲ",
+  "auth.password": "ਪਾਸਵਰਡ",
+  "auth.nativeLanguagePlaceholder": "ਮੂਲ ਭਾਸ਼ਾ (ਜਿਵੇਂ ਕਿ en)",
+  "auth.emailPasswordRequired": "ਈਮੇਲ ਅਤੇ ਪਾਸਵਰਡ ਦੀ ਲੋੜ ਹੈ।",
+  "auth.usernameDisplayNameRequired": "ਉਪਭੋਗਤਾ ਨਾਮ ਅਤੇ ਡਿਸਪਲੇ ਨਾਮ ਦੀ ਲੋੜ ਹੈ।",
+  "auth.pleaseWait": "ਕਿਰਪਾ ਕਰਕੇ ਉਡੀਕ ਕਰੋ…",
+  "auth.createAccount": "ਖਾਤਾ ਬਣਾਓ",
+  "auth.genericError": "ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ।",
 } satisfies Record<TranslationKey, string>;
 export default d_pa;

@@ -238,5 +238,18 @@ const d_bbc = {
   "settings.saved": "Pengaturan na disimpan.",
   "settings.error400": "Parrohahon ma pengaturan terjemahanmuna.",
   "settings.saveError": "Ndang boi disimpan pengaturan. Coba ma muse.",
+  "auth.welcomeBack": "Selamat datang ma di hamu",
+  "auth.createAccountHeading": "Buat ma akunmu .",
+  "auth.login": "Masuk ma",
+  "auth.signUp": "Daftar ma",
+  "auth.username": "Goar Pangguna",
+  "auth.email": "Alamat email",
+  "auth.password": "Sandi",
+  "auth.nativeLanguagePlaceholder": "Bahasa asli (misalna en)",
+  "auth.emailPasswordRequired": "Dihaporluhon do email dohot sandi.",
+  "auth.usernameDisplayNameRequired": "Dipangido do goar pangguna dohot goar pataridahon.",
+  "auth.pleaseWait": "Tolong ma paimahon...",
+  "auth.createAccount": "Mambahen akun .",
+  "auth.genericError": "Adong do na sala.",
 } satisfies Record<TranslationKey, string>;
 export default d_bbc;

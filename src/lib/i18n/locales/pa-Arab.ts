@@ -238,5 +238,18 @@ const d_pa_Arab = {
   "settings.saved": "ترتیبات محفوظ کر لئیاں گئیاں۔",
   "settings.error400": "مہربانی کر کے اپنی ترجمے دی ترتیب ویکھو۔",
   "settings.saveError": "ترتیبات محفوظ نئیں کر سکے۔ فیر کوشش کرو۔",
+  "auth.welcomeBack": "جی آیاں نوں واپس",
+  "auth.createAccountHeading": "اپنا اکاؤنٹ بناؤ",
+  "auth.login": "لاگ ان کرو",
+  "auth.signUp": "سائن اپ کرو",
+  "auth.username": "ورتن آلا ناں",
+  "auth.email": "ای میل",
+  "auth.password": "پاس ورڈ",
+  "auth.nativeLanguagePlaceholder": "ماں بولی (جیویں en)",
+  "auth.emailPasswordRequired": "ای میل تے پاس ورڈ دی لوڑ اے۔",
+  "auth.usernameDisplayNameRequired": "ورتن آلا ناں تے ڈسپلے دا ناں ضروری اے۔",
+  "auth.pleaseWait": "مہربانی کر کے انتظار کرو...",
+  "auth.createAccount": "اکاؤنٹ بناؤ",
+  "auth.genericError": "کجھ غلط ہو گیا۔",
 } satisfies Record<TranslationKey, string>;
 export default d_pa_Arab;

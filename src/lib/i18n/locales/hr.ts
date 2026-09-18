@@ -238,5 +238,18 @@ const d_hr = {
   "settings.saved": "Postavke su spremljene.",
   "settings.error400": "Provjerite svoje postavke prijevoda.",
   "settings.saveError": "Nije moguće spremiti postavke. Pokušajte ponovno.",
+  "auth.welcomeBack": "Dobro došao nazad",
+  "auth.createAccountHeading": "Kreirajte svoj račun",
+  "auth.login": "Prijavite se",
+  "auth.signUp": "Prijavite se",
+  "auth.username": "Korisničko ime",
+  "auth.email": "E-mail",
+  "auth.password": "Lozinka",
+  "auth.nativeLanguagePlaceholder": "Maternji jezik (npr. en)",
+  "auth.emailPasswordRequired": "E-pošta i lozinka su obavezni.",
+  "auth.usernameDisplayNameRequired": "Potrebno je korisničko ime i ime za prikaz.",
+  "auth.pleaseWait": "Molimo pričekajte…",
+  "auth.createAccount": "Napravi račun",
+  "auth.genericError": "Nešto nije u redu.",
 } satisfies Record<TranslationKey, string>;
 export default d_hr;

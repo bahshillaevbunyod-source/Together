@@ -238,5 +238,18 @@ const ar = {
   "settings.saved": "تم حفظ الإعدادات.",
   "settings.error400": "يرجى التحقق من إعدادات الترجمة الخاصة بك.",
   "settings.saveError": "لا يمكن حفظ الإعدادات. حاول ثانية.",
+  "auth.welcomeBack": "مرحبًا بعودتك",
+  "auth.createAccountHeading": "أنشئ حسابك",
+  "auth.login": "تسجيل الدخول",
+  "auth.signUp": "قم بالتسجيل",
+  "auth.username": "اسم المستخدم",
+  "auth.email": "البريد الإلكتروني",
+  "auth.password": "كلمة المرور",
+  "auth.nativeLanguagePlaceholder": "اللغة الأم (مثل en)",
+  "auth.emailPasswordRequired": "البريد الإلكتروني وكلمة المرور مطلوبة.",
+  "auth.usernameDisplayNameRequired": "مطلوب اسم المستخدم واسم العرض.",
+  "auth.pleaseWait": "من فضلك انتظر...",
+  "auth.createAccount": "إنشاء حساب",
+  "auth.genericError": "حدث خطأ ما.",
 } satisfies Record<TranslationKey, string>;
 export default ar;

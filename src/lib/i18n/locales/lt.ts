@@ -238,5 +238,18 @@ const d_lt = {
   "settings.saved": "Nustatymai išsaugoti.",
   "settings.error400": "Patikrinkite vertimo nustatymus.",
   "settings.saveError": "Nepavyko išsaugoti nustatymų. Bandykite dar kartą.",
+  "auth.welcomeBack": "Sveiki sugrįžę",
+  "auth.createAccountHeading": "Susikurkite paskyrą",
+  "auth.login": "Prisijunkite",
+  "auth.signUp": "Užsiregistruoti",
+  "auth.username": "Vartotojo vardas",
+  "auth.email": "El. paštas",
+  "auth.password": "Slaptažodis",
+  "auth.nativeLanguagePlaceholder": "Gimtoji kalba (pvz., en)",
+  "auth.emailPasswordRequired": "Reikalingas el. pašto adresas ir slaptažodis.",
+  "auth.usernameDisplayNameRequired": "Reikalingas vartotojo vardas ir rodomas vardas.",
+  "auth.pleaseWait": "Prašome palaukti…",
+  "auth.createAccount": "Sukurti paskyrą",
+  "auth.genericError": "Kažkas nutiko.",
 } satisfies Record<TranslationKey, string>;
 export default d_lt;

@@ -238,5 +238,18 @@ const d_tg = {
   "settings.saved": "Танзимот захира карда шуд.",
   "settings.error400": "Лутфан танзимоти тарҷумаи худро санҷед.",
   "settings.saveError": "Танзимотро захира карда натавонист. Як бори дигар санҷед.",
+  "auth.welcomeBack": "Боз хуш омадед",
+  "auth.createAccountHeading": "Ҳисоби худро эҷод кунед",
+  "auth.login": "Ворид шавед",
+  "auth.signUp": "Номнавис шавед",
+  "auth.username": "Номи корбар",
+  "auth.email": "Почтаи электронӣ",
+  "auth.password": "Рамз",
+  "auth.nativeLanguagePlaceholder": "Забони модарӣ (масалан, en)",
+  "auth.emailPasswordRequired": "Почтаи электронӣ ва парол лозим аст.",
+  "auth.usernameDisplayNameRequired": "Номи корбар ва номи намоиш талаб карда мешавад.",
+  "auth.pleaseWait": "Лутфан интизор шавед…",
+  "auth.createAccount": "Ҳисоб эҷод кунед",
+  "auth.genericError": "Чизе хато кард.",
 } satisfies Record<TranslationKey, string>;
 export default d_tg;

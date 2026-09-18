@@ -238,5 +238,18 @@ const d_vi = {
   "settings.saved": "Đã lưu cài đặt.",
   "settings.error400": "Vui lòng kiểm tra cài đặt dịch của bạn.",
   "settings.saveError": "Không thể lưu cài đặt. Hãy thử lại.",
+  "auth.welcomeBack": "Chào mừng trở lại",
+  "auth.createAccountHeading": "Tạo tài khoản của bạn",
+  "auth.login": "Đăng nhập",
+  "auth.signUp": "Đăng ký",
+  "auth.username": "Tên người dùng",
+  "auth.email": "Địa chỉ email",
+  "auth.password": "Mật khẩu",
+  "auth.nativeLanguagePlaceholder": "Ngôn ngữ bản địa (ví dụ: en)",
+  "auth.emailPasswordRequired": "Email và mật khẩu là bắt buộc.",
+  "auth.usernameDisplayNameRequired": "Tên người dùng và tên hiển thị là bắt buộc.",
+  "auth.pleaseWait": "Xin vui lòng chờ…",
+  "auth.createAccount": "Tạo tài khoản",
+  "auth.genericError": "Đã xảy ra lỗi.",
 } satisfies Record<TranslationKey, string>;
 export default d_vi;

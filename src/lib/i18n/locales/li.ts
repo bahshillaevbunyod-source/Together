@@ -238,5 +238,18 @@ const d_li = {
   "settings.saved": "Insjtellinge opgeslage.",
   "settings.error400": "Controleer de vertaolingsinstellinge.",
   "settings.saveError": "Kon de insjtellinge neet opsjlaon. Probeer nog ummer.",
+  "auth.welcomeBack": "Welkom trök",
+  "auth.createAccountHeading": "Maak eur account op",
+  "auth.login": "Log in op eur account",
+  "auth.signUp": "Meld dich aan",
+  "auth.username": "Gebruikersnaom",
+  "auth.email": "E-mail",
+  "auth.password": "Wachtwoord",
+  "auth.nativeLanguagePlaceholder": "Moedertaol (b.v. en)",
+  "auth.emailPasswordRequired": "E-mail en wachtwoord zien vereis.",
+  "auth.usernameDisplayNameRequired": "Gebruikersnaam en displaynaam zien vereis.",
+  "auth.pleaseWait": "Wach aub…",
+  "auth.createAccount": "Rekening make",
+  "auth.genericError": "D’r is get fout gegaange.",
 } satisfies Record<TranslationKey, string>;
 export default d_li;

@@ -238,5 +238,18 @@ const d_hy = {
   "settings.saved": "Կարգավորումները պահված են:",
   "settings.error400": "Խնդրում ենք ստուգել ձեր թարգմանության կարգավորումները:",
   "settings.saveError": "Չհաջողվեց պահել կարգավորումները: Կրկին փորձեք:",
+  "auth.welcomeBack": "Բարի վերադարձ",
+  "auth.createAccountHeading": "Ստեղծեք ձեր հաշիվը",
+  "auth.login": "Մուտք գործեք",
+  "auth.signUp": "Գրանցվեք",
+  "auth.username": "Օգտվողի անունը",
+  "auth.email": "Էլ",
+  "auth.password": "Գաղտնաբառ",
+  "auth.nativeLanguagePlaceholder": "Մայրենի լեզու (օրինակ՝ en)",
+  "auth.emailPasswordRequired": "Պահանջվում է էլ. փոստ և գաղտնաբառը:",
+  "auth.usernameDisplayNameRequired": "Օգտագործողի անունը և ցուցադրվող անունը պարտադիր են:",
+  "auth.pleaseWait": "Խնդրում ենք սպասել…",
+  "auth.createAccount": "Ստեղծել հաշիվ",
+  "auth.genericError": "Սխալ առաջացավ։",
 } satisfies Record<TranslationKey, string>;
 export default d_hy;

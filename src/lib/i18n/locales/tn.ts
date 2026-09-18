@@ -238,5 +238,18 @@ const d_tn = {
   "settings.saved": "Diseting di bolokilwe.",
   "settings.error400": "Tsweetswee tlhola diseting tsa thanolo ya gago.",
   "settings.saveError": "Ga e kgone go boloka diseting. Leka gape.",
+  "auth.welcomeBack": "O amogetswe gape",
+  "auth.createAccountHeading": "Tlhama akhaonto ya gago",
+  "auth.login": "Tsena",
+  "auth.signUp": "Ikwadise",
+  "auth.username": "Leinatiriso",
+  "auth.email": "Imeile",
+  "auth.password": "Nomoro ya sephiri",
+  "auth.nativeLanguagePlaceholder": "Puo ya gae (sekao, en)",
+  "auth.emailPasswordRequired": "Imeile le nomoro ya sephiri di a tlhokega.",
+  "auth.usernameDisplayNameRequired": "Leina la modirisi le leina la pontsho di a tlhokega.",
+  "auth.pleaseWait": "Tsweetswee ema pele...",
+  "auth.createAccount": "Tlhama akhaonto",
+  "auth.genericError": "Sengwe se ne sa senyega.",
 } satisfies Record<TranslationKey, string>;
 export default d_tn;

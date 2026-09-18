@@ -238,5 +238,18 @@ const d_ga = {
   "settings.saved": "Socruithe sábháilte.",
   "settings.error400": "Seiceáil do shocruithe aistriúcháin.",
   "settings.saveError": "Níorbh fhéidir na socruithe a shábháil. Bain triail eile as.",
+  "auth.welcomeBack": "Fáilte ar ais",
+  "auth.createAccountHeading": "Cruthaigh do chuntas",
+  "auth.login": "Logáil isteach",
+  "auth.signUp": "Cláraigh",
+  "auth.username": "Ainm úsáideora",
+  "auth.email": "Ríomhphost",
+  "auth.password": "Pasfhocal",
+  "auth.nativeLanguagePlaceholder": "teanga dhúchais (m.sh. ga)",
+  "auth.emailPasswordRequired": "Tá ríomhphost agus pasfhocal ag teastáil.",
+  "auth.usernameDisplayNameRequired": "Tá ainm úsáideora agus ainm taispeána ag teastáil.",
+  "auth.pleaseWait": "Fan le do thoil…",
+  "auth.createAccount": "Cruthaigh cuntas",
+  "auth.genericError": "Chuaigh rud éigin mícheart.",
 } satisfies Record<TranslationKey, string>;
 export default d_ga;

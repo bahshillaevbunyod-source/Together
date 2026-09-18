@@ -238,5 +238,18 @@ const d_ky = {
   "settings.saved": "Орнотуулар сакталды.",
   "settings.error400": "Котормо жөндөөлөрүңүздү текшериңиз.",
   "settings.saveError": "Жөндөөлөр сакталган жок. Кайра аракет кыл.",
+  "auth.welcomeBack": "Кайрадан кош келиңиз",
+  "auth.createAccountHeading": "Каттоо эсебиңизди түзүңүз",
+  "auth.login": "Кириңиз",
+  "auth.signUp": "Катталыңыз",
+  "auth.username": "Колдонуучунун аты",
+  "auth.email": "Электрондук почта дареги",
+  "auth.password": "Сырсөз",
+  "auth.nativeLanguagePlaceholder": "Эне тил (мисалы, en)",
+  "auth.emailPasswordRequired": "Электрондук почта жана сырсөз талап кылынат.",
+  "auth.usernameDisplayNameRequired": "Колдонуучунун аты жана дисплей аты талап кылынат.",
+  "auth.pleaseWait": "Күтө туруңуз…",
+  "auth.createAccount": "Каттоо эсебин түзүү",
+  "auth.genericError": "Бир жерден ката кетти.",
 } satisfies Record<TranslationKey, string>;
 export default d_ky;

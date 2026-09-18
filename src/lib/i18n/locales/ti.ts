@@ -238,5 +238,18 @@ const d_ti = {
   "settings.saved": "ቅጥዕታት ተዓቂቦም።",
   "settings.error400": "በጃኹም ናይ ትርጉም ቅጥዕታትኩም ርኣዩ።",
   "settings.saveError": "ቅጥዕታት ክዕቅብ ኣይከኣለን። እንደገና ፈትን።",
+  "auth.welcomeBack": "እንቋዕ ብደሓን መጻእኩም",
+  "auth.createAccountHeading": "ኣካውንትካ ፍጠር",
+  "auth.login": "እቶ",
+  "auth.signUp": "ተመዝገብ",
+  "auth.username": "ስም ተጠቃሚ",
+  "auth.email": "ኢመይል",
+  "auth.password": "ፓስዎርድ",
+  "auth.nativeLanguagePlaceholder": "ቋንቋ መበቆል (ንኣብነት en)",
+  "auth.emailPasswordRequired": "ኢመይልን ፓስዎርድን የድሊ።",
+  "auth.usernameDisplayNameRequired": "ስም ተጠቃሚን ስም ምርኢትን የድሊ።",
+  "auth.pleaseWait": "በጃኹም ተጸበዩ...",
+  "auth.createAccount": "ኣካውንት ምፍጣር",
+  "auth.genericError": "ገለ ነገር ተጋግዩ።",
 } satisfies Record<TranslationKey, string>;
 export default d_ti;

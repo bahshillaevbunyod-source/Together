@@ -238,5 +238,18 @@ const d_ss = {
   "settings.saved": "Emasethingi agciniwe.",
   "settings.error400": "Sicela uhlole emasethingi akho ekuhumusha.",
   "settings.saveError": "Ayikhoni kugcina emasethingi. Yetama futsi.",
+  "auth.welcomeBack": "Siyakwemukela futsi",
+  "auth.createAccountHeading": "Dala i-akhawunti yakho",
+  "auth.login": "Ngena ngemvume",
+  "auth.signUp": "Bhalisa",
+  "auth.username": "Ligama lemsebentisi",
+  "auth.email": "Imeyili",
+  "auth.password": "Iphasiwedi",
+  "auth.nativeLanguagePlaceholder": "Lulwimi lwemdzabu (sib. si)",
+  "auth.emailPasswordRequired": "Kudzingeka i-imeyili nephasiwedi.",
+  "auth.usernameDisplayNameRequired": "Ligama lemsebentisi kanye neligama lekubonisa kuyadzingeka.",
+  "auth.pleaseWait": "Ngicela ulindze...",
+  "auth.createAccount": "Dala i-akhawunti",
+  "auth.genericError": "Kukhona lokungahambanga kahle.",
 } satisfies Record<TranslationKey, string>;
 export default d_ss;

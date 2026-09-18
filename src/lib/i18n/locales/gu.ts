@@ -238,5 +238,18 @@ const d_gu = {
   "settings.saved": "સેટિંગ્સ સાચવી.",
   "settings.error400": "કૃપા કરીને તમારી અનુવાદ સેટિંગ્સ તપાસો.",
   "settings.saveError": "સેટિંગ્સ સાચવી શક્યાં નથી. ફરી પ્રયાસ કરો.",
+  "auth.welcomeBack": "ફરી સ્વાગત છે",
+  "auth.createAccountHeading": "તમારું એકાઉન્ટ બનાવો",
+  "auth.login": "લોગ ઇન કરો",
+  "auth.signUp": "સાઇન અપ કરો",
+  "auth.username": "વપરાશકર્તા નામ",
+  "auth.email": "ઈમેલ",
+  "auth.password": "પાસવર્ડ",
+  "auth.nativeLanguagePlaceholder": "મૂળ ભાષા (દા.ત. en)",
+  "auth.emailPasswordRequired": "ઈમેલ અને પાસવર્ડ જરૂરી છે.",
+  "auth.usernameDisplayNameRequired": "વપરાશકર્તા નામ અને પ્રદર્શન નામ જરૂરી છે.",
+  "auth.pleaseWait": "કૃપા કરીને રાહ જુઓ...",
+  "auth.createAccount": "એકાઉન્ટ બનાવો",
+  "auth.genericError": "કંઈક ખોટું થયું.",
 } satisfies Record<TranslationKey, string>;
 export default d_gu;

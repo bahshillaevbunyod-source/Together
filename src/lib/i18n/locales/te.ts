@@ -238,5 +238,18 @@ const d_te = {
   "settings.saved": "సెట్టింగ్‌లు సేవ్ చేయబడ్డాయి.",
   "settings.error400": "దయచేసి మీ అనువాద సెట్టింగ్‌లను తనిఖీ చేయండి.",
   "settings.saveError": "సెట్టింగ్‌లను సేవ్ చేయడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
+  "auth.welcomeBack": "తిరిగి స్వాగతం",
+  "auth.createAccountHeading": "మీ ఖాతాను సృష్టించండి",
+  "auth.login": "లాగిన్ అవ్వండి",
+  "auth.signUp": "సైన్ అప్ చేయండి",
+  "auth.username": "వినియోగదారు పేరు",
+  "auth.email": "ఇమెయిల్",
+  "auth.password": "పాస్వర్డ్",
+  "auth.nativeLanguagePlaceholder": "స్థానిక భాష (ఉదా. en)",
+  "auth.emailPasswordRequired": "ఇమెయిల్ మరియు పాస్వర్డ్ అవసరం.",
+  "auth.usernameDisplayNameRequired": "వినియోగదారు పేరు మరియు ప్రదర్శన పేరు అవసరం.",
+  "auth.pleaseWait": "దయచేసి వేచి ఉండండి…",
+  "auth.createAccount": "ఖాతాను సృష్టించండి",
+  "auth.genericError": "ఏదో తప్పు జరిగింది.",
 } satisfies Record<TranslationKey, string>;
 export default d_te;

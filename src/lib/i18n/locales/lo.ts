@@ -238,5 +238,18 @@ const d_lo = {
   "settings.saved": "ບັນທຶກການຕັ້ງຄ່າແລ້ວ.",
   "settings.error400": "ກະລຸນາກວດເບິ່ງການຕັ້ງຄ່າການແປຂອງທ່ານ.",
   "settings.saveError": "ບໍ່ສາມາດບັນທຶກການຕັ້ງຄ່າໄດ້. ລອງອີກຄັ້ງ.",
+  "auth.welcomeBack": "ຍິນດີຕ້ອນຮັບກັບຄືນ",
+  "auth.createAccountHeading": "ສ້າງບັນຊີຂອງທ່ານ",
+  "auth.login": "ເຂົ້າສູ່ລະບົບ",
+  "auth.signUp": "ລົງທະບຽນ",
+  "auth.username": "ຊື່ຜູ້ໃຊ້",
+  "auth.email": "ອີເມວ",
+  "auth.password": "ລະຫັດຜ່ານ",
+  "auth.nativeLanguagePlaceholder": "ພາສາພື້ນເມືອງ (ເຊັ່ນ: en)",
+  "auth.emailPasswordRequired": "ຕ້ອງການອີເມວ ແລະລະຫັດຜ່ານ.",
+  "auth.usernameDisplayNameRequired": "ຊື່ຜູ້ໃຊ້ແລະຊື່ສະແດງແມ່ນຕ້ອງການ.",
+  "auth.pleaseWait": "ກະລຸນາລໍຖ້າ...",
+  "auth.createAccount": "ສ້າງບັນຊີ",
+  "auth.genericError": "ມີບາງຢ່າງຜິດພາດ.",
 } satisfies Record<TranslationKey, string>;
 export default d_lo;

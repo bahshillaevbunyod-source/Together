@@ -238,5 +238,18 @@ const d_hmn = {
   "settings.saved": "Chaw khaws tseg.",
   "settings.error400": "Thov xyuas koj qhov chaw txhais lus.",
   "settings.saveError": "Tsis tuaj yeem khaws cov kev teeb tsa. Sim dua.",
+  "auth.welcomeBack": "Txais tos rov qab",
+  "auth.createAccountHeading": "Tsim koj tus account",
+  "auth.login": "Nkag mus",
+  "auth.signUp": "Sau npe",
+  "auth.username": "Tus neeg siv lub npe",
+  "auth.email": "Email chaw nyob",
+  "auth.password": "Tus password",
+  "auth.nativeLanguagePlaceholder": "Haiv neeg (e.g. en)",
+  "auth.emailPasswordRequired": "Yuav tsum muaj email thiab password.",
+  "auth.usernameDisplayNameRequired": "Tus neeg siv lub npe thiab lub npe tso saib yuav tsum tau ua.",
+  "auth.pleaseWait": "Thov tos…",
+  "auth.createAccount": "Tsim tus account",
+  "auth.genericError": "Ib yam dab tsi mus tsis ncaj ncees lawm.",
 } satisfies Record<TranslationKey, string>;
 export default d_hmn;

@@ -238,5 +238,18 @@ const d_eo = {
   "settings.saved": "Agordoj konservitaj.",
   "settings.error400": "Bonvolu kontroli viajn tradukajn agordojn.",
   "settings.saveError": "Ne eblis konservi agordojn. Provu denove.",
+  "auth.welcomeBack": "Bonvenon reen",
+  "auth.createAccountHeading": "Kreu vian konton",
+  "auth.login": "Ensalutu",
+  "auth.signUp": "Aliĝu",
+  "auth.username": "Uzantnomo",
+  "auth.email": "Retpoŝto",
+  "auth.password": "Pasvorto",
+  "auth.nativeLanguagePlaceholder": "Gepatra lingvo (ekz. en)",
+  "auth.emailPasswordRequired": "Retpoŝto kaj pasvorto estas postulataj.",
+  "auth.usernameDisplayNameRequired": "Uzantnomo kaj montra nomo estas postulataj.",
+  "auth.pleaseWait": "Bonvolu atendi...",
+  "auth.createAccount": "Krei konton",
+  "auth.genericError": "Io misfunkciis.",
 } satisfies Record<TranslationKey, string>;
 export default d_eo;

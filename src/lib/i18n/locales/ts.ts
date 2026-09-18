@@ -238,5 +238,18 @@ const d_ts = {
   "settings.saved": "Switirhisiwa swi hlayisiwile.",
   "settings.error400": "Hi kombela u kambisisa swiyimiso swa wena swa vuhundzuluxeri.",
   "settings.saveError": "A swi swi kotanga ku hlayisa swiyimiso. Ringeta nakambe.",
+  "auth.welcomeBack": "Mi amukeriwile ku vuya",
+  "auth.createAccountHeading": "Endla akhawunti ya wena",
+  "auth.login": "Nghena eka yona",
+  "auth.signUp": "Tsarisa",
+  "auth.username": "Vito ra mutirhisi",
+  "auth.email": "Imeyili",
+  "auth.password": "Phasiwedi",
+  "auth.nativeLanguagePlaceholder": "Ririmi ra rikwavo (e.g. en) .",
+  "auth.emailPasswordRequired": "Imeyili na phaswedi swa laveka.",
+  "auth.usernameDisplayNameRequired": "Vito ra mutirhisi na vito ra nkombiso swa laveka.",
+  "auth.pleaseWait": "Hi kombela mi yima...",
+  "auth.createAccount": "Endla akhawunti",
+  "auth.genericError": "Ku ni leswi nga famba kahle.",
 } satisfies Record<TranslationKey, string>;
 export default d_ts;

@@ -238,5 +238,18 @@ const d_kk = {
   "settings.saved": "Параметрлер сақталды.",
   "settings.error400": "Аударма параметрлерін тексеріңіз.",
   "settings.saveError": "Параметрлерді сақтау мүмкін болмады. Қайтадан байқап көріңіз.",
+  "auth.welcomeBack": "Қайтадан қош келдіңіз",
+  "auth.createAccountHeading": "Тіркелгіңізді жасаңыз",
+  "auth.login": "Жүйеге кіріңіз",
+  "auth.signUp": "Тіркелу",
+  "auth.username": "Пайдаланушы аты",
+  "auth.email": "Электрондық пошта",
+  "auth.password": "Құпия сөз",
+  "auth.nativeLanguagePlaceholder": "Ана тілі (мысалы, en)",
+  "auth.emailPasswordRequired": "Электрондық пошта мен құпия сөз қажет.",
+  "auth.usernameDisplayNameRequired": "Пайдаланушы аты мен көрсетілетін атау қажет.",
+  "auth.pleaseWait": "Күте тұрыңыз…",
+  "auth.createAccount": "Тіркелгі жасау",
+  "auth.genericError": "Бірдеңе дұрыс болмады.",
 } satisfies Record<TranslationKey, string>;
 export default d_kk;

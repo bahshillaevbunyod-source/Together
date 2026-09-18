@@ -238,5 +238,18 @@ const d_as = {
   "settings.saved": "ছেটিংছ সংৰক্ষণ কৰা হৈছে।",
   "settings.error400": "অনুগ্ৰহ কৰি আপোনাৰ অনুবাদৰ ছেটিংছ পৰীক্ষা কৰক।",
   "settings.saveError": "ছেটিংছ সংৰক্ষণ কৰিব পৰা নগ’ল৷ আকৌ এবাৰ চেষ্টা কৰক।",
+  "auth.welcomeBack": "পুনৰ স্বাগতম",
+  "auth.createAccountHeading": "আপোনাৰ একাউণ্ট সৃষ্টি কৰক",
+  "auth.login": "লগ ইন কৰক",
+  "auth.signUp": "চাইন আপ কৰক",
+  "auth.username": "ব্যৱহাৰকাৰীৰ নাম",
+  "auth.email": "ইমেইল",
+  "auth.password": "পাছৱৰ্ড",
+  "auth.nativeLanguagePlaceholder": "থলুৱা ভাষা (যেনে en)",
+  "auth.emailPasswordRequired": "ইমেইল আৰু পাছৱৰ্ডৰ প্ৰয়োজন।",
+  "auth.usernameDisplayNameRequired": "ব্যৱহাৰকাৰীৰ নাম আৰু প্ৰদৰ্শনৰ নাম প্ৰয়োজনীয়।",
+  "auth.pleaseWait": "অনুগ্ৰহ কৰি অপেক্ষা কৰক...",
+  "auth.createAccount": "একাউণ্ট সৃষ্টি কৰক",
+  "auth.genericError": "কিবা এটা ভুল হ’ল।",
 } satisfies Record<TranslationKey, string>;
 export default d_as;

@@ -238,5 +238,18 @@ const d_bn = {
   "settings.saved": "সেটিংস সংরক্ষিত।",
   "settings.error400": "আপনার অনুবাদ সেটিংস চেক করুন.",
   "settings.saveError": "সেটিংস সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন",
+  "auth.welcomeBack": "আবার স্বাগতম",
+  "auth.createAccountHeading": "আপনার অ্যাকাউন্ট তৈরি করুন",
+  "auth.login": "লগ ইন করুন",
+  "auth.signUp": "সাইন আপ করুন",
+  "auth.username": "ব্যবহারকারীর নাম",
+  "auth.email": "ইমেইল",
+  "auth.password": "পাসওয়ার্ড",
+  "auth.nativeLanguagePlaceholder": "স্থানীয় ভাষা (যেমন এন)",
+  "auth.emailPasswordRequired": "ইমেল এবং পাসওয়ার্ড প্রয়োজন.",
+  "auth.usernameDisplayNameRequired": "ব্যবহারকারীর নাম এবং প্রদর্শন নাম প্রয়োজন.",
+  "auth.pleaseWait": "অনুগ্রহ করে অপেক্ষা করুন...",
+  "auth.createAccount": "অ্যাকাউন্ট তৈরি করুন",
+  "auth.genericError": "কিছু ভুল হয়েছে",
 } satisfies Record<TranslationKey, string>;
 export default d_bn;

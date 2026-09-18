@@ -238,5 +238,18 @@ const d_awa = {
   "settings.saved": "सेटिंग सहेजी गै।",
   "settings.error400": "कृपया आपन अनुवाद सेटिंग्स जाँच करा।",
   "settings.saveError": "सेटिंग्स सहेज नाहीं पावा। फिर से कोशिश करा।",
+  "auth.welcomeBack": "वापस स्वागत है",
+  "auth.createAccountHeading": "आपन खाता बनावा",
+  "auth.login": "लॉग इन करा",
+  "auth.signUp": "साइन अप करा",
+  "auth.username": "उपयोगकर्ता नाम",
+  "auth.email": "ईमेल",
+  "auth.password": "पासवर्ड",
+  "auth.nativeLanguagePlaceholder": "देशी भाषा (जैसे एन)",
+  "auth.emailPasswordRequired": "ईमेल अऊर पासवर्ड के जरूरत है।",
+  "auth.usernameDisplayNameRequired": "उपयोगकर्ता नाम अऊर प्रदर्शन नाम आवश्यक है।",
+  "auth.pleaseWait": "कृपया इंतजार करा...",
+  "auth.createAccount": "खाता बनावा",
+  "auth.genericError": "कुछ गलत होइगा।",
 } satisfies Record<TranslationKey, string>;
 export default d_awa;

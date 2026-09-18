@@ -238,5 +238,18 @@ const d_kn = {
   "settings.saved": "ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಉಳಿಸಲಾಗಿದೆ.",
   "settings.error400": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಅನುವಾದ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.",
   "settings.saveError": "ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "auth.welcomeBack": "ಮರಳಿ ಸ್ವಾಗತ",
+  "auth.createAccountHeading": "ನಿಮ್ಮ ಖಾತೆಯನ್ನು ರಚಿಸಿ",
+  "auth.login": "ಲಾಗ್ ಇನ್ ಮಾಡಿ",
+  "auth.signUp": "ಸೈನ್ ಅಪ್ ಮಾಡಿ",
+  "auth.username": "ಬಳಕೆದಾರ ಹೆಸರು",
+  "auth.email": "ಇಮೇಲ್",
+  "auth.password": "ಪಾಸ್ವರ್ಡ್",
+  "auth.nativeLanguagePlaceholder": "ಸ್ಥಳೀಯ ಭಾಷೆ (ಉದಾ. en)",
+  "auth.emailPasswordRequired": "ಇಮೇಲ್ ಮತ್ತು ಪಾಸ್ವರ್ಡ್ ಅಗತ್ಯವಿದೆ.",
+  "auth.usernameDisplayNameRequired": "ಬಳಕೆದಾರಹೆಸರು ಮತ್ತು ಪ್ರದರ್ಶನ ಹೆಸರು ಅಗತ್ಯವಿದೆ.",
+  "auth.pleaseWait": "ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ...",
+  "auth.createAccount": "ಖಾತೆಯನ್ನು ರಚಿಸಿ",
+  "auth.genericError": "ಏನೋ ತಪ್ಪಾಗಿದೆ.",
 } satisfies Record<TranslationKey, string>;
 export default d_kn;

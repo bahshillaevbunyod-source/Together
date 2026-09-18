@@ -238,5 +238,18 @@ const d_new = {
   "settings.saved": "सेटिङ्गत बचे जुल ।",
   "settings.error400": "छिगु भाय् हिलेगु सेटिङ्ग स्वयादिसँ ।",
   "settings.saveError": "सेटिङ्ग सेभ याये मफुत । हाकनं कुतः या ।",
+  "auth.welcomeBack": "हानं लसकुस दु ।",
+  "auth.createAccountHeading": "छिगु खाता चायेकादिसँ",
+  "auth.login": "लग इन या",
+  "auth.signUp": "साइन अप यानादिसँ ।",
+  "auth.username": "छ्यलामि नां",
+  "auth.email": "इमेल",
+  "auth.password": "पासवर्ड",
+  "auth.nativeLanguagePlaceholder": "मातृभाषा (दसु इन)",
+  "auth.emailPasswordRequired": "इमेल व पासवर्ड माः ।",
+  "auth.usernameDisplayNameRequired": "छ्यलामि नां व क्यनेगु नां माः ।",
+  "auth.pleaseWait": "कृपा यानाः लं च्वनादिसँ ...",
+  "auth.createAccount": "खाता चायेकि",
+  "auth.genericError": "छुं द्वन ।",
 } satisfies Record<TranslationKey, string>;
 export default d_new;

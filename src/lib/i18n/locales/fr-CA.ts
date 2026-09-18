@@ -238,5 +238,18 @@ const d_fr_CA = {
   "settings.saved": "Paramètres enregistrés.",
   "settings.error400": "Veuillez vérifier vos paramètres de traduction.",
   "settings.saveError": "Impossible d'enregistrer les paramètres. Essayer de nouveau.",
+  "auth.welcomeBack": "Bon retour",
+  "auth.createAccountHeading": "Créez votre compte",
+  "auth.login": "Connectez-vous",
+  "auth.signUp": "Inscrivez-vous",
+  "auth.username": "Nom d'utilisateur",
+  "auth.email": "Courriel",
+  "auth.password": "Mot de passe",
+  "auth.nativeLanguagePlaceholder": "Langue maternelle (par exemple en)",
+  "auth.emailPasswordRequired": "L'e-mail et le mot de passe sont requis.",
+  "auth.usernameDisplayNameRequired": "Le nom d’utilisateur et le nom d’affichage sont requis.",
+  "auth.pleaseWait": "Veuillez patienter…",
+  "auth.createAccount": "Créer un compte",
+  "auth.genericError": "Quelque chose s'est mal passé.",
 } satisfies Record<TranslationKey, string>;
 export default d_fr_CA;

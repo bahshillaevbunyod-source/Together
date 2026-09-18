@@ -238,5 +238,18 @@ const d_et = {
   "settings.saved": "Seaded salvestatud.",
   "settings.error400": "Kontrollige oma tõlkeseadeid.",
   "settings.saveError": "Seadeid ei saanud salvestada. Proovi uuesti.",
+  "auth.welcomeBack": "Tere tulemast tagasi",
+  "auth.createAccountHeading": "Looge oma konto",
+  "auth.login": "Logi sisse",
+  "auth.signUp": "Registreeruge",
+  "auth.username": "Kasutajanimi",
+  "auth.email": "Meil",
+  "auth.password": "Parool",
+  "auth.nativeLanguagePlaceholder": "Emakeel (nt en)",
+  "auth.emailPasswordRequired": "Vajalik on meiliaadress ja parool.",
+  "auth.usernameDisplayNameRequired": "Kasutajanimi ja kuvatav nimi on nõutavad.",
+  "auth.pleaseWait": "Palun oota…",
+  "auth.createAccount": "Loo konto",
+  "auth.genericError": "Midagi läks valesti.",
 } satisfies Record<TranslationKey, string>;
 export default d_et;

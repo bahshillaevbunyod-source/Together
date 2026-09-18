@@ -238,5 +238,18 @@ const d_yua = {
   "settings.saved": "Configuración guardada.",
   "settings.error400": "Ilawil a configuración u traducción.",
   "settings.saveError": "Ma' páajchaj u ooks le configuración. Ilawil tu ka'atéen.",
+  "auth.welcomeBack": "Bienvenido suut",
+  "auth.createAccountHeading": "Beet a yilaje'",
+  "auth.login": "wokol",
+  "auth.signUp": "ts'íibt a k'aaba'",
+  "auth.username": "K'aaba' usuario",
+  "auth.email": "Correo electrónico",
+  "auth.password": "Contraseña",
+  "auth.nativeLanguagePlaceholder": "t'aan síijil (je'ebix. en)",
+  "auth.emailPasswordRequired": "K'a'abéet u correo electrónico yéetel contraseña.",
+  "auth.usernameDisplayNameRequired": "K'a'abéet u k'aaba' usuario yéetel u k'aaba' ye'esik.",
+  "auth.pleaseWait": "Béet pa'atik...",
+  "auth.createAccount": "Beet jump'éel yilaje'",
+  "auth.genericError": "Yaan ba'ax ma' bin ma'alob.",
 } satisfies Record<TranslationKey, string>;
 export default d_yua;

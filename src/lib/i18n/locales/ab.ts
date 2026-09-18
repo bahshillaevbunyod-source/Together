@@ -238,5 +238,18 @@ const d_ab = {
   "settings.saved": "Аиқәыршәарақәа еиқәырхоуп.",
   "settings.error400": "Ҳаҳәоит, аиҭагара архиарақәа гәашәҭ.",
   "settings.saveError": "Аиқәыршәарақәа рыхьчара ауам. Даҽазнык шәҽазышәшәа.",
+  "auth.welcomeBack": "Бзиала шәаабеит",
+  "auth.createAccountHeading": "Ухыԥхьаӡара аԥҵара",
+  "auth.login": "Аҭалара",
+  "auth.signUp": "Аҽҭаҩра",
+  "auth.username": "Ахархәаҩ ихьӡ",
+  "auth.email": "Ае-маил",
+  "auth.password": "Амаӡажәа",
+  "auth.nativeLanguagePlaceholder": "Анхатә бызшәа (е.г. en)",
+  "auth.emailPasswordRequired": "Ае-маили аԥсыӡажәеи рыда ԥсыхәа ыҟам.",
+  "auth.usernameDisplayNameRequired": "Ахархәаҩ ихьӡи аарԥшратә хьӡи рыхәҭоуп.",
+  "auth.pleaseWait": "Ҳаҳәоит, шәааԥшы...",
+  "auth.createAccount": "Ахыԥхьаӡара аԥҵара",
+  "auth.genericError": "Акы еиқәымшәеит.",
 } satisfies Record<TranslationKey, string>;
 export default d_ab;

@@ -238,5 +238,18 @@ const d_da = {
   "settings.saved": "Indstillinger gemt.",
   "settings.error400": "Tjek venligst dine oversættelsesindstillinger.",
   "settings.saveError": "Indstillingerne kunne ikke gemmes. Prøv igen.",
+  "auth.welcomeBack": "Velkommen tilbage",
+  "auth.createAccountHeading": "Opret din konto",
+  "auth.login": "Log ind",
+  "auth.signUp": "Tilmeld dig",
+  "auth.username": "Brugernavn",
+  "auth.email": "E-mail",
+  "auth.password": "Adgangskode",
+  "auth.nativeLanguagePlaceholder": "Modersmål (f.eks. da)",
+  "auth.emailPasswordRequired": "E-mail og adgangskode er påkrævet.",
+  "auth.usernameDisplayNameRequired": "Brugernavn og visningsnavn er påkrævet.",
+  "auth.pleaseWait": "Vent venligst...",
+  "auth.createAccount": "Opret konto",
+  "auth.genericError": "Noget gik galt.",
 } satisfies Record<TranslationKey, string>;
 export default d_da;

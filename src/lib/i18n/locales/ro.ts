@@ -238,5 +238,18 @@ const d_ro = {
   "settings.saved": "Setările au fost salvate.",
   "settings.error400": "Vă rugăm să verificați setările de traducere.",
   "settings.saveError": "Nu s-au putut salva setările. Încearcă din nou.",
+  "auth.welcomeBack": "Bine ai revenit",
+  "auth.createAccountHeading": "Creați-vă contul",
+  "auth.login": "Conectați-vă",
+  "auth.signUp": "Înscrie-te",
+  "auth.username": "Nume de utilizator",
+  "auth.email": "E-mail",
+  "auth.password": "Parolă",
+  "auth.nativeLanguagePlaceholder": "Limba maternă (de ex. en)",
+  "auth.emailPasswordRequired": "E-mailul și parola sunt necesare.",
+  "auth.usernameDisplayNameRequired": "Numele de utilizator și numele afișat sunt necesare.",
+  "auth.pleaseWait": "Vă rugăm să așteptați…",
+  "auth.createAccount": "Creați cont",
+  "auth.genericError": "Ceva a mers prost.",
 } satisfies Record<TranslationKey, string>;
 export default d_ro;

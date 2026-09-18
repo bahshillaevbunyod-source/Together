@@ -238,5 +238,18 @@ const d_gaa = {
   "settings.saved": "Akɛ gbɛjianɔtoo lɛ eto.",
   "settings.error400": "Ofainɛ kwɛmɔ oshishitsɔɔmɔ gbɛjianɔtoo lɛ.",
   "settings.saveError": "Enyɛɛɛ ekɛ gbɛjianɔtoo lɛ ato. Kaa ekoŋŋ.",
+  "auth.welcomeBack": "Wɔhere bo atuu",
+  "auth.createAccountHeading": "Bɔɔ o akaunt",
+  "auth.login": "Botemɔ mli",
+  "auth.signUp": "Ŋmaa gbɛi",
+  "auth.username": "Gbɛi ni akɛtsuɔ nii",
+  "auth.email": "Email adrɛɛsi",
+  "auth.password": "Paswɛd",
+  "auth.nativeLanguagePlaceholder": "Maŋ wiemɔ (nɔkwɛmɔnɔ en)",
+  "auth.emailPasswordRequired": "Email kɛ paswɛd he miihia.",
+  "auth.usernameDisplayNameRequired": "Gbɛi ni akɛtsuɔ nii kɛ gbɛi ni ajieɔ lɛ he miihia.",
+  "auth.pleaseWait": "Ofainɛ mɛ...",
+  "auth.createAccount": "Bɔɔ akaunt",
+  "auth.genericError": "Nɔ ko eyaaa nɔ jogbaŋŋ.",
 } satisfies Record<TranslationKey, string>;
 export default d_gaa;

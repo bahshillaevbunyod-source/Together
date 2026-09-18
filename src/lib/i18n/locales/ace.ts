@@ -238,5 +238,18 @@ const d_ace = {
   "settings.saved": "Setting nyang ka disimpan.",
   "settings.error400": "Neupareksa setélan terjemahan droeneuh.",
   "settings.saveError": "Hana jeuet ta simpan setting. Cuba lom.",
+  "auth.welcomeBack": "Selamat teuka lom",
+  "auth.createAccountHeading": "Peugot akun droeneuh",
+  "auth.login": "Tamong lam akun droeneuh",
+  "auth.signUp": "Daftar",
+  "auth.username": "Nan ureueng ngui",
+  "auth.email": "Alamat email",
+  "auth.password": "Kata sandi",
+  "auth.nativeLanguagePlaceholder": "Bahasa asli (misalnya en)",
+  "auth.emailPasswordRequired": "Email ngon kata sandi nyang peureulee.",
+  "auth.usernameDisplayNameRequired": "Nan ureueng ngui ngon nan tampilan nyang peureulee.",
+  "auth.pleaseWait": "Neupreh...",
+  "auth.createAccount": "Peugot akun",
+  "auth.genericError": "Na nyang salah.",
 } satisfies Record<TranslationKey, string>;
 export default d_ace;

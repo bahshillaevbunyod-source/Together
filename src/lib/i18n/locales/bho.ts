@@ -238,5 +238,18 @@ const d_bho = {
   "settings.saved": "सेटिंग्स सेव हो गइल बा.",
   "settings.error400": "कृपया आपन अनुवाद सेटिंग्स के जांच करीं।",
   "settings.saveError": "सेटिंग सेव ना हो पावल. एक बेर फेरु से कोशिश करीं।",
+  "auth.welcomeBack": "राउर वापसी के स्वागत बा",
+  "auth.createAccountHeading": "आपन खाता बनाईं",
+  "auth.login": "लॉग इन करीं",
+  "auth.signUp": "साइन अप करीं",
+  "auth.username": "प्रयोगकर्ता के नाम बा",
+  "auth.email": "ईमेल पर भेजल जा सकेला",
+  "auth.password": "पासवर्ड के बा",
+  "auth.nativeLanguagePlaceholder": "मूल भाषा (जइसे कि एन) 1.1.",
+  "auth.emailPasswordRequired": "ईमेल आ पासवर्ड के जरूरत बा.",
+  "auth.usernameDisplayNameRequired": "यूजरनेम आ डिस्प्ले नाम जरूरी बा।",
+  "auth.pleaseWait": "कृपया इंतजार करीं...",
+  "auth.createAccount": "खाता बनावे के बा",
+  "auth.genericError": "कुछ गड़बड़ हो गइल।",
 } satisfies Record<TranslationKey, string>;
 export default d_bho;

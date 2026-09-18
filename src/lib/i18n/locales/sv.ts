@@ -238,5 +238,18 @@ const d_sv = {
   "settings.saved": "Inställningar sparade.",
   "settings.error400": "Kontrollera dina översättningsinställningar.",
   "settings.saveError": "Det gick inte att spara inställningarna. Försök igen.",
+  "auth.welcomeBack": "Välkommen tillbaka",
+  "auth.createAccountHeading": "Skapa ditt konto",
+  "auth.login": "Logga in",
+  "auth.signUp": "Anmäl dig",
+  "auth.username": "Användarnamn",
+  "auth.email": "E-post",
+  "auth.password": "Lösenord",
+  "auth.nativeLanguagePlaceholder": "Modersmål (t.ex. sv)",
+  "auth.emailPasswordRequired": "E-post och lösenord krävs.",
+  "auth.usernameDisplayNameRequired": "Användarnamn och visningsnamn krävs.",
+  "auth.pleaseWait": "Vänligen vänta...",
+  "auth.createAccount": "Skapa konto",
+  "auth.genericError": "Något gick fel.",
 } satisfies Record<TranslationKey, string>;
 export default d_sv;

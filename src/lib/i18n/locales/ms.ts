@@ -238,5 +238,18 @@ const d_ms = {
   "settings.saved": "Tetapan disimpan.",
   "settings.error400": "Sila semak tetapan terjemahan anda.",
   "settings.saveError": "Tidak dapat menyimpan tetapan. Cuba lagi.",
+  "auth.welcomeBack": "Selamat kembali",
+  "auth.createAccountHeading": "Buat akaun anda",
+  "auth.login": "Log masuk",
+  "auth.signUp": "daftar",
+  "auth.username": "Nama pengguna",
+  "auth.email": "E-mel",
+  "auth.password": "Kata laluan",
+  "auth.nativeLanguagePlaceholder": "Bahasa ibunda (cth. en)",
+  "auth.emailPasswordRequired": "E-mel dan kata laluan diperlukan.",
+  "auth.usernameDisplayNameRequired": "Nama pengguna dan nama paparan diperlukan.",
+  "auth.pleaseWait": "Sila tunggu…",
+  "auth.createAccount": "Buat akaun",
+  "auth.genericError": "Sesuatu telah berlaku.",
 } satisfies Record<TranslationKey, string>;
 export default d_ms;

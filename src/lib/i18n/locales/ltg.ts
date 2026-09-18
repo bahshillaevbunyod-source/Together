@@ -238,5 +238,18 @@ const d_ltg = {
   "settings.saved": "Saglobuoti īstatejumi.",
   "settings.error400": "Lyudzu, puorbaudi sovus tulkuošonys īstatejumus.",
   "settings.saveError": "Navarēja saglobuot īstatejumus. Raugi vēļreiz.",
+  "auth.welcomeBack": "Laipni lyugti atpakaļ .",
+  "auth.createAccountHeading": "Izveiduot sovu kontu .",
+  "auth.login": "Pīsaceļt",
+  "auth.signUp": "Pīsaceļt",
+  "auth.username": "Lītuotuoju vuords",
+  "auth.email": "E-posts",
+  "auth.password": "Parole",
+  "auth.nativeLanguagePlaceholder": "Dzymtuo volūda (pīm., en)",
+  "auth.emailPasswordRequired": "Vajadzeigs e-posts i parole.",
+  "auth.usernameDisplayNameRequired": "Vajadzeigs lītuotuoju vuords i paruodeišonys vuords.",
+  "auth.pleaseWait": "Lyudzu, pagaidit...",
+  "auth.createAccount": "Izveiduot kontu .",
+  "auth.genericError": "Nazkas guoja greizi.",
 } satisfies Record<TranslationKey, string>;
 export default d_ltg;

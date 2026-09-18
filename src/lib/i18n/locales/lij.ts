@@ -238,5 +238,18 @@ const d_lij = {
   "settings.saved": "Impostaçioin sarvæ.",
   "settings.error400": "Pe favô, controlla e impostaçioin de traduçion.",
   "settings.saveError": "No l'é stæto poscibile sarvâ e impostaçioin. Prova torna.",
+  "auth.welcomeBack": "Benvenuo torna",
+  "auth.createAccountHeading": "Crea o teu conto",
+  "auth.login": "Accedi",
+  "auth.signUp": "Iscriviti",
+  "auth.username": "Nomme d'utente",
+  "auth.email": "E-mail",
+  "auth.password": "Password do conto",
+  "auth.nativeLanguagePlaceholder": "Lengua nativa (p.e. en)",
+  "auth.emailPasswordRequired": "Son neçessäi email e password.",
+  "auth.usernameDisplayNameRequired": "Son neçessäi o nomme d'utente e o nomme de visualizzaçion.",
+  "auth.pleaseWait": "Pe favô, attendi...",
+  "auth.createAccount": "Creâ un conto",
+  "auth.genericError": "Quarcösa o l'é anæto mâ.",
 } satisfies Record<TranslationKey, string>;
 export default d_lij;

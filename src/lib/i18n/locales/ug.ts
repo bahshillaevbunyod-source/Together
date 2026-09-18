@@ -238,5 +238,18 @@ const d_ug = {
   "settings.saved": "تەڭشەكلەر ساقلاندى.",
   "settings.error400": "تەرجىمە تەڭشەكلىرىڭىزنى تەكشۈرۈڭ.",
   "settings.saveError": "تەڭشەكلەرنى ساقلىيالمىدى. قايتا سىناڭ.",
+  "auth.welcomeBack": "خۇش كەپسىز",
+  "auth.createAccountHeading": "ھېساباتىڭىزنى قۇرۇڭ",
+  "auth.login": "كىرىڭ",
+  "auth.signUp": "تىزىملىتىڭ",
+  "auth.username": "ئىشلەتكۈچى ئىسمى",
+  "auth.email": "ئېلخەت",
+  "auth.password": "پارول",
+  "auth.nativeLanguagePlaceholder": "ئانا تىل (مەسىلەن en)",
+  "auth.emailPasswordRequired": "ئېلېكترونلۇق خەت ۋە پارول تەلەپ قىلىنىدۇ.",
+  "auth.usernameDisplayNameRequired": "ئىشلەتكۈچى ئىسمى ۋە كۆرسىتىش ئىسمى تەلەپ قىلىنىدۇ.",
+  "auth.pleaseWait": "ساقلاپ تۇرۇڭ…",
+  "auth.createAccount": "ھېسابات قۇر",
+  "auth.genericError": "چاتاق چىقتى.",
 } satisfies Record<TranslationKey, string>;
 export default d_ug;
