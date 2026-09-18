@@ -17,6 +17,7 @@ import {
   type PublicUserProfile,
 } from "@/lib/api";
 import { FollowListModal } from "@/components/profile/FollowListModal";
+import { useLanguage } from "@/lib/language-context";
 
 type Status = "loading" | "ready" | "notfound" | "error";
 
@@ -33,6 +34,7 @@ function memberSince(iso: string): string {
 }
 
 export default function PublicProfilePage() {
+  const { t } = useLanguage();
   const params = useParams<{ username: string }>();
   const router = useRouter();
   const username =
@@ -146,11 +148,11 @@ export default function PublicProfilePage() {
     } catch (err) {
       // Preserve current state; show a safe message (never raw backend text).
       if (err instanceof ApiError && err.status === 401) {
-        setFollowError("Please sign in to follow people.");
+        setFollowError(t("profile.followSignIn"));
       } else if (err instanceof ApiError && err.status === 403) {
-        setFollowError("You can’t follow this user.");
+        setFollowError(t("profile.followForbidden"));
       } else {
-        setFollowError("Couldn’t update follow status. Try again.");
+        setFollowError(t("profile.followError"));
       }
     } finally {
       setFollowPending(false);
@@ -167,13 +169,13 @@ export default function PublicProfilePage() {
       router.push(`/messages?c=${encodeURIComponent(conv.id)}`);
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
-        setMessageError("Please sign in to send messages.");
+        setMessageError(t("profile.messageSignIn"));
       } else if (err instanceof ApiError && err.status === 403) {
-        setMessageError("You can’t message this user.");
+        setMessageError(t("profile.messageForbidden"));
       } else if (err instanceof ApiError && err.status === 404) {
-        setMessageError("This user is no longer available.");
+        setMessageError(t("profile.userUnavailable"));
       } else {
-        setMessageError("Couldn’t open conversation. Try again.");
+        setMessageError(t("profile.messageError"));
       }
       setMessagePending(false); // stay on page to show the error
     }
@@ -181,13 +183,13 @@ export default function PublicProfilePage() {
 
   const friendlyRelError = (err: unknown, fallback: string): string => {
     if (err instanceof ApiError && err.status === 401) {
-      return "Please sign in first.";
+      return t("profile.relSignIn");
     }
     if (err instanceof ApiError && err.status === 403) {
-      return "You can’t do that with this user.";
+      return t("profile.relForbidden");
     }
     if (err instanceof ApiError && err.status === 404) {
-      return "This user is no longer available.";
+      return t("profile.userUnavailable");
     }
     return fallback;
   };
@@ -205,7 +207,7 @@ export default function PublicProfilePage() {
       // isBlocked) instead of guessing.
       await reconcileProfile(profile.username);
     } catch (err) {
-      setBlockError(friendlyRelError(err, "Couldn’t block this user. Try again."));
+      setBlockError(friendlyRelError(err, t("profile.blockError")));
     } finally {
       setBlockPending(false);
     }
@@ -223,7 +225,7 @@ export default function PublicProfilePage() {
       await reconcileProfile(profile.username);
     } catch (err) {
       setBlockError(
-        friendlyRelError(err, "Couldn’t unblock this user. Try again."),
+        friendlyRelError(err, t("profile.unblockError")),
       );
     } finally {
       setBlockPending(false);
@@ -232,14 +234,14 @@ export default function PublicProfilePage() {
 
   if (status === "loading") {
     return (
-      <p className="py-16 text-center text-sm text-muted">Loading profile…</p>
+      <p className="py-16 text-center text-sm text-muted">{t("profile.loading")}</p>
     );
   }
 
   if (status === "notfound") {
     return (
       <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-8 text-center shadow-sm">
-        <p className="text-sm text-muted">This user doesn’t exist.</p>
+        <p className="text-sm text-muted">{t("profile.notFound")}</p>
       </div>
     );
   }
@@ -247,13 +249,13 @@ export default function PublicProfilePage() {
   if (status === "error" || !profile) {
     return (
       <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-8 text-center shadow-sm">
-        <p className="text-sm text-muted">Couldn’t load this profile.</p>
+        <p className="text-sm text-muted">{t("profile.publicLoadError")}</p>
         <button
           type="button"
           onClick={() => load()}
           className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
         >
-          Try again
+          {t("search.tryAgain")}
         </button>
       </div>
     );
@@ -268,9 +270,9 @@ export default function PublicProfilePage() {
     <div className="mx-auto max-w-2xl">
       {profile.isSelf ? (
         <div className="mb-3 flex items-center justify-between rounded-xl border border-border bg-surface px-4 py-2 text-sm">
-          <span className="text-muted">This is your profile.</span>
+          <span className="text-muted">{t("profile.selfBanner")}</span>
           <Link href="/profile" className="text-primary hover:underline">
-            Go to your profile
+            {t("profile.goToYourProfile")}
           </Link>
         </div>
       ) : null}
@@ -306,7 +308,7 @@ export default function PublicProfilePage() {
                         : "bg-primary text-white hover:bg-primary-hover"
                     }`}
                   >
-                    {profile.isFollowing ? "Following" : "Follow"}
+                    {profile.isFollowing ? t("profile.followingState") : t("profile.follow")}
                   </button>
                   <button
                     type="button"
@@ -314,12 +316,12 @@ export default function PublicProfilePage() {
                     disabled={messagePending}
                     className="rounded-full border border-border px-5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    {messagePending ? "…" : "Message"}
+                    {messagePending ? "…" : t("profile.message")}
                   </button>
                   <div className="relative" ref={menuRef}>
                     <button
                       type="button"
-                      aria-label="More options"
+                      aria-label={t("profile.moreOptions")}
                       aria-haspopup="menu"
                       aria-expanded={menuOpen}
                       onClick={() => setMenuOpen((v) => !v)}
@@ -345,7 +347,7 @@ export default function PublicProfilePage() {
                           className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-red-600 transition-colors hover:bg-red-50"
                         >
                           <Ban className="h-4 w-4 shrink-0" />
-                          Block user
+                          {t("profile.blockUser")}
                         </button>
                       </div>
                     ) : null}
@@ -361,7 +363,7 @@ export default function PublicProfilePage() {
                 className="text-foreground transition-colors hover:text-primary"
               >
                 <span className="font-semibold">{profile.followersCount}</span>{" "}
-                <span className="text-muted">Followers</span>
+                <span className="text-muted">{t("profile.followers")}</span>
               </button>
               <button
                 type="button"
@@ -369,7 +371,7 @@ export default function PublicProfilePage() {
                 className="text-foreground transition-colors hover:text-primary"
               >
                 <span className="font-semibold">{profile.followingCount}</span>{" "}
-                <span className="text-muted">Following</span>
+                <span className="text-muted">{t("profile.following")}</span>
               </button>
             </div>
 
@@ -389,11 +391,10 @@ export default function PublicProfilePage() {
             </span>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-foreground">
-                You blocked @{profile.username}
+                {t("profile.blockedHeading", { name: profile.username })}
               </p>
               <p className="text-xs text-muted">
-                They can’t follow or message you. Unblock to restore normal
-                interactions.
+                {t("profile.blockedBody")}
               </p>
               {blockError ? (
                 <p className="mt-1 text-xs text-red-500" role="alert">
@@ -407,7 +408,7 @@ export default function PublicProfilePage() {
               disabled={blockPending}
               className="shrink-0 rounded-full border border-border bg-surface px-5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {blockPending ? "Unblocking…" : "Unblock"}
+              {blockPending ? t("profile.unblocking") : t("profile.unblock")}
             </button>
           </div>
         ) : null}
@@ -421,17 +422,17 @@ export default function PublicProfilePage() {
         <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-2 border-t border-border pt-4 text-sm">
           {location ? (
             <div>
-              <dt className="text-muted-soft">Location</dt>
+              <dt className="text-muted-soft">{t("profile.location")}</dt>
               <dd className="text-foreground">{location}</dd>
             </div>
           ) : null}
           <div>
-            <dt className="text-muted-soft">Native language</dt>
+            <dt className="text-muted-soft">{t("profile.nativeLanguage")}</dt>
             <dd className="text-foreground">{profile.nativeLanguage}</dd>
           </div>
           {joined ? (
             <div>
-              <dt className="text-muted-soft">Member since</dt>
+              <dt className="text-muted-soft">{t("profile.memberSince")}</dt>
               <dd className="text-foreground">{joined}</dd>
             </div>
           ) : null}
@@ -444,7 +445,7 @@ export default function PublicProfilePage() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
           role="dialog"
           aria-modal="true"
-          aria-label="Block user"
+          aria-label={t("profile.blockUser")}
           onClick={() => {
             if (!blockPending) setConfirmBlock(false);
           }}
@@ -457,11 +458,10 @@ export default function PublicProfilePage() {
               <Ban className="h-6 w-6" />
             </span>
             <h2 className="mt-4 text-lg font-semibold text-foreground">
-              Block @{profile.username}?
+              {t("profile.blockConfirmTitle", { name: profile.username })}
             </h2>
             <p className="mt-1.5 text-sm leading-relaxed text-muted">
-              They won’t be able to follow or message you, and you’ll unfollow
-              each other. You can unblock them any time.
+              {t("profile.blockConfirmBody")}
             </p>
             {blockError ? (
               <p className="mt-2 text-xs text-red-500" role="alert">
@@ -475,7 +475,7 @@ export default function PublicProfilePage() {
                 disabled={blockPending}
                 className="rounded-full px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:bg-background disabled:opacity-50"
               >
-                Cancel
+                {t("post.cancel")}
               </button>
               <button
                 type="button"
@@ -483,7 +483,7 @@ export default function PublicProfilePage() {
                 disabled={blockPending}
                 className="rounded-full bg-red-600 px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {blockPending ? "Blocking…" : "Block"}
+                {blockPending ? t("profile.blocking") : t("profile.block")}
               </button>
             </div>
           </div>

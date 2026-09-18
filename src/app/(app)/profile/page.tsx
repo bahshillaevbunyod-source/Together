@@ -11,6 +11,7 @@ import {
   type ProfileResponse,
 } from "@/lib/api";
 import { LANGUAGES } from "@/lib/languages";
+import { useLanguage } from "@/lib/language-context";
 import { FollowListModal } from "@/components/profile/FollowListModal";
 
 type Status = "loading" | "ready" | "error";
@@ -27,12 +28,13 @@ function memberSince(iso: string): string {
   return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
-// Human-readable language name from a code (e.g. "en" -> "English"). Pinned to
-// English so the label is consistent with the rest of the UI.
-function languageName(code: string): string {
+// Human-readable language name from a code (e.g. "en" -> "English"), rendered in
+// the resolved platform UI locale so the label matches the rest of the UI. The
+// stored nativeLanguage code is never changed.
+function languageName(code: string, locale: string): string {
   if (!code) return "";
   try {
-    const name = new Intl.DisplayNames(["en"], { type: "language" }).of(
+    const name = new Intl.DisplayNames([locale], { type: "language" }).of(
       code.toLowerCase(),
     );
     if (name && name.toLowerCase() !== code.toLowerCase()) return name;
@@ -58,6 +60,7 @@ function countryName(code: string): string {
 }
 
 export default function ProfilePage() {
+  const { t, locale } = useLanguage();
   const [profile, setProfile] = useState<ProfileResponse | null>(null);
   const [followers, setFollowers] = useState<number | null>(null);
   const [following, setFollowing] = useState<number | null>(null);
@@ -97,20 +100,20 @@ export default function ProfilePage() {
 
   if (status === "loading") {
     return (
-      <p className="py-16 text-center text-sm text-muted">Loading profile…</p>
+      <p className="py-16 text-center text-sm text-muted">{t("profile.loading")}</p>
     );
   }
 
   if (status === "error" || !profile) {
     return (
       <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-8 text-center shadow-sm">
-        <p className="text-sm text-muted">Couldn’t load your profile.</p>
+        <p className="text-sm text-muted">{t("profile.loadError")}</p>
         <button
           type="button"
           onClick={() => load()}
           className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
         >
-          Try again
+          {t("search.tryAgain")}
         </button>
       </div>
     );
@@ -120,7 +123,7 @@ export default function ProfilePage() {
     .filter((v) => v && v.trim().length > 0)
     .join(", ");
   const joined = memberSince(profile.createdAt);
-  const language = languageName(profile.nativeLanguage);
+  const language = languageName(profile.nativeLanguage, locale);
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -149,7 +152,7 @@ export default function ProfilePage() {
                 href="/profile/edit"
                 className="shrink-0 rounded-full border border-border px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background"
               >
-                Edit profile
+                {t("profile.edit")}
               </Link>
             </div>
 
@@ -163,7 +166,7 @@ export default function ProfilePage() {
                 <span className="font-semibold text-foreground">
                   {followers ?? "—"}
                 </span>{" "}
-                <span className="text-muted">Followers</span>
+                <span className="text-muted">{t("profile.followers")}</span>
               </button>
               <button
                 type="button"
@@ -173,7 +176,7 @@ export default function ProfilePage() {
                 <span className="font-semibold text-foreground">
                   {following ?? "—"}
                 </span>{" "}
-                <span className="text-muted">Following</span>
+                <span className="text-muted">{t("profile.following")}</span>
               </button>
             </div>
           </div>
@@ -203,7 +206,7 @@ export default function ProfilePage() {
           {joined ? (
             <span className="flex items-center gap-1.5">
               <CalendarDays className="h-4 w-4 text-muted-soft" aria-hidden />
-              Joined {joined}
+              {t("profile.joined", { date: joined })}
             </span>
           ) : null}
         </div>
