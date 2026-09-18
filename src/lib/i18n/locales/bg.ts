@@ -251,5 +251,14 @@ const d_bg = {
   "auth.pleaseWait": "моля изчакайте...",
   "auth.createAccount": "Създаване на акаунт",
   "auth.genericError": "Нещо се обърка.",
+  "language.loading": "Зареждат се заедно...",
+  "language.connectionError": "Together не можа да се свърже.",
+  "language.loadError": "Together не можа да зареди езиковите ви предпочитания.",
+  "language.chooseTitle": "Изберете вашия език",
+  "language.description": "Together ще използва този език в цялата платформа и за автоматични преводи.",
+  "language.search": "Търсене на езици",
+  "language.noMatches": "Няма езици, отговарящи на вашето търсене.",
+  "language.continue": "Продължи",
+  "language.saveError": "Езикът ви не можа да бъде запазен. Опитайте отново.",
 } satisfies Record<TranslationKey, string>;
 export default d_bg;

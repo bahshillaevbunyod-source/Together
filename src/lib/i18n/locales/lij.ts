@@ -251,5 +251,14 @@ const d_lij = {
   "auth.pleaseWait": "Pe favô, attendi...",
   "auth.createAccount": "Creâ un conto",
   "auth.genericError": "Quarcösa o l'é anæto mâ.",
+  "language.loading": "Carregamento Insemme...",
+  "language.connectionError": "Insemme no poeivan connettise.",
+  "language.loadError": "Insemme o no l'é stæto poscibile carregâ e vòstre preferense de lengua.",
+  "language.chooseTitle": "Scegli a tò lengua",
+  "language.description": "Insemme deuviemmo sto lenguaggio in sce tutta a piattaforma e pe-e traduçioin automatiche.",
+  "language.search": "Reçerca e lengue",
+  "language.noMatches": "Nisciuña lengua a corresponde a-a vòstra reçerca.",
+  "language.continue": "Anâ avanti",
+  "language.saveError": "No l’é stæto poscibile sarvâ a vòstra lengua. Prova torna.",
 } satisfies Record<TranslationKey, string>;
 export default d_lij;

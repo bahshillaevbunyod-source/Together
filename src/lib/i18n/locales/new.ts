@@ -251,5 +251,14 @@ const d_new = {
   "auth.pleaseWait": "कृपा यानाः लं च्वनादिसँ ...",
   "auth.createAccount": "खाता चायेकि",
   "auth.genericError": "छुं द्वन ।",
+  "language.loading": "नापं लोड जुयाच्वन ...",
+  "language.connectionError": "नापं स्वाये मफुत ।",
+  "language.loadError": "नापं छिगु भाषाया पसः लोड याये मफुत ।",
+  "language.chooseTitle": "छंगु भाय् ल्य ।",
+  "language.description": "नापं थुगु भाय् प्लेटफर्मय् व स्वचालित भाय् हिलेत छ्यलेगु जुइ ।",
+  "language.search": "भाय् मालास्व ।",
+  "language.noMatches": "छिं मालादीगुलिं छुं नं भाय् ज्वःलाःगु मदु ।",
+  "language.continue": "यानावं च्वनेगु",
+  "language.saveError": "छिगु भाय् बचे याये मफुत । हाकनं कुतः या ।",
 } satisfies Record<TranslationKey, string>;
 export default d_new;

@@ -251,5 +251,14 @@ const d_ilo = {
   "auth.pleaseWait": "Pangngaasiyo ta aguraykayo...",
   "auth.createAccount": "Mangaramid iti account",
   "auth.genericError": "Adda nagbiddut.",
+  "language.loading": "Agkarga a Sangsangkamaysa...",
+  "language.connectionError": "Ti sangsangkamaysa ket saan a makakonekta.",
+  "language.loadError": "Ti sangsangkamaysa ket saan a makakarga kadagiti kaykayatmo a pagsasao.",
+  "language.chooseTitle": "Pilien ti pagsasaom",
+  "language.description": "Ti sangsangkamaysa ket agusarto iti daytoy a pagsasao iti ballasiw ti plataporma ken para kadagiti automatiko a panagipatarus.",
+  "language.search": "Agbiruk kadagiti pagsasao",
+  "language.noMatches": "Awan dagiti pagsasao a maitunos iti panagbirukmo.",
+  "language.continue": "Ituloy",
+  "language.saveError": "Saan a maisalakan ti pagsasaom. Padasem manen.",
 } satisfies Record<TranslationKey, string>;
 export default d_ilo;

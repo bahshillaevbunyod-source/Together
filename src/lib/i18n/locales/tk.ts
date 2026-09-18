@@ -251,5 +251,14 @@ const d_tk = {
   "auth.pleaseWait": "Haýyş ediň ...",
   "auth.createAccount": "Hasap dörediň",
   "auth.genericError": "Bir zat nädogry boldy.",
+  "language.loading": "Bilelikde ýüklenýär ...",
+  "language.connectionError": "Bilelikde birleşip bilmedik.",
+  "language.loadError": "Bilelikde dil islegleriňizi ýükläp bolmaz.",
+  "language.chooseTitle": "Diliňizi saýlaň",
+  "language.description": "Bu dili bilelikde platforma we awtomatiki terjimeler üçin ulanarys.",
+  "language.search": "Dilleri gözläň",
+  "language.noMatches": "Gözlegiňize hiç bir dil gabat gelenok.",
+  "language.continue": "Dowam et",
+  "language.saveError": "Diliňizi saklap bolmaýar. Gaýtadan synanyşyň.",
 } satisfies Record<TranslationKey, string>;
 export default d_tk;

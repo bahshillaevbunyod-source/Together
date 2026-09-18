@@ -251,5 +251,14 @@ const d_gom = {
   "auth.pleaseWait": "कृपया वाट पळयात...",
   "auth.createAccount": "खातें तयार करचें",
   "auth.genericError": "कितें तरी चुकलें.",
+  "language.loading": "एकठांय लोड करप...",
+  "language.connectionError": "एकठांय जोडपाक मेळ्ळें ना.",
+  "language.loadError": "एकठांय तुमची भास पसंती लोड करूंक शकली ना.",
+  "language.chooseTitle": "तुमची भास निवडात",
+  "language.description": "एकठांय ही भास प्लॅटफॉर्माचेर आनी स्वयंचलीत अणकारां खातीर वापरतले.",
+  "language.search": "भासो सोद",
+  "language.noMatches": "तुमच्या सोदाक जुळनाशिल्ली खंयचीच भास.",
+  "language.continue": "चालू दवरात",
+  "language.saveError": "तुमची भास जतनाय घेवंक शकली ना. परतून यत्न करात.",
 } satisfies Record<TranslationKey, string>;
 export default d_gom;

@@ -251,5 +251,14 @@ const d_te = {
   "auth.pleaseWait": "దయచేసి వేచి ఉండండి…",
   "auth.createAccount": "ఖాతాను సృష్టించండి",
   "auth.genericError": "ఏదో తప్పు జరిగింది.",
+  "language.loading": "కలిసి లోడ్ అవుతోంది…",
+  "language.connectionError": "కలిసి కనెక్ట్ కాలేదు.",
+  "language.loadError": "కలిసి మీ భాషా ప్రాధాన్యతలను లోడ్ చేయడం సాధ్యపడలేదు.",
+  "language.chooseTitle": "మీ భాషను ఎంచుకోండి",
+  "language.description": "కలిసి ఈ భాషను ప్లాట్‌ఫారమ్ అంతటా మరియు ఆటోమేటిక్ అనువాదాల కోసం ఉపయోగిస్తుంది.",
+  "language.search": "భాషలను శోధించండి",
+  "language.noMatches": "మీ శోధనకు సరిపోలే భాషలు ఏవీ లేవు.",
+  "language.continue": "కొనసాగించు",
+  "language.saveError": "మీ భాషను సేవ్ చేయడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
 } satisfies Record<TranslationKey, string>;
 export default d_te;

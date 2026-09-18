@@ -251,5 +251,14 @@ const ko = {
   "auth.pleaseWait": "기다려 주십시오…",
   "auth.createAccount": "계정 만들기",
   "auth.genericError": "문제가 발생했습니다.",
+  "language.loading": "함께 로드 중…",
+  "language.connectionError": "함께 연결할 수 없습니다.",
+  "language.loadError": "Together에서 언어 환경설정을 로드할 수 없습니다.",
+  "language.chooseTitle": "언어를 선택하세요",
+  "language.description": "Together는 플랫폼 전체와 자동 번역에 이 언어를 사용합니다.",
+  "language.search": "언어 검색",
+  "language.noMatches": "검색어와 일치하는 언어가 없습니다.",
+  "language.continue": "계속",
+  "language.saveError": "언어를 저장할 수 없습니다. 다시 시도해 보세요.",
 } satisfies Record<TranslationKey, string>;
 export default ko;

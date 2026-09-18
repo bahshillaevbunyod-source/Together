@@ -251,5 +251,14 @@ const d_pt_BR = {
   "auth.pleaseWait": "Por favor, espere…",
   "auth.createAccount": "Criar conta",
   "auth.genericError": "Algo deu errado.",
+  "language.loading": "Carregando juntos…",
+  "language.connectionError": "Together não conseguiu conectar.",
+  "language.loadError": "Together não conseguiu carregar suas preferências de idioma.",
+  "language.chooseTitle": "Escolha seu idioma",
+  "language.description": "Together usará esse idioma em toda a plataforma e para traduções automáticas.",
+  "language.search": "Pesquisar idiomas",
+  "language.noMatches": "Nenhum idioma corresponde à sua pesquisa.",
+  "language.continue": "Continuar",
+  "language.saveError": "Não foi possível salvar seu idioma. Tente novamente.",
 } satisfies Record<TranslationKey, string>;
 export default d_pt_BR;

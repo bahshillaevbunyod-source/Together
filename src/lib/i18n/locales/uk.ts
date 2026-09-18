@@ -251,5 +251,14 @@ const d_uk = {
   "auth.pleaseWait": "Зачекайте...",
   "auth.createAccount": "Створити акаунт",
   "auth.genericError": "Щось пішло не так.",
+  "language.loading": "Завантаження разом…",
+  "language.connectionError": "Together не вдалося підключитися.",
+  "language.loadError": "Together не вдалося завантажити ваші мовні налаштування.",
+  "language.chooseTitle": "Оберіть свою мову",
+  "language.description": "Together використовуватиме цю мову на всій платформі та для автоматичного перекладу.",
+  "language.search": "Пошук мов",
+  "language.noMatches": "Жодна мова не відповідає вашому запиту.",
+  "language.continue": "Продовжити",
+  "language.saveError": "Не вдалося зберегти вашу мову. Спробуйте ще раз.",
 } satisfies Record<TranslationKey, string>;
 export default d_uk;

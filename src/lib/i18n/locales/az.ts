@@ -251,5 +251,14 @@ const d_az = {
   "auth.pleaseWait": "Zəhmət olmasa gözləyin...",
   "auth.createAccount": "Hesab yaradın",
   "auth.genericError": "Nəsə xəta baş verdi.",
+  "language.loading": "Birlikdə Yüklənir...",
+  "language.connectionError": "Birlikdə qoşulmaq mümkün olmadı.",
+  "language.loadError": "Birgə dil tərcihlərinizi yükləyə bilmədi.",
+  "language.chooseTitle": "Dilinizi seçin",
+  "language.description": "Birlikdə bu dili platformada və avtomatik tərcümələr üçün istifadə edəcək.",
+  "language.search": "Dilləri axtar",
+  "language.noMatches": "Axtarışınıza uyğun dil yoxdur.",
+  "language.continue": "Davam et",
+  "language.saveError": "Dilinizi saxlamaq mümkün olmadı. Yenidən cəhd edin.",
 } satisfies Record<TranslationKey, string>;
 export default d_az;

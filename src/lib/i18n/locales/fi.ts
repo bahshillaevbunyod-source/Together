@@ -251,5 +251,14 @@ const d_fi = {
   "auth.pleaseWait": "Odota…",
   "auth.createAccount": "Luo tili",
   "auth.genericError": "Jotain meni pieleen.",
+  "language.loading": "Ladataan yhdessä…",
+  "language.connectionError": "Together ei voinut muodostaa yhteyttä.",
+  "language.loadError": "Together ei voinut ladata kieliasetuksiasi.",
+  "language.chooseTitle": "Valitse kieli",
+  "language.description": "Together käyttää tätä kieltä koko alustalla ja automaattisissa käännöksissä.",
+  "language.search": "Hae kieliä",
+  "language.noMatches": "Ei hakuasi vastaavia kieliä.",
+  "language.continue": "Jatka",
+  "language.saveError": "Kieltäsi ei voitu tallentaa. Yritä uudelleen.",
 } satisfies Record<TranslationKey, string>;
 export default d_fi;

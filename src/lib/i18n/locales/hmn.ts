@@ -251,5 +251,14 @@ const d_hmn = {
   "auth.pleaseWait": "Thov tos…",
   "auth.createAccount": "Tsim tus account",
   "auth.genericError": "Ib yam dab tsi mus tsis ncaj ncees lawm.",
+  "language.loading": "Loading Ua ke…",
+  "language.connectionError": "Ua ke tsis tuaj yeem txuas tau.",
+  "language.loadError": "Ua ke tsis tuaj yeem thauj koj cov lus nyiam.",
+  "language.chooseTitle": "Xaiv koj hom lus",
+  "language.description": "Ua ke yuav siv hom lus no hla lub platform thiab rau kev txhais tsis siv neeg.",
+  "language.search": "Nrhiav hom lus",
+  "language.noMatches": "Tsis muaj hom lus phim koj qhov kev tshawb nrhiav.",
+  "language.continue": "Txuas ntxiv",
+  "language.saveError": "Tsis tuaj yeem khaws koj cov lus. Sim dua.",
 } satisfies Record<TranslationKey, string>;
 export default d_hmn;

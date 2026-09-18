@@ -251,5 +251,14 @@ const d_dv = {
   "auth.pleaseWait": "މަޑުކޮށްލައްވާ...",
   "auth.createAccount": "އެކައުންޓް އުފެއްދުން",
   "auth.genericError": "ކަމެއް ގޯސްވީއެވެ.",
+  "language.loading": "އެކީގައި ލޯޑް ކުރަނީ...",
+  "language.connectionError": "އެކީގައި ގުޅެވޭ ގޮތެއް ނުވިއެވެ.",
+  "language.loadError": "އެކީގައި ތިބާގެ ބަހުގެ އިސްކަންދޭ ކަންތައްތައް ލޯޑް ނުކުރެވުނެވެ.",
+  "language.chooseTitle": "ތިބާގެ ބަސް ހޮވުން",
+  "language.description": "ޓޫގޭދަރ އިން މި ބަސް ޕްލެޓްފޯމް ހުރަސްކޮށް އަދި އޮޓޮމެޓިކް ތަރުޖަމާތަކަށް ބޭނުންކުރާނެއެވެ.",
+  "language.search": "ބަސްތައް ހޯދުން",
+  "language.noMatches": "ތިބާ ހޯދުމުގެ އެއްވެސް ބަހެއް ދިމާނުވެއެވެ.",
+  "language.continue": "ކުރިއަށް ދިއުން",
+  "language.saveError": "ތިބާގެ ބަސް ސޭވް ނުކުރެވުނެވެ. އަނެއްކާވެސް މަސައްކަތް ކުރާށެވެ.",
 } satisfies Record<TranslationKey, string>;
 export default d_dv;

@@ -251,5 +251,14 @@ const d_ceb = {
   "auth.pleaseWait": "Palihug paghulat…",
   "auth.createAccount": "Paghimo og account",
   "auth.genericError": "Naay nahitabo.",
+  "language.loading": "Nag-uban nga nagkarga…",
+  "language.connectionError": "Dili makakonektar.",
+  "language.loadError": "Dili makarga ang imong mga gusto sa lengguwahe.",
+  "language.chooseTitle": "Pilia ang imong pinulongan",
+  "language.description": "Magkauban nga mogamit niini nga pinulongan sa tibuok plataporma ug alang sa awtomatikong paghubad.",
+  "language.search": "Pangitaa ang mga pinulongan",
+  "language.noMatches": "Walay pinulongan nga mohaum sa imong pagpangita.",
+  "language.continue": "Padayon",
+  "language.saveError": "Dili ma-save ang imong lengguwahe. Sulayi pag-usab.",
 } satisfies Record<TranslationKey, string>;
 export default d_ceb;

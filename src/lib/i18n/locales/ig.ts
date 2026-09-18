@@ -251,5 +251,14 @@ const d_ig = {
   "auth.pleaseWait": "Biko chere…",
   "auth.createAccount": "Mepụta akaụntụ",
   "auth.genericError": "Ọ nwere ihe adịghị mma.",
+  "language.loading": "Na-ebukọ ọnụ…",
+  "language.connectionError": "Enweghị ike ijikọ ọnụ.",
+  "language.loadError": "Ọnụ enweghị ike ibunye mmasị asụsụ gị.",
+  "language.chooseTitle": "Họrọ asụsụ gị",
+  "language.description": "Ọnụ ga-eji asụsụ a n'ofe ikpo okwu yana maka ntụgharị asụsụ akpaka.",
+  "language.search": "Chọọ asụsụ",
+  "language.noMatches": "Ọ nweghị asụsụ dabara na nchọ gị.",
+  "language.continue": "Gaa n'ihu",
+  "language.saveError": "Enweghị ike ichekwa asụsụ gị. Nwaa ọzọ.",
 } satisfies Record<TranslationKey, string>;
 export default d_ig;

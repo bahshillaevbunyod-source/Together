@@ -251,5 +251,14 @@ const d_kn = {
   "auth.pleaseWait": "ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ...",
   "auth.createAccount": "ಖಾತೆಯನ್ನು ರಚಿಸಿ",
   "auth.genericError": "ಏನೋ ತಪ್ಪಾಗಿದೆ.",
+  "language.loading": "ಒಟ್ಟಿಗೆ ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
+  "language.connectionError": "ಒಟ್ಟಿಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+  "language.loadError": "ಒಟ್ಟಿಗೆ ನಿಮ್ಮ ಭಾಷಾ ಪ್ರಾಶಸ್ತ್ಯಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+  "language.chooseTitle": "ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆರಿಸಿ",
+  "language.description": "ಒಟ್ಟಿಗೆ ಈ ಭಾಷೆಯನ್ನು ಪ್ಲಾಟ್‌ಫಾರ್ಮ್‌ನಾದ್ಯಂತ ಮತ್ತು ಸ್ವಯಂಚಾಲಿತ ಅನುವಾದಗಳಿಗಾಗಿ ಬಳಸುತ್ತದೆ.",
+  "language.search": "ಭಾಷೆಗಳನ್ನು ಹುಡುಕಿ",
+  "language.noMatches": "ಯಾವುದೇ ಭಾಷೆಗಳು ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ.",
+  "language.continue": "ಮುಂದುವರಿಸಿ",
+  "language.saveError": "ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಉಳಿಸಲಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
 } satisfies Record<TranslationKey, string>;
 export default d_kn;

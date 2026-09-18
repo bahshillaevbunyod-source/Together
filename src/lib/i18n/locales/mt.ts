@@ -251,5 +251,14 @@ const d_mt = {
   "auth.pleaseWait": "Jekk jogħġbok stenna...",
   "auth.createAccount": "Oħloq kont",
   "auth.genericError": "Xi ħaġa marret ħażin.",
+  "language.loading": "Tagħbija Flimkien...",
+  "language.connectionError": "Flimkien ma setgħux jgħaqqdu.",
+  "language.loadError": "Together ma setgħetx tagħbija l-preferenzi tal-lingwa tiegħek.",
+  "language.chooseTitle": "Agħżel il-lingwa tiegħek",
+  "language.description": "Flimkien se tuża din il-lingwa madwar il-pjattaforma u għal traduzzjonijiet awtomatiċi.",
+  "language.search": "Fittex lingwi",
+  "language.noMatches": "Ebda lingwa ma taqbilx mat-tfittxija tiegħek.",
+  "language.continue": "Kompli",
+  "language.saveError": "Ma setgħetx issalva l-lingwa tiegħek. Erġa' pprova.",
 } satisfies Record<TranslationKey, string>;
 export default d_mt;

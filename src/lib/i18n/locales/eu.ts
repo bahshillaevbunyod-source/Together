@@ -251,5 +251,14 @@ const d_eu = {
   "auth.pleaseWait": "Mesedez, itxaron...",
   "auth.createAccount": "Sortu kontua",
   "auth.genericError": "Zerbait gaizki joan da.",
+  "language.loading": "Elkarrekin kargatzen…",
+  "language.connectionError": "Together ezin izan da konektatu.",
+  "language.loadError": "Together-ek ezin izan ditu zure hizkuntza-hobespenak kargatu.",
+  "language.chooseTitle": "Aukeratu zure hizkuntza",
+  "language.description": "Together-ek hizkuntza hau erabiliko du plataforma osoan eta itzulpen automatikoetarako.",
+  "language.search": "Bilatu hizkuntzak",
+  "language.noMatches": "Ez dago zure bilaketarekin bat datorren hizkuntzarik.",
+  "language.continue": "Jarraitu",
+  "language.saveError": "Ezin izan da zure hizkuntza gorde. Saiatu berriro.",
 } satisfies Record<TranslationKey, string>;
 export default d_eu;

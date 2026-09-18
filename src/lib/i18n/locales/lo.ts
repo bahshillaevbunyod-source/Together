@@ -251,5 +251,14 @@ const d_lo = {
   "auth.pleaseWait": "ກະລຸນາລໍຖ້າ...",
   "auth.createAccount": "ສ້າງບັນຊີ",
   "auth.genericError": "ມີບາງຢ່າງຜິດພາດ.",
+  "language.loading": "ກຳລັງໂຫຼດນຳກັນ…",
+  "language.connectionError": "ເຊື່ອມຕໍ່ກັນບໍ່ໄດ້.",
+  "language.loadError": "ຮ່ວມກັນບໍ່ສາມາດໂຫຼດການຕັ້ງຄ່າພາສາຂອງທ່ານໄດ້.",
+  "language.chooseTitle": "ເລືອກພາສາຂອງທ່ານ",
+  "language.description": "ຮ່ວມກັນຈະໃຊ້ພາສານີ້ໃນທົ່ວແພລດຟອມ ແລະສຳລັບການແປອັດຕະໂນມັດ.",
+  "language.search": "ຊອກຫາພາສາ",
+  "language.noMatches": "ບໍ່ມີພາສາໃດກົງກັບການຄົ້ນຫາຂອງທ່ານ.",
+  "language.continue": "ສືບຕໍ່",
+  "language.saveError": "ບໍ່ສາມາດບັນທຶກພາສາຂອງທ່ານໄດ້. ລອງໃໝ່ອີກຄັ້ງ.",
 } satisfies Record<TranslationKey, string>;
 export default d_lo;

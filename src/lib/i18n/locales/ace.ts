@@ -251,5 +251,14 @@ const d_ace = {
   "auth.pleaseWait": "Neupreh...",
   "auth.createAccount": "Peugot akun",
   "auth.genericError": "Na nyang salah.",
+  "language.loading": "Meu-muat Beusaban...",
+  "language.connectionError": "Sama-sama hana jeuet meusambong.",
+  "language.loadError": "Meusajan hana jeuet ta muat preferensi basa droeneuh.",
+  "language.chooseTitle": "Pileh basa droe neuh .",
+  "language.description": "Meusajan-sajan akan geungui basa nyoe di mandum platform dan keu terjemahan otomatis.",
+  "language.search": "Mita basa",
+  "language.noMatches": "Hana bahsa nyang cocok ngon nyang droeneuh mita.",
+  "language.continue": "Sambong",
+  "language.saveError": "Hana jeuet tapeutheun basa droeneuh. Cuba lom.",
 } satisfies Record<TranslationKey, string>;
 export default d_ace;

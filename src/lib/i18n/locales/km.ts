@@ -251,5 +251,14 @@ const d_km = {
   "auth.pleaseWait": "សូមរង់ចាំ…",
   "auth.createAccount": "បង្កើតគណនី",
   "auth.genericError": "មានអ្វីមួយខុសប្រក្រតី។",
+  "language.loading": "កំពុងផ្ទុករួមគ្នា…",
+  "language.connectionError": "រួមគ្នាមិនអាចតភ្ជាប់បានទេ។",
+  "language.loadError": "រួមគ្នាមិនអាចផ្ទុកចំណូលចិត្តភាសារបស់អ្នកបានទេ។",
+  "language.chooseTitle": "ជ្រើសរើសភាសារបស់អ្នក",
+  "language.description": "រួមគ្នានឹងប្រើភាសានេះនៅលើវេទិកា និងសម្រាប់ការបកប្រែដោយស្វ័យប្រវត្តិ។",
+  "language.search": "ស្វែងរកភាសា",
+  "language.noMatches": "គ្មានភាសាដែលត្រូវនឹងការស្វែងរករបស់អ្នកទេ។",
+  "language.continue": "បន្ត",
+  "language.saveError": "មិនអាចរក្សាទុកភាសារបស់អ្នកបានទេ។ ព្យាយាមម្តងទៀត។",
 } satisfies Record<TranslationKey, string>;
 export default d_km;

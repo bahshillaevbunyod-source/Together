@@ -251,5 +251,14 @@ const d_bua = {
   "auth.pleaseWait": "Хүлһэлжэ байгты...",
   "auth.createAccount": "Данса байгуулха",
   "auth.genericError": "Нэгэ юумэн буруу болоо.",
+  "language.loading": "Хамтадаа ашаглажа байнабди...",
+  "language.connectionError": "Хамта холбоо тогтоожо шадаагүй.",
+  "language.loadError": "Together танай хэлэнэй дуратай зүйлнүүдые ашаглажа шадаагүй.",
+  "language.chooseTitle": "Хэлэеэ шэлэ",
+  "language.description": "Хамтадаа энэ хэлэ бүхы платформо болон автомат оршуулгада хэрэглэхэбди.",
+  "language.search": "Хэлэнүүдые бэдэрхэ",
+  "language.noMatches": "Ямаршье хэлэн танай бэдэрэлгэдэ таарахагүй.",
+  "language.continue": "Үргэлжэхэ",
+  "language.saveError": "Хэлэеэ абаржа шадаагүйб. Дахин туршагты.",
 } satisfies Record<TranslationKey, string>;
 export default d_bua;

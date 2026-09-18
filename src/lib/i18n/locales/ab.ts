@@ -251,5 +251,14 @@ const d_ab = {
   "auth.pleaseWait": "Ҳаҳәоит, шәааԥшы...",
   "auth.createAccount": "Ахыԥхьаӡара аԥҵара",
   "auth.genericError": "Акы еиқәымшәеит.",
+  "language.loading": "Еицҭагалара...",
+  "language.connectionError": "Еицны аимадара рылымшеит.",
+  "language.loadError": "Еицны шәбызшәа аԥшьгарақәа рҭагалара алымшеит.",
+  "language.chooseTitle": "Иалышәх шәбызшәа",
+  "language.description": "Еицны ари абызшәа ҳхы иаҳархәоит аплатформа зегьы аҿы, насгьы автоматтә еиҭагақәа рзы.",
+  "language.search": "Абызшәақәа рыԥшаара",
+  "language.noMatches": "Уԥшаара иақәшәо ​​бызшәак ыҟам.",
+  "language.continue": "Ацҵара",
+  "language.saveError": "Убызшәа аиқәырхара ауам. Даҽазнык шәҽазышәшәа.",
 } satisfies Record<TranslationKey, string>;
 export default d_ab;

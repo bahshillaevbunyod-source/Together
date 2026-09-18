@@ -251,5 +251,14 @@ const d_so = {
   "auth.pleaseWait": "Fadlan sug…",
   "auth.createAccount": "Akoon samee",
   "auth.genericError": "Wax baa khaldamay",
+  "language.loading": "Si wada jir ah ayaa wax u wada…",
+  "language.connectionError": "Wadajir ayaa isku xiri waayey",
+  "language.loadError": "Si wada jir ah ayaa u qaadi kari waayay dookhyada luqadaada.",
+  "language.chooseTitle": "Dooro luqadaada",
+  "language.description": "Si wada jir ah ayaa luuqadan u isticmaali doona guud ahaan goobta iyo turjumaada tooska ah.",
+  "language.search": "Raadi luqadaha",
+  "language.noMatches": "Ma jiro luqado ku habboon raadintaada.",
+  "language.continue": "Sii wad",
+  "language.saveError": "Ma keydin kari waayay luqadaada Isku day mar kale",
 } satisfies Record<TranslationKey, string>;
 export default d_so;

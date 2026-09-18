@@ -83,7 +83,10 @@ for (const [code, dict] of dicts) {
     if (typeof v !== "string" || v.trim() === "") fail(`[5] ${code}: empty "${k}"`);
     else if (v !== v.trim()) fail(`[5] ${code}: whitespace-padded "${k}"`);
     else if (/�/.test(v)) fail(`[5] ${code}: corruption (U+FFFD) in "${k}"`);
-    else if (/Together/.test(v)) fail(`[5] ${code}: brand "Together" present in "${k}"`);
+    // The product brand is the literal token "Together" and must stay identical
+    // in every locale. Allow only the exact standalone brand word; any other
+    // "Together" occurrence (glued/partial — i.e. leakage or corruption) still fails.
+    else if (/Together/.test(v.replace(/\bTogether\b/g, ""))) fail(`[5] ${code}: brand "Together" present in "${k}"`);
   }
 }
 

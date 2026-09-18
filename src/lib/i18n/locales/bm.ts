@@ -251,5 +251,14 @@ const d_bm = {
   "auth.pleaseWait": "Aw ka kɔnɔni kɛ...",
   "auth.createAccount": "Konte dabɔ",
   "auth.genericError": "Fɛn dɔ ma ɲɛ.",
+  "language.loading": "Ka doni kɛ ɲɔgɔn fɛ...",
+  "language.connectionError": "Jɛkulu ma se ka ɲɔgɔn sɔrɔ.",
+  "language.loadError": "Jɛkulu ma se k’aw ka kanko fɛɛrɛw doni.",
+  "language.chooseTitle": "I ka kan sugandi",
+  "language.description": "Jɛkulu bɛna baara kɛ ni kan in ye kɛnɛ kan ani bamanankan bamanankan otomatiki kama.",
+  "language.search": "kanw ɲinini",
+  "language.noMatches": "Kan si tɛ bɛn i ka ɲinini ma.",
+  "language.continue": "Tɛmɛ",
+  "language.saveError": "A ma se k’i ka kan mara. Aw ye a ɲini tugun.",
 } satisfies Record<TranslationKey, string>;
 export default d_bm;

@@ -251,5 +251,14 @@ const d_scn = {
   "auth.pleaseWait": "Aspitta...",
   "auth.createAccount": "Criàri cuntu",
   "auth.genericError": "Quarchi cosa sbagghiò.",
+  "language.loading": "Caricamentu nzèmmula...",
+  "language.connectionError": "Insèmmula non putìanu cunnèttiri.",
+  "language.loadError": "Insèmmula nun putìanu carricari li vostri prifirenze linguistichi.",
+  "language.chooseTitle": "Scegghi la tò lingua",
+  "language.description": "Nzemi usarà chista lingua pi tutta la piattaforma e pê traduzzioni autumàtichi.",
+  "language.search": "Lingui di ricerca",
+  "language.noMatches": "Nudda lingua currispunni â tò ricerca.",
+  "language.continue": "Cuntinuari",
+  "language.saveError": "Non putìa sarbari la tò lingua. Pruva n'autra vota.",
 } satisfies Record<TranslationKey, string>;
 export default d_scn;

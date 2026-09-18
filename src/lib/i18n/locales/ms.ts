@@ -251,5 +251,14 @@ const d_ms = {
   "auth.pleaseWait": "Sila tunggu…",
   "auth.createAccount": "Buat akaun",
   "auth.genericError": "Sesuatu telah berlaku.",
+  "language.loading": "Memuatkan Bersama…",
+  "language.connectionError": "Together tidak dapat menyambung.",
+  "language.loadError": "Together tidak dapat memuatkan pilihan bahasa anda.",
+  "language.chooseTitle": "Pilih bahasa anda",
+  "language.description": "Together akan menggunakan bahasa ini merentas platform dan untuk terjemahan automatik.",
+  "language.search": "Cari bahasa",
+  "language.noMatches": "Tiada bahasa yang sepadan dengan carian anda.",
+  "language.continue": "Teruskan",
+  "language.saveError": "Tidak dapat menyimpan bahasa anda. Cuba lagi.",
 } satisfies Record<TranslationKey, string>;
 export default d_ms;

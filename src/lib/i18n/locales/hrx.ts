@@ -251,5 +251,14 @@ const d_hrx = {
   "auth.pleaseWait": "Bitte waarte...",
   "auth.createAccount": "Konto mache",
   "auth.genericError": "Etwas is ferkheert kang.",
+  "language.loading": "Laden Mitsamer...",
+  "language.connectionError": "Tsusamer khonte mer nët ferklayche.",
+  "language.loadError": "Tsusamer khont net tayn xprooch preferënse laate.",
+  "language.chooseTitle": "Tuu tayn xprooch raus suuche .",
+  "language.description": "Tsusamer wëre tiise xprooch penutst iwer ti kans plats un fer automatixe iwersëtsunge.",
+  "language.search": "Suuch xprooche",
+  "language.noMatches": "Kewis, khee xprooche tuun mit tayn suuchung xtime.",
+  "language.continue": "Wayter",
+  "language.saveError": "Konnt net tayn xprooch retuer pringe. Proop noch mool.",
 } satisfies Record<TranslationKey, string>;
 export default d_hrx;

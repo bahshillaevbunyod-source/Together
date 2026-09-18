@@ -251,5 +251,14 @@ const d_ku = {
   "auth.pleaseWait": "Ji kerema xwe li bendê bin…",
   "auth.createAccount": "Hesab biafirîne",
   "auth.genericError": "Tiştek xelet derket.",
+  "language.loading": "Bi hev re barkirin…",
+  "language.connectionError": "Bi hev re nekarîn girêbidin.",
+  "language.loadError": "Bi hev re nekarî tercîhên zimanê we bar bike.",
+  "language.chooseTitle": "Zimanê xwe hilbijêre",
+  "language.description": "Bi hev re dê vî zimanî li seranserê platformê û ji bo wergerên otomatîk bikar bînin.",
+  "language.search": "Zimanan bigerin",
+  "language.noMatches": "Tu ziman li hev nayên lêgerîna te.",
+  "language.continue": "Berdewamkirin",
+  "language.saveError": "Nikaribû zimanê we xilas bike. Dubare bixebitin.",
 } satisfies Record<TranslationKey, string>;
 export default d_ku;

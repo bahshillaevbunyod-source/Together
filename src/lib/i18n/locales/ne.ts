@@ -251,5 +251,14 @@ const d_ne = {
   "auth.pleaseWait": "कृपया प्रतीक्षा गर्नुहोस्...",
   "auth.createAccount": "खाता सिर्जना गर्नुहोस्",
   "auth.genericError": "केही गडबड भयो।",
+  "language.loading": "सँगै लोड हुँदै...",
+  "language.connectionError": "सँगै जडान हुन सकेन।",
+  "language.loadError": "सँगसँगै तपाईंको भाषा प्राथमिकताहरू लोड गर्न सकेन।",
+  "language.chooseTitle": "आफ्नो भाषा छान्नुहोस्",
+  "language.description": "Together ले प्लेटफर्ममा र स्वचालित अनुवादहरूको लागि यो भाषा प्रयोग गर्नेछ।",
+  "language.search": "भाषाहरू खोज्नुहोस्",
+  "language.noMatches": "तपाईंको खोजसँग कुनै भाषाहरू मेल खाँदैन।",
+  "language.continue": "जारी राख्नुहोस्",
+  "language.saveError": "तपाईँको भाषा सुरक्षित गर्न सकिएन। पुन: प्रयास गर्नुहोस्।",
 } satisfies Record<TranslationKey, string>;
 export default d_ne;

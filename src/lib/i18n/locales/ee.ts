@@ -251,5 +251,14 @@ const d_ee = {
   "auth.pleaseWait": "Taflatse lala...",
   "auth.createAccount": "Wɔ akɔntabubu",
   "auth.genericError": "Nane gblẽ.",
+  "language.loading": "Wole agba tsɔm ɖekae...",
+  "language.connectionError": "Ðekawɔwɔ mete ŋu do ka o.",
+  "language.loadError": "Together meteŋu tsɔ wò gbegbɔgblɔ ƒe tiatiawɔblɔɖewo o.",
+  "language.chooseTitle": "Tia wò gbegbɔgblɔ",
+  "language.description": "Together azã gbe sia le mɔ̃a katã dzi kple na gbegɔmeɖeɖewo le wo ɖokui si.",
+  "language.search": "Di gbegbɔgblɔwo",
+  "language.noMatches": "Gbe aɖeke mesɔ kple wò didi o.",
+  "language.continue": "Yi edzi",
+  "language.saveError": "Mete ŋu dzra wò gbea ɖo o. Gate kpɔ ake.",
 } satisfies Record<TranslationKey, string>;
 export default d_ee;

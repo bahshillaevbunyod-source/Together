@@ -251,5 +251,14 @@ const d_kri = {
   "auth.pleaseWait": "Duya una wet...",
   "auth.createAccount": "Krio akɔn",
   "auth.genericError": "Sɔntin bin rɔng.",
+  "language.loading": "Lod Togɛda...",
+  "language.connectionError": "Tugeda nɔ bin ebul fɔ kɔnɛkt.",
+  "language.loadError": "Tugeda nɔ bin ebul fɔ lod yu langwej prɛferɛns.",
+  "language.chooseTitle": "Pik yu langwej",
+  "language.description": "Tugeda go yuz dis langwej kross di pletfom en fo otomatik transleshon.",
+  "language.search": "Sɔch langwej dɛn",
+  "language.noMatches": "No langwej nɔ de we mach wetin yu de fɛn.",
+  "language.continue": "Kɔntinyu",
+  "language.saveError": "I nɔ bin ebul fɔ sev yu langwej. Tray bak.",
 } satisfies Record<TranslationKey, string>;
 export default d_kri;

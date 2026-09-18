@@ -251,5 +251,14 @@ const d_kk = {
   "auth.pleaseWait": "Күте тұрыңыз…",
   "auth.createAccount": "Тіркелгі жасау",
   "auth.genericError": "Бірдеңе дұрыс болмады.",
+  "language.loading": "Бірге жүктелуде...",
+  "language.connectionError": "Бірге қосыла алмады.",
+  "language.loadError": "Бірге тіл таңдауларыңызды жүктей алмады.",
+  "language.chooseTitle": "Тілді таңдаңыз",
+  "language.description": "Бірге бұл тілді платформада және автоматты аудармалар үшін пайдаланады.",
+  "language.search": "Тілдерді іздеу",
+  "language.noMatches": "Сізге ешбір тіл сәйкес келмейді.",
+  "language.continue": "Жалғастыру",
+  "language.saveError": "Тіліңізді сақтау мүмкін болмады. Қайталап көріңіз.",
 } satisfies Record<TranslationKey, string>;
 export default d_kk;

@@ -251,5 +251,14 @@ const d_ta = {
   "auth.pleaseWait": "தயவுசெய்து காத்திருங்கள்…",
   "auth.createAccount": "கணக்கை உருவாக்கவும்",
   "auth.genericError": "ஏதோ தவறாகிவிட்டது.",
+  "language.loading": "ஒன்றாக ஏற்றுகிறது…",
+  "language.connectionError": "ஒன்றாக இணைக்க முடியவில்லை.",
+  "language.loadError": "உங்கள் மொழி விருப்பங்களை ஒன்றாக ஏற்ற முடியவில்லை.",
+  "language.chooseTitle": "உங்கள் மொழியை தேர்வு செய்யவும்",
+  "language.description": "ஒன்றாக இந்த மொழியை பிளாட்ஃபார்ம் முழுவதும் மற்றும் தானியங்கி மொழிபெயர்ப்புகளுக்கு பயன்படுத்தும்.",
+  "language.search": "மொழிகளைத் தேடு",
+  "language.noMatches": "உங்கள் தேடலுக்கு எந்த மொழியும் பொருந்தவில்லை.",
+  "language.continue": "தொடரவும்",
+  "language.saveError": "உங்கள் மொழியைச் சேமிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
 } satisfies Record<TranslationKey, string>;
 export default d_ta;

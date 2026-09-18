@@ -251,5 +251,14 @@ const d_nus = {
   "auth.pleaseWait": "Ɣän la̱ŋä ji̱ i̱ li̱pɛ...",
   "auth.createAccount": "Ca̱k akaun",
   "auth.genericError": "Tëëkɛ mi cu duer.",
+  "language.loading": "Loading kɛɛl...",
+  "language.connectionError": "Kɛn kɛɛl /ke̱n kɛn rɔ̱ luäŋ kɛ röm.",
+  "language.loadError": "Together /cɛ thokdu min nhɔki luäŋ kɛ loc thi̱n.",
+  "language.chooseTitle": "Kuany thokdu .",
+  "language.description": "Kɛ matdiɛn ba thok ɛmɛ la̱t rɛy plathpuɔm kɛɛliw kɛnɛ kɛ kui̱ lucä mi̱ ca la̱t kärɔa.",
+  "language.search": "Gör thuk",
+  "language.noMatches": "Thiɛlɛ thuk ti cäät kɛ min go̱o̱ri.",
+  "language.continue": "Wä nhia̱m",
+  "language.saveError": "/Cɛ thokdu luäŋ kɛ ga̱ŋ. Ɣɔ̱n ɛ nyɔk.",
 } satisfies Record<TranslationKey, string>;
 export default d_nus;

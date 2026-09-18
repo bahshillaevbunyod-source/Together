@@ -251,5 +251,14 @@ const d_cgg = {
   "auth.pleaseWait": "Hakyiri rindaho...",
   "auth.createAccount": "Taho akawunti",
   "auth.genericError": "Hariho ekyashobya.",
+  "language.loading": "Okutaho Hamwe...",
+  "language.connectionError": "Hamwe tibarikubaasa kukwatiraine.",
+  "language.loadError": "Together tibarikubaasa kutaho orurimi oru orikukunda.",
+  "language.chooseTitle": "Ronda orurimi rwawe",
+  "language.description": "Hamwe nibaija kukoresa orurimi oru omu nkora yoona n’okuvunuura ebirikwekorera.",
+  "language.search": "Ronda endimi",
+  "language.noMatches": "Tihariho ndimi ezirikushushana n'ebi orikuronda.",
+  "language.continue": "Kugumizamu",
+  "language.saveError": "Tibarikubaasa kujuna orurimi rwawe. Gyezaho ogundi murundi.",
 } satisfies Record<TranslationKey, string>;
 export default d_cgg;

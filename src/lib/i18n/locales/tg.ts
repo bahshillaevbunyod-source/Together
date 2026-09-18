@@ -251,5 +251,14 @@ const d_tg = {
   "auth.pleaseWait": "Лутфан интизор шавед…",
   "auth.createAccount": "Ҳисоб эҷод кунед",
   "auth.genericError": "Чизе хато кард.",
+  "language.loading": "Якҷоя бор карда мешавад…",
+  "language.connectionError": "Якҷоя пайваст шуда натавонист.",
+  "language.loadError": "Якҷоя натавонистанд афзалиятҳои забони шуморо бор кунанд.",
+  "language.chooseTitle": "Забони худро интихоб кунед",
+  "language.description": "Якҷоя ин забонро дар тамоми платформа ва барои тарҷумаҳои худкор истифода хоҳанд кард.",
+  "language.search": "Ҷустуҷӯи забонҳо",
+  "language.noMatches": "Ягон забон ба ҷустуҷӯи шумо мувофиқат намекунад.",
+  "language.continue": "Давом додан",
+  "language.saveError": "Забони шуморо захира карда натавонист. Як бори дигар санҷед.",
 } satisfies Record<TranslationKey, string>;
 export default d_tg;

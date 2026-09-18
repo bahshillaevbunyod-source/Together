@@ -251,5 +251,14 @@ const d_lg = {
   "auth.pleaseWait": "Nsaba mulinde...",
   "auth.createAccount": "Tonda akawunti",
   "auth.genericError": "Waliwo ekyatambula obubi.",
+  "language.loading": "Okutikka Wamu...",
+  "language.connectionError": "Okugatta awamu tekwasobodde kuyungibwa.",
+  "language.loadError": "Okugatta awamu tekwasobodde kutikka lulimi lwo lw’oyagala.",
+  "language.chooseTitle": "Londa olulimi lwo",
+  "language.description": "Wamu ejja kukozesa olulimi luno okubuna omukutu era n'okuvvuunula okw'otoma.",
+  "language.search": "Okunoonya ennimi",
+  "language.noMatches": "Tewali nnimi zikwatagana na kunoonya kwo.",
+  "language.continue": "Mugende mu maaso",
+  "language.saveError": "Teyasobodde kutereka lulimi lwo. Gezaako nate.",
 } satisfies Record<TranslationKey, string>;
 export default d_lg;

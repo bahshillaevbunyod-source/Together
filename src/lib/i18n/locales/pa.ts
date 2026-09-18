@@ -251,5 +251,14 @@ const d_pa = {
   "auth.pleaseWait": "ਕਿਰਪਾ ਕਰਕੇ ਉਡੀਕ ਕਰੋ…",
   "auth.createAccount": "ਖਾਤਾ ਬਣਾਓ",
   "auth.genericError": "ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ।",
+  "language.loading": "ਇਕੱਠੇ ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...",
+  "language.connectionError": "ਇਕੱਠੇ ਕਨੈਕਟ ਨਹੀਂ ਹੋ ਸਕੇ।",
+  "language.loadError": "ਇੱਕਠੇ ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਤਰਜੀਹਾਂ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕਰ ਸਕੇ।",
+  "language.chooseTitle": "ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ",
+  "language.description": "Together ਇਸ ਭਾਸ਼ਾ ਨੂੰ ਪਲੇਟਫਾਰਮ ਵਿੱਚ ਅਤੇ ਸਵੈਚਲਿਤ ਅਨੁਵਾਦਾਂ ਲਈ ਵਰਤੇਗਾ।",
+  "language.search": "ਭਾਸ਼ਾਵਾਂ ਦੀ ਖੋਜ ਕਰੋ",
+  "language.noMatches": "ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਕੋਈ ਵੀ ਭਾਸ਼ਾ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ।",
+  "language.continue": "ਜਾਰੀ ਰੱਖੋ",
+  "language.saveError": "ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਨੂੰ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
 } satisfies Record<TranslationKey, string>;
 export default d_pa;

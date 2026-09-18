@@ -251,5 +251,14 @@ const d_pam = {
   "auth.pleaseWait": "Paki manaya...",
   "auth.createAccount": "gawa kang account",
   "auth.genericError": "Atin nang mali.",
+  "language.loading": "Kaka-load na ning Together…",
+  "language.connectionError": "E la makakonekta deng miyabe.",
+  "language.loadError": "Ing Together e malyaring i-load ing kekang amanung kagustuhan.",
+  "language.chooseTitle": "Pilinan me ing kekang amanu",
+  "language.description": "Gamitan mi ya ining amanu keng mabilug a platform ampo para kareng automatic a pamagsalin.",
+  "language.search": "Manintun amanu",
+  "language.noMatches": "Alang amanung makatuglung king kekang panintunan.",
+  "language.continue": "Sundu",
+  "language.saveError": "Eku agyung i-save ing kekang amanu. Subukan meng pasibayu.",
 } satisfies Record<TranslationKey, string>;
 export default d_pam;

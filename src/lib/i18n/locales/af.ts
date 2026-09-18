@@ -251,5 +251,14 @@ const d_af = {
   "auth.pleaseWait": "Wag asseblief...",
   "auth.createAccount": "Skep rekening",
   "auth.genericError": "Iets het verkeerd geloop.",
+  "language.loading": "Laai tans saam …",
+  "language.connectionError": "Together kon nie koppel nie.",
+  "language.loadError": "Together kon nie jou taalvoorkeure laai nie.",
+  "language.chooseTitle": "Kies jou taal",
+  "language.description": "Together sal hierdie taal regoor die platform en vir outomatiese vertalings gebruik.",
+  "language.search": "Soek tale",
+  "language.noMatches": "Geen tale pas by jou soektog nie.",
+  "language.continue": "Gaan voort",
+  "language.saveError": "Kon nie jou taal stoor nie. Probeer weer.",
 } satisfies Record<TranslationKey, string>;
 export default d_af;

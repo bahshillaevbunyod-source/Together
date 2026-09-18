@@ -251,5 +251,14 @@ const d_cs = {
   "auth.pleaseWait": "Čekejte prosím…",
   "auth.createAccount": "Vytvořit účet",
   "auth.genericError": "Něco se pokazilo.",
+  "language.loading": "Načítání společně…",
+  "language.connectionError": "Společně se nelze připojit.",
+  "language.loadError": "Společně se nepodařilo načíst vaše jazykové preference.",
+  "language.chooseTitle": "Vyberte si svůj jazyk",
+  "language.description": "Together bude používat tento jazyk napříč platformou a pro automatické překlady.",
+  "language.search": "Vyhledat jazyky",
+  "language.noMatches": "Vašemu hledání neodpovídají žádné jazyky.",
+  "language.continue": "Pokračovat",
+  "language.saveError": "Nepodařilo se uložit váš jazyk. Zkuste to znovu.",
 } satisfies Record<TranslationKey, string>;
 export default d_cs;

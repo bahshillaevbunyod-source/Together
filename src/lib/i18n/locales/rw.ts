@@ -251,5 +251,14 @@ const d_rw = {
   "auth.pleaseWait": "Nyamuneka tegereza…",
   "auth.createAccount": "Kora konti",
   "auth.genericError": "Ikintu kitagenze neza.",
+  "language.loading": "Kwikorera hamwe…",
+  "language.connectionError": "Twese hamwe ntushobora guhuza.",
+  "language.loadError": "Hamwe hamwe ntushobora kwikorera ururimi ukunda.",
+  "language.chooseTitle": "Hitamo ururimi rwawe",
+  "language.description": "Hamwe na hamwe tuzakoresha uru rurimi kurubuga rwa interineti no kubisobanuro byikora.",
+  "language.search": "Shakisha indimi",
+  "language.noMatches": "Nta ndimi zihuye no gushakisha kwawe.",
+  "language.continue": "Komeza",
+  "language.saveError": "Ntushobora kubika ururimi rwawe. Ongera ugerageze.",
 } satisfies Record<TranslationKey, string>;
 export default d_rw;

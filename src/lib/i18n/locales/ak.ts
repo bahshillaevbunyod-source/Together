@@ -251,5 +251,14 @@ const d_ak = {
   "auth.pleaseWait": "Yɛsrɛ sɛ twɛn...",
   "auth.createAccount": "Yɛ akontaabu",
   "auth.genericError": "Biribi ankɔ yiye.",
+  "language.loading": "Wɔrebom de nneɛma ahyɛ mu...",
+  "language.connectionError": "Wɔabom antumi ankɔ.",
+  "language.loadError": "Together antumi anhyɛ wo kasa a wopɛ.",
+  "language.chooseTitle": "Paw wo kasa",
+  "language.description": "Together de kasa yi bedi dwuma wɔ platform no nyinaa so ne nkyerɛase a ɛyɛ ɔtopae.",
+  "language.search": "Hwehwɛ kasa ahorow",
+  "language.noMatches": "Kasa biara nni hɔ a ɛne wo hwehwɛ no nhyia.",
+  "language.continue": "Kɔ so",
+  "language.saveError": "Entumi nkora wo kasa so. Sɔ hwɛ bio.",
 } satisfies Record<TranslationKey, string>;
 export default d_ak;

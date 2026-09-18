@@ -251,5 +251,14 @@ const d_din = {
   "auth.pleaseWait": "Yïn thiëcku ba tïït...",
   "auth.createAccount": "Lok akɔɔn",
   "auth.genericError": "Këdäŋ acï rɛ̈ɛ̈c.",
+  "language.loading": "Tääu ë Tök...",
+  "language.connectionError": "Ku ë tök acïï lëu bïk röt rek.",
+  "language.loadError": "Töŋë acïï lëu bïk thoŋdu tääu thïn.",
+  "language.chooseTitle": "Kuany thoŋdu",
+  "language.description": "Together abï thoŋ kënë luɔ̈ɔ̈i në thäät yiic ku në thäät yiic ke thäät yiic.",
+  "language.search": "Kɔɔr thook",
+  "language.noMatches": "Acïn thook ye thöŋ ke kë kɔɔr.",
+  "language.continue": "Kë lɔ̈",
+  "language.saveError": "Acï lëu bï thoŋdu gël. Dhɔ̈l them.",
 } satisfies Record<TranslationKey, string>;
 export default d_din;

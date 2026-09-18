@@ -251,5 +251,14 @@ const d_yi = {
   "auth.pleaseWait": "ביטע וואַרטן…",
   "auth.createAccount": "שאַפֿן אַ חשבון",
   "auth.genericError": "עפּעס איז פאַלש.",
+  "language.loading": "לאָודינג צוזאַמען...",
+  "language.connectionError": "צוזאַמען קען נישט פאַרבינדן.",
+  "language.loadError": "Together קען נישט לאָדן דיין שפּראַך פּרעפֿערענצן.",
+  "language.chooseTitle": "קלייַבן דיין שפּראַך",
+  "language.description": "Together וועט נוצן די שפּראַך איבער דער פּלאַטפאָרמע און פֿאַר אָטאַמאַטיק איבערזעצונגען.",
+  "language.search": "זוכן שפראכן",
+  "language.noMatches": "קיין שפראכן שטימען מיט דיין זוך.",
+  "language.continue": "פאָרזעצן",
+  "language.saveError": "קען נישט ראַטעווען דיין שפּראַך. פּרוּווט ווידער.",
 } satisfies Record<TranslationKey, string>;
 export default d_yi;

@@ -251,5 +251,14 @@ const d_et = {
   "auth.pleaseWait": "Palun oota…",
   "auth.createAccount": "Loo konto",
   "auth.genericError": "Midagi läks valesti.",
+  "language.loading": "Laaditakse koos…",
+  "language.connectionError": "Together ei saanud ühendust luua.",
+  "language.loadError": "Together ei saanud teie keele-eelistusi laadida.",
+  "language.chooseTitle": "Valige keel",
+  "language.description": "Together kasutab seda keelt kogu platvormil ja automaatsete tõlgete jaoks.",
+  "language.search": "Otsi keeli",
+  "language.noMatches": "Teie otsingule ei vasta ükski keel.",
+  "language.continue": "Jätka",
+  "language.saveError": "Teie keelt ei saanud salvestada. Proovige uuesti.",
 } satisfies Record<TranslationKey, string>;
 export default d_et;

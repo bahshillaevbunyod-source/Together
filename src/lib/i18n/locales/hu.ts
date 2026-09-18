@@ -251,5 +251,14 @@ const d_hu = {
   "auth.pleaseWait": "Kérjük, várjon…",
   "auth.createAccount": "Hozzon létre fiókot",
   "auth.genericError": "Valami elromlott.",
+  "language.loading": "Betöltés együtt…",
+  "language.connectionError": "A Together nem tudott csatlakozni.",
+  "language.loadError": "A Together nem tudta betölteni a nyelvi beállításait.",
+  "language.chooseTitle": "Válaszd ki a nyelved",
+  "language.description": "A Together ezt a nyelvet fogja használni az egész platformon és az automatikus fordításokhoz.",
+  "language.search": "Nyelvek keresése",
+  "language.noMatches": "Egyetlen nyelv sem felel meg a keresésnek.",
+  "language.continue": "Folytatás",
+  "language.saveError": "Nem sikerült menteni a nyelvet. Próbálja újra.",
 } satisfies Record<TranslationKey, string>;
 export default d_hu;

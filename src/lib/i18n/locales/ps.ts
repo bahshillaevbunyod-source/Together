@@ -251,5 +251,14 @@ const d_ps = {
   "auth.pleaseWait": "مهرباني وکړئ انتظار وکړئ…",
   "auth.createAccount": "حساب جوړ کړئ",
   "auth.genericError": "یو څه غلط شو.",
+  "language.loading": "په ګډه بار کول...",
+  "language.connectionError": "یوځای سره وصل نشو.",
+  "language.loadError": "یوځای نشي کولی ستاسو د ژبې غوره توبونه پورته کړي.",
+  "language.chooseTitle": "خپله ژبه وټاکئ",
+  "language.description": "په ګډه به دا ژبه په ټول پلیټ فارم کې او د اتوماتیک ژباړې لپاره وکاروئ.",
+  "language.search": "ژبو وپلټئ",
+  "language.noMatches": "هیڅ ژبه ستاسو د لټون سره سمون نه خوري.",
+  "language.continue": "ادامه ورکړئ",
+  "language.saveError": "نشي کولی ستاسو ژبه خوندي کړي. بیا هڅه وکړئ.",
 } satisfies Record<TranslationKey, string>;
 export default d_ps;

@@ -251,5 +251,14 @@ const d_mai = {
   "auth.pleaseWait": "कृपया प्रतीक्षा करू...",
   "auth.createAccount": "खाता बनाये",
   "auth.genericError": "किछु गड़बड़ भ’ गेलै।",
+  "language.loading": "एक साथ लोड हो रहल अछि...",
+  "language.connectionError": "एक संग कनेक्ट नहि भ’ सकल.",
+  "language.loadError": "एक संग अहाँक भाषा वरीयता लोड नहि क’ सकल.",
+  "language.chooseTitle": "अपन भाषा चुनू",
+  "language.description": "एक साथ ई भाषा के उपयोग पूरा प्लेटफॉर्म पर आरू स्वचालित अनुवाद के लेलऽ करतै.",
+  "language.search": "खोज भाषाएँ",
+  "language.noMatches": "कोनो भाषा अहाँक खोज सँ मेल नहि खाइत अछि.",
+  "language.continue": "जारी रहू",
+  "language.saveError": "अपन भाषा केँ सहेजल नहि सकल. पुनः प्रयास करू.",
 } satisfies Record<TranslationKey, string>;
 export default d_mai;

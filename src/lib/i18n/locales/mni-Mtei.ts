@@ -251,5 +251,14 @@ const d_mni_Mtei = {
   "auth.pleaseWait": "ꯆꯥꯅꯕꯤꯗꯨꯅꯥ ꯉꯥꯏꯕꯤꯌꯨ...",
   "auth.createAccount": "ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯝꯕꯥ꯫",
   "auth.genericError": "ꯀꯔꯤꯒꯨꯝꯕꯥ ꯈꯔꯥ ꯑꯁꯣꯌꯕꯥ ꯑꯃꯥ ꯊꯣꯀꯈꯤ꯫",
+  "language.loading": "ꯄꯨꯟꯅꯥ ꯂꯣꯗ ꯇꯧꯔꯤ...",
+  "language.connectionError": "ꯄꯨꯟꯅꯥ ꯀꯅꯦꯛꯇ ꯇꯧꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫",
+  "language.loadError": "ꯄꯨꯟꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯂꯣꯂꯒꯤ ꯄꯁꯟꯗꯁꯤꯡ ꯂꯣꯗ ꯇꯧꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫",
+  "language.chooseTitle": "ꯑꯗꯣꯃꯒꯤ ꯂꯣꯜ ꯈꯅꯕꯤꯌꯨ",
+  "language.description": "ꯄꯨꯟꯅꯥ ꯄ꯭ꯂꯦꯠꯐꯣꯔꯝ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯑꯃꯁꯨꯡ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯑꯣꯏꯅꯥ ꯍꯟꯗꯣꯀꯄꯒꯤ ꯊꯕꯛꯇꯥ ꯂꯣꯜ ꯑꯁꯤ ꯁꯤꯖꯤꯟꯅꯒꯅꯤ꯫",
+  "language.search": "ꯂꯣꯂꯁꯤꯡ ꯊꯤꯕꯥ",
+  "language.noMatches": "ꯑꯗꯣꯃꯒꯤ ꯊꯤꯖꯤꯅꯕꯒꯤ ꯊꯕꯛ ꯑꯁꯤꯒꯥ ꯃꯥꯟꯅꯕꯥ ꯂꯣꯜ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫",
+  "language.continue": "ꯃꯈꯥ ꯆꯠꯊꯕꯥ",
+  "language.saveError": "ꯑꯗꯣꯃꯒꯤ ꯂꯣꯜ ꯁꯦꯚ ꯇꯧꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯧ꯫",
 } satisfies Record<TranslationKey, string>;
 export default d_mni_Mtei;

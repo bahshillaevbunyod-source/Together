@@ -251,5 +251,14 @@ const d_my = {
   "auth.pleaseWait": "ကျေးဇူးပြု၍ စောင့်ပါ...",
   "auth.createAccount": "အကောင့်ဖန်တီးပါ။",
   "auth.genericError": "တစ်ခုခုမှားသွားသည်။",
+  "language.loading": "အတူတကွ တင်နေသည်…",
+  "language.connectionError": "အတူတကွ မချိတ်ဆက်နိုင်ပါ။",
+  "language.loadError": "အတူတကွ သင့်ဘာသာစကား စိတ်ကြိုက်များကို တင်၍မရပါ။",
+  "language.chooseTitle": "သင့်ဘာသာစကားကိုရွေးချယ်ပါ",
+  "language.description": "ဤဘာသာစကားကို ပလပ်ဖောင်းတစ်လျှောက်နှင့် အလိုအလျောက်ဘာသာပြန်ခြင်းများအတွက် အတူတကွ အသုံးပြုပါမည်။",
+  "language.search": "ဘာသာစကားများရှာဖွေ",
+  "language.noMatches": "သင့်ရှာဖွေမှုနှင့် ကိုက်ညီသည့် ဘာသာစကားမရှိပါ။",
+  "language.continue": "ဆက်ရန်",
+  "language.saveError": "သင့်ဘာသာစကားကို သိမ်းဆည်း၍မရပါ။ ထပ်စမ်းကြည့်ပါ။",
 } satisfies Record<TranslationKey, string>;
 export default d_my;

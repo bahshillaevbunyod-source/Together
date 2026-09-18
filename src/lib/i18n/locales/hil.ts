@@ -251,5 +251,14 @@ const d_hil = {
   "auth.pleaseWait": "Palihog hulat...",
   "auth.createAccount": "Maghimo sang account",
   "auth.genericError": "May naglain.",
+  "language.loading": "Naga-load nga Mag-upod...",
+  "language.connectionError": "Ang magkaupod indi makakonektar.",
+  "language.loadError": "Ang Together indi maka-load sang imo mga gusto sa lenguahe.",
+  "language.chooseTitle": "Pilia ang imo lenguahe",
+  "language.description": "Ang Together magagamit sini nga lenguahe sa bug-os nga plataporma kag para sa awtomatiko nga mga paglubad.",
+  "language.search": "Pangitaa ang mga lenguahe",
+  "language.noMatches": "Wala sing mga lenguahe nga nagahisanto sa imo ginapangita.",
+  "language.continue": "Magpadayon",
+  "language.saveError": "Indi maluwas ang imo lenguahe. Tilawi liwat.",
 } satisfies Record<TranslationKey, string>;
 export default d_hil;

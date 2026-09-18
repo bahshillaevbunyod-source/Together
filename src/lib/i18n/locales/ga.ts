@@ -251,5 +251,14 @@ const d_ga = {
   "auth.pleaseWait": "Fan le do thoil…",
   "auth.createAccount": "Cruthaigh cuntas",
   "auth.genericError": "Chuaigh rud éigin mícheart.",
+  "language.loading": "Ag Luchtú le Chéile…",
+  "language.connectionError": "Níorbh fhéidir ceangal le chéile.",
+  "language.loadError": "Níorbh fhéidir le chéile do shainroghanna teanga a lódáil.",
+  "language.chooseTitle": "Roghnaigh do theanga",
+  "language.description": "Úsáidfear an teanga seo le chéile ar fud an ardáin agus le haghaidh aistriúcháin uathoibríocha.",
+  "language.search": "Teangacha cuardaigh",
+  "language.noMatches": "Ní thagann teanga ar bith le do chuardach.",
+  "language.continue": "Ar aghaidh",
+  "language.saveError": "Níorbh fhéidir do theanga a shábháil. Bain triail eile as.",
 } satisfies Record<TranslationKey, string>;
 export default d_ga;

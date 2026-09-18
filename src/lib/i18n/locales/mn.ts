@@ -251,5 +251,14 @@ const d_mn = {
   "auth.pleaseWait": "Хүлээгээрэй...",
   "auth.createAccount": "Бүртгэл үүсгэх",
   "auth.genericError": "Ямар нэг алдаа гарлаа.",
+  "language.loading": "Хамтдаа ачаалж байна...",
+  "language.connectionError": "Хамтдаа холбогдож чадсангүй.",
+  "language.loadError": "Хамтдаа таны хэлний тохиргоог ачаалж чадсангүй.",
+  "language.chooseTitle": "Хэлээ сонго",
+  "language.description": "Хамтдаа энэ хэлийг платформ болон автомат орчуулгад ашиглах болно.",
+  "language.search": "Хэл хайх",
+  "language.noMatches": "Таны хайлтад тохирох хэл олдсонгүй.",
+  "language.continue": "Үргэлжлүүлэх",
+  "language.saveError": "Таны хэлийг хадгалж чадсангүй. Дахин оролдоно уу.",
 } satisfies Record<TranslationKey, string>;
 export default d_mn;

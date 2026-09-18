@@ -251,5 +251,14 @@ const d_bik = {
   "auth.pleaseWait": "Halaton tabi...",
   "auth.createAccount": "Magmukna nin account",
   "auth.genericError": "May nangyaring sala.",
+  "language.loading": "Magkaibanan an Pagkarga...",
+  "language.connectionError": "Dai nakakonektar an magkaibanan.",
+  "language.loadError": "Dai kayang i-load kan Together an saimong mga kagustuhan sa tataramon.",
+  "language.chooseTitle": "Pilion an saimong tataramon",
+  "language.description": "An Together gagamiton an tataramon na ini sa bilog na plataporma asin para sa mga awtomatikong traduksiyon.",
+  "language.search": "Maghanap nin mga tataramon",
+  "language.noMatches": "Mayo nin mga tataramon na nakakatugma sa saimong pighahanap.",
+  "language.continue": "Magpadagos",
+  "language.saveError": "Dai nailigtas an saimong tataramon. Probaran giraray.",
 } satisfies Record<TranslationKey, string>;
 export default d_bik;

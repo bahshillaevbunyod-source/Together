@@ -251,5 +251,14 @@ const d_ca = {
   "auth.pleaseWait": "Si us plau, espereu...",
   "auth.createAccount": "Crea un compte",
   "auth.genericError": "Alguna cosa va fallar.",
+  "language.loading": "S'està carregant junts...",
+  "language.connectionError": "Together no s'ha pogut connectar.",
+  "language.loadError": "Together no ha pogut carregar les teves preferències d'idioma.",
+  "language.chooseTitle": "Tria el teu idioma",
+  "language.description": "Together utilitzarà aquest idioma a tota la plataforma i per a traduccions automàtiques.",
+  "language.search": "Cerca idiomes",
+  "language.noMatches": "Cap idioma coincideix amb la teva cerca.",
+  "language.continue": "Continua",
+  "language.saveError": "No s'ha pogut desar el vostre idioma. Torna-ho a provar.",
 } satisfies Record<TranslationKey, string>;
 export default d_ca;

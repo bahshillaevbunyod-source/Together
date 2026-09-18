@@ -251,5 +251,14 @@ const es = {
   "auth.pleaseWait": "Por favor espera...",
   "auth.createAccount": "Crear cuenta",
   "auth.genericError": "Algo salió mal.",
+  "language.loading": "Cargando juntos…",
+  "language.connectionError": "Together no pudo conectarse.",
+  "language.loadError": "Together no pudo cargar tus preferencias de idioma.",
+  "language.chooseTitle": "Elige tu idioma",
+  "language.description": "Together utilizará este idioma en toda la plataforma y para traducciones automáticas.",
+  "language.search": "Idiomas de búsqueda",
+  "language.noMatches": "Ningún idioma coincide con su búsqueda.",
+  "language.continue": "Continuar",
+  "language.saveError": "No se pudo guardar el idioma. Inténtalo de nuevo.",
 } satisfies Record<TranslationKey, string>;
 export default es;

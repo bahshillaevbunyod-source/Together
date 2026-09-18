@@ -251,5 +251,14 @@ const d_pa_Arab = {
   "auth.pleaseWait": "مہربانی کر کے انتظار کرو...",
   "auth.createAccount": "اکاؤنٹ بناؤ",
   "auth.genericError": "کجھ غلط ہو گیا۔",
+  "language.loading": "اکٹھے لوڈ ہو رئے آں...",
+  "language.connectionError": "اکٹھے جڑ نئیں سکے۔",
+  "language.loadError": "اکٹھے تہاڈی بولی دی ترجیحات لوڈ نئیں کر سکے۔",
+  "language.chooseTitle": "اپنی بولی چنو",
+  "language.description": "اکٹھے اس بولی نو پلیٹ فارم تے خودکار ترجمے دے لیی استعمال کراں گے۔",
+  "language.search": "بولیاں لبھو",
+  "language.noMatches": "کوئی بولی تہاڈی کھوج نال میل نئیں کھاندی۔",
+  "language.continue": "جاری رکھو",
+  "language.saveError": "تہاڈی بولی نئیں بچا سکیا۔ فیر کوشش کرو۔",
 } satisfies Record<TranslationKey, string>;
 export default d_pa_Arab;

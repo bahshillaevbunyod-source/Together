@@ -251,5 +251,14 @@ const d_luo = {
   "auth.pleaseWait": "Yie irit...",
   "auth.createAccount": "Los akaunt",
   "auth.genericError": "Gimoro ne ok odhi maber.",
+  "language.loading": "Waketo Kaachiel...",
+  "language.connectionError": "Kaachiel ne ok nyal tudruok.",
+  "language.loadError": "Kaachiel ok nyal keto dhok ma ihero.",
+  "language.chooseTitle": "Yier dhok ma itiyogo",
+  "language.description": "Kaachiel, wabiro tiyo kod dhokno e mbui duto kendo e loko dhok ma otomatik.",
+  "language.search": "Manyo dhok",
+  "language.noMatches": "Onge dhok ma chal gi gima idwaro.",
+  "language.continue": "Dhi nyime",
+  "language.saveError": "Ne ok nyal rito dhok mari. Tem kendo.",
 } satisfies Record<TranslationKey, string>;
 export default d_luo;

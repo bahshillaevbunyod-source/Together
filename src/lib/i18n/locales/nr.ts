@@ -251,5 +251,14 @@ const d_nr = {
   "auth.pleaseWait": "Ngibawa ulinde...",
   "auth.createAccount": "Yenza i-akhawundi",
   "auth.genericError": "Kukhona okungahambi kuhle.",
+  "language.loading": "Ukulayisha Ndawonye...",
+  "language.connectionError": "Bobabili azange bakghone ukuxhumana.",
+  "language.loadError": "I-Together ayikghoni ukulayisha iintandokazi zakho zolimi.",
+  "language.chooseTitle": "Khetha ilimi lakho",
+  "language.description": "Ngokubambisana sizokusebenzisa ilimi leli kiyo yoke ipulatifomu begodu nokutjhugulula okuzenzakalelayo.",
+  "language.search": "Sesha amalimi",
+  "language.noMatches": "Awekho amalimi ahambelana nokufuna kwakho.",
+  "language.continue": "Raga",
+  "language.saveError": "Angeze wakghona ukulondoloza ilimi lakho. Linga godu.",
 } satisfies Record<TranslationKey, string>;
 export default d_nr;

@@ -251,5 +251,14 @@ const d_fy = {
   "auth.pleaseWait": "Wachtsje asjebleaft...",
   "auth.createAccount": "Meitsje akkount",
   "auth.genericError": "Der gie wat mis.",
+  "language.loading": "Tegearre laden…",
+  "language.connectionError": "Tegearre koe gjin ferbining meitsje.",
+  "language.loadError": "Together koe jo taalfoarkar net lade.",
+  "language.chooseTitle": "Kies jo taal",
+  "language.description": "Together sil dizze taal brûke oer it platfoarm en foar automatyske oersettingen.",
+  "language.search": "Talen sykje",
+  "language.noMatches": "Gjin talen oerienkomme mei jo sykopdracht.",
+  "language.continue": "Trochgean",
+  "language.saveError": "Kin jo taal net bewarje. Besykje it nochris.",
 } satisfies Record<TranslationKey, string>;
 export default d_fy;

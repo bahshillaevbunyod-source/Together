@@ -251,5 +251,14 @@ const uz = {
   "auth.pleaseWait": "Iltimos, kuting…",
   "auth.createAccount": "Hisob yaratish",
   "auth.genericError": "Nimadir xato ketdi.",
+  "language.loading": "Birga yuklanmoqda…",
+  "language.connectionError": "Birgalikda ulanib bo'lmadi.",
+  "language.loadError": "Birgalikda til sozlamalaringizni yuklay olmadi.",
+  "language.chooseTitle": "Tilingizni tanlang",
+  "language.description": "Birgalikda bu til platformada va avtomatik tarjimalar uchun ishlatiladi.",
+  "language.search": "Tillarni qidirish",
+  "language.noMatches": "Qidiruvingizga mos til topilmadi.",
+  "language.continue": "Davom et",
+  "language.saveError": "Tilingizni saqlab boʻlmadi. Qayta urinib koʻring.",
 } satisfies Record<TranslationKey, string>;
 export default uz;

@@ -251,5 +251,14 @@ const d_fa = {
   "auth.pleaseWait": "لطفا صبر کنید…",
   "auth.createAccount": "ایجاد حساب کاربری",
   "auth.genericError": "مشکلی پیش آمد.",
+  "language.loading": "در حال بارگیری با هم…",
+  "language.connectionError": "به هم متصل نشد.",
+  "language.loadError": "ترجیحات زبان شما بارگیری نشد.",
+  "language.chooseTitle": "زبان خود را انتخاب کنید",
+  "language.description": "Together از این زبان در سراسر پلتفرم و برای ترجمه خودکار استفاده می‌کند.",
+  "language.search": "جستجوی زبان",
+  "language.noMatches": "هیچ زبانی با جستجوی شما مطابقت ندارد.",
+  "language.continue": "ادامه",
+  "language.saveError": "زبان شما ذخیره نشد. دوباره امتحان کنید.",
 } satisfies Record<TranslationKey, string>;
 export default d_fa;

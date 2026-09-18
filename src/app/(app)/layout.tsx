@@ -9,6 +9,9 @@ import { useAuth } from "@/lib/auth-context";
 import { getProfile } from "@/lib/api";
 import { LanguageProvider } from "@/lib/language-context";
 import { RealtimeProvider } from "@/lib/realtime-context";
+// Pre-AppShell gate states render before the LanguageProvider mounts, so they
+// use the canonical English dictionary (English fallback + LTR).
+import en from "@/lib/i18n/locales/en";
 
 type ProfileStatus = "loading" | "ready" | "error";
 
@@ -70,17 +73,17 @@ export default function AppGroupLayout({
         />
         {status === "error" ? (
           <>
-            <span className="text-sm text-muted">Together couldn’t connect.</span>
+            <span className="text-sm text-muted">{en["language.connectionError"]}</span>
             <button
               type="button"
               onClick={() => void refresh()}
               className="rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
             >
-              Retry
+              {en["search.tryAgain"]}
             </button>
           </>
         ) : (
-          <span className="text-sm text-muted">Loading Together…</span>
+          <span className="text-sm text-muted">{en["language.loading"]}</span>
         )}
       </div>
     );
@@ -89,13 +92,13 @@ export default function AppGroupLayout({
   if (profileStatus === "error") {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background">
-        <span className="text-sm text-muted">Together couldn’t load your language preferences.</span>
+        <span className="text-sm text-muted">{en["language.loadError"]}</span>
         <button
           type="button"
           onClick={() => void loadProfile()}
           className="rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
         >
-          Retry
+          {en["search.tryAgain"]}
         </button>
       </div>
     );
@@ -104,7 +107,7 @@ export default function AppGroupLayout({
   if (profileStatus !== "ready" || platformLanguage === null) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <span className="text-sm text-muted">Loading Together…</span>
+        <span className="text-sm text-muted">{en["language.loading"]}</span>
       </div>
     );
   }

@@ -251,5 +251,14 @@ const d_co = {
   "auth.pleaseWait": "Per piacè aspettate…",
   "auth.createAccount": "Crea un contu",
   "auth.genericError": "Qualcosa hè andatu male.",
+  "language.loading": "Caricamentu Inseme…",
+  "language.connectionError": "Together ùn pudia micca cunnette.",
+  "language.loadError": "Together ùn hà micca pussutu carricà e vostre preferenze di lingua.",
+  "language.chooseTitle": "Sceglite a vostra lingua",
+  "language.description": "Together aduprà sta lingua in tutta a piattaforma è per traduzzione automatica.",
+  "language.search": "Cerca lingue",
+  "language.noMatches": "Nisuna lingua currisponde à a vostra ricerca.",
+  "language.continue": "Cuntinuà",
+  "language.saveError": "Ùn si pudia salvà a vostra lingua. Pruvate di novu.",
 } satisfies Record<TranslationKey, string>;
 export default d_co;

@@ -251,5 +251,14 @@ const d_vi = {
   "auth.pleaseWait": "Xin vui lòng chờ…",
   "auth.createAccount": "Tạo tài khoản",
   "auth.genericError": "Đã xảy ra lỗi.",
+  "language.loading": "Đang tải cùng nhau…",
+  "language.connectionError": "Không thể kết nối cùng nhau.",
+  "language.loadError": "Together không thể tải tùy chọn ngôn ngữ của bạn.",
+  "language.chooseTitle": "Chọn ngôn ngữ của bạn",
+  "language.description": "Cùng nhau sử dụng ngôn ngữ này trên nền tảng và cho các bản dịch tự động.",
+  "language.search": "Tìm kiếm ngôn ngữ",
+  "language.noMatches": "Không có ngôn ngữ nào phù hợp với tìm kiếm của bạn.",
+  "language.continue": "Tiếp tục",
+  "language.saveError": "Không thể lưu ngôn ngữ của bạn. Hãy thử lại.",
 } satisfies Record<TranslationKey, string>;
 export default d_vi;

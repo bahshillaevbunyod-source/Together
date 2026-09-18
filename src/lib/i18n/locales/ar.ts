@@ -251,5 +251,14 @@ const ar = {
   "auth.pleaseWait": "من فضلك انتظر...",
   "auth.createAccount": "إنشاء حساب",
   "auth.genericError": "حدث خطأ ما.",
+  "language.loading": "جاري التحميل معًا...",
+  "language.connectionError": "تعذر الاتصال معًا.",
+  "language.loadError": "تعذر تحميل تفضيلات اللغة معًا.",
+  "language.chooseTitle": "اختر لغتك",
+  "language.description": "سنستخدم معًا هذه اللغة عبر النظام الأساسي وللترجمات التلقائية.",
+  "language.search": "البحث في اللغات",
+  "language.noMatches": "لا توجد لغات تطابق بحثك.",
+  "language.continue": "متابعة",
+  "language.saveError": "تعذر حفظ لغتك. حاول مرة أخرى.",
 } satisfies Record<TranslationKey, string>;
 export default ar;

@@ -251,5 +251,14 @@ const d_pag = {
   "auth.pleaseWait": "Manalagar kayo pa...",
   "auth.createAccount": "Manggawa na account",
   "auth.genericError": "Walay agawan aliwa.",
+  "language.loading": "On-lo-load so Together…",
+  "language.connectionError": "Ag akakonekta so Together.",
+  "language.loadError": "Ag na-load na Together so labay mon lenguahe.",
+  "language.chooseTitle": "Pilien so lenguahem",
+  "language.description": "Usaren na Together iyan lenguahe ed interon plataporma tan parad automatikon patalos.",
+  "language.search": "Mananap na saray lenguahe",
+  "language.noMatches": "Anggapoy lenguahe ya mipara ed aanapen mo.",
+  "language.continue": "Ituloy",
+  "language.saveError": "Agko na-save so lenguahe yo. Salien lamet.",
 } satisfies Record<TranslationKey, string>;
 export default d_pag;

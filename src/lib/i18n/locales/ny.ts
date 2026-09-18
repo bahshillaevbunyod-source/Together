@@ -251,5 +251,14 @@ const d_ny = {
   "auth.pleaseWait": "Chonde dikirani…",
   "auth.createAccount": "Pangani akaunti",
   "auth.genericError": "Chinachake chalakwika.",
+  "language.loading": "Kutsegula Limodzi…",
+  "language.connectionError": "Pamodzi sinathe kulumikizana.",
+  "language.loadError": "Pamodzi sitingathe kutsitsa zokonda zanu.",
+  "language.chooseTitle": "Sankhani chilankhulo chanu",
+  "language.description": "Pamodzi tigwiritsa ntchito chilankhulochi papulatifomu komanso kumasulira zokha.",
+  "language.search": "Sakani zinenero",
+  "language.noMatches": "Palibe zinenero zofanana ndi zomwe mukufufuza.",
+  "language.continue": "Pitirizani",
+  "language.saveError": "Sizinathe kusunga chilankhulo chanu. Yesaninso.",
 } satisfies Record<TranslationKey, string>;
 export default d_ny;

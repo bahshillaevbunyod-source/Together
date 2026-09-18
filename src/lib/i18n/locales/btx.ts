@@ -251,5 +251,14 @@ const d_btx = {
   "auth.pleaseWait": "Tolong timai...",
   "auth.createAccount": "Erbahan akun",
   "auth.genericError": "Lit si la mehuli si terjadi.",
+  "language.loading": "Muat Ras-ras...",
+  "language.connectionError": "Ras-ras la banci erhubungen.",
+  "language.loadError": "Ras-ras la banci muat pilihen bahasandu.",
+  "language.chooseTitle": "Pilihlah bahasandu .",
+  "language.description": "Ras-ras nggunaken bahasa enda i belang-belang platform ras guna terjemahen otomatis.",
+  "language.search": "Daramilah bahasa .",
+  "language.noMatches": "La lit bahasa si cocok ras si idaramindu.",
+  "language.continue": "Minter",
+  "language.saveError": "Labo banci iselamatkenndu bahasandu. Cubakenndu mulihi.",
 } satisfies Record<TranslationKey, string>;
 export default d_btx;

@@ -251,5 +251,14 @@ const d_hi = {
   "auth.pleaseWait": "कृपया प्रतीक्षा करें...",
   "auth.createAccount": "खाता बनाएं",
   "auth.genericError": "कुछ गलत हो गया।",
+  "language.loading": "एक साथ लोड हो रहा है...",
+  "language.connectionError": "टुगेदर कनेक्ट नहीं हो सका.",
+  "language.loadError": "Together आपकी भाषा प्राथमिकताओं को लोड नहीं कर सका.",
+  "language.chooseTitle": "अपनी भाषा चुनें",
+  "language.description": "टुगेदर पूरे प्लेटफॉर्म पर और स्वचालित अनुवाद के लिए इस भाषा का उपयोग करेगा।",
+  "language.search": "भाषाएं खोजें",
+  "language.noMatches": "कोई भी भाषा आपकी खोज से मेल नहीं खाती.",
+  "language.continue": "जारी रखें",
+  "language.saveError": "आपकी भाषा सहेजी नहीं जा सकी. पुनः प्रयास करें.",
 } satisfies Record<TranslationKey, string>;
 export default d_hi;

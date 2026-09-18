@@ -251,5 +251,14 @@ const d_hy = {
   "auth.pleaseWait": "Խնդրում ենք սպասել…",
   "auth.createAccount": "Ստեղծել հաշիվ",
   "auth.genericError": "Սխալ առաջացավ։",
+  "language.loading": "Բեռնում ենք միասին…",
+  "language.connectionError": "Միասին չհաջողվեց միանալ:",
+  "language.loadError": "Միասին չհաջողվեց բեռնել ձեր լեզվի նախապատվությունները:",
+  "language.chooseTitle": "Ընտրեք ձեր լեզուն",
+  "language.description": "Together-ը կօգտագործի այս լեզուն հարթակում և ավտոմատ թարգմանությունների համար:",
+  "language.search": "Որոնել լեզուներ",
+  "language.noMatches": "Ոչ մի լեզու չի համապատասխանում ձեր որոնմանը:",
+  "language.continue": "Շարունակել",
+  "language.saveError": "Չհաջողվեց պահպանել ձեր լեզուն: Փորձեք նորից։",
 } satisfies Record<TranslationKey, string>;
 export default d_hy;

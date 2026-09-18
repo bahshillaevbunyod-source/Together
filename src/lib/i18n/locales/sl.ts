@@ -251,5 +251,14 @@ const d_sl = {
   "auth.pleaseWait": "Počakajte prosim ...",
   "auth.createAccount": "Ustvari račun",
   "auth.genericError": "Nekaj ​​je šlo narobe.",
+  "language.loading": "Nalaganje skupaj ...",
+  "language.connectionError": "Together se ni mogel povezati.",
+  "language.loadError": "Together ni mogel naložiti vaših jezikovnih nastavitev.",
+  "language.chooseTitle": "Izberite svoj jezik",
+  "language.description": "Together bo uporabljal ta jezik na celotni platformi in za samodejne prevode.",
+  "language.search": "Išči jezike",
+  "language.noMatches": "Z vašim iskanjem se ne ujema noben jezik.",
+  "language.continue": "Nadaljuj",
+  "language.saveError": "Ni bilo mogoče shraniti vašega jezika. Poskusite znova.",
 } satisfies Record<TranslationKey, string>;
 export default d_sl;

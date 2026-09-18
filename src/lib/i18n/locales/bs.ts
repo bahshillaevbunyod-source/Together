@@ -251,5 +251,14 @@ const d_bs = {
   "auth.pleaseWait": "Molimo pričekajte…",
   "auth.createAccount": "Kreirajte nalog",
   "auth.genericError": "Nešto je pošlo po zlu.",
+  "language.loading": "Učitavanje zajedno…",
+  "language.connectionError": "Zajedno se nije moglo povezati.",
+  "language.loadError": "Zajedno nije moguće učitati vaše jezičke postavke.",
+  "language.chooseTitle": "Odaberite svoj jezik",
+  "language.description": "Zajedno će koristiti ovaj jezik na cijeloj platformi i za automatske prijevode.",
+  "language.search": "Traži jezike",
+  "language.noMatches": "Nijedan jezik ne odgovara vašem pretraživanju.",
+  "language.continue": "Nastavi",
+  "language.saveError": "Nije moguće sačuvati vaš jezik. Pokušajte ponovo.",
 } satisfies Record<TranslationKey, string>;
 export default d_bs;

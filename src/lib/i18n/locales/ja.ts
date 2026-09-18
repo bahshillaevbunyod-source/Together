@@ -251,5 +251,14 @@ const ja = {
   "auth.pleaseWait": "お待ちください…",
   "auth.createAccount": "アカウントを作成する",
   "auth.genericError": "何か問題が発生しました。",
+  "language.loading": "一緒に読み込んでいます…",
+  "language.connectionError": "Together 接続できませんでした。",
+  "language.loadError": "Together は言語設定を読み込めませんでした。",
+  "language.chooseTitle": "言語を選択してください",
+  "language.description": "Together はプラットフォーム全体および自動翻訳にこの言語を使用します。",
+  "language.search": "言語を検索",
+  "language.noMatches": "検索に一致する言語はありません。",
+  "language.continue": "続行",
+  "language.saveError": "言語を保存できませんでした。もう一度お試しください。",
 } satisfies Record<TranslationKey, string>;
 export default ja;

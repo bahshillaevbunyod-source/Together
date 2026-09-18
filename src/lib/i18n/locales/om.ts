@@ -251,5 +251,14 @@ const d_om = {
   "auth.pleaseWait": "Mee eegaa...",
   "auth.createAccount": "Akkaawuntii uumuu",
   "auth.genericError": "Waan tokkotu dogoggora ta'e.",
+  "language.loading": "Walitti Fe'aa Jira...",
+  "language.connectionError": "Waliin walqabsiisuu hin dandeenye.",
+  "language.loadError": "Waliin filannoo afaanii kee fe’uu hin dandeenye.",
+  "language.chooseTitle": "Afaan kee filadhu",
+  "language.description": "Together afaan kana waltajjii guutuu fi hiikkaa ofumaan ni fayyadama.",
+  "language.search": "Afaanota barbaadi",
+  "language.noMatches": "Afaan kamiyyuu barbaacha kee wajjin wal hin simne.",
+  "language.continue": "Itti fufaa",
+  "language.saveError": "Afaan kee qusachuu hin dandeenye. Ammas yaali.",
 } satisfies Record<TranslationKey, string>;
 export default d_om;

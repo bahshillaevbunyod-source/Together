@@ -251,5 +251,14 @@ const d_sq = {
   "auth.pleaseWait": "Ju lutemi prisni…",
   "auth.createAccount": "Krijo llogari",
   "auth.genericError": "Diçka shkoi keq.",
+  "language.loading": "Po ngarkojmë së bashku…",
+  "language.connectionError": "Së bashku nuk mund të lidheshim.",
+  "language.loadError": "Së bashku nuk mund të ngarkoheshin preferencat tuaja gjuhësore.",
+  "language.chooseTitle": "Zgjidh gjuhën tënde",
+  "language.description": "Së bashku do ta përdorin këtë gjuhë në të gjithë platformën dhe për përkthime automatike.",
+  "language.search": "Kërko gjuhë",
+  "language.noMatches": "Asnjë gjuhë nuk përputhet me kërkimin tuaj.",
+  "language.continue": "Vazhdo",
+  "language.saveError": "Nuk mund të ruhej gjuha juaj. Provo sërish.",
 } satisfies Record<TranslationKey, string>;
 export default d_sq;

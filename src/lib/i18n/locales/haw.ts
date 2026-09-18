@@ -251,5 +251,14 @@ const d_haw = {
   "auth.pleaseWait": "E ʻoluʻolu e kali…",
   "auth.createAccount": "Hana mooolelo",
   "auth.genericError": "Ua hewa kekahi mea.",
+  "language.loading": "Ke hoʻouka pū nei…",
+  "language.connectionError": "ʻAʻole hiki ke hui pū.",
+  "language.loadError": "ʻAʻole hiki ke hoʻouka i kāu mau makemake ʻōlelo.",
+  "language.chooseTitle": "E koho i kāu ʻōlelo",
+  "language.description": "E hoʻohana pū ʻia kēia ʻōlelo ma ka paepae a no ka unuhi ʻakomi.",
+  "language.search": "Huli i nā ʻōlelo",
+  "language.noMatches": "ʻAʻohe ʻōlelo e like me kāu hulina.",
+  "language.continue": "E hoʻomau",
+  "language.saveError": "ʻAʻole hiki ke mālama i kāu ʻōlelo. E hoao hou.",
 } satisfies Record<TranslationKey, string>;
 export default d_haw;

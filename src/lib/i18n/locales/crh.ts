@@ -251,5 +251,14 @@ const d_crh = {
   "auth.pleaseWait": "Риджа этем, бекленъиз...",
   "auth.createAccount": "Эсапны яратынъыз .",
   "auth.genericError": "Бир шейлер ерине кельмеди.",
+  "language.loading": "Бирликте юклемек...",
+  "language.connectionError": "Берабер багъланып оламады.",
+  "language.loadError": "Together тиль сечимлеринъизни юклеп оламады.",
+  "language.chooseTitle": "Озь тилинъни сечип ал .",
+  "language.description": "Бераберликте бу тильни платформа боюнджа ве автоматик терджимелер ичюн къулланаджакълар.",
+  "language.search": "Къыдырув тиллери .",
+  "language.noMatches": "Сизинъ къыдырувынъызгъа ич бир тиль келишмей.",
+  "language.continue": "Девам этмек",
+  "language.saveError": "Тилинъни къуртара бильмеди. Кене тырышынъыз.",
 } satisfies Record<TranslationKey, string>;
 export default d_crh;

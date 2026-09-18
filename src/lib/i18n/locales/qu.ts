@@ -251,5 +251,14 @@ const d_qu = {
   "auth.pleaseWait": "Ama hina kaspa, suyaykuy...",
   "auth.createAccount": "Cuenta ruway",
   "auth.genericError": "Imapas mana allintam pasarqa.",
+  "language.loading": "Kuska Kargaspa...",
+  "language.connectionError": "Kuska mana t’inkinakuyta atirqankuchu.",
+  "language.loadError": "Kuska mana simi munasqaykikunata kargayta atirqankuchu.",
+  "language.chooseTitle": "Simiykita akllay",
+  "language.description": "Kuska kay simita tukuy plataformapi chaymanta kikillanmanta tikraykunapaq llamk'achinqa.",
+  "language.search": "Simikunata maskay",
+  "language.noMatches": "Mana ima simikuna maskasqaykiwan tupanchu.",
+  "language.continue": "Qatiq",
+  "language.saveError": "Mana simiykita waqaychayta atirqanchu. Hukmanta kallpachakuy.",
 } satisfies Record<TranslationKey, string>;
 export default d_qu;

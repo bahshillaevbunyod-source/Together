@@ -251,5 +251,14 @@ const d_szl = {
   "auth.pleaseWait": "Proszōm poczkaj...",
   "auth.createAccount": "Utworz kōnto",
   "auth.genericError": "Coś poszło nie tak.",
+  "language.loading": "Ładowanie Razym...",
+  "language.connectionError": "Razym niy mogły sie łōnczyć.",
+  "language.loadError": "Razym niy mōg załadować twojich preferyncyjōw jynzykowych.",
+  "language.chooseTitle": "Ôbiyraj swōj jynzyk",
+  "language.description": "Razym używōmy tego jynzyka na cołkij platformie i do autōmatycznych przekładōw.",
+  "language.search": "Wyszukowanie jynzykōw",
+  "language.noMatches": "Żodne jynzyki niy ôdpadajōm twojim wyszukowaniu.",
+  "language.continue": "Kōntynuować",
+  "language.saveError": "Niy mōg zapisać swojij godki. Sprōbuj jeszcze raz.",
 } satisfies Record<TranslationKey, string>;
 export default d_szl;

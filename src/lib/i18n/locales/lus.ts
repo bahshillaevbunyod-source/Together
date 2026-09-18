@@ -251,5 +251,14 @@ const d_lus = {
   "auth.pleaseWait": "Khawngaihin lo nghak rawh...",
   "auth.createAccount": "Account siam rawh",
   "auth.genericError": "Thil engemaw a kal sual a.",
+  "language.loading": "Loading dun a ni...",
+  "language.connectionError": "An inzawmkhawm thei lo.",
+  "language.loadError": "Together hian i tawng duh zawngte chu a load thei lo.",
+  "language.chooseTitle": "I tawng thlang rawh",
+  "language.description": "Together hian he tawng hi platform pumpuiah leh automatic-a lehlinna atan a hmang ang.",
+  "language.search": "Ṭawng zawng rawh",
+  "language.noMatches": "I zawn nen hian ṭawng engmah a inmil lo.",
+  "language.continue": "Chhunzawm rawh",
+  "language.saveError": "I tawng chu a save thei lo. Ti leh rawh.",
 } satisfies Record<TranslationKey, string>;
 export default d_lus;

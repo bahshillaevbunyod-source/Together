@@ -251,5 +251,14 @@ const d_nso = {
   "auth.pleaseWait": "Ke kgopela le emele...",
   "auth.createAccount": "Theha akhaonto",
   "auth.genericError": "Se sengwe se ile sa sepela gabotse.",
+  "language.loading": "Go Laetša Mmogo...",
+  "language.connectionError": "Mmogo ga se ya kgona go kgokagana.",
+  "language.loadError": "Mmogo ga se ya kgona go laetša dikgetho tša gago tša polelo.",
+  "language.chooseTitle": "Kgetha polelo ya gago",
+  "language.description": "Mmogo e tla šomiša polelo ye go ralala le sefala le bakeng sa diphetolelo tša go itiriša.",
+  "language.search": "Batla maleme",
+  "language.noMatches": "Ga go na maleme ao a swanago le nyakišišo ya gago.",
+  "language.continue": "Tšwela pele",
+  "language.saveError": "Ga se ya kgona go boloka polelo ya gago. Leka gape.",
 } satisfies Record<TranslationKey, string>;
 export default d_nso;

@@ -251,5 +251,14 @@ const d_mg = {
   "auth.pleaseWait": "Andraso azafady…",
   "auth.createAccount": "Mamorona kaonty",
   "auth.genericError": "Nisy zavatra tsy nety.",
+  "language.loading": "Miara-mitondra…",
+  "language.connectionError": "Tsy afaka nifandray.",
+  "language.loadError": "Tsy afaka nampiditra ny safidinao ny fiteninao.",
+  "language.chooseTitle": "Fidio ny fiteninao",
+  "language.description": "Hiara-hampiasa ity fiteny ity manerana ny lampihazo sy ho an'ny fandikan-teny mandeha ho azy.",
+  "language.search": "Fikarohana fiteny",
+  "language.noMatches": "Tsy misy fiteny mifanaraka amin'ny fikarohanao.",
+  "language.continue": "Tohizo",
+  "language.saveError": "Tsy voatahiry ny fiteninao. Andramo indray.",
 } satisfies Record<TranslationKey, string>;
 export default d_mg;

@@ -251,5 +251,14 @@ const d_ktu = {
   "auth.pleaseWait": "Pardon vingila...",
   "auth.createAccount": "Kusala konti",
   "auth.genericError": "Kima mosi salamaka ve mbote.",
+  "language.loading": "Kutula Kisika Mosi...",
+  "language.connectionError": "Kumosi lendaka kukangama ve.",
+  "language.loadError": "Kumosi lenda charge ve ndinga ya nge ke zolaka.",
+  "language.chooseTitle": "Pona ndinga na nge",
+  "language.description": "Kumosi ta sadila ndinga yai na nzila ya estrade mpi sambu na bambalula ya automatique.",
+  "language.search": "Sosa bandinga",
+  "language.noMatches": "Ata ndinga mosi ve ke wakana ti mambu yina nge ke sosa.",
+  "language.continue": "Kulanda",
+  "language.saveError": "Kukonda kugulusa ndinga na nge. Meka diaka.",
 } satisfies Record<TranslationKey, string>;
 export default d_ktu;

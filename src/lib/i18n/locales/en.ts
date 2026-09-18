@@ -261,6 +261,16 @@ export const en = {
   "auth.pleaseWait": "Please wait…",
   "auth.createAccount": "Create account",
   "auth.genericError": "Something went wrong.",
+
+  "language.loading": "Loading Together…",
+  "language.connectionError": "Together couldn’t connect.",
+  "language.loadError": "Together couldn’t load your language preferences.",
+  "language.chooseTitle": "Choose your language",
+  "language.description": "Together will use this language across the platform and for automatic translations.",
+  "language.search": "Search languages",
+  "language.noMatches": "No languages match your search.",
+  "language.continue": "Continue",
+  "language.saveError": "Couldn’t save your language. Try again.",
 } as const;
 
 export type TranslationKey = keyof typeof en;

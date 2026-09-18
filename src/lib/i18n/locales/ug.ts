@@ -251,5 +251,14 @@ const d_ug = {
   "auth.pleaseWait": "ساقلاپ تۇرۇڭ…",
   "auth.createAccount": "ھېسابات قۇر",
   "auth.genericError": "چاتاق چىقتى.",
+  "language.loading": "بىللە يۈكلەۋاتىدۇ…",
+  "language.connectionError": "بىللە ئۇلىنالمىدى.",
+  "language.loadError": "تىل ئەۋزەللىكىڭىزنى بىللە يۈكلىيەلمىدى.",
+  "language.chooseTitle": "تىلىڭىزنى تاللاڭ",
+  "language.description": "بۇ تىلنى سۇپا ۋە ئاپتوماتىك تەرجىمە ئۈچۈن بىرلىكتە ئىشلىتىدۇ.",
+  "language.search": "تىل ئىزدەش",
+  "language.noMatches": "ئىزدىشىڭىزگە ھېچقانداق تىل ماس كەلمەيدۇ.",
+  "language.continue": "داۋاملاشتۇر",
+  "language.saveError": "تىلىڭىزنى ساقلىيالمىدى. قايتا سىناڭ.",
 } satisfies Record<TranslationKey, string>;
 export default d_ug;

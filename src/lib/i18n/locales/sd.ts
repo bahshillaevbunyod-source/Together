@@ -251,5 +251,14 @@ const d_sd = {
   "auth.pleaseWait": "مهرباني ڪري انتظار ڪريو…",
   "auth.createAccount": "اڪائونٽ ٺاهيو",
   "auth.genericError": "ڪجهه غلط ٿيو.",
+  "language.loading": "گڏجي لوڊ ٿي رهيو آهي...",
+  "language.connectionError": "گڏو گڏ ڳنڍي نه سگھيا.",
+  "language.loadError": "گڏو گڏ توهان جي ٻولي ترجيحن کي لوڊ نه ڪري سگهيو.",
+  "language.chooseTitle": "پنهنجي ٻولي چونڊيو",
+  "language.description": "Together ھن ٻولي کي پليٽ فارم تي ۽ خودڪار ترجمن لاءِ استعمال ڪندا.",
+  "language.search": "ٻوليون ڳولھيو",
+  "language.noMatches": "ڪنهن به ٻولي توهان جي ڳولها سان نه ملندي.",
+  "language.continue": "جاري",
+  "language.saveError": "توهان جي ٻولي محفوظ نه ٿي سگهي. ٻيهر ڪوشش ڪريو.",
 } satisfies Record<TranslationKey, string>;
 export default d_sd;

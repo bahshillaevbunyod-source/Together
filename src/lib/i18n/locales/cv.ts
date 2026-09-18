@@ -251,5 +251,14 @@ const d_cv = {
   "auth.pleaseWait": "Кӗтӗр-ха...",
   "auth.createAccount": "Аккаунт йӗркелӗр",
   "auth.genericError": "Темскер йӑнӑш пулчӗ.",
+  "language.loading": "Пӗрле ҫӗклесе...",
+  "language.connectionError": "Пӗрле ҫыхӑнаймарӑмӑр.",
+  "language.loadError": "Together сирӗн чӗлхе суйласа илӗвӗсене ҫӗклеймерӗ.",
+  "language.chooseTitle": "Хӑвӑрӑн чӗлхене суйласа илӗр",
+  "language.description": "Пӗрле ҫак чӗлхепе платформӑра тата автоматла куҫарусем валли усӑ курӗҫ.",
+  "language.search": "Шырав чӗлхисем",
+  "language.noMatches": "Сирӗн шыравпа нимӗнле чӗлхе те килӗшмест.",
+  "language.continue": "Малалла",
+  "language.saveError": "Сирӗн чӗлхене упраса хӑвараймарӑмӑр. Тепӗр хут тытӑнса пӑхӑр.",
 } satisfies Record<TranslationKey, string>;
 export default d_cv;

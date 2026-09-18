@@ -251,5 +251,14 @@ const d_no = {
   "auth.pleaseWait": "Vennligst vent...",
   "auth.createAccount": "Opprett konto",
   "auth.genericError": "Noe gikk galt.",
+  "language.loading": "Laster sammen...",
+  "language.connectionError": "Together kunne ikke koble til.",
+  "language.loadError": "Together kunne ikke laste inn språkpreferansene dine.",
+  "language.chooseTitle": "Velg språket ditt",
+  "language.description": "Together vil bruke dette språket på tvers av plattformen og for automatiske oversettelser.",
+  "language.search": "Søk etter språk",
+  "language.noMatches": "Ingen språk samsvarer med søket ditt.",
+  "language.continue": "Fortsett",
+  "language.saveError": "Kunne ikke lagre språket ditt. Prøv igjen.",
 } satisfies Record<TranslationKey, string>;
 export default d_no;

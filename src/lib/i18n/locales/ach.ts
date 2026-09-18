@@ -251,5 +251,14 @@ const d_ach = {
   "auth.pleaseWait": "Tim ber ikur...",
   "auth.createAccount": "Yab akaunti",
   "auth.genericError": "Gin mo obale.",
+  "language.loading": "Tye ka keto kacel...",
+  "language.connectionError": "Kacel onongo pe gitwero kubbe.",
+  "language.loadError": "Kacel pe twero keto leb ma imaro.",
+  "language.chooseTitle": "Yer leb ni",
+  "language.description": "Kacel wabitic ki leb man i kom jami weny ki pi gonyo leb ma otiime kene.",
+  "language.search": "Yeny leb",
+  "language.noMatches": "Pe tye leb mo ma rwate ki gin ma itye ka yenyo.",
+  "language.continue": "Mede",
+  "language.saveError": "Pe atwero gwoko leb ni. Tem doki.",
 } satisfies Record<TranslationKey, string>;
 export default d_ach;

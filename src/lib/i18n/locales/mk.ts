@@ -251,5 +251,14 @@ const d_mk = {
   "auth.pleaseWait": "Ве молиме почекајте…",
   "auth.createAccount": "Креирај сметка",
   "auth.genericError": "Нешто тргна наопаку.",
+  "language.loading": "Се вчитуваме заедно…",
+  "language.connectionError": "Не можеше да се поврземе заедно.",
+  "language.loadError": "Заедно не може да се вчитаат вашите поставки за јазикот.",
+  "language.chooseTitle": "Изберете го вашиот јазик",
+  "language.description": "Заедно ќе го користиме овој јазик низ платформата и за автоматски преводи.",
+  "language.search": "Пребарај јазици",
+  "language.noMatches": "Ниту еден јазик не одговара на вашето пребарување.",
+  "language.continue": "Продолжи",
+  "language.saveError": "Не може да се зачува вашиот јазик. Обидете се повторно.",
 } satisfies Record<TranslationKey, string>;
 export default d_mk;

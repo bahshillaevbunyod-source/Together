@@ -251,5 +251,14 @@ const d_dz = {
   "auth.pleaseWait": "བསྒུག་གནང་།",
   "auth.createAccount": "རྩིས་ཐོ་གསར་བསྐྲུན་འབད།",
   "auth.genericError": "ག་ཅི་ཅིག་འཛོལ་བ་འགྱོ་ཡི།",
+  "language.loading": "གཅིག་ཁར་མངོན་གསལ་འབད་དོ།",
+  "language.connectionError": "གཅིག་ཁར་མཐུད་མ་ཚུགས།",
+  "language.loadError": "གཅིག་ཁར་ཁྱོད་ཀྱི་སྐད་ཡིག་དགའ་གདམ་ཚུ་མངོན་གསལ་འབད་མ་ཚུགས།",
+  "language.chooseTitle": "རང་གི་སྐད་ཡིག་འདེམས།",
+  "language.description": "མཉམ་གཅིག་སྦེ་ སྐད་ཡིག་འདི་ གཞི་རྟེན་དང་ རང་བཞིན་གྱི་སྐད་སྒྱུར་ཚུ་གི་དོན་ལུ་ ལག་ལེན་འཐབ་འོང་།",
+  "language.search": "སྐད་ཡིག་འཚོལ་ཞིབ།",
+  "language.noMatches": "ཁྱོད་ཀྱི་འཚོལ་ཞིབ་དང་མཐུན་པའི་སྐད་ཡིག་གཅིག་ཡང་མེད།",
+  "language.continue": "འཕྲོ༌མཐུད",
+  "language.saveError": "ཁྱོད་རའི་སྐད་ཡིག་སྲུང་བཞག་འབད་མ་ཚུགས། ལོག་སྟེ་འབད་རྩོལ་བསྐྱེད།",
 } satisfies Record<TranslationKey, string>;
 export default d_dz;

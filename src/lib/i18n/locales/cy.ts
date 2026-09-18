@@ -251,5 +251,14 @@ const d_cy = {
   "auth.pleaseWait": "Arhoswch os gwelwch yn dda…",
   "auth.createAccount": "Creu cyfrif",
   "auth.genericError": "Aeth rhywbeth o'i le.",
+  "language.loading": "Llwytho Gyda'n Gilydd…",
+  "language.connectionError": "Gyda'n gilydd methu cysylltu.",
+  "language.loadError": "Gyda'n gilydd ni fu modd llwytho eich dewisiadau iaith.",
+  "language.chooseTitle": "Dewiswch eich iaith",
+  "language.description": "Bydd Gyda'n gilydd yn defnyddio'r iaith hon ar draws y platfform ac ar gyfer cyfieithiadau awtomatig.",
+  "language.search": "Ieithoedd chwilio",
+  "language.noMatches": "Nid oes unrhyw ieithoedd yn cyfateb i'ch chwiliad.",
+  "language.continue": "Parhau",
+  "language.saveError": "Methu cadw eich iaith. Ceisiwch eto.",
 } satisfies Record<TranslationKey, string>;
 export default d_cy;

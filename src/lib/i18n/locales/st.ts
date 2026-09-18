@@ -251,5 +251,14 @@ const d_st = {
   "auth.pleaseWait": "Ke kopa o eme...",
   "auth.createAccount": "Etsa akhaonto",
   "auth.genericError": "Ho bile le phoso.",
+  "language.loading": "E ea Bua Hammoho...",
+  "language.connectionError": "Mmoho ha e kgone ho hokela.",
+  "language.loadError": "Hammoho ha re khone ho kenya likhetho tsa hau tsa puo.",
+  "language.chooseTitle": "Khetha puo ea hau",
+  "language.description": "Mmoho re tla sebelisa puo ena sethaleng le bakeng sa liphetolelo tse iketsang.",
+  "language.search": "Batla lipuo",
+  "language.noMatches": "Ha ho lipuo tse tšoanang le seo u se batlang.",
+  "language.continue": "Tsoela pele",
+  "language.saveError": "E hlolehile ho boloka puo ea hau. Leka hape.",
 } satisfies Record<TranslationKey, string>;
 export default d_st;

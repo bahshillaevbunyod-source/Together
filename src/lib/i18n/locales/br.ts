@@ -251,5 +251,14 @@ const d_br = {
   "auth.pleaseWait": "Gortozit mar plij...",
   "auth.createAccount": "Krouiñ ur gont",
   "auth.genericError": "Un dra bennak a zo aet fall.",
+  "language.loading": "O kargañ asambles...",
+  "language.connectionError": "N'hall ket Together kennaskañ.",
+  "language.loadError": "N'hall ket Together kargañ ho penndibaboù yezh.",
+  "language.chooseTitle": "Dibabit ho yezh",
+  "language.description": "Implijout a raio Together ar yezh-mañ dre ar bladenn hag evit an troidigezhioù emgefre.",
+  "language.search": "Klask yezhoù",
+  "language.noMatches": "N'eus yezh ebet a glot gant ho klask.",
+  "language.continue": "Kenderc'hel",
+  "language.saveError": "N'haller ket enrollañ ho yezh. Klaskit en-dro.",
 } satisfies Record<TranslationKey, string>;
 export default d_br;

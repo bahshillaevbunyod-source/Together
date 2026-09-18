@@ -251,5 +251,14 @@ const d_bho = {
   "auth.pleaseWait": "कृपया इंतजार करीं...",
   "auth.createAccount": "खाता बनावे के बा",
   "auth.genericError": "कुछ गड़बड़ हो गइल।",
+  "language.loading": "एक साथ लोड हो रहल बा...",
+  "language.connectionError": "एक साथ कनेक्ट ना हो पावल।",
+  "language.loadError": "एक साथ ही राउर भाषा पसंद लोड ना हो पावल।",
+  "language.chooseTitle": "अपना भाषा चुनीं",
+  "language.description": "एक साथ एह भाषा के इस्तेमाल पूरा प्लेटफार्म में आ स्वचालित अनुवाद खातिर करी।",
+  "language.search": "भाषा खोजीं",
+  "language.noMatches": "कवनो भाषा राउर खोज से मेल ना खात बा।",
+  "language.continue": "जारी रहीं",
+  "language.saveError": "रउरा भाषा के सेव ना कर सकल. फिर से कोशिश करीं।",
 } satisfies Record<TranslationKey, string>;
 export default d_bho;

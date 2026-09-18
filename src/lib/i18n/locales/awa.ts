@@ -251,5 +251,14 @@ const d_awa = {
   "auth.pleaseWait": "कृपया इंतजार करा...",
   "auth.createAccount": "खाता बनावा",
   "auth.genericError": "कुछ गलत होइगा।",
+  "language.loading": "एक साथ लोड हो रहा है...",
+  "language.connectionError": "एक साथ जुड़ नाहीं पावा।",
+  "language.loadError": "साथ मा आपकी भाषा वरीयताओं का लोड नाहीं कीन जा सकत रहा।",
+  "language.chooseTitle": "आपन भाषा चुनौ",
+  "language.description": "एक साथ पूरे मंच अऊर स्वचालित अनुवादन के लिए ई भाषा का उपयोग करब।",
+  "language.search": "भाषा खोजौ",
+  "language.noMatches": "कौनो भाषा आपके खोज से मेल नाहीं खात है।",
+  "language.continue": "चालू राखब",
+  "language.saveError": "आपन भाषा नाहीं बचा पावा। फिर से कोशिश करा।",
 } satisfies Record<TranslationKey, string>;
 export default d_awa;

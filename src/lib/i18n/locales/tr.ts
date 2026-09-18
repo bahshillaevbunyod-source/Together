@@ -251,5 +251,14 @@ const tr = {
   "auth.pleaseWait": "Lütfen bekleyin…",
   "auth.createAccount": "Hesap oluştur",
   "auth.genericError": "Bir şeyler ters gitti.",
+  "language.loading": "Birlikte Yükleniyor…",
+  "language.connectionError": "Birlikte bağlantı kurulamadı.",
+  "language.loadError": "Together, dil tercihlerinizi yükleyemedi.",
+  "language.chooseTitle": "Dilinizi seçin",
+  "language.description": "Together bu dili platform genelinde ve otomatik çeviriler için kullanacak.",
+  "language.search": "Dillerde ara",
+  "language.noMatches": "Aramanızla eşleşen dil yok.",
+  "language.continue": "Devam",
+  "language.saveError": "Diliniz kaydedilemedi. Tekrar deneyin.",
 } satisfies Record<TranslationKey, string>;
 export default tr;

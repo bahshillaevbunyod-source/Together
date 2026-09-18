@@ -251,5 +251,14 @@ const d_zh_TW = {
   "auth.pleaseWait": "请稍等...",
   "auth.createAccount": "创建帐户",
   "auth.genericError": "出了点问题。",
+  "language.loading": "一起載入…",
+  "language.connectionError": "Together 無法連線。",
+  "language.loadError": "Together 無法載入您的語言首選項。",
+  "language.chooseTitle": "選擇您的語言",
+  "language.description": "Together 將在整個平台上使用此語言並進行自動翻譯。",
+  "language.search": "搜尋語言",
+  "language.noMatches": "沒有與您的搜尋相符的語言。",
+  "language.continue": "繼續",
+  "language.saveError": "無法儲存您的語言。再試一次。",
 } satisfies Record<TranslationKey, string>;
 export default d_zh_TW;

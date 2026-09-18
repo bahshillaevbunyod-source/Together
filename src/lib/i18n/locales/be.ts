@@ -251,5 +251,14 @@ const d_be = {
   "auth.pleaseWait": "Калі ласка, пачакайце...",
   "auth.createAccount": "Стварыць уліковы запіс",
   "auth.genericError": "Нешта пайшло не так.",
+  "language.loading": "Загрузка разам...",
+  "language.connectionError": "Together не можа падключыцца.",
+  "language.loadError": "Together не можа загрузіць вашы моўныя налады.",
+  "language.chooseTitle": "Выберыце сваю мову",
+  "language.description": "Together будзе выкарыстоўваць гэту мову на ўсёй платформе і для аўтаматычных перакладаў.",
+  "language.search": "Пошук моў",
+  "language.noMatches": "Няма моў, якія адпавядаюць вашаму запыту.",
+  "language.continue": "Працягнуць",
+  "language.saveError": "Не атрымалася захаваць вашу мову. Паспрабуйце яшчэ раз.",
 } satisfies Record<TranslationKey, string>;
 export default d_be;

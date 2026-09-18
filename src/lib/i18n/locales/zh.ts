@@ -251,5 +251,14 @@ const zh = {
   "auth.pleaseWait": "请稍等...",
   "auth.createAccount": "创建帐户",
   "auth.genericError": "出了点问题。",
+  "language.loading": "一起加载…",
+  "language.connectionError": "Together 无法连接。",
+  "language.loadError": "Together 无法加载您的语言首选项。",
+  "language.chooseTitle": "选择您的语言",
+  "language.description": "Together 将在整个平台上使用此语言并进行自动翻译。",
+  "language.search": "搜索语言",
+  "language.noMatches": "没有与您的搜索匹配的语言。",
+  "language.continue": "继续",
+  "language.saveError": "无法保存您的语言。再试一次。",
 } satisfies Record<TranslationKey, string>;
 export default zh;

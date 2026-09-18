@@ -251,5 +251,14 @@ const d_bew = {
   "auth.pleaseWait": "Tolong tunggu...",
   "auth.createAccount": "Bikin akun",
   "auth.genericError": "Ada yang salah.",
+  "language.loading": "Lagi muat Together…",
+  "language.connectionError": "Together kagak bisa nyambung.",
+  "language.loadError": "Together kagak bisa muat preferensi bahasa lu.",
+  "language.chooseTitle": "Pilih bahasa lu",
+  "language.description": "Together bakal make bahasa ini di seluruh platform dan buat terjemahan otomatis.",
+  "language.search": "Cari bahasa",
+  "language.noMatches": "Gak ada bahasa yang cocok dengan pencarian lu.",
+  "language.continue": "Lanjut",
+  "language.saveError": "Gak bisa nyimpen bahasa lu. Coba lagi.",
 } satisfies Record<TranslationKey, string>;
 export default d_bew;

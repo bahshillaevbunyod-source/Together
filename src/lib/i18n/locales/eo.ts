@@ -251,5 +251,14 @@ const d_eo = {
   "auth.pleaseWait": "Bonvolu atendi...",
   "auth.createAccount": "Krei konton",
   "auth.genericError": "Io misfunkciis.",
+  "language.loading": "Kune Ŝarĝante...",
+  "language.connectionError": "Together ne povis konektiĝi.",
+  "language.loadError": "Together ne povis ŝargi viajn lingvopreferojn.",
+  "language.chooseTitle": "Elektu vian lingvon",
+  "language.description": "Together uzos ĉi tiun lingvon tra la platformo kaj por aŭtomataj tradukoj.",
+  "language.search": "Serĉi lingvojn",
+  "language.noMatches": "Neniu lingvo kongruas kun via serĉo.",
+  "language.continue": "Daŭrigu",
+  "language.saveError": "Ne eblis konservi vian lingvon. Provu denove.",
 } satisfies Record<TranslationKey, string>;
 export default d_eo;

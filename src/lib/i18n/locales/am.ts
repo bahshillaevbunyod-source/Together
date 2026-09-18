@@ -251,5 +251,14 @@ const d_am = {
   "auth.pleaseWait": "እባክዎ ይጠብቁ…",
   "auth.createAccount": "መለያ ይፍጠሩ",
   "auth.genericError": "የሆነ ችግር ተፈጥሯል።",
+  "language.loading": "አንድ ላይ በመጫን ላይ…",
+  "language.connectionError": "አንድ ላይ መገናኘት አልተቻለም።",
+  "language.loadError": "አንድ ላይ የእርስዎን የቋንቋ ምርጫዎች መጫን አልተቻለም።",
+  "language.chooseTitle": "ቋንቋህን ምረጥ",
+  "language.description": "በአንድነት ይህንን ቋንቋ በመድረክ ላይ እና በራስ ሰር ለትርጉሞች እንጠቀማለን።",
+  "language.search": "ቋንቋዎችን ይፈልጉ",
+  "language.noMatches": "ከፍለጋህ ጋር የሚዛመዱ ቋንቋዎች የሉም።",
+  "language.continue": "ቀጥል",
+  "language.saveError": "ቋንቋህን ማስቀመጥ አልተቻለም። እንደገና ይሞክሩ።",
 } satisfies Record<TranslationKey, string>;
 export default d_am;

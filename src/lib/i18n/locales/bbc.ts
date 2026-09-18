@@ -251,5 +251,14 @@ const d_bbc = {
   "auth.pleaseWait": "Tolong ma paimahon...",
   "auth.createAccount": "Mambahen akun .",
   "auth.genericError": "Adong do na sala.",
+  "language.loading": "Rap mamuat...",
+  "language.connectionError": "Rap ndang boi mardomu.",
+  "language.loadError": "Rap ndang boi mamuat bahasa na dihalomohon rohamuna.",
+  "language.chooseTitle": "Pillit ma bahasamu .",
+  "language.description": "Rap mamangke bahasa on di sude panggung dohot tu terjemahan otomatis.",
+  "language.search": "Lului ma bahasa .",
+  "language.noMatches": "Ndang adong bahasa na hombar tu na dilului hamu.",
+  "language.continue": "Manorushon",
+  "language.saveError": "Ndang boi paluahon bahasamuna. Coba ma muse.",
 } satisfies Record<TranslationKey, string>;
 export default d_bbc;

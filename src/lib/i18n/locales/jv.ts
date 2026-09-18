@@ -251,5 +251,14 @@ const d_jv = {
   "auth.pleaseWait": "Mangga ngenteni…",
   "auth.createAccount": "Nggawe akun",
   "auth.genericError": "Ana sing salah.",
+  "language.loading": "Muat Bareng…",
+  "language.connectionError": "Bareng ora bisa nyambung.",
+  "language.loadError": "Bareng ora bisa mbukak pilihan basa sampeyan.",
+  "language.chooseTitle": "Pilih basa sampeyan",
+  "language.description": "Bareng bakal nggunakake basa iki ing saindhenging platform lan kanggo terjemahan otomatis.",
+  "language.search": "Telusuri basa",
+  "language.noMatches": "Ora ana basa sing cocog karo panelusuran sampeyan.",
+  "language.continue": "Terus",
+  "language.saveError": "Ora bisa nyimpen basa sampeyan. Coba maneh.",
 } satisfies Record<TranslationKey, string>;
 export default d_jv;

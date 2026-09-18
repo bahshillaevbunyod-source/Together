@@ -251,5 +251,14 @@ const d_fil = {
   "auth.pleaseWait": "Mangyaring maghintay…",
   "auth.createAccount": "Gumawa ng account",
   "auth.genericError": "Nagkaproblema.",
+  "language.loading": "Naglo-load nang Sama-sama…",
+  "language.connectionError": "Hindi makakonekta ang magkasama.",
+  "language.loadError": "Hindi ma-load ng magkasama ang iyong mga kagustuhan sa wika.",
+  "language.chooseTitle": "Piliin ang iyong wika",
+  "language.description": "Gagamitin ng magkasama ang wikang ito sa buong platform at para sa mga awtomatikong pagsasalin.",
+  "language.search": "Maghanap ng mga wika",
+  "language.noMatches": "Walang mga wikang tumutugma sa iyong paghahanap.",
+  "language.continue": "Magpatuloy",
+  "language.saveError": "Hindi ma-save ang iyong wika. Subukang muli.",
 } satisfies Record<TranslationKey, string>;
 export default d_fil;

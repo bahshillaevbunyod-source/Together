@@ -251,5 +251,14 @@ const d_sg = {
   "auth.pleaseWait": "Pardon ku...",
   "auth.createAccount": "Sara mbeni compte",
   "auth.genericError": "Mbeni ye asi.",
+  "language.loading": "Loading Legeoko...",
+  "language.connectionError": "Tour alingbi ti connecté pëpe.",
+  "language.loadError": "Toge alingbi pëpe ti charge yanga ti kodoro ti mo.",
+  "language.chooseTitle": "Soro yanga ti kodoro ti mo .",
+  "language.description": "A yeke sara kua na yanga ti kodoro so na ndö ti plateforme ni kue nga ndali ti atraduction automatique.",
+  "language.search": "Gi ayanga ti kodoro .",
+  "language.noMatches": "Mbeni yanga ti kodoro oko alingbi na gingo ye ti mo pëpe.",
+  "language.continue": "Ngba ti sara ni",
+  "language.saveError": "A lingbi ti bata yanga ti kodoro ti mo pëpe. Tara encore.",
 } satisfies Record<TranslationKey, string>;
 export default d_sg;

@@ -251,5 +251,14 @@ const d_shn = {
   "auth.pleaseWait": "ၶႅၼ်းတေႃႈပႂ်ႉတူၺ်း...",
   "auth.createAccount": "ႁဵတ်းဢၵွင်ႉ",
   "auth.genericError": "မီးလွင်ႈၽိတ်းပိူင်ႈၵႂႃႇ။",
+  "language.loading": "Loading ၸွမ်းၵၼ်...",
+  "language.connectionError": "ႁူမ်ႈၵၼ် ဢမ်ႇၸၢင်ႈၵပ်းသိုပ်ႇ။",
+  "language.loadError": "Together ဢမ်ႇၸၢင်ႈ ဢဝ်ၽႃႇသႃႇ ဢၼ်ၸဝ်ႈၵဝ်ႇ လႆႈၸႂ်ၼၼ်ႉ သႂ်ႇလႆႈ။",
+  "language.chooseTitle": "လိူၵ်ႈၽႃႇသႃႇၵႂၢမ်းလၢတ်ႈ",
+  "language.description": "ႁူမ်ႈၵၼ်တေၸႂ်ႉတိုဝ်းၽႃႇသႃႇၼႆႉ ၽၢၼ်ႇၼိူဝ်ပလႅတ်ႉဝွၵ်ႉ လႄႈ တွၼ်ႈတႃႇ ၵၢၼ်ပိၼ်ႇၽႃႇသႃႇ ဢၼ်ႁဵတ်းႁင်းမၼ်းၼၼ်ႉယဝ်ႉ။",
+  "language.search": "သွၵ်ႈႁႃၽႃႇသႃႇ",
+  "language.noMatches": "ဢမ်ႇမီးၽႃႇသႃႇ ဢၼ်ထုၵ်ႇၵၼ်တင်း ဢၼ်ၸဝ်ႈၵဝ်ႇသွၵ်ႈႁႃ။",
+  "language.continue": "သိုပ်ႇထႅင်ႈ",
+  "language.saveError": "ဢမ်ႇၸၢင်ႈသိမ်းဝႆႉ ၽႃႇသႃႇၵႂၢမ်းလၢတ်ႈၸဝ်ႈၵဝ်ႇ။ ၶိုၼ်းၶတ်းၸႂ်တူၺ်းလႄႈ။",
 } satisfies Record<TranslationKey, string>;
 export default d_shn;

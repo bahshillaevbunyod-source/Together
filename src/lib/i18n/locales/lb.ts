@@ -251,5 +251,14 @@ const d_lb = {
   "auth.pleaseWait": "W.e.g. waart ...",
   "auth.createAccount": "Schafen Kont",
   "auth.genericError": "Eppes ass falsch gaangen.",
+  "language.loading": "Zesumme lueden...",
+  "language.connectionError": "Zesumme konnten net konnektéieren.",
+  "language.loadError": "Together konnt Är Sproochastellungen net lueden.",
+  "language.chooseTitle": "Wielt Är Sprooch",
+  "language.description": "Together wäert dës Sprooch op der ganzer Plattform a fir automatesch Iwwersetzunge benotzen.",
+  "language.search": "Sproochen sichen",
+  "language.noMatches": "Keng Sprooche passen zu Ärer Sich.",
+  "language.continue": "Weider",
+  "language.saveError": "Konnt Är Sprooch net späicheren. Probéiert nach eng Kéier.",
 } satisfies Record<TranslationKey, string>;
 export default d_lb;

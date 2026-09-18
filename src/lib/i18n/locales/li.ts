@@ -251,5 +251,14 @@ const d_li = {
   "auth.pleaseWait": "Wach aub…",
   "auth.createAccount": "Rekening make",
   "auth.genericError": "D’r is get fout gegaange.",
+  "language.loading": "Same laden…",
+  "language.connectionError": "Same kooste neet verbinde.",
+  "language.loadError": "Same koos eur taalveurkeure neet lade.",
+  "language.chooseTitle": "Kies eur taal",
+  "language.description": "Same zulle deze taol gebruke op ‘t ganse platform en veur automatische vertaolinge.",
+  "language.search": "Zoek taole",
+  "language.noMatches": "Gein taole euvereinkomme mit eur zeuktoch.",
+  "language.continue": "Doorgoon",
+  "language.saveError": "Kon dien taal neet opsjlaon. Probeer nog ummer.",
 } satisfies Record<TranslationKey, string>;
 export default d_li;

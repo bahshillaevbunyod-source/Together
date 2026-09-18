@@ -251,5 +251,14 @@ const d_gaa = {
   "auth.pleaseWait": "Ofainɛ mɛ...",
   "auth.createAccount": "Bɔɔ akaunt",
   "auth.genericError": "Nɔ ko eyaaa nɔ jogbaŋŋ.",
+  "language.loading": "Akɛwoɔ mli ekomekomei...",
+  "language.connectionError": "Ekomefeemɔ nyɛɛɛ atsa.",
+  "language.loadError": "Together nyɛɛɛ ekɛ owiemɔ ni osumɔɔ lɛ awo mli.",
+  "language.chooseTitle": "Halamɔ owiemɔ lɛ",
+  "language.description": "Together kɛ wiemɔ nɛɛ baatsu nii yɛ kpoku lɛ nɔ fɛɛ kɛha otomatik shishitsɔɔmɔi.",
+  "language.search": "Taomɔ wiemɔi",
+  "language.noMatches": "Wiemɔi ko bɛ ni kɛ otaomɔ lɛ kpãaa gbee.",
+  "language.continue": "Tsanɔ",
+  "language.saveError": "Enyɛɛɛ ekɛ owiemɔ lɛ ato. Kaa ekoŋŋ.",
 } satisfies Record<TranslationKey, string>;
 export default d_gaa;

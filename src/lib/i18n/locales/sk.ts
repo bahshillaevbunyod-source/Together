@@ -251,5 +251,14 @@ const d_sk = {
   "auth.pleaseWait": "Čakajte prosím…",
   "auth.createAccount": "Vytvoriť účet",
   "auth.genericError": "Niečo sa pokazilo.",
+  "language.loading": "Načítava sa spolu...",
+  "language.connectionError": "Spoločne sa nepodarilo pripojiť.",
+  "language.loadError": "Spoločnosti sa nepodarilo načítať vaše jazykové preferencie.",
+  "language.chooseTitle": "Vyberte si svoj jazyk",
+  "language.description": "Together bude používať tento jazyk naprieč platformou a na automatické preklady.",
+  "language.search": "Hľadať jazyky",
+  "language.noMatches": "Vášmu vyhľadávaniu nezodpovedajú žiadne jazyky.",
+  "language.continue": "Pokračovať",
+  "language.saveError": "Nepodarilo sa uložiť váš jazyk. Skúste to znova.",
 } satisfies Record<TranslationKey, string>;
 export default d_sk;

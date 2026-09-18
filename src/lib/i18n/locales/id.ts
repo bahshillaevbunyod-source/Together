@@ -251,5 +251,14 @@ const d_id = {
   "auth.pleaseWait": "Harap tunggu…",
   "auth.createAccount": "Buat akun",
   "auth.genericError": "Ada yang tidak beres.",
+  "language.loading": "Memuat Bersama…",
+  "language.connectionError": "Bersama tidak dapat terhubung.",
+  "language.loadError": "Together tidak dapat memuat preferensi bahasa Anda.",
+  "language.chooseTitle": "Pilih bahasa Anda",
+  "language.description": "Together akan menggunakan bahasa ini di seluruh platform dan untuk terjemahan otomatis.",
+  "language.search": "Cari bahasa",
+  "language.noMatches": "Tidak ada bahasa yang cocok dengan penelusuran Anda.",
+  "language.continue": "Lanjutkan",
+  "language.saveError": "Tidak dapat menyimpan bahasa Anda. Coba lagi.",
 } satisfies Record<TranslationKey, string>;
 export default d_id;

@@ -251,5 +251,14 @@ const d_crs = {
   "auth.pleaseWait": "silvouple espere...",
   "auth.createAccount": "kree kont",
   "auth.genericError": "I annan en keksoz ki'n al mal.",
+  "language.loading": "pe sarz ansanm...",
+  "language.connectionError": "ansanm pa ti kapab konekte.",
+  "language.loadError": "Together pa ti kapab load ou bann preferans langaz.",
+  "language.chooseTitle": "Swazir ou langaz",
+  "language.description": "ansanm pou servi sa langaz atraver platform e pou bann tradiksyon otomatik.",
+  "language.search": "rod bann langaz",
+  "language.noMatches": "napa langaz ki koresponn avek ou resers.",
+  "language.continue": "Kontinyen",
+  "language.saveError": "pa'n kapab sov ou langaz. esey ankor.",
 } satisfies Record<TranslationKey, string>;
 export default d_crs;

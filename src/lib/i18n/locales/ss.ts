@@ -251,5 +251,14 @@ const d_ss = {
   "auth.pleaseWait": "Ngicela ulindze...",
   "auth.createAccount": "Dala i-akhawunti",
   "auth.genericError": "Kukhona lokungahambanga kahle.",
+  "language.loading": "Kulayisha Ndawonye...",
+  "language.connectionError": "Ndawonye bekungakhoni kuxhumana.",
+  "language.loadError": "Ndawonye akuzange kukhone kulayisha lokukhetsako kwelulwimi lwakho.",
+  "language.chooseTitle": "Khetsa lulwimi lwakho",
+  "language.description": "Ndawonye sitawusebentisa lolulwimi kulo lonkhe lepulatifomu kanye nekuhumusha lokuzenzakalelayo.",
+  "language.search": "Sesha tilwimi",
+  "language.noMatches": "Kute tilwimi letihambisana nekuphenya kwakho.",
+  "language.continue": "Chubeka",
+  "language.saveError": "Angizange ngikhone kugcina lulwimi lwakho. Yetama futsi.",
 } satisfies Record<TranslationKey, string>;
 export default d_ss;

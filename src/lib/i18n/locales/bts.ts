@@ -251,5 +251,14 @@ const d_bts = {
   "auth.pleaseWait": "Tolong paima...",
   "auth.createAccount": "Mambahen akun",
   "auth.genericError": "Dong na lepak.",
+  "language.loading": "Mamuat Together…",
+  "language.connectionError": "Together lang boi mardomu.",
+  "language.loadError": "Together lang boi mamuat pilihan bahasa nassiam.",
+  "language.chooseTitle": "Pilih nasiam ma sahap nasiam",
+  "language.description": "Together mamakei bahasa on i sab platform pakon bani terjemahan otomatis.",
+  "language.search": "Pindahi bahasa",
+  "language.noMatches": "Seng dong bahasa na sosok pakon na ipindahi nasiam.",
+  "language.continue": "Toruskon",
+  "language.saveError": "Seng boi isimpan sahap nassiam. Coba use.",
 } satisfies Record<TranslationKey, string>;
 export default d_bts;

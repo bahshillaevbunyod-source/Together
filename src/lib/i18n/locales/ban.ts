@@ -251,5 +251,14 @@ const d_ban = {
   "auth.pleaseWait": "Antosang...",
   "auth.createAccount": "Ngaryanin akun",
   "auth.genericError": "Ada ane iwang.",
+  "language.loading": "Muat Sinarengan...",
+  "language.connectionError": "Sinarengan nénten prasida nyambung.",
+  "language.loadError": "Together nénten prasida ngunggahang preferensi basa Sametoné.",
+  "language.chooseTitle": "Pilih basa Sametoné",
+  "language.description": "Sinarengan pacang nganggen basa puniki ring lintas platform lan antuk terjemahan otomatis.",
+  "language.search": "Sliksik basa",
+  "language.noMatches": "Nénten wénten basa sané cocok sareng panyliksikan Sametoné.",
+  "language.continue": "Nerusang",
+  "language.saveError": "Nénten prasida nyimpen basa Sametoné. Indayang malih.",
 } satisfies Record<TranslationKey, string>;
 export default d_ban;

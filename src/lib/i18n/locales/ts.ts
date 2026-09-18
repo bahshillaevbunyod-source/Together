@@ -251,5 +251,14 @@ const d_ts = {
   "auth.pleaseWait": "Hi kombela mi yima...",
   "auth.createAccount": "Endla akhawunti",
   "auth.genericError": "Ku ni leswi nga famba kahle.",
+  "language.loading": "Ku Layicha Swin'we...",
+  "language.connectionError": "Swin’we a swi nga ta swi kota ku hlanganisa.",
+  "language.loadError": "Swin’we a swi nga swi koti ku layicha swihlawulekisi swa wena swa ririmi.",
+  "language.chooseTitle": "Hlawula ririmi ra wena",
+  "language.description": "Swin’we swi ta tirhisa ririmi leri eka pulatifomo hinkwayo na le ka vuhundzuluxeri bya otomatiki.",
+  "language.search": "Ku lavisisa tindzimi",
+  "language.noMatches": "Ku hava tindzimi leti fambisanaka ni ku lavisisa ka wena.",
+  "language.continue": "Yisa emahlweni",
+  "language.saveError": "A swi swi kotanga ku hlayisa ririmi ra wena. Ringeta nakambe.",
 } satisfies Record<TranslationKey, string>;
 export default d_ts;

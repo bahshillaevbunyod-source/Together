@@ -251,5 +251,14 @@ const d_rom = {
   "auth.pleaseWait": "Te rughiv tut te aźukeres…",
   "auth.createAccount": "Ker konto",
   "auth.genericError": "Vareso gelo bilačhe.",
+  "language.loading": "Ładel o Together…",
+  "language.connectionError": "O Together nashti te konektirinel pes.",
+  "language.loadError": "O Together nashti te thovel tumare ćhibăqe preferencie.",
+  "language.chooseTitle": "Alosar tiri ćhib",
+  "language.description": "O Together ka utilizil kadi ćhib pe sasti platforma thaj vaś automatikane translacie.",
+  "language.search": "Roden e ćhiba",
+  "language.noMatches": "Ni jekh ćhib na malavel pes tumare rodipnaça.",
+  "language.continue": "Te źas maj dur",
+  "language.saveError": "Nashti te garavav tiri ćhib. Zumaven pale.",
 } satisfies Record<TranslationKey, string>;
 export default d_rom;

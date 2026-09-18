@@ -251,5 +251,14 @@ const d_ti = {
   "auth.pleaseWait": "በጃኹም ተጸበዩ...",
   "auth.createAccount": "ኣካውንት ምፍጣር",
   "auth.genericError": "ገለ ነገር ተጋግዩ።",
+  "language.loading": "ብሓባር ምጽዓን...",
+  "language.connectionError": "ብሓባር ክራኸብ ኣይከኣለን።",
+  "language.loadError": "ብሓባር ምርጫታት ቋንቋኻ ክጽዕን ኣይከኣለን።",
+  "language.chooseTitle": "ቋንቋኻ ምረጽ",
+  "language.description": "ብሓባር ነዚ ቋንቋ ኣብ መላእ መድረኽን ንኣውቶማቲክ ትርጉማትን ክጥቀመሉ እዩ።",
+  "language.search": "ቋንቋታት ምድላይ",
+  "language.noMatches": "ዝኾነ ቋንቋ ምስ ምድላይካ ዝሰማማዕ የለን።",
+  "language.continue": "ቀጽል",
+  "language.saveError": "ቋንቋኻ ክዕቅብ ኣይከኣለን። እንደገና ፈትን።",
 } satisfies Record<TranslationKey, string>;
 export default d_ti;

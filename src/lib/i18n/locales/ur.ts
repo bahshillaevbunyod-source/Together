@@ -251,5 +251,14 @@ const d_ur = {
   "auth.pleaseWait": "براہ کرم انتظار کریں…",
   "auth.createAccount": "اکاؤنٹ بنائیں",
   "auth.genericError": "کچھ غلط ہو گیا۔",
+  "language.loading": "ایک ساتھ لوڈ ہو رہا ہے…",
+  "language.connectionError": "ایک ساتھ منسلک نہیں ہو سکے۔",
+  "language.loadError": "ایک ساتھ آپ کی زبان کی ترجیحات لوڈ نہیں کر سکے۔",
+  "language.chooseTitle": "اپنی زبان کا انتخاب کریں",
+  "language.description": "Together اس زبان کو پلیٹ فارم پر اور خودکار ترجمے کے لیے استعمال کرے گا۔",
+  "language.search": "زبانیں تلاش کریں",
+  "language.noMatches": "کوئی زبانیں آپ کی تلاش سے مماثل نہیں ہیں۔",
+  "language.continue": "جاری رکھیں",
+  "language.saveError": "آپ کی زبان محفوظ نہیں ہو سکی۔ دوبارہ کوشش کریں۔",
 } satisfies Record<TranslationKey, string>;
 export default d_ur;

@@ -251,5 +251,14 @@ const d_la = {
   "auth.pleaseWait": "Quaeso exspectare…",
   "auth.createAccount": "Novam rationem",
   "auth.genericError": "Aliquid abiit iniuriam.",
+  "language.loading": "Oneratione ...",
+  "language.connectionError": "Una coniungere non potuit.",
+  "language.loadError": "Una optiones linguae tuae onerare non potuerunt.",
+  "language.chooseTitle": "Linguam tuam elige",
+  "language.description": "Simul hac lingua utetur trans suggestum et ad translationes latae sententiae.",
+  "language.search": "Quaerere linguas",
+  "language.noMatches": "Nullae linguae inquisitioni tuae aequant.",
+  "language.continue": "Perge",
+  "language.saveError": "Linguam tuam servare non potui. Iterum conare.",
 } satisfies Record<TranslationKey, string>;
 export default d_la;

@@ -251,5 +251,14 @@ const d_or = {
   "auth.pleaseWait": "ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ…",
   "auth.createAccount": "ଖାତା ସୃଷ୍ଟି କରନ୍ତୁ |",
   "auth.genericError": "କିଛି ଭୁଲ୍ ହୋଇଗଲା |",
+  "language.loading": "ଏକାଠି ଲୋଡିଂ…",
+  "language.connectionError": "ଏକତ୍ର ସଂଯୋଗ ହୋଇପାରିବ ନାହିଁ |",
+  "language.loadError": "ଏକତ୍ର ତୁମର ଭାଷା ପସନ୍ଦ ଲୋଡ୍ କରିପାରିବ ନାହିଁ |",
+  "language.chooseTitle": "ଆପଣଙ୍କର ଭାଷା ବାଛନ୍ତୁ |",
+  "language.description": "ମିଳିତ ଭାବରେ ପ୍ଲାଟଫର୍ମରେ ଏବଂ ସ୍ୱୟଂଚାଳିତ ଅନୁବାଦ ପାଇଁ ଏହି ଭାଷା ବ୍ୟବହାର କରିବେ |",
+  "language.search": "ଭାଷା ଖୋଜ |",
+  "language.noMatches": "କ search ଣସି ଭାଷା ତୁମର ସନ୍ଧାନ ସହିତ ମେଳ ଖାଉ ନାହିଁ |",
+  "language.continue": "ଜାରି ରଖ |",
+  "language.saveError": "ଆପଣଙ୍କର ଭାଷା ସଞ୍ଚୟ କରିପାରିବ ନାହିଁ | ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
 } satisfies Record<TranslationKey, string>;
 export default d_or;

@@ -251,5 +251,14 @@ const d_gd = {
   "auth.pleaseWait": "Feuch an fuirich thu…",
   "auth.createAccount": "Cruthaich cunntas",
   "auth.genericError": "Chaidh rudeigin ceàrr.",
+  "language.loading": "A’ luchdachadh còmhla…",
+  "language.connectionError": "Cha b’ urrainn dhuinn ceangal a dhèanamh còmhla.",
+  "language.loadError": "Cha b’ urrainn dhuinn na roghainnean cànain agad a luchdachadh còmhla.",
+  "language.chooseTitle": "Tagh do chànan",
+  "language.description": "Cleachdaidh sinn an cànan seo còmhla thairis air an àrd-ùrlar agus airson eadar-theangachadh fèin-ghluasadach.",
+  "language.search": "Cànanan rannsachaidh",
+  "language.noMatches": "Chan eil cànan sam bith a' freagairt ris an rannsachadh agad.",
+  "language.continue": "Lean air adhart",
+  "language.saveError": "Cha b’ urrainn dhuinn do chànan a shàbhaladh. Feuch ris a-rithist.",
 } satisfies Record<TranslationKey, string>;
 export default d_gd;

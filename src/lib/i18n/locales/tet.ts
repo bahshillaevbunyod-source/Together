@@ -251,5 +251,14 @@ const d_tet = {
   "auth.pleaseWait": "Favor hein...",
   "auth.createAccount": "Kria konta",
   "auth.genericError": "Buat ruma la'o sala.",
+  "language.loading": "Karrega hela Together…",
+  "language.connectionError": "Together labele liga.",
+  "language.loadError": "Together labele karrega ita-boot nia preferénsia lian nian.",
+  "language.chooseTitle": "Hili Ita-boot nia lian",
+  "language.description": "Together sei uza lian ida-ne'e iha plataforma tomak no ba tradusaun automátiku sira.",
+  "language.search": "Buska lian sira",
+  "language.noMatches": "Laiha lian ida ne'ebé hanesan ho ita-boot nia peskiza.",
+  "language.continue": "Kontinua",
+  "language.saveError": "Labele salva ita-boot nia lian. Koko fali.",
 } satisfies Record<TranslationKey, string>;
 export default d_tet;

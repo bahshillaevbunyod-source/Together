@@ -251,5 +251,14 @@ const d_sm = {
   "auth.pleaseWait": "Fa'amolemole fa'atali...",
   "auth.createAccount": "Fausia tala",
   "auth.genericError": "Sa i ai se mea na faaletonu.",
+  "language.loading": "Lota Fa'atasi…",
+  "language.connectionError": "E le mafai ona fesootai faatasi.",
+  "language.loadError": "E le mafai ona la'u fa'atasi lau gagana e te mana'o ai.",
+  "language.chooseTitle": "Fili lau gagana",
+  "language.description": "O le a fa'aoga fa'atasi lenei gagana i luga o le fa'avae ma mo fa'aliliuga otometi.",
+  "language.search": "Su'e gagana",
+  "language.noMatches": "E leai ni gagana e fetaui ma lau sailiga.",
+  "language.continue": "Fa'aauau",
+  "language.saveError": "Ua le mafai ona sefe lau gagana. Toe taumafai.",
 } satisfies Record<TranslationKey, string>;
 export default d_sm;

@@ -251,5 +251,14 @@ const d_gl = {
   "auth.pleaseWait": "Agarde…",
   "auth.createAccount": "Crear conta",
   "auth.genericError": "Algo saíu mal.",
+  "language.loading": "Cargando xuntos...",
+  "language.connectionError": "Together non se puido conectar.",
+  "language.loadError": "Together non puido cargar as túas preferencias de idioma.",
+  "language.chooseTitle": "Escolle o teu idioma",
+  "language.description": "Together usará este idioma na plataforma e para traducións automáticas.",
+  "language.search": "Buscar idiomas",
+  "language.noMatches": "Ningún idioma coincide coa túa busca.",
+  "language.continue": "Continuar",
+  "language.saveError": "Non se puido gardar o teu idioma. Téntao de novo.",
 } satisfies Record<TranslationKey, string>;
 export default d_gl;

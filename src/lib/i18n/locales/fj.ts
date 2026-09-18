@@ -251,5 +251,14 @@ const d_fj = {
   "auth.pleaseWait": "Kerekere mo waraka mada...",
   "auth.createAccount": "Cakava na akaude",
   "auth.genericError": "E dua na ka e cala.",
+  "language.loading": "Vakavodoki Vata...",
+  "language.connectionError": "E sega ni rawa ni veitaratara vata.",
+  "language.loadError": "Vata e sega ni rawa ni vakavodoki na nomu gagadre ni vosa.",
+  "language.chooseTitle": "Digitaka na nomu vosa .",
+  "language.description": "Vata ena vakayagataka na vosa oqo ena taudaku ni ituvatuva kei na me baleta na vakadewa vakataki koya.",
+  "language.search": "Vakasaqara na vosa",
+  "language.noMatches": "E sega ni dua na vosa e veiganiti kei na nomu vakasaqaqara.",
+  "language.continue": "Tomana",
+  "language.saveError": "E sega ni rawa ni vakabulai na nomu vosa. Tovolea tale.",
 } satisfies Record<TranslationKey, string>;
 export default d_fj;

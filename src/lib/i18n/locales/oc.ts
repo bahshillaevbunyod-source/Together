@@ -251,5 +251,14 @@ const d_oc = {
   "auth.pleaseWait": "Espèra...",
   "auth.createAccount": "Crear un compte",
   "auth.genericError": "Quicòm s'es marrit.",
+  "language.loading": "En cargant amassa...",
+  "language.connectionError": "Amassa podián pas se connectar.",
+  "language.loadError": "Together a pas pogut cargar vòstras preferéncias lingüisticas.",
+  "language.chooseTitle": "Causissètz vòstra lenga",
+  "language.description": "Amassa utilizarem aquesta lenga a travèrs la plataforma e per las traduccions automaticas.",
+  "language.search": "Cercar de lengas",
+  "language.noMatches": "Cap de lenga correspond pas a vòstra recèrca.",
+  "language.continue": "Contunhar",
+  "language.saveError": "Poguèt pas salvar vòstra lenga. Ensajatz tornarmai.",
 } satisfies Record<TranslationKey, string>;
 export default d_oc;

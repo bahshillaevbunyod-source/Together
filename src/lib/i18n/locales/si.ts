@@ -251,5 +251,14 @@ const d_si = {
   "auth.pleaseWait": "කරුණාකර රැඳී සිටින්න…",
   "auth.createAccount": "ගිණුමක් සාදන්න",
   "auth.genericError": "යමක් වැරදී ඇත.",
+  "language.loading": "Together පූරණය වෙමින්…",
+  "language.connectionError": "එකට සම්බන්ධ වීමට නොහැකි විය.",
+  "language.loadError": "එකට ඔබේ භාෂා මනාප පූරණය කළ නොහැකි විය.",
+  "language.chooseTitle": "ඔබේ භාෂාව තෝරන්න",
+  "language.description": "එකට මෙම භාෂාව වේදිකාව හරහා සහ ස්වයංක්‍රීය පරිවර්තන සඳහා භාවිතා කරනු ඇත.",
+  "language.search": "භාෂා සොයන්න",
+  "language.noMatches": "ඔබේ සෙවුමට ගැලපෙන භාෂා කිසිවක් නැත.",
+  "language.continue": "ඉදිරියට යන්න",
+  "language.saveError": "ඔබේ භාෂාව සුරැකීමට නොහැකි විය. නැවත උත්සාහ කරන්න.",
 } satisfies Record<TranslationKey, string>;
 export default d_si;

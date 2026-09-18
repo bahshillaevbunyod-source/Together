@@ -251,5 +251,14 @@ const d_tn = {
   "auth.pleaseWait": "Tsweetswee ema pele...",
   "auth.createAccount": "Tlhama akhaonto",
   "auth.genericError": "Sengwe se ne sa senyega.",
+  "language.loading": "Go Laisa Mmogo...",
+  "language.connectionError": "Mmogo ga re kgone go golagana.",
+  "language.loadError": "Mmogo ga e a kgona go laisa ditlhopho tsa gago tsa puo.",
+  "language.chooseTitle": "Tlhopha puo ya gago",
+  "language.description": "Mmogo re tla dirisa puo eno go ralala polatefomo le go dira dithanolo tse di itirisang.",
+  "language.search": "Batla dipuo",
+  "language.noMatches": "Ga go na dipuo tse di tsamaelanang le patlo ya gago.",
+  "language.continue": "Tswelela",
+  "language.saveError": "Ga e kgone go boloka puo ya gago. Leka gape.",
 } satisfies Record<TranslationKey, string>;
 export default d_tn;

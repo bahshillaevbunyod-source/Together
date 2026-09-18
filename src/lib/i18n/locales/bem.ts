@@ -251,5 +251,14 @@ const d_bem = {
   "auth.pleaseWait": "Mukwai lindilila...",
   "auth.createAccount": "Panga akaunti",
   "auth.genericError": "Pali fimo ifyalubene.",
+  "language.loading": "Ukubika Pamo...",
+  "language.connectionError": "Pamo tekuti basuntinkanye.",
+  "language.loadError": "Pamo tekuti fibike ifyo mwatemwa ululimi.",
+  "language.chooseTitle": "Saleni ululimi lwenu",
+  "language.description": "Pamo tukabomfya ulu lulimi pa pulatifomu yonse na ku kwalula ukwaibela.",
+  "language.search": "Fwayeni ifitundu",
+  "language.noMatches": "Tapali ifitundu ifipalene nefyo mulefwaya.",
+  "language.continue": "Konkanyapo",
+  "language.saveError": "Teti nsungile ululimi lwenu. Esheni nakabili.",
 } satisfies Record<TranslationKey, string>;
 export default d_bem;

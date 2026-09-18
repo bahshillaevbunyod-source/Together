@@ -251,5 +251,14 @@ const d_yo = {
   "auth.pleaseWait": "Jọwọ duro…",
   "auth.createAccount": "Ṣẹda iroyin",
   "auth.genericError": "Nkankan ti ko tọ.",
+  "language.loading": "Nkojọpọ papọ…",
+  "language.connectionError": "Papọ ko le sopọ.",
+  "language.loadError": "Papọ ko le ṣajọpọ awọn ayanfẹ ede rẹ.",
+  "language.chooseTitle": "Yan ede rẹ",
+  "language.description": "Papọ yoo lo ede yii kọja pẹpẹ ati fun awọn itumọ aladaaṣe.",
+  "language.search": "Wa awọn ede",
+  "language.noMatches": "Ko si ede ti o baamu wiwa rẹ.",
+  "language.continue": "Tesiwaju",
+  "language.saveError": "Ko le fi ede rẹ pamọ. Gbiyanju lẹẹkansi.",
 } satisfies Record<TranslationKey, string>;
 export default d_yo;

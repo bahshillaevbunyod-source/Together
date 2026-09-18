@@ -251,5 +251,14 @@ const d_alz = {
   "auth.pleaseWait": "Kwayo ikur...",
   "auth.createAccount": "Caku akaunti",
   "auth.genericError": "Piny moko utime marac.",
+  "language.loading": "Tie ka ketho Together…",
+  "language.connectionError": "Together copo ngo ni rwate.",
+  "language.loadError": "Together copo ketho ngo lembe peri mi dhok.",
+  "language.chooseTitle": "Yer dhok peri",
+  "language.description": "Together bi tiyo ku dhok eni iwi platform man pi loko dhok.",
+  "language.search": "Yeny dhok",
+  "language.noMatches": "Dhok moko ope ma rwate ku yeny peri.",
+  "language.continue": "Medre",
+  "language.saveError": "Icopo gwoko ngo dhok peri. Tem kendu.",
 } satisfies Record<TranslationKey, string>;
 export default d_alz;

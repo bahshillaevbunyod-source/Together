@@ -251,5 +251,14 @@ const d_ro = {
   "auth.pleaseWait": "Vă rugăm să așteptați…",
   "auth.createAccount": "Creați cont",
   "auth.genericError": "Ceva a mers prost.",
+  "language.loading": "Se încarcă împreună...",
+  "language.connectionError": "Together nu s-a putut conecta.",
+  "language.loadError": "Together nu a putut încărca preferințele de limbă.",
+  "language.chooseTitle": "Alegeți limba",
+  "language.description": "Together va folosi această limbă pe platformă și pentru traduceri automate.",
+  "language.search": "Căutați limbi",
+  "language.noMatches": "Nici o limbă nu corespunde căutării dvs.",
+  "language.continue": "Continuați",
+  "language.saveError": "Nu s-a putut salva limba. Încercați din nou.",
 } satisfies Record<TranslationKey, string>;
 export default d_ro;

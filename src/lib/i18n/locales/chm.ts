@@ -251,5 +251,14 @@ const d_chm = {
   "auth.pleaseWait": "Пожалуйста, вучалте...",
   "auth.createAccount": "Аккаунтым ышташ",
   "auth.genericError": "Иктаж-мо уда лийын.",
+  "language.loading": "Пырля загрузка...",
+  "language.connectionError": "Пырля ушен кертын огытыл.",
+  "language.loadError": "Together тендан йылме ойыртемдам пуртен кертын огыл.",
+  "language.chooseTitle": "Шке йылмым ойырен налза",
+  "language.description": "Пырля тиде йылмым платформышто да автоматический кусарымашлан кучылташ тӱҥалыт.",
+  "language.search": "Йылме-влакым кычалмаш",
+  "language.noMatches": "Кычалме дене нимогай йылме ок келше.",
+  "language.continue": "Умбакыже",
+  "language.saveError": "Тендан йылмедам арален коден огынал. Эше ик гана ыштен ончо.",
 } satisfies Record<TranslationKey, string>;
 export default d_chm;

@@ -251,5 +251,14 @@ const d_doi = {
   "auth.pleaseWait": "कृपया इंतजार करो...",
   "auth.createAccount": "खाता बनाओ",
   "auth.genericError": "कुछ गड़बड़ हो गया।",
+  "language.loading": "एक साथ लोड हो रहा है...",
+  "language.connectionError": "इक साथ कनेक्ट नेईं होई सके।",
+  "language.loadError": "इक साथ तुंदी भाशा प्राथमिकताएं गी लोड नेईं करी सकेआ।",
+  "language.chooseTitle": "अपनी भाषा चुनें",
+  "language.description": "एक साथ इस भाशा दा इस्तेमाल पूरे प्लेटफार्म च ते स्वचालित अनुवादें लेई करग।",
+  "language.search": "खोज भाषाएं",
+  "language.noMatches": "कोई बी भाशा तुंदी खोज कन्नै मेल नेईं खंदा।",
+  "language.continue": "जारी रक्खो",
+  "language.saveError": "अपनी भाशा गी बचाई नेईं सकेआ. फिर कोशिश करो।",
 } satisfies Record<TranslationKey, string>;
 export default d_doi;

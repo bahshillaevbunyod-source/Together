@@ -251,5 +251,14 @@ const d_xh = {
   "auth.pleaseWait": "Nceda ulinde...",
   "auth.createAccount": "Yenza iakhawunti",
   "auth.genericError": "Into ayihamba kakuhle.",
+  "language.loading": "Ilayisha Kunye…",
+  "language.connectionError": "Kunye akukwazanga ukunxibelelana.",
+  "language.loadError": "Sisonke asikwazanga ukulayisha ulwimi olukhethayo.",
+  "language.chooseTitle": "Khetha ulwimi lwakho",
+  "language.description": "Sikunye sizakusebenzisa olu lwimi kulo lonke iqonga kunye neenguqulelo ezizenzekelayo.",
+  "language.search": "Phanda iilwimi",
+  "language.noMatches": "Akukho lwimi oluhambelana nophendlo lwakho.",
+  "language.continue": "Qhubeka",
+  "language.saveError": "Ayikwazanga ukugcina ulwimi lwakho. Zama kwakhona.",
 } satisfies Record<TranslationKey, string>;
 export default d_xh;

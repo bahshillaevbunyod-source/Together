@@ -251,5 +251,14 @@ const d_lt = {
   "auth.pleaseWait": "Prašome palaukti…",
   "auth.createAccount": "Sukurti paskyrą",
   "auth.genericError": "Kažkas nutiko.",
+  "language.loading": "Įkeliama kartu…",
+  "language.connectionError": "Together nepavyko prisijungti.",
+  "language.loadError": "Together nepavyko įkelti kalbos nuostatų.",
+  "language.chooseTitle": "Pasirinkite kalbą",
+  "language.description": "Together naudos šią kalbą visoje platformoje ir automatiniams vertimams.",
+  "language.search": "Ieškoti kalbų",
+  "language.noMatches": "Paiešką atitinkančių kalbų nėra.",
+  "language.continue": "Tęsti",
+  "language.saveError": "Nepavyko išsaugoti jūsų kalbos. Bandykite dar kartą.",
 } satisfies Record<TranslationKey, string>;
 export default d_lt;

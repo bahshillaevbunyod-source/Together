@@ -251,5 +251,14 @@ const d_rn = {
   "auth.pleaseWait": "Ndagusavye urindire...",
   "auth.createAccount": "Rema konti",
   "auth.genericError": "Hari ikintu cabaye nabi.",
+  "language.loading": "Gushiramwo hamwe...",
+  "language.connectionError": "Hamwe ntivyashobora gufatanya.",
+  "language.loadError": "Hamwe ntivyashobora gushiramwo ururimi ukunda.",
+  "language.chooseTitle": "Hitamwo ururimi rwawe",
+  "language.description": "Twese hamwe tuzokoresha uru rurimi ku rubuga rwose no ku mpinduro zikora.",
+  "language.search": "Gushakisha indimi",
+  "language.noMatches": "Nta ndimi zihuye n'ivyo ushaka.",
+  "language.continue": "Bandanya",
+  "language.saveError": "Ntashobora gukiza ururimi rwawe. Subira ugerageze.",
 } satisfies Record<TranslationKey, string>;
 export default d_rn;

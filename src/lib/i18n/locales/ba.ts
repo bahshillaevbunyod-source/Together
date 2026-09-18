@@ -251,5 +251,14 @@ const d_ba = {
   "auth.pleaseWait": "Зинһар, көтөгөҙ...",
   "auth.createAccount": "Иҫәп яҙмаһын булдырыу",
   "auth.genericError": "Нимәлер дөрөҫ булманы.",
+  "language.loading": "Бергә тейәү...",
+  "language.connectionError": "Бергә тоташтыра алманы’.",
+  "language.loadError": "Бергә тейәп булманы’ һеҙҙең тел өҫтөнлөктәре.",
+  "language.chooseTitle": "Үҙ телеңде һайла .",
+  "language.description": "Бергәләп был телде платформа буйынса һәм автоматик тәржемәләр өсөн ҡулланасаҡ.",
+  "language.search": "Телдәрҙе эҙләү",
+  "language.noMatches": "Эҙләүегеҙгә бер тел дә тап килмәй.",
+  "language.continue": "Дауам итергә",
+  "language.saveError": "Һеҙҙең телде һаҡлап ҡала алманы. Тағы ла тырышып ҡарағыҙ.",
 } satisfies Record<TranslationKey, string>;
 export default d_ba;

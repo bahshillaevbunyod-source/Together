@@ -251,5 +251,14 @@ const d_lmo = {
   "auth.pleaseWait": "Per piasér speta...",
   "auth.createAccount": "Crea cunt",
   "auth.genericError": "Quaicoss l’è ndad mal.",
+  "language.loading": "Caricament insema...",
+  "language.connectionError": "Insema pudevan minga culegà.",
+  "language.loadError": "Insema pudeva minga cargà i preferenz linguistich.",
+  "language.chooseTitle": "Scegli la tò lengua",
+  "language.description": "Insema duperaran chesta lengua sü la piattafurma e per i traduziun automatich.",
+  "language.search": "Cerca lengue",
+  "language.noMatches": "Nissüna lengua currispunt a la vòstra ricerca.",
+  "language.continue": "Segutar",
+  "language.saveError": "Pudeva minga salvà la tò lengua. Pruva ancamò.",
 } satisfies Record<TranslationKey, string>;
 export default d_lmo;

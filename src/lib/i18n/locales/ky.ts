@@ -251,5 +251,14 @@ const d_ky = {
   "auth.pleaseWait": "Күтө туруңуз…",
   "auth.createAccount": "Каттоо эсебин түзүү",
   "auth.genericError": "Бир жерден ката кетти.",
+  "language.loading": "Бирге жүктөлүүдө…",
+  "language.connectionError": "Бирге туташкан жок.",
+  "language.loadError": "Бирге тил тандоолоруңузду жүктөй алган жок.",
+  "language.chooseTitle": "Тилиңизди тандаңыз",
+  "language.description": "Бирге бул тилди бардык платформада жана автоматтык которуулар үчүн колдонобуз.",
+  "language.search": "Тилдерди издөө",
+  "language.noMatches": "Издөөңүзгө дал келген тилдер жок.",
+  "language.continue": "Улантуу",
+  "language.saveError": "Тилиңиз сакталбай койду. Кайталап көрүңүз.",
 } satisfies Record<TranslationKey, string>;
 export default d_ky;

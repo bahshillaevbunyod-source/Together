@@ -251,5 +251,14 @@ const d_sn = {
   "auth.pleaseWait": "Mirai henyu...",
   "auth.createAccount": "Gadzira account",
   "auth.genericError": "Pane chakaipa.",
+  "language.loading": "Kurodha Pamwe Chete…",
+  "language.connectionError": "Tose tatadza kubatana.",
+  "language.loadError": "Tose tatadza kurodha zvaunofarira zvemutauro.",
+  "language.chooseTitle": "Sarudza mutauro wako",
+  "language.description": "Tose tichashandisa mutauro uyu papuratifomu uye nekushandura yega yega.",
+  "language.search": "Tsvaga mitauro",
+  "language.noMatches": "Hapana mitauro inoenderana netsvakiridzo yako.",
+  "language.continue": "Enderera",
+  "language.saveError": "Hatina kukwanisa kuchengetedza mutauro wako. Edza zvakare.",
 } satisfies Record<TranslationKey, string>;
 export default d_sn;

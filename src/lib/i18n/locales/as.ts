@@ -251,5 +251,14 @@ const d_as = {
   "auth.pleaseWait": "অনুগ্ৰহ কৰি অপেক্ষা কৰক...",
   "auth.createAccount": "একাউণ্ট সৃষ্টি কৰক",
   "auth.genericError": "কিবা এটা ভুল হ’ল।",
+  "language.loading": "একেলগে লোড কৰা হৈছে...",
+  "language.connectionError": "একেলগে সংযোগ কৰিব পৰা নগ’ল।",
+  "language.loadError": "একেলগে আপোনাৰ ভাষা পছন্দসমূহ লোড কৰিব নোৱাৰিলে।",
+  "language.chooseTitle": "আপোনাৰ ভাষা বাছি লওক",
+  "language.description": "Together এ এই ভাষাটো সমগ্ৰ প্লেটফৰ্মত আৰু স্বয়ংক্ৰিয় অনুবাদৰ বাবে ব্যৱহাৰ কৰিব।",
+  "language.search": "ভাষা সন্ধান কৰক",
+  "language.noMatches": "কোনো ভাষা আপোনাৰ সন্ধানৰ সৈতে মিল নাই।",
+  "language.continue": "অব্যাহত ৰাখক",
+  "language.saveError": "আপোনাৰ ভাষা সংৰক্ষণ কৰিব পৰা নগ’ল। পুনৰ চেষ্টা কৰক।",
 } satisfies Record<TranslationKey, string>;
 export default d_as;

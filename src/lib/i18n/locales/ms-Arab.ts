@@ -251,5 +251,14 @@ const d_ms_Arab = {
   "auth.pleaseWait": "سيلا توڠڬو...",
   "auth.createAccount": "بوات اكاءون",
   "auth.genericError": "اد يڠ تيدق كنا.",
+  "language.loading": "ممواتكن برسام...",
+  "language.connectionError": "برسام تيدق داڤت برسامبوڠ.",
+  "language.loadError": "برسام-سام تيدق داڤت ممواتكن كبوليهن بهاس اندا.",
+  "language.chooseTitle": "ڤيليه بهاس اندا",
+  "language.description": "برسام-سام اكن مڠڬوناكن بهاس اين د سلوروه ڤلتفوم دان اونتوق ترجمهن اوتوماتيس.",
+  "language.search": "چاري بهاس",
+  "language.noMatches": "تياد بهاس يڠ سسواي دڠن ڤنچارين ​​اندا.",
+  "language.continue": "تروسكن",
+  "language.saveError": "تيدق داڤت مڽلامتكن بهاس اندا. چوبا لاڬي.",
 } satisfies Record<TranslationKey, string>;
 export default d_ms_Arab;

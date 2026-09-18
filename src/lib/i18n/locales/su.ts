@@ -251,5 +251,14 @@ const d_su = {
   "auth.pleaseWait": "Mangga antosan…",
   "auth.createAccount": "Jieun akun",
   "auth.genericError": "Aya nu lepat.",
+  "language.loading": "Muat Babarengan…",
+  "language.connectionError": "Barengan teu bisa nyambung.",
+  "language.loadError": "Bareng teu bisa ngamuat préferénsi basa anjeun.",
+  "language.chooseTitle": "Pilih basa anjeun",
+  "language.description": "Bareng bakal ngagunakeun basa ieu di sakuliah platform jeung pikeun tarjamahan otomatis.",
+  "language.search": "Paluruh basa",
+  "language.noMatches": "Teu aya basa anu cocog sareng pamilarian anjeun.",
+  "language.continue": "Teruskeun",
+  "language.saveError": "Teu tiasa nyimpen basa anjeun. Cobian deui.",
 } satisfies Record<TranslationKey, string>;
 export default d_su;

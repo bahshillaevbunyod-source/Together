@@ -251,5 +251,14 @@ const d_pap = {
   "auth.pleaseWait": "Por fabor warda...",
   "auth.createAccount": "Krea kuenta",
   "auth.genericError": "Algu a bai robes.",
+  "language.loading": "Ta karga e Together…",
+  "language.connectionError": "Together no por a konektá.",
+  "language.loadError": "Together no por a karga bo preferensia di idioma.",
+  "language.chooseTitle": "Skohe bo idioma",
+  "language.description": "Together lo usa e idioma aki riba henter e plataforma i pa tradukshonnan outomátiko.",
+  "language.search": "Buska idiomanan",
+  "language.noMatches": "Ningun idioma ta kuadra ku bo búskeda.",
+  "language.continue": "Sigui",
+  "language.saveError": "No por a warda bo idioma. Purba atrobe.",
 } satisfies Record<TranslationKey, string>;
 export default d_pap;

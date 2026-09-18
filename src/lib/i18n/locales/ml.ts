@@ -251,5 +251,14 @@ const d_ml = {
   "auth.pleaseWait": "ദയവായി കാത്തിരിക്കൂ...",
   "auth.createAccount": "അക്കൗണ്ട് സൃഷ്ടിക്കുക",
   "auth.genericError": "എന്തോ കുഴപ്പം സംഭവിച്ചു.",
+  "language.loading": "ഒരുമിച്ച് ലോഡുചെയ്യുന്നു…",
+  "language.connectionError": "ഒരുമിച്ച് ബന്ധിപ്പിക്കാൻ കഴിഞ്ഞില്ല.",
+  "language.loadError": "ഒരുമിച്ച് നിങ്ങളുടെ ഭാഷാ മുൻഗണനകൾ ലോഡ് ചെയ്യാനായില്ല.",
+  "language.chooseTitle": "നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക",
+  "language.description": "ഒരുമിച്ച് പ്ലാറ്റ്‌ഫോമിലുടനീളം സ്വയമേവയുള്ള വിവർത്തനങ്ങൾക്കും ഈ ഭാഷ ഉപയോഗിക്കും.",
+  "language.search": "ഭാഷകൾ തിരയുക",
+  "language.noMatches": "നിങ്ങളുടെ തിരയലുമായി പൊരുത്തപ്പെടുന്ന ഭാഷകളൊന്നുമില്ല.",
+  "language.continue": "തുടരുക",
+  "language.saveError": "നിങ്ങളുടെ ഭാഷ സംരക്ഷിക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക.",
 } satisfies Record<TranslationKey, string>;
 export default d_ml;

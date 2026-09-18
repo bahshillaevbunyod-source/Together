@@ -251,5 +251,14 @@ const d_ha = {
   "auth.pleaseWait": "Da fatan za a jira…",
   "auth.createAccount": "Ƙirƙiri asusu",
   "auth.genericError": "Wani abu ya faru.",
+  "language.loading": "Ana Loda Tare…",
+  "language.connectionError": "Ba a iya haɗawa tare.",
+  "language.loadError": "Tare ba za a iya loda abubuwan zaɓinku na yare ba.",
+  "language.chooseTitle": "Zaɓi harshen ku",
+  "language.description": "Tare za a yi amfani da wannan harshe a duk faɗin dandamali kuma don fassarar atomatik.",
+  "language.search": "Bincika harsuna",
+  "language.noMatches": "Babu yaruka da suka dace da bincikenku.",
+  "language.continue": "Ci gaba",
+  "language.saveError": "Ba za a iya ajiye harshen ku ba. Gwada kuma.",
 } satisfies Record<TranslationKey, string>;
 export default d_ha;

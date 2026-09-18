@@ -251,5 +251,14 @@ const d_sa = {
   "auth.pleaseWait": "कृपया प्रतीक्षां कुर्वन्तु...",
   "auth.createAccount": "खाता रचयतु",
   "auth.genericError": "किमपि भ्रष्टं जातम्।",
+  "language.loading": "एकत्र लोड् भवति...",
+  "language.connectionError": "एकत्र सम्बद्धं कर्तुं न शक्तम्।",
+  "language.loadError": "एकत्र भवतः भाषाप्राथमिकताः लोड् कर्तुं न शक्तवन्तः।",
+  "language.chooseTitle": "स्वभाषां चिनोतु",
+  "language.description": "एकत्र मञ्चे स्वचालितअनुवादार्थं च एतां भाषां उपयुज्यते।",
+  "language.search": "भाषा अन्वेषणं",
+  "language.noMatches": "भवतः अन्वेषणेन सह कोऽपि भाषा न मेलति।",
+  "language.continue": "अन्तरताम्",
+  "language.saveError": "भवतः भाषां रक्षितुं न शक्तवान् । पुनः प्रयासं कुर्वन्तु।",
 } satisfies Record<TranslationKey, string>;
 export default d_sa;

@@ -251,5 +251,14 @@ const d_min = {
   "auth.pleaseWait": "Tolong tunggu...",
   "auth.createAccount": "Buek akun",
   "auth.genericError": "Ado nan salah.",
+  "language.loading": "Mamuek Basamo...",
+  "language.connectionError": "Basamo-samo indak bisa basambuang.",
+  "language.loadError": "Basamo-samo indak bisa mamuek pilihan bahaso sanak.",
+  "language.chooseTitle": "Piliah bahaso sanak",
+  "language.description": "Basamo-samo akan manggunoan bahaso ko di saluruah platform jo untuak tarjamahan otomatis.",
+  "language.search": "Cari bahaso",
+  "language.noMatches": "Indak ado bahaso nan sasuai jo pancarian Sanak.",
+  "language.continue": "Lanjuik",
+  "language.saveError": "Indak bisa manyimpan bahaso awak. Cubolah baliak.",
 } satisfies Record<TranslationKey, string>;
 export default d_min;

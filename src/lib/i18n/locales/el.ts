@@ -251,5 +251,14 @@ const d_el = {
   "auth.pleaseWait": "Παρακαλώ περιμένετε…",
   "auth.createAccount": "Δημιουργία λογαριασμού",
   "auth.genericError": "Κάτι πήγε στραβά.",
+  "language.loading": "Φόρτωση μαζί…",
+  "language.connectionError": "Δεν ήταν δυνατή η σύνδεση μαζί.",
+  "language.loadError": "Δεν ήταν δυνατή η φόρτωση των προτιμήσεων γλώσσας μαζί.",
+  "language.chooseTitle": "Επιλέξτε τη γλώσσα σας",
+  "language.description": "Μαζί θα χρησιμοποιούν αυτή τη γλώσσα σε όλη την πλατφόρμα και για αυτόματες μεταφράσεις.",
+  "language.search": "Αναζήτηση γλωσσών",
+  "language.noMatches": "Καμία γλώσσα δεν αντιστοιχεί στην αναζήτησή σας.",
+  "language.continue": "Συνεχίζω",
+  "language.saveError": "Δεν ήταν δυνατή η αποθήκευση της γλώσσας σας. Προσπαθήστε ξανά.",
 } satisfies Record<TranslationKey, string>;
 export default d_el;

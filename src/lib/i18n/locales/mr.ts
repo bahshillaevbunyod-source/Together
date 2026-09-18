@@ -251,5 +251,14 @@ const d_mr = {
   "auth.pleaseWait": "कृपया प्रतीक्षा करा...",
   "auth.createAccount": "खाते तयार करा",
   "auth.genericError": "काहीतरी चूक झाली.",
+  "language.loading": "एकत्र लोड करत आहे...",
+  "language.connectionError": "एकत्र कनेक्ट होऊ शकले नाही.",
+  "language.loadError": "तुमची भाषा प्राधान्ये एकत्र लोड करू शकलो नाही.",
+  "language.chooseTitle": "तुमची भाषा निवडा",
+  "language.description": "Together ही भाषा संपूर्ण प्लॅटफॉर्मवर आणि स्वयंचलित भाषांतरांसाठी वापरेल.",
+  "language.search": "भाषा शोधा",
+  "language.noMatches": "तुमच्या शोधाशी कोणतीही भाषा जुळत नाही.",
+  "language.continue": "सुरू ठेवा",
+  "language.saveError": "तुमची भाषा जतन करू शकलो नाही. पुन्हा प्रयत्न करा.",
 } satisfies Record<TranslationKey, string>;
 export default d_mr;

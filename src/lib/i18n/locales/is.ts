@@ -251,5 +251,14 @@ const d_is = {
   "auth.pleaseWait": "Vinsamlegast bíddu…",
   "auth.createAccount": "Búðu til reikning",
   "auth.genericError": "Eitthvað fór úrskeiðis.",
+  "language.loading": "Hleður saman...",
+  "language.connectionError": "Together gat ekki tengst.",
+  "language.loadError": "Together gat ekki hlaðið tungumálastillingunum þínum.",
+  "language.chooseTitle": "Veldu tungumálið þitt",
+  "language.description": "Together mun nota þetta tungumál á vettvangi og fyrir sjálfvirkar þýðingar.",
+  "language.search": "Leita tungumál",
+  "language.noMatches": "Engin tungumál passa við leitina.",
+  "language.continue": "Halda áfram",
+  "language.saveError": "Ekki tókst að vista tungumálið þitt. Reyndu aftur.",
 } satisfies Record<TranslationKey, string>;
 export default d_is;

@@ -251,5 +251,14 @@ const d_cnh = {
   "auth.pleaseWait": "Hngak ko...",
   "auth.createAccount": "Account ser",
   "auth.genericError": "Thil pakhatkhat a palh.",
+  "language.loading": "Hmunkhat ah kan char...",
+  "language.connectionError": "Hmunkhat ah kan i pehtlai kho lo.",
+  "language.loadError": "Together nih na holh duhmi kha a khumh kho lo.",
+  "language.chooseTitle": "Na holh kha i thim",
+  "language.description": "Hmunkhat ah hi holh hi platform cung le amah tein lehnak caah kan hman lai.",
+  "language.search": "Holh kawl",
+  "language.noMatches": "Na kawlmi he aa tlakmi holh pakhat hmanh a um lo.",
+  "language.continue": "Pehzulh",
+  "language.saveError": "Na holh kha ka khamh kho lo. I zuam tthan.",
 } satisfies Record<TranslationKey, string>;
 export default d_cnh;

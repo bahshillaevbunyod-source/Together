@@ -251,5 +251,14 @@ const d_ht = {
   "auth.pleaseWait": "Tanpri tann...",
   "auth.createAccount": "Kreye kont",
   "auth.genericError": "Yon bagay ale mal.",
+  "language.loading": "Chaje ansanm…",
+  "language.connectionError": "Together pa t kapab konekte.",
+  "language.loadError": "Together pa t kapab chaje preferans lang ou yo.",
+  "language.chooseTitle": "Chwazi lang ou",
+  "language.description": "Together pral sèvi ak lang sa a atravè platfòm la ak pou tradiksyon otomatik yo.",
+  "language.search": "Chache lang",
+  "language.noMatches": "Pa gen okenn lang ki koresponn ak rechèch ou an.",
+  "language.continue": "Kontinye",
+  "language.saveError": "Pa t 'kapab sove lang ou a. Eseye ankò.",
 } satisfies Record<TranslationKey, string>;
 export default d_ht;

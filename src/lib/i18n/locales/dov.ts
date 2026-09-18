@@ -251,5 +251,14 @@ const d_dov = {
   "auth.pleaseWait": "Ndalomba kulindila...",
   "auth.createAccount": "Panga akaunti",
   "auth.genericError": "Kuli chintu chakalubide.",
+  "language.loading": "Kubikka antoomwe...",
+  "language.connectionError": "Together tiiyakakonzya kuswaangana.",
+  "language.loadError": "Together tiiyakakonzya kubikka mwaambo ngoyanda.",
+  "language.chooseTitle": "Sala mwaambo wako",
+  "language.description": "Together uyoobelesya mwaambo ooyu aapulatifomu yoonse alubo mukusandululwa kwazyo.",
+  "language.search": "Kuyandaula myaambo",
+  "language.noMatches": "Kunyina milaka iikonzya kweendelana akuyandaula kwako.",
+  "language.continue": "Kozumanana",
+  "language.saveError": "Tiikwakonzya kubamba mwaambo wako. Kosola alimwi.",
 } satisfies Record<TranslationKey, string>;
 export default d_dov;

@@ -251,5 +251,14 @@ const d_ay = {
   "auth.pleaseWait": "Ukhamajj suytʼapjjam...",
   "auth.createAccount": "Cuenta luraña",
   "auth.genericError": "Kunas jan waliruw puriwayi.",
+  "language.loading": "Mayacht'asis apkatañataki...",
+  "language.connectionError": "Mayacht’asisax janiw mayacht’asipkaspati.",
+  "language.loadError": "Mayacht’asisax janiw aru munañanak apkatañjamäkiti.",
+  "language.chooseTitle": "Aru ajlliñamawa",
+  "language.description": "Mayacht’asisaw aka aru apnaqapxani plataforma taypin ukhamarak automático jaqukipäwinakataki.",
+  "language.search": "Arunak thaqhaña",
+  "language.noMatches": "Janiw kuna arunakas thakhiparjamäkiti.",
+  "language.continue": "Jichhax sarantaskakiwa",
+  "language.saveError": "Janiw arut qhispiyañjamäkiti. Mayampi yant’añani.",
 } satisfies Record<TranslationKey, string>;
 export default d_ay;

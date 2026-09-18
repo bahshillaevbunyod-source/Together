@@ -251,5 +251,14 @@ const d_yua = {
   "auth.pleaseWait": "Béet pa'atik...",
   "auth.createAccount": "Beet jump'éel yilaje'",
   "auth.genericError": "Yaan ba'ax ma' bin ma'alob.",
+  "language.loading": "Táan u kuuch Together…",
+  "language.connectionError": "Together ma' páajchaj u conectar.",
+  "language.loadError": "Together ma' páajchaj u kuuch a t'aan.",
+  "language.chooseTitle": "Yéey a t'aan",
+  "language.description": "Together yaan u meyajtik le t'aana' ti' tuláakal le plataforma yéetel uti'al u sutk'esiko'ob automáticas.",
+  "language.search": "Kaxant t'aano'ob",
+  "language.noMatches": "Mix jump'éel t'aan ku bin yéetel a kaxant.",
+  "language.continue": "Táan u t'u'uchpachtik",
+  "language.saveError": "Ma' páajchaj u ta'akikubáa a t'aan. Ilawil tu ka'atéen.",
 } satisfies Record<TranslationKey, string>;
 export default d_yua;

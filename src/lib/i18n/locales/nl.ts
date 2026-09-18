@@ -251,5 +251,14 @@ const d_nl = {
   "auth.pleaseWait": "Even geduld a.u.b....",
   "auth.createAccount": "Account aanmaken",
   "auth.genericError": "Er is iets misgegaan.",
+  "language.loading": "Samen laden…",
+  "language.connectionError": "Samen kon geen verbinding maken.",
+  "language.loadError": "Together kan je taalvoorkeuren niet laden.",
+  "language.chooseTitle": "Kies je taal",
+  "language.description": "Together zal deze taal op het hele platform en voor automatische vertalingen gebruiken.",
+  "language.search": "Zoektalen",
+  "language.noMatches": "Er komen geen talen overeen met uw zoekopdracht.",
+  "language.continue": "Doorgaan",
+  "language.saveError": "Kan uw taal niet opslaan. Probeer het opnieuw.",
 } satisfies Record<TranslationKey, string>;
 export default d_nl;

@@ -251,5 +251,14 @@ const d_gu = {
   "auth.pleaseWait": "કૃપા કરીને રાહ જુઓ...",
   "auth.createAccount": "એકાઉન્ટ બનાવો",
   "auth.genericError": "કંઈક ખોટું થયું.",
+  "language.loading": "સાથે લોડ થઈ રહ્યું છે...",
+  "language.connectionError": "એકસાથે કનેક્ટ થઈ શક્યું નથી.",
+  "language.loadError": "સાથે મળીને તમારી ભાષા પસંદગીઓ લોડ કરી શક્યાં નથી.",
+  "language.chooseTitle": "તમારી ભાષા પસંદ કરો",
+  "language.description": "Together સમગ્ર પ્લેટફોર્મ પર અને સ્વચાલિત અનુવાદો માટે આ ભાષાનો ઉપયોગ કરશે.",
+  "language.search": "ભાષાઓ શોધો",
+  "language.noMatches": "તમારી શોધ સાથે કોઈ ભાષા મેળ ખાતી નથી.",
+  "language.continue": "ચાલુ રાખો",
+  "language.saveError": "તમારી ભાષા સાચવી શકાઈ નથી. ફરી પ્રયાસ કરો.",
 } satisfies Record<TranslationKey, string>;
 export default d_gu;

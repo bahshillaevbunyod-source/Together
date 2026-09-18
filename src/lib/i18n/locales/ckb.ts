@@ -251,5 +251,14 @@ const d_ckb = {
   "auth.pleaseWait": "تکایە چاوەڕوان بن...",
   "auth.createAccount": "دروستکردنی ئەکاونت",
   "auth.genericError": "شتێک بە هەڵەدا چووە.",
+  "language.loading": "پێکەوە بارکردن...",
+  "language.connectionError": "بەیەکەوە نەیتوانی پەیوەندی بکات.",
+  "language.loadError": "بەیەکەوە نەیتوانی هەڵبژاردەکانی زمانەکەت بار بکات.",
+  "language.chooseTitle": "زمانەکەت هەڵبژێرە",
+  "language.description": "پێکەوە ئەم زمانە بەکاردەهێنێت لە سەرانسەری پلاتفۆرمەکەدا و بۆ وەرگێڕانی ئۆتۆماتیکی.",
+  "language.search": "زمانەکان بگەڕێ",
+  "language.noMatches": "هیچ زمانێک لەگەڵ گەڕانەکەتدا ناگونجێت.",
+  "language.continue": "بەردەوام بن",
+  "language.saveError": "نەتوانرا زمانەکەت پاشەکەوت بکات. دووبارە هەوڵبدەرەوە.",
 } satisfies Record<TranslationKey, string>;
 export default d_ckb;

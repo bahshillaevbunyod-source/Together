@@ -251,5 +251,14 @@ const d_yue = {
   "auth.pleaseWait": "唔該等下 …",
   "auth.createAccount": "建立帳戶",
   "auth.genericError": "有啲嘢出錯咗。",
+  "language.loading": "一齊載入緊 …",
+  "language.connectionError": "一齊連接唔到。",
+  "language.loadError": "Together 載入唔到你嘅語言偏好設定。",
+  "language.chooseTitle": "揀你嘅語言",
+  "language.description": "一齊會喺整個平台同埋自動翻譯嗰陣用呢種語言。",
+  "language.search": "搜尋語言",
+  "language.noMatches": "冇語言同你嘅搜尋相符。",
+  "language.continue": "繼續",
+  "language.saveError": "儲存唔到你嘅語言。再試多次。",
 } satisfies Record<TranslationKey, string>;
 export default d_yue;

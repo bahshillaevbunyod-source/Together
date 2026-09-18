@@ -251,5 +251,14 @@ const d_mak = {
   "auth.pleaseWait": "Tolong antayangi...",
   "auth.createAccount": "appareki akun",
   "auth.genericError": "Nia apa-apa sala.",
+  "language.loading": "Naloadi Together…",
+  "language.connectionError": "Together takkulleai assileo.",
+  "language.loadError": "Together takkulleai antama ri preferensi bahasanu.",
+  "language.chooseTitle": "Pilei basanu",
+  "language.description": "Together lanapakei anne bahasaya ri sikontu platform siagang untuk terjemahan otomatis.",
+  "language.search": "Pa'boyai bahasa",
+  "language.noMatches": "Tena bahasa yang cocok dengan pencarian Anda.",
+  "language.continue": "Lanjut",
+  "language.saveError": "Tena nakkulle anjagai basanu. Cobai pole.",
 } satisfies Record<TranslationKey, string>;
 export default d_mak;

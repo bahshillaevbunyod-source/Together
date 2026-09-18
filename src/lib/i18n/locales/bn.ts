@@ -251,5 +251,14 @@ const d_bn = {
   "auth.pleaseWait": "অনুগ্রহ করে অপেক্ষা করুন...",
   "auth.createAccount": "অ্যাকাউন্ট তৈরি করুন",
   "auth.genericError": "কিছু ভুল হয়েছে",
+  "language.loading": "একসাথে লোড হচ্ছে...",
+  "language.connectionError": "একসাথে সংযোগ করা যায়নি।",
+  "language.loadError": "একসাথে আপনার ভাষার পছন্দগুলি লোড করতে পারেনি৷",
+  "language.chooseTitle": "আপনার ভাষা চয়ন করুন",
+  "language.description": "Together এই ভাষাটি প্ল্যাটফর্ম জুড়ে এবং স্বয়ংক্রিয় অনুবাদের জন্য ব্যবহার করবে।",
+  "language.search": "ভাষা অনুসন্ধান করুন",
+  "language.noMatches": "আপনার অনুসন্ধানের সাথে কোনো ভাষা মেলে না।",
+  "language.continue": "চালিয়ে যান",
+  "language.saveError": "আপনার ভাষা সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।",
 } satisfies Record<TranslationKey, string>;
 export default d_bn;

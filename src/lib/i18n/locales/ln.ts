@@ -251,5 +251,14 @@ const d_ln = {
   "auth.pleaseWait": "Svp bozela...",
   "auth.createAccount": "Bosala compte",
   "auth.genericError": "Eloko moko ekendeki mabe.",
+  "language.loading": "Ko charger Ensemble...",
+  "language.connectionError": "Ensemble bakokaki ko connecter te.",
+  "language.loadError": "Ensemble ekokaki ko charger ba préférences ya langue na yo te.",
+  "language.chooseTitle": "Pona monoko na yo",
+  "language.description": "Elongo bakosalela monoko oyo na estrade mobimba mpe mpo na mabongoli ya automatique.",
+  "language.search": "Luká minɔkɔ",
+  "language.noMatches": "Minɔkɔ moko te ekokani na oyo ozali koluka.",
+  "language.continue": "Kokoba",
+  "language.saveError": "Ekokaki kobikisa monoko na yo te. Meká lisusu.",
 } satisfies Record<TranslationKey, string>;
 export default d_ln;

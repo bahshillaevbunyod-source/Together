@@ -251,5 +251,14 @@ const ru = {
   "auth.pleaseWait": "Пожалуйста, подождите…",
   "auth.createAccount": "Создать учетную запись",
   "auth.genericError": "Что-то пошло не так.",
+  "language.loading": "Совместная загрузка…",
+  "language.connectionError": "Вместе не удалось подключиться.",
+  "language.loadError": "Не удалось загрузить языковые настройки.",
+  "language.chooseTitle": "Выберите язык",
+  "language.description": "Вместе будем использовать этот язык на всей платформе и для автоматических переводов.",
+  "language.search": "Языки поиска",
+  "language.noMatches": "Нет языков, соответствующих вашему запросу.",
+  "language.continue": "Продолжить",
+  "language.saveError": "Не удалось сохранить язык. Попробуйте еще раз.",
 } satisfies Record<TranslationKey, string>;
 export default ru;

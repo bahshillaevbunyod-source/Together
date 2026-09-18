@@ -251,5 +251,14 @@ const d_da = {
   "auth.pleaseWait": "Vent venligst...",
   "auth.createAccount": "Opret konto",
   "auth.genericError": "Noget gik galt.",
+  "language.loading": "Indlæser sammen...",
+  "language.connectionError": "Together kunne ikke oprette forbindelse.",
+  "language.loadError": "Together kunne ikke indlæse dine sprogpræferencer.",
+  "language.chooseTitle": "Vælg dit sprog",
+  "language.description": "Together vil bruge dette sprog på tværs af platformen og til automatiske oversættelser.",
+  "language.search": "Søg efter sprog",
+  "language.noMatches": "Ingen sprog matcher din søgning.",
+  "language.continue": "Fortsæt",
+  "language.saveError": "Kunne ikke gemme dit sprog. Prøv igen.",
 } satisfies Record<TranslationKey, string>;
 export default d_da;

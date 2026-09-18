@@ -251,5 +251,14 @@ const d_ff = {
   "auth.pleaseWait": "Tiiɗno, ɗaɓɓu...",
   "auth.createAccount": "Sos konte",
   "auth.genericError": "Won ko ŋakki.",
+  "language.loading": "Nana loowde Together…",
+  "language.connectionError": "Together waawaa seŋaade.",
+  "language.loadError": "Together waawaa loowde cuɓe ɗemngal maa.",
+  "language.chooseTitle": "Suɓo ɗemngal maa",
+  "language.description": "Together huutorto ɗemngal ngal e dow lowre ndee e firooji jaɓɓorgo.",
+  "language.search": "Yiylo ɗemɗe",
+  "language.noMatches": "Alaa ɗemngal nanndu e yiylugol maa.",
+  "language.continue": "Jokku",
+  "language.saveError": "Waawaa danndude ɗemngal maa. Eto kadi.",
 } satisfies Record<TranslationKey, string>;
 export default d_ff;

@@ -7,6 +7,10 @@ import { useRouter } from "next/navigation";
 import { ApiError, getProfile, updateProfile } from "@/lib/api";
 import { useAuth } from "@/lib/auth-context";
 import { LANGUAGES } from "@/lib/languages";
+// Pre-AppShell onboarding renders before any LanguageProvider exists, so it uses
+// the canonical English dictionary (English fallback + LTR). The selected
+// language must not become the active platform language until the PATCH succeeds.
+import en from "@/lib/i18n/locales/en";
 
 type ProfileStatus = "loading" | "ready" | "error";
 
@@ -73,9 +77,9 @@ export default function LanguagePage() {
       router.replace("/");
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
-        setSaveError("Your session has expired. Please sign in again.");
+        setSaveError(en["edit.sessionExpired"]);
       } else {
-        setSaveError("Couldn’t save your language. Try again.");
+        setSaveError(en["language.saveError"]);
       }
     } finally {
       setSaving(false);
@@ -95,17 +99,17 @@ export default function LanguagePage() {
         />
         {status === "error" ? (
           <>
-            <span className="text-sm text-muted">Together couldn’t connect.</span>
+            <span className="text-sm text-muted">{en["language.connectionError"]}</span>
             <button
               type="button"
               onClick={() => void refresh()}
               className="rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
             >
-              Retry
+              {en["search.tryAgain"]}
             </button>
           </>
         ) : (
-          <span className="text-sm text-muted">Loading Together…</span>
+          <span className="text-sm text-muted">{en["language.loading"]}</span>
         )}
       </div>
     );
@@ -114,7 +118,7 @@ export default function LanguagePage() {
   if (profileStatus === "loading" || platformLanguage !== null) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <span className="text-sm text-muted">Loading Together…</span>
+        <span className="text-sm text-muted">{en["language.loading"]}</span>
       </div>
     );
   }
@@ -122,13 +126,13 @@ export default function LanguagePage() {
   if (profileStatus === "error") {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background px-4 text-center">
-        <p className="text-sm text-muted">Together couldn’t load your language preferences.</p>
+        <p className="text-sm text-muted">{en["language.loadError"]}</p>
         <button
           type="button"
           onClick={() => void loadProfile()}
           className="rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
         >
-          Retry
+          {en["search.tryAgain"]}
         </button>
       </div>
     );
@@ -147,20 +151,20 @@ export default function LanguagePage() {
             className="h-12 w-12 object-contain"
           />
           <h1 className="mt-4 text-xl font-bold tracking-tight text-foreground">
-            Choose your language
+            {en["language.chooseTitle"]}
           </h1>
           <p className="mt-2 max-w-md text-sm leading-6 text-muted">
-            Together will use this language across the platform and for automatic translations.
+            {en["language.description"]}
           </p>
         </div>
 
         <label className="mt-6 block">
-          <span className="sr-only">Search languages</span>
+          <span className="sr-only">{en["language.search"]}</span>
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search languages"
+            placeholder={en["language.search"]}
             className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm text-foreground placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
           />
         </label>
@@ -190,7 +194,7 @@ export default function LanguagePage() {
           })}
         </div>
         {languages.length === 0 ? (
-          <p className="mt-4 text-sm text-muted">No languages match your search.</p>
+          <p className="mt-4 text-sm text-muted">{en["language.noMatches"]}</p>
         ) : null}
 
         {saveError ? (
@@ -205,7 +209,7 @@ export default function LanguagePage() {
           onClick={() => void onContinue()}
           className="mt-6 w-full rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
         >
-          {saving ? "Saving…" : "Continue"}
+          {saving ? en["post.saving"] : en["language.continue"]}
         </button>
       </section>
     </main>

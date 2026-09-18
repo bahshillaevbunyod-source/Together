@@ -251,5 +251,14 @@ const d_lv = {
   "auth.pleaseWait": "Lūdzu, uzgaidiet…",
   "auth.createAccount": "Izveidot kontu",
   "auth.genericError": "Kaut kas nogāja greizi.",
+  "language.loading": "Notiek ielāde kopā…",
+  "language.connectionError": "Together nevarēja izveidot savienojumu.",
+  "language.loadError": "Together nevarēja ielādēt jūsu valodas preferences.",
+  "language.chooseTitle": "Izvēlieties valodu",
+  "language.description": "Together izmantos šo valodu visā platformā un automātiskiem tulkojumiem.",
+  "language.search": "Meklēt valodas",
+  "language.noMatches": "Jūsu meklēšanai neatbilst neviena valoda.",
+  "language.continue": "Turpināt",
+  "language.saveError": "Nevarēja saglabāt jūsu valodu. Mēģiniet vēlreiz.",
 } satisfies Record<TranslationKey, string>;
 export default d_lv;

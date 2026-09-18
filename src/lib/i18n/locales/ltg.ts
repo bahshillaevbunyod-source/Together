@@ -251,5 +251,14 @@ const d_ltg = {
   "auth.pleaseWait": "Lyudzu, pagaidit...",
   "auth.createAccount": "Izveiduot kontu .",
   "auth.genericError": "Nazkas guoja greizi.",
+  "language.loading": "Īkruošona kūpā...",
+  "language.connectionError": "Kūpā navarēja sasaisteit.",
+  "language.loadError": "Kūpā navarēja īluodēt sovys volūdys prīkšrūceibys.",
+  "language.chooseTitle": "Izavielej sovu volūdu .",
+  "language.description": "Kūpā izmontuos itū volūdu vysā platformā i automatiskajim tulkuojumim.",
+  "language.search": "Meklēt volūdys .",
+  "language.noMatches": "Nivīna volūda naatbylst jūs mekliejumam.",
+  "language.continue": "Turpynuot",
+  "language.saveError": "Navarēja gluobt sovu volūdu. Raugi vēļreiz.",
 } satisfies Record<TranslationKey, string>;
 export default d_ltg;

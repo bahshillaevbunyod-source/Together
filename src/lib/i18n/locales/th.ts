@@ -251,5 +251,14 @@ const d_th = {
   "auth.pleaseWait": "กรุณารอสักครู่...",
   "auth.createAccount": "สร้างบัญชี",
   "auth.genericError": "มีบางอย่างผิดพลาด",
+  "language.loading": "กำลังโหลดพร้อมกัน…",
+  "language.connectionError": "เชื่อมต่อกันไม่ได้",
+  "language.loadError": "Together ไม่สามารถโหลดการตั้งค่าภาษาของคุณได้",
+  "language.chooseTitle": "เลือกภาษาของคุณ",
+  "language.description": "ร่วมกันจะใช้ภาษานี้ทั่วทั้งแพลตฟอร์มและสำหรับการแปลอัตโนมัติ",
+  "language.search": "ค้นหาภาษา",
+  "language.noMatches": "ไม่มีภาษาที่ตรงกับการค้นหาของคุณ",
+  "language.continue": "ดำเนินการต่อ",
+  "language.saveError": "ไม่สามารถบันทึกภาษาของคุณได้ ลองอีกครั้ง",
 } satisfies Record<TranslationKey, string>;
 export default d_th;

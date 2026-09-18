@@ -251,5 +251,14 @@ const d_ka = {
   "auth.pleaseWait": "გთხოვთ დაელოდოთ…",
   "auth.createAccount": "ანგარიშის შექმნა",
   "auth.genericError": "რაღაც შეფერხდა.",
+  "language.loading": "ერთად იტვირთება…",
+  "language.connectionError": "ერთად ვერ დაკავშირება.",
+  "language.loadError": "ერთად ვერ ჩაიტვირთა თქვენი ენის პარამეტრები.",
+  "language.chooseTitle": "აირჩიეთ ენა",
+  "language.description": "ერთად გამოიყენებს ამ ენას პლატფორმაზე და ავტომატური თარგმანისთვის.",
+  "language.search": "ენების ძიება",
+  "language.noMatches": "ენები არ შეესაბამება თქვენს ძიებას.",
+  "language.continue": "გაგრძელება",
+  "language.saveError": "თქვენი ენის შენახვა ვერ მოხერხდა. სცადეთ ხელახლა.",
 } satisfies Record<TranslationKey, string>;
 export default d_ka;

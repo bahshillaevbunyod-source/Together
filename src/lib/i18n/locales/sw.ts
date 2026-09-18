@@ -251,5 +251,14 @@ const d_sw = {
   "auth.pleaseWait": "Tafadhali subiri...",
   "auth.createAccount": "Fungua akaunti",
   "auth.genericError": "Hitilafu fulani imetokea.",
+  "language.loading": "Inapakia Pamoja…",
+  "language.connectionError": "Pamoja haikuweza kuunganishwa.",
+  "language.loadError": "Pamoja hatukuweza kupakia mapendeleo yako ya lugha.",
+  "language.chooseTitle": "Chagua lugha yako",
+  "language.description": "Pamoja tutatumia lugha hii kwenye jukwaa na kwa tafsiri za kiotomatiki.",
+  "language.search": "Tafuta lugha",
+  "language.noMatches": "Hakuna lugha zinazolingana na utafutaji wako.",
+  "language.continue": "Endelea",
+  "language.saveError": "Imeshindwa kuhifadhi lugha yako. Jaribu tena.",
 } satisfies Record<TranslationKey, string>;
 export default d_sw;

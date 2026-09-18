@@ -251,5 +251,14 @@ const d_he = {
   "auth.pleaseWait": "אנא המתן...",
   "auth.createAccount": "צור חשבון",
   "auth.genericError": "משהו השתבש.",
+  "language.loading": "טוען ביחד...",
+  "language.connectionError": "Together לא הצליח להתחבר.",
+  "language.loadError": "Together לא הצליח לטעון את העדפות השפה שלך.",
+  "language.chooseTitle": "בחר את השפה שלך",
+  "language.description": "Together ישתמש בשפה זו על פני הפלטפורמה ועבור תרגומים אוטומטיים.",
+  "language.search": "חיפוש שפות",
+  "language.noMatches": "אין שפות שמתאימות לחיפוש שלך.",
+  "language.continue": "המשך",
+  "language.saveError": "לא ניתן לשמור את השפה שלך. נסה שוב.",
 } satisfies Record<TranslationKey, string>;
 export default d_he;
