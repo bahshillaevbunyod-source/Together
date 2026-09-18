@@ -123,6 +123,17 @@ const d_tet = {
   "notifications.action.postLike": "gosta ita-nia publikasaun",
   "notifications.action.postComment": "komenta ita-nia publikasaun",
   "notifications.action.default": "haruka notifikasaun ba ita",
+  "stories.add": "Hatama istória",
+  "sidebar.suggestedForYou": "Sujere ba ita-boot",
+  "sidebar.seeAll": "Haree hotu",
+  "sidebar.follow": "Tuir",
+  "sidebar.dismiss": "Hasai {name}",
+  "world.peopleOnlineAroundWorld": "Ema online iha mundu tomak",
+  "world.online": "{count} ema online",
+  "world.exploreMap": "Esplora mapa",
+  "world.meetTheWorld": "Hasoru Mundu",
+  "world.meetDescription": "Ema foun sira. Istória foun sira. Mundu ida ne'ebé laran-di'ak liu.",
+  "world.exploreNow": "Esplora agora",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tet;

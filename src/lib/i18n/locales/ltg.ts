@@ -123,6 +123,17 @@ const d_ltg = {
   "notifications.action.postLike": "paticja tovs īroksts",
   "notifications.action.postComment": "komenteja tovu īrokstu",
   "notifications.action.default": "atsyuteja tev pierviesti",
+  "stories.add": "Pīvīnuot stuostu .",
+  "sidebar.suggestedForYou": "Īrūsynuots deļ Teve .",
+  "sidebar.seeAll": "Redzēt vysus .",
+  "sidebar.follow": "Sekuot",
+  "sidebar.dismiss": "Atlaist XQZLĀTUERU123 . {name}",
+  "world.peopleOnlineAroundWorld": "100 doc#1159 Cylvāki tīšsaistē vysā pasaulī .",
+  "world.online": "100 doc#1159 Cylvāki ir tīšsaistē . {count}",
+  "world.exploreMap": "Izpieteit karti .",
+  "world.meetTheWorld": "Satikt pasauli .",
+  "world.meetDescription": "Jauni cylvāki. Jauni stuosti. Laipnuoks pasauļs.",
+  "world.exploreNow": "Izpieteit niu",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ltg;

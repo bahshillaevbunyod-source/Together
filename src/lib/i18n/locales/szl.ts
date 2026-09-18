@@ -123,6 +123,17 @@ const d_szl = {
   "notifications.action.postLike": "polubiōł twōj wpis",
   "notifications.action.postComment": "skōmyntowoł twōj wpis",
   "notifications.action.default": "posłoł ci powiadōmiynie",
+  "stories.add": "Przidej historyjo",
+  "sidebar.suggestedForYou": "Zasugerowane dlo Ciebie",
+  "sidebar.seeAll": "Zobŏcz wszyske",
+  "sidebar.follow": "Podōnżać",
+  "sidebar.dismiss": "Ôdciepniyńcie {name}",
+  "world.peopleOnlineAroundWorld": "Ludzie w internecie na cołkim świecie",
+  "world.online": "{count} ôsōb w internecie",
+  "world.exploreMap": "Przebadaj karta",
+  "world.meetTheWorld": "Poznaj świat",
+  "world.meetDescription": "Nowi ludzie. Nowe historyje. Życzniyjszy świat.",
+  "world.exploreNow": "Przebadaj teroz",
 } satisfies Record<TranslationKey, string>;
 
 export default d_szl;

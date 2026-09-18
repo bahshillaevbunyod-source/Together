@@ -123,6 +123,17 @@ const d_ga = {
   "notifications.action.postLike": "gur thaitin do phostáil leo",
   "notifications.action.postComment": "gur thrácht siad ar do phostáil",
   "notifications.action.default": "gur sheol siad fógra chugat",
+  "stories.add": "Cuir scéal leis",
+  "sidebar.suggestedForYou": "Molta duit",
+  "sidebar.seeAll": "Féach ar fad",
+  "sidebar.follow": "Lean",
+  "sidebar.dismiss": "Ruaig {name}",
+  "world.peopleOnlineAroundWorld": "Daoine ar fud an domhain ar líne",
+  "world.online": "{count} duine ar líne",
+  "world.exploreMap": "Déan iniúchadh ar an léarscáil",
+  "world.meetTheWorld": "Téigh in aithne ar an Domhan",
+  "world.meetDescription": "Daoine nua. Scéalta nua. Domhan níos áille.",
+  "world.exploreNow": "Déan iniúchadh anois",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ga;

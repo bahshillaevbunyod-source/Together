@@ -123,6 +123,17 @@ const d_tn = {
   "notifications.action.postLike": "o ratile poso ya gago",
   "notifications.action.postComment": "o akgetse mo posong ya gago",
   "notifications.action.default": "o go rometse kitsiso",
+  "stories.add": "Tsenya kgang",
+  "sidebar.suggestedForYou": "E go tshitshinngwa",
+  "sidebar.seeAll": "Bona tsotlhe",
+  "sidebar.follow": "Latela",
+  "sidebar.dismiss": "Latlha {name}",
+  "world.peopleOnlineAroundWorld": "Batho ba mo inthaneteng lefatshe ka bophara",
+  "world.online": "Batho ba mo inthaneteng {count}",
+  "world.exploreMap": "Batlisisa mmapa",
+  "world.meetTheWorld": "Kopana le Lefatshe",
+  "world.meetDescription": "Batho ba basha. Dikgang tse disha. Lefatshe le le bonolo.",
+  "world.exploreNow": "Batlisisa jaanong",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tn;

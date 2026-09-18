@@ -123,6 +123,17 @@ const d_mr = {
   "notifications.action.postLike": "तुमची पोस्ट आवडली",
   "notifications.action.postComment": "तुमच्या पोस्टवर टिप्पणी केली",
   "notifications.action.default": "तुम्हाला एक सूचना पाठवली",
+  "stories.add": "कथा जोडा",
+  "sidebar.suggestedForYou": "तुमच्यासाठी सुचवले आहे",
+  "sidebar.seeAll": "सर्व पहा",
+  "sidebar.follow": "अनुसरण करा",
+  "sidebar.dismiss": "{name} डिसमिस करा",
+  "world.peopleOnlineAroundWorld": "जगभरातील लोक ऑनलाइन",
+  "world.online": "{count} लोक ऑनलाइन",
+  "world.exploreMap": "नकाशा एक्सप्लोर करा",
+  "world.meetTheWorld": "जगाला भेटा",
+  "world.meetDescription": "नवीन लोक. नवीन कथा. एक दयाळू जग.",
+  "world.exploreNow": "आता एक्सप्लोर करा",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mr;

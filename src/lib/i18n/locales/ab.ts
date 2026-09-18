@@ -123,6 +123,17 @@ const d_ab = {
   "notifications.action.postLike": "упост дазыхнархеит",
   "notifications.action.postComment": "упост иазкны иаҭаку",
   "notifications.action.default": "адырраҭара уазишьҭит",
+  "stories.add": "Ажәабжь ацҵатәуп",
+  "sidebar.suggestedForYou": "Уара узы иҳадгалоуп",
+  "sidebar.seeAll": "Зегьы рбара",
+  "sidebar.follow": "Ашьҭанеира",
+  "sidebar.dismiss": "Аҟәыхра {name}",
+  "world.peopleOnlineAroundWorld": "Адунеи зегь аҿы ауаа онлаин",
+  "world.online": "{count} ауаа онлаин",
+  "world.exploreMap": "Ахсаала ҭышәҵаа",
+  "world.meetTheWorld": "Адунеи шәеибадыр",
+  "world.meetDescription": "Ауаа ҿыцқәа. Ажәабжь ҿыцқәа. Еиҳа иқьиоу адунеи.",
+  "world.exploreNow": "Иҭҵаатәуп уажәы",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ab;

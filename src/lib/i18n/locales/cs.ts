@@ -123,6 +123,17 @@ const d_cs = {
   "notifications.action.postLike": "označil(a) tvůj příspěvek To se mi líbí",
   "notifications.action.postComment": "okomentoval(a) tvůj příspěvek",
   "notifications.action.default": "ti poslal(a) oznámení",
+  "stories.add": "Přidat příběh",
+  "sidebar.suggestedForYou": "Navrženo pro vás",
+  "sidebar.seeAll": "Zobrazit vše",
+  "sidebar.follow": "Následovat",
+  "sidebar.dismiss": "Zavřít {name}",
+  "world.peopleOnlineAroundWorld": "Lidé online po celém světě",
+  "world.online": "{count} lidí online",
+  "world.exploreMap": "Prozkoumejte mapu",
+  "world.meetTheWorld": "Seznamte se se světem",
+  "world.meetDescription": "Noví lidé. Nové příběhy. Laskavější svět.",
+  "world.exploreNow": "Prozkoumat nyní",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cs;

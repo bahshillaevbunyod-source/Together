@@ -123,6 +123,17 @@ const d_fi = {
   "notifications.action.postLike": "tykkäsi julkaisustasi",
   "notifications.action.postComment": "kommentoi julkaisuasi",
   "notifications.action.default": "lähetti sinulle ilmoituksen",
+  "stories.add": "Lisää tarina",
+  "sidebar.suggestedForYou": "Suositeltu sinulle",
+  "sidebar.seeAll": "Katso kaikki",
+  "sidebar.follow": "Seuraa",
+  "sidebar.dismiss": "Hylkää {name}",
+  "world.peopleOnlineAroundWorld": "Ihmiset verkossa ympäri maailmaa",
+  "world.online": "{count} ihmistä verkossa",
+  "world.exploreMap": "Tutustu karttaan",
+  "world.meetTheWorld": "Tapaa maailma",
+  "world.meetDescription": "Uusia ihmisiä. Uusia tarinoita. Lempeämpi maailma.",
+  "world.exploreNow": "Tutustu nyt",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fi;

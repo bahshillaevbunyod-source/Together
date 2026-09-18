@@ -24,6 +24,18 @@ export const en = {
   "user.loggingOut": "Logging out…",
   "user.logoutError": "Couldn’t log out. Try again.",
 
+  "stories.add": "Add story",
+  "sidebar.suggestedForYou": "Suggested for you",
+  "sidebar.seeAll": "See all",
+  "sidebar.follow": "Follow",
+  "sidebar.dismiss": "Dismiss {name}",
+  "world.peopleOnlineAroundWorld": "People online around the world",
+  "world.online": "{count} online",
+  "world.exploreMap": "Explore Map",
+  "world.meetTheWorld": "Meet the World",
+  "world.meetDescription": "New people. New stories. A kinder world.",
+  "world.exploreNow": "Explore Now",
+
   "composer.placeholder": "What's on your mind?",
   "composer.action.photo": "Photo",
   "composer.action.video": "Video",

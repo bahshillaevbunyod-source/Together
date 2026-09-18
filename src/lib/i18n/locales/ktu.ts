@@ -123,6 +123,17 @@ const d_ktu = {
   "notifications.action.postLike": "zolaka post na nge",
   "notifications.action.postComment": "tulaka komenti na post na nge",
   "notifications.action.default": "tindaka nge kizabisa",
+  "stories.add": "Yika disolo",
+  "sidebar.suggestedForYou": "Bo me pesa ngindu sambu na nge",
+  "sidebar.seeAll": "Tala yonso",
+  "sidebar.follow": "Kulanda",
+  "sidebar.dismiss": "Kukatula {name}",
+  "world.peopleOnlineAroundWorld": "Bantu ya internet na ntoto ya mvimba .",
+  "world.online": "Bantu {count} na internet",
+  "world.exploreMap": "Tala karte",
+  "world.meetTheWorld": "Kukutana ti Inza",
+  "world.meetDescription": "Bantu ya mpa. Masolo ya mpa. Inza mosi ya mbote.",
+  "world.exploreNow": "Tala sesepi",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ktu;

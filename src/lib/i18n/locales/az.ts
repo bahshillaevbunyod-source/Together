@@ -123,6 +123,17 @@ const d_az = {
   "notifications.action.postLike": "paylaşımını bəyəndi",
   "notifications.action.postComment": "paylaşımına şərh yazdı",
   "notifications.action.default": "sənə bildiriş göndərdi",
+  "stories.add": "Hekayə əlavə edin",
+  "sidebar.suggestedForYou": "Sizin üçün təklif olunur",
+  "sidebar.seeAll": "Hamısına baxın",
+  "sidebar.follow": "İzləyin",
+  "sidebar.dismiss": "{name}-ü rədd edin",
+  "world.peopleOnlineAroundWorld": "Bütün dünyada onlayn olan insanlar",
+  "world.online": "{count} nəfər onlayn",
+  "world.exploreMap": "Xəritəni araşdırın",
+  "world.meetTheWorld": "Dünya ilə tanış olun",
+  "world.meetDescription": "Yeni insanlar. Yeni hekayələr. Daha mehriban bir dünya.",
+  "world.exploreNow": "İndi kəşf edin",
 } satisfies Record<TranslationKey, string>;
 
 export default d_az;

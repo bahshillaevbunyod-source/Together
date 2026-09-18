@@ -123,6 +123,17 @@ const d_hmn = {
   "notifications.action.postLike": "nyiam koj qhov ncej",
   "notifications.action.postComment": "tau tawm tswv yim rau koj qhov ncej",
   "notifications.action.default": "tau xa ib qho kev ceeb toom rau koj",
+  "stories.add": "Ntxiv dab neeg",
+  "sidebar.suggestedForYou": "Pom zoo rau koj",
+  "sidebar.seeAll": "Saib tag nrho",
+  "sidebar.follow": "Ua raws",
+  "sidebar.dismiss": "Tshem tawm {name}",
+  "world.peopleOnlineAroundWorld": "Cov neeg hauv online thoob ntiaj teb",
+  "world.online": "{count} neeg online",
+  "world.exploreMap": "Tshawb nrhiav daim ntawv qhia",
+  "world.meetTheWorld": "Ntsib lub ntiaj teb",
+  "world.meetDescription": "Cov neeg tshiab. Cov dab neeg tshiab. Lub ntiaj teb zoo dua.",
+  "world.exploreNow": "Tshawb nrhiav tam sim no",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hmn;

@@ -123,6 +123,17 @@ const d_mni_Mtei = {
   "notifications.action.postLike": "ꯅꯍꯥꯛꯀꯤ ꯄꯣꯁ꯭ꯠ ꯄꯥꯝꯃꯤ",
   "notifications.action.postComment": "ꯅꯍꯥꯛꯀꯤ ꯄꯣꯁ꯭ꯠꯇ ꯃꯇ ꯄꯤꯔꯦ",
   "notifications.action.default": "ꯅꯍꯥꯛꯄ ꯈꯪꯍꯟꯅꯕ ꯑꯃ ꯊꯥꯔꯦ",
+  "stories.add": "ꯋꯥꯔꯤ ꯍꯥꯄꯆꯤꯅꯕꯥ꯫",
+  "sidebar.suggestedForYou": "ꯑꯗꯣꯃꯒꯤꯗꯃꯛ ꯁꯖꯦꯁꯟ ꯄꯤꯈꯤ꯫",
+  "sidebar.seeAll": "ꯄꯨꯝꯅꯃꯛ ꯌꯦꯡꯕꯤꯌꯨ꯫",
+  "sidebar.follow": "ꯇꯨꯡ ꯏꯅꯕ",
+  "sidebar.dismiss": "{name} ꯊꯥꯗꯣꯀꯎ",
+  "world.peopleOnlineAroundWorld": "ꯃꯥꯂꯦꯝ ꯁꯤꯅꯕꯥ ꯊꯨꯡꯅꯥ ꯃꯤꯌꯥꯝꯅꯥ ꯑꯣꯅꯂꯥꯏꯟꯗꯥ ꯂꯩꯔꯤ꯫",
+  "world.online": "{count} ꯃꯤꯑꯣꯏ ꯑꯣꯅꯂꯥꯏꯟꯗꯥ ꯂꯩꯔꯤ꯫",
+  "world.exploreMap": "ꯃꯦꯞ ꯑꯗꯨ ꯑꯦꯛꯁꯞꯂꯣꯔ ꯇꯧ꯫",
+  "world.meetTheWorld": "ꯃꯥꯂꯦꯃꯒꯥ ꯎꯅꯕꯤꯌꯨ꯫",
+  "world.meetDescription": "ꯑꯅꯧꯕꯥ ꯃꯤꯑꯣꯏꯁꯤꯡ꯫ ꯑꯅꯧꯕꯥ ꯋꯥꯔꯤꯁꯤꯡ꯫ ꯍꯦꯟꯅꯥ ꯃꯤꯅꯨꯡꯁꯤ ꯂꯩꯕꯥ ꯃꯥꯂꯦꯝ ꯑꯃꯥ꯫",
+  "world.exploreNow": "ꯍꯧꯖꯤꯛ ꯑꯦꯛꯁꯞꯂꯣꯔ ꯇꯧꯕꯤꯌꯨ꯫",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mni_Mtei;

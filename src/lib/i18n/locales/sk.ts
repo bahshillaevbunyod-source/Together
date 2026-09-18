@@ -123,6 +123,17 @@ const d_sk = {
   "notifications.action.postLike": "označil(a) tvoj príspevok Páči sa mi",
   "notifications.action.postComment": "okomentoval(a) tvoj príspevok",
   "notifications.action.default": "ti poslal(a) oznámenie",
+  "stories.add": "Pridajte príbeh",
+  "sidebar.suggestedForYou": "Navrhnuté pre vás",
+  "sidebar.seeAll": "Zobraziť všetky",
+  "sidebar.follow": "Sledujte",
+  "sidebar.dismiss": "Zrušiť {name}",
+  "world.peopleOnlineAroundWorld": "Ľudia online po celom svete",
+  "world.online": "{count} ľudí online",
+  "world.exploreMap": "Preskúmajte mapu",
+  "world.meetTheWorld": "Zoznámte sa so svetom",
+  "world.meetDescription": "Noví ľudia. Nové príbehy. Milší svet.",
+  "world.exploreNow": "Preskúmajte teraz",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sk;

@@ -123,6 +123,17 @@ const d_ckb = {
   "notifications.action.postLike": "پۆستەکەتی بەدڵ بوو",
   "notifications.action.postComment": "لەسەر پۆستەکەت لێدوانی نووسی",
   "notifications.action.default": "ئاگادارکردنەوەیەکی بۆ ناردیت",
+  "stories.add": "چیرۆک زیاد بکە",
+  "sidebar.suggestedForYou": "پێشنیار کراوە بۆ ئێوە",
+  "sidebar.seeAll": "هەمووی ببینە",
+  "sidebar.follow": "بەدواداچوون",
+  "sidebar.dismiss": "{name} لە کارەکەی دووربخەرەوە",
+  "world.peopleOnlineAroundWorld": "خەڵکی ئۆنلاین لە سەرانسەری جیهان",
+  "world.online": "{count} کەس لە ڕێگەی ئۆنلاینەوە",
+  "world.exploreMap": "نەخشەکە بگەڕێ",
+  "world.meetTheWorld": "جیهان بناسە",
+  "world.meetDescription": "کەسانی نوێ. چیرۆکی نوێ. جیهانێکی میهرەبانتر.",
+  "world.exploreNow": "ئێستا بگەڕێ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ckb;

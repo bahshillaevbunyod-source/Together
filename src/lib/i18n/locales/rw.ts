@@ -123,6 +123,17 @@ const d_rw = {
   "notifications.action.postLike": "yakunze inyandiko yawe",
   "notifications.action.postComment": "yasize igitekerezo ku nyandiko yawe",
   "notifications.action.default": "yakohereje itangazo",
+  "stories.add": "Ongeraho inkuru",
+  "sidebar.suggestedForYou": "Icyifuzo cyawe",
+  "sidebar.seeAll": "Reba byose",
+  "sidebar.follow": "Kurikira",
+  "sidebar.dismiss": "Kwirukana {name}",
+  "world.peopleOnlineAroundWorld": "Abantu kumurongo kwisi yose",
+  "world.online": "{count} abantu kumurongo",
+  "world.exploreMap": "Shakisha ikarita",
+  "world.meetTheWorld": "Tahura n'isi",
+  "world.meetDescription": "Abantu bashya. Inkuru nshya. Isi nziza.",
+  "world.exploreNow": "Shakisha nonaha",
 } satisfies Record<TranslationKey, string>;
 
 export default d_rw;

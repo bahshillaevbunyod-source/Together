@@ -123,6 +123,17 @@ const d_din = {
   "notifications.action.postLike": "acï postdu nhiaar",
   "notifications.action.postComment": "acï jam wɛt e postdu",
   "notifications.action.default": "acï ke ŋic tuɔɔc tede yïïn",
+  "stories.add": "Tääu akököl thïn",
+  "sidebar.suggestedForYou": "Kë cï lueel tënë yïn",
+  "sidebar.seeAll": "Tïŋ ëbɛ̈n",
+  "sidebar.follow": "Tuɔ̈n",
+  "sidebar.dismiss": "Nyaai {name}",
+  "world.peopleOnlineAroundWorld": "Kɔc tɔ̈ në aliiric në pinynhom",
+  "world.online": "Kɔc atɔ̈ në aliiric {count}",
+  "world.exploreMap": "Tïŋ kë ye piny nyuɔɔth",
+  "world.meetTheWorld": "Lɔ̈m pinynhom",
+  "world.meetDescription": "Kɔc yam. Akököl yam. Pinynhom de mïth.",
+  "world.exploreNow": "Cɔl ëmɛn",
 } satisfies Record<TranslationKey, string>;
 
 export default d_din;

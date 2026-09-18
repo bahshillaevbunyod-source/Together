@@ -123,6 +123,17 @@ const d_kk = {
   "notifications.action.postLike": "жазбаңызды ұнатты",
   "notifications.action.postComment": "жазбаңызға пікір қалдырды",
   "notifications.action.default": "сізге хабарландыру жіберді",
+  "stories.add": "Әңгіме қосыңыз",
+  "sidebar.suggestedForYou": "Сізге ұсынылды",
+  "sidebar.seeAll": "Барлығын көру",
+  "sidebar.follow": "Бақылаңыз",
+  "sidebar.dismiss": "{name} жабу",
+  "world.peopleOnlineAroundWorld": "Дүние жүзіндегі желідегі адамдар",
+  "world.online": "{count} адам желіде",
+  "world.exploreMap": "Картаны зерттеңіз",
+  "world.meetTheWorld": "Әлеммен танысу",
+  "world.meetDescription": "Жаңа адамдар. Жаңа әңгімелер. Мейірімді әлем.",
+  "world.exploreNow": "Қазір зерттеңіз",
 } satisfies Record<TranslationKey, string>;
 
 export default d_kk;

@@ -123,6 +123,17 @@ const d_so = {
   "notifications.action.postLike": "wuu jeclaaday boostadaada",
   "notifications.action.postComment": "wuxuu faallo ka bixiyay boostadaada",
   "notifications.action.default": "wuxuu kuu soo diray ogeysiis",
+  "stories.add": "Sheeko ku dar",
+  "sidebar.suggestedForYou": "Laguu soo jeediyay",
+  "sidebar.seeAll": "Dhammaan arag",
+  "sidebar.follow": "Raac",
+  "sidebar.dismiss": "Jooji {name}",
+  "world.peopleOnlineAroundWorld": "Dadka online-ka ah ee adduunka oo dhan",
+  "world.online": "{count} qof onlayn ah",
+  "world.exploreMap": "Baadh khariidada",
+  "world.meetTheWorld": "La kulan Adduunka",
+  "world.meetDescription": "Dad cusub. Sheekooyin cusub. Aduun ka naxariis badan.",
+  "world.exploreNow": "hadda baadh",
 } satisfies Record<TranslationKey, string>;
 
 export default d_so;

@@ -123,6 +123,17 @@ const d_eu = {
   "notifications.action.postLike": "zure argitalpena gustuko du",
   "notifications.action.postComment": "zure argitalpena iruzkindu du",
   "notifications.action.default": "jakinarazpen bat bidali dizu",
+  "stories.add": "Gehitu istorioa",
+  "sidebar.suggestedForYou": "Zuretzat proposatua",
+  "sidebar.seeAll": "Ikusi guztiak",
+  "sidebar.follow": "Jarraitu",
+  "sidebar.dismiss": "Baztertu {name}",
+  "world.peopleOnlineAroundWorld": "Jendea sarean munduan zehar",
+  "world.online": "{count} pertsona konektatuta",
+  "world.exploreMap": "Arakatu mapa",
+  "world.meetTheWorld": "Ezagutu mundua",
+  "world.meetDescription": "Jende berria. Istorio berriak. Mundu atseginagoa.",
+  "world.exploreNow": "Arakatu orain",
 } satisfies Record<TranslationKey, string>;
 
 export default d_eu;

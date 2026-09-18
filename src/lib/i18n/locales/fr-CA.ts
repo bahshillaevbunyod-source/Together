@@ -123,6 +123,17 @@ const d_fr_CA = {
   "notifications.action.postLike": "a aimé votre publication",
   "notifications.action.postComment": "a commenté votre publication",
   "notifications.action.default": "vous a envoyé une notification",
+  "stories.add": "Ajouter une histoire",
+  "sidebar.suggestedForYou": "suggéré pour vous",
+  "sidebar.seeAll": "Voir tout",
+  "sidebar.follow": "Suivre",
+  "sidebar.dismiss": "Ignorer {name}",
+  "world.peopleOnlineAroundWorld": "Personnes en ligne partout dans le monde",
+  "world.online": "{count} personnes en ligne",
+  "world.exploreMap": "Explorez la carte",
+  "world.meetTheWorld": "Rencontrer le monde",
+  "world.meetDescription": "De nouvelles personnes. De nouvelles histoires. Un monde plus gentil.",
+  "world.exploreNow": "Explorez maintenant",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fr_CA;

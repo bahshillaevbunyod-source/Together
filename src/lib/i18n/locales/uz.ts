@@ -123,6 +123,17 @@ const uz = {
   "notifications.action.postLike": "postingizni yoqtirdi",
   "notifications.action.postComment": "postingizga izoh qoldirdi",
   "notifications.action.default": "sizga bildirishnoma yubordi",
+  "stories.add": "Hikoya qo'shing",
+  "sidebar.suggestedForYou": "Siz uchun tavsiya etilgan",
+  "sidebar.seeAll": "Hammasini ko'rish",
+  "sidebar.follow": "Kuzatish",
+  "sidebar.dismiss": "{name}ni yopish",
+  "world.peopleOnlineAroundWorld": "Dunyo bo'ylab odamlar onlayn",
+  "world.online": "{count} kishi onlayn",
+  "world.exploreMap": "Xaritani o'rganing",
+  "world.meetTheWorld": "Dunyo bilan tanishing",
+  "world.meetDescription": "Yangi odamlar. Yangi hikoyalar. Yaxshiroq dunyo.",
+  "world.exploreNow": "Hozir oʻrganing",
 } satisfies Record<TranslationKey, string>;
 
 export default uz;

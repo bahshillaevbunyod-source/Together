@@ -123,6 +123,17 @@ const d_gu = {
   "notifications.action.postLike": "તમારી પોસ્ટ પસંદ કરી",
   "notifications.action.postComment": "તમારી પોસ્ટ પર ટિપ્પણી કરી",
   "notifications.action.default": "તમને એક સૂચના મોકલી",
+  "stories.add": "વાર્તા ઉમેરો",
+  "sidebar.suggestedForYou": "તમારા માટે સૂચવ્યું",
+  "sidebar.seeAll": "બધા જુઓ",
+  "sidebar.follow": "અનુસરો",
+  "sidebar.dismiss": "{name} કાઢી નાખો",
+  "world.peopleOnlineAroundWorld": "વિશ્વભરના લોકો ઓનલાઇન",
+  "world.online": "{count} લોકો ઓનલાઇન",
+  "world.exploreMap": "નકશાનું અન્વેષણ કરો",
+  "world.meetTheWorld": "વિશ્વને મળો",
+  "world.meetDescription": "નવા લોકો. નવી વાર્તાઓ. એક દયાળુ વિશ્વ.",
+  "world.exploreNow": "હવે અન્વેષણ કરો",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gu;

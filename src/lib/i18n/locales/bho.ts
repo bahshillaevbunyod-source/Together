@@ -123,6 +123,17 @@ const d_bho = {
   "notifications.action.postLike": "राउर पोस्ट के पसंद कइलस",
   "notifications.action.postComment": "राउर पोस्ट पर टिप्पणी कइलस",
   "notifications.action.default": "राउर लगे एगो सूचना भेजलस",
+  "stories.add": "कहानी जोड़ल जाव",
+  "sidebar.suggestedForYou": "रउरा खातिर सुझावल गइल बा",
+  "sidebar.seeAll": "सब देखल जाव",
+  "sidebar.follow": "पीछे पीछे चलल",
+  "sidebar.dismiss": "{name} के खारिज कर दीं",
+  "world.peopleOnlineAroundWorld": "दुनिया भर के लोग ऑनलाइन बाड़े",
+  "world.online": "{count} लोग ऑनलाइन बाड़े",
+  "world.exploreMap": "नक्शा के खोज करीं",
+  "world.meetTheWorld": "दुनिया से मिलल जाव",
+  "world.meetDescription": "नया लोग के। नया-नया कहानी बा। एगो दयालु दुनिया।",
+  "world.exploreNow": "अब एक्सप्लोर करीं",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bho;

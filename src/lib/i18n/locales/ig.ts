@@ -123,6 +123,17 @@ const d_ig = {
   "notifications.action.postLike": "masịrị post gị",
   "notifications.action.postComment": "kwuru okwu na post gị",
   "notifications.action.default": "zitere gị ọkwa",
+  "stories.add": "Tinye akụkọ",
+  "sidebar.suggestedForYou": "Atụụrụ gị aro",
+  "sidebar.seeAll": "Hụ ihe niile",
+  "sidebar.follow": "Soro",
+  "sidebar.dismiss": "Wepụ {name}",
+  "world.peopleOnlineAroundWorld": "Ndị mmadụ na ntanetị gburugburu ụwa",
+  "world.online": "{count} ndị mmadụ n'ịntanetị",
+  "world.exploreMap": "Chọgharịa maapụ ahụ",
+  "world.meetTheWorld": "Zute Ụwa",
+  "world.meetDescription": "Ndị ọhụrụ. Akụkọ ọhụrụ. Ụwa kacha mma.",
+  "world.exploreNow": "Nyochaa ugbu a",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ig;

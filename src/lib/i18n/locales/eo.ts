@@ -123,6 +123,17 @@ const d_eo = {
   "notifications.action.postLike": "ŝatis vian afiŝon",
   "notifications.action.postComment": "komentis vian afiŝon",
   "notifications.action.default": "sendis al vi sciigon",
+  "stories.add": "Aldonu rakonton",
+  "sidebar.suggestedForYou": "Sugestita por vi",
+  "sidebar.seeAll": "Vidu ĉiujn",
+  "sidebar.follow": "Sekvu",
+  "sidebar.dismiss": "Forĵeti {name}",
+  "world.peopleOnlineAroundWorld": "Homoj interrete tra la mondo",
+  "world.online": "{count} homoj interrete",
+  "world.exploreMap": "Esploru la mapon",
+  "world.meetTheWorld": "Renkontu la Mondon",
+  "world.meetDescription": "Novaj homoj. Novaj rakontoj. Pli afabla mondo.",
+  "world.exploreNow": "Esploru nun",
 } satisfies Record<TranslationKey, string>;
 
 export default d_eo;

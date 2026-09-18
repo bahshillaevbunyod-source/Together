@@ -123,6 +123,17 @@ const d_uk = {
   "notifications.action.postLike": "уподобав вашу публікацію",
   "notifications.action.postComment": "прокоментував вашу публікацію",
   "notifications.action.default": "надіслав вам сповіщення",
+  "stories.add": "Додати історію",
+  "sidebar.suggestedForYou": "Рекомендовано для вас",
+  "sidebar.seeAll": "Переглянути всі",
+  "sidebar.follow": "Слідуйте",
+  "sidebar.dismiss": "Відхилити {name}",
+  "world.peopleOnlineAroundWorld": "Люди онлайн по всьому світу",
+  "world.online": "{count} людей онлайн",
+  "world.exploreMap": "Дослідіть карту",
+  "world.meetTheWorld": "Знайомство зі світом",
+  "world.meetDescription": "Нові люди. Нові історії. Добрий світ.",
+  "world.exploreNow": "Дослідіть зараз",
 } satisfies Record<TranslationKey, string>;
 
 export default d_uk;

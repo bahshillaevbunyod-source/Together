@@ -123,6 +123,17 @@ const d_bg = {
   "notifications.action.postLike": "хареса публикацията ти",
   "notifications.action.postComment": "коментира публикацията ти",
   "notifications.action.default": "ти изпрати известие",
+  "stories.add": "Добавете история",
+  "sidebar.suggestedForYou": "Предложено за вас",
+  "sidebar.seeAll": "Вижте всички",
+  "sidebar.follow": "Следвайте",
+  "sidebar.dismiss": "Отхвърляне на {name}",
+  "world.peopleOnlineAroundWorld": "Хора онлайн по целия свят",
+  "world.online": "{count} души онлайн",
+  "world.exploreMap": "Разгледайте картата",
+  "world.meetTheWorld": "Запознайте се със света",
+  "world.meetDescription": "Нови хора. Нови истории. Един по-мил свят.",
+  "world.exploreNow": "Разгледайте сега",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bg;

@@ -123,6 +123,17 @@ const d_shn = {
   "notifications.action.postLike": "မၢၵ်ႇမႅၼ်ႈပုၶ်ႈၸဝ်ႈ",
   "notifications.action.postComment": "ပၼ်တၢင်းႁၼ်ထိုင်ၼိူဝ်ပုၶ်ႈၸဝ်ႈ",
   "notifications.action.default": "သူင်ႇၵၢၼ်ပွင်ႇလႅင်းထိုင်ၸဝ်ႈ",
+  "stories.add": "ထႅမ်ပိုၼ်း",
+  "sidebar.suggestedForYou": "ပၼ်တၢင်းႁၼ်ထိုင် တွၼ်ႈတႃႇသူ",
+  "sidebar.seeAll": "တူၺ်းမူတ်း",
+  "sidebar.follow": "ၸွမ်းလင်",
+  "sidebar.dismiss": "ထွၼ်ဢွၵ်ႇ {name}",
+  "world.peopleOnlineAroundWorld": "ၵူၼ်းၼိူဝ်ဢွၼ်ႊလၢႆႊ ၼႂ်းလုမ်ႈၾႃႉ",
+  "world.online": "{count}ၵေႃႉၼိူဝ်ဢွၼ်ႊလၢႆႊ",
+  "world.exploreMap": "လဵပ်ႈႁဵၼ်းၽႅၼ်ႇလိၼ်",
+  "world.meetTheWorld": "ႁူပ်ႉထူပ်းတင်းလုမ်ႈၾႃႉ",
+  "world.meetDescription": "ၵူၼ်းမႂ်ႇ။ ၸိူင်းမႂ်ႇ။ လုမ်ႈၾႃႉဢၼ်လီလိူဝ်။",
+  "world.exploreNow": "လဵပ်ႈႁဵၼ်းတူၺ်းမိူဝ်ႈလဵဝ်",
 } satisfies Record<TranslationKey, string>;
 
 export default d_shn;

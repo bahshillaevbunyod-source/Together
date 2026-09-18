@@ -123,6 +123,17 @@ const d_bem = {
   "notifications.action.postLike": "atemenwe icalembwa cobe",
   "notifications.action.postComment": "alandilepo pa calembwa cobe",
   "notifications.action.default": "akutumina icebo",
+  "stories.add": "Lundako ilyashi",
+  "sidebar.suggestedForYou": "Icapeelwa kuli imwe",
+  "sidebar.seeAll": "Moneni fyonse",
+  "sidebar.follow": "Ukukonka",
+  "sidebar.dismiss": "Ukufumyapo {name}",
+  "world.peopleOnlineAroundWorld": "Abantu abali pa Intaneti isonde lyonse",
+  "world.online": "Abantu bali pa Intaneti {count}",
+  "world.exploreMap": "Moneni mapu",
+  "world.meetTheWorld": "Ukukumanya Icalo",
+  "world.meetDescription": "Abantu bapya. Amalyashi ayapya. Ici calo ica mutembo.",
+  "world.exploreNow": "Fwayeni nomba",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bem;

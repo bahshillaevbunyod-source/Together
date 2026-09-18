@@ -123,6 +123,17 @@ const pt = {
   "notifications.action.postLike": "gostou da tua publicação",
   "notifications.action.postComment": "comentou a tua publicação",
   "notifications.action.default": "enviou-te uma notificação",
+  "stories.add": "Adicionar história",
+  "sidebar.suggestedForYou": "Sugerido para você",
+  "sidebar.seeAll": "Ver tudo",
+  "sidebar.follow": "Seguir",
+  "sidebar.dismiss": "Dispensar {name}",
+  "world.peopleOnlineAroundWorld": "Pessoas on-line em todo o mundo",
+  "world.online": "{count} pessoas on-line",
+  "world.exploreMap": "Explorar o mapa",
+  "world.meetTheWorld": "Conheça o mundo",
+  "world.meetDescription": "Novas pessoas. Novas histórias. Um mundo mais gentil.",
+  "world.exploreNow": "Explorar agora",
 } satisfies Record<TranslationKey, string>;
 
 export default pt;

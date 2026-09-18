@@ -123,6 +123,17 @@ const d_tg = {
   "notifications.action.postLike": "паёми шуморо писандид",
   "notifications.action.postComment": "ба паёми шумо шарҳ навишт",
   "notifications.action.default": "ба шумо огоҳинома фиристод",
+  "stories.add": "Ҳикоя илова кунед",
+  "sidebar.suggestedForYou": "Барои шумо пешниҳод шудааст",
+  "sidebar.seeAll": "Ҳама бинед",
+  "sidebar.follow": "Пайравӣ кунед",
+  "sidebar.dismiss": "Хориҷ кардани {name}",
+  "world.peopleOnlineAroundWorld": "Одамон дар саросари ҷаҳон онлайн",
+  "world.online": "{count} нафар онлайн",
+  "world.exploreMap": "Харитаро омӯзед",
+  "world.meetTheWorld": "Бо ҷаҳон шинос шавед",
+  "world.meetDescription": "Одамони нав. Ҳикояҳои нав. Ҷаҳони меҳрубонтар.",
+  "world.exploreNow": "Ҳоло омӯзед",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tg;

@@ -123,6 +123,17 @@ const ja = {
   "notifications.action.postLike": "があなたの投稿にいいねしました",
   "notifications.action.postComment": "があなたの投稿にコメントしました",
   "notifications.action.default": "があなたに通知を送信しました",
+  "stories.add": "ストーリーを追加する",
+  "sidebar.suggestedForYou": "あなたにおすすめ",
+  "sidebar.seeAll": "全て見る",
+  "sidebar.follow": "フォローする",
+  "sidebar.dismiss": "{name} を無視する",
+  "world.peopleOnlineAroundWorld": "世界中のオンラインの人々",
+  "world.online": "{count} 人がオンライン",
+  "world.exploreMap": "地図を探索する",
+  "world.meetTheWorld": "世界に会う",
+  "world.meetDescription": "新しい人たち。新しい物語。もっと優しい世界。",
+  "world.exploreNow": "今すぐ探索してください",
 } satisfies Record<TranslationKey, string>;
 
 export default ja;

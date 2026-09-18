@@ -123,6 +123,17 @@ const d_br = {
   "notifications.action.postLike": "en deus karet da bostadenn",
   "notifications.action.postComment": "en deus lakaet un evezhiadenn war da bostadenn",
   "notifications.action.default": "en deus kaset ur c'hemenn dit",
+  "stories.add": "Ouzhpennañ istor",
+  "sidebar.suggestedForYou": "Kinniget deoc'h",
+  "sidebar.seeAll": "Gwelet an holl",
+  "sidebar.follow": "Heuliañ",
+  "sidebar.dismiss": "Dilemel {name}",
+  "world.peopleOnlineAroundWorld": "Tud enlinenn dre ar bed a-bezh",
+  "world.online": "{count} den enlinenn",
+  "world.exploreMap": "Ergerzhout ar gartenn",
+  "world.meetTheWorld": "Kejañ gant ar bed",
+  "world.meetDescription": "Tud nevez. Istorioù nevez. Ur bed plijusoc'h.",
+  "world.exploreNow": "Ergerzhit bremañ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_br;

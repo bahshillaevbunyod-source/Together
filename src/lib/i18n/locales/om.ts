@@ -123,6 +123,17 @@ const d_om = {
   "notifications.action.postLike": "barreeffama kee jaallate",
   "notifications.action.postComment": "barreeffama kee irratti yaada kenne",
   "notifications.action.default": "beeksisa siif erge",
+  "stories.add": "Seenaa itti dabalaa",
+  "sidebar.suggestedForYou": "Yaada isiniif kenname",
+  "sidebar.seeAll": "Hundaa ilaalaa",
+  "sidebar.follow": "Hordofuu",
+  "sidebar.dismiss": "{name} hojii irraa ari'i",
+  "world.peopleOnlineAroundWorld": "Namoonni addunyaa guutuu toora interneetii irratti argaman",
+  "world.online": "Namoonni toora interneetii irratti argamu {count}",
+  "world.exploreMap": "Kaartaa qoradhu",
+  "world.meetTheWorld": "Addunyaa waliin wal baraa",
+  "world.meetDescription": "Namoota haaraa. Seenaa haaraa. Addunyaa gara laafessa.",
+  "world.exploreNow": "Amma qoradhu",
 } satisfies Record<TranslationKey, string>;
 
 export default d_om;

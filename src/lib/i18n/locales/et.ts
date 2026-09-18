@@ -123,6 +123,17 @@ const d_et = {
   "notifications.action.postLike": "märkis su postituse meeldivaks",
   "notifications.action.postComment": "kommenteeris su postitust",
   "notifications.action.default": "saatis sulle teavituse",
+  "stories.add": "Lisa lugu",
+  "sidebar.suggestedForYou": "Soovitatud teile",
+  "sidebar.seeAll": "Vaata kõiki",
+  "sidebar.follow": "Jälgi",
+  "sidebar.dismiss": "Loobu {name}",
+  "world.peopleOnlineAroundWorld": "Inimesed võrgus üle maailma",
+  "world.online": "{count} inimest võrgus",
+  "world.exploreMap": "Uurige kaarti",
+  "world.meetTheWorld": "Tutvuge maailmaga",
+  "world.meetDescription": "Uued inimesed. Uued lood. Lahkem maailm.",
+  "world.exploreNow": "Uurige kohe",
 } satisfies Record<TranslationKey, string>;
 
 export default d_et;

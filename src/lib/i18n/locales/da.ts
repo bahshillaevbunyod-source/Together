@@ -123,6 +123,17 @@ const d_da = {
   "notifications.action.postLike": "kan lide dit opslag",
   "notifications.action.postComment": "kommenterede dit opslag",
   "notifications.action.default": "sendte dig en notifikation",
+  "stories.add": "Tilføj historie",
+  "sidebar.suggestedForYou": "Foreslået til dig",
+  "sidebar.seeAll": "Se alle",
+  "sidebar.follow": "Følge",
+  "sidebar.dismiss": "Afvis {name}",
+  "world.peopleOnlineAroundWorld": "Folk online rundt om i verden",
+  "world.online": "{count} personer online",
+  "world.exploreMap": "Udforsk kortet",
+  "world.meetTheWorld": "Mød verden",
+  "world.meetDescription": "Nye mennesker. Nye historier. En venligere verden.",
+  "world.exploreNow": "Udforsk nu",
 } satisfies Record<TranslationKey, string>;
 
 export default d_da;

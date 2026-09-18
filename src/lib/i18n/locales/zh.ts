@@ -123,6 +123,17 @@ const zh = {
   "notifications.action.postLike": "赞了你的帖子",
   "notifications.action.postComment": "评论了你的帖子",
   "notifications.action.default": "给你发送了一条通知",
+  "stories.add": "添加故事",
+  "sidebar.suggestedForYou": "为您推荐",
+  "sidebar.seeAll": "查看全部",
+  "sidebar.follow": "跟随",
+  "sidebar.dismiss": "解雇 {name}",
+  "world.peopleOnlineAroundWorld": "世界各地的人们上网",
+  "world.online": "{count}人在线",
+  "world.exploreMap": "探索地图",
+  "world.meetTheWorld": "认识世界",
+  "world.meetDescription": "新人。新故事。一个更友善的世界。",
+  "world.exploreNow": "立即探索",
 } satisfies Record<TranslationKey, string>;
 
 export default zh;

@@ -123,6 +123,17 @@ const d_lg = {
   "notifications.action.postLike": "yayagadde ekiwandiiko kyo",
   "notifications.action.postComment": "yawadde ku kiwandiiko kyo",
   "notifications.action.default": "yakuweerezza ekirango",
+  "stories.add": "Yongera ku mboozi",
+  "sidebar.suggestedForYou": "Ekiteeseddwa ku lulwo",
+  "sidebar.seeAll": "Laba byonna",
+  "sidebar.follow": "Okugoberera",
+  "sidebar.dismiss": "Goba {name}",
+  "world.peopleOnlineAroundWorld": "Abantu ku yintaneeti okwetoloola ensi yonna",
+  "world.online": "Abantu bali ku mutimbagano {count}",
+  "world.exploreMap": "Weekenneenye maapu",
+  "world.meetTheWorld": "Sisinkana Ensi",
+  "world.meetDescription": "Abantu abapya. Emboozi empya. Ensi esingako okuba ey’ekisa.",
+  "world.exploreNow": "Yeekenneenya kati",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lg;

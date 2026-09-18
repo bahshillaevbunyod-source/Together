@@ -123,6 +123,17 @@ const d_btx = {
   "notifications.action.postLike": "ngena atena postingenndu",
   "notifications.action.postComment": "mereken komentar bas postingenndu",
   "notifications.action.default": "ngirimken pemberitahun man bandu",
+  "stories.add": "Tambahken ceritana .",
+  "sidebar.suggestedForYou": "Isaranken man bandu .",
+  "sidebar.seeAll": "Nehen kerina",
+  "sidebar.follow": "Ngayak",
+  "sidebar.dismiss": "Pecatlah {name} .",
+  "world.peopleOnlineAroundWorld": "Kalak si online i belang-belang doni .",
+  "world.online": "{count} kalak online .",
+  "world.exploreMap": "Jelajahi peta e .",
+  "world.meetTheWorld": "Jumpa ras Doni .",
+  "world.meetDescription": "Kalak si mbaru. Cerita si mbaru. Doni si lebih mehuli.",
+  "world.exploreNow": "Jelajahi genduari",
 } satisfies Record<TranslationKey, string>;
 
 export default d_btx;

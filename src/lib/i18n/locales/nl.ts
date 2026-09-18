@@ -123,6 +123,17 @@ const d_nl = {
   "notifications.action.postLike": "vindt je bericht leuk",
   "notifications.action.postComment": "heeft op je bericht gereageerd",
   "notifications.action.default": "heeft je een melding gestuurd",
+  "stories.add": "Voeg verhaal toe",
+  "sidebar.suggestedForYou": "Voorgesteld voor jou",
+  "sidebar.seeAll": "Bekijk alles",
+  "sidebar.follow": "Volgen",
+  "sidebar.dismiss": "{name} afwijzen",
+  "world.peopleOnlineAroundWorld": "Mensen online over de hele wereld",
+  "world.online": "{count} mensen online",
+  "world.exploreMap": "Verken de kaart",
+  "world.meetTheWorld": "Maak kennis met de wereld",
+  "world.meetDescription": "Nieuwe mensen. Nieuwe verhalen. Een vriendelijkere wereld.",
+  "world.exploreNow": "Ontdek nu",
 } satisfies Record<TranslationKey, string>;
 
 export default d_nl;

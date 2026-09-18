@@ -123,6 +123,17 @@ const d_fa = {
   "notifications.action.postLike": "پست شما را پسندید",
   "notifications.action.postComment": "روی پست شما نظر گذاشت",
   "notifications.action.default": "برای شما اعلانی فرستاد",
+  "stories.add": "اضافه کردن داستان",
+  "sidebar.suggestedForYou": "برای شما پیشنهاد می شود",
+  "sidebar.seeAll": "همه را ببینید",
+  "sidebar.follow": "دنبال کنید",
+  "sidebar.dismiss": "رد {name}",
+  "world.peopleOnlineAroundWorld": "افراد آنلاین در سراسر جهان",
+  "world.online": "{count} نفر آنلاین",
+  "world.exploreMap": "نقشه را کاوش کنید",
+  "world.meetTheWorld": "جهان را ملاقات کنید",
+  "world.meetDescription": "افراد جدید. داستان های جدید دنیای مهربان تر",
+  "world.exploreNow": "اکنون کاوش کنید",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fa;

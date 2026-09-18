@@ -123,6 +123,17 @@ const d_jv = {
   "notifications.action.postLike": "seneng karo kirimanmu",
   "notifications.action.postComment": "menehi komentar ing kirimanmu",
   "notifications.action.default": "ngirim notifikasi menyang kowe",
+  "stories.add": "Tambah crita",
+  "sidebar.suggestedForYou": "Disaranake kanggo sampeyan",
+  "sidebar.seeAll": "Deleng kabeh",
+  "sidebar.follow": "Tindakake",
+  "sidebar.dismiss": "Mbusak {name}",
+  "world.peopleOnlineAroundWorld": "Wong online ing saindenging jagad",
+  "world.online": "{count} wong online",
+  "world.exploreMap": "Jelajahi peta",
+  "world.meetTheWorld": "Ketemu Donya",
+  "world.meetDescription": "wong anyar. crita anyar. Donya sing luwih apik.",
+  "world.exploreNow": "Jelajahi saiki",
 } satisfies Record<TranslationKey, string>;
 
 export default d_jv;

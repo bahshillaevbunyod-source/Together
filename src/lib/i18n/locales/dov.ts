@@ -123,6 +123,17 @@ const d_dov = {
   "notifications.action.postLike": "wakkomanina cakalembwa cako",
   "notifications.action.postComment": "wakalemba pacakalembwa cako",
   "notifications.action.default": "wakutumina cilailiko",
+  "stories.add": "Koyungizya makani",
+  "sidebar.suggestedForYou": "Zyakasungwaazigwa kuli nduwe",
+  "sidebar.seeAll": "Bona zyoonse",
+  "sidebar.follow": "Tobela",
+  "sidebar.dismiss": "Kogwisya {name}",
+  "world.peopleOnlineAroundWorld": "Bantu bali a intaneti munyika yoonse",
+  "world.online": "{count} bantu bali a intaneti",
+  "world.exploreMap": "Langa maapu",
+  "world.meetTheWorld": "Swaanganya Nyika",
+  "world.meetDescription": "Bantu bapya. Makani mapya. Nyika iili kabotu.",
+  "world.exploreNow": "Langa lino",
 } satisfies Record<TranslationKey, string>;
 
 export default d_dov;

@@ -123,6 +123,17 @@ const d_yue = {
   "notifications.action.postLike": "讚咗你嘅帖",
   "notifications.action.postComment": "喺你嘅帖留言",
   "notifications.action.default": "傳咗個通知俾你",
+  "stories.add": "加故事",
+  "sidebar.suggestedForYou": "建議畀你",
+  "sidebar.seeAll": "睇晒",
+  "sidebar.follow": "跟住",
+  "sidebar.dismiss": "解僱 {name}",
+  "world.peopleOnlineAroundWorld": "世界各地嘅人喺網上",
+  "world.online": "{count} 人網上",
+  "world.exploreMap": "探索地圖",
+  "world.meetTheWorld": "認識世界",
+  "world.meetDescription": "新人。新故事。一個更善良嘅世界。",
+  "world.exploreNow": "即刻探索",
 } satisfies Record<TranslationKey, string>;
 
 export default d_yue;

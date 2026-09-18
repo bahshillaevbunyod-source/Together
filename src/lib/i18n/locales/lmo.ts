@@ -123,6 +123,17 @@ const d_lmo = {
   "notifications.action.postLike": "el g'ha piasuu el tò post",
   "notifications.action.postComment": "l'à commentaa el tò post",
   "notifications.action.default": "el t'à mandaa 'na notifega",
+  "stories.add": "Aggiungi storia",
+  "sidebar.suggestedForYou": "Suggerì per tì",
+  "sidebar.seeAll": "Vedi tutt",
+  "sidebar.follow": "Andar adree",
+  "sidebar.dismiss": "Licenziar {name}",
+  "world.peopleOnlineAroundWorld": "La gent online in del mund",
+  "world.online": "{count} gent in linea",
+  "world.exploreMap": "Esplora la mapa",
+  "world.meetTheWorld": "Incuntrà el mund",
+  "world.meetDescription": "Gent nœuva. Nœuve stori. Un mund püsee gentil.",
+  "world.exploreNow": "Esplora adess",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lmo;

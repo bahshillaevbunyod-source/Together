@@ -123,6 +123,17 @@ const d_fj = {
   "notifications.action.postLike": "e vinakata na nomu ivolatukutuku",
   "notifications.action.postComment": "e vakamacalataka na nomu ivolatukutuku",
   "notifications.action.default": "e vakauta vei iko e dua na iVakasala",
+  "stories.add": "Kuria na italanoa",
+  "sidebar.suggestedForYou": "Vakatututaki vei iko",
+  "sidebar.seeAll": "Raica kece",
+  "sidebar.follow": "Muria",
+  "sidebar.dismiss": "Vakasuka {name}",
+  "world.peopleOnlineAroundWorld": "Na tamata ena initaneti e vuravura raraba .",
+  "world.online": "Era sa initaneti na tamata {count}",
+  "world.exploreMap": "Raica na mape",
+  "world.meetTheWorld": "Sotava na Vuravura",
+  "world.meetDescription": "Na tamata vou. Na italanoa vou. E dua na vuravura vakayalololoma.",
+  "world.exploreNow": "Vakasaqara ena gauna oqo",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fj;

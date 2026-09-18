@@ -123,6 +123,17 @@ const d_zh_TW = {
   "notifications.action.postLike": "對你的貼文按讚",
   "notifications.action.postComment": "留言了你的貼文",
   "notifications.action.default": "傳送了一則通知給你",
+  "stories.add": "添加故事",
+  "sidebar.suggestedForYou": "為您推薦",
+  "sidebar.seeAll": "看全部",
+  "sidebar.follow": "跟隨",
+  "sidebar.dismiss": "解僱 {name}",
+  "world.peopleOnlineAroundWorld": "世界各地的人上網",
+  "world.online": "{count}人在線",
+  "world.exploreMap": "探索地圖",
+  "world.meetTheWorld": "認識世界",
+  "world.meetDescription": "新人。新故事。一個更友善的世界。",
+  "world.exploreNow": "立即探索",
 } satisfies Record<TranslationKey, string>;
 
 export default d_zh_TW;

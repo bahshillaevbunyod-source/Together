@@ -123,6 +123,17 @@ const d_bew = {
   "notifications.action.postLike": "nyukain postingan lu",
   "notifications.action.postComment": "ngomentarin postingan lu",
   "notifications.action.default": "ngirim notifikasi ke lu",
+  "stories.add": "Tambahin cerita",
+  "sidebar.suggestedForYou": "Disaranin buat lu",
+  "sidebar.seeAll": "Liat semua",
+  "sidebar.follow": "Ngintilin",
+  "sidebar.dismiss": "Buang {name}",
+  "world.peopleOnlineAroundWorld": "Orang-orang online di seluruh dunia",
+  "world.online": "{count} orang online",
+  "world.exploreMap": "Jelajahi peta",
+  "world.meetTheWorld": "Ketemu Dunia",
+  "world.meetDescription": "Orang baru. Cerita baru. Dunia yang lebih baik.",
+  "world.exploreNow": "Jelajahin sekarang",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bew;

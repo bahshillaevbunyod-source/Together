@@ -123,6 +123,17 @@ const d_or = {
   "notifications.action.postLike": "ଆପଣଙ୍କ ପୋଷ୍ଟ ପସନ୍ଦ କଲେ",
   "notifications.action.postComment": "ଆପଣଙ୍କ ପୋଷ୍ଟରେ ମନ୍ତବ୍ୟ ଦେଲେ",
   "notifications.action.default": "ଆପଣଙ୍କୁ ଏକ ବିଜ୍ଞପ୍ତି ପଠାଇଲେ",
+  "stories.add": "କାହାଣୀ ଯୋଡନ୍ତୁ |",
+  "sidebar.suggestedForYou": "ଆପଣଙ୍କ ପାଇଁ ପରାମର୍ଶ ଦିଆଯାଇଛି |",
+  "sidebar.seeAll": "ସମସ୍ତ ଦେଖନ୍ତୁ |",
+  "sidebar.follow": "ଅନୁସରଣ କରନ୍ତୁ",
+  "sidebar.dismiss": "{name} କୁ ବରଖାସ୍ତ କରନ୍ତୁ |",
+  "world.peopleOnlineAroundWorld": "ସାରା ବିଶ୍ୱରେ ଲୋକମାନେ ଅନଲାଇନ୍ |",
+  "world.online": "{count} ଅନଲାଇନ୍ |",
+  "world.exploreMap": "ମାନଚିତ୍ର ଅନୁସନ୍ଧାନ କରନ୍ତୁ |",
+  "world.meetTheWorld": "ବିଶ୍ Meet କୁ ଭେଟ |",
+  "world.meetDescription": "ନୂତନ ଲୋକ | ନୂତନ କାହାଣୀ | ଏକ ଦୟାଳୁ ଦୁନିଆ |",
+  "world.exploreNow": "ବର୍ତ୍ତମାନ ଏକ୍ସପ୍ଲୋର୍ କରନ୍ତୁ |",
 } satisfies Record<TranslationKey, string>;
 
 export default d_or;

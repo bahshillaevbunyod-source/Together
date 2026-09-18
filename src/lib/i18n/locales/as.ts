@@ -123,6 +123,17 @@ const d_as = {
   "notifications.action.postLike": "আপোনাৰ পʼষ্ট ভাল পালে",
   "notifications.action.postComment": "আপোনাৰ পʼষ্টত মন্তব্য কৰিলে",
   "notifications.action.default": "আপোনালৈ এটা জাননী পঠিয়ালে",
+  "stories.add": "কাহিনী যোগ কৰক",
+  "sidebar.suggestedForYou": "আপোনাৰ বাবে পৰামৰ্শ দিয়া হৈছে",
+  "sidebar.seeAll": "সকলো চাওক",
+  "sidebar.follow": "অনুসৰণ কৰা",
+  "sidebar.dismiss": "{name} বাতিল কৰক",
+  "world.peopleOnlineAroundWorld": "সমগ্ৰ বিশ্বৰ মানুহ অনলাইন",
+  "world.online": "{count} জন লোক অনলাইন",
+  "world.exploreMap": "মানচিত্ৰখন অন্বেষণ কৰক",
+  "world.meetTheWorld": "বিশ্বক লগ কৰক",
+  "world.meetDescription": "নতুন মানুহ। নতুন কাহিনী। এখন দয়ালু পৃথিৱী।",
+  "world.exploreNow": "এতিয়াই অন্বেষণ কৰক",
 } satisfies Record<TranslationKey, string>;
 
 export default d_as;

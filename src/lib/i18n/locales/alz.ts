@@ -123,6 +123,17 @@ const d_alz = {
   "notifications.action.postLike": "omaro post peri",
   "notifications.action.postComment": "oketo paro i post peri",
   "notifications.action.default": "ooro angeyni bang in",
+  "stories.add": "Med lembe",
+  "sidebar.suggestedForYou": "Juyero iri",
+  "sidebar.seeAll": "Nen zo",
+  "sidebar.follow": "Lubi",
+  "sidebar.dismiss": "Wek {name}",
+  "world.peopleOnlineAroundWorld": "Dhanu iwi yamu i ng'om zoo",
+  "world.online": "{count} dhanu iwi yamu",
+  "world.exploreMap": "Nen map",
+  "world.meetTheWorld": "Nwangu ngom",
+  "world.meetDescription": "Dhanu manyen. Lembe manyen. Ngom maber.",
+  "world.exploreNow": "Nen kawoni",
 } satisfies Record<TranslationKey, string>;
 
 export default d_alz;

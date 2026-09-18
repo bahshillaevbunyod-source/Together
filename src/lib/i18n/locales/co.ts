@@ -123,6 +123,17 @@ const d_co = {
   "notifications.action.postLike": "li hè piaciutu u to post",
   "notifications.action.postComment": "hà cummentatu u to post",
   "notifications.action.default": "t'hà mandatu una nutifica",
+  "stories.add": "Aghjunghjite a storia",
+  "sidebar.suggestedForYou": "Suggeritu per voi",
+  "sidebar.seeAll": "Vede tuttu",
+  "sidebar.follow": "Segui",
+  "sidebar.dismiss": "Ignora {name}",
+  "world.peopleOnlineAroundWorld": "E persone in linea in u mondu",
+  "world.online": "{count} persone in linea",
+  "world.exploreMap": "Esplora a mappa",
+  "world.meetTheWorld": "Scuntrà u mondu",
+  "world.meetDescription": "Genti novi. Storie novi. Un mondu più amable.",
+  "world.exploreNow": "Esplora avà",
 } satisfies Record<TranslationKey, string>;
 
 export default d_co;

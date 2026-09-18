@@ -123,6 +123,17 @@ const d_mn = {
   "notifications.action.postLike": "таны нийтлэлд таалагдлаа",
   "notifications.action.postComment": "таны нийтлэлд сэтгэгдэл бичлээ",
   "notifications.action.default": "танд мэдэгдэл илгээлээ",
+  "stories.add": "Өгүүллэг нэмнэ үү",
+  "sidebar.suggestedForYou": "Танд санал болгож байна",
+  "sidebar.seeAll": "Бүгдийг харах",
+  "sidebar.follow": "Дага",
+  "sidebar.dismiss": "{name}-г хэрэгсэхгүй болгох",
+  "world.peopleOnlineAroundWorld": "Дэлхий даяар онлайн хүмүүс",
+  "world.online": "{count} хүн онлайн байна",
+  "world.exploreMap": "Газрын зурагтай танилцана уу",
+  "world.meetTheWorld": "Дэлхийтэй танилц",
+  "world.meetDescription": "Шинэ хүмүүс. Шинэ түүхүүд. Илүү эелдэг ертөнц.",
+  "world.exploreNow": "Одоо судлаарай",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mn;

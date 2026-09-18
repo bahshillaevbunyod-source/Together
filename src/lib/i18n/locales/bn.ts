@@ -123,6 +123,17 @@ const d_bn = {
   "notifications.action.postLike": "আপনার পোস্ট পছন্দ করেছেন",
   "notifications.action.postComment": "আপনার পোস্টে মন্তব্য করেছেন",
   "notifications.action.default": "আপনাকে একটি বিজ্ঞপ্তি পাঠিয়েছেন",
+  "stories.add": "গল্প যোগ করুন",
+  "sidebar.suggestedForYou": "আপনার জন্য প্রস্তাবিত",
+  "sidebar.seeAll": "সব দেখুন",
+  "sidebar.follow": "অনুসরণ করুন",
+  "sidebar.dismiss": "{name} খারিজ করুন৷",
+  "world.peopleOnlineAroundWorld": "সারা বিশ্বের মানুষ অনলাইন",
+  "world.online": "{count} জন অনলাইন",
+  "world.exploreMap": "মানচিত্র অন্বেষণ",
+  "world.meetTheWorld": "বিশ্বের সাথে দেখা করুন",
+  "world.meetDescription": "নতুন মানুষ। নতুন গল্প। একটি দয়ালু পৃথিবী।",
+  "world.exploreNow": "এখন অন্বেষণ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bn;

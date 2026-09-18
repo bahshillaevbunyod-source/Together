@@ -123,6 +123,17 @@ const d_xh = {
   "notifications.action.postLike": "uyithandile ipost yakho",
   "notifications.action.postComment": "uphawule kwipost yakho",
   "notifications.action.default": "ukuthumele isaziso",
+  "stories.add": "Yongeza ibali",
+  "sidebar.suggestedForYou": "Icetyiselwe wena",
+  "sidebar.seeAll": "Ndinibone nonke",
+  "sidebar.follow": "Landela",
+  "sidebar.dismiss": "Cima {name}",
+  "world.peopleOnlineAroundWorld": "Abantu abakwi-intanethi kwihlabathi liphela",
+  "world.online": "{count} abantu kwi-intanethi",
+  "world.exploreMap": "Jonga imaphu",
+  "world.meetTheWorld": "Dibana neHlabathi",
+  "world.meetDescription": "Abantu abatsha. Amabali amatsha. Ihlabathi elinobubele.",
+  "world.exploreNow": "Jonga ngoku",
 } satisfies Record<TranslationKey, string>;
 
 export default d_xh;

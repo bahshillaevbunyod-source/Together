@@ -123,6 +123,17 @@ const d_ln = {
   "notifications.action.postLike": "asepeli na lisolo na yo",
   "notifications.action.postComment": "apesi likanisi na lisolo na yo",
   "notifications.action.default": "atindeli yo liyebisi",
+  "stories.add": "Bakisa lisolo",
+  "sidebar.suggestedForYou": "Epesameli likanisi mpo na yo",
+  "sidebar.seeAll": "Talá nyonso",
+  "sidebar.follow": "Kolanda",
+  "sidebar.dismiss": "Bolongola {name}",
+  "world.peopleOnlineAroundWorld": "Bato oyo bazali na Internet na mokili mobimba",
+  "world.online": "{count} bato bazali na internet",
+  "world.exploreMap": "Talá karte yango",
+  "world.meetTheWorld": "Bokutana na Mokili",
+  "world.meetDescription": "Bato ya sika. Masolo ya sika. Mokili moko ya boboto koleka.",
+  "world.exploreNow": "Bolukaluka sikoyo",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ln;

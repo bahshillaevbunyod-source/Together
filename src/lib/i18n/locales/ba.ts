@@ -123,6 +123,17 @@ const d_ba = {
   "notifications.action.postLike": "яҙмағыҙҙы оҡшатты",
   "notifications.action.postComment": "яҙмағыҙға аңлатма яҙҙы",
   "notifications.action.default": "һеҙгә белдереү ебәрҙе",
+  "stories.add": "Хикәйә өҫтәү",
+  "sidebar.suggestedForYou": "Һеҙҙең өсөн тәҡдим ителә",
+  "sidebar.seeAll": "Барыһын да ҡарау",
+  "sidebar.follow": "Эйәрергә",
+  "sidebar.dismiss": "123-сө XQZUSER-ҙы эштән бушатыу {name}",
+  "world.peopleOnlineAroundWorld": "Бөтә донъяла кешеләр онлайн",
+  "world.online": "{count} кеше онлайн",
+  "world.exploreMap": "Картаны өйрәнеү",
+  "world.meetTheWorld": "Донъя менән танышыу",
+  "world.meetDescription": "Яңы кешеләр. Яңы хикәйәләр. Игелеклерәк донъя.",
+  "world.exploreNow": "Хәҙер тикшерегеҙ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ba;

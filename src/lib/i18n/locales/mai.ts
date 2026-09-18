@@ -123,6 +123,17 @@ const d_mai = {
   "notifications.action.postLike": "अहाँक पोस्ट पसिन्न केलक",
   "notifications.action.postComment": "अहाँक पोस्ट पर टिप्पणी केलक",
   "notifications.action.default": "अहाँ केँ एकटा सूचना पठेलक",
+  "stories.add": "कथा जोड़ू",
+  "sidebar.suggestedForYou": "अहाँक लेल सुझाओल गेल",
+  "sidebar.seeAll": "सब देखू",
+  "sidebar.follow": "अनुसरण",
+  "sidebar.dismiss": "{name} के खारिज करू",
+  "world.peopleOnlineAroundWorld": "दुनिया भर के लोग ऑनलाइन",
+  "world.online": "{count} लोग ऑनलाइन",
+  "world.exploreMap": "नक्शा खोजें",
+  "world.meetTheWorld": "दुनिया से मिलिए",
+  "world.meetDescription": "नव लोक। नव-नव कथा। एकटा दयालु दुनिया।",
+  "world.exploreNow": "अखन अन्वेषण करू",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mai;

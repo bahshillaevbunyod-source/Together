@@ -123,6 +123,17 @@ const d_hrx = {
   "notifications.action.postLike": "hòt dei post gefall",
   "notifications.action.postComment": "hòt uf dei post kommentiert",
   "notifications.action.default": "hòt dir en meldung geschickt",
+  "stories.add": "Kexicht hinzufügen",
+  "sidebar.suggestedForYou": "Suggesiert fer tich",
+  "sidebar.seeAll": "Siit ales",
+  "sidebar.follow": "Noo keen",
+  "sidebar.dismiss": "{name} wech xafe",
+  "world.peopleOnlineAroundWorld": "Ti layt uf te kans wëlt sin online .",
+  "world.online": "{count} persoone online",
+  "world.exploreMap": "Entfluus ti karte .",
+  "world.meetTheWorld": "Tref ti Welt .",
+  "world.meetDescription": "Noye layt. Noye kexichte. Een kinder welt.",
+  "world.exploreNow": "Entfluus jetzt",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hrx;

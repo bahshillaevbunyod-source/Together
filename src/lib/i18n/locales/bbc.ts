@@ -123,6 +123,17 @@ const d_bbc = {
   "notifications.action.postLike": "lomo rohana di postinganmu",
   "notifications.action.postComment": "mangalusi postinganmu",
   "notifications.action.default": "mangirim pangalusion tu ho",
+  "stories.add": "Tambahon cerita .",
+  "sidebar.suggestedForYou": "Disaranhon tu hamu .",
+  "sidebar.seeAll": "Ida ma sude",
+  "sidebar.follow": "Mandohoti",
+  "sidebar.dismiss": "Pabali ma {name}",
+  "world.peopleOnlineAroundWorld": "Halak online di liat portibi on .",
+  "world.online": "{count} halak online",
+  "world.exploreMap": "Jelajahi ma peta i .",
+  "world.meetTheWorld": "Pajumpang dohot Portibi on",
+  "world.meetDescription": "Halak na baru. Carita na baru. Dunia na lam burju.",
+  "world.exploreNow": "Jelajahi ma saonari",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bbc;

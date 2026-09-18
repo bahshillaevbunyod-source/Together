@@ -123,6 +123,17 @@ const d_ak = {
   "notifications.action.postLike": "apɛ wo post no",
   "notifications.action.postComment": "ayɛ w'post no ho adwene",
   "notifications.action.default": "asoma wo amanneɛbɔ",
+  "stories.add": "Fa asɛm bi ka ho",
+  "sidebar.suggestedForYou": "Wɔahyɛ nyansa ama wo",
+  "sidebar.seeAll": "Hwɛ ne nyinaa",
+  "sidebar.follow": "Di akyire",
+  "sidebar.dismiss": "Yi {name} no fi hɔ",
+  "world.peopleOnlineAroundWorld": "Nnipa a wɔwɔ Intanɛt so wɔ wiase nyinaa",
+  "world.online": "{count} nnipa wɔ intanɛt so",
+  "world.exploreMap": "Hwehwɛ asase mfonini no mu",
+  "world.meetTheWorld": "Hu Wiase no",
+  "world.meetDescription": "Nnipa foforo. Nsɛm foforo. Wiase a ayamye wom.",
+  "world.exploreNow": "Hwehwɛ mu mprempren",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ak;

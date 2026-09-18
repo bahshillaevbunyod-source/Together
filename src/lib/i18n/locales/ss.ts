@@ -123,6 +123,17 @@ const d_ss = {
   "notifications.action.postLike": "utsandze umbhalo wakho",
   "notifications.action.postComment": "uphawule embhalweni wakho",
   "notifications.action.default": "ukutfumele satiso",
+  "stories.add": "Ngeta indzaba",
+  "sidebar.suggestedForYou": "Kuphakanyiselwe wena",
+  "sidebar.seeAll": "Bona konkhe",
+  "sidebar.follow": "Landzela",
+  "sidebar.dismiss": "Lahla {name}",
+  "world.peopleOnlineAroundWorld": "Bantfu labaku-inthanethi emhlabeni wonkhe",
+  "world.online": "{count} bantfu ku-inthanethi",
+  "world.exploreMap": "Hlola lelibalave",
+  "world.meetTheWorld": "Hlangana nemhlaba",
+  "world.meetDescription": "Bantfu labasha. Tindzaba letinsha. Umhlaba lonemusa.",
+  "world.exploreNow": "Hlola nyalo",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ss;

@@ -123,6 +123,17 @@ const d_sa = {
   "notifications.action.postLike": "भवतः प्रकाशनं रोचितवान्",
   "notifications.action.postComment": "भवतः प्रकाशने टिप्पणीं कृतवान्",
   "notifications.action.default": "भवते सूचनाम् एकां प्रेषितवान्",
+  "stories.add": "कथां योजयतु",
+  "sidebar.suggestedForYou": "भवतः कृते सूचितम्",
+  "sidebar.seeAll": "सर्वाणि पश्यन्तु",
+  "sidebar.follow": "अनुशीलनं",
+  "sidebar.dismiss": "{name} को खारिज करें",
+  "world.peopleOnlineAroundWorld": "विश्वे जनाः अन्तर्जालद्वारा",
+  "world.online": "{count} जनाः ऑनलाइन",
+  "world.exploreMap": "नक्शां अन्वेष्टुम्",
+  "world.meetTheWorld": "विश्वं मिलतु",
+  "world.meetDescription": "नवीनाः जनाः। नवीन कथा। दयालुतरः संसारः ।",
+  "world.exploreNow": "अधुना अन्वेषणं कुर्वन्तु",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sa;

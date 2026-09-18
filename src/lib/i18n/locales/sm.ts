@@ -123,6 +123,17 @@ const d_sm = {
   "notifications.action.postLike": "na fiafia i lau pou",
   "notifications.action.postComment": "na faamatala i lau pou",
   "notifications.action.default": "na lafoina se faʻailoga iā te oe",
+  "stories.add": "Faaopoopo tala",
+  "sidebar.suggestedForYou": "Fautuaina mo oe",
+  "sidebar.seeAll": "Va'ai uma",
+  "sidebar.follow": "Mulimuli",
+  "sidebar.dismiss": "Fa'ate'a {name}",
+  "world.peopleOnlineAroundWorld": "Tagata i luga ole laiga i le lalolagi atoa",
+  "world.online": "{count} tagata i luga ole laiga",
+  "world.exploreMap": "Saili le faafanua",
+  "world.meetTheWorld": "Feiloai i le Lalolagi",
+  "world.meetDescription": "Tagata fou. Tala fou. Se lalolagi agalelei.",
+  "world.exploreNow": "Su'esu'e nei",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sm;

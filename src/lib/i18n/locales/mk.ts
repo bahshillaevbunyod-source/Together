@@ -123,6 +123,17 @@ const d_mk = {
   "notifications.action.postLike": "ја лајкна твојата објава",
   "notifications.action.postComment": "ја коментираше твојата објава",
   "notifications.action.default": "ти испрати известување",
+  "stories.add": "Додадете приказна",
+  "sidebar.suggestedForYou": "Предложено за вас",
+  "sidebar.seeAll": "Видете ги сите",
+  "sidebar.follow": "Следете",
+  "sidebar.dismiss": "Отфрли го {name}",
+  "world.peopleOnlineAroundWorld": "Луѓе онлајн ширум светот",
+  "world.online": "{count} луѓе онлајн",
+  "world.exploreMap": "Истражете ја картата",
+  "world.meetTheWorld": "Запознајте го светот",
+  "world.meetDescription": "Нови луѓе. Нови приказни. Пољубезен свет.",
+  "world.exploreNow": "Истражувајте сега",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mk;

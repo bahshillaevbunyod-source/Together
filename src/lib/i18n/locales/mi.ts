@@ -123,6 +123,17 @@ const d_mi = {
   "notifications.action.postLike": "i pai ki tō pou",
   "notifications.action.postComment": "i whakatākoto kōrero mō tō pou",
   "notifications.action.default": "i tuku pānui ki a koe",
+  "stories.add": "Tāpiri kōrero",
+  "sidebar.suggestedForYou": "Kua tohua mo koe",
+  "sidebar.seeAll": "Tirohia katoa",
+  "sidebar.follow": "Whaia",
+  "sidebar.dismiss": "Waiho {name}",
+  "world.peopleOnlineAroundWorld": "Tangata ipurangi huri noa i te ao",
+  "world.online": "{count} tangata i runga ipurangi",
+  "world.exploreMap": "Torotoro te mapi",
+  "world.meetTheWorld": "Tutaki ki te Ao",
+  "world.meetDescription": "Tangata hou. Nga korero hou. He ao atawhai.",
+  "world.exploreNow": "Torotoro inaianei",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mi;

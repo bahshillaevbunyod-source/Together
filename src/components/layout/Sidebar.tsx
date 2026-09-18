@@ -97,15 +97,15 @@ export function Sidebar() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
             <div className="relative">
-              <h3 className="text-base font-semibold">Meet the World</h3>
+              <h3 className="text-base font-semibold">{t("world.meetTheWorld")}</h3>
               <p className="mt-1 text-xs leading-snug text-white/80">
-                New people. New stories. A kinder world.
+                {t("world.meetDescription")}
               </p>
               <button
                 type="button"
                 className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90"
               >
-                Explore Now
+                {t("world.exploreNow")}
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </div>

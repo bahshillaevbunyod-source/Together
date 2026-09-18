@@ -123,6 +123,17 @@ const it = {
   "notifications.action.postLike": "ha messo Mi piace al tuo post",
   "notifications.action.postComment": "ha commentato il tuo post",
   "notifications.action.default": "ti ha inviato una notifica",
+  "stories.add": "Aggiungi storia",
+  "sidebar.suggestedForYou": "Suggerito per te",
+  "sidebar.seeAll": "Vedi tutto",
+  "sidebar.follow": "Seguire",
+  "sidebar.dismiss": "Ignora {name}",
+  "world.peopleOnlineAroundWorld": "Persone online in tutto il mondo",
+  "world.online": "{count} persone in linea",
+  "world.exploreMap": "Esplora la mappa",
+  "world.meetTheWorld": "Incontra il mondo",
+  "world.meetDescription": "Nuove persone. Nuove storie. Un mondo più gentile.",
+  "world.exploreNow": "Esplora ora",
 } satisfies Record<TranslationKey, string>;
 
 export default it;

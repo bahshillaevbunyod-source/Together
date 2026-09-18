@@ -123,6 +123,17 @@ const d_cgg = {
   "notifications.action.postLike": "yakunda ekihandiiko kyaawe",
   "notifications.action.postComment": "yateeraho aha kihandiiko kyaawe",
   "notifications.action.default": "yakwoherereza emanyiso",
+  "stories.add": "Yongyera ekigano",
+  "sidebar.suggestedForYou": "Ekiteiso ahabwawe",
+  "sidebar.seeAll": "Reeba byona",
+  "sidebar.follow": "Kukurata",
+  "sidebar.dismiss": "Obinga {name}",
+  "world.peopleOnlineAroundWorld": "Abantu aha Intaneeti omunsi yoona",
+  "world.online": "{count} abantu aha Intaneeti",
+  "world.exploreMap": "Reeba maapu",
+  "world.meetTheWorld": "Buuza ensi yoona",
+  "world.meetDescription": "Abantu basya. Ebitebyo bisya. Ensi erimu embabazi.",
+  "world.exploreNow": "Reeba hati",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cgg;

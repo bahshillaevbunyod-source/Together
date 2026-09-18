@@ -123,6 +123,17 @@ const d_ts = {
   "notifications.action.postLike": "u rhandzile post ya wena",
   "notifications.action.postComment": "u hlamurile eka post ya wena",
   "notifications.action.default": "u ku rhumerile xitiviso",
+  "stories.add": "Engetelani xitori",
+  "sidebar.suggestedForYou": "Xiringanyeto eka wena",
+  "sidebar.seeAll": "Vona hinkwaswo",
+  "sidebar.follow": "Landzela",
+  "sidebar.dismiss": "Hlongola {name}",
+  "world.peopleOnlineAroundWorld": "Vanhu va le ka Internet emisaveni hinkwayo",
+  "world.online": "{count} vanhu va le ka inthanete",
+  "world.exploreMap": "Kambisisa mepe lowu",
+  "world.meetTheWorld": "Hlangana na Misava",
+  "world.meetDescription": "Vanhu lavantshwa. Switori leswintshwa. Misava leyi nga ni musa.",
+  "world.exploreNow": "Hlawula sweswi",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ts;

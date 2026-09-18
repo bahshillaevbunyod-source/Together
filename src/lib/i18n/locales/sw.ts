@@ -123,6 +123,17 @@ const d_sw = {
   "notifications.action.postLike": "alipenda chapisho lako",
   "notifications.action.postComment": "alitoa maoni kwenye chapisho lako",
   "notifications.action.default": "alikutumia arifa",
+  "stories.add": "Ongeza hadithi",
+  "sidebar.suggestedForYou": "Iliyopendekezwa kwa ajili yako",
+  "sidebar.seeAll": "Tazama zote",
+  "sidebar.follow": "Fuata",
+  "sidebar.dismiss": "Ondoa {name}",
+  "world.peopleOnlineAroundWorld": "Watu mtandaoni kote ulimwenguni",
+  "world.online": "Watu {count} mtandaoni",
+  "world.exploreMap": "Chunguza ramani",
+  "world.meetTheWorld": "Kutana na Ulimwengu",
+  "world.meetDescription": "Watu wapya. Hadithi mpya. Ulimwengu mwema.",
+  "world.exploreNow": "Chunguza sasa",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sw;

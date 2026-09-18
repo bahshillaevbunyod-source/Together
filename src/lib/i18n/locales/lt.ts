@@ -123,6 +123,17 @@ const d_lt = {
   "notifications.action.postLike": "pamėgo tavo įrašą",
   "notifications.action.postComment": "pakomentavo tavo įrašą",
   "notifications.action.default": "atsiuntė tau pranešimą",
+  "stories.add": "Pridėti istoriją",
+  "sidebar.suggestedForYou": "Siūloma jums",
+  "sidebar.seeAll": "Žiūrėti viską",
+  "sidebar.follow": "Sekite",
+  "sidebar.dismiss": "Atsisakyti {name}",
+  "world.peopleOnlineAroundWorld": "Žmonės internete visame pasaulyje",
+  "world.online": "{count} žmonės prisijungę",
+  "world.exploreMap": "Naršykite žemėlapį",
+  "world.meetTheWorld": "Susipažink su pasauliu",
+  "world.meetDescription": "Nauji žmonės. Naujos istorijos. Geresnis pasaulis.",
+  "world.exploreNow": "Naršykite dabar",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lt;

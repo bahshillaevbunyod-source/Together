@@ -123,6 +123,17 @@ const d_hy = {
   "notifications.action.postLike": "հավանեց քո գրառումը",
   "notifications.action.postComment": "մեկնաբանեց քո գրառումը",
   "notifications.action.default": "քեզ ծանուցում ուղարկեց",
+  "stories.add": "Ավելացնել պատմություն",
+  "sidebar.suggestedForYou": "Առաջարկվում է ձեզ համար",
+  "sidebar.seeAll": "Տես բոլորը",
+  "sidebar.follow": "Հետևեք",
+  "sidebar.dismiss": "Փակել {name}-ը",
+  "world.peopleOnlineAroundWorld": "Մարդիկ առցանց ամբողջ աշխարհում",
+  "world.online": "{count} մարդ առցանց",
+  "world.exploreMap": "Ուսումնասիրեք քարտեզը",
+  "world.meetTheWorld": "Հանդիպեք աշխարհին",
+  "world.meetDescription": "Նոր մարդիկ. Նոր պատմություններ. Ավելի բարի աշխարհ:",
+  "world.exploreNow": "Բացահայտեք հիմա",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hy;

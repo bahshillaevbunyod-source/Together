@@ -123,6 +123,17 @@ const d_lo = {
   "notifications.action.postLike": "ມັກໂພສຂອງເຈົ້າ",
   "notifications.action.postComment": "ສະແດງຄວາມຄິດເຫັນໃນໂພສຂອງເຈົ້າ",
   "notifications.action.default": "ສົ່ງການແຈ້ງເຕືອນຫາເຈົ້າ",
+  "stories.add": "ເພີ່ມເລື່ອງ",
+  "sidebar.suggestedForYou": "ແນະນຳສຳລັບເຈົ້າ",
+  "sidebar.seeAll": "ເບິ່ງທັງຫມົດ",
+  "sidebar.follow": "ປະຕິບັດຕາມ",
+  "sidebar.dismiss": "ປິດ {name}",
+  "world.peopleOnlineAroundWorld": "ຄົນອອນໄລນ໌ທົ່ວໂລກ",
+  "world.online": "{count} ຄົນອອນໄລນ໌",
+  "world.exploreMap": "ສຳຫຼວດແຜນທີ່",
+  "world.meetTheWorld": "ພົບກັບໂລກ",
+  "world.meetDescription": "ຄົນໃໝ່. ເລື່ອງໃໝ່. ໂລກທີ່ອ່ອນໂຍນ.",
+  "world.exploreNow": "ສຳຫຼວດດຽວນີ້",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lo;

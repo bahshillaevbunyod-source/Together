@@ -123,6 +123,17 @@ const d_te = {
   "notifications.action.postLike": "మీ పోస్ట్‌ను ఇష్టపడ్డారు",
   "notifications.action.postComment": "మీ పోస్ట్‌పై వ్యాఖ్యానించారు",
   "notifications.action.default": "మీకు ఒక నోటిఫికేషన్ పంపారు",
+  "stories.add": "కథను జోడించండి",
+  "sidebar.suggestedForYou": "మీ కోసం సూచించబడింది",
+  "sidebar.seeAll": "అన్నీ చూడండి",
+  "sidebar.follow": "అనుసరించండి",
+  "sidebar.dismiss": "{name}ని తీసివేయండి",
+  "world.peopleOnlineAroundWorld": "ప్రపంచవ్యాప్తంగా ఆన్‌లైన్‌లో ఉన్న వ్యక్తులు",
+  "world.online": "{count} మంది వ్యక్తులు ఆన్‌లైన్‌లో ఉన్నారు",
+  "world.exploreMap": "మ్యాప్‌ని అన్వేషించండి",
+  "world.meetTheWorld": "ప్రపంచాన్ని కలవండి",
+  "world.meetDescription": "కొత్త వ్యక్తులు. కొత్త కథలు. దయగల ప్రపంచం.",
+  "world.exploreNow": "ఇప్పుడు అన్వేషించండి",
 } satisfies Record<TranslationKey, string>;
 
 export default d_te;

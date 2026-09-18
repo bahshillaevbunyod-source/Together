@@ -123,6 +123,17 @@ const d_ro = {
   "notifications.action.postLike": "a apreciat postarea ta",
   "notifications.action.postComment": "a comentat la postarea ta",
   "notifications.action.default": "ți-a trimis o notificare",
+  "stories.add": "Adăugați povestea",
+  "sidebar.suggestedForYou": "Sugerat pentru tine",
+  "sidebar.seeAll": "Vezi toate",
+  "sidebar.follow": "Urmăriți",
+  "sidebar.dismiss": "Închideți {name}",
+  "world.peopleOnlineAroundWorld": "Oameni online din întreaga lume",
+  "world.online": "{count} de persoane online",
+  "world.exploreMap": "Explorați harta",
+  "world.meetTheWorld": "Faceți cunoștință cu lumea",
+  "world.meetDescription": "Oameni noi. Povești noi. O lume mai blândă.",
+  "world.exploreNow": "Explorează acum",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ro;

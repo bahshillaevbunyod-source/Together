@@ -123,6 +123,17 @@ const d_nus = {
   "notifications.action.postLike": "ci postdu nhök",
   "notifications.action.postComment": "ci jiök kɛ postdu",
   "notifications.action.default": "ci ka ŋäc jak ni jiɛn",
+  "stories.add": "Add ruac",
+  "sidebar.suggestedForYou": "Ca lar kɛ kui̱du",
+  "sidebar.seeAll": "Guic kɛndiaal",
+  "sidebar.follow": "Gur kä lɛr",
+  "sidebar.dismiss": "Kämni XQZUTHƐR123 raar {name}",
+  "world.peopleOnlineAroundWorld": "Nɛy tin te rɛy intɛrnɛtdä wi̱i̱muɔ̱ɔ̱n kɛɛliw",
+  "world.online": "{count} nɛy tin te rɛy intɛrnɛtdä",
+  "world.exploreMap": "Guɛc map",
+  "world.meetTheWorld": "Jiëk Wi̱cmuɔ̱ɔ̱n",
+  "world.meetDescription": "Nɛy ti pay ben. Ruac mi pay tuɔɔk. Ɛn wi̱cmuɔ̱ɔ̱n mi̱ tɔt.",
+  "world.exploreNow": "Ɛkplörɛ ɛntäämɛ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_nus;

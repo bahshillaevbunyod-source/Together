@@ -123,6 +123,17 @@ const d_ur = {
   "notifications.action.postLike": "آپ کی پوسٹ پسند کی",
   "notifications.action.postComment": "آپ کی پوسٹ پر تبصرہ کیا",
   "notifications.action.default": "آپ کو ایک اطلاع بھیجی",
+  "stories.add": "کہانی شامل کریں۔",
+  "sidebar.suggestedForYou": "آپ کے لیے تجویز کردہ",
+  "sidebar.seeAll": "سب دیکھیں",
+  "sidebar.follow": "پیروی کریں۔",
+  "sidebar.dismiss": "{name} کو برخاست کریں۔",
+  "world.peopleOnlineAroundWorld": "دنیا بھر میں آن لائن لوگ",
+  "world.online": "{count} لوگ آن لائن",
+  "world.exploreMap": "نقشہ دریافت کریں۔",
+  "world.meetTheWorld": "دنیا سے ملو",
+  "world.meetDescription": "نئے لوگ۔ نئی کہانیاں۔ ایک مہربان دنیا۔",
+  "world.exploreNow": "ابھی دریافت کریں۔",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ur;

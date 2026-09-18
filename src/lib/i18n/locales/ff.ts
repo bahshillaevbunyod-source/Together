@@ -123,6 +123,17 @@ const d_ff = {
   "notifications.action.postLike": "yiɗii winndannde maa",
   "notifications.action.postComment": "wowlii e winndannde maa",
   "notifications.action.default": "neldii ma tintinde",
+  "stories.add": "Ɓeydu heen daartol",
+  "sidebar.suggestedForYou": "Wasiyaaji wonande on",
+  "sidebar.seeAll": "Ƴeew fof",
+  "sidebar.follow": "Tokkugo",
+  "sidebar.dismiss": "Woppu {name}",
+  "world.peopleOnlineAroundWorld": "Yimɓe e internet e nder winndere ndee",
+  "world.online": "{count} yimɓe e internet",
+  "world.exploreMap": "Yiylo kartal ngal",
+  "world.meetTheWorld": "Jokkondira e Aduna",
+  "world.meetDescription": "Yimɓe kesi. Haalaaji kesi. Aduna ɓurɗo moƴƴude.",
+  "world.exploreNow": "Yiylo jooni",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ff;

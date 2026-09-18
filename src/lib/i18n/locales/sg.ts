@@ -123,6 +123,17 @@ const d_sg = {
   "notifications.action.postLike": "aye post ti mo",
   "notifications.action.postComment": "asara commentaire na ndö ti post ti mo",
   "notifications.action.default": "atokua na mo mbeni masa",
+  "stories.add": "A zia mbaï na ndo ni .",
+  "sidebar.suggestedForYou": "A mû wango ndali ti mo .",
+  "sidebar.seeAll": "Bâ aye kue .",
+  "sidebar.follow": "Gue na peko",
+  "sidebar.dismiss": "Zia {name}",
+  "world.peopleOnlineAroundWorld": "Azo so ayeke na ndo ti Internet na ndo ti sese kue .",
+  "world.online": "{count} azo na ndo ti Internet .",
+  "world.exploreMap": "Bâ carte ni .",
+  "world.meetTheWorld": "Ti tingbi na azo ti dunia kue .",
+  "world.meetDescription": "Afini zo. Afini mbaï. Mbeni dunia so ayeke nzoni mingi.",
+  "world.exploreNow": "Gi fadeso .",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sg;

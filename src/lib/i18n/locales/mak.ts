@@ -123,6 +123,17 @@ const d_mak = {
   "notifications.action.postLike": "angngaia postingannu",
   "notifications.action.postComment": "angkomentari postingannu",
   "notifications.action.default": "akkiring pappauang mae ri kau",
+  "stories.add": "tambai carita",
+  "sidebar.suggestedForYou": "Ni sarankan untuk ikatte",
+  "sidebar.seeAll": "Ciniki ngaseng",
+  "sidebar.follow": "Amminawang",
+  "sidebar.dismiss": "Pa'le'baki {name}",
+  "world.peopleOnlineAroundWorld": "Tau online ri sikuntuna linoa",
+  "world.online": "{count} tau online",
+  "world.exploreMap": "Ansalidiki peta",
+  "world.meetTheWorld": "Sibuntulu linoa",
+  "world.meetDescription": "Tau beru. Carita beru. lino labbi baji.",
+  "world.exploreNow": "Jelajahi kamma kammayya anne",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mak;

@@ -123,6 +123,17 @@ const d_zu = {
   "notifications.action.postLike": "uthande okuthunyelwe kwakho",
   "notifications.action.postComment": "uphawule kokuthunyelwe kwakho",
   "notifications.action.default": "ukuthumele isaziso",
+  "stories.add": "Engeza indaba",
+  "sidebar.suggestedForYou": "Okuphakanyiselwe wena",
+  "sidebar.seeAll": "Bona konke",
+  "sidebar.follow": "Landela",
+  "sidebar.dismiss": "Cashisa i-{name}",
+  "world.peopleOnlineAroundWorld": "Abantu abaku-inthanethi emhlabeni jikelele",
+  "world.online": "{count} abantu ku-inthanethi",
+  "world.exploreMap": "Hlola imephu",
+  "world.meetTheWorld": "Hlangana Nomhlaba",
+  "world.meetDescription": "Abantu abasha. Izindaba ezintsha. Umhlaba onomusa.",
+  "world.exploreNow": "Hlola manje",
 } satisfies Record<TranslationKey, string>;
 
 export default d_zu;

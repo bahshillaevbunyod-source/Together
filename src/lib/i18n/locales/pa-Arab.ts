@@ -123,6 +123,17 @@ const d_pa_Arab = {
   "notifications.action.postLike": "تہاڈی پوسٹ نوں پسند کیتا",
   "notifications.action.postComment": "تہاڈی پوسٹ تے تبصرہ کیتا",
   "notifications.action.default": "تہانوں اک اطلاع گھلی",
+  "stories.add": "کہانی شامل کرو",
+  "sidebar.suggestedForYou": "تہاڈے لئی تجویز کیتا گیا اے",
+  "sidebar.seeAll": "سب ویکھو",
+  "sidebar.follow": "ہیٹھاں",
+  "sidebar.dismiss": "{name} نو مسترد کرو",
+  "world.peopleOnlineAroundWorld": "دنیا بھر دے لوک آن لائن نیں",
+  "world.online": "{count} لوک آن لائن",
+  "world.exploreMap": "نقشے نو دریافت کرو",
+  "world.meetTheWorld": "دنیا نال ملو",
+  "world.meetDescription": "نویں لوک۔ نویاں کہانیاں۔ اک مہربان دنیا۔",
+  "world.exploreNow": "ہن دریافت کرو",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pa_Arab;

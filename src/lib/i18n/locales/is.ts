@@ -123,6 +123,17 @@ const d_is = {
   "notifications.action.postLike": "líkaði við færsluna þína",
   "notifications.action.postComment": "gerði athugasemd við færsluna þína",
   "notifications.action.default": "sendi þér tilkynningu",
+  "stories.add": "Bæta við sögu",
+  "sidebar.suggestedForYou": "Mælt með fyrir þig",
+  "sidebar.seeAll": "Sjá allt",
+  "sidebar.follow": "Fylgstu með",
+  "sidebar.dismiss": "Hunsa {name}",
+  "world.peopleOnlineAroundWorld": "Fólk á netinu um allan heim",
+  "world.online": "{count} manns á netinu",
+  "world.exploreMap": "Skoðaðu kortið",
+  "world.meetTheWorld": "Hittu heiminn",
+  "world.meetDescription": "Nýtt fólk. Nýjar sögur. Betri heimur.",
+  "world.exploreNow": "Kanna núna",
 } satisfies Record<TranslationKey, string>;
 
 export default d_is;

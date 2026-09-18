@@ -123,6 +123,17 @@ const d_pa = {
   "notifications.action.postLike": "ਤੁਹਾਡੀ ਪੋਸਟ ਪਸੰਦ ਕੀਤੀ",
   "notifications.action.postComment": "ਤੁਹਾਡੀ ਪੋਸਟ 'ਤੇ ਟਿੱਪਣੀ ਕੀਤੀ",
   "notifications.action.default": "ਤੁਹਾਨੂੰ ਇੱਕ ਸੂਚਨਾ ਭੇਜੀ",
+  "stories.add": "ਕਹਾਣੀ ਸ਼ਾਮਲ ਕਰੋ",
+  "sidebar.suggestedForYou": "ਤੁਹਾਡੇ ਲਈ ਸੁਝਾਏ ਗਏ",
+  "sidebar.seeAll": "ਸਾਰੇ ਦੇਖੋ",
+  "sidebar.follow": "ਦਾ ਪਾਲਣ ਕਰੋ",
+  "sidebar.dismiss": "{name} ਨੂੰ ਖਾਰਜ ਕਰੋ",
+  "world.peopleOnlineAroundWorld": "ਦੁਨੀਆ ਭਰ ਦੇ ਲੋਕ ਔਨਲਾਈਨ ਹਨ",
+  "world.online": "{count} ਲੋਕ ਔਨਲਾਈਨ",
+  "world.exploreMap": "ਨਕਸ਼ੇ ਦੀ ਪੜਚੋਲ ਕਰੋ",
+  "world.meetTheWorld": "ਸੰਸਾਰ ਨੂੰ ਮਿਲੋ",
+  "world.meetDescription": "ਨਵੇਂ ਲੋਕ। ਨਵੀਆਂ ਕਹਾਣੀਆਂ। ਇੱਕ ਦਿਆਲੂ ਸੰਸਾਰ.",
+  "world.exploreNow": "ਹੁਣੇ ਪੜਚੋਲ ਕਰੋ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pa;

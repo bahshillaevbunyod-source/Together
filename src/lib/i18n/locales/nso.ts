@@ -123,6 +123,17 @@ const d_nso = {
   "notifications.action.postLike": "o ratile poso ya gago",
   "notifications.action.postComment": "o hlalositše poso ya gago",
   "notifications.action.default": "o go rometše tsebišo",
+  "stories.add": "Oketša kanegelo",
+  "sidebar.suggestedForYou": "E šišinywa bakeng sa gago",
+  "sidebar.seeAll": "Bona ka moka",
+  "sidebar.follow": "Latela",
+  "sidebar.dismiss": "Raka {name}",
+  "world.peopleOnlineAroundWorld": "Batho ba inthaneteng lefaseng ka bophara",
+  "world.online": "{count} batho ba inthaneteng",
+  "world.exploreMap": "Hlahloba mmapa",
+  "world.meetTheWorld": "Kopana le Lefase",
+  "world.meetDescription": "Batho ba bafsa. Dikanegelo tše mpsha. Lefase le le botho.",
+  "world.exploreNow": "Hlahloba bjale",
 } satisfies Record<TranslationKey, string>;
 
 export default d_nso;

@@ -123,6 +123,17 @@ const d_sd = {
   "notifications.action.postLike": "توهان جي پوسٽ پسند ڪئي",
   "notifications.action.postComment": "توهان جي پوسٽ تي تبصرو ڪيو",
   "notifications.action.default": "توهان ڏانهن هڪ اطلاع موڪلي",
+  "stories.add": "ڪهاڻي شامل ڪريو",
+  "sidebar.suggestedForYou": "توھان لاءِ تجويز ڪيل",
+  "sidebar.seeAll": "سڀ ڏسو",
+  "sidebar.follow": "تابعداري ڪريو",
+  "sidebar.dismiss": "برطرف ڪريو {name}",
+  "world.peopleOnlineAroundWorld": "دنيا جي چوڌاري آن لائن ماڻهو",
+  "world.online": "{count} ماڻهو آن لائن",
+  "world.exploreMap": "نقشي جي ڳولا ڪريو",
+  "world.meetTheWorld": "دنيا سان ملو",
+  "world.meetDescription": "نوان ماڻهو. نيون ڪهاڻيون. هڪ مهربان دنيا.",
+  "world.exploreNow": "ھاڻي دريافت ڪريو",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sd;

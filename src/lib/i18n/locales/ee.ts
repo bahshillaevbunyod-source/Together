@@ -123,6 +123,17 @@ const d_ee = {
   "notifications.action.postLike": "lɔ̃ wò nuŋlɔɖia",
   "notifications.action.postComment": "de asi wò nuŋlɔɖia ŋu",
   "notifications.action.default": "ɖo nyanana ɖe wò",
+  "stories.add": "Tsɔ ŋutinya kpee",
+  "sidebar.suggestedForYou": "Woɖo aɖaŋu na wò",
+  "sidebar.seeAll": "Kpɔ wo katã ɖa",
+  "sidebar.follow": "Kplᴐe ɖo",
+  "sidebar.dismiss": "Miɖe asi le {name} ŋu",
+  "world.peopleOnlineAroundWorld": "Amewo le Internet dzi le xexeame godoo",
+  "world.online": "{count} amewo le internet dzi",
+  "world.exploreMap": "Dzro anyigbatataa me",
+  "world.meetTheWorld": "Do go Xexeame",
+  "world.meetDescription": "Ame yeyewo. Ŋutinya yeyewo. Xexe si me dɔmenyonyo le wu.",
+  "world.exploreNow": "Dzro nu me fifia",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ee;

@@ -123,6 +123,17 @@ const d_my = {
   "notifications.action.postLike": "သင့်ပို့စ်ကို နှစ်သက်ခဲ့သည်",
   "notifications.action.postComment": "သင့်ပို့စ်ကို မှတ်ချက်ပေးခဲ့သည်",
   "notifications.action.default": "သင့်ထံ အသိပေးချက်တစ်ခု ပို့ခဲ့သည်",
+  "stories.add": "ဇာတ်လမ်းထည့်ပါ။",
+  "sidebar.suggestedForYou": "သင့်အတွက် အကြံပြုထားသည်။",
+  "sidebar.seeAll": "အားလုံးကြည့်",
+  "sidebar.follow": "လိုက်နာပါ။",
+  "sidebar.dismiss": "{name} ကို ဖယ်ထားပါ။",
+  "world.peopleOnlineAroundWorld": "ကမ္ဘာတဝှမ်းက အွန်လိုင်းလူတွေ",
+  "world.online": "အွန်လိုင်းတွင် လူ {count} ဦး",
+  "world.exploreMap": "မြေပုံကို စူးစမ်းပါ။",
+  "world.meetTheWorld": "ကမ္ဘာနှင့်တွေ့ဆုံပါ။",
+  "world.meetDescription": "လူသစ်။ ဇာတ်လမ်းအသစ်များ။ ပိုကြင်နာတဲ့ကမ္ဘာ။",
+  "world.exploreNow": "ယခု စူးစမ်းပါ။",
 } satisfies Record<TranslationKey, string>;
 
 export default d_my;

@@ -123,6 +123,17 @@ const d_haw = {
   "notifications.action.postLike": "ua makemake i kāu kūkala",
   "notifications.action.postComment": "ua manaʻo i kāu kūkala",
   "notifications.action.default": "ua hoʻouna iā ʻoe i leka hoʻomaopopo",
+  "stories.add": "Hoʻohui moʻolelo",
+  "sidebar.suggestedForYou": "Manaʻo ʻia no ʻoe",
+  "sidebar.seeAll": "ʻIke i nā mea a pau",
+  "sidebar.follow": "Hahai",
+  "sidebar.dismiss": "E kāpae iā {name}",
+  "world.peopleOnlineAroundWorld": "Nā kānaka ma ka pūnaewele a puni ka honua",
+  "world.online": "{count} kanaka ma ka pūnaewele",
+  "world.exploreMap": "E ʻimi i ka palapala ʻāina",
+  "world.meetTheWorld": "Hui i ka Honua",
+  "world.meetDescription": "Nā kānaka hou. Nā moʻolelo hou. He honua ʻoluʻolu.",
+  "world.exploreNow": "E ʻimi i kēia manawa",
 } satisfies Record<TranslationKey, string>;
 
 export default d_haw;

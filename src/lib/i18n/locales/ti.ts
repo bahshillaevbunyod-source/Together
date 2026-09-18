@@ -123,6 +123,17 @@ const d_ti = {
   "notifications.action.postLike": "ንጽሑፍካ ወዲዱዎ",
   "notifications.action.postComment": "ኣብ ጽሑፍካ ርእይቶ ሂቡ",
   "notifications.action.default": "ምልክታ ሰዲዱልካ",
+  "stories.add": "ዛንታ ወስኹሉ።",
+  "sidebar.suggestedForYou": "ንዓኻትኩም ዝብል ሓሳብ ኣቕሪቡ።",
+  "sidebar.seeAll": "ኩሉ ርአ",
+  "sidebar.follow": "ተኸተል",
+  "sidebar.dismiss": "{name} ምብራር",
+  "world.peopleOnlineAroundWorld": "ኣብ መላእ ዓለም ዝርከቡ ሰባት ብኢንተርነት",
+  "world.online": "{count} ሰባት ኣብ መስመር ኣለዉ።",
+  "world.exploreMap": "ነቲ ካርታ ዳህሰሶ",
+  "world.meetTheWorld": "ምስ ዓለም ተራኸብ",
+  "world.meetDescription": "ሓደስቲ ሰባት። ሓድሽ ዛንታታት። ዝያዳ ሕያዋይ ዓለም።",
+  "world.exploreNow": "ሕጂ ዳህሰሱ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ti;

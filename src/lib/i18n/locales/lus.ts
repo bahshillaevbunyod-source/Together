@@ -123,6 +123,17 @@ const d_lus = {
   "notifications.action.postLike": "i post a duh",
   "notifications.action.postComment": "i post-ah thu a sawi",
   "notifications.action.default": "hriattirna a rawn thawn",
+  "stories.add": "Thuziak belh rawh",
+  "sidebar.suggestedForYou": "I tan rawtna siam a ni",
+  "sidebar.seeAll": "A zawng zawng en rawh",
+  "sidebar.follow": "Zui",
+  "sidebar.dismiss": "{name} chu hnawhchhuah rawh",
+  "world.peopleOnlineAroundWorld": "Khawvel hmun hrang hranga mipui online",
+  "world.online": "Mite chu online-ah an awm a {count}",
+  "world.exploreMap": "Map chu chhui chhuak rawh",
+  "world.meetTheWorld": "Khawvel nen inhmu rawh",
+  "world.meetDescription": "Mi tharte. Thu thar. Khawvel ngilnei zawk.",
+  "world.exploreNow": "Tunah hian explore rawh",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lus;

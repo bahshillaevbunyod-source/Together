@@ -123,6 +123,17 @@ const d_new = {
   "notifications.action.postLike": "छिगु पोस्त यःत",
   "notifications.action.postComment": "छिगु पोस्तय् कमेन्त यात",
   "notifications.action.default": "छिगु नापं छगू सूचना छ्वत",
+  "stories.add": "बाखं तनादिसँ",
+  "sidebar.suggestedForYou": "छिगु निंतिं सुझाव",
+  "sidebar.seeAll": "सकतां स्व",
+  "sidebar.follow": "ल्यू ल्यू वनेगु",
+  "sidebar.dismiss": "एक्सक्यूजेयूएसआर १२३ यात खारेज या {name}",
+  "world.peopleOnlineAroundWorld": "हलिंन्यंकया मनूत अनलाइन",
+  "world.online": "मनूत अनलाइनय् दु । {count}",
+  "world.exploreMap": "नक्सा मालास्व ।",
+  "world.meetTheWorld": "हलिंयात नाप ला",
+  "world.meetDescription": "न्हूपिं मनूत । न्हूगु बाखंत । छगू दयालु हलिं ।",
+  "world.exploreNow": "आः मालास्व ।",
 } satisfies Record<TranslationKey, string>;
 
 export default d_new;

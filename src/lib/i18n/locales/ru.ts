@@ -123,6 +123,17 @@ const ru = {
   "notifications.action.postLike": "оценил вашу публикацию",
   "notifications.action.postComment": "прокомментировал вашу публикацию",
   "notifications.action.default": "отправил вам уведомление",
+  "stories.add": "Добавить историю",
+  "sidebar.suggestedForYou": "Предлагается для вас",
+  "sidebar.seeAll": "Посмотреть все",
+  "sidebar.follow": "Следовать",
+  "sidebar.dismiss": "Отклонить {name}",
+  "world.peopleOnlineAroundWorld": "Люди онлайн по всему миру",
+  "world.online": "{count} человека онлайн",
+  "world.exploreMap": "Исследуйте карту",
+  "world.meetTheWorld": "Знакомьтесь с миром",
+  "world.meetDescription": "Новые люди. Новые истории. Более добрый мир.",
+  "world.exploreNow": "Исследуйте сейчас",
 } satisfies Record<TranslationKey, string>;
 
 export default ru;

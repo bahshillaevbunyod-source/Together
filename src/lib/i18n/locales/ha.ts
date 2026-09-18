@@ -123,6 +123,17 @@ const d_ha = {
   "notifications.action.postLike": "ya so gidan yanar gizonka",
   "notifications.action.postComment": "ya yi sharhi kan gidan yanar gizonka",
   "notifications.action.default": "ya aiko maka da sanarwa",
+  "stories.add": "Ƙara labari",
+  "sidebar.suggestedForYou": "Shawarwari gare ku",
+  "sidebar.seeAll": "Duba duka",
+  "sidebar.follow": "Bi",
+  "sidebar.dismiss": "Kore {name}",
+  "world.peopleOnlineAroundWorld": "Mutane online a duk duniya",
+  "world.online": "{count} mutane akan layi",
+  "world.exploreMap": "Bincika taswirar",
+  "world.meetTheWorld": "Haɗu da Duniya",
+  "world.meetDescription": "Sabbin mutane. Sabbin labarai. Duniya mai kirki.",
+  "world.exploreNow": "Nemo yanzu",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ha;

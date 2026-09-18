@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { X } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 type Person = {
   name: string;
@@ -42,15 +43,19 @@ const people: Person[] = [
 ];
 
 export function SuggestedPeople() {
+  const { t } = useLanguage();
+
   return (
     <section className="mr-1 rounded-2xl border border-border bg-surface p-5 shadow-sm">
       <div className="flex items-center justify-between gap-2">
-        <h2 className="text-sm font-semibold text-foreground">Suggested for you</h2>
+        <h2 className="text-sm font-semibold text-foreground">
+          {t("sidebar.suggestedForYou")}
+        </h2>
         <button
           type="button"
           className="rounded text-xs font-medium text-primary transition-colors hover:text-primary-hover"
         >
-          See all
+          {t("sidebar.seeAll")}
         </button>
       </div>
 
@@ -78,11 +83,11 @@ export function SuggestedPeople() {
                 type="button"
                 className="rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/10"
               >
-                Follow
+                {t("sidebar.follow")}
               </button>
               <button
                 type="button"
-                aria-label={`Dismiss ${person.name}`}
+                aria-label={t("sidebar.dismiss", { name: person.name })}
                 className="flex h-6 w-6 items-center justify-center rounded-full text-muted-soft transition-colors hover:bg-background hover:text-muted"
               >
                 <X className="h-4 w-4" />

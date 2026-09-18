@@ -123,6 +123,17 @@ const d_su = {
   "notifications.action.postLike": "mikaresep unggahan anjeun",
   "notifications.action.postComment": "méré koméntar dina unggahan anjeun",
   "notifications.action.default": "ngirim béwara ka anjeun",
+  "stories.add": "Tambahkeun carita",
+  "sidebar.suggestedForYou": "Disarankeun pikeun anjeun",
+  "sidebar.seeAll": "Tingali sadayana",
+  "sidebar.follow": "Nuturkeun",
+  "sidebar.dismiss": "Leupaskeun {name}",
+  "world.peopleOnlineAroundWorld": "Jalma online di sakuliah dunya",
+  "world.online": "{count} jalma online",
+  "world.exploreMap": "Ngajalajah peta",
+  "world.meetTheWorld": "Papanggih Dunya",
+  "world.meetDescription": "jalma anyar. Carita anyar. Dunya kinder.",
+  "world.exploreNow": "Ngajalajah ayeuna",
 } satisfies Record<TranslationKey, string>;
 
 export default d_su;

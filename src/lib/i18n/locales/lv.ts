@@ -123,6 +123,17 @@ const d_lv = {
   "notifications.action.postLike": "novērtēja tavu ierakstu ar patīk",
   "notifications.action.postComment": "komentēja tavu ierakstu",
   "notifications.action.default": "nosūtīja tev paziņojumu",
+  "stories.add": "Pievienojiet stāstu",
+  "sidebar.suggestedForYou": "Ieteikts jums",
+  "sidebar.seeAll": "Skatīt visu",
+  "sidebar.follow": "Sekojiet",
+  "sidebar.dismiss": "Noraidīt {name}",
+  "world.peopleOnlineAroundWorld": "Cilvēki tiešsaistē visā pasaulē",
+  "world.online": "{count} cilvēki tiešsaistē",
+  "world.exploreMap": "Izpētiet karti",
+  "world.meetTheWorld": "Iepazīstieties ar pasauli",
+  "world.meetDescription": "Jauni cilvēki. Jauni stāsti. Laipnāka pasaule.",
+  "world.exploreNow": "Izpētiet tūlīt",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lv;

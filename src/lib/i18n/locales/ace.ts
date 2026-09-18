@@ -123,6 +123,17 @@ const d_ace = {
   "notifications.action.postLike": "galak keu postingan gata",
   "notifications.action.postComment": "jikomen postingan gata",
   "notifications.action.default": "jikirem saboh pemberitahuan keu gata",
+  "stories.add": "Tambah calitra",
+  "sidebar.suggestedForYou": "Disarankan keu droeneuh",
+  "sidebar.seeAll": "Ka kalon mandum",
+  "sidebar.follow": "Ikot",
+  "sidebar.dismiss": "Peuhah {name}",
+  "world.peopleOnlineAroundWorld": "Ureung online ban sigom donya .",
+  "world.online": "{count} ureung online .",
+  "world.exploreMap": "Jeulajah peta nyan",
+  "world.meetTheWorld": "Meurumpok ngon Donya",
+  "world.meetDescription": "Ureung baro. Cerita-cerita baro. Donya nyang leubeh get.",
+  "world.exploreNow": "Jeulajah jinoe",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ace;

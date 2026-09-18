@@ -123,6 +123,17 @@ const d_nr = {
   "notifications.action.postLike": "uthande okuthunyelweko kwakho",
   "notifications.action.postComment": "uphawule kokuthunyelweko kwakho",
   "notifications.action.default": "ukuthumele umemezelo",
+  "stories.add": "Faka indatjana",
+  "sidebar.suggestedForYou": "Kuphakanyisiwe kuwe",
+  "sidebar.seeAll": "Bona koke",
+  "sidebar.follow": "Landela",
+  "sidebar.dismiss": "Lahla i-{name}",
+  "world.peopleOnlineAroundWorld": "Abantu abaku-inthanethi ephasini loke",
+  "world.online": "{count} abantu ku-inthanethi",
+  "world.exploreMap": "Hlola imephu",
+  "world.meetTheWorld": "Hlangana nePhasi",
+  "world.meetDescription": "Abantu abatjha. Iindaba ezitjha. Iphasi elinomusa.",
+  "world.exploreNow": "Hlola nje",
 } satisfies Record<TranslationKey, string>;
 
 export default d_nr;

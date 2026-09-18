@@ -123,6 +123,17 @@ const d_kri = {
   "notifications.action.postLike": "lek yu pos",
   "notifications.action.postComment": "kɔmɛnt na yu pos",
   "notifications.action.default": "sɛnd yu wan notifikeshɔn",
+  "stories.add": "Ad stori",
+  "sidebar.suggestedForYou": "Dɛn dɔn tɔk bɔt am fɔ yu",
+  "sidebar.seeAll": "Si ɔltin",
+  "sidebar.follow": "Fala",
+  "sidebar.dismiss": "Dismis {name} we yu go yuz",
+  "world.peopleOnlineAroundWorld": "Pipul dɛn we de na di Intanɛt ɔlsay na di wɔl",
+  "world.online": "{count} pipul dɛn de na di intanɛt",
+  "world.exploreMap": "Eksplore di map",
+  "world.meetTheWorld": "Mit di Wɔl",
+  "world.meetDescription": "Nyu pipul dɛn. Nyu stori dɛn. Wan wɔl we gɛt gud at.",
+  "world.exploreNow": "Ɛksplɔrɔ naw",
 } satisfies Record<TranslationKey, string>;
 
 export default d_kri;

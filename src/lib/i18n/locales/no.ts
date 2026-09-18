@@ -123,6 +123,17 @@ const d_no = {
   "notifications.action.postLike": "likte innlegget ditt",
   "notifications.action.postComment": "kommenterte innlegget ditt",
   "notifications.action.default": "sendte deg et varsel",
+  "stories.add": "Legg til historie",
+  "sidebar.suggestedForYou": "Foreslått for deg",
+  "sidebar.seeAll": "Se alle",
+  "sidebar.follow": "Følge",
+  "sidebar.dismiss": "Avvis {name}",
+  "world.peopleOnlineAroundWorld": "Folk på nett over hele verden",
+  "world.online": "{count} personer online",
+  "world.exploreMap": "Utforsk kartet",
+  "world.meetTheWorld": "Møt verden",
+  "world.meetDescription": "Nye mennesker. Nye historier. En snillere verden.",
+  "world.exploreNow": "Utforsk nå",
 } satisfies Record<TranslationKey, string>;
 
 export default d_no;

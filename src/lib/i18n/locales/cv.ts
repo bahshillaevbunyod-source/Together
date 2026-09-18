@@ -123,6 +123,17 @@ const d_cv = {
   "notifications.action.postLike": "санăн постна килĕштерчĕ",
   "notifications.action.postComment": "санăн постна комментари хушрĕ",
   "notifications.action.default": "сана пĕлтерӳ ячĕ",
+  "stories.add": "Сюжет хушӑр",
+  "sidebar.suggestedForYou": "Сирӗн валли сӗннӗ",
+  "sidebar.seeAll": "Пурне те кур",
+  "sidebar.follow": "Хыççӑн пыр",
+  "sidebar.dismiss": "{name} кӑларса пӑрахӑр",
+  "world.peopleOnlineAroundWorld": "Пӗтӗм тӗнчери ҫынсем онлайн",
+  "world.online": "{count} ҫын онлайн",
+  "world.exploreMap": "Карттӑна тӗпчесе пӗлӗр",
+  "world.meetTheWorld": "Тӗнчепе паллашӑр",
+  "world.meetDescription": "Çӗнӗ ҫынсем. Ҫӗнӗ калавсем. Ырӑрах тӗнче.",
+  "world.exploreNow": "Халех тӗпчесе пӗлӗр",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cv;

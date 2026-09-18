@@ -123,6 +123,17 @@ const d_rom = {
   "notifications.action.postLike": "kamlja ćo posto",
   "notifications.action.postComment": "dija duma pe ćo posto",
   "notifications.action.default": "bičhaldja tuke jekh angaripe",
+  "stories.add": "Thov paramiči",
+  "sidebar.suggestedForYou": "Sugerimo tumenge",
+  "sidebar.seeAll": "Dikh sa",
+  "sidebar.follow": "Зal palal",
+  "sidebar.dismiss": "Te nakhaves {name}",
+  "world.peopleOnlineAroundWorld": "Manuśa online anθ-i sasti lumja",
+  "world.online": "{count} manuša online",
+  "world.exploreMap": "Dikh i mapa",
+  "world.meetTheWorld": "Arakh e lumia",
+  "world.meetDescription": "Neve manuša. Neve paramiče. Jekh maj laćhi lumia.",
+  "world.exploreNow": "Xramosar akana",
 } satisfies Record<TranslationKey, string>;
 
 export default d_rom;

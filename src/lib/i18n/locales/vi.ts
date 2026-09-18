@@ -123,6 +123,17 @@ const d_vi = {
   "notifications.action.postLike": "đã thích bài viết của bạn",
   "notifications.action.postComment": "đã bình luận về bài viết của bạn",
   "notifications.action.default": "đã gửi cho bạn một thông báo",
+  "stories.add": "Thêm câu chuyện",
+  "sidebar.suggestedForYou": "Được đề xuất cho bạn",
+  "sidebar.seeAll": "Xem tất cả",
+  "sidebar.follow": "Theo",
+  "sidebar.dismiss": "Loại bỏ {name}",
+  "world.peopleOnlineAroundWorld": "Mọi người trực tuyến trên khắp thế giới",
+  "world.online": "{count} người trực tuyến",
+  "world.exploreMap": "Khám phá bản đồ",
+  "world.meetTheWorld": "Gặp gỡ thế giới",
+  "world.meetDescription": "Những người mới. Những câu chuyện mới. Một thế giới tử tế hơn.",
+  "world.exploreNow": "Khám phá ngay bây giờ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_vi;

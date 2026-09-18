@@ -123,6 +123,17 @@ const d_gd = {
   "notifications.action.postLike": "gun do chòrd am post agad ris",
   "notifications.action.postComment": "gun tug e beachd air a' phost agad",
   "notifications.action.default": "gun do chuir e brath thugad",
+  "stories.add": "Cuir sgeulachd ris",
+  "sidebar.suggestedForYou": "Air a mholadh dhut",
+  "sidebar.seeAll": "Faic na h-uile",
+  "sidebar.follow": "Leanaibh",
+  "sidebar.dismiss": "Cuir às do {name}",
+  "world.peopleOnlineAroundWorld": "Daoine air-loidhne air feadh an t-saoghail a",
+  "world.online": "{count} neach air loidhne",
+  "world.exploreMap": "Rannsaich am mapa",
+  "world.meetTheWorld": "Coinnich ris an t-Saoghal",
+  "world.meetDescription": "Daoine ùra. Sgeulachdan ùra. Saoghal nas caoile.",
+  "world.exploreNow": "Rannsaich a-nis",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gd;

@@ -123,6 +123,17 @@ const d_fy = {
   "notifications.action.postLike": "fynt dyn berjocht moai",
   "notifications.action.postComment": "hat op dyn berjocht reagearre",
   "notifications.action.default": "hat dy in melding stjoerd",
+  "stories.add": "Foegje ferhaal ta",
+  "sidebar.suggestedForYou": "Foarsteld foar jo",
+  "sidebar.seeAll": "Sjoch alles",
+  "sidebar.follow": "Folgje",
+  "sidebar.dismiss": "Ofslúte {name}",
+  "world.peopleOnlineAroundWorld": "Minsken online oer de hiele wrâld",
+  "world.online": "{count} minsken online",
+  "world.exploreMap": "Ferkenne de kaart",
+  "world.meetTheWorld": "Moetsje de wrâld",
+  "world.meetDescription": "Nije minsken. Nije ferhalen. In freonliker wrâld.",
+  "world.exploreNow": "Ferkenne no",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fy;

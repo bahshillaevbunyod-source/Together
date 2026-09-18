@@ -123,6 +123,17 @@ const d_st = {
   "notifications.action.postLike": "o ratile poso ea hao",
   "notifications.action.postComment": "o hlalositse poso ea hao",
   "notifications.action.default": "o u rometse tsebiso",
+  "stories.add": "Kenya pale",
+  "sidebar.suggestedForYou": "E khothalelitsoeng uena",
+  "sidebar.seeAll": "Bona kaofela",
+  "sidebar.follow": "Latela",
+  "sidebar.dismiss": "Tlosa {name}",
+  "world.peopleOnlineAroundWorld": "Batho ba inthaneteng lefatšeng ka bophara",
+  "world.online": "{count} batho ba inthaneteng",
+  "world.exploreMap": "Lekola 'mapa",
+  "world.meetTheWorld": "Kopana le Lefatše",
+  "world.meetDescription": "Batho ba bacha. Litaba tse ncha. Lefatše le mosa.",
+  "world.exploreNow": "Lekola hona joale",
 } satisfies Record<TranslationKey, string>;
 
 export default d_st;

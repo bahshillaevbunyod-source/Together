@@ -1,20 +1,24 @@
 import Image from "next/image";
 import { Plus } from "lucide-react";
 import { stories } from "@/data/stories";
+import { useLanguage } from "@/lib/language-context";
 
 export function StoriesRow() {
+  const { t } = useLanguage();
+
   return (
     <section>
       <div className="flex gap-4 overflow-x-auto">
         {/* Add story */}
         <button
           type="button"
+          aria-label={t("stories.add")}
           className="flex w-16 shrink-0 flex-col items-center gap-2"
         >
           <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-dashed border-border text-primary">
             <Plus className="h-6 w-6" />
           </span>
-          <span className="text-xs text-muted">Add story</span>
+          <span className="text-xs text-muted">{t("stories.add")}</span>
         </button>
 
         {/* People stories */}

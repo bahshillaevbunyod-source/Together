@@ -123,6 +123,17 @@ const d_mt = {
   "notifications.action.postLike": "għoġbitu l-post tiegħek",
   "notifications.action.postComment": "ikkummenta fuq il-post tiegħek",
   "notifications.action.default": "bagħatlek notifika",
+  "stories.add": "Żid l-istorja",
+  "sidebar.suggestedForYou": "Issuġġerit għalik",
+  "sidebar.seeAll": "Ara kollha",
+  "sidebar.follow": "Segwi",
+  "sidebar.dismiss": "Iwarrab {name}",
+  "world.peopleOnlineAroundWorld": "Nies onlajn madwar id-dinja",
+  "world.online": "{count} nies online",
+  "world.exploreMap": "Esplora l-mappa",
+  "world.meetTheWorld": "Iltaqa' mad-Dinja",
+  "world.meetDescription": "Nies ġodda. Stejjer ġodda. Dinja aktar ġentili.",
+  "world.exploreNow": "Esplora issa",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mt;

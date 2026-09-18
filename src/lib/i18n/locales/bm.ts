@@ -123,6 +123,17 @@ const d_bm = {
   "notifications.action.postLike": "y'a diya i ka sɛbɛnni na",
   "notifications.action.postComment": "y'a hakilina di i ka sɛbɛnni kan",
   "notifications.action.default": "ye kolatigɛ dɔ ci i ma",
+  "stories.add": "Maana fara a kan",
+  "sidebar.suggestedForYou": "Ladilikan dira aw ma",
+  "sidebar.seeAll": "Aw ye a bɛɛ lajɛ",
+  "sidebar.follow": "Ka tugu",
+  "sidebar.dismiss": "A ye {name} bɔ baara la",
+  "world.peopleOnlineAroundWorld": "Mɔgɔw ​​bɛ ɛntɛrinɛti kan diɲɛ fan bɛɛ la",
+  "world.online": "{count} mɔgɔw bɛ ɛntɛrinɛti kan",
+  "world.exploreMap": "Karta in sɛgɛsɛgɛ",
+  "world.meetTheWorld": "Aw ye Diɲɛ kunbɛn",
+  "world.meetDescription": "Mɔgɔ kuraw. Maana kuraw. Diɲɛ min ka ɲi kosɛbɛ.",
+  "world.exploreNow": "Sɛgɛsɛgɛli kɛ sisan",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bm;

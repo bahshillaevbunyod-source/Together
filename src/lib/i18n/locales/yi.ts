@@ -123,6 +123,17 @@ const d_yi = {
   "notifications.action.postLike": "האָט ליב געהאַט דיין פּאָסט",
   "notifications.action.postComment": "האָט קאָמענטירט דיין פּאָסט",
   "notifications.action.default": "האָט דיר געשיקט אַ באַנאַכריכטיקונג",
+  "stories.add": "לייג געשיכטע",
+  "sidebar.suggestedForYou": "פארגעלייגט פֿאַר איר",
+  "sidebar.seeAll": "זען אַלע",
+  "sidebar.follow": "גיי",
+  "sidebar.dismiss": "אָפּזאָגן {name}",
+  "world.peopleOnlineAroundWorld": "מענטשן אָנליין אַרום די וועלט",
+  "world.online": "{count} מענטשן אָנליין",
+  "world.exploreMap": "ויספאָרשן די מאַפּע",
+  "world.meetTheWorld": "טרעפן די וועלט",
+  "world.meetDescription": "נייע מענטשן. נייע מעשיות. א בעסערע וועלט.",
+  "world.exploreNow": "ויספאָרשן איצט",
 } satisfies Record<TranslationKey, string>;
 
 export default d_yi;

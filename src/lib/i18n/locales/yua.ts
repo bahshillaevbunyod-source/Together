@@ -123,6 +123,17 @@ const d_yua = {
   "notifications.action.postLike": "uts tu tʼaan a postaʼ",
   "notifications.action.postComment": "tʼaan tu yóokʼol a postaʼ",
   "notifications.action.default": "túuxt teech junpʼéel kʼaʼajsajil",
+  "stories.add": "Ts'áa tsikbal",
+  "sidebar.suggestedForYou": "Sugerido utia'al tech",
+  "sidebar.seeAll": "Ilawil tuláakal",
+  "sidebar.follow": "Tsaypach",
+  "sidebar.dismiss": "{name} u p'atik",
+  "world.peopleOnlineAroundWorld": "Máako'ob ti' internet ichil yóok'ol kaab",
+  "world.online": "{count} máako'ob ti' internet ichil",
+  "world.exploreMap": "Ilawil le mapao'",
+  "world.meetTheWorld": "K'ajóolt yóok'ol kaab",
+  "world.meetDescription": "Túumben máako'ob. Túumben tsikbalo'ob. jump'éel yóok'ol kaab asab uts.",
+  "world.exploreNow": "Xak'alxok bejla'e'",
 } satisfies Record<TranslationKey, string>;
 
 export default d_yua;

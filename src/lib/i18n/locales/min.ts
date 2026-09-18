@@ -123,6 +123,17 @@ const d_min = {
   "notifications.action.postLike": "manyukoi kiriman angku",
   "notifications.action.postComment": "mangomentari kiriman angku",
   "notifications.action.default": "mangirim pambaritauan ka angku",
+  "stories.add": "Tambah carito",
+  "sidebar.suggestedForYou": "Disarankan untuak sanak",
+  "sidebar.seeAll": "Caliak sadonyo",
+  "sidebar.follow": "Ikuik",
+  "sidebar.dismiss": "Buang {name}",
+  "world.peopleOnlineAroundWorld": "Urang online di saluruah dunia .",
+  "world.online": "{count} urang online",
+  "world.exploreMap": "Jelajahi peta",
+  "world.meetTheWorld": "Basobok jo Dunia",
+  "world.meetDescription": "Urang baru. Carito-carito baru. Dunia nan labiah baiak.",
+  "world.exploreNow": "Jelajahi kini",
 } satisfies Record<TranslationKey, string>;
 
 export default d_min;

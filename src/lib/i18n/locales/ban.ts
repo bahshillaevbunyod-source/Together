@@ -123,6 +123,17 @@ const d_ban = {
   "notifications.action.postLike": "seneng ring postingan ragane",
   "notifications.action.postComment": "ngomentar postingan ragane",
   "notifications.action.default": "ngirim pemberitahuan ring ragane",
+  "stories.add": "Wewehin carita",
+  "sidebar.suggestedForYou": "Kausulang anggén Sameton",
+  "sidebar.seeAll": "Cingakin sami",
+  "sidebar.follow": "Ngikutin",
+  "sidebar.dismiss": "Icalang {name}",
+  "world.peopleOnlineAroundWorld": "Jadma sané online ring sajebag jagat",
+  "world.online": "{count} jadma sané online",
+  "world.exploreMap": "Jelajahin peta",
+  "world.meetTheWorld": "Kacunduk sareng Jagat",
+  "world.meetDescription": "Jadma anyar. Satua anyar. Jagat sané becikan.",
+  "world.exploreNow": "Jelajah mangkin",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ban;

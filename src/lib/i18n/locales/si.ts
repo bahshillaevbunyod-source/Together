@@ -123,6 +123,17 @@ const d_si = {
   "notifications.action.postLike": "ඔබගේ පළකිරීමට කැමති විය",
   "notifications.action.postComment": "ඔබගේ පළකිරීමට අදහස් දැක්වීය",
   "notifications.action.default": "ඔබට දැනුම්දීමක් එවීය",
+  "stories.add": "කතාව එකතු කරන්න",
+  "sidebar.suggestedForYou": "ඔබ වෙනුවෙන් යෝජනා කර ඇත",
+  "sidebar.seeAll": "සියල්ල බලන්න",
+  "sidebar.follow": "අනුගමනය කරන්න",
+  "sidebar.dismiss": "{name} ඉවත් කරන්න",
+  "world.peopleOnlineAroundWorld": "ලොව පුරා සිටින පුද්ගලයින් සබැඳිව",
+  "world.online": "පුද්ගලයන් {count}ක් සබැඳිව",
+  "world.exploreMap": "සිතියම ගවේෂණය කරන්න",
+  "world.meetTheWorld": "ලෝකය හමුවන්න",
+  "world.meetDescription": "අලුත් මිනිස්සු. අලුත් කතා. කරුණාවන්ත ලෝකයක්.",
+  "world.exploreNow": "දැන් ගවේෂණය කරන්න",
 } satisfies Record<TranslationKey, string>;
 
 export default d_si;

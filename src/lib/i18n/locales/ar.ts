@@ -123,6 +123,17 @@ const ar = {
   "notifications.action.postLike": "أعجِب بمنشورك",
   "notifications.action.postComment": "علّق على منشورك",
   "notifications.action.default": "أرسل إليك إشعارًا",
+  "stories.add": "أضف قصة",
+  "sidebar.suggestedForYou": "مقترحة لك",
+  "sidebar.seeAll": "شاهد الكل",
+  "sidebar.follow": "يتبع",
+  "sidebar.dismiss": "تجاهل {name}",
+  "world.peopleOnlineAroundWorld": "الناس على الانترنت في جميع أنحاء العالم",
+  "world.online": "{count} شخصًا متصلين بالإنترنت",
+  "world.exploreMap": "استكشف الخريطة",
+  "world.meetTheWorld": "تعرف على العالم",
+  "world.meetDescription": "أشخاص جدد. قصص جديدة. عالم ألطف.",
+  "world.exploreNow": "استكشف الآن",
 } satisfies Record<TranslationKey, string>;
 
 export default ar;

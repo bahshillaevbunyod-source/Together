@@ -123,6 +123,17 @@ const d_cy = {
   "notifications.action.postLike": "hoffi dy bost",
   "notifications.action.postComment": "wneud sylw ar dy bost",
   "notifications.action.default": "anfon hysbysiad atat",
+  "stories.add": "Ychwanegu stori",
+  "sidebar.suggestedForYou": "Awgrymir i chi",
+  "sidebar.seeAll": "Gweld y cyfan",
+  "sidebar.follow": "Dilyn",
+  "sidebar.dismiss": "Diystyru {name}",
+  "world.peopleOnlineAroundWorld": "Pobl ar-lein ledled y byd",
+  "world.online": "{count} o bobl ar-lein",
+  "world.exploreMap": "Archwiliwch y map",
+  "world.meetTheWorld": "Cwrdd â'r Byd",
+  "world.meetDescription": "Pobl newydd. Straeon newydd. Byd mwy caredig.",
+  "world.exploreNow": "Archwiliwch nawr",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cy;

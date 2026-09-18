@@ -123,6 +123,17 @@ const d_cnh = {
   "notifications.action.postLike": "na post a duh",
   "notifications.action.postComment": "na post ah a chim",
   "notifications.action.default": "theihternak pakhat an kan thawn",
+  "stories.add": "Tuanbia chap",
+  "sidebar.suggestedForYou": "Nangmah caah ruahnak cheuhnak",
+  "sidebar.seeAll": "A dihlak in zoh",
+  "sidebar.follow": "Zulh",
+  "sidebar.dismiss": "{name} kha hlawt",
+  "world.peopleOnlineAroundWorld": "Vawleicung pumpi ah online ah a ummi hna",
+  "world.online": "{count} minung online ah",
+  "world.exploreMap": "Map kha zoh",
+  "world.meetTheWorld": "Vawlei he i tong",
+  "world.meetDescription": "Mi thar. Tuanbia thar hna. A nem deuhmi vawlei.",
+  "world.exploreNow": "Atu ah kawl",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cnh;

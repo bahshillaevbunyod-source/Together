@@ -123,6 +123,17 @@ const d_ach = {
   "notifications.action.postLike": "omaro pos ni",
   "notifications.action.postComment": "oketo tam i kom pos ni",
   "notifications.action.default": "ocwalo angeya bot in",
+  "stories.add": "Med lok",
+  "sidebar.suggestedForYou": "Ki miini tam ni",
+  "sidebar.seeAll": "Nen weng",
+  "sidebar.follow": "Lub",
+  "sidebar.dismiss": "Kwanyo {name}",
+  "world.peopleOnlineAroundWorld": "Dano ma tye i intanet i wilobo lung",
+  "world.online": "{count} dano ma tye i intanet",
+  "world.exploreMap": "Tem neno map ni",
+  "world.meetTheWorld": "Nwong lobo",
+  "world.meetDescription": "Dano manyen. lok manyen. Lobo ma mwol.",
+  "world.exploreNow": "Yeny kombedi",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ach;

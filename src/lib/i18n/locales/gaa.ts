@@ -123,6 +123,17 @@ const d_gaa = {
   "notifications.action.postLike": "esumɔɔ o post lɛ",
   "notifications.action.postComment": "ewie o post lɛ he",
   "notifications.action.default": "etsu adafitswaa eha bo",
+  "stories.add": "Kɛ sane afata he",
+  "sidebar.suggestedForYou": "Akɛ ŋaawoo ha aha bo",
+  "sidebar.seeAll": "Kwɛmɔ fɛɛ",
+  "sidebar.follow": "Nyɛmɔ sɛɛ",
+  "sidebar.dismiss": "Shĩmɔ {name}",
+  "world.peopleOnlineAroundWorld": "Mɛi ni yɔɔ Intanɛt lɛ nɔ yɛ je lɛŋ he fɛɛ he",
+  "world.online": "Mɛi yɛ Intanɛt lɛ nɔ {count}",
+  "world.exploreMap": "Kwɛmɔ shikpɔŋ he mfoniri lɛ mli",
+  "world.meetTheWorld": "Kpeemɔ Je lɛ",
+  "world.meetDescription": "Mɛi heei. Saji heei. Jeŋ ni mli hi fe tsutsu lɛ.",
+  "world.exploreNow": "Kwɛmɔ bianɛ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gaa;

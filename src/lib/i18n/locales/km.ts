@@ -123,6 +123,17 @@ const d_km = {
   "notifications.action.postLike": "បានចូលចិត្តការបង្ហោះរបស់អ្នក",
   "notifications.action.postComment": "បានផ្ដល់មតិលើការបង្ហោះរបស់អ្នក",
   "notifications.action.default": "បានផ្ញើការជូនដំណឹងមកអ្នក",
+  "stories.add": "បន្ថែមរឿង",
+  "sidebar.suggestedForYou": "បានណែនាំសម្រាប់អ្នក",
+  "sidebar.seeAll": "មើលទាំងអស់គ្នា",
+  "sidebar.follow": "ធ្វើតាម",
+  "sidebar.dismiss": "ច្រានចោល {name}",
+  "world.peopleOnlineAroundWorld": "មនុស្សអនឡាញជុំវិញពិភពលោក",
+  "world.online": "{count} នាក់តាមអ៊ីនធឺណិត",
+  "world.exploreMap": "រុករកផែនទី",
+  "world.meetTheWorld": "ជួបពិភពលោក",
+  "world.meetDescription": "មនុស្សថ្មី។ រឿងថ្មីៗ។ ពិភពលោកដែលល្អជាង។",
+  "world.exploreNow": "រុករកឥឡូវនេះ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_km;

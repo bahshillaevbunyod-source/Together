@@ -123,6 +123,17 @@ const d_dv = {
   "notifications.action.postLike": "ތިބާގެ ޕޯސްޓަށް ލައިކްކުރި",
   "notifications.action.postComment": "ތިބާގެ ޕޯސްޓަށް ކޮމެންޓްކުރި",
   "notifications.action.default": "ތިބާއަށް އެންގުމެއް ފޮނުވި",
+  "stories.add": "ވާހަކަ އިތުރުކޮށްލާށެވެ",
+  "sidebar.suggestedForYou": "ތިބާއަށް ލަފާދީފައި",
+  "sidebar.seeAll": "ހުރިހާ ކަމެއް ބަލާށެވެ",
+  "sidebar.follow": "ފޮލޯ",
+  "sidebar.dismiss": "{name} ވަކިކުރުން",
+  "world.peopleOnlineAroundWorld": "ދުނިޔޭގެ އެކި ކަންކޮޅުތަކުގައި އޮންލައިންކޮށް މީހުން",
+  "world.online": "{count} މީހުން އޮންލައިންކޮށް",
+  "world.exploreMap": "މެޕް ހޯދާށެވެ",
+  "world.meetTheWorld": "ދުނިޔެއާ ބައްދަލުކުރޭ",
+  "world.meetDescription": "އައު މީހުން. އާ ވާހަކަތަކެވެ. އޯގާތެރި ދުނިޔެއެކެވެ.",
+  "world.exploreNow": "މިހާރު އެކްސްޕްލޯރ ކޮށްލައްވާ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_dv;

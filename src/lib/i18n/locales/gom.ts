@@ -123,6 +123,17 @@ const d_gom = {
   "notifications.action.postLike": "तुजी पोस्ट आवडली",
   "notifications.action.postComment": "तुज्या पोस्टाचेर प्रतिक्रिया दिली",
   "notifications.action.default": "तुका एक सूचोवणी धाडली",
+  "stories.add": "कथा जोडची",
+  "sidebar.suggestedForYou": "तुमकां सुचयलां",
+  "sidebar.seeAll": "सगळें पळयात",
+  "sidebar.follow": "अनुसरण करचें",
+  "sidebar.dismiss": "{name} काडून उडोवप",
+  "world.peopleOnlineAroundWorld": "संवसारभरांतले लोक ऑनलायन",
+  "world.online": "{count} लोक ऑनलायन आसात",
+  "world.exploreMap": "नकाशाचो अभ्यास करचो",
+  "world.meetTheWorld": "संवसाराक मेळचें",
+  "world.meetDescription": "नवे लोक. नवी कथा. एक दयाळू संवसार.",
+  "world.exploreNow": "आतांच एक्सप्लोर करात",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gom;

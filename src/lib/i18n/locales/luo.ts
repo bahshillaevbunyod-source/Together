@@ -123,6 +123,17 @@ const d_luo = {
   "notifications.action.postLike": "ohero postni",
   "notifications.action.postComment": "oketo paro e postni",
   "notifications.action.default": "oori wach miluongo",
+  "stories.add": "Med wach",
+  "sidebar.suggestedForYou": "Ochiw paro ni in",
+  "sidebar.seeAll": "Neno duto",
+  "sidebar.follow": "Luwo",
+  "sidebar.dismiss": "Gol oko {name}",
+  "world.peopleOnlineAroundWorld": "Ji ma ni e mbui e piny mangima",
+  "world.online": "Ji ni e mbui {count}",
+  "world.exploreMap": "Rang map",
+  "world.meetTheWorld": "Iromo gi Piny",
+  "world.meetDescription": "Joma manyien. Sigana manyien. Piny ma nigi ng’wono moloyo.",
+  "world.exploreNow": "Rang sani",
 } satisfies Record<TranslationKey, string>;
 
 export default d_luo;

@@ -123,6 +123,17 @@ const d_el = {
   "notifications.action.postLike": "έκανε Μου αρέσει στη δημοσίευσή σου",
   "notifications.action.postComment": "σχολίασε τη δημοσίευσή σου",
   "notifications.action.default": "σου έστειλε μια ειδοποίηση",
+  "stories.add": "Προσθήκη ιστορίας",
+  "sidebar.suggestedForYou": "Προτείνεται για εσάς",
+  "sidebar.seeAll": "Δείτε όλα",
+  "sidebar.follow": "Ακολουθώ",
+  "sidebar.dismiss": "Παράβλεψη {name}",
+  "world.peopleOnlineAroundWorld": "Άνθρωποι online σε όλο τον κόσμο",
+  "world.online": "{count} άτομα online",
+  "world.exploreMap": "Εξερευνήστε τον χάρτη",
+  "world.meetTheWorld": "Γνωρίστε τον κόσμο",
+  "world.meetDescription": "Νέοι άνθρωποι. Νέες ιστορίες. Ένας πιο ευγενικός κόσμος.",
+  "world.exploreNow": "Εξερευνήστε τώρα",
 } satisfies Record<TranslationKey, string>;
 
 export default d_el;

@@ -123,6 +123,17 @@ const d_sn = {
   "notifications.action.postLike": "afarira chinyorwa chako",
   "notifications.action.postComment": "apindura pachinyorwa chako",
   "notifications.action.default": "akutumira chiziviso",
+  "stories.add": "Wedzera nyaya",
+  "sidebar.suggestedForYou": "Zvakakurudzirwa iwe",
+  "sidebar.seeAll": "Ona zvese",
+  "sidebar.follow": "Tevera",
+  "sidebar.dismiss": "Ramba {name}",
+  "world.peopleOnlineAroundWorld": "Vanhu vari paIndaneti pasi rose",
+  "world.online": "{count} vanhu online",
+  "world.exploreMap": "Ongorora mepu",
+  "world.meetTheWorld": "Sangana neNyika",
+  "world.meetDescription": "Vanhu vatsva. Nyaya itsva. Nyika ine mutsa.",
+  "world.exploreNow": "Ongorora izvozvi",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sn;

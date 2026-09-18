@@ -123,6 +123,17 @@ const d_lij = {
   "notifications.action.postLike": "gh'é piaxuo o teu post",
   "notifications.action.postComment": "o l'à commentou o teu post",
   "notifications.action.default": "o t'à mandou 'na notifica",
+  "stories.add": "Azzonta stöia",
+  "sidebar.suggestedForYou": "Conscigliou pe ti",
+  "sidebar.seeAll": "Vedi tutti",
+  "sidebar.follow": "Seguî",
+  "sidebar.dismiss": "Licensia {name}",
+  "world.peopleOnlineAroundWorld": "Persoñe in linia inte tutto o mondo",
+  "world.online": "{count} persoñe in linia",
+  "world.exploreMap": "Esplora a mappa",
+  "world.meetTheWorld": "Conosce o Mondo",
+  "world.meetDescription": "Neuve persoñe. Neuve stöie. Un mondo ciù gentile.",
+  "world.exploreNow": "Esplora oua",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lij;

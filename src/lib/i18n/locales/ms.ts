@@ -123,6 +123,17 @@ const d_ms = {
   "notifications.action.postLike": "menyukai hantaran anda",
   "notifications.action.postComment": "mengulas hantaran anda",
   "notifications.action.default": "menghantar pemberitahuan kepada anda",
+  "stories.add": "Tambah cerita",
+  "sidebar.suggestedForYou": "Dicadangkan untuk anda",
+  "sidebar.seeAll": "Lihat semua",
+  "sidebar.follow": "Ikut",
+  "sidebar.dismiss": "Ketepikan {name}",
+  "world.peopleOnlineAroundWorld": "Orang dalam talian di seluruh dunia",
+  "world.online": "{count} orang dalam talian",
+  "world.exploreMap": "Terokai peta",
+  "world.meetTheWorld": "Bertemu Dunia",
+  "world.meetDescription": "orang baru. cerita baru. Dunia yang lebih baik.",
+  "world.exploreNow": "Terokai sekarang",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ms;

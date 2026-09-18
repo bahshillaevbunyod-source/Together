@@ -123,6 +123,17 @@ const d_crh = {
   "notifications.action.postLike": "paylaşımıñnı begendi",
   "notifications.action.postComment": "paylaşımıñğa şerh yazdı",
   "notifications.action.default": "saña bir bildirim yiberdi",
+  "stories.add": "Икяе къошмакъ .",
+  "sidebar.suggestedForYou": "Сиз ичюн теклиф этильген .",
+  "sidebar.seeAll": "Эписини корь",
+  "sidebar.follow": "Излемек",
+  "sidebar.dismiss": "ХКЗУСЕР123 иштен чыкъарынъыз. {name}",
+  "world.peopleOnlineAroundWorld": "Бутюн дюнья боюнджа адамлар онлайн .",
+  "world.online": "{count} адам онлайн .",
+  "world.exploreMap": "Хаританы тешкеринъиз .",
+  "world.meetTheWorld": "Дюньянен таныш ол .",
+  "world.meetDescription": "Янъы адамлар. Янъы икяелер. Даа мераметли дюнья.",
+  "world.exploreNow": "Шимди огренинъиз .",
 } satisfies Record<TranslationKey, string>;
 
 export default d_crh;

@@ -123,6 +123,17 @@ const d_ta = {
   "notifications.action.postLike": "உங்கள் இடுகையை விரும்பினர்",
   "notifications.action.postComment": "உங்கள் இடுகைக்குக் கருத்திட்டனர்",
   "notifications.action.default": "உங்களுக்கு ஒரு அறிவிப்பை அனுப்பினர்",
+  "stories.add": "கதையைச் சேர்க்கவும்",
+  "sidebar.suggestedForYou": "உங்களுக்காகப் பரிந்துரைக்கப்பட்டது",
+  "sidebar.seeAll": "அனைத்தையும் பார்க்கவும்",
+  "sidebar.follow": "பின்பற்றவும்",
+  "sidebar.dismiss": "{name}ஐ நிராகரி",
+  "world.peopleOnlineAroundWorld": "உலகம் முழுவதும் ஆன்லைன் மக்கள்",
+  "world.online": "{count} பேர் ஆன்லைனில்",
+  "world.exploreMap": "வரைபடத்தை ஆராயுங்கள்",
+  "world.meetTheWorld": "உலகத்தை சந்திக்கவும்",
+  "world.meetDescription": "புதிய மனிதர்கள். புதிய கதைகள். கனிவான உலகம்.",
+  "world.exploreNow": "இப்போது ஆராயுங்கள்",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ta;

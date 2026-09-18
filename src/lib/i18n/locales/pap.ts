@@ -123,6 +123,17 @@ const d_pap = {
   "notifications.action.postLike": "a gusta bo post",
   "notifications.action.postComment": "a komentá riba bo post",
   "notifications.action.default": "a manda bo un notifikashon",
+  "stories.add": "Agregá historia",
+  "sidebar.suggestedForYou": "Sugerí pa bo",
+  "sidebar.seeAll": "Mira tur",
+  "sidebar.follow": "Sigui",
+  "sidebar.dismiss": "Rechasá {name}",
+  "world.peopleOnlineAroundWorld": "Hende online rònt mundu",
+  "world.online": "{count} hende online",
+  "world.exploreMap": "Eksplorá e mapa",
+  "world.meetTheWorld": "Topa Mundu",
+  "world.meetDescription": "Hende nobo. Storianan nobo. Un mundu mas amabel.",
+  "world.exploreNow": "Eksplorá awor",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pap;

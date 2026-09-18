@@ -123,6 +123,17 @@ const d_bts = {
   "notifications.action.postLike": "marosuh bani postinganmu",
   "notifications.action.postComment": "mamere komentar bani postinganmu",
   "notifications.action.default": "mangirim pamboto bam",
+  "stories.add": "Tambahkon sarita",
+  "sidebar.suggestedForYou": "Isaranhon bamu",
+  "sidebar.seeAll": "Tonggor ma haganup",
+  "sidebar.follow": "Mandihuti",
+  "sidebar.dismiss": "Hapus {name}",
+  "world.peopleOnlineAroundWorld": "Halak na online i sab dunia on",
+  "world.online": "{count} halak online",
+  "world.exploreMap": "Pardiateihon ma peta ai",
+  "world.meetTheWorld": "Pajumpah pakon Dunia",
+  "world.meetDescription": "Halak na baru. Carita na baru. Dunia na lobih bujur.",
+  "world.exploreNow": "Jelajahi ma sonari",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bts;

@@ -123,6 +123,17 @@ const d_pam = {
   "notifications.action.postLike": "a miye-like king post mu",
   "notifications.action.postComment": "a mengomento king post mu",
   "notifications.action.default": "a mengapadala keka king abiso",
+  "stories.add": "Dagdagan ing kwentu",
+  "sidebar.suggestedForYou": "Suggested para keka",
+  "sidebar.seeAll": "akit mu ngan",
+  "sidebar.follow": "Tukyan",
+  "sidebar.dismiss": "Itago si {name}",
+  "world.peopleOnlineAroundWorld": "Deng tau online keng mabilug a yatu",
+  "world.online": "{count} katau online",
+  "world.exploreMap": "Lawen me ing mapa",
+  "world.meetTheWorld": "akit me ing yatu",
+  "world.meetDescription": "Bayung tau. Bayung kwentu. Mas masanting a yatu.",
+  "world.exploreNow": "Mag explore ka ngeni",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pam;

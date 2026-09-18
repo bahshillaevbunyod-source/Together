@@ -123,6 +123,17 @@ const d_ka = {
   "notifications.action.postLike": "მოიწონა შენი პოსტი",
   "notifications.action.postComment": "დააკომენტარა შენი პოსტი",
   "notifications.action.default": "გამოგიგზავნა შეტყობინება",
+  "stories.add": "დაამატეთ ამბავი",
+  "sidebar.suggestedForYou": "შემოთავაზებულია თქვენთვის",
+  "sidebar.seeAll": "იხილეთ ყველა",
+  "sidebar.follow": "მიჰყევით",
+  "sidebar.dismiss": "{name}-ის გაუქმება",
+  "world.peopleOnlineAroundWorld": "ხალხი ონლაინ მთელ მსოფლიოში",
+  "world.online": "{count} ადამიანი ონლაინ",
+  "world.exploreMap": "გამოიკვლიეთ რუკა",
+  "world.meetTheWorld": "გაიცანი მსოფლიო",
+  "world.meetDescription": "ახალი ხალხი. ახალი ისტორიები. უფრო კეთილი სამყარო.",
+  "world.exploreNow": "გამოიკვლიეთ ახლავე",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ka;

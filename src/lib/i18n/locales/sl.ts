@@ -123,6 +123,17 @@ const d_sl = {
   "notifications.action.postLike": "je všečkal(a) tvojo objavo",
   "notifications.action.postComment": "je komentiral(a) tvojo objavo",
   "notifications.action.default": "ti je poslal(a) obvestilo",
+  "stories.add": "Dodaj zgodbo",
+  "sidebar.suggestedForYou": "Predlagano za vas",
+  "sidebar.seeAll": "Glej vse",
+  "sidebar.follow": "Sledi",
+  "sidebar.dismiss": "Opusti {name}",
+  "world.peopleOnlineAroundWorld": "Ljudje na spletu po vsem svetu",
+  "world.online": "{count} ljudi na spletu",
+  "world.exploreMap": "Raziščite zemljevid",
+  "world.meetTheWorld": "Spoznajte svet",
+  "world.meetDescription": "Novi ljudje. Nove zgodbe. Prijaznejši svet.",
+  "world.exploreNow": "Raziščite zdaj",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sl;

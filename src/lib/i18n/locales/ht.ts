@@ -123,6 +123,17 @@ const d_ht = {
   "notifications.action.postLike": "te renmen pòs ou",
   "notifications.action.postComment": "te kòmante sou pòs ou",
   "notifications.action.default": "voye yon notifikasyon ba ou",
+  "stories.add": "Ajoute istwa",
+  "sidebar.suggestedForYou": "Sijere pou ou",
+  "sidebar.seeAll": "Gade tout",
+  "sidebar.follow": "Swiv",
+  "sidebar.dismiss": "Rejte {name}",
+  "world.peopleOnlineAroundWorld": "Moun sou entènèt atravè mond lan",
+  "world.online": "{count} moun sou entènèt",
+  "world.exploreMap": "Eksplore kat la",
+  "world.meetTheWorld": "Rankontre mond lan",
+  "world.meetDescription": "Nouvo moun. Nouvo istwa. Yon mond ki pi janti.",
+  "world.exploreNow": "Eksplore kounye a",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ht;

@@ -123,6 +123,17 @@ const d_ca = {
   "notifications.action.postLike": "ha indicat que li agrada la teva publicació",
   "notifications.action.postComment": "ha comentat la teva publicació",
   "notifications.action.default": "t'ha enviat una notificació",
+  "stories.add": "Afegeix una història",
+  "sidebar.suggestedForYou": "Suggerit per a tu",
+  "sidebar.seeAll": "Veure-ho tot",
+  "sidebar.follow": "Seguiu",
+  "sidebar.dismiss": "Ignora {name}",
+  "world.peopleOnlineAroundWorld": "Gent en línia a tot el món",
+  "world.online": "{count} persones en línia",
+  "world.exploreMap": "Explora el mapa",
+  "world.meetTheWorld": "Coneix el món",
+  "world.meetDescription": "Gent nova. Noves històries. Un món més amable.",
+  "world.exploreNow": "Explora ara",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ca;

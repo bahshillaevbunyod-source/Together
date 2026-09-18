@@ -123,6 +123,17 @@ const d_ay = {
   "notifications.action.postLike": "yatiyawim kusisiyi",
   "notifications.action.postComment": "yatiyawimar aru churi",
   "notifications.action.default": "mä yatiyaw apayanitam",
+  "stories.add": "Sarnaqäwi yapxataña",
+  "sidebar.suggestedForYou": "Jumatakiw iwxt’ata",
+  "sidebar.seeAll": "Taqi kun uñjañäni",
+  "sidebar.follow": "Arkaña",
+  "sidebar.dismiss": "Ukax mä {name}",
+  "world.peopleOnlineAroundWorld": "Uraqpachanx jaqinakax internet tuqiw uñt’ayasipxi",
+  "world.online": "{count} jaqinakaw internetan utji",
+  "world.exploreMap": "Mapa uñakipt’aña",
+  "world.meetTheWorld": "Akapachampi uñt’asipxam",
+  "world.meetDescription": "Machaq jaqinaka. Machaq sarnaqäwinaka. Mä suma chuyman pacha.",
+  "world.exploreNow": "Jichhax yatxatapxañani",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ay;

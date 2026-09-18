@@ -123,6 +123,17 @@ const d_bua = {
   "notifications.action.postLike": "шинии бэшэгые һайшаагаа",
   "notifications.action.postComment": "шинии бэшэгтэ тайлбари бэшээ",
   "notifications.action.default": "шамда мэдэгдэл эльгээбэ",
+  "stories.add": "Түүхэ нэмэхэ",
+  "sidebar.suggestedForYou": "Таанадта дурадхагдана",
+  "sidebar.seeAll": "Бүхыень хараха",
+  "sidebar.follow": "Дахаха",
+  "sidebar.dismiss": "{name}-ые үгы хэхэ",
+  "world.peopleOnlineAroundWorld": "Дэлхэй дүүрэн хүнүүд онлайн",
+  "world.online": "{count} хүн онлайн",
+  "world.exploreMap": "Карта шэнжэлхэ",
+  "world.meetTheWorld": "Дэлхэйтэй танилсаха",
+  "world.meetDescription": "Шэнэ хүнүүд. Шэнэ хөөрөөнүүд. Һайн һайхан дэлхэй.",
+  "world.exploreNow": "Мүнөө шэнжэлхэ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bua;

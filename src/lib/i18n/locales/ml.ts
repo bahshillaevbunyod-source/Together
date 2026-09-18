@@ -123,6 +123,17 @@ const d_ml = {
   "notifications.action.postLike": "നിങ്ങളുടെ പോസ്റ്റ് ഇഷ്ടപ്പെട്ടു",
   "notifications.action.postComment": "നിങ്ങളുടെ പോസ്റ്റിൽ അഭിപ്രായമിട്ടു",
   "notifications.action.default": "നിങ്ങൾക്ക് ഒരു അറിയിപ്പ് അയച്ചു",
+  "stories.add": "കഥ ചേർക്കുക",
+  "sidebar.suggestedForYou": "നിങ്ങൾക്കായി നിർദ്ദേശിച്ചു",
+  "sidebar.seeAll": "എല്ലാം കാണുക",
+  "sidebar.follow": "പിന്തുടരുക",
+  "sidebar.dismiss": "{name} നിരസിക്കുക",
+  "world.peopleOnlineAroundWorld": "ലോകമെമ്പാടുമുള്ള ആളുകൾ ഓൺലൈനിൽ",
+  "world.online": "{count} ആളുകൾ ഓൺലൈനിൽ",
+  "world.exploreMap": "മാപ്പ് പര്യവേക്ഷണം ചെയ്യുക",
+  "world.meetTheWorld": "ലോകത്തെ കണ്ടുമുട്ടുക",
+  "world.meetDescription": "പുതിയ ആളുകൾ. പുതിയ കഥകൾ. ദയയുള്ള ഒരു ലോകം.",
+  "world.exploreNow": "ഇപ്പോൾ പര്യവേക്ഷണം ചെയ്യുക",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ml;

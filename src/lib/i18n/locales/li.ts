@@ -123,6 +123,17 @@ const d_li = {
   "notifications.action.postLike": "vónj dien pos leuk",
   "notifications.action.postComment": "haet op dien pos gereageerd",
   "notifications.action.default": "haet diech 'n berichtgeving gestuurd",
+  "stories.add": "Voeg verhaol toe",
+  "sidebar.suggestedForYou": "Veur uch veurgesjtèld",
+  "sidebar.seeAll": "Alles zeen",
+  "sidebar.follow": "Vollige",
+  "sidebar.dismiss": "{name} verwerpe",
+  "world.peopleOnlineAroundWorld": "Luuj online euver de ganse wereld",
+  "world.online": "{count} lui online",
+  "world.exploreMap": "Verken de kaart",
+  "world.meetTheWorld": "Ontmoet de wereld",
+  "world.meetDescription": "Nuie lui. Nuie verhaole. ‘n Kinder wereld.",
+  "world.exploreNow": "Verken noe",
 } satisfies Record<TranslationKey, string>;
 
 export default d_li;

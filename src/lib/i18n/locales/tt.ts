@@ -123,6 +123,17 @@ const d_tt = {
   "notifications.action.postLike": "язмагызны ошатты",
   "notifications.action.postComment": "язмагызга комментарий язды",
   "notifications.action.default": "сезгә белдерү җибәрде",
+  "stories.add": "Хикәя өстәү",
+  "sidebar.suggestedForYou": "Сезгә тәкъдим ителә",
+  "sidebar.seeAll": "Барысын да карагыз",
+  "sidebar.follow": "Ияр",
+  "sidebar.dismiss": "{name}",
+  "world.peopleOnlineAroundWorld": "Бөтен дөнья кешеләре",
+  "world.online": "{count} онлайн",
+  "world.exploreMap": "Картаны барлау",
+  "world.meetTheWorld": "Дөнья белән танышу",
+  "world.meetDescription": "Яңа кешеләр. Яңа хикәяләр. Игелекле дөнья.",
+  "world.exploreNow": "Хәзер тикшерегез",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tt;

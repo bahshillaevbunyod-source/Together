@@ -123,6 +123,17 @@ const d_kn = {
   "notifications.action.postLike": "ನಿಮ್ಮ ಪೋಸ್ಟ್ ಇಷ್ಟಪಟ್ಟರು",
   "notifications.action.postComment": "ನಿಮ್ಮ ಪೋಸ್ಟ್‌ಗೆ ಕಾಮೆಂಟ್ ಮಾಡಿದರು",
   "notifications.action.default": "ನಿಮಗೆ ಒಂದು ಅಧಿಸೂಚನೆ ಕಳುಹಿಸಿದರು",
+  "stories.add": "ಕಥೆಯನ್ನು ಸೇರಿಸಿ",
+  "sidebar.suggestedForYou": "ನಿಮಗಾಗಿ ಸೂಚಿಸಲಾಗಿದೆ",
+  "sidebar.seeAll": "ಎಲ್ಲಾ ನೋಡಿ",
+  "sidebar.follow": "ಅನುಸರಿಸಿ",
+  "sidebar.dismiss": "{name} ಅನ್ನು ವಜಾಗೊಳಿಸಿ",
+  "world.peopleOnlineAroundWorld": "ಪ್ರಪಂಚದಾದ್ಯಂತ ಜನರು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ",
+  "world.online": "{count} ಜನರು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ",
+  "world.exploreMap": "ನಕ್ಷೆಯನ್ನು ಅನ್ವೇಷಿಸಿ",
+  "world.meetTheWorld": "ಜಗತ್ತನ್ನು ಭೇಟಿ ಮಾಡಿ",
+  "world.meetDescription": "ಹೊಸ ಜನರು. ಹೊಸ ಕಥೆಗಳು. ಒಂದು ಕಿಂಡರ್ ವರ್ಲ್ಡ್.",
+  "world.exploreNow": "ಈಗ ಅನ್ವೇಷಿಸಿ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_kn;

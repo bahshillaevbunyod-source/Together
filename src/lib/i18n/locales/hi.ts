@@ -123,6 +123,17 @@ const d_hi = {
   "notifications.action.postLike": "आपकी पोस्ट पसंद की",
   "notifications.action.postComment": "आपकी पोस्ट पर टिप्पणी की",
   "notifications.action.default": "आपको एक सूचना भेजी",
+  "stories.add": "कहानी जोड़ें",
+  "sidebar.suggestedForYou": "आपके लिए सुझाव दिया गया है",
+  "sidebar.seeAll": "सभी देखें",
+  "sidebar.follow": "अनुसरण करना",
+  "sidebar.dismiss": "{name} को ख़ारिज करें",
+  "world.peopleOnlineAroundWorld": "दुनिया भर में लोग ऑनलाइन",
+  "world.online": "{count} लोग ऑनलाइन",
+  "world.exploreMap": "मानचित्र का अन्वेषण करें",
+  "world.meetTheWorld": "दुनिया से मिलें",
+  "world.meetDescription": "नये लोग. नई कहानियाँ. एक दयालु दुनिया.",
+  "world.exploreNow": "अभी अन्वेषण करें",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hi;

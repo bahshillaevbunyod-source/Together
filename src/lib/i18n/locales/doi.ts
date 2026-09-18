@@ -123,6 +123,17 @@ const d_doi = {
   "notifications.action.postLike": "तुंदी पोस्ट पसंद कीती",
   "notifications.action.postComment": "तुंदी पोस्ट पर टिप्पणी कीती",
   "notifications.action.default": "तुसें गी इक सूचना भेजी",
+  "stories.add": "कहानी जोड़ो",
+  "sidebar.suggestedForYou": "तुहाडे वास्ते सुझाव दित्ता",
+  "sidebar.seeAll": "सारे देखिये",
+  "sidebar.follow": "पालन ​​करना",
+  "sidebar.dismiss": "{name} गी खारिज करो",
+  "world.peopleOnlineAroundWorld": "दुनिया भर दे लोक ऑनलाइन",
+  "world.online": "{count} लोग ऑनलाइन",
+  "world.exploreMap": "नक्शे दा पता लाओ",
+  "world.meetTheWorld": "मिलिए दुनिया",
+  "world.meetDescription": "नए लोग। नई कहानियां। इक किंडर दुनिया।",
+  "world.exploreNow": "अज्जै थमां गै एक्सप्लोर करो",
 } satisfies Record<TranslationKey, string>;
 
 export default d_doi;

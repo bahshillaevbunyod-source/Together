@@ -123,6 +123,17 @@ const d_sq = {
   "notifications.action.postLike": "pëlqeu postimin tënd",
   "notifications.action.postComment": "komentoi postimin tënd",
   "notifications.action.default": "të dërgoi një njoftim",
+  "stories.add": "Shto histori",
+  "sidebar.suggestedForYou": "Sugjeruar për ju",
+  "sidebar.seeAll": "Shihni të gjitha",
+  "sidebar.follow": "Ndiqni",
+  "sidebar.dismiss": "Hiq {name}",
+  "world.peopleOnlineAroundWorld": "Njerëzit online në mbarë botën",
+  "world.online": "{count} persona në linjë",
+  "world.exploreMap": "Eksploroni hartën",
+  "world.meetTheWorld": "Njihuni me botën",
+  "world.meetDescription": "Njerëz të rinj. Tregime të reja. Një botë më e sjellshme.",
+  "world.exploreNow": "Eksploroni tani",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sq;

@@ -123,6 +123,17 @@ const d_am = {
   "notifications.action.postLike": "ልጥፍዎን ወደደ",
   "notifications.action.postComment": "በልጥፍዎ ላይ አስተያየት ሰጠ",
   "notifications.action.default": "ማሳወቂያ ላከልዎት",
+  "stories.add": "ታሪክ ጨምር",
+  "sidebar.suggestedForYou": "ለእርስዎ የተጠቆመ",
+  "sidebar.seeAll": "ሁሉንም ይመልከቱ",
+  "sidebar.follow": "ተከተል",
+  "sidebar.dismiss": "{name}ን አሰናብት",
+  "world.peopleOnlineAroundWorld": "በዓለም ዙሪያ ያሉ ሰዎች በመስመር ላይ",
+  "world.online": "{count} ሰዎች በመስመር ላይ",
+  "world.exploreMap": "ካርታውን ያስሱ",
+  "world.meetTheWorld": "ከአለም ጋር ተገናኙ",
+  "world.meetDescription": "አዲስ ሰዎች። አዳዲስ ታሪኮች. ደግ ዓለም።",
+  "world.exploreNow": "አሁን ያስሱ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_am;

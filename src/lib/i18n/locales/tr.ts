@@ -123,6 +123,17 @@ const tr = {
   "notifications.action.postLike": "gönderini beğendi",
   "notifications.action.postComment": "gönderine yorum yaptı",
   "notifications.action.default": "sana bir bildirim gönderdi",
+  "stories.add": "Hikaye ekle",
+  "sidebar.suggestedForYou": "Sizin için önerildi",
+  "sidebar.seeAll": "Tümünü gör",
+  "sidebar.follow": "Takip etmek",
+  "sidebar.dismiss": "{name}'ü kapat",
+  "world.peopleOnlineAroundWorld": "Dünya çapında çevrimiçi insanlar",
+  "world.online": "{count} kişi çevrimiçi",
+  "world.exploreMap": "Haritayı keşfedin",
+  "world.meetTheWorld": "Dünyayla Tanışın",
+  "world.meetDescription": "Yeni insanlar. Yeni hikayeler. Daha nazik bir dünya.",
+  "world.exploreNow": "Şimdi keşfet",
 } satisfies Record<TranslationKey, string>;
 
 export default tr;

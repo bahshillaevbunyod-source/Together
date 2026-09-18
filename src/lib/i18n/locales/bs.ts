@@ -123,6 +123,17 @@ const d_bs = {
   "notifications.action.postLike": "označio/la je tvoju objavu sa sviđa mi se",
   "notifications.action.postComment": "komentarisao/la je tvoju objavu",
   "notifications.action.default": "poslao/la ti je obavještenje",
+  "stories.add": "Dodaj priču",
+  "sidebar.suggestedForYou": "Predloženo za vas",
+  "sidebar.seeAll": "Vidi sve",
+  "sidebar.follow": "Pratite",
+  "sidebar.dismiss": "Odbaci {name}",
+  "world.peopleOnlineAroundWorld": "Ljudi na mreži širom svijeta",
+  "world.online": "{count} ljudi na mreži",
+  "world.exploreMap": "Istražite mapu",
+  "world.meetTheWorld": "Upoznajte svijet",
+  "world.meetDescription": "Novi ljudi. Nove priče. Ljubazniji svijet.",
+  "world.exploreNow": "Istražite sada",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bs;

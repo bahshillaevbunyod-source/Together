@@ -123,6 +123,17 @@ const d_hil = {
   "notifications.action.postLike": "nga nag-like sang imo post",
   "notifications.action.postComment": "nga nagkomento sa imo post",
   "notifications.action.default": "nga nagpadala sa imo sang pahibalo",
+  "stories.add": "Idugang ang istorya",
+  "sidebar.suggestedForYou": "Ginsugyot para sa imo",
+  "sidebar.seeAll": "Makita ang tanan",
+  "sidebar.follow": "Sundon",
+  "sidebar.dismiss": "Isikway ang {name}",
+  "world.peopleOnlineAroundWorld": "Ang mga tawo online sa bug-os nga kalibutan",
+  "world.online": "{count} ka tawo online",
+  "world.exploreMap": "Susiha ang mapa",
+  "world.meetTheWorld": "Hibalua ang Kalibutan",
+  "world.meetDescription": "Bag-o nga mga tawo. Bag-o nga mga istorya. Isa ka mas maluluy-on nga kalibutan.",
+  "world.exploreNow": "Usisaa karon",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hil;

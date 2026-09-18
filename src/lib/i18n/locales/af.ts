@@ -123,6 +123,17 @@ const d_af = {
   "notifications.action.postLike": "het van jou plasing gehou",
   "notifications.action.postComment": "het op jou plasing kommentaar gelewer",
   "notifications.action.default": "het vir jou 'n kennisgewing gestuur",
+  "stories.add": "Voeg storie by",
+  "sidebar.suggestedForYou": "Vir jou voorgestel",
+  "sidebar.seeAll": "Sien alles",
+  "sidebar.follow": "Volg",
+  "sidebar.dismiss": "Maak {name} toe",
+  "world.peopleOnlineAroundWorld": "Mense aanlyn regoor die wêreld",
+  "world.online": "{count} mense aanlyn",
+  "world.exploreMap": "Verken die kaart",
+  "world.meetTheWorld": "Ontmoet die Wêreld",
+  "world.meetDescription": "Nuwe mense. Nuwe stories. 'n vriendeliker wêreld.",
+  "world.exploreNow": "Verken nou",
 } satisfies Record<TranslationKey, string>;
 
 export default d_af;

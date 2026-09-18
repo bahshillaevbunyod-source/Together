@@ -123,6 +123,17 @@ const d_awa = {
   "notifications.action.postLike": "तोहार पोस्ट पसंद कीन",
   "notifications.action.postComment": "तोहार पोस्ट पय टिप्पणी कीन",
   "notifications.action.default": "तोहका एक सूचना पठइस",
+  "stories.add": "कहानी जोड़ौ",
+  "sidebar.suggestedForYou": "आपके लिए सुझावा गा है",
+  "sidebar.seeAll": "सब देखौ",
+  "sidebar.follow": "अनुसरन करब",
+  "sidebar.dismiss": "{name} का खारिज करा",
+  "world.peopleOnlineAroundWorld": "दुनिया भर के लोग ऑनलाइन",
+  "world.online": "{count} लोग ऑनलाइन",
+  "world.exploreMap": "नक्शा का अन्वेषण करा",
+  "world.meetTheWorld": "दुनिया से मिलौ",
+  "world.meetDescription": "नये मनई। नई कहानियाँ। एक दयालु दुनिया।",
+  "world.exploreNow": "अब अन्वेषण करा",
 } satisfies Record<TranslationKey, string>;
 
 export default d_awa;

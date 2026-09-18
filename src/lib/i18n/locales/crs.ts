@@ -123,6 +123,17 @@ const d_crs = {
   "notifications.action.postLike": "in kontan ou post",
   "notifications.action.postComment": "in komant lo ou post",
   "notifications.action.default": "in anvoy ou en notifikasyon",
+  "stories.add": "azout zistwar",
+  "sidebar.suggestedForYou": "sizere pour ou",
+  "sidebar.seeAll": "vwar tou",
+  "sidebar.follow": "Swiv",
+  "sidebar.dismiss": "Rezete {name}",
+  "world.peopleOnlineAroundWorld": "dimoun online atraver lemonn",
+  "world.online": "{count} dimoun online",
+  "world.exploreMap": "eksplor sa map",
+  "world.meetTheWorld": "zwenn lemonn",
+  "world.meetDescription": "Nouvo dimoun. bann nouvo zistwar. en lemonn pli zantiy.",
+  "world.exploreNow": "eksplore la konmela",
 } satisfies Record<TranslationKey, string>;
 
 export default d_crs;

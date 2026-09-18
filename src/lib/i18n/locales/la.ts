@@ -123,6 +123,17 @@ const d_la = {
   "notifications.action.postLike": "rem tuam probavit",
   "notifications.action.postComment": "rem tuam commentatus est",
   "notifications.action.default": "tibi notificationem misit",
+  "stories.add": "Add fabula",
+  "sidebar.suggestedForYou": "Suggessit tibi",
+  "sidebar.seeAll": "Vide omnia",
+  "sidebar.follow": "sequere",
+  "sidebar.dismiss": "mitte {name}",
+  "world.peopleOnlineAroundWorld": "Populus online per orbem terrarum",
+  "world.online": "{count} populus online",
+  "world.exploreMap": "Explore the map",
+  "world.meetTheWorld": "Occurrit mundo",
+  "world.meetDescription": "Novi populi. Novae fabulae. Mitior orbis.",
+  "world.exploreNow": "Explore nunc",
 } satisfies Record<TranslationKey, string>;
 
 export default d_la;

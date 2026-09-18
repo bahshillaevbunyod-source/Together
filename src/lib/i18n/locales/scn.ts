@@ -123,6 +123,17 @@ const d_scn = {
   "notifications.action.postLike": "ci piaciu lu to post",
   "notifications.action.postComment": "cummintau lu to post",
   "notifications.action.default": "ti mannau na nutifica",
+  "stories.add": "Aggiungi storia",
+  "sidebar.suggestedForYou": "Cunsigghiatu pi tia",
+  "sidebar.seeAll": "Vidi tutti",
+  "sidebar.follow": "Sicutari",
+  "sidebar.dismiss": "Licinziari {name}",
+  "world.peopleOnlineAroundWorld": "Li pirsòni online ‘n tuttu u munnu",
+  "world.online": "{count} pirsuni 'n linea",
+  "world.exploreMap": "Esplora la mappa",
+  "world.meetTheWorld": "Incuntràu lu Munnu",
+  "world.meetDescription": "Genti novi. Novi storii. Nu munnu cchiù gentili.",
+  "world.exploreNow": "Esplora ora",
 } satisfies Record<TranslationKey, string>;
 
 export default d_scn;

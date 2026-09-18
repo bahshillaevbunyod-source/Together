@@ -123,6 +123,17 @@ const ko = {
   "notifications.action.postLike": "님이 회원님의 게시물을 좋아합니다",
   "notifications.action.postComment": "님이 회원님의 게시물에 댓글을 남겼습니다",
   "notifications.action.default": "님이 회원님에게 알림을 보냈습니다",
+  "stories.add": "스토리 추가",
+  "sidebar.suggestedForYou": "당신을 위해 제안",
+  "sidebar.seeAll": "모두 보기",
+  "sidebar.follow": "따르다",
+  "sidebar.dismiss": "{name} 닫기",
+  "world.peopleOnlineAroundWorld": "전 세계 온라인 사람들",
+  "world.online": "{count}명 온라인",
+  "world.exploreMap": "지도 탐색",
+  "world.meetTheWorld": "세계를 만나다",
+  "world.meetDescription": "새로운 사람들. 새로운 이야기. 더 친절한 세상.",
+  "world.exploreNow": "지금 살펴보세요",
 } satisfies Record<TranslationKey, string>;
 
 export default ko;

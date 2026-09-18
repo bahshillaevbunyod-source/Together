@@ -123,6 +123,17 @@ const d_id = {
   "notifications.action.postLike": "menyukai postinganmu",
   "notifications.action.postComment": "mengomentari postinganmu",
   "notifications.action.default": "mengirimimu notifikasi",
+  "stories.add": "Tambahkan cerita",
+  "sidebar.suggestedForYou": "Disarankan untuk Anda",
+  "sidebar.seeAll": "Lihat semuanya",
+  "sidebar.follow": "Mengikuti",
+  "sidebar.dismiss": "Singkirkan {name}",
+  "world.peopleOnlineAroundWorld": "Orang-orang online di seluruh dunia",
+  "world.online": "{count} orang daring",
+  "world.exploreMap": "Jelajahi peta",
+  "world.meetTheWorld": "Temui Dunia",
+  "world.meetDescription": "Orang baru. Cerita baru. Dunia yang lebih ramah.",
+  "world.exploreNow": "Jelajahi sekarang",
 } satisfies Record<TranslationKey, string>;
 
 export default d_id;

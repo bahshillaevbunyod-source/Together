@@ -123,6 +123,17 @@ const d_gl = {
   "notifications.action.postLike": "gustoulle a túa publicación",
   "notifications.action.postComment": "comentou a túa publicación",
   "notifications.action.default": "envioute unha notificación",
+  "stories.add": "Engadir historia",
+  "sidebar.suggestedForYou": "Suxerido para ti",
+  "sidebar.seeAll": "Ver todo",
+  "sidebar.follow": "Segue",
+  "sidebar.dismiss": "Ignorar {name}",
+  "world.peopleOnlineAroundWorld": "Persoas en liña en todo o mundo",
+  "world.online": "{count} persoas en liña",
+  "world.exploreMap": "Explora o mapa",
+  "world.meetTheWorld": "Coñece o mundo",
+  "world.meetDescription": "Xente nova. Novas historias. Un mundo máis amable.",
+  "world.exploreNow": "Explora agora",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gl;

@@ -123,6 +123,17 @@ const d_he = {
   "notifications.action.postLike": "אהב את הפוסט שלך",
   "notifications.action.postComment": "הגיב על הפוסט שלך",
   "notifications.action.default": "שלח לך התראה",
+  "stories.add": "הוסף סיפור",
+  "sidebar.suggestedForYou": "הציע עבורך",
+  "sidebar.seeAll": "ראה הכל",
+  "sidebar.follow": "לַעֲקוֹב",
+  "sidebar.dismiss": "סגור את {name}",
+  "world.peopleOnlineAroundWorld": "אנשים מקוונים ברחבי העולם",
+  "world.online": "{count} אנשים מקוונים",
+  "world.exploreMap": "חקור את המפה",
+  "world.meetTheWorld": "פגוש את העולם",
+  "world.meetDescription": "אנשים חדשים. סיפורים חדשים. עולם חביב יותר.",
+  "world.exploreNow": "חקור עכשיו",
 } satisfies Record<TranslationKey, string>;
 
 export default d_he;

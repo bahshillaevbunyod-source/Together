@@ -123,6 +123,17 @@ const d_sv = {
   "notifications.action.postLike": "gillade ditt inlägg",
   "notifications.action.postComment": "kommenterade ditt inlägg",
   "notifications.action.default": "skickade en avisering till dig",
+  "stories.add": "Lägg till berättelse",
+  "sidebar.suggestedForYou": "Föreslog för dig",
+  "sidebar.seeAll": "Se alla",
+  "sidebar.follow": "Följa",
+  "sidebar.dismiss": "Avvisa {name}",
+  "world.peopleOnlineAroundWorld": "Människor online runt om i världen",
+  "world.online": "{count} personer online",
+  "world.exploreMap": "Utforska kartan",
+  "world.meetTheWorld": "Möt världen",
+  "world.meetDescription": "Nya människor. Nya berättelser. En snällare värld.",
+  "world.exploreNow": "Utforska nu",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sv;

@@ -123,6 +123,17 @@ const d_tk = {
   "notifications.action.postLike": "ýazgyňy halady",
   "notifications.action.postComment": "ýazgyňa teswir ýazdy",
   "notifications.action.default": "saňa bildiriş iberdi",
+  "stories.add": "Hekaýa goş",
+  "sidebar.suggestedForYou": "Size maslahat berilýär",
+  "sidebar.seeAll": "Hemmesine serediň",
+  "sidebar.follow": "Yzarla",
+  "sidebar.dismiss": "{name}-den çykaryň",
+  "world.peopleOnlineAroundWorld": "Bütin dünýäde adamlar",
+  "world.online": "{count} adam onlaýn",
+  "world.exploreMap": "Kartany öwreniň",
+  "world.meetTheWorld": "Dünýä bilen tanyş",
+  "world.meetDescription": "Täze adamlar. Täze hekaýalar. Hoşniýetli dünýä.",
+  "world.exploreNow": "Indi öwreniň",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tk;

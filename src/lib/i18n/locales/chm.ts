@@ -123,6 +123,17 @@ const d_chm = {
   "notifications.action.postLike": "тыйын постетым йӧратыш",
   "notifications.action.postComment": "тыйын постешет комментарийым возыш",
   "notifications.action.default": "тыланет шижтарымашым колтыш",
+  "stories.add": "Историйым ешарыза",
+  "sidebar.suggestedForYou": "Тыланда темлалтеш",
+  "sidebar.seeAll": "Чыла ончо",
+  "sidebar.follow": "Кид пышташ",
+  "sidebar.dismiss": "{name}-ым кораҥдаш",
+  "world.peopleOnlineAroundWorld": "Тӱня мучко еҥ-влак интернетыште",
+  "world.online": "{count} еҥ онлайн",
+  "world.exploreMap": "Картым шымлаш",
+  "world.meetTheWorld": "Тӱня дене палыме лийза",
+  "world.meetDescription": "У еҥ-влак. У ойлымаш-влак. Поро тӱня.",
+  "world.exploreNow": "Кызыт шымлыза",
 } satisfies Record<TranslationKey, string>;
 
 export default d_chm;

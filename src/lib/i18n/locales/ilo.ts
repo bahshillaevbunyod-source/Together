@@ -123,6 +123,17 @@ const d_ilo = {
   "notifications.action.postLike": "a nangayat iti post mo",
   "notifications.action.postComment": "a nagkomento iti post mo",
   "notifications.action.default": "a nangipatulod kenka iti pakaammo",
+  "stories.add": "Inayon ti estoria",
+  "sidebar.suggestedForYou": "Insingasing para kenka",
+  "sidebar.seeAll": "Kitaen amin",
+  "sidebar.follow": "Suruten",
+  "sidebar.dismiss": "Ilaksid ti {name}",
+  "world.peopleOnlineAroundWorld": "Dagiti tattao nga online iti intero a lubong",
+  "world.online": "{count} nga tao online",
+  "world.exploreMap": "Sukisokenyo ti mapa",
+  "world.meetTheWorld": "Maam-ammo ti Lubong",
+  "world.meetDescription": "Baro a tattao. Baro nga estoria. Maysa a naasi a lubong.",
+  "world.exploreNow": "Sukisokenyo itan",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ilo;

@@ -123,6 +123,17 @@ const d_gn = {
   "notifications.action.postLike": "ombovyʼa nde jehai",
   "notifications.action.postComment": "omombeʼu nde jehaipy",
   "notifications.action.default": "omondo ndéve marandu'i",
+  "stories.add": "Ombojoapy tembiasakue",
+  "sidebar.suggestedForYou": "Oñesugeríva ndéve guarã",
+  "sidebar.seeAll": "Ehecha opa mba'e",
+  "sidebar.follow": "Hakykuerereka",
+  "sidebar.dismiss": "Omosẽ {name}",
+  "world.peopleOnlineAroundWorld": "Umi hénte oĩva Internétpe ko múndo tuichakuére",
+  "world.online": "{count} tapicha en línea",
+  "world.exploreMap": "Ejeporeka pe mápa rehe",
+  "world.meetTheWorld": "Eikuaa ko Yvóra",
+  "world.meetDescription": "Tapicha pyahu. Tembiasakue pyahu. Peteĩ mundo ipy’aporãvéva.",
+  "world.exploreNow": "Ejeporeka ko’áĝa",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gn;

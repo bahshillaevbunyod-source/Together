@@ -123,6 +123,17 @@ const d_qu = {
   "notifications.action.postLike": "publikasqaykita gustakun",
   "notifications.action.postComment": "publikasqaykipi rimaykun",
   "notifications.action.default": "huk willayta apachimusunki",
+  "stories.add": "Willakuyta yapay",
+  "sidebar.suggestedForYou": "Qampaq yuyaychasqa",
+  "sidebar.seeAll": "Tukuy rikuy",
+  "sidebar.follow": "Qatiq",
+  "sidebar.dismiss": "Descargar {name}",
+  "world.peopleOnlineAroundWorld": "Enteron pachapi runakuna internetpi",
+  "world.online": "{count} runakuna internetpi",
+  "world.exploreMap": "Mapata t’aqwiriy",
+  "world.meetTheWorld": "Kay pachawan riqsinakuy",
+  "world.meetDescription": "Musuq runakuna. Musuq willakuykuna. Aswan sumaq sunquyuq pacha.",
+  "world.exploreNow": "Kunanqa maskay",
 } satisfies Record<TranslationKey, string>;
 
 export default d_qu;

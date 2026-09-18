@@ -123,6 +123,17 @@ const d_bik = {
   "notifications.action.postLike": "na naggusto kan post mo",
   "notifications.action.postComment": "na nagkomento sa post mo",
   "notifications.action.default": "na nagpadara saimo nin abiso",
+  "stories.add": "Dagdagan nin istorya",
+  "sidebar.suggestedForYou": "Isinusuherir para saimo",
+  "sidebar.seeAll": "Hilingon an gabos",
+  "sidebar.follow": "Sunod",
+  "sidebar.dismiss": "Ibaliwala an {name}",
+  "world.peopleOnlineAroundWorld": "An mga tawo online sa bilog na kinaban",
+  "world.online": "{count} katawo sa online",
+  "world.exploreMap": "Susihon an mapa",
+  "world.meetTheWorld": "Midbidon an Kinaban",
+  "world.meetDescription": "Bagong mga tawo. Mga bagong istorya. Sarong mas maboot na kinaban.",
+  "world.exploreNow": "Mag-eksplorar ngonyan",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bik;

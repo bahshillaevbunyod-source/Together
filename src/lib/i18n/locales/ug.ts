@@ -123,6 +123,17 @@ const d_ug = {
   "notifications.action.postLike": "يازمىڭىزنى ياقتۇردى",
   "notifications.action.postComment": "يازمىڭىزغا باھا يازدى",
   "notifications.action.default": "سىزگە ئۇقتۇرۇش ئەۋەتتى",
+  "stories.add": "ھېكايە قوشۇڭ",
+  "sidebar.suggestedForYou": "سىزگە تەكلىپ بەردى",
+  "sidebar.seeAll": "ھەممىنى كۆرۈڭ",
+  "sidebar.follow": "ئەگىشىڭ",
+  "sidebar.dismiss": "{name} نى ئەمەلدىن قالدۇرۇڭ",
+  "world.peopleOnlineAroundWorld": "دۇنيانىڭ ھەرقايسى جايلىرىدىكى كىشىلەر",
+  "world.online": "{count} توردا",
+  "world.exploreMap": "خەرىتە ئۈستىدە ئىزدىنىڭ",
+  "world.meetTheWorld": "دۇنيا بىلەن تونۇشۇڭ",
+  "world.meetDescription": "يېڭى كىشىلەر. يېڭى ھېكايىلەر. مېھرىبان دۇنيا.",
+  "world.exploreNow": "ھازىر ئىزدەڭ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ug;

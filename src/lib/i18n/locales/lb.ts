@@ -123,6 +123,17 @@ const d_lb = {
   "notifications.action.postLike": "huet däi Post gär",
   "notifications.action.postComment": "huet däi Post kommentéiert",
   "notifications.action.default": "huet dir eng Notifikatioun geschéckt",
+  "stories.add": "Add Geschicht",
+  "sidebar.suggestedForYou": "Fir Iech proposéiert",
+  "sidebar.seeAll": "Gesinn all",
+  "sidebar.follow": "Follegt",
+  "sidebar.dismiss": "Entlooss {name}",
+  "world.peopleOnlineAroundWorld": "Leit online ronderëm d'Welt",
+  "world.online": "{count} Leit online",
+  "world.exploreMap": "Entdeckt d'Kaart",
+  "world.meetTheWorld": "Trefft d'Welt",
+  "world.meetDescription": "Nei Leit. Nei Geschichten. Eng léif Welt.",
+  "world.exploreNow": "Entdeckt elo",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lb;

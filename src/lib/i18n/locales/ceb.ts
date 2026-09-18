@@ -123,6 +123,17 @@ const d_ceb = {
   "notifications.action.postLike": "nga ni-like sa imong post",
   "notifications.action.postComment": "nga nangomento sa imong post",
   "notifications.action.default": "nga nagpadala nimo og pahibalo",
+  "stories.add": "Idugang ang istorya",
+  "sidebar.suggestedForYou": "Gisugyot alang kanimo",
+  "sidebar.seeAll": "Tan-awa ang tanan",
+  "sidebar.follow": "Sunda",
+  "sidebar.dismiss": "Isalikway ang {name}",
+  "world.peopleOnlineAroundWorld": "Mga tawo online sa tibuok kalibutan",
+  "world.online": "{count} ka tawo online",
+  "world.exploreMap": "Susiha ang mapa",
+  "world.meetTheWorld": "Himamata ang Kalibutan",
+  "world.meetDescription": "Bag-ong mga tawo. Bag-ong mga istorya. Usa ka mas buotan nga kalibutan.",
+  "world.exploreNow": "Explore karon",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ceb;

@@ -123,6 +123,17 @@ const d_pag = {
   "notifications.action.postLike": "ya angilike ed post mo",
   "notifications.action.postComment": "ya angkomento ed post mo",
   "notifications.action.default": "ya angipawit ed sika na pakabatan",
+  "stories.add": "Idagdag so istorya",
+  "sidebar.suggestedForYou": "Insuheri parad sika",
+  "sidebar.seeAll": "Nengnengen so amin",
+  "sidebar.follow": "Ontumbok",
+  "sidebar.dismiss": "Ibaliwala so {name}",
+  "world.peopleOnlineAroundWorld": "Saray totoon online ed interon mundo",
+  "world.online": "{count} ya totoon online",
+  "world.exploreMap": "Nengnengen so mapa",
+  "world.meetTheWorld": "Amtaen so Mundo",
+  "world.meetDescription": "Balon totoo. Balon istorya. Mas maomaong a mundo.",
+  "world.exploreNow": "Mansukimat natan",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pag;

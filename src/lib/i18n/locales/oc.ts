@@ -123,6 +123,17 @@ const d_oc = {
   "notifications.action.postLike": "a agradat ta publicacion",
   "notifications.action.postComment": "a comentat ta publicacion",
   "notifications.action.default": "t'a mandat una notificacion",
+  "stories.add": "Apondre l'istòria",
+  "sidebar.suggestedForYou": "Suggerit per vos",
+  "sidebar.seeAll": "Veire tot",
+  "sidebar.follow": "Seguir",
+  "sidebar.dismiss": "Descartar {name}",
+  "world.peopleOnlineAroundWorld": "Las personas en linha dins lo mond entièr",
+  "world.online": "{count} personas en linha",
+  "world.exploreMap": "Exploratz la mapa",
+  "world.meetTheWorld": "Rescontratz lo Mond",
+  "world.meetDescription": "De personas novèlas. De novèlas istòrias. Un mond mai gentil.",
+  "world.exploreNow": "Explora ara",
 } satisfies Record<TranslationKey, string>;
 
 export default d_oc;

@@ -123,6 +123,17 @@ const d_ps = {
   "notifications.action.postLike": "ستاسو پوسټ یې خوښ کړ",
   "notifications.action.postComment": "ستاسو پوسټ باندې یې تبصره وکړه",
   "notifications.action.default": "تاسو ته یې خبرتیا ولیږله",
+  "stories.add": "کیسه اضافه کړئ",
+  "sidebar.suggestedForYou": "ستاسو لپاره وړاندیز شوی",
+  "sidebar.seeAll": "ټول وګورئ",
+  "sidebar.follow": "تعقیب کړئ",
+  "sidebar.dismiss": "{name} ګوښه کړئ",
+  "world.peopleOnlineAroundWorld": "خلک په ټوله نړۍ کې آنلاین",
+  "world.online": "{count} خلک آنلاین",
+  "world.exploreMap": "نقشه وپلټئ",
+  "world.meetTheWorld": "له نړۍ سره ووینئ",
+  "world.meetDescription": "نوي خلک. نوې کیسې. یو مهربانه نړۍ.",
+  "world.exploreNow": "اوس وپلټئ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ps;

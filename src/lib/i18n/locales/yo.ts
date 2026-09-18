@@ -123,6 +123,17 @@ const d_yo = {
   "notifications.action.postLike": "fẹ́ràn ìfìwéránṣẹ́ rẹ",
   "notifications.action.postComment": "ṣàríwí sí ìfìwéránṣẹ́ rẹ",
   "notifications.action.default": "fi ìfitónilétí ránṣẹ́ sí ọ",
+  "stories.add": "Fi itan kun",
+  "sidebar.suggestedForYou": "Daba fun o",
+  "sidebar.seeAll": "Wo gbogbo",
+  "sidebar.follow": "Tẹle",
+  "sidebar.dismiss": "Pa {name} kuro",
+  "world.peopleOnlineAroundWorld": "Eniyan online ni ayika agbaye",
+  "world.online": "{count} eniyan lori ayelujara",
+  "world.exploreMap": "Ye maapu naa",
+  "world.meetTheWorld": "Pade Agbaye",
+  "world.meetDescription": "Awọn eniyan titun. Awọn itan tuntun. Aye alaanu.",
+  "world.exploreNow": "Ye ni bayi",
 } satisfies Record<TranslationKey, string>;
 
 export default d_yo;

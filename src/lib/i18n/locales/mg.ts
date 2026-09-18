@@ -123,6 +123,17 @@ const d_mg = {
   "notifications.action.postLike": "tia ny lahatsoratrao",
   "notifications.action.postComment": "naneho hevitra tamin'ny lahatsoratrao",
   "notifications.action.default": "nandefa fampahafantarana ho anao",
+  "stories.add": "Ampio tantara",
+  "sidebar.suggestedForYou": "Soso-kevitra ho anao",
+  "sidebar.seeAll": "Jereo daholo",
+  "sidebar.follow": "Araho",
+  "sidebar.dismiss": "Esory ny {name}",
+  "world.peopleOnlineAroundWorld": "Olona an-tserasera manerana izao tontolo izao",
+  "world.online": "{count} olona an-tserasera",
+  "world.exploreMap": "Diniho ny sarintany",
+  "world.meetTheWorld": "Hihaona amin'izao tontolo izao",
+  "world.meetDescription": "Olona vaovao. Tantara vaovao. Tontolo tsara fanahy.",
+  "world.exploreNow": "Diniho izao",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mg;

@@ -123,6 +123,17 @@ const d_ku = {
   "notifications.action.postLike": "şandiya te eciband",
   "notifications.action.postComment": "li ser şandiya te şîrove kir",
   "notifications.action.default": "ji te re agahdarîyek şand",
+  "stories.add": "Çîrok zêde bike",
+  "sidebar.suggestedForYou": "Ji bo we pêşniyar kirin",
+  "sidebar.seeAll": "Hemî bibînin",
+  "sidebar.follow": "Pêketin",
+  "sidebar.dismiss": "{name} ji holê rakin",
+  "world.peopleOnlineAroundWorld": "Mirovên li seranserê cîhanê online",
+  "world.online": "{count} kes serhêl",
+  "world.exploreMap": "Nexşeyê bigerin",
+  "world.meetTheWorld": "Bi Cîhanê re hevdîtin bikin",
+  "world.meetDescription": "Kesên nû. Çîrokên nû. Cîhanek dilovan.",
+  "world.exploreNow": "Niha lêkolîn bikin",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ku;

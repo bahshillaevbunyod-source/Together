@@ -123,6 +123,17 @@ const d_hu = {
   "notifications.action.postLike": "kedvelte a bejegyzésedet",
   "notifications.action.postComment": "hozzászólt a bejegyzésedhez",
   "notifications.action.default": "értesítést küldött neked",
+  "stories.add": "Történet hozzáadása",
+  "sidebar.suggestedForYou": "Önnek ajánlott",
+  "sidebar.seeAll": "Az összes megtekintése",
+  "sidebar.follow": "Kövesd",
+  "sidebar.dismiss": "{name} elvetése",
+  "world.peopleOnlineAroundWorld": "Emberek online szerte a világon",
+  "world.online": "{count} ember online",
+  "world.exploreMap": "Fedezze fel a térképet",
+  "world.meetTheWorld": "Találkozz a világgal",
+  "world.meetDescription": "Új emberek. Új történetek. Egy kedvesebb világ.",
+  "world.exploreNow": "Fedezze fel most",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hu;

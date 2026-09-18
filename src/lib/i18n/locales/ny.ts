@@ -123,6 +123,17 @@ const d_ny = {
   "notifications.action.postLike": "wakonda positi yanu",
   "notifications.action.postComment": "wayankha pa positi yanu",
   "notifications.action.default": "wakutumizirani chidziwitso",
+  "stories.add": "Onjezani nkhani",
+  "sidebar.suggestedForYou": "Zopangira inu",
+  "sidebar.seeAll": "Onani zonse",
+  "sidebar.follow": "Tsatirani",
+  "sidebar.dismiss": "Chotsani {name}",
+  "world.peopleOnlineAroundWorld": "Anthu pa intaneti padziko lonse lapansi",
+  "world.online": "{count} anthu pa intaneti",
+  "world.exploreMap": "Onani mapu",
+  "world.meetTheWorld": "Kumanani ndi Dziko",
+  "world.meetDescription": "Anthu atsopano. Nkhani zatsopano. Dziko lachifundo.",
+  "world.exploreNow": "Onani tsopano",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ny;

@@ -123,6 +123,17 @@ const d_th = {
   "notifications.action.postLike": "ถูกใจโพสต์ของคุณ",
   "notifications.action.postComment": "แสดงความคิดเห็นในโพสต์ของคุณ",
   "notifications.action.default": "ส่งการแจ้งเตือนถึงคุณ",
+  "stories.add": "เพิ่มเรื่องราว",
+  "sidebar.suggestedForYou": "แนะนำสำหรับคุณ",
+  "sidebar.seeAll": "ดูทั้งหมด",
+  "sidebar.follow": "ติดตาม",
+  "sidebar.dismiss": "ยกเลิก {name}",
+  "world.peopleOnlineAroundWorld": "ผู้คนออนไลน์ทั่วโลก",
+  "world.online": "{count} คนออนไลน์",
+  "world.exploreMap": "สำรวจแผนที่",
+  "world.meetTheWorld": "พบกับโลก",
+  "world.meetDescription": "คนใหม่. เรื่องราวใหม่ๆ โลกที่ใจดียิ่งขึ้น",
+  "world.exploreNow": "สำรวจเลย",
 } satisfies Record<TranslationKey, string>;
 
 export default d_th;

@@ -123,6 +123,17 @@ const d_ms_Arab = {
   "notifications.action.postLike": "مڽوکاي هنترن اندا",
   "notifications.action.postComment": "مڠومن هنترن اندا",
   "notifications.action.default": "مڠهنتر ڤمبريتاهوان کڤد اندا",
+  "stories.add": "تمبه چريتا",
+  "sidebar.suggestedForYou": "دچادڠكن اونتوق اندا",
+  "sidebar.seeAll": "ليهت سموا",
+  "sidebar.follow": "ايكوت",
+  "sidebar.dismiss": "بواڠ {name}",
+  "world.peopleOnlineAroundWorld": "اورڠ دالم تالين د سلوروه دنيا",
+  "world.online": "{count} اورڠ دالم تالين",
+  "world.exploreMap": "تروسكن ڤتا",
+  "world.meetTheWorld": "برتمو دڠن دنيا",
+  "world.meetDescription": "اورڠ بارو. چريتا بارو. دنيا يڠ لبيه باءيق.",
+  "world.exploreNow": "تروسكن سكارڠ",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ms_Arab;

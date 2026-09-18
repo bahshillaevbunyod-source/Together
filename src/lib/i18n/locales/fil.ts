@@ -123,6 +123,17 @@ const d_fil = {
   "notifications.action.postLike": "na nag-like sa post mo",
   "notifications.action.postComment": "na nag-comment sa post mo",
   "notifications.action.default": "na nagpadala sa iyo ng abiso",
+  "stories.add": "Magdagdag ng kwento",
+  "sidebar.suggestedForYou": "Iminungkahi para sa iyo",
+  "sidebar.seeAll": "Tingnan lahat",
+  "sidebar.follow": "Sundin",
+  "sidebar.dismiss": "I-dismiss ang {name}",
+  "world.peopleOnlineAroundWorld": "Mga taong online sa buong mundo",
+  "world.online": "{count} tao ang online",
+  "world.exploreMap": "Galugarin ang mapa",
+  "world.meetTheWorld": "Kilalanin ang Mundo",
+  "world.meetDescription": "Mga bagong tao. Mga bagong kwento. Isang mas mabait na mundo.",
+  "world.exploreNow": "Galugarin ngayon",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fil;
