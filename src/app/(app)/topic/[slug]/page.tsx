@@ -26,12 +26,12 @@ export default function TopicPage() {
           href="/discover"
           className="text-sm text-muted transition-colors hover:text-foreground"
         >
-          Discover
+          {t("navigation.discover")}
         </Link>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-foreground">
           #{slug}
         </h1>
-        <p className="mt-1 text-sm text-muted">Posts in this topic.</p>
+        <p className="mt-1 text-sm text-muted">{t("topic.postsInTopic")}</p>
       </header>
 
       <FeedProvider key={slug} fetchPage={fetchPage}>

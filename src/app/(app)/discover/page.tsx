@@ -181,10 +181,10 @@ export default function DiscoverPage() {
     <div className="mx-auto w-full max-w-3xl">
       <header className="mb-5">
         <h1 className="text-2xl font-bold tracking-tight text-foreground">
-          Discover
+          {t("navigation.discover")}
         </h1>
         <p className="mt-1 text-sm text-muted">
-          Meet people from around the world.
+          {t("discover.description")}
         </p>
       </header>
 
@@ -195,8 +195,8 @@ export default function DiscoverPage() {
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search people by name or @username"
-          aria-label="Search people"
+          placeholder={t("discover.searchPlaceholder")}
+          aria-label={t("search.ariaLabel")}
           className="h-12 w-full rounded-2xl border border-border bg-surface pl-12 pr-4 text-sm text-foreground shadow-sm placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
       </div>
@@ -232,7 +232,7 @@ export default function DiscoverPage() {
             </div>
             <div className="mt-10">
               <section>
-                <SectionHeading>Discover posts</SectionHeading>
+                <SectionHeading>{t("discover.posts")}</SectionHeading>
                 <FeedProvider fetchPage={getDiscoverPosts}>
                   <Feed
                     loadingMessage={t("feed.discoverLoading")}
@@ -295,21 +295,23 @@ function ForYouSection({
   onLoadMore: () => void;
   onFollowed: (id: string) => void;
 }) {
+  const { t } = useLanguage();
+
   return (
     <section>
-      <SectionHeading>For you</SectionHeading>
+      <SectionHeading>{t("discover.forYou")}</SectionHeading>
 
       {status === "loading" ? <CardSkeletons /> : null}
 
       {status === "error" ? (
         <div className="rounded-2xl border border-border bg-surface p-8 text-center">
-          <p className="text-sm text-muted">Couldn’t load suggestions.</p>
+          <p className="text-sm text-muted">{t("discover.suggestionsError")}</p>
           <button
             type="button"
             onClick={onReload}
             className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
           >
-            Try again
+            {t("search.tryAgain")}
           </button>
         </div>
       ) : null}
@@ -320,10 +322,10 @@ function ForYouSection({
             <Users className="h-7 w-7" />
           </span>
           <h3 className="mt-4 text-base font-semibold text-foreground">
-            You’re all caught up
+            {t("discover.allCaughtUp")}
           </h3>
           <p className="mt-1 max-w-sm text-sm text-muted">
-            No new people to suggest right now. Try searching above.
+            {t("discover.noNewPeople")}
           </p>
         </div>
       ) : null}
@@ -343,7 +345,7 @@ function ForYouSection({
                 disabled={loadingMore}
                 className="rounded-full border border-border bg-surface px-5 py-2 text-sm text-muted transition-colors hover:text-foreground disabled:opacity-50"
               >
-                {loadingMore ? "Loading…" : "Load more"}
+                {loadingMore ? t("feed.loadingMore") : t("feed.loadMore")}
               </button>
             </div>
           ) : null}
@@ -354,6 +356,7 @@ function ForYouSection({
 }
 
 function TrendingTopicsSection() {
+  const { t } = useLanguage();
   const [items, setItems] = useState<TrendingTopic[]>([]);
   const [status, setStatus] = useState<Status>("loading");
 
@@ -384,10 +387,10 @@ function TrendingTopicsSection() {
         </span>
         <div className="min-w-0">
           <h2 className="text-sm font-semibold text-foreground">
-            Trending topics
+            {t("discover.trendingTopics")}
           </h2>
           <p className="truncate text-xs text-muted">
-            Conversations people are having on Together.
+            {t("discover.trendingDescription", { brand: "Together" })}
           </p>
         </div>
       </div>
@@ -405,20 +408,20 @@ function TrendingTopicsSection() {
 
       {status === "error" ? (
         <div className="rounded-2xl border border-border bg-surface p-6 text-center">
-          <p className="text-sm text-muted">Couldn’t load trending topics.</p>
+          <p className="text-sm text-muted">{t("discover.trendingError")}</p>
           <button
             type="button"
             onClick={() => load()}
             className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
           >
-            Try again
+            {t("search.tryAgain")}
           </button>
         </div>
       ) : null}
 
       {status === "ready" && items.length === 0 ? (
         <div className="rounded-2xl border border-border bg-surface px-6 py-10 text-center">
-          <p className="text-sm text-muted">No trending topics to show yet.</p>
+          <p className="text-sm text-muted">{t("discover.noTrendingTopics")}</p>
         </div>
       ) : null}
 
@@ -461,6 +464,7 @@ function countryLabel(code: string): string {
  * reloads the section filtered to that country.
  */
 function WorldSection() {
+  const { t } = useLanguage();
   const [activeCountry, setActiveCountry] = useState(""); // "" = all countries
   const [items, setItems] = useState<DiscoverUser[]>([]);
   const [status, setStatus] = useState<Status>("loading");
@@ -550,10 +554,10 @@ function WorldSection() {
         </span>
         <div className="min-w-0">
           <h2 className="text-sm font-semibold text-foreground">
-            Explore the world
+            {t("discover.exploreWorld")}
           </h2>
           <p className="truncate text-xs text-muted">
-            Meet people from around the world.
+            {t("discover.description")}
           </p>
         </div>
       </div>
@@ -570,7 +574,7 @@ function WorldSection() {
               : "border border-border text-muted hover:text-foreground"
           }`}
         >
-          All countries
+          {t("discover.allCountries")}
         </button>
         {countries.map((code) => (
           <button
@@ -593,13 +597,13 @@ function WorldSection() {
 
       {status === "error" ? (
         <div className="rounded-2xl border border-border bg-surface p-8 text-center">
-          <p className="text-sm text-muted">Couldn’t load people.</p>
+          <p className="text-sm text-muted">{t("discover.peopleError")}</p>
           <button
             type="button"
             onClick={() => load(activeCountry)}
             className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
           >
-            Try again
+            {t("search.tryAgain")}
           </button>
         </div>
       ) : null}
@@ -608,8 +612,10 @@ function WorldSection() {
         <div className="rounded-2xl border border-border bg-surface px-6 py-12 text-center">
           <p className="text-sm text-muted">
             {activeCountry
-              ? `No people to explore in ${countryLabel(activeCountry)} right now.`
-              : "No people to explore right now."}
+              ? t("discover.noPeopleInCountry", {
+                  country: countryLabel(activeCountry),
+                })
+              : t("discover.noPeople")}
           </p>
         </div>
       ) : null}
@@ -629,7 +635,7 @@ function WorldSection() {
                 disabled={loadingMore}
                 className="rounded-full border border-border bg-surface px-5 py-2 text-sm text-muted transition-colors hover:text-foreground disabled:opacity-50"
               >
-                {loadingMore ? "Loading…" : "Load more"}
+                {loadingMore ? t("feed.loadingMore") : t("feed.loadMore")}
               </button>
             </div>
           ) : null}
@@ -644,6 +650,7 @@ function WorldSection() {
  * self / blocked / already-followed. Shows a subtle follower count for context.
  */
 function PopularSection() {
+  const { t } = useLanguage();
   const [items, setItems] = useState<DiscoverUser[]>([]);
   const [status, setStatus] = useState<Status>("loading");
   const [nextCursor, setNextCursor] = useState("");
@@ -703,10 +710,10 @@ function PopularSection() {
         </span>
         <div className="min-w-0">
           <h2 className="text-sm font-semibold text-foreground">
-            Popular people
+            {t("discover.popularPeople")}
           </h2>
           <p className="truncate text-xs text-muted">
-            The most-followed people on Together.
+            {t("discover.popularDescription", { brand: "Together" })}
           </p>
         </div>
       </div>
@@ -715,20 +722,20 @@ function PopularSection() {
 
       {status === "error" ? (
         <div className="rounded-2xl border border-border bg-surface p-8 text-center">
-          <p className="text-sm text-muted">Couldn’t load popular people.</p>
+          <p className="text-sm text-muted">{t("discover.peopleError")}</p>
           <button
             type="button"
             onClick={() => load()}
             className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
           >
-            Try again
+            {t("search.tryAgain")}
           </button>
         </div>
       ) : null}
 
       {status === "ready" && items.length === 0 ? (
         <div className="rounded-2xl border border-border bg-surface px-6 py-12 text-center">
-          <p className="text-sm text-muted">No popular people to show yet.</p>
+          <p className="text-sm text-muted">{t("discover.noPopularPeople")}</p>
         </div>
       ) : null}
 
@@ -752,7 +759,7 @@ function PopularSection() {
                 disabled={loadingMore}
                 className="rounded-full border border-border bg-surface px-5 py-2 text-sm text-muted transition-colors hover:text-foreground disabled:opacity-50"
               >
-                {loadingMore ? "Loading…" : "Load more"}
+                {loadingMore ? t("feed.loadingMore") : t("feed.loadMore")}
               </button>
             </div>
           ) : null}
@@ -775,24 +782,26 @@ function SearchSection({
   topicStatus: SearchStatus;
   topics: TrendingTopic[];
 }) {
+  const { t } = useLanguage();
+
   return (
     <section>
-      <SectionHeading>Results for “{query}”</SectionHeading>
+      <SectionHeading>{t("discover.searchResults", { query })}</SectionHeading>
 
       {status === "loading" ? (
         <div className="flex items-center gap-2 px-1 py-6 text-sm text-muted">
           <Loader2 className="h-4 w-4 animate-spin" />
-          Searching…
+          {t("search.searching")}
         </div>
       ) : null}
 
       {status === "error" ? (
-        <p className="px-1 py-6 text-sm text-muted">Couldn’t run search.</p>
+        <p className="px-1 py-6 text-sm text-muted">{t("search.error")}</p>
       ) : null}
 
       {status === "ready" && results.length === 0 ? (
         <p className="px-1 py-6 text-sm text-muted-soft">
-          No people found for “{query}”.
+          {t("search.emptyPrefix")}{query}{t("search.emptySuffix")}
         </p>
       ) : null}
 
@@ -807,17 +816,17 @@ function SearchSection({
       {topicStatus === "loading" ? (
         <div className="mt-6 flex items-center gap-2 text-sm text-muted">
           <Loader2 className="h-4 w-4 animate-spin" />
-          Searching topics…
+          {t("discover.searchingTopics")}
         </div>
       ) : null}
 
       {topicStatus === "error" ? (
-        <p className="mt-6 text-sm text-muted">Couldn’t load topics.</p>
+        <p className="mt-6 text-sm text-muted">{t("discover.topicsError")}</p>
       ) : null}
 
       {topics.length > 0 ? (
         <div className="mt-6">
-          <SectionHeading>Topics</SectionHeading>
+          <SectionHeading>{t("discover.topics")}</SectionHeading>
           <div className="flex flex-wrap gap-2">
             {topics.map((topic) => (
               <Link

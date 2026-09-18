@@ -7,6 +7,7 @@ import { MapPin } from "lucide-react";
 
 import { ApiError, followUser } from "@/lib/api";
 import { formatCount } from "@/lib/format";
+import { useLanguage } from "@/lib/language-context";
 
 export interface PersonCardUser {
   id: string;
@@ -66,6 +67,7 @@ export function PersonCard({
   /** Show a subtle follower-count line (used by the Popular section). */
   showFollowers?: boolean;
 }) {
+  const { t } = useLanguage();
   const [following, setFollowing] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(false);
@@ -94,7 +96,11 @@ export function PersonCard({
 
   return (
     <article className="group flex items-center gap-3.5 rounded-2xl border border-border bg-surface p-4 transition-all hover:border-primary/30 hover:shadow-sm">
-      <Link href={href} aria-label={`View ${user.displayName}'s profile`} className="shrink-0">
+      <Link
+        href={href}
+        aria-label={t("discover.viewProfile", { name: user.displayName })}
+        className="shrink-0"
+      >
         <Image
           src={user.avatarUrl ?? FALLBACK_AVATAR}
           alt={user.displayName}
@@ -130,7 +136,9 @@ export function PersonCard({
         user.followerCount > 0 ? (
           <div className="mt-0.5 text-xs text-muted-soft">
             {formatCount(user.followerCount)}{" "}
-            {user.followerCount === 1 ? "follower" : "followers"}
+            {user.followerCount === 1
+              ? t("discover.follower")
+              : t("discover.followers")}
           </div>
         ) : null}
       </div>
@@ -146,7 +154,13 @@ export function PersonCard({
             : "bg-primary text-white hover:bg-primary-hover disabled:opacity-60"
         }`}
       >
-        {following ? "Following" : pending ? "…" : error ? "Retry" : "Follow"}
+        {following
+          ? t("profile.followingState")
+          : pending
+            ? "…"
+            : error
+              ? t("search.tryAgain")
+              : t("profile.follow")}
       </button>
     </article>
   );
