@@ -171,6 +171,11 @@ const d_bua = {
   "profile.relForbidden": "Энэ хэрэглэгшэтэй тиимэ юумэ хэжэ шадахагүйш.",
   "profile.blockError": "Энэ хэрэглэгшые хаажа шадаагүй. Дахин туршагты.",
   "profile.unblockError": "Энэ хэрэглэгшые тайлажа шадаагүй. Дахин туршагты.",
+  "profile.close": "Хааха",
+  "profile.noFollowers": "Дахагшад үшөө үгы.",
+  "profile.noFollowing": "Хэнииешье үшөө дахажа байгаагүйб.",
+  "profile.followListErrorFollowers": "Дахагшадые ашаглажа шадаагүй.",
+  "profile.followListErrorFollowing": "Дахагшадые ашаглажа шадаагүй.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bua;

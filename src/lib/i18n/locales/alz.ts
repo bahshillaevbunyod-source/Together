@@ -171,6 +171,11 @@ const d_alz = {
   "profile.relForbidden": "Icopo timo ngo kumeno ku jatic eni.",
   "profile.blockError": "Acopo juku ngo jatic eni. Tem kendu.",
   "profile.unblockError": "Acopo ngo ni yabo jamb tic eni. Tem kendu.",
+  "profile.close": "Cego",
+  "profile.noFollowers": "Ju ma lubo tokgi podi epe.",
+  "profile.noFollowing": "Podi abe lubo ngo ngati moko.",
+  "profile.followListErrorFollowers": "Acopo ketho ngo ju ma lubo.",
+  "profile.followListErrorFollowing": "Acopo ketho ngo piny ma lubo.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_alz;

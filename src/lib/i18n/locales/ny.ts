@@ -171,6 +171,11 @@ const d_ny = {
   "profile.relForbidden": "Simungathe kuchita izi ndi wosuta uyu.",
   "profile.blockError": "Sitinathe kuletsa wogwiritsa ntchitoyu. Yesaninso.",
   "profile.unblockError": "Sitinathe kuletsa wosutayu. Yesaninso.",
+  "profile.close": "Tsekani",
+  "profile.noFollowers": "Palibe otsatira pano.",
+  "profile.noFollowing": "Osatsatira aliyense panobe.",
+  "profile.followListErrorFollowers": "Sitinathe kutsitsa otsatira.",
+  "profile.followListErrorFollowing": "Sizinathe kutsegula.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ny;

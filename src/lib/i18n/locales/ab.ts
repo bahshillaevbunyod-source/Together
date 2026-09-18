@@ -171,6 +171,11 @@ const d_ab = {
   "profile.relForbidden": "Ари ахархәаҩ ила уи ҟауҵар ҟалом.",
   "profile.blockError": "Ари ахархәаҩ иблокиртәым. Даҽазнык шәҽазышәшәа.",
   "profile.unblockError": "Ари ахархәаҩ иблок аартра ауам. Даҽазнык шәҽазышәшәа.",
+  "profile.close": "Иарктәуп",
+  "profile.noFollowers": "Макьана ашьҭанеицәа ыҟам.",
+  "profile.noFollowing": "Макьана аӡәгьы дишьҭамлац.",
+  "profile.followListErrorFollowers": "Ашьҭанеицәа рҭагалара ауам.",
+  "profile.followListErrorFollowing": "Ашьҭанеира аҭагалара ауам.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ab;

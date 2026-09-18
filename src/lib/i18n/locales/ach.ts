@@ -171,6 +171,11 @@ const d_ach = {
   "profile.relForbidden": "Pe itwero timo meno ki latic man.",
   "profile.blockError": "Pe atwero gengo latic man. Tem doki.",
   "profile.unblockError": "Pe atwero yabo latic man. Tem doki.",
+  "profile.close": "Cego",
+  "profile.noFollowers": "Pe tye ngat mo ma lubo kore.",
+  "profile.noFollowing": "Pe atye ka lubo ngat mo keken.",
+  "profile.followListErrorFollowers": "Pe twero keto dano ma lubo kore.",
+  "profile.followListErrorFollowing": "Pe twero keto jami ma lubo ni.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ach;

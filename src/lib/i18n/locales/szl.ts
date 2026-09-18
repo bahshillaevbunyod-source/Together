@@ -171,6 +171,11 @@ const d_szl = {
   "profile.relForbidden": "Niy możesz tego zrobić z tym używoczym.",
   "profile.blockError": "Niy mōg zablokować tego używocza. Sprōbuj jeszcze raz.",
   "profile.unblockError": "Niy mōg ôdblokować tego używocza. Sprōbuj jeszcze raz.",
+  "profile.close": "Zamknij",
+  "profile.noFollowers": "Jeszcze niy ma ôbozowcōw.",
+  "profile.noFollowing": "Jeszcze nikogo niy śledzōm.",
+  "profile.followListErrorFollowers": "Niy mōg załadować ôbozowcōw.",
+  "profile.followListErrorFollowing": "Niy mōg załadować nastympujōncego.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_szl;

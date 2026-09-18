@@ -171,6 +171,11 @@ const d_mk = {
   "profile.relForbidden": "Не можете да го направите тоа со овој корисник.",
   "profile.blockError": "Не може да се блокира овој корисник. Обидете се повторно.",
   "profile.unblockError": "Не можеше да се одблокира овој корисник. Обидете се повторно.",
+  "profile.close": "Затвори",
+  "profile.noFollowers": "Сè уште нема следбеници.",
+  "profile.noFollowing": "Сè уште не следи никого.",
+  "profile.followListErrorFollowers": "Не можеше да се вчитаат следбениците.",
+  "profile.followListErrorFollowing": "Не може да се вчита следново.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mk;

@@ -171,6 +171,11 @@ const d_sw = {
   "profile.relForbidden": "Huwezi kufanya hivyo na mtumiaji huyu.",
   "profile.blockError": "Haikuweza kumzuia mtumiaji huyu. Jaribu tena.",
   "profile.unblockError": "Haikuweza kumfungulia mtumiaji huyu. Jaribu tena.",
+  "profile.close": "Funga",
+  "profile.noFollowers": "Bado hakuna wafuasi.",
+  "profile.noFollowing": "Bado hujamfuata mtu yeyote.",
+  "profile.followListErrorFollowers": "Haikuweza kupakia wafuasi.",
+  "profile.followListErrorFollowing": "Haikuweza kupakia kufuata.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sw;

@@ -171,6 +171,11 @@ const d_tn = {
   "profile.relForbidden": "O ka se dire jalo ka modirisi yono.",
   "profile.blockError": "Ga e kgone go thibela modirisi yono. Leka gape.",
   "profile.unblockError": "Ga e kgone go thibolola modirisi yono. Leka gape.",
+  "profile.close": "Tswala",
+  "profile.noFollowers": "Ga go ise go nne le balatedi.",
+  "profile.noFollowing": "Ga ke ise ke latele ope.",
+  "profile.followListErrorFollowers": "Ga e kgone go laisa balatedi.",
+  "profile.followListErrorFollowing": "Ga e kgone go laisa tse di latelang.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tn;

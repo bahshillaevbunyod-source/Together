@@ -171,6 +171,11 @@ const d_cs = {
   "profile.relForbidden": "S tímto uživatelem to nemůžete udělat.",
   "profile.blockError": "Tohoto uživatele se nepodařilo zablokovat. Zkuste to znovu.",
   "profile.unblockError": "Tohoto uživatele se nepodařilo odblokovat. Zkuste to znovu.",
+  "profile.close": "Zavřít",
+  "profile.noFollowers": "Zatím žádní sledující.",
+  "profile.noFollowing": "Zatím nikoho nesleduji.",
+  "profile.followListErrorFollowers": "Sledovatele se nepodařilo načíst.",
+  "profile.followListErrorFollowing": "Sledování se nepodařilo načíst.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cs;

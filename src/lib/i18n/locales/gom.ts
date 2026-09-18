@@ -171,6 +171,11 @@ const d_gom = {
   "profile.relForbidden": "ह्या वापरप्या वांगडा तुमी तशें करूंक शकना.",
   "profile.blockError": "ह्या वापरप्याक आडावंक शकलो ना. परतून यत्न करात.",
   "profile.unblockError": "ह्या वापरप्याक अनब्लॉक करूंक शकलो ना. परतून यत्न करात.",
+  "profile.close": "बंद करचें",
+  "profile.noFollowers": "अजून फॉलोअर्स नात.",
+  "profile.noFollowing": "अजून कोणाक फालो करूंक ना.",
+  "profile.followListErrorFollowers": "फॉलोअर्स लोड करूंक शकले नात.",
+  "profile.followListErrorFollowing": "फालोविंग लोड करूंक शकलो ना.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gom;

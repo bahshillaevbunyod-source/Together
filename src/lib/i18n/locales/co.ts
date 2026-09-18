@@ -171,6 +171,11 @@ const d_co = {
   "profile.relForbidden": "Ùn pudete micca fà cù questu utilizatore.",
   "profile.blockError": "Ùn pudia micca bluccà stu utilizatore. Prova dinò.",
   "profile.unblockError": "Ùn pudia micca sbloccare stu utilizatore. Prova dinò.",
+  "profile.close": "Chiudi",
+  "profile.noFollowers": "Nisun seguitori ancora.",
+  "profile.noFollowing": "Ùn seguite à nimu.",
+  "profile.followListErrorFollowers": "Ùn pudia micca carica i seguitori.",
+  "profile.followListErrorFollowing": "Impossibile caricare i seguenti.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_co;

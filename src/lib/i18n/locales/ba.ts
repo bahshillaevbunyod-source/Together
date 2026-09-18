@@ -171,6 +171,11 @@ const d_ba = {
   "profile.relForbidden": "Һеҙ&#8217;т был ҡулланыусы менән эшләй ала.",
   "profile.blockError": "Был ҡулланыусыны блоклай алманы. Тағы ла тырышып ҡарағыҙ.",
   "profile.unblockError": "Был ҡулланыусыны блоктан сығара алманы. Тағы ла тырышып ҡарағыҙ.",
+  "profile.close": "Ябыҡ",
+  "profile.noFollowers": "Әлегә эҙләүселәр юҡ.",
+  "profile.noFollowing": "Әлегә бер кемгә лә эйәрмәй.",
+  "profile.followListErrorFollowers": "Йөкләп булманы’эҙләүселәр.",
+  "profile.followListErrorFollowing": "Йөкләй алманы’түбәндәге.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ba;

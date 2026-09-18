@@ -171,6 +171,11 @@ const d_sv = {
   "profile.relForbidden": "Du kan inte göra det med den här användaren.",
   "profile.blockError": "Det gick inte att blockera den här användaren. Försök igen.",
   "profile.unblockError": "Det gick inte att avblockera den här användaren. Försök igen.",
+  "profile.close": "Stäng",
+  "profile.noFollowers": "Inga följare ännu.",
+  "profile.noFollowing": "Följer inte någon ännu.",
+  "profile.followListErrorFollowers": "Det gick inte att läsa in följare.",
+  "profile.followListErrorFollowing": "Det gick inte att ladda följande.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sv;

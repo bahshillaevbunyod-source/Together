@@ -171,6 +171,11 @@ const d_ga = {
   "profile.relForbidden": "Ní féidir leat é sin a dhéanamh leis an úsáideoir seo.",
   "profile.blockError": "Níorbh fhéidir an t-úsáideoir seo a bhacadh. Bain triail eile as.",
   "profile.unblockError": "Níorbh fhéidir an bac a bhaint den úsáideoir seo. Bain triail eile as.",
+  "profile.close": "Dún",
+  "profile.noFollowers": "Níl aon leantóir fós.",
+  "profile.noFollowing": "Gan éinne a leanúint fós.",
+  "profile.followListErrorFollowers": "Níorbh fhéidir leantóirí a lódáil.",
+  "profile.followListErrorFollowing": "Níorbh fhéidir an méid seo a leanas a lódáil.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ga;

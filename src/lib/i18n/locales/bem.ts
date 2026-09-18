@@ -171,6 +171,11 @@ const d_bem = {
   "profile.relForbidden": "Teti mucite ifyo kuli uyu kabomfya.",
   "profile.blockError": "Teti cicingilile uyu umubomfi. Esheni nakabili.",
   "profile.unblockError": "Teti mufumye uyu umubomfi. Esheni nakabili.",
+  "profile.close": "Isaleni",
+  "profile.noFollowers": "Tapali abakonshi nomba.",
+  "profile.noFollowing": "Tabakonkelepo umuntu nangu umo nomba.",
+  "profile.followListErrorFollowers": "Tacikweteko abakonshi.",
+  "profile.followListErrorFollowing": "Teti cikonkepo ukukonkapo.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bem;

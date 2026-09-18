@@ -171,6 +171,11 @@ const d_ca = {
   "profile.relForbidden": "No ho pots fer amb aquest usuari.",
   "profile.blockError": "No s'ha pogut bloquejar aquest usuari. Torna-ho a provar.",
   "profile.unblockError": "No s'ha pogut desbloquejar aquest usuari. Torna-ho a provar.",
+  "profile.close": "Tancar",
+  "profile.noFollowers": "Encara no hi ha seguidors.",
+  "profile.noFollowing": "Encara no segueix ningú.",
+  "profile.followListErrorFollowers": "No s'han pogut carregar els seguidors.",
+  "profile.followListErrorFollowing": "No s'ha pogut carregar el següent.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ca;

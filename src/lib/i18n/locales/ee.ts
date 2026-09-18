@@ -171,6 +171,11 @@ const d_ee = {
   "profile.relForbidden": "Màte ŋu awɔ ema kple zãla sia o.",
   "profile.blockError": "Mete ŋu xe mɔ na zãla sia o. Gadze agbagba ake.",
   "profile.unblockError": "Mete ŋu ɖe mɔ na zãla sia o. Gadze agbagba ake.",
+  "profile.close": "Kloe",
+  "profile.noFollowers": "Yomedzelawo aɖeke meli haɖe o.",
+  "profile.noFollowing": "Nyemedze ame aɖeke yome haɖe o.",
+  "profile.followListErrorFollowers": "Mete ŋu tsɔa eyomedzelawo ƒe agba o.",
+  "profile.followListErrorFollowing": "Mete ŋu tsɔ kplɔkplɔ ɖo o.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ee;

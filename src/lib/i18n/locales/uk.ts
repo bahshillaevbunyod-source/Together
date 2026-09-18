@@ -171,6 +171,11 @@ const d_uk = {
   "profile.relForbidden": "Ви не можете зробити це з цим користувачем.",
   "profile.blockError": "Не вдалося заблокувати цього користувача. Спробуйте знову.",
   "profile.unblockError": "Не вдалося розблокувати цього користувача. Спробуйте знову.",
+  "profile.close": "Закрити",
+  "profile.noFollowers": "Ще немає підписників.",
+  "profile.noFollowing": "Ще ні на кого не стежить.",
+  "profile.followListErrorFollowers": "Не вдалося завантажити підписників.",
+  "profile.followListErrorFollowing": "Не вдалося завантажити підписку.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_uk;

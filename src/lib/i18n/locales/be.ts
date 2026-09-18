@@ -171,6 +171,11 @@ const d_be = {
   "profile.relForbidden": "Вы не можаце зрабіць гэта з гэтым карыстальнікам.",
   "profile.blockError": "Не ўдалося заблакіраваць гэтага карыстальніка. Паспрабуйце яшчэ раз.",
   "profile.unblockError": "Не ўдалося разблакіраваць гэтага карыстальніка. Паспрабуйце яшчэ раз.",
+  "profile.close": "Блізка",
+  "profile.noFollowers": "Пакуль няма падпісчыкаў.",
+  "profile.noFollowing": "Пакуль ні на каго не падпісаны.",
+  "profile.followListErrorFollowers": "Не ўдалося загрузіць падпісчыкаў.",
+  "profile.followListErrorFollowing": "Не ўдалося загрузіць падпіску.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_be;

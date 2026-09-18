@@ -171,6 +171,11 @@ const d_gaa = {
   "profile.relForbidden": "Onyɛŋ okɛ mɔ nɛɛ afee nakai.",
   "profile.blockError": "Enyɛɛɛ etsĩ mɔ nɛɛ naa. Kaa ekoŋŋ.",
   "profile.unblockError": "Enyɛɛɛ egbele mɔ nɛɛ naa. Kaa ekoŋŋ.",
+  "profile.close": "Gbalamɔ",
+  "profile.noFollowers": "Mɛi ni nyiɛɔ esɛɛ lɛ bɛ lolo.",
+  "profile.noFollowing": "Enyiɛɛɛɛ mɔ ko sɛɛ lolo.",
+  "profile.followListErrorFollowers": "Enyɛɛɛ ekɛ sɛɛnyiɛlɔi lɛ awo mli.",
+  "profile.followListErrorFollowing": "Enyɛɛɛ ekɛ nɔ ni nyiɛ sɛɛ lɛ awo mli.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gaa;

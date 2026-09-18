@@ -171,6 +171,11 @@ const d_bs = {
   "profile.relForbidden": "Ne možete to učiniti s ovim korisnikom.",
   "profile.blockError": "Nije moguće blokirati ovog korisnika. Pokušajte ponovo.",
   "profile.unblockError": "Nije moguće deblokirati ovog korisnika. Pokušajte ponovo.",
+  "profile.close": "Zatvori",
+  "profile.noFollowers": "Još nema pratilaca.",
+  "profile.noFollowing": "Ne pratim još nikoga.",
+  "profile.followListErrorFollowers": "Nije moguće učitati pratioce.",
+  "profile.followListErrorFollowing": "Nije moguće učitati sljedeće.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bs;

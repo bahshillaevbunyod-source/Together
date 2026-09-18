@@ -171,6 +171,11 @@ const d_mai = {
   "profile.relForbidden": "एहि उपयोगकर्ताक संग अहाँ से नहि क’ सकैत छी.",
   "profile.blockError": "एहि प्रयोक्ता केँ ब्लॉक नहि क’ सकल. फेर कोशिश करू।",
   "profile.unblockError": "एहि प्रयोक्ता केँ अनब्लॉक नहि क’ सकल. फेर कोशिश करू।",
+  "profile.close": "बंद करू",
+  "profile.noFollowers": "एखन धरि कोनो फॉलोअर्स नहि।",
+  "profile.noFollowing": "एखन धरि ककरो फॉलो नहि क रहल छी।",
+  "profile.followListErrorFollowers": "फॉलोअर्स लोड नहि क’ सकल.",
+  "profile.followListErrorFollowing": "फॉलोइंग लोड नहि क’ सकल.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mai;

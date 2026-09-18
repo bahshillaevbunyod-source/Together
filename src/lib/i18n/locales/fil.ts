@@ -171,6 +171,11 @@ const d_fil = {
   "profile.relForbidden": "Hindi mo magagawa iyon sa user na ito.",
   "profile.blockError": "Hindi ma-block ang user na ito. Subukan muli.",
   "profile.unblockError": "Hindi ma-unblock ang user na ito. Subukan muli.",
+  "profile.close": "Isara",
+  "profile.noFollowers": "Wala pang followers.",
+  "profile.noFollowing": "Hindi pa sumusunod sa sinuman.",
+  "profile.followListErrorFollowers": "Hindi ma-load ang mga tagasubaybay.",
+  "profile.followListErrorFollowing": "Hindi ma-load ang sumusunod.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fil;

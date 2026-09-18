@@ -171,6 +171,11 @@ const ja = {
   "profile.relForbidden": "このユーザーではそれを行うことはできません。",
   "profile.blockError": "このユーザーをブロックできませんでした。もう一度やり直してください。",
   "profile.unblockError": "このユーザーのブロックを解除できませんでした。もう一度やり直してください。",
+  "profile.close": "閉じる",
+  "profile.noFollowers": "まだフォロワーはいません。",
+  "profile.noFollowing": "まだ誰もフォローしていません。",
+  "profile.followListErrorFollowers": "フォロワーを読み込めませんでした。",
+  "profile.followListErrorFollowing": "以下を読み込めませんでした。",
 } satisfies Record<TranslationKey, string>;
 
 export default ja;

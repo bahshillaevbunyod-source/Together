@@ -171,6 +171,11 @@ const d_ts = {
   "profile.relForbidden": "A wu nge swi koti ku endla sweswo hi mutirhisi loyi.",
   "profile.blockError": "A swi swi kotanga ku sivela mutirhisi loyi. Ringeta nakambe.",
   "profile.unblockError": "A swi swi kotanga ku pfula xisirhelelo xa mutirhisi loyi. Ringeta nakambe.",
+  "profile.close": "Pfala",
+  "profile.noFollowers": "Ku hava valandzeri ku fikela sweswi.",
+  "profile.noFollowing": "A ndzi landzeleli munhu ku fikela sweswi.",
+  "profile.followListErrorFollowers": "A swi swi kotanga ku layicha valandzeri.",
+  "profile.followListErrorFollowing": "A swi koteki ku layicha ku landzela.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ts;

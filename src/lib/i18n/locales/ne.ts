@@ -171,6 +171,11 @@ const d_ne = {
   "profile.relForbidden": "तपाईं यो प्रयोगकर्तासँग गर्न सक्नुहुन्न।",
   "profile.blockError": "यो प्रयोगकर्तालाई रोक लगाउन सकिएन। पुन: प्रयास गर्नुहोस्।",
   "profile.unblockError": "यो प्रयोगकर्तालाई अनब्लक गर्न सकिएन। पुन: प्रयास गर्नुहोस्।",
+  "profile.close": "बन्द गर्नुहोस्",
+  "profile.noFollowers": "अहिलेसम्म कुनै अनुयायीहरू छैनन्।",
+  "profile.noFollowing": "अहिलेसम्म कसैलाई पछ्याएको छैन।",
+  "profile.followListErrorFollowers": "फलोअरहरू लोड गर्न सकिएन।",
+  "profile.followListErrorFollowing": "निम्न लोड गर्न सकिएन।",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ne;

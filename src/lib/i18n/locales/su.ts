@@ -171,6 +171,11 @@ const d_su = {
   "profile.relForbidden": "Anjeun teu tiasa ngalakukeun éta sareng pangguna ieu.",
   "profile.blockError": "Teu bisa meungpeuk pamaké ieu. Cobian deui.",
   "profile.unblockError": "Teu tiasa ngabuka blokir pangguna ieu. Cobian deui.",
+  "profile.close": "Tutup",
+  "profile.noFollowers": "Teu acan aya pengikut.",
+  "profile.noFollowing": "Teu nuturkeun saha waé.",
+  "profile.followListErrorFollowers": "Teu tiasa ngamuat pengikut.",
+  "profile.followListErrorFollowing": "Teu tiasa ngamuat nuturkeun.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_su;

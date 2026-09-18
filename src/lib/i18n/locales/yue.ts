@@ -171,6 +171,11 @@ const d_yue = {
   "profile.relForbidden": "你唔可以用呢個用戶咁做。",
   "profile.blockError": "封鎖唔到呢個用戶。再試多次。",
   "profile.unblockError": "解除封鎖唔到呢個用戶。再試多次。",
+  "profile.close": "閂咗",
+  "profile.noFollowers": "仲未有追隨者。",
+  "profile.noFollowing": "仲未跟緊任何人。",
+  "profile.followListErrorFollowers": "載入唔到追蹤者。",
+  "profile.followListErrorFollowing": "載入唔到追蹤內容。",
 } satisfies Record<TranslationKey, string>;
 
 export default d_yue;

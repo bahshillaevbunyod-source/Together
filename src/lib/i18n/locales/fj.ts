@@ -171,6 +171,11 @@ const d_fj = {
   "profile.relForbidden": "E sega ni rawa ni o cakava oqori ena vakayagataki oqo.",
   "profile.blockError": "E sega ni rawa ni vakatabui na vakayagataki oqo. Tovolea tale.",
   "profile.unblockError": "E sega ni rawa ni vakatabui na vakayagataki oqo. Tovolea tale.",
+  "profile.close": "Voleka",
+  "profile.noFollowers": "Se bera ni dua na daumuri.",
+  "profile.noFollowing": "Sega ni muria e dua se bera.",
+  "profile.followListErrorFollowers": "E sega ni rawa ni vakavodoki.",
+  "profile.followListErrorFollowing": "E sega ni rawa ni vakavodoki.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fj;

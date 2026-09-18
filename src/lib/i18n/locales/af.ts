@@ -171,6 +171,11 @@ const d_af = {
   "profile.relForbidden": "Jy kan dit nie met hierdie gebruiker doen nie.",
   "profile.blockError": "Kon nie hierdie gebruiker blokkeer nie. Probeer weer.",
   "profile.unblockError": "Kon nie hierdie gebruiker deblokkeer nie. Probeer weer.",
+  "profile.close": "Maak toe",
+  "profile.noFollowers": "Nog geen volgers nie.",
+  "profile.noFollowing": "Nog niemand volg nie.",
+  "profile.followListErrorFollowers": "Kon nie volgers laai nie.",
+  "profile.followListErrorFollowing": "Kon nie volgende laai nie.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_af;

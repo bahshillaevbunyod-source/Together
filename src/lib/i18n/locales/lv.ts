@@ -171,6 +171,11 @@ const d_lv = {
   "profile.relForbidden": "Jūs to nevarat izdarīt ar šo lietotāju.",
   "profile.blockError": "Nevarēja bloķēt šo lietotāju. Mēģiniet vēlreiz.",
   "profile.unblockError": "Nevarēja atbloķēt šo lietotāju. Mēģiniet vēlreiz.",
+  "profile.close": "Aizvērt",
+  "profile.noFollowers": "Vēl nav neviena sekotāja.",
+  "profile.noFollowing": "Vēl nevienam neseko.",
+  "profile.followListErrorFollowers": "Nevarēja ielādēt sekotājus.",
+  "profile.followListErrorFollowing": "Nevarēja ielādēt sekošanu.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lv;

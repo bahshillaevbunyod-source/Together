@@ -171,6 +171,11 @@ const d_scn = {
   "profile.relForbidden": "Nun si po fari cu chistu utenti.",
   "profile.blockError": "Nun fu pututu bluccari st'utenti. Pruva n'autra vota.",
   "profile.unblockError": "Nun fu potutu sbluccari st'utenti. Pruva n'autra vota.",
+  "profile.close": "Chiudi",
+  "profile.noFollowers": "Ancora nuḍḍu seguaci.",
+  "profile.noFollowing": "Nun segui ancora nuddu.",
+  "profile.followListErrorFollowers": "Nun putìa carricari li seguaci.",
+  "profile.followListErrorFollowing": "Nun putìa carricari chiḍḍu ca segui.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_scn;

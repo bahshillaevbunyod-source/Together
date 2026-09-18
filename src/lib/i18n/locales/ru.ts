@@ -171,6 +171,11 @@ const ru = {
   "profile.relForbidden": "Вы не можете сделать это с этим пользователем.",
   "profile.blockError": "Не удалось заблокировать этого пользователя. Попробуйте еще раз.",
   "profile.unblockError": "Не удалось разблокировать этого пользователя. Попробуйте еще раз.",
+  "profile.close": "Закрыть",
+  "profile.noFollowers": "Пока нет подписчиков.",
+  "profile.noFollowing": "Пока ни на кого не подписан.",
+  "profile.followListErrorFollowers": "Не удалось загрузить подписчиков.",
+  "profile.followListErrorFollowing": "Не удалось загрузить следующее.",
 } satisfies Record<TranslationKey, string>;
 
 export default ru;

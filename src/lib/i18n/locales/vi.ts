@@ -171,6 +171,11 @@ const d_vi = {
   "profile.relForbidden": "Bạn không thể làm điều đó với người dùng này.",
   "profile.blockError": "Không thể chặn người dùng này. Hãy thử lại.",
   "profile.unblockError": "Không thể bỏ chặn người dùng này. Hãy thử lại.",
+  "profile.close": "Đóng",
+  "profile.noFollowers": "Chưa có người theo dõi.",
+  "profile.noFollowing": "Chưa theo dõi ai cả.",
+  "profile.followListErrorFollowers": "Không thể tải người theo dõi.",
+  "profile.followListErrorFollowing": "Không thể tải nội dung sau.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_vi;

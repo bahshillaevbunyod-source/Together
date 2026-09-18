@@ -171,6 +171,11 @@ const d_pam = {
   "profile.relForbidden": "E mu agyung gawan ita keng user ayni.",
   "profile.blockError": "Eku agyung i-block ining user. Subukan meng pasibayu.",
   "profile.unblockError": "Eku agyung i-unblock ining user. Subukan meng pasibayu.",
+  "profile.close": "malapit",
+  "profile.noFollowers": "Ala pang talatuki.",
+  "profile.noFollowing": "Eku pa susunud keng ninu man.",
+  "profile.followListErrorFollowers": "Eku agyung i-load ing followers.",
+  "profile.followListErrorFollowing": "Eku agyung i-load ing susunud.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pam;

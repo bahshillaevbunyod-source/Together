@@ -171,6 +171,11 @@ const d_tt = {
   "profile.relForbidden": "Сез бу кулланучы белән эшли алмыйсыз.",
   "profile.blockError": "Бу кулланучыны блоклый алмыйм. Кабатлап карагыз.",
   "profile.unblockError": "Бу кулланучыны блоклап булмый. Кабатлап карагыз.",
+  "profile.close": "Ябу",
+  "profile.noFollowers": "Әлегә иярүчеләр юк.",
+  "profile.noFollowing": "Әле беркемгә дә иярмим.",
+  "profile.followListErrorFollowers": "Ияртүчеләрне йөкләп булмый.",
+  "profile.followListErrorFollowing": "Түбәндә йөкләп булмый.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tt;

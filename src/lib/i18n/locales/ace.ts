@@ -171,6 +171,11 @@ const d_ace = {
   "profile.relForbidden": "Kamoe hana jeuet kamoe peubuet lagee nyan ngon ureueng ngui nyoe.",
   "profile.blockError": "Hana jeuet ta blok ureueng ngui nyoe. Cuba lom.",
   "profile.unblockError": "Hana jeuet neubuka blokir ureueng ngui nyoe. Cuba lom.",
+  "profile.close": "Tutop",
+  "profile.noFollowers": "Hana pengikut lom.",
+  "profile.noFollowing": "Hana ikot soe lom.",
+  "profile.followListErrorFollowers": "Hana jeut load pengikut.",
+  "profile.followListErrorFollowing": "Hana jeuet load meuikot.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ace;

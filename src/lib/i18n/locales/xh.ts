@@ -171,6 +171,11 @@ const d_xh = {
   "profile.relForbidden": "Awunakuyenza loo nto ngalo msebenzisi.",
   "profile.blockError": "Ayikwazanga ukuvimba lo msebenzisi. Zama kwakhona.",
   "profile.unblockError": "Ayikwazanga ukuvulela lo msebenzisi. Zama kwakhona.",
+  "profile.close": "Vala",
+  "profile.noFollowers": "Akukho balandeli okwangoku.",
+  "profile.noFollowing": "Awulandeli mntu okwangoku.",
+  "profile.followListErrorFollowers": "Ayikwazanga ukulayisha abalandeli.",
+  "profile.followListErrorFollowing": "Ayikwazanga ukulayisha okulandelayo.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_xh;

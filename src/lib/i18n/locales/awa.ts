@@ -171,6 +171,11 @@ const d_awa = {
   "profile.relForbidden": "आप ई उपयोगकर्ता के साथे अइसन नाहीं कइ सकत हैं।",
   "profile.blockError": "ई उपयोगकर्ता का अवरुद्ध नाहीं कीन जा सकत रहा। फिर से कोशिश करा।",
   "profile.unblockError": "ई उपयोगकर्ता का अनब्लॉक नाहीं कीन जा सकत रहा। फिर से कोशिश करा।",
+  "profile.close": "बंद करा",
+  "profile.noFollowers": "अबहीं तक कौनो अनुयायी नाहीं।",
+  "profile.noFollowing": "अबहीं तक केहू का फॉलो नाहीं करत अहै।",
+  "profile.followListErrorFollowers": "फॉलोअर्स लोड नाहीं कइ पाइन।",
+  "profile.followListErrorFollowing": "निम्नलिखित लोड नाहीं होइ पावा।",
 } satisfies Record<TranslationKey, string>;
 
 export default d_awa;

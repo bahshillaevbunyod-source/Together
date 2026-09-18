@@ -171,6 +171,11 @@ const d_nus = {
   "profile.relForbidden": "/Ciɛ de luäŋ kɛ lätni jɛ kɛ ram ɛmɛ.",
   "profile.blockError": "/Ka̱n yuthɛr ɛmɛ luäŋ kɛ ga̱ŋ. Ɣɔ̱n ɛ nyɔk.",
   "profile.unblockError": "/Ka̱n yuthɛr ɛmɛ luäŋ kɛ wuɔ̱c. Ɣɔ̱n ɛ nyɔk.",
+  "profile.close": "Ga̱ŋ",
+  "profile.noFollowers": "/Thiɛlɛ nɛy ti guɔ̱ɔ̱rkɛ jɛ.",
+  "profile.noFollowing": "/Ci raan guɔ̱ɔ̱r ŋotdɛ.",
+  "profile.followListErrorFollowers": "/Ka̱n nɛy tin guɔ̱ɔ̱rkɛ jɛ luäŋ kɛ loc thi̱n.",
+  "profile.followListErrorFollowing": "/Ka̱n jɛ luäŋ kɛ loc jɔk.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_nus;

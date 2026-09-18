@@ -177,6 +177,11 @@ export const en = {
   "profile.relForbidden": "You can’t do that with this user.",
   "profile.blockError": "Couldn’t block this user. Try again.",
   "profile.unblockError": "Couldn’t unblock this user. Try again.",
+  "profile.close": "Close",
+  "profile.noFollowers": "No followers yet.",
+  "profile.noFollowing": "Not following anyone yet.",
+  "profile.followListErrorFollowers": "Couldn’t load followers.",
+  "profile.followListErrorFollowing": "Couldn’t load following.",
 } as const;
 
 export type TranslationKey = keyof typeof en;

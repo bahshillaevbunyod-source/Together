@@ -171,6 +171,11 @@ const d_eo = {
   "profile.relForbidden": "Vi ne povas fari tion kun ĉi tiu uzanto.",
   "profile.blockError": "Ne eblis bloki ĉi tiun uzanton. Provu denove.",
   "profile.unblockError": "Ne eblis malbloki ĉi tiun uzanton. Provu denove.",
+  "profile.close": "Fermu",
+  "profile.noFollowers": "Ankoraŭ neniuj sekvantoj.",
+  "profile.noFollowing": "Ankoraŭ ne sekvas iun.",
+  "profile.followListErrorFollowers": "Ne eblis ŝargi adeptojn.",
+  "profile.followListErrorFollowing": "Ne eblis ŝarĝi sekvantan.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_eo;

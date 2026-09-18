@@ -171,6 +171,11 @@ const d_pa_Arab = {
   "profile.relForbidden": "تسی ایس ورتن آلے دے نال انج نئیں کر سکدے۔",
   "profile.blockError": "اس ورتن آلے نو بلاک نئیں کر سکیا۔ فیر کوشش کرو۔",
   "profile.unblockError": "اس ورتن آلے نو ان بلاک نئیں کیتا جا سکیا۔ فیر کوشش کرو۔",
+  "profile.close": "بند کرو",
+  "profile.noFollowers": "ہلے تک کوئی پیروکار نئیں۔",
+  "profile.noFollowing": "ہلے تیکر کسے نوں فالو نئیں کر رہیا۔",
+  "profile.followListErrorFollowers": "پیروکار لوڈ نئیں کر سکے۔",
+  "profile.followListErrorFollowing": "مندرجہ ذیل لوڈ نئیں ہو سکیا۔",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pa_Arab;

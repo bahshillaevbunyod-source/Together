@@ -171,6 +171,11 @@ const d_sq = {
   "profile.relForbidden": "Ju nuk mund ta bëni këtë me këtë përdorues.",
   "profile.blockError": "Ky përdorues nuk mund të bllokohej. Provo sërish.",
   "profile.unblockError": "Ky përdorues nuk mund të zhbllokohej. Provo sërish.",
+  "profile.close": "Mbylle",
+  "profile.noFollowers": "Ende nuk ka ndjekës.",
+  "profile.noFollowing": "Nuk ndjek ende askënd.",
+  "profile.followListErrorFollowers": "Ndjekësit nuk mund të ngarkoheshin.",
+  "profile.followListErrorFollowing": "Nuk mund të ngarkohej vijimi.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sq;

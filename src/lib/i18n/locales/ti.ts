@@ -171,6 +171,11 @@ const d_ti = {
   "profile.relForbidden": "ምስ’ዚ ተጠቃሚ’ዚ ከምኡ ክትገብር ኣይትኽእልን ኢኻ።",
   "profile.blockError": "ነዚ ተጠቃሚ’ዚ ክዓግቶ ኣይከኣለን። እንደገና ፈትን።",
   "profile.unblockError": "ነዚ ተጠቃሚ’ዚ ክፈትሖ ኣይከኣለን። እንደገና ፈትን።",
+  "profile.close": "ዕጸዎ።",
+  "profile.noFollowers": "ገና ተኸታተልቲ የለን።",
+  "profile.noFollowing": "ክሳብ ሕጂ ንዝኾነ ሰብ ኣይከታተልን።",
+  "profile.followListErrorFollowers": "ተኸታተልቲ ክጽዕን ኣይከኣለን።",
+  "profile.followListErrorFollowing": "ተኸታታሊ ክጽዕን ኣይከኣለን።",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ti;

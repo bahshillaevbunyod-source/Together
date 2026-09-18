@@ -171,6 +171,11 @@ const d_lo = {
   "profile.relForbidden": "ທ່ານບໍ່ສາມາດເຮັດແນວນັ້ນກັບຜູ້ໃຊ້ນີ້.",
   "profile.blockError": "ບໍ່ສາມາດບລັອກຜູ້ໃຊ້ນີ້ໄດ້. ລອງອີກຄັ້ງ.",
   "profile.unblockError": "ບໍ່ສາມາດປົດບລັອກຜູ້ໃຊ້ນີ້ໄດ້. ລອງອີກຄັ້ງ.",
+  "profile.close": "ປິດ",
+  "profile.noFollowers": "ບໍ່ມີຜູ້ຕິດຕາມເທື່ອ.",
+  "profile.noFollowing": "ບໍ່ໄດ້ຕິດຕາມໃຜເທື່ອ.",
+  "profile.followListErrorFollowers": "ບໍ່ສາມາດໂຫຼດຜູ້ຕິດຕາມໄດ້.",
+  "profile.followListErrorFollowing": "ບໍ່ສາມາດໂຫຼດການຕິດຕາມໄດ້.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lo;

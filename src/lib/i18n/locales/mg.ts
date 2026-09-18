@@ -171,6 +171,11 @@ const d_mg = {
   "profile.relForbidden": "Tsy afaka manao izany amin'ity mpampiasa ity ianao.",
   "profile.blockError": "Tsy afaka nanakana ity mpampiasa ity. Andramo indray mandeha.",
   "profile.unblockError": "Tsy afaka nanafoana ity mpampiasa ity. Andramo indray mandeha.",
+  "profile.close": "Akatona",
+  "profile.noFollowers": "Tsy mbola misy mpanaraka.",
+  "profile.noFollowing": "Tsy mbola manaraka na iza na iza.",
+  "profile.followListErrorFollowers": "Tsy afaka nampiditra mpanaraka.",
+  "profile.followListErrorFollowing": "Tsy afaka nampiditra ny manaraka.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mg;

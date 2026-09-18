@@ -171,6 +171,11 @@ const d_la = {
   "profile.relForbidden": "Hoc usore facere non potes.",
   "profile.blockError": "Non impedit hunc usum. Iterum tenta.",
   "profile.unblockError": "Non potuisti hunc usorem decludere. Iterum tenta.",
+  "profile.close": "Claudere",
+  "profile.noFollowers": "Quisque sed nulla.",
+  "profile.noFollowing": "Ne quis tamen sequentia.",
+  "profile.followListErrorFollowers": "Sectatores onerare non poterant.",
+  "profile.followListErrorFollowing": "Non poterant sequenti onerare.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_la;

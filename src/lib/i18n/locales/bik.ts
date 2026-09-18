@@ -171,6 +171,11 @@ const d_bik = {
   "profile.relForbidden": "Dai mo iyan magigibo sa paragamit na ini.",
   "profile.blockError": "Dai nabara an paragamit na ini. Probaran giraray.",
   "profile.unblockError": "Dai na-unblock an user na ini. Probaran giraray.",
+  "profile.close": "Isara",
+  "profile.noFollowers": "Mayo pang parasunod.",
+  "profile.noFollowing": "Dai pa nagsusunod sa kiisay man.",
+  "profile.followListErrorFollowers": "Dai naka-load nin mga parasunod.",
+  "profile.followListErrorFollowing": "Dai naka-load nin minasunod.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bik;

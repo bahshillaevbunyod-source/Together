@@ -171,6 +171,11 @@ const d_hu = {
   "profile.relForbidden": "Ezzel a felhasználóval ezt nem teheti meg.",
   "profile.blockError": "Nem sikerült letiltani ezt a felhasználót. Próbáld újra.",
   "profile.unblockError": "Nem sikerült feloldani ezt a felhasználót. Próbáld újra.",
+  "profile.close": "Bezárás",
+  "profile.noFollowers": "Még nincsenek követők.",
+  "profile.noFollowing": "Még nem követ senkit.",
+  "profile.followListErrorFollowers": "Nem sikerült betölteni a követőket.",
+  "profile.followListErrorFollowing": "Nem sikerült betölteni a követést.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hu;

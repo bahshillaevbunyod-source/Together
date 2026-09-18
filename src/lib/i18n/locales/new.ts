@@ -171,6 +171,11 @@ const d_new = {
   "profile.relForbidden": "थ्व प्रयोगकर्तालिसे छिं अथे याये फइमखु ।",
   "profile.blockError": "थ्व छ्यलामियात ब्लक याये मफुत । हाकनं कुतः या ।",
   "profile.unblockError": "थ्व छ्यलामियात अनब्लक याये मफुत । हाकनं कुतः या ।",
+  "profile.close": "तिनाब्यु",
+  "profile.noFollowers": "आःतक फलोअर्स मदुनि ।",
+  "profile.noFollowing": "आःतकं सुयातं फलो यानाच्वंगु मदुनि ।",
+  "profile.followListErrorFollowers": "फलोअर्स लोड याये मफुत ।",
+  "profile.followListErrorFollowing": "फलोइङ लोड याये मफुत ।",
 } satisfies Record<TranslationKey, string>;
 
 export default d_new;

@@ -171,6 +171,11 @@ const d_crh = {
   "profile.relForbidden": "Бу къулланыджынен ойле япып оламазсынъ.",
   "profile.blockError": "Бу къулланыджыны къапатып оламады. Кене тырышынъыз.",
   "profile.unblockError": "Бу къулланыджынынъ блокировкасыны ачып оламады. Кене тырышынъыз.",
+  "profile.close": "Якъын",
+  "profile.noFollowers": "Аля даа излейиджилер ёкъ.",
+  "profile.noFollowing": "Даа кимсенинъ артындан кетмей.",
+  "profile.followListErrorFollowers": "Излейиджилерни юклеп оламады.",
+  "profile.followListErrorFollowing": "Излейиджилерни юклеп оламады.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_crh;

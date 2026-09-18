@@ -171,6 +171,11 @@ const d_btx = {
   "profile.relForbidden": "La banci ilakokenndu bage ras pengguna enda.",
   "profile.blockError": "Labo banci iblokirndu pengguna enda. Cubakenndu mulihi.",
   "profile.unblockError": "Labo banci ibuka blokir pengguna enda. Cubakenndu mulihi.",
+  "profile.close": "Tutup",
+  "profile.noFollowers": "La lit pengikutna.",
+  "profile.noFollowing": "Labo ngikutken ise pe lenga.",
+  "profile.followListErrorFollowers": "Labo banci muat pengikutna.",
+  "profile.followListErrorFollowing": "Labo banci muat ngikutken.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_btx;

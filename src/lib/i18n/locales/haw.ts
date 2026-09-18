@@ -171,6 +171,11 @@ const d_haw = {
   "profile.relForbidden": "ʻAʻole hiki iā ʻoe ke hana me kēia mea hoʻohana.",
   "profile.blockError": "ʻAʻole hiki ke ālai i kēia mea hoʻohana. Hana hou.",
   "profile.unblockError": "ʻAʻole hiki ke wehe i kēia mea hoʻohana. Hana hou.",
+  "profile.close": "Pani",
+  "profile.noFollowers": "ʻAʻohe mea hahai.",
+  "profile.noFollowing": "ʻAʻole i hahai i kekahi.",
+  "profile.followListErrorFollowers": "ʻAʻole hiki ke hoʻouka i nā mea hahai.",
+  "profile.followListErrorFollowing": "ʻAʻole hiki ke hoʻouka i ka hahai ʻana.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_haw;

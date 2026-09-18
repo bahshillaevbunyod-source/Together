@@ -171,6 +171,11 @@ const d_bho = {
   "profile.relForbidden": "एह यूजर के साथे रउरा अइसन नइखीं कर सकत.",
   "profile.blockError": "एह प्रयोगकर्ता के ब्लॉक ना कर सकल. एक बेर फेरु से कोशिश करीं।",
   "profile.unblockError": "एह प्रयोगकर्ता के अनब्लॉक ना कर सकल. एक बेर फेरु से कोशिश करीं।",
+  "profile.close": "बंद कर दीं",
+  "profile.noFollowers": "अभी तक कवनो फॉलोअर्स नइखे।",
+  "profile.noFollowing": "अभी तक केहू के फॉलो नईखी करत।",
+  "profile.followListErrorFollowers": "फॉलोअर्स लोड ना हो पावल.",
+  "profile.followListErrorFollowing": "फॉलोइंग लोड ना हो पावल.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bho;

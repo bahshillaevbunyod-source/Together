@@ -171,6 +171,11 @@ const d_zu = {
   "profile.relForbidden": "Awukwazi ukwenza lokho ngalo msebenzisi.",
   "profile.blockError": "Ayikwazanga ukuvimba lo msebenzisi. Zama futhi.",
   "profile.unblockError": "Ayikwazanga ukuvulela lo msebenzisi. Zama futhi.",
+  "profile.close": "Vala",
+  "profile.noFollowers": "Abekho abalandeli okwamanje.",
+  "profile.noFollowing": "Akakalandeli muntu okwamanje.",
+  "profile.followListErrorFollowers": "Ayikwazanga ukulayisha abalandeli.",
+  "profile.followListErrorFollowing": "Ayikwazanga ukulayisha okulandelayo.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_zu;

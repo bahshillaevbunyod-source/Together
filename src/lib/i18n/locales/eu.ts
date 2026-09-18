@@ -171,6 +171,11 @@ const d_eu = {
   "profile.relForbidden": "Ezin duzu hori egin erabiltzaile honekin.",
   "profile.blockError": "Ezin izan da erabiltzaile hau blokeatu. Saiatu berriro.",
   "profile.unblockError": "Ezin izan da desblokeatu erabiltzaile hau. Saiatu berriro.",
+  "profile.close": "Itxi",
+  "profile.noFollowers": "Ez dago jarraitzailerik oraindik.",
+  "profile.noFollowing": "Oraindik ez inori jarraitzen.",
+  "profile.followListErrorFollowers": "Ezin izan dira kargatu jarraitzaileak.",
+  "profile.followListErrorFollowing": "Ezin izan da kargatu jarraitzaileak.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_eu;

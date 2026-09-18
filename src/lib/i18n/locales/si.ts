@@ -171,6 +171,11 @@ const d_si = {
   "profile.relForbidden": "ඔබට මෙම පරිශීලකයා සමඟ එය කළ නොහැක.",
   "profile.blockError": "මෙම පරිශීලකයා අවහිර කිරීමට නොහැකි විය. නැවත උත්සාහ කරන්න.",
   "profile.unblockError": "මෙම පරිශීලකයා අවහිර කිරීම ඉවත් කළ නොහැකි විය. නැවත උත්සාහ කරන්න.",
+  "profile.close": "වසන්න",
+  "profile.noFollowers": "තවමත් අනුගාමිකයින් නැත.",
+  "profile.noFollowing": "තවම කාගෙවත් පස්සෙන් නෑ.",
+  "profile.followListErrorFollowers": "අනුගාමිකයින් පූරණය කළ නොහැකි විය.",
+  "profile.followListErrorFollowing": "පහත පූරණය කළ නොහැකි විය.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_si;

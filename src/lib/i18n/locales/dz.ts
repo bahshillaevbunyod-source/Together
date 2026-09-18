@@ -171,6 +171,11 @@ const d_dz = {
   "profile.relForbidden": "ཁྱོད་ཀྱིས་ ལག་ལེན་པ་འདི་དང་གཅིག་ཁར་ དེ་སྦེ་འབད་མི་ཚུགས།",
   "profile.blockError": "ལག་ལེན་པ་འདི་བཀག་མ་ཚུགས། ལོག་སྟེ་འབད་རྩོལ་བསྐྱེད།",
   "profile.unblockError": "ལག་ལེན་པ་འདི་བཀག་ཆ་འབད་མ་ཚུགས། ལོག་སྟེ་འབད་རྩོལ་བསྐྱེད།",
+  "profile.close": "ཁ་བསྡམས།",
+  "profile.noFollowers": "ད་ལྟོ་ཡང་ རྗེས་འཇུག་པ་མེད།",
+  "profile.noFollowing": "ད་ལྟོ་ཡང་ ག་གི་རྗེས་སུ་མ་འབྲང་།",
+  "profile.followListErrorFollowers": "རྗེས་འཇུག་པ་མངོན་གསལ་འབད་མ་ཚུགས།",
+  "profile.followListErrorFollowing": "འོག་གི་མངོན་གསལ་འབད་མ་ཚུགས།",
 } satisfies Record<TranslationKey, string>;
 
 export default d_dz;

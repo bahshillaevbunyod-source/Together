@@ -171,6 +171,11 @@ const d_tk = {
   "profile.relForbidden": "Bu ulanyjy bilen edip bilmersiňiz.",
   "profile.blockError": "Bu ulanyjyny blokirläp bolmaýar Gaýtadan synanyşyň.",
   "profile.unblockError": "Bu ulanyjyny açyp bolmaýar Gaýtadan synanyşyň.",
+  "profile.close": ".Akyn",
+  "profile.noFollowers": "Entek yzarlaýanlar ýok.",
+  "profile.noFollowing": "Entek hiç kimi yzarlamok.",
+  "profile.followListErrorFollowers": "Yzarlaýjylary ýükläp bolmaýar",
+  "profile.followListErrorFollowing": "Aşakdakylary ýükläp bolmaýar",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tk;

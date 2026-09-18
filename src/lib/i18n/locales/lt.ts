@@ -171,6 +171,11 @@ const d_lt = {
   "profile.relForbidden": "Su šiuo vartotoju to padaryti negalite.",
   "profile.blockError": "Nepavyko užblokuoti šio naudotojo. Bandykite dar kartą.",
   "profile.unblockError": "Nepavyko atblokuoti šio naudotojo. Bandykite dar kartą.",
+  "profile.close": "Uždaryti",
+  "profile.noFollowers": "Sekėjų dar nėra.",
+  "profile.noFollowing": "Nieko dar neseka.",
+  "profile.followListErrorFollowers": "Nepavyko įkelti stebėtojų.",
+  "profile.followListErrorFollowing": "Nepavyko įkelti sekimo.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lt;

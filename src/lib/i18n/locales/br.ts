@@ -171,6 +171,11 @@ const d_br = {
   "profile.relForbidden": "N'haller ket ober kement-se gant an implijer-mañ.",
   "profile.blockError": "N'haller ket stankañ an implijer-mañ. Klaskit en-dro.",
   "profile.unblockError": "N'haller ket distankañ an implijer-mañ. Klaskit en-dro.",
+  "profile.close": "Serriñ",
+  "profile.noFollowers": "Heulier ebet c'hoazh.",
+  "profile.noFollowing": "N'on ket o heuliañ den ebet c'hoazh.",
+  "profile.followListErrorFollowers": "N'haller ket kargañ heulierien.",
+  "profile.followListErrorFollowing": "N'haller ket kargañ ar pezh a heul.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_br;

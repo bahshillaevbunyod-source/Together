@@ -171,6 +171,11 @@ const d_lb = {
   "profile.relForbidden": "Dir kënnt dat net mat dësem Benotzer maachen.",
   "profile.blockError": "Konnt dëse Benotzer net blockéieren. Probéiert nach eng Kéier.",
   "profile.unblockError": "Konnt dëse Benotzer net deblockéieren. Probéiert nach eng Kéier.",
+  "profile.close": "Zoumaachen",
+  "profile.noFollowers": "Nach keng Follower.",
+  "profile.noFollowing": "Nach kee verfollegen.",
+  "profile.followListErrorFollowers": "Konnt Follower net lueden.",
+  "profile.followListErrorFollowing": "Konnt folgend net lueden.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lb;

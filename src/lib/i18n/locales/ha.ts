@@ -171,6 +171,11 @@ const d_ha = {
   "profile.relForbidden": "Ba za ku iya yin hakan tare da wannan mai amfani ba.",
   "profile.blockError": "Ba za a iya toshe wannan mai amfani ba. Gwada kuma.",
   "profile.unblockError": "An kasa buɗe wannan mai amfani. Gwada kuma.",
+  "profile.close": "Kusa",
+  "profile.noFollowers": "Babu mabiya tukuna.",
+  "profile.noFollowing": "Ba a bin kowa tukuna.",
+  "profile.followListErrorFollowers": "An kasa loda mabiya.",
+  "profile.followListErrorFollowing": "An kasa loda abubuwan biyo baya.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ha;

@@ -171,6 +171,11 @@ const d_lg = {
   "profile.relForbidden": "Ekyo tosobola kukikola na mukozesa ono.",
   "profile.blockError": "Teyasobodde kuziyiza mukozesa ono. Gezaako nate.",
   "profile.unblockError": "Teyasobodde kusumulula mukozesa ono. Gezaako nate.",
+  "profile.close": "Ggalawo",
+  "profile.noFollowers": "Tewali bagoberezi n'okutuusa kati.",
+  "profile.noFollowing": "Sinnagoberera muntu yenna.",
+  "profile.followListErrorFollowers": "Teyasobodde kutikka bagoberezi.",
+  "profile.followListErrorFollowing": "Teyasobodde kutikka kugoberera.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lg;

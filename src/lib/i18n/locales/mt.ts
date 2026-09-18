@@ -171,6 +171,11 @@ const d_mt = {
   "profile.relForbidden": "Ma tistax tagħmel dan ma 'dan l-utent.",
   "profile.blockError": "Ma setgħetx timblokka lil dan l-utent. Erġa' pprova.",
   "profile.unblockError": "Ma setgħetx tiżblokka dan l-utent. Erġa' pprova.",
+  "profile.close": "Agħlaq",
+  "profile.noFollowers": "S'issa l-ebda segwaċi.",
+  "profile.noFollowing": "Għadu ma jsegwi lil ħadd.",
+  "profile.followListErrorFollowers": "Ma setgħetx tagħbija segwaċi.",
+  "profile.followListErrorFollowing": "Ma setgħetx tagħbija li ġej.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mt;

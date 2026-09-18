@@ -171,6 +171,11 @@ const d_ay = {
   "profile.relForbidden": "Aka apnaqirimpixa janiwa ukham lurañjamäkiti.",
   "profile.blockError": "Janiw aka apnaqirirux jark’kaspati. Mayampiw yantʼañama.",
   "profile.unblockError": "Janiw aka apnaqirirux jark’aqañjamäkiti. Mayampiw yantʼañama.",
+  "profile.close": "Jist’antaña",
+  "profile.noFollowers": "Jichhakamax janiw arkirinakax utjkiti.",
+  "profile.noFollowing": "Janiw khitirus arktawaykiti.",
+  "profile.followListErrorFollowers": "Janiw arkirinakarux cargañjamäkänti.",
+  "profile.followListErrorFollowing": "Janiw arktañax cargañjamäkiti.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ay;

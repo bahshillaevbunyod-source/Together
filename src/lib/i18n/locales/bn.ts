@@ -171,6 +171,11 @@ const d_bn = {
   "profile.relForbidden": "আপনি এই ব্যবহারকারীর সাথে এটি করতে পারবেন না।",
   "profile.blockError": "এই ব্যবহারকারীকে ব্লক করা যায়নি। আবার চেষ্টা করুন",
   "profile.unblockError": "এই ব্যবহারকারীকে আনব্লক করা যায়নি। আবার চেষ্টা করুন",
+  "profile.close": "বন্ধ",
+  "profile.noFollowers": "এখনো কোনো অনুগামী নেই।",
+  "profile.noFollowing": "এখনও কাউকে অনুসরণ করছি না।",
+  "profile.followListErrorFollowers": "ফলোয়ার লোড করা যায়নি।",
+  "profile.followListErrorFollowing": "অনুসরণ করা লোড করা যায়নি।",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bn;

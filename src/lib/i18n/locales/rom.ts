@@ -171,6 +171,11 @@ const d_rom = {
   "profile.relForbidden": "Tu nashti te keres godo kadale uźitoreça.",
   "profile.blockError": "Nashti te blokirinel pes akava uźitori. Zumav pale.",
   "profile.unblockError": "Nashti te putarel pes akava uźitori. Zumav pale.",
+  "profile.close": "Phande",
+  "profile.noFollowers": "Akana naj śerutne.",
+  "profile.noFollowing": "Akana na śunav khonik.",
+  "profile.followListErrorFollowers": "Nashti te lav le śerutnen.",
+  "profile.followListErrorFollowing": "Nashti te lav o śerutno.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_rom;

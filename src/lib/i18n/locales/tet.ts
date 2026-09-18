@@ -171,6 +171,11 @@ const d_tet = {
   "profile.relForbidden": "Ita-boot labele halo ida-ne'e ho utilizadór ida-ne'e.",
   "profile.blockError": "Labele blokeia utilizadór ida-ne'e. Koko fali.",
   "profile.unblockError": "Labele desblokeia utilizadór ida-ne'e. Koko fali.",
+  "profile.close": "Taka",
+  "profile.noFollowers": "Seidauk iha seguidor sira.",
+  "profile.noFollowing": "Seidauk tuir ema ida.",
+  "profile.followListErrorFollowers": "Labele hatama seguidor sira.",
+  "profile.followListErrorFollowing": "Labele loke tuirmai.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tet;

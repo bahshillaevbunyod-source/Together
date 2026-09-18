@@ -171,6 +171,11 @@ const d_ss = {
   "profile.relForbidden": "Angeke ukwati kwenta loko ngalomsebentisi.",
   "profile.blockError": "Ayikhoni kuvimba lomsebentisi. Yetama futsi.",
   "profile.unblockError": "Ayikhoni kuvula lomsebentisi. Yetama futsi.",
+  "profile.close": "Vala",
+  "profile.noFollowers": "Kute balandzeli kwanyalo.",
+  "profile.noFollowing": "Akulandzeli muntfu okwamanje.",
+  "profile.followListErrorFollowers": "Angizange ngikhone kulayisha balandzeli.",
+  "profile.followListErrorFollowing": "Ayikhoni kulayisha lokulandzelako.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ss;

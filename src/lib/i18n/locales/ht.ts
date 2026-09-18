@@ -171,6 +171,11 @@ const d_ht = {
   "profile.relForbidden": "Ou pa ka fè sa ak itilizatè sa a.",
   "profile.blockError": "Pa t 'kapab bloke itilizatè sa a. Eseye ankò.",
   "profile.unblockError": "Pa t 'kapab debloke itilizatè sa a. Eseye ankò.",
+  "profile.close": "Fèmen",
+  "profile.noFollowers": "Pa gen patizan ankò.",
+  "profile.noFollowing": "Pa swiv pèsonn ankò.",
+  "profile.followListErrorFollowers": "Pa t 'kapab chaje disip yo.",
+  "profile.followListErrorFollowing": "Pa t 'kapab chaje sa yo.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ht;

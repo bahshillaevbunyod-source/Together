@@ -171,6 +171,11 @@ const d_th = {
   "profile.relForbidden": "คุณไม่สามารถทำสิ่งนั้นกับผู้ใช้รายนี้ได้",
   "profile.blockError": "ไม่สามารถบล็อกผู้ใช้รายนี้ได้ ลองอีกครั้ง",
   "profile.unblockError": "ไม่สามารถเลิกบล็อกผู้ใช้รายนี้ได้ ลองอีกครั้ง",
+  "profile.close": "ปิด",
+  "profile.noFollowers": "ยังไม่มีผู้ติดตามเลย",
+  "profile.noFollowing": "ยังไม่ได้ติดตามใครเลย",
+  "profile.followListErrorFollowers": "ไม่สามารถโหลดผู้ติดตามได้",
+  "profile.followListErrorFollowing": "ไม่สามารถโหลดการติดตามได้",
 } satisfies Record<TranslationKey, string>;
 
 export default d_th;

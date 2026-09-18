@@ -171,6 +171,11 @@ const d_no = {
   "profile.relForbidden": "Du kan ikke gjøre det med denne brukeren.",
   "profile.blockError": "Kunne ikke blokkere denne brukeren. Prøv igjen.",
   "profile.unblockError": "Kunne ikke oppheve blokkeringen av denne brukeren. Prøv igjen.",
+  "profile.close": "Lukk",
+  "profile.noFollowers": "Ingen følgere ennå.",
+  "profile.noFollowing": "Følger ikke noen ennå.",
+  "profile.followListErrorFollowers": "Kunne ikke laste inn følgere.",
+  "profile.followListErrorFollowing": "Kunne ikke laste inn følgende.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_no;

@@ -171,6 +171,11 @@ const d_gn = {
   "profile.relForbidden": "Ndaikatúi rejapo upéva ko puruhára ndive.",
   "profile.blockError": "Ndaikatúi ojoko ko puruhárape. Eñeha’ã jey.",
   "profile.unblockError": "Ndaikatúi ojepe’a ko puruhárape. Eñeha’ã jey.",
+  "profile.close": "Oñemboty",
+  "profile.noFollowers": "Ndaipóri gueteri seguidor.",
+  "profile.noFollowing": "Ndosegíri gueteri avavépe.",
+  "profile.followListErrorFollowers": "Ndaikatúi okargá umi seguidor.",
+  "profile.followListErrorFollowing": "Ndaikatúi okargá seguimiento.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gn;

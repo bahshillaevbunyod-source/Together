@@ -171,6 +171,11 @@ const es = {
   "profile.relForbidden": "No puedes hacer eso con este usuario.",
   "profile.blockError": "No se pudo bloquear a este usuario. Intentar otra vez.",
   "profile.unblockError": "No se pudo desbloquear a este usuario. Intentar otra vez.",
+  "profile.close": "Cerrar",
+  "profile.noFollowers": "Aún no hay seguidores.",
+  "profile.noFollowing": "Aún no sigo a nadie.",
+  "profile.followListErrorFollowers": "No se pudieron cargar seguidores.",
+  "profile.followListErrorFollowing": "No se pudo cargar lo siguiente.",
 } satisfies Record<TranslationKey, string>;
 
 export default es;

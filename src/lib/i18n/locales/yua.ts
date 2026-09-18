@@ -171,6 +171,11 @@ const d_yua = {
   "profile.relForbidden": "ma' je'el u páajtal a beetik yéetel le usuarioa'.",
   "profile.blockError": "Ma' páajchaj u k'a'alal le usuarioa'. Ilawil tu ka'atéen.",
   "profile.unblockError": "Ma' páajchaj u desbloquear le usuario. Ilawil tu ka'atéen.",
+  "profile.close": "Muts'ik",
+  "profile.noFollowers": "Mina'an u tsaypachtik láayli'.",
+  "profile.noFollowing": "ma' táan in t'u'uchpachtik mixmáak.",
+  "profile.followListErrorFollowers": "Ma' páajchaj u kuuch le seguidores.",
+  "profile.followListErrorFollowing": "Ma' páajchaj u kuuch le je'ela'.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_yua;

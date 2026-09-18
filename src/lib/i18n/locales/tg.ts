@@ -171,6 +171,11 @@ const d_tg = {
   "profile.relForbidden": "Шумо инро бо ин корбар карда наметавонед.",
   "profile.blockError": "Ин корбарро манъ карда натавонист. Як бори дигар санҷед.",
   "profile.unblockError": "Ин корбарро боз карда натавонист. Як бори дигар санҷед.",
+  "profile.close": "Пӯшед",
+  "profile.noFollowers": "Ҳанӯз пайравон надоранд.",
+  "profile.noFollowing": "Ҳанӯз касеро пайгирӣ накардаед.",
+  "profile.followListErrorFollowers": "Пайравонро бор кардан муяссар нашуд.",
+  "profile.followListErrorFollowing": "Пайравӣ бор карда нашуд.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_tg;

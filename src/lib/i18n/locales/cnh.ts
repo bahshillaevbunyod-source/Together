@@ -171,6 +171,11 @@ const d_cnh = {
   "profile.relForbidden": "Hi hmantu he cun cutin na tuah kho lai lo.",
   "profile.blockError": "Hi hmantu hi kham khawh a si lo. I zuam tthan.",
   "profile.unblockError": "Hi hmantu hi on khawh a si lo. I zuam tthan.",
+  "profile.close": "Khar",
+  "profile.noFollowers": "Zultu an um rih lo.",
+  "profile.noFollowing": "Ahohmanh ka zul rih hna lo.",
+  "profile.followListErrorFollowers": "Zultu pawl ka lak khawh hna lo.",
+  "profile.followListErrorFollowing": "A zul kho lo.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cnh;

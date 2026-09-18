@@ -171,6 +171,11 @@ const d_am = {
   "profile.relForbidden": "ከዚህ ተጠቃሚ ጋር ይህን ማድረግ አይችሉም።",
   "profile.blockError": "ይህን ተጠቃሚ ማገድ አልተቻለም። እንደገና ይሞክሩ።",
   "profile.unblockError": "የዚህን ተጠቃሚ እገዳ ማንሳት አልተቻለም። እንደገና ይሞክሩ።",
+  "profile.close": "ዝጋ",
+  "profile.noFollowers": "እስካሁን ምንም ተከታዮች የሉም።",
+  "profile.noFollowing": "እስካሁን ማንንም አልተከተለም።",
+  "profile.followListErrorFollowers": "ተከታዮችን መጫን አልተቻለም።",
+  "profile.followListErrorFollowing": "ተከታይን መጫን አልተቻለም።",
 } satisfies Record<TranslationKey, string>;
 
 export default d_am;

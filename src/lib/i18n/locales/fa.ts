@@ -171,6 +171,11 @@ const d_fa = {
   "profile.relForbidden": "شما نمی توانید این کار را با این کاربر انجام دهید.",
   "profile.blockError": "این کاربر مسدود نشد. دوباره امتحان کنید.",
   "profile.unblockError": "این کاربر رفع انسداد نشد. دوباره امتحان کنید.",
+  "profile.close": "بستن",
+  "profile.noFollowers": "هنوز دنبال کننده ای وجود ندارد.",
+  "profile.noFollowing": "هنوز کسی را دنبال نکرده است",
+  "profile.followListErrorFollowers": "فالوورها بارگیری نشد.",
+  "profile.followListErrorFollowing": "موارد زیر بارگیری نشد.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fa;

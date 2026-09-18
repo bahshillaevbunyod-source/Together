@@ -171,6 +171,11 @@ const d_ln = {
   "profile.relForbidden": "Okoki kosala bongo te na mosaleli oyo.",
   "profile.blockError": "Ekoki ko bloquer mosaleli oyo te. Meká lisusu.",
   "profile.unblockError": "Ekokaki ko débloquer mosaleli oyo te. Meká lisusu.",
+  "profile.close": "Bokanga",
+  "profile.noFollowers": "Ba followers te nanu.",
+  "profile.noFollowing": "Kolanda nanu mutu te.",
+  "profile.followListErrorFollowers": "Ekokaki ko charger ba followers te.",
+  "profile.followListErrorFollowing": "Ekokaki ko charger suivi te.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ln;

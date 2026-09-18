@@ -171,6 +171,11 @@ const d_yo = {
   "profile.relForbidden": "O ko le ṣe bẹ pẹlu olumulo yii.",
   "profile.blockError": "Ko le dènà olumulo yii. Gbiyanju lẹẹkansi.",
   "profile.unblockError": "Ko le sina olumulo yi. Gbiyanju lẹẹkansi.",
+  "profile.close": "Sunmọ",
+  "profile.noFollowers": "Ko si awọn ọmọlẹyin sibẹsibẹ.",
+  "profile.noFollowing": "Ko tẹle ẹnikẹni sibẹsibẹ.",
+  "profile.followListErrorFollowers": "Ko le kojọpọ awọn ọmọlẹyin.",
+  "profile.followListErrorFollowing": "Ko le kojọpọ atẹle.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_yo;

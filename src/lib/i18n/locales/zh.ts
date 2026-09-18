@@ -171,6 +171,11 @@ const zh = {
   "profile.relForbidden": "您不能对此用户执行此操作。",
   "profile.blockError": "无法阻止该用户。再试一次。",
   "profile.unblockError": "无法取消阻止该用户。再试一次。",
+  "profile.close": "关闭",
+  "profile.noFollowers": "还没有关注者。",
+  "profile.noFollowing": "还没有关注任何人。",
+  "profile.followListErrorFollowers": "无法加载关注者。",
+  "profile.followListErrorFollowing": "无法加载以下内容。",
 } satisfies Record<TranslationKey, string>;
 
 export default zh;

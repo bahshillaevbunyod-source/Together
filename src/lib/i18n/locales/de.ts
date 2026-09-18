@@ -171,6 +171,11 @@ const de = {
   "profile.relForbidden": "Das ist mit diesem Benutzer nicht möglich.",
   "profile.blockError": "Dieser Benutzer konnte nicht blockiert werden. Versuchen Sie es erneut.",
   "profile.unblockError": "Dieser Benutzer konnte nicht entsperrt werden. Versuchen Sie es erneut.",
+  "profile.close": "Schließen",
+  "profile.noFollowers": "Noch keine Follower.",
+  "profile.noFollowing": "Ich folge noch niemandem.",
+  "profile.followListErrorFollowers": "Follower konnten nicht geladen werden.",
+  "profile.followListErrorFollowing": "Folgendes konnte nicht geladen werden.",
 } satisfies Record<TranslationKey, string>;
 
 export default de;

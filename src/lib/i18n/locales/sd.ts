@@ -171,6 +171,11 @@ const d_sd = {
   "profile.relForbidden": "توهان هن صارف سان ائين نٿا ڪري سگهو.",
   "profile.blockError": "هن صارف کي بلاڪ نه ڪري سگهيو. ٻيهر ڪوشش ڪريو.",
   "profile.unblockError": "هن صارف کي بلاڪ نه ڪري سگهيو. ٻيهر ڪوشش ڪريو.",
+  "profile.close": "بند",
+  "profile.noFollowers": "في الحال ڪوبه پيروڪار ناهي.",
+  "profile.noFollowing": "اڃا تائين ڪنهن جي پيروي نه ڪئي آهي.",
+  "profile.followListErrorFollowers": "پيروڪار لوڊ نه ٿي سگهيو.",
+  "profile.followListErrorFollowing": "پٺيان لوڊ نه ٿي سگھيو.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sd;

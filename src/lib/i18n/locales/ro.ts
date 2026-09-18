@@ -171,6 +171,11 @@ const d_ro = {
   "profile.relForbidden": "Nu poți face asta cu acest utilizator.",
   "profile.blockError": "Acest utilizator nu a putut fi blocat. Încearcă din nou.",
   "profile.unblockError": "Acest utilizator nu a putut fi deblocat. Încearcă din nou.",
+  "profile.close": "Închide",
+  "profile.noFollowers": "Încă nu există urmăritori.",
+  "profile.noFollowing": "Nu urmăresc încă pe nimeni.",
+  "profile.followListErrorFollowers": "Nu s-au putut încărca persoanele interesate.",
+  "profile.followListErrorFollowing": "Nu s-a putut încărca următoarele.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ro;

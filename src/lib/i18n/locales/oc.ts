@@ -171,6 +171,11 @@ const d_oc = {
   "profile.relForbidden": "O podètz pas far amb aqueste utilizaire.",
   "profile.blockError": "Poguèt pas blocar aqueste utilizaire. Ensajatz tornarmai.",
   "profile.unblockError": "Poguèt pas desblocar aqueste utilizaire. Ensajatz tornarmai.",
+  "profile.close": "Barrar",
+  "profile.noFollowers": "Pas encara de seguidors.",
+  "profile.noFollowing": "Seguissi pas encara degun.",
+  "profile.followListErrorFollowers": "Poguèt pas cargar de seguidors.",
+  "profile.followListErrorFollowing": "Poguèt pas cargar la seguida.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_oc;

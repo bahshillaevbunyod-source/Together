@@ -171,6 +171,11 @@ const ar = {
   "profile.relForbidden": "لا يمكنك فعل ذلك مع هذا المستخدم.",
   "profile.blockError": "تعذر حظر هذا المستخدم. حاول ثانية.",
   "profile.unblockError": "تعذر إلغاء حظر هذا المستخدم. حاول ثانية.",
+  "profile.close": "إغلاق",
+  "profile.noFollowers": "لا يوجد متابعين بعد",
+  "profile.noFollowing": "لا أتابع أحداً بعد.",
+  "profile.followListErrorFollowers": "تعذر تحميل المتابعين.",
+  "profile.followListErrorFollowing": "تعذر تحميل المتابعة.",
 } satisfies Record<TranslationKey, string>;
 
 export default ar;

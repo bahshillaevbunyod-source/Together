@@ -171,6 +171,11 @@ const d_ms_Arab = {
   "profile.relForbidden": "اندا تيدق بوليه ملاكوكنڽ دڠن ڤڠڬونا اين.",
   "profile.blockError": "تيدق داڤت مڽكت ڤڠڬونا اين. چوبا لاڬي.",
   "profile.unblockError": "تيدق داڤت ممبوك بلوك ڤڠڬونا اين. چوبا لاڬي.",
+  "profile.close": "توتوڤ",
+  "profile.noFollowers": "تياد ڤڠيكوت لاڬي.",
+  "profile.noFollowing": "بلوم مڠيكوتي سسياڤا لاڬي.",
+  "profile.followListErrorFollowers": "تيدق داڤت ممواتكن ڤڠيكوت.",
+  "profile.followListErrorFollowing": "تيدق داڤت ممواتكن برايكوت.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ms_Arab;

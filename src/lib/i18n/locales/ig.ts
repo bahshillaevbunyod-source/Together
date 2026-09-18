@@ -171,6 +171,11 @@ const d_ig = {
   "profile.relForbidden": "Ị nweghị ike iji onye ọrụ a mee nke ahụ.",
   "profile.blockError": "Enweghị ike igbochi onye ọrụ a. Nwaa ọzọ.",
   "profile.unblockError": "Enweghị ike ịkpọghee onye ọrụ a. Nwaa ọzọ.",
+  "profile.close": "Mechie",
+  "profile.noFollowers": "Enweghị ndị na-eso ụzọ.",
+  "profile.noFollowing": "Anaghị eso onye ọ bụla ma.",
+  "profile.followListErrorFollowers": "Enweghị ike ibunye ndị na-eso ụzọ.",
+  "profile.followListErrorFollowing": "Enweghị ike ibunye ihe ndị a.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ig;

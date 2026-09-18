@@ -171,6 +171,11 @@ const d_fi = {
   "profile.relForbidden": "Et voi tehdä sitä tämän käyttäjän kanssa.",
   "profile.blockError": "Tätä käyttäjää ei voitu estää. Yritä uudelleen.",
   "profile.unblockError": "Tämän käyttäjän estoa ei voitu kumota. Yritä uudelleen.",
+  "profile.close": "Sulje",
+  "profile.noFollowers": "Ei vielä seuraajia.",
+  "profile.noFollowing": "Ei seuraa vielä ketään.",
+  "profile.followListErrorFollowers": "Seuraajia ei voitu ladata.",
+  "profile.followListErrorFollowing": "Seuraamista ei voitu ladata.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fi;

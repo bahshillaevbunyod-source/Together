@@ -171,6 +171,11 @@ const d_cy = {
   "profile.relForbidden": "Ni allwch wneud hynny gyda'r defnyddiwr hwn.",
   "profile.blockError": "Methu â rhwystro'r defnyddiwr hwn. Ceisiwch eto.",
   "profile.unblockError": "Ni fu modd dadrwystro'r defnyddiwr hwn. Ceisiwch eto.",
+  "profile.close": "Cau",
+  "profile.noFollowers": "Dim dilynwyr eto.",
+  "profile.noFollowing": "Ddim yn dilyn neb eto.",
+  "profile.followListErrorFollowers": "Methu llwytho dilynwyr.",
+  "profile.followListErrorFollowing": "Methu llwytho'r canlynol.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cy;

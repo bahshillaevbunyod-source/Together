@@ -171,6 +171,11 @@ const d_sa = {
   "profile.relForbidden": "अस्मिन् उपयोक्त्रेण भवन्तः तत् कर्तुं न शक्नुवन्ति ।",
   "profile.blockError": "एतत् उपयोक्तारं अवरुद्धुं न शक्तवान् । पुनः प्रयासं कुरुत।",
   "profile.unblockError": "अस्य उपयोक्तुः अवरोधं कर्तुं न शक्तवान् । पुनः प्रयासं कुरुत।",
+  "profile.close": "निमील्यताम्",
+  "profile.noFollowers": "अद्यापि अनुयायिनः नास्ति।",
+  "profile.noFollowing": "अद्यापि कस्यचित् अनुसरणं न करोति।",
+  "profile.followListErrorFollowers": "अनुयायिनः लोड् कर्तुं न शक्तवान् ।",
+  "profile.followListErrorFollowing": "अनुसरणं लोड् कर्तुं न शक्तवान् ।",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sa;

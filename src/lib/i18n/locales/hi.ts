@@ -171,6 +171,11 @@ const d_hi = {
   "profile.relForbidden": "आप इस उपयोगकर्ता के साथ ऐसा नहीं कर सकते.",
   "profile.blockError": "इस उपयोगकर्ता को ब्लॉक नहीं किया जा सका. पुनः प्रयास करें।",
   "profile.unblockError": "इस उपयोगकर्ता को अनब्लॉक नहीं किया जा सका. पुनः प्रयास करें।",
+  "profile.close": "बंद करें",
+  "profile.noFollowers": "अभी तक कोई अनुयायी नहीं.",
+  "profile.noFollowing": "अभी तक किसी को फ़ॉलो नहीं कर रहा हूँ.",
+  "profile.followListErrorFollowers": "फ़ॉलोअर्स लोड नहीं किए जा सके.",
+  "profile.followListErrorFollowing": "निम्नलिखित लोड नहीं किया जा सका.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hi;

@@ -171,6 +171,11 @@ const d_bm = {
   "profile.relForbidden": "I tɛ Se k’o Kɛ ni nin baarakɛla in ye.",
   "profile.blockError": "A ma Se k’o baarakɛla in bali. Aw bɛ segin ka a lajɛ.",
   "profile.unblockError": "A ma Se ka nin baarakɛla in bali. Aw bɛ segin ka a lajɛ.",
+  "profile.close": "A da tugu",
+  "profile.noFollowers": "Follower si tɛ yen fɔlɔ.",
+  "profile.noFollowing": "A ma tugu mɔgɔ si kɔ fɔlɔ.",
+  "profile.followListErrorFollowers": "A ma se ka tugubagaw doni.",
+  "profile.followListErrorFollowing": "A ma se ka tugu-tugu ɲɔgɔn kɔ.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bm;

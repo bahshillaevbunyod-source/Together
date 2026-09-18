@@ -171,6 +171,11 @@ const d_bew = {
   "profile.relForbidden": "Lu kagak bisa ngelakuin itu dengan pengguna ini.",
   "profile.blockError": "Gak bisa ngeblokir pengguna ini. Coba lagi.",
   "profile.unblockError": "Gak bisa ngebuka blokir pengguna ini. Coba lagi.",
+  "profile.close": "Tutup",
+  "profile.noFollowers": "Belum ada pengikut.",
+  "profile.noFollowing": "Belom ngikutin siapa-siapa.",
+  "profile.followListErrorFollowers": "Gak bisa muat pengikut.",
+  "profile.followListErrorFollowing": "Gak bisa muat berikutnya.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bew;

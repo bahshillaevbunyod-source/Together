@@ -171,6 +171,11 @@ const d_fy = {
   "profile.relForbidden": "Jo kinne dat net dwaan mei dizze brûker.",
   "profile.blockError": "Koe dizze brûker net blokkearje. Besykje opnij.",
   "profile.unblockError": "Koe dizze brûker net deblokkearje. Besykje opnij.",
+  "profile.close": "Slút",
+  "profile.noFollowers": "Noch gjin folgers.",
+  "profile.noFollowing": "Noch net ien folgje.",
+  "profile.followListErrorFollowers": "Koe folgers net laden.",
+  "profile.followListErrorFollowing": "Koe folgjende net lade.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fy;

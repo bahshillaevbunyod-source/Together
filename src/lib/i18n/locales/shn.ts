@@ -171,6 +171,11 @@ const d_shn = {
   "profile.relForbidden": "ဢမ်ႇႁဵတ်းလႆႈ ၸွမ်း ၽူႈၸႂ်ႉတိုဝ်းၼႆႉ။",
   "profile.blockError": "ဢမ်ႇၸၢင်ႈႁႄႉႁၢမ်ႈ ၽူႈၸႂ်ႉတိုဝ်းၼႆႉ။ ၶိုၼ်းၶတ်းၸႂ်တူၺ်းလႄႈ။",
   "profile.unblockError": "ဢမ်ႇၸၢင်ႈပိုတ်ႇပၼ် ၽူႈၸႂ်ႉတိုဝ်းၼႆႉလႆႈ။ ၶိုၼ်းၶတ်းၸႂ်တူၺ်းလႄႈ။",
+  "profile.close": "ဢိုတ်း",
+  "profile.noFollowers": "ပႆႇမီးၽူႈၸွမ်းလင်။",
+  "profile.noFollowing": "ဢမ်ႇပႆႇၸွမ်းၽႂ်။",
+  "profile.followListErrorFollowers": "ဢမ်ႇၸၢင်ႈ load ၽူႈၸွမ်းလင်။",
+  "profile.followListErrorFollowing": "ဢမ်ႇၸၢင်ႈ load ၸွမ်း။",
 } satisfies Record<TranslationKey, string>;
 
 export default d_shn;

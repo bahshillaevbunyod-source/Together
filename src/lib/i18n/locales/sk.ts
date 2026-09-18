@@ -171,6 +171,11 @@ const d_sk = {
   "profile.relForbidden": "S týmto používateľom to nemôžete urobiť.",
   "profile.blockError": "Tohto používateľa sa nepodarilo zablokovať. Skúste to znova.",
   "profile.unblockError": "Tohto používateľa sa nepodarilo odblokovať. Skúste to znova.",
+  "profile.close": "Zavrieť",
+  "profile.noFollowers": "Zatiaľ žiadni sledovatelia.",
+  "profile.noFollowing": "Zatiaľ nikoho nesledujem.",
+  "profile.followListErrorFollowers": "Nepodarilo sa načítať sledovateľov.",
+  "profile.followListErrorFollowing": "Sledovanie sa nepodarilo načítať.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sk;

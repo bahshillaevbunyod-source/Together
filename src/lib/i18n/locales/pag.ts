@@ -171,6 +171,11 @@ const d_pag = {
   "profile.relForbidden": "Agmo nagawaan itan ed sayan user.",
   "profile.blockError": "Agko na-block iyan user. Salien lamet.",
   "profile.unblockError": "Agko na-unblock iyan user. Salien lamet.",
+  "profile.close": "Saraan",
+  "profile.noFollowers": "Anggapo ni ray patumbok.",
+  "profile.noFollowing": "Anggapo ni so ontutumbok ed siopaman.",
+  "profile.followListErrorFollowers": "Agko na-load iray patumbok.",
+  "profile.followListErrorFollowing": "Agnayarin i-load so ontumbok.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pag;

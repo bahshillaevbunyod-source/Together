@@ -171,6 +171,11 @@ const d_ak = {
   "profile.relForbidden": "Worentumi mfa saa ɔdefo yi nyɛ saa.",
   "profile.blockError": "Entumi nsiw saa ɔdefo yi kwan. Bɔ mmɔden bio.",
   "profile.unblockError": "Entumi nyi saa ɔdefo yi ano. Bɔ mmɔden bio.",
+  "profile.close": "Bɛto mu",
+  "profile.noFollowers": "Akyidifo biara nni hɔ de besi nnɛ.",
+  "profile.noFollowing": "Wonnya nni obiara akyi.",
+  "profile.followListErrorFollowers": "Entumi n’load akyidifo.",
+  "profile.followListErrorFollowing": "Entumi load akyidi.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ak;

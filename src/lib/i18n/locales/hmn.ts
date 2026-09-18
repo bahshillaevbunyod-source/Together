@@ -171,6 +171,11 @@ const d_hmn = {
   "profile.relForbidden": "Koj tsis tuaj yeem ua qhov ntawd nrog tus neeg siv no.",
   "profile.blockError": "Tsis tuaj yeem thaiv tus neeg siv no. Sim dua.",
   "profile.unblockError": "Tsis tuaj yeem thaiv tus neeg siv no. Sim dua.",
+  "profile.close": "Kaw",
+  "profile.noFollowers": "Tseem tsis tau muaj followers.",
+  "profile.noFollowing": "Tseem tsis tau raws leej twg.",
+  "profile.followListErrorFollowers": "Tsis tuaj yeem thauj cov followers.",
+  "profile.followListErrorFollowing": "Tsis tuaj yeem thauj khoom tom qab.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hmn;

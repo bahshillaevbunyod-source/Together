@@ -171,6 +171,11 @@ const d_lij = {
   "profile.relForbidden": "No peu ëse fæto quello con st'utente.",
   "profile.blockError": "No l'é stæto poscibile bloccâ st'utente. Prova torna.",
   "profile.unblockError": "No l'é stæto poscibile desbloccâ sto utente. Prova torna.",
+  "profile.close": "Serrâ",
+  "profile.noFollowers": "Ancon nisciun seguitô.",
+  "profile.noFollowing": "No seguî ancon nisciun.",
+  "profile.followListErrorFollowers": "No l'é stæto poscibile carregâ i seguitoî.",
+  "profile.followListErrorFollowing": "No l'é stæto poscibile carregâ o seguente.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lij;

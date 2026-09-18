@@ -171,6 +171,11 @@ const d_crs = {
   "profile.relForbidden": "ou pa kapab fer sa avek sa itilizater.",
   "profile.blockError": "pa’n kapab blok sa itilizater. esey ankor.",
   "profile.unblockError": "pa’n kapab deblok sa itilizater. esey ankor.",
+  "profile.close": "fermen",
+  "profile.noFollowers": "napa ankor swiver.",
+  "profile.noFollowing": "pa ankor swiv personn.",
+  "profile.followListErrorFollowers": "pa ti kapab load bann swiver.",
+  "profile.followListErrorFollowing": "pa ti kapab load swivan.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_crs;

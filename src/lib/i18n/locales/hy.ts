@@ -171,6 +171,11 @@ const d_hy = {
   "profile.relForbidden": "Դուք չեք կարող դա անել այս օգտատիրոջ հետ:",
   "profile.blockError": "Չհաջողվեց արգելափակել այս օգտատիրոջը: Կրկին փորձեք:",
   "profile.unblockError": "Չհաջողվեց արգելափակել այս օգտատիրոջը: Կրկին փորձեք:",
+  "profile.close": "Փակել",
+  "profile.noFollowers": "Առայժմ հետևորդներ չկան:",
+  "profile.noFollowing": "Դեռևս ոչ մեկին չեմ հետևում:",
+  "profile.followListErrorFollowers": "Չհաջողվեց բեռնել հետևորդներին:",
+  "profile.followListErrorFollowing": "Չհաջողվեց բեռնել հետևյալը:",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hy;

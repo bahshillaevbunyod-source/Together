@@ -171,6 +171,11 @@ const d_st = {
   "profile.relForbidden": "U ka se etse joalo ka mosebelisi enoa.",
   "profile.blockError": "E hlolehile ho thibela mosebelisi enoa. Leka hape.",
   "profile.unblockError": "E hlolehile ho bula mosebelisi enoa. Leka hape.",
+  "profile.close": "Koala",
+  "profile.noFollowers": "Ha ho na balateli hajoale.",
+  "profile.noFollowing": "Ha ke e-so latele mang kapa mang.",
+  "profile.followListErrorFollowers": "E hlolehile ho bula balateli.",
+  "profile.followListErrorFollowing": "E hlolehile ho bula tse latelang.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_st;

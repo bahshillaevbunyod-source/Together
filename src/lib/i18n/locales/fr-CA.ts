@@ -171,6 +171,11 @@ const d_fr_CA = {
   "profile.relForbidden": "Vous ne pouvez pas faire ça avec cet utilisateur.",
   "profile.blockError": "Impossible de bloquer cet utilisateur. Essayer de nouveau.",
   "profile.unblockError": "Impossible de déverrouiller cet utilisateur. Essayer de nouveau.",
+  "profile.close": "Fermer",
+  "profile.noFollowers": "Aucun abonné pour l'instant.",
+  "profile.noFollowing": "Je ne suis encore personne.",
+  "profile.followListErrorFollowers": "Impossible de charger les abonnés.",
+  "profile.followListErrorFollowing": "Impossible de charger le suivi.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_fr_CA;

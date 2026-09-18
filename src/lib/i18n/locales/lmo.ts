@@ -171,6 +171,11 @@ const d_lmo = {
   "profile.relForbidden": "Pœdet minga fär chel cun chestu utent.",
   "profile.blockError": "Pudeva minga blocà chestu utent. Pruva ancamò.",
   "profile.unblockError": "Pudeva minga sbloccar chestu utent. Pruva ancamò.",
+  "profile.close": "Serra",
+  "profile.noFollowers": "Ancamò nissun seguitur.",
+  "profile.noFollowing": "Seguir ancamò nissun.",
+  "profile.followListErrorFollowers": "Pudeva minga cargà i seguitur.",
+  "profile.followListErrorFollowing": "Pudeva minga cargar el seguent.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lmo;

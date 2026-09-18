@@ -171,6 +171,11 @@ const d_ff = {
   "profile.relForbidden": "A waawaa waɗde ɗum e ooɗoo kuutortooɗo.",
   "profile.blockError": "Waawaa haɗde oo kuutortooɗo. Enndu kadi.",
   "profile.unblockError": "Waawaa udditaade oo kuutortooɗo. Enndu kadi.",
+  "profile.close": "Uddit",
+  "profile.noFollowers": "Alaa almuɓɓe tawo.",
+  "profile.noFollowing": "Rewaani hay gooto tawo.",
+  "profile.followListErrorFollowers": "Waawaa loowde almuɓɓe.",
+  "profile.followListErrorFollowing": "Waawaa loowde jokkude.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ff;

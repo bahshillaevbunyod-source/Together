@@ -171,6 +171,11 @@ const d_zh_TW = {
   "profile.relForbidden": "您不能對此使用者執行此操作。",
   "profile.blockError": "無法封鎖該用戶。再試一次。",
   "profile.unblockError": "無法取消封鎖該用戶。再試一次。",
+  "profile.close": "關閉",
+  "profile.noFollowers": "還沒有關注者。",
+  "profile.noFollowing": "還沒有關注任何人。",
+  "profile.followListErrorFollowers": "無法加載關注者。",
+  "profile.followListErrorFollowing": "無法載入以下內容。",
 } satisfies Record<TranslationKey, string>;
 
 export default d_zh_TW;

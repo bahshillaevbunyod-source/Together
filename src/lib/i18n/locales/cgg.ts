@@ -171,6 +171,11 @@ const d_cgg = {
   "profile.relForbidden": "Ekyo torikubaasa kukikora n’omukozesa ogu.",
   "profile.blockError": "Tikirikubaasa kuzibira omukozesa ogu. Gyezaho ogundi murundi.",
   "profile.unblockError": "Tikirikubaasa kwiguraho omukozesa ogu. Gyezaho ogundi murundi.",
+  "profile.close": "Kwinga",
+  "profile.noFollowers": "Tihariho abakuratsi hati.",
+  "profile.noFollowing": "Tihariho orikukuratira hati.",
+  "profile.followListErrorFollowers": "Tibarikubaasa kutaho abakuratsi.",
+  "profile.followListErrorFollowing": "Tibarikubaasa kutaho okukuratira.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cgg;

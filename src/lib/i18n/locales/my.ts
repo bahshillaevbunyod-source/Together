@@ -171,6 +171,11 @@ const d_my = {
   "profile.relForbidden": "ဤအသုံးပြုသူနှင့် ၎င်းကို သင်ပြုလုပ်၍မရပါ။",
   "profile.blockError": "ဤအသုံးပြုသူကို ပိတ်ဆို့၍မရပါ။ ထပ်ကြိုးစားပါ။",
   "profile.unblockError": "ဤအသုံးပြုသူကို ပြန်ဖွင့်၍မရပါ။ ထပ်ကြိုးစားပါ။",
+  "profile.close": "ပိတ်လိုက်",
+  "profile.noFollowers": "နောက်လိုက်များ မရှိသေးပါ။",
+  "profile.noFollowing": "ဘယ်သူ့ကိုမှ မလိုက်သေးဘူး။",
+  "profile.followListErrorFollowers": "နောက်လိုက်များကို တင်၍မရပါ။",
+  "profile.followListErrorFollowing": "လိုက်ကြည့်ခြင်းကို မတင်နိုင်ခဲ့ပါ။",
 } satisfies Record<TranslationKey, string>;
 
 export default d_my;

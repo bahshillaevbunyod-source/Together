@@ -171,6 +171,11 @@ const d_nso = {
   "profile.relForbidden": "You can’t do that ka modiriši yo.",
   "profile.blockError": "Couldn’t block modiriši yo. Leka gape.",
   "profile.unblockError": "Couldn’t unblock modiriši yo. Leka gape.",
+  "profile.close": "Tswala",
+  "profile.noFollowers": "Ga go na balatedi go fihla ga bjale.",
+  "profile.noFollowing": "Ga se a latela motho ga bjale.",
+  "profile.followListErrorFollowers": "Couldn’t load ya balatedi.",
+  "profile.followListErrorFollowing": "Couldn’t load go latela.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_nso;

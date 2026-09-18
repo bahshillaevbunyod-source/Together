@@ -171,6 +171,11 @@ const d_luo = {
   "profile.relForbidden": "Ok inyal timo kamano gi ng’at ma tiyo kode.",
   "profile.blockError": "Ok nyal geng’o ng’at ma tiyo kode. Tem kendo.",
   "profile.unblockError": "Ok nyal golo ng’at ma tiyo kode. Tem kendo.",
+  "profile.close": "Lor",
+  "profile.noFollowers": "Onge jolup nyaka sani.",
+  "profile.noFollowing": "Ok oluwo ng’ato nyaka sani.",
+  "profile.followListErrorFollowers": "Ne ok nyal keto jolupne.",
+  "profile.followListErrorFollowing": "Ne ok nyal load luwogi.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_luo;

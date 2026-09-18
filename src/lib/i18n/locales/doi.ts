@@ -171,6 +171,11 @@ const d_doi = {
   "profile.relForbidden": "तुस इस बरतूनी कन्नै एह् नेईं करी सकदे।",
   "profile.blockError": "इस बरतूनी गी ब्लॉक नेईं करी सकेआ। फिर कोशिश करो।",
   "profile.unblockError": "इस बरतूनी गी अनब्लॉक नेईं करी सकेआ। फिर कोशिश करो।",
+  "profile.close": "बंद करो",
+  "profile.noFollowers": "अजे तक कोई फॉलोअर्स नहीं।",
+  "profile.noFollowing": "अभी तक किसी को फॉलो नहीं कर रहा।",
+  "profile.followListErrorFollowers": "फॉलोअर्स लोड नेईं करी सकेआ।",
+  "profile.followListErrorFollowing": "फॉलोइंग लोड नेईं करी सकेआ।",
 } satisfies Record<TranslationKey, string>;
 
 export default d_doi;

@@ -171,6 +171,11 @@ const d_yi = {
   "profile.relForbidden": "איר קענען נישט טאָן דאָס מיט דעם באַניצער.",
   "profile.blockError": "קען נישט בלאקירן דעם באנוצער. פּרוּווט ווידער.",
   "profile.unblockError": "קען נישט ופשליסן דעם באַניצער. פּרוּווט ווידער.",
+  "profile.close": "נאָענט",
+  "profile.noFollowers": "נאָך קיין אנהענגערס.",
+  "profile.noFollowing": "נאך קיינעם נישט נאכפאלגט.",
+  "profile.followListErrorFollowers": "קען נישט לאָדן אנהענגערס.",
+  "profile.followListErrorFollowing": "קען נישט לאָדן די פאלגענדע.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_yi;

@@ -171,6 +171,11 @@ const d_mn = {
   "profile.relForbidden": "Та энэ хэрэглэгчтэй үүнийг хийх боломжгүй.",
   "profile.blockError": "Энэ хэрэглэгчийг блоклож чадсангүй. Дахин оролдоно уу.",
   "profile.unblockError": "Энэ хэрэглэгчийг блокоос гаргаж чадсангүй. Дахин оролдоно уу.",
+  "profile.close": "Хаах",
+  "profile.noFollowers": "Одоогоор дагагч алга.",
+  "profile.noFollowing": "Одоогоор хэнийг ч дагааагүй байна.",
+  "profile.followListErrorFollowers": "Дагагчдыг ачаалж чадсангүй.",
+  "profile.followListErrorFollowing": "Дараахыг ачаалж чадсангүй.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mn;

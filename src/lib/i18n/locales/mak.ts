@@ -171,6 +171,11 @@ const d_mak = {
   "profile.relForbidden": "Tena nukkulle anggaukangi anjo kammaya siagang anne tau ammakea.",
   "profile.blockError": "Tena nakkulle ni blokir anne tau ammakea. Cobai pole.",
   "profile.unblockError": "Tena nakkulle ni sungkei anne tau ammakea. Cobai pole.",
+  "profile.close": "tutupi",
+  "profile.noFollowers": "Tena tau amminawang.",
+  "profile.noFollowing": "Tenapa napinawang tau maraeng.",
+  "profile.followListErrorFollowers": "Tena nakkulle antama pengikut.",
+  "profile.followListErrorFollowing": "Tena nakkulle antama ri boko.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mak;

@@ -10,6 +10,7 @@ import {
   getFollowing,
   type FollowListItem,
 } from "@/lib/api";
+import { useLanguage, type TranslationKey } from "@/lib/language-context";
 
 type Mode = "followers" | "following";
 type Status = "loading" | "ready" | "error";
@@ -20,14 +21,21 @@ const FALLBACK_AVATAR =
     '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#d4d4d8"/></svg>',
   );
 
-const TITLES: Record<Mode, string> = {
-  followers: "Followers",
-  following: "Following",
+// Translation keys per mode. Keyed on the stable `mode` id (not any display
+// label), so logic never depends on translated/English copy.
+const TITLE_KEY: Record<Mode, TranslationKey> = {
+  followers: "profile.followers",
+  following: "profile.following",
 };
 
-const EMPTY: Record<Mode, string> = {
-  followers: "No followers yet.",
-  following: "Not following anyone yet.",
+const EMPTY_KEY: Record<Mode, TranslationKey> = {
+  followers: "profile.noFollowers",
+  following: "profile.noFollowing",
+};
+
+const ERROR_KEY: Record<Mode, TranslationKey> = {
+  followers: "profile.followListErrorFollowers",
+  following: "profile.followListErrorFollowing",
 };
 
 /**
@@ -44,6 +52,7 @@ export function FollowListModal({
   mode: Mode;
   onClose: () => void;
 }) {
+  const { t } = useLanguage();
   const [items, setItems] = useState<FollowListItem[]>([]);
   const [status, setStatus] = useState<Status>("loading");
   const [nextCursor, setNextCursor] = useState("");
@@ -109,7 +118,7 @@ export function FollowListModal({
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
       role="dialog"
       aria-modal="true"
-      aria-label={TITLES[mode]}
+      aria-label={t(TITLE_KEY[mode])}
       onClick={onClose}
     >
       <div
@@ -118,11 +127,11 @@ export function FollowListModal({
       >
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
           <h2 className="text-sm font-semibold text-foreground">
-            {TITLES[mode]}
+            {t(TITLE_KEY[mode])}
           </h2>
           <button
             type="button"
-            aria-label="Close"
+            aria-label={t("profile.close")}
             onClick={onClose}
             className="flex h-8 w-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-background focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
@@ -132,25 +141,25 @@ export function FollowListModal({
 
         <div className="min-h-0 flex-1 overflow-y-auto">
           {status === "loading" ? (
-            <p className="px-4 py-10 text-center text-sm text-muted">Loading…</p>
+            <p className="px-4 py-10 text-center text-sm text-muted">{t("feed.loadingMore")}</p>
           ) : null}
 
           {status === "error" ? (
             <div className="px-4 py-10 text-center">
-              <p className="text-sm text-muted">Couldn’t load {TITLES[mode].toLowerCase()}.</p>
+              <p className="text-sm text-muted">{t(ERROR_KEY[mode])}</p>
               <button
                 type="button"
                 onClick={() => load()}
                 className="mt-2 rounded text-sm text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
-                Try again
+                {t("search.tryAgain")}
               </button>
             </div>
           ) : null}
 
           {status === "ready" && items.length === 0 ? (
             <p className="px-4 py-10 text-center text-sm text-muted-soft">
-              {EMPTY[mode]}
+              {t(EMPTY_KEY[mode])}
             </p>
           ) : null}
 
@@ -192,7 +201,7 @@ export function FollowListModal({
               disabled={loadingMore}
               className="w-full border-t border-border px-4 py-2.5 text-center text-sm text-muted transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary disabled:opacity-50"
             >
-              {loadingMore ? "Loading…" : "Load more"}
+              {loadingMore ? t("feed.loadingMore") : t("feed.loadMore")}
             </button>
           ) : null}
         </div>

@@ -171,6 +171,11 @@ const d_om = {
   "profile.relForbidden": "Fayyadamaa kanaan akkas gochuu hin dandeessu.",
   "profile.blockError": "Fayyadamaa kana ugguruu hin dandeenye. Ammas yaalaa.",
   "profile.unblockError": "Fayyadamaa kana ugguruu hin dandeenye. Ammas yaalaa.",
+  "profile.close": "Cufi",
+  "profile.noFollowers": "Ammatti hordoftoota hin jiru.",
+  "profile.noFollowing": "Hanga ammaatti nama tokkollee hordofaa hin jiru.",
+  "profile.followListErrorFollowers": "Hordoftoota fe’uu hin dandeenye.",
+  "profile.followListErrorFollowing": "Hordoffii fe’uu hin dandeenye.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_om;

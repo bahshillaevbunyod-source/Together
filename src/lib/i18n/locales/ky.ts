@@ -171,6 +171,11 @@ const d_ky = {
   "profile.relForbidden": "Бул колдонуучу менен муну кыла албайсыз.",
   "profile.blockError": "Бул колдонуучуну бөгөттөй алган жок. Кайра аракет кыл.",
   "profile.unblockError": "Бул колдонуучуну бөгөттөн чыгаруу мүмкүн болгон жок. Кайра аракет кыл.",
+  "profile.close": "Жабуу",
+  "profile.noFollowers": "Азырынча жолдоочулар жок.",
+  "profile.noFollowing": "Азырынча эч кимди ээрчий элек.",
+  "profile.followListErrorFollowers": "Жолдоочулар жүктөлгөн жок.",
+  "profile.followListErrorFollowing": "Төмөнкүлөр жүктөлгөн жок.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ky;

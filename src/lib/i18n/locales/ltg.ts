@@ -171,6 +171,11 @@ const d_ltg = {
   "profile.relForbidden": "Ar itū lītuotuoju tū navar izdareit.",
   "profile.blockError": "Navarēja bloķēt itū lītuotuoju. Raugi vēļreiz.",
   "profile.unblockError": "Navarēja atblokuot itū lītuotuoju. Raugi vēļreiz.",
+  "profile.close": "Aizvērt",
+  "profile.noFollowers": "Vēļ nav sekuotuoju.",
+  "profile.noFollowing": "Vēļ nivīnam nasekojūt.",
+  "profile.followListErrorFollowers": "Navarēja īluodēt sekuotuojus.",
+  "profile.followListErrorFollowing": "Navarēja īluodēt sekuošonu.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ltg;

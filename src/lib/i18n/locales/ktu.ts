@@ -171,6 +171,11 @@ const d_ktu = {
   "profile.relForbidden": "Nge lenda sala yau ve na user yayi.",
   "profile.blockError": "Kukangama ve na muntu yai. Meka diaka.",
   "profile.unblockError": "Kukonda kukanga muntu yai. Meka diaka.",
+  "profile.close": "Kanga",
+  "profile.noFollowers": "Ba landi kele ntete ve.",
+  "profile.noFollowing": "Kulanda muntu ve ntete.",
+  "profile.followListErrorFollowers": "Kukonda charge ya ba landi.",
+  "profile.followListErrorFollowing": "Kukonda kulanda.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ktu;

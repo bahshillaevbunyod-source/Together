@@ -171,6 +171,11 @@ const d_mni_Mtei = {
   "profile.relForbidden": "ꯌꯨꯖꯔ ꯑꯁꯤꯒꯥ ꯂꯣꯌꯅꯅꯥ ꯅꯍꯥꯛꯅꯥ ꯃꯗꯨ ꯇꯧꯕꯥ ꯉꯃꯗꯦ꯫",
   "profile.blockError": "ꯌꯨꯖꯔ ꯑꯁꯤ ꯕ꯭ꯂꯣꯛ ꯇꯧꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯧ꯫",
   "profile.unblockError": "ꯌꯨꯖꯔ ꯑꯁꯤ ꯑꯅꯕ꯭ꯂꯣꯛ ꯇꯧꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯧ꯫",
+  "profile.close": "ꯀ꯭ꯂꯣꯖ ꯇꯧꯕꯥ꯫",
+  "profile.noFollowers": "ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯐꯣꯂꯣꯋꯔ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫",
+  "profile.noFollowing": "ꯍꯧꯖꯤꯛ ꯐꯥꯑꯣꯕꯥ ꯀꯅꯥꯒꯨꯝꯕꯥ ꯑꯃꯠꯇꯥ ꯐꯣꯂꯣ ꯇꯧꯗ꯭ꯔꯤ꯫",
+  "profile.followListErrorFollowers": "ꯐꯣꯂꯣꯋꯔꯁꯤꯡ ꯂꯣꯗ ꯇꯧꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫",
+  "profile.followListErrorFollowing": "ꯐꯣꯂꯣꯋꯤꯡ ꯂꯣꯗ ꯇꯧꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mni_Mtei;

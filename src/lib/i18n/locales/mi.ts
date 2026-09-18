@@ -171,6 +171,11 @@ const d_mi = {
   "profile.relForbidden": "Kaore e taea e koe te mahi me tenei kaiwhakamahi.",
   "profile.blockError": "Kaore i taea te aukati i tenei kaiwhakamahi. Ngana ano.",
   "profile.unblockError": "Kaore i taea te whakakore i tenei kaiwhakamahi. Ngana ano.",
+  "profile.close": "Katia",
+  "profile.noFollowers": "Kaore ano he kaiwhaiwhai.",
+  "profile.noFollowing": "Kaore ano kia whai i tetahi.",
+  "profile.followListErrorFollowers": "Kaore i taea te uta nga kaiwhaiwhai.",
+  "profile.followListErrorFollowing": "Kāore i taea te uta i muri.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mi;

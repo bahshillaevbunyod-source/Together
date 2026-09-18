@@ -171,6 +171,11 @@ const d_ta = {
   "profile.relForbidden": "இந்தப் பயனருடன் நீங்கள் அதைச் செய்ய முடியாது.",
   "profile.blockError": "இந்தப் பயனரைத் தடுக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
   "profile.unblockError": "இந்தப் பயனரைத் தடுக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+  "profile.close": "மூடு",
+  "profile.noFollowers": "இதுவரை பின்தொடர்பவர்கள் இல்லை.",
+  "profile.noFollowing": "இதுவரை யாரையும் பின்தொடரவில்லை.",
+  "profile.followListErrorFollowers": "பின்தொடர்பவர்களை ஏற்ற முடியவில்லை.",
+  "profile.followListErrorFollowing": "பின்தொடர்வதை ஏற்ற முடியவில்லை.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ta;

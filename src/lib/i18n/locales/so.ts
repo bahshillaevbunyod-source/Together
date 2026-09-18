@@ -171,6 +171,11 @@ const d_so = {
   "profile.relForbidden": "Taas kuma samayn kartid isticmaalahan.",
   "profile.blockError": "Ma joojin karo isticmaalaha. Isku day mar kale",
   "profile.unblockError": "Waa la joojin waayay isticmaalaha. Isku day mar kale",
+  "profile.close": "Xir",
+  "profile.noFollowers": "Wali ma jiro cid raacsan",
+  "profile.noFollowing": "Weli cidna lama daba socdo.",
+  "profile.followListErrorFollowers": "Ma rari karo taageerayaasha",
+  "profile.followListErrorFollowing": "Ma rari karo raacitaanka",
 } satisfies Record<TranslationKey, string>;
 
 export default d_so;

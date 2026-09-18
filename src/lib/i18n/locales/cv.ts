@@ -171,6 +171,11 @@ const d_cv = {
   "profile.relForbidden": "Эсир ҫак пользовательпе ҫакна тума пултараймастӑр.",
   "profile.blockError": "Ку пользователе пӳлме май килмерӗ. Тепӗр хут тытӑнса пӑхӑр.",
   "profile.unblockError": "Ку пользователе уҫма май килмерӗ. Тепӗр хут тытӑнса пӑхӑр.",
+  "profile.close": "Хуп",
+  "profile.noFollowers": "Хальлӗхе ҫынсем ҫук-ха.",
+  "profile.noFollowing": "Хальлӗхе никам хыҫҫӑн та пымастӑп-ха.",
+  "profile.followListErrorFollowers": "Ҫынсем хыҫҫӑн ҫӳреме май килмерӗ.",
+  "profile.followListErrorFollowing": "Ҫакӑн хыҫҫӑн ҫырма май килмерӗ.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_cv;

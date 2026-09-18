@@ -171,6 +171,11 @@ const d_da = {
   "profile.relForbidden": "Du kan ikke gøre det med denne bruger.",
   "profile.blockError": "Denne bruger kunne ikke blokeres. Prøv igen.",
   "profile.unblockError": "Kunne ikke fjerne blokeringen af ​​denne bruger. Prøv igen.",
+  "profile.close": "Luk",
+  "profile.noFollowers": "Ingen følgere endnu.",
+  "profile.noFollowing": "Følger ikke nogen endnu.",
+  "profile.followListErrorFollowers": "Tilhængere kunne ikke indlæses.",
+  "profile.followListErrorFollowing": "Følgende kunne ikke indlæses.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_da;

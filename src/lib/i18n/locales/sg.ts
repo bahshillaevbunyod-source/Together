@@ -171,6 +171,11 @@ const d_sg = {
   "profile.relForbidden": "Lo lingbi ti sara tongaso pëpe na zo so.",
   "profile.blockError": "A lingbi ti kanga lege na zo so pëpe. Tara encore.",
   "profile.unblockError": "A lingbi ti zi lege na zo so pëpe. Tara encore.",
+  "profile.close": "Kanga",
+  "profile.noFollowers": "Azo ti mû peko ti lo ade ti si pëpe.",
+  "profile.noFollowing": "Ti mû peko ti mbeni zo pëpe.",
+  "profile.followListErrorFollowers": "A lingbi ti charge azo ti peko pëpe.",
+  "profile.followListErrorFollowing": "A lingbi ti charge ni pëpe.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sg;

@@ -171,6 +171,11 @@ const it = {
   "profile.relForbidden": "Non puoi farlo con questo utente.",
   "profile.blockError": "Impossibile bloccare questo utente. Riprova.",
   "profile.unblockError": "Impossibile sbloccare questo utente. Riprova.",
+  "profile.close": "Chiudi",
+  "profile.noFollowers": "Nessun follower ancora.",
+  "profile.noFollowing": "Non seguo ancora nessuno.",
+  "profile.followListErrorFollowers": "Impossibile caricare i follower.",
+  "profile.followListErrorFollowing": "Impossibile caricare quanto segue.",
 } satisfies Record<TranslationKey, string>;
 
 export default it;

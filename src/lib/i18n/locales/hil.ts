@@ -171,6 +171,11 @@ const d_hil = {
   "profile.relForbidden": "Indi mo ina mahimo sa sini nga user.",
   "profile.blockError": "Indi ma-block ini nga user. Tilawi liwat.",
   "profile.unblockError": "Indi ma-unblock ini nga user. Tilawi liwat.",
+  "profile.close": "Magsira",
+  "profile.noFollowers": "Wala pay sumusunod.",
+  "profile.noFollowing": "Wala pa nagasunod sa bisan sin-o.",
+  "profile.followListErrorFollowers": "Indi maka-load sang mga sumulunod.",
+  "profile.followListErrorFollowing": "Indi ma-load ang nagasunod.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hil;

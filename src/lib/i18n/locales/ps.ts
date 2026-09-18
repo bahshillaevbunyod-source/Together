@@ -171,6 +171,11 @@ const d_ps = {
   "profile.relForbidden": "تاسو دا د دې کارونکي سره نشئ کولی.",
   "profile.blockError": "دا کارونکي نشي بندولی. بیا هڅه وکړئ.",
   "profile.unblockError": "دا کارن بلاک نه شو کولی. بیا هڅه وکړئ.",
+  "profile.close": "تړل",
+  "profile.noFollowers": "تراوسه هیڅ پیروان نشته.",
+  "profile.noFollowing": "تر اوسه د چا پیروي نه کوي.",
+  "profile.followListErrorFollowers": "پیروان نشي پورته کولی.",
+  "profile.followListErrorFollowing": "تعقیب نشي پورته کولی.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ps;

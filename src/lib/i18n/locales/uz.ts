@@ -171,6 +171,11 @@ const uz = {
   "profile.relForbidden": "Bu foydalanuvchi bilan buni qila olmaysiz.",
   "profile.blockError": "Bu foydalanuvchini bloklab bo‘lmadi. Qayta urinib ko'ring.",
   "profile.unblockError": "Bu foydalanuvchini blokdan chiqarib bo‘lmadi. Qayta urinib ko'ring.",
+  "profile.close": "Yopish",
+  "profile.noFollowers": "Hali kuzatuvchilar yo'q.",
+  "profile.noFollowing": "Hali hech kimni kuzatmagan.",
+  "profile.followListErrorFollowers": "Obunachilarni yuklab bo‘lmadi.",
+  "profile.followListErrorFollowing": "Kuzatuvni yuklab bo‘lmadi.",
 } satisfies Record<TranslationKey, string>;
 
 export default uz;

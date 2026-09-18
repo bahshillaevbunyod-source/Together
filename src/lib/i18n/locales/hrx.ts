@@ -171,6 +171,11 @@ const d_hrx = {
   "profile.relForbidden": "Tuu khanst tas nët mit tiise penutser mache.",
   "profile.blockError": "Konnt net tiise user xpoote. Proop noch mool.",
   "profile.unblockError": "Konnt net tiise user entblokeere. Proop noch mool.",
+  "profile.close": "Tsum",
+  "profile.noFollowers": "Noch khee nookhomer.",
+  "profile.noFollowing": "Noch niks noo nimant.",
+  "profile.followListErrorFollowers": "Konnt net ti nookhomer laate.",
+  "profile.followListErrorFollowing": "Konnt net laden folge.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_hrx;

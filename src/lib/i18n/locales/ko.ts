@@ -171,6 +171,11 @@ const ko = {
   "profile.relForbidden": "이 사용자에게는 그렇게 할 수 없습니다.",
   "profile.blockError": "이 사용자를 차단할 수 없습니다. 다시 시도해 보세요.",
   "profile.unblockError": "이 사용자를 차단 해제할 수 없습니다. 다시 시도해 보세요.",
+  "profile.close": "닫기",
+  "profile.noFollowers": "아직 팔로어가 없습니다.",
+  "profile.noFollowing": "아직 팔로우하는 사람이 없습니다.",
+  "profile.followListErrorFollowers": "팔로어를 로드할 수 없습니다.",
+  "profile.followListErrorFollowing": "다음 항목을 로드할 수 없습니다.",
 } satisfies Record<TranslationKey, string>;
 
 export default ko;

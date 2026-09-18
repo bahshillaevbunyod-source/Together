@@ -171,6 +171,11 @@ const d_bts = {
   "profile.relForbidden": "Lang boi bahenonmu sonai bani pangguna on.",
   "profile.blockError": "Lang boi iblokir pangguna on. Coba use.",
   "profile.unblockError": "Lang boi mambuka blokir pangguna on. Coba use.",
+  "profile.close": "Tutup",
+  "profile.noFollowers": "Lang dong ope pangihutni.",
+  "profile.noFollowing": "Lang dong ope na mangirikkon.",
+  "profile.followListErrorFollowers": "Lang boi mamuat pengikut.",
+  "profile.followListErrorFollowing": "Lang boi mamuat na mangihut.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bts;

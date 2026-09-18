@@ -171,6 +171,11 @@ const d_kk = {
   "profile.relForbidden": "Сіз бұл пайдаланушымен мұны істей алмайсыз.",
   "profile.blockError": "Бұл пайдаланушыны блоктау мүмкін болмады. Қайтадан байқап көріңіз.",
   "profile.unblockError": "Бұл пайдаланушыны бөгеуден шығару мүмкін болмады. Қайтадан байқап көріңіз.",
+  "profile.close": "Жабу",
+  "profile.noFollowers": "Әзірге жазылушылар жоқ.",
+  "profile.noFollowing": "Әлі ешкімді бақыламаймын.",
+  "profile.followListErrorFollowers": "Жазылушыларды жүктеу мүмкін болмады.",
+  "profile.followListErrorFollowing": "Келесіні жүктеу мүмкін болмады.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_kk;

@@ -171,6 +171,11 @@ const d_sn = {
   "profile.relForbidden": "Iwe haugone kuita izvo nemushandisi uyu.",
   "profile.blockError": "Hatina kukwanisa kuvharisa mushandisi uyu. Edza zvakare.",
   "profile.unblockError": "Hatina kukwanisa kuvhura mushandisi uyu. Edza zvakare.",
+  "profile.close": "Vhara",
+  "profile.noFollowers": "Hapasati pave nevateveri.",
+  "profile.noFollowing": "Haasati atevera chero munhu.",
+  "profile.followListErrorFollowers": "Hatina kukwanisa kurodha vateveri.",
+  "profile.followListErrorFollowing": "Hatina kukwanisa kuburitsa zvinotevera.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sn;

@@ -171,6 +171,11 @@ const d_qu = {
   "profile.relForbidden": "Chaytaqa manan kay ruwaqwanqa ruwayta atiwaqchu.",
   "profile.blockError": "Kay llamk’achiqta mana hark’ayta atirqanchu. Hukmanta kallpachakuy.",
   "profile.unblockError": "Kay llamk’achiqta mana hark’ayta atirqanchu. Hukmanta kallpachakuy.",
+  "profile.close": "Wichqay",
+  "profile.noFollowers": "Manaraqmi qatiqninkuna kanchu.",
+  "profile.noFollowing": "Manaraqmi pitapas qatipachkanraqchu.",
+  "profile.followListErrorFollowers": "Mana qatiqkunata kargayta atirqanchu.",
+  "profile.followListErrorFollowing": "Mana qatiq cargayta atirqanchu.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_qu;

@@ -171,6 +171,11 @@ const d_gd = {
   "profile.relForbidden": "Chan urrainn dhut sin a dhèanamh leis a’ chleachdaiche seo.",
   "profile.blockError": "Cha b' urrainn dhuinn an cleachdaiche seo a bhacadh. Feuch ris a-rithist.",
   "profile.unblockError": "Cha b' urrainn dhuinn an cleachdaiche seo a bhacadh. Feuch ris a-rithist.",
+  "profile.close": "Dùin",
+  "profile.noFollowers": "Chan eil luchd-leantainn ann fhathast.",
+  "profile.noFollowing": "Gun a bhith a’ leantainn duine sam bith fhathast.",
+  "profile.followListErrorFollowers": "Cha b' urrainn dhuinn luchd-leantainn a luchdachadh.",
+  "profile.followListErrorFollowing": "Cha b' urrainn dhuinn na leanas a luchdachadh.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gd;

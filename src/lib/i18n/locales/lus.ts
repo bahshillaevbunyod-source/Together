@@ -171,6 +171,11 @@ const d_lus = {
   "profile.relForbidden": "He user hmang hian chutiang chu i ti thei lo.",
   "profile.blockError": "He user hi a block thei lo. Ti leh teh.",
   "profile.unblockError": "He user hi a unblock thei lo. Ti leh teh.",
+  "profile.close": "Khar rawh",
+  "profile.noFollowers": "Follower a la awm lo.",
+  "profile.noFollowing": "Tumah a la follow lo.",
+  "profile.followListErrorFollowers": "Followers a load thei lo.",
+  "profile.followListErrorFollowing": "Following a load thei lo.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_lus;

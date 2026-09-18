@@ -171,6 +171,11 @@ const d_ml = {
   "profile.relForbidden": "ഈ ഉപയോക്താവിനൊപ്പം നിങ്ങൾക്ക് അത് ചെയ്യാൻ കഴിയില്ല.",
   "profile.blockError": "ഈ ഉപയോക്താവിനെ തടയാൻ കഴിഞ്ഞില്ല. വീണ്ടും ശ്രമിക്കുക.",
   "profile.unblockError": "ഈ ഉപയോക്താവിനെ അൺബ്ലോക്ക് ചെയ്യാനായില്ല. വീണ്ടും ശ്രമിക്കുക.",
+  "profile.close": "അടയ്ക്കുക",
+  "profile.noFollowers": "ഇതുവരെ അനുയായികളില്ല.",
+  "profile.noFollowing": "ഇതുവരെ ആരെയും പിന്തുടരുന്നില്ല.",
+  "profile.followListErrorFollowers": "പിന്തുടരുന്നവരെ ലോഡ് ചെയ്യാനായില്ല.",
+  "profile.followListErrorFollowing": "പിന്തുടരുന്നത് ലോഡ് ചെയ്യാനായില്ല.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ml;

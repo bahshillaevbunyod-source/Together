@@ -171,6 +171,11 @@ const tr = {
   "profile.relForbidden": "Bu kullanıcıyla bunu yapamazsınız.",
   "profile.blockError": "Bu kullanıcı engellenemedi. Tekrar deneyin.",
   "profile.unblockError": "Bu kullanıcının engellemesi kaldırılamadı. Tekrar deneyin.",
+  "profile.close": "Kapat",
+  "profile.noFollowers": "Henüz takipçi yok.",
+  "profile.noFollowing": "Henüz kimseyi takip etmiyorum.",
+  "profile.followListErrorFollowers": "Takipçiler yüklenemedi.",
+  "profile.followListErrorFollowing": "Takip yüklenemedi.",
 } satisfies Record<TranslationKey, string>;
 
 export default tr;

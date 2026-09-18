@@ -171,6 +171,11 @@ const d_ka = {
   "profile.relForbidden": "თქვენ არ შეგიძლიათ ამის გაკეთება ამ მომხმარებელთან.",
   "profile.blockError": "ამ მომხმარებლის დაბლოკვა ვერ მოხერხდა. სცადეთ ხელახლა.",
   "profile.unblockError": "ამ მომხმარებლის განბლოკვა ვერ მოხერხდა. სცადეთ ხელახლა.",
+  "profile.close": "დახურვა",
+  "profile.noFollowers": "მიმდევრები ჯერ არ არის.",
+  "profile.noFollowing": "ჯერ არავის არ მიყვება.",
+  "profile.followListErrorFollowers": "მიმდევრების ჩატვირთვა ვერ მოხერხდა.",
+  "profile.followListErrorFollowing": "შემდეგი ჩატვირთვა ვერ მოხერხდა.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ka;

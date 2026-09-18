@@ -171,6 +171,11 @@ const d_as = {
   "profile.relForbidden": "এই ব্যৱহাৰকাৰীৰ সৈতে আপুনি তেনেকুৱা কৰিব নোৱাৰে৷",
   "profile.blockError": "এই ব্যৱহাৰকাৰীক ব্লক কৰিব পৰা নগ’ল৷ আকৌ এবাৰ চেষ্টা কৰক।",
   "profile.unblockError": "এই ব্যৱহাৰকাৰীক আনব্লক কৰিব পৰা নগ’ল৷ আকৌ এবাৰ চেষ্টা কৰক।",
+  "profile.close": "বন্ধ কৰক",
+  "profile.noFollowers": "এতিয়াও কোনো অনুগামী নাই।",
+  "profile.noFollowing": "এতিয়াও কাকো অনুসৰণ কৰা নাই।",
+  "profile.followListErrorFollowers": "ফ’ল’ৱাৰ লোড কৰিব পৰা নগ’ল৷",
+  "profile.followListErrorFollowing": "অনুসৰণ লোড কৰিব পৰা নগ’ল৷",
 } satisfies Record<TranslationKey, string>;
 
 export default d_as;

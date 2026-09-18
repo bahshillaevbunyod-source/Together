@@ -171,6 +171,11 @@ const d_ban = {
   "profile.relForbidden": "Sameton nénten dados ngamargiang indiké punika sareng sanganggé puniki.",
   "profile.blockError": "Nénten prasida nyengkalen sanganggé puniki. Indayang malih.",
   "profile.unblockError": "Nénten prasida mukak blokir sanganggé puniki. Indayang malih.",
+  "profile.close": "Tutup",
+  "profile.noFollowers": "Durung wénten pengikut.",
+  "profile.noFollowing": "Durung ngiring sapasira ugi.",
+  "profile.followListErrorFollowers": "Nénten prasida muat pengikut.",
+  "profile.followListErrorFollowing": "Nénten prasida ngunggahang selanturnyané.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ban;

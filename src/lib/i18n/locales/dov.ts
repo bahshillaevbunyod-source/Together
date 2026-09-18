@@ -171,6 +171,11 @@ const d_dov = {
   "profile.relForbidden": "Tokonzyi kuchita oobo amuntu ooyu.",
   "profile.blockError": "Tachikonzyi kukasya sikubelesya ooyu. Kosola alimwi.",
   "profile.unblockError": "Tachikonzyi kuvwungulula sikubelesya ooyu. Kosola alimwi.",
+  "profile.close": "Jala",
+  "profile.noFollowers": "Kunyina batobeli pe.",
+  "profile.noFollowing": "Tanditobelezyi muntu pe.",
+  "profile.followListErrorFollowers": "Tachikonzyi kunjizya batobeli.",
+  "profile.followListErrorFollowing": "Tachikonzeka pe kubikka zitobela.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_dov;

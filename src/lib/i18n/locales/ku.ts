@@ -171,6 +171,11 @@ const d_ku = {
   "profile.relForbidden": "Hûn nikarin bi vê bikarhênerê re bikin.",
   "profile.blockError": "Nekarî vî bikarhênerî asteng bike. Dubare bixebitin.",
   "profile.unblockError": "Nekarî vî bikarhênerî asteng bike. Dubare bixebitin.",
+  "profile.close": "Nêzîkî",
+  "profile.noFollowers": "Hîn tu kes tune li pey te nakeve.",
+  "profile.noFollowing": "Hîn li pey kesî nayê.",
+  "profile.followListErrorFollowers": "Nekarî şagirtan bar bike.",
+  "profile.followListErrorFollowing": "Nekarî jêr bar bike.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ku;

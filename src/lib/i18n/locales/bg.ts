@@ -171,6 +171,11 @@ const d_bg = {
   "profile.relForbidden": "Не можете да направите това с този потребител.",
   "profile.blockError": "Този потребител не можа да бъде блокиран. Опитайте отново.",
   "profile.unblockError": "Този потребител не можа да бъде деблокиран. Опитайте отново.",
+  "profile.close": "затвори",
+  "profile.noFollowers": "Все още няма последователи.",
+  "profile.noFollowing": "Все още не следва никого.",
+  "profile.followListErrorFollowers": "Последователите не можаха да се заредят.",
+  "profile.followListErrorFollowing": "Следването не можа да се зареди.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bg;

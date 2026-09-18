@@ -171,6 +171,11 @@ const d_el = {
   "profile.relForbidden": "Δεν μπορείτε να το κάνετε αυτό με αυτόν τον χρήστη.",
   "profile.blockError": "Δεν ήταν δυνατός ο αποκλεισμός αυτού του χρήστη. Προσπαθήστε ξανά.",
   "profile.unblockError": "Δεν ήταν δυνατή η κατάργηση αποκλεισμού αυτού του χρήστη. Προσπαθήστε ξανά.",
+  "profile.close": "Κλείσιμο",
+  "profile.noFollowers": "Δεν υπάρχουν ακόμα ακόλουθοι.",
+  "profile.noFollowing": "Δεν ακολουθεί κανέναν ακόμα.",
+  "profile.followListErrorFollowers": "Δεν ήταν δυνατή η φόρτωση των ακολούθων.",
+  "profile.followListErrorFollowing": "Δεν ήταν δυνατή η φόρτωση των παρακάτω.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_el;

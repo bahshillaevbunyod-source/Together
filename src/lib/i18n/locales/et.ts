@@ -171,6 +171,11 @@ const d_et = {
   "profile.relForbidden": "Te ei saa seda selle kasutajaga teha.",
   "profile.blockError": "Seda kasutajat ei saanud blokeerida. Proovi uuesti.",
   "profile.unblockError": "Seda kasutajat ei saanud deblokeerida. Proovi uuesti.",
+  "profile.close": "Sule",
+  "profile.noFollowers": "Jälgijaid pole veel.",
+  "profile.noFollowing": "Ei jälgi veel kedagi.",
+  "profile.followListErrorFollowers": "Jälgijaid ei saanud laadida.",
+  "profile.followListErrorFollowing": "Jälgimist ei saanud laadida.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_et;

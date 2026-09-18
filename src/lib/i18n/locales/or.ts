@@ -171,6 +171,11 @@ const d_or = {
   "profile.relForbidden": "ଆପଣ ଏହି ଉପଭୋକ୍ତା ସହିତ ତାହା କରିପାରିବେ ନାହିଁ |",
   "profile.blockError": "ଏହି ଉପଭୋକ୍ତାଙ୍କୁ ଅବରୋଧ କରିପାରିବ ନାହିଁ | ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
   "profile.unblockError": "ଏହି ଉପଯୋଗକର୍ତ୍ତାଙ୍କୁ ଅବରୋଧ କରିପାରିବ ନାହିଁ | ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+  "profile.close": "ବନ୍ଦ",
+  "profile.noFollowers": "ଏପର୍ଯ୍ୟନ୍ତ କ No ଣସି ଅନୁସରଣକାରୀ ନାହାଁନ୍ତି |",
+  "profile.noFollowing": "ଏପର୍ଯ୍ୟନ୍ତ କାହାକୁ ଅନୁସରଣ କରୁନାହିଁ |",
+  "profile.followListErrorFollowers": "ଅନୁସରଣକାରୀଙ୍କୁ ଲୋଡ୍ କରିପାରିବ ନାହିଁ |",
+  "profile.followListErrorFollowing": "ନିମ୍ନଲିଖିତ ଲୋଡ୍ ହୋଇପାରିବ ନାହିଁ |",
 } satisfies Record<TranslationKey, string>;
 
 export default d_or;

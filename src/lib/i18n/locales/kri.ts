@@ -171,6 +171,11 @@ const d_kri = {
   "profile.relForbidden": "Yu nɔ go ebul fɔ du dat wit dis yuza.",
   "profile.blockError": "I nɔ bin ebul fɔ blok dis yuza. Tray bak.",
   "profile.unblockError": "Nɔ bin ebul fɔ unblock dis yuza. Tray bak.",
+  "profile.close": "Klos",
+  "profile.noFollowers": "No pipul nɔ de fala am yet.",
+  "profile.noFollowing": "Nɔ de fala ɛnibɔdi yet.",
+  "profile.followListErrorFollowers": "I nɔ bin ebul fɔ lod pipul dɛn we de fala am.",
+  "profile.followListErrorFollowing": "I nɔ bin ebul fɔ lod fɔ fala.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_kri;

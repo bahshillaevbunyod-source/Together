@@ -171,6 +171,11 @@ const d_dv = {
   "profile.relForbidden": "މި ޔޫޒަރާއި އެކު އެކަން ނުކުރެވޭނެއެވެ.",
   "profile.blockError": "މި ޔޫޒަރ ބްލޮކް ނުކުރެވުނެވެ. އަނެއްކާވެސް މަސައްކަތް ކުރާށެވެ.",
   "profile.unblockError": "މި ޔޫޒަރ އަންބްލޮކް ނުކުރެވުނެވެ. އަނެއްކާވެސް މަސައްކަތް ކުރާށެވެ.",
+  "profile.close": "ބަންދުކޮށްލާށެވެ",
+  "profile.noFollowers": "އަދި ފޮލޯވަރުންނެއް ނެތެވެ.",
+  "profile.noFollowing": "އަދި އެއްވެސް މީހަކު ފޮލޯއެއް ނުކުރަން.",
+  "profile.followListErrorFollowers": "ފޮލޯވަރުން ލޯޑް ނުކުރެވުނެވެ.",
+  "profile.followListErrorFollowing": "ފޮލޯވަރުން ލޯޑް ނުކުރެވުނެވެ.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_dv;

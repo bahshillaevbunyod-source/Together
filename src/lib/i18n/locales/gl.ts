@@ -171,6 +171,11 @@ const d_gl = {
   "profile.relForbidden": "Non podes facelo con este usuario.",
   "profile.blockError": "Non se puido bloquear este usuario. Téntao de novo.",
   "profile.unblockError": "Non se puido desbloquear este usuario. Téntao de novo.",
+  "profile.close": "Pechar",
+  "profile.noFollowers": "Aínda non hai seguidores.",
+  "profile.noFollowing": "Aínda non segues a ninguén.",
+  "profile.followListErrorFollowers": "Non se puideron cargar os seguidores.",
+  "profile.followListErrorFollowing": "Non se puido cargar o seguinte.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gl;

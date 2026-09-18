@@ -171,6 +171,11 @@ const d_chm = {
   "profile.relForbidden": "Тиде пайдаланыше дене тидым ыштен от керт.",
   "profile.blockError": "Тиде пайдаланышым блокироватлаш ок лий. Эше ик гана тӧчен ончо.",
   "profile.unblockError": "Тиде пайдаланышым почаш ок лий. Эше ик гана тӧчен ончо.",
+  "profile.close": "Петыраш",
+  "profile.noFollowers": "Эше почеш кайыше-влак уке улыт.",
+  "profile.noFollowing": "Эше нигӧмат почеш омыл.",
+  "profile.followListErrorFollowers": "Почеш кайыше-влакым пуртен кертын огыл.",
+  "profile.followListErrorFollowing": "Умбакыже загрузитлен кертын огыл.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_chm;

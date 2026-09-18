@@ -171,6 +171,11 @@ const d_jv = {
   "profile.relForbidden": "Sampeyan ora bisa nindakake karo pangguna iki.",
   "profile.blockError": "Ora bisa mblokir pangguna iki. Coba maneh.",
   "profile.unblockError": "Ora bisa mbukak blokir pangguna iki. Coba maneh.",
+  "profile.close": "Nutup",
+  "profile.noFollowers": "Durung ana pengikut.",
+  "profile.noFollowing": "Durung ngetutake sapa wae.",
+  "profile.followListErrorFollowers": "Ora bisa mbukak pengikut.",
+  "profile.followListErrorFollowing": "Ora bisa mbukak ing ngisor iki.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_jv;

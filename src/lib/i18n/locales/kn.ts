@@ -171,6 +171,11 @@ const d_kn = {
   "profile.relForbidden": "ಈ ಬಳಕೆದಾರರೊಂದಿಗೆ ನೀವು ಅದನ್ನು ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
   "profile.blockError": "ಈ ಬಳಕೆದಾರರನ್ನು ನಿರ್ಬಂಧಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
   "profile.unblockError": "ಈ ಬಳಕೆದಾರರನ್ನು ಅನಿರ್ಬಂಧಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "profile.close": "ಮುಚ್ಚಿ",
+  "profile.noFollowers": "ಇನ್ನೂ ಯಾವುದೇ ಅನುಯಾಯಿಗಳಿಲ್ಲ.",
+  "profile.noFollowing": "ಇನ್ನೂ ಯಾರನ್ನೂ ಅನುಸರಿಸುತ್ತಿಲ್ಲ.",
+  "profile.followListErrorFollowers": "ಅನುಯಾಯಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+  "profile.followListErrorFollowing": "ಅನುಸರಿಸುವುದನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_kn;

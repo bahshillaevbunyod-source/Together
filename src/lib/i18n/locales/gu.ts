@@ -171,6 +171,11 @@ const d_gu = {
   "profile.relForbidden": "તમે આ વપરાશકર્તા સાથે તે કરી શકતા નથી.",
   "profile.blockError": "આ વપરાશકર્તાને અવરોધિત કરી શક્યાં નથી. ફરી પ્રયાસ કરો.",
   "profile.unblockError": "આ વપરાશકર્તાને અનાવરોધિત કરી શકાયું નથી. ફરી પ્રયાસ કરો.",
+  "profile.close": "બંધ કરો",
+  "profile.noFollowers": "હજુ સુધી કોઈ અનુયાયીઓ નથી.",
+  "profile.noFollowing": "હજુ સુધી કોઈને અનુસરતા નથી.",
+  "profile.followListErrorFollowers": "અનુયાયીઓ લોડ કરી શક્યાં નથી.",
+  "profile.followListErrorFollowing": "નીચેનાને લોડ કરી શકાયું નથી.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_gu;

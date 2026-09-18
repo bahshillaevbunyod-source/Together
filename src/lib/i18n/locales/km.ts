@@ -171,6 +171,11 @@ const d_km = {
   "profile.relForbidden": "អ្នកមិនអាចធ្វើវាជាមួយអ្នកប្រើប្រាស់នេះបានទេ។",
   "profile.blockError": "មិនអាចទប់ស្កាត់អ្នកប្រើប្រាស់នេះបានទេ។ ព្យាយាមម្តងទៀត។",
   "profile.unblockError": "មិន​អាច​បិទ​អ្នក​ប្រើ​នេះ​បាន​ទេ។ ព្យាយាមម្តងទៀត។",
+  "profile.close": "បិទ",
+  "profile.noFollowers": "មិនទាន់មានអ្នកតាមដាននៅឡើយ។",
+  "profile.noFollowing": "មិន​ទាន់​តាម​អ្នក​ណា​ទេ។",
+  "profile.followListErrorFollowers": "មិនអាចផ្ទុកអ្នកតាមបានទេ។",
+  "profile.followListErrorFollowing": "មិនអាចផ្ទុកការតាមដានបានទេ។",
 } satisfies Record<TranslationKey, string>;
 
 export default d_km;

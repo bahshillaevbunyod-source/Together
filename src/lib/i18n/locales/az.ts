@@ -171,6 +171,11 @@ const d_az = {
   "profile.relForbidden": "Bu istifadəçi ilə bunu edə bilməzsiniz.",
   "profile.blockError": "Bu istifadəçini bloklamaq mümkün olmadı. Yenidən cəhd edin.",
   "profile.unblockError": "Bu istifadəçini blokdan çıxarmaq mümkün olmadı. Yenidən cəhd edin.",
+  "profile.close": "Bağlayın",
+  "profile.noFollowers": "Hələ izləyici yoxdur.",
+  "profile.noFollowing": "Hələ heç kimi izləmirəm.",
+  "profile.followListErrorFollowers": "İzləyiciləri yükləmək mümkün olmadı.",
+  "profile.followListErrorFollowing": "İzləməni yükləmək mümkün olmadı.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_az;

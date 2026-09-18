@@ -171,6 +171,11 @@ const d_bbc = {
   "profile.relForbidden": "Ndang boi songon i dibahen hamu tu pangguna on.",
   "profile.blockError": "Ndang boi diblokir pangguna on. Coba ma muse.",
   "profile.unblockError": "Ndang boi dibuka blokir ni pangguna on. Coba ma muse.",
+  "profile.close": "Tutup",
+  "profile.noFollowers": "Dang adong dope pangihutna.",
+  "profile.noFollowing": "Ndang mangihuthon manang ise dope.",
+  "profile.followListErrorFollowers": "Ndang boi be muat pangihut.",
+  "profile.followListErrorFollowing": "Ndang boi be muat mangihut.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_bbc;

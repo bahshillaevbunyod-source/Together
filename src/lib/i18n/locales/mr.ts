@@ -171,6 +171,11 @@ const d_mr = {
   "profile.relForbidden": "तुम्ही या वापरकर्त्यासह असे करू शकत नाही.",
   "profile.blockError": "या वापरकर्त्याला अवरोधित करू शकलो नाही. पुन्हा प्रयत्न करा.",
   "profile.unblockError": "या वापरकर्त्याला अनब्लॉक करता आले नाही. पुन्हा प्रयत्न करा.",
+  "profile.close": "बंद करा",
+  "profile.noFollowers": "अद्याप कोणतेही अनुयायी नाहीत.",
+  "profile.noFollowing": "अजून कुणाला फॉलो करत नाहीये.",
+  "profile.followListErrorFollowers": "फॉलोअर्स लोड करू शकलो नाही.",
+  "profile.followListErrorFollowing": "खालील लोड करू शकलो नाही.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_mr;

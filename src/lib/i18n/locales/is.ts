@@ -171,6 +171,11 @@ const d_is = {
   "profile.relForbidden": "Þú getur ekki gert það með þessum notanda.",
   "profile.blockError": "Ekki tókst að loka fyrir þennan notanda. Reyndu aftur.",
   "profile.unblockError": "Ekki tókst að opna þennan notanda af bannlista. Reyndu aftur.",
+  "profile.close": "Loka",
+  "profile.noFollowers": "Engir fylgjendur ennþá.",
+  "profile.noFollowing": "Ekki fylgst með neinum ennþá.",
+  "profile.followListErrorFollowers": "Ekki tókst að hlaða fylgjendum.",
+  "profile.followListErrorFollowing": "Ekki tókst að hlaða eftirfarandi.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_is;

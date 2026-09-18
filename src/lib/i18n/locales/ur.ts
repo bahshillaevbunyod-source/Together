@@ -171,6 +171,11 @@ const d_ur = {
   "profile.relForbidden": "آپ اس صارف کے ساتھ ایسا نہیں کر سکتے۔",
   "profile.blockError": "اس صارف کو بلاک نہیں کیا جا سکا۔ دوبارہ کوشش کریں۔",
   "profile.unblockError": "اس صارف کو غیر مسدود نہیں کیا جا سکا۔ دوبارہ کوشش کریں۔",
+  "profile.close": "بند",
+  "profile.noFollowers": "ابھی تک کوئی پیروکار نہیں۔",
+  "profile.noFollowing": "ابھی تک کسی کی پیروی نہیں کی۔",
+  "profile.followListErrorFollowers": "پیروکاروں کو لوڈ نہیں کیا جا سکا۔",
+  "profile.followListErrorFollowing": "مندرجہ ذیل لوڈ نہیں ہو سکا۔",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ur;

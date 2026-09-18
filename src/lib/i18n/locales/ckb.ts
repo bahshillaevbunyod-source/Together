@@ -171,6 +171,11 @@ const d_ckb = {
   "profile.relForbidden": "تۆ ناتوانی ئەوە لەگەڵ ئەم بەکارهێنەرەدا بکەیت.",
   "profile.blockError": "نەیتوانی ئەم بەکارهێنەرە بلۆک بکات. دووبارە هەوڵبدەرەوە.",
   "profile.unblockError": "نەتوانرا ئەم بەکارهێنەرە بلۆکی بکات. دووبارە هەوڵبدەرەوە.",
+  "profile.close": "دابخە",
+  "profile.noFollowers": "هێشتا هیچ فۆڵۆوەرێک نییە.",
+  "profile.noFollowing": "تا ئێستا فۆڵۆوی کەس نەکردووە.",
+  "profile.followListErrorFollowers": "نەیتوانی فۆڵۆوەرەکان بار بکات.",
+  "profile.followListErrorFollowing": "نەیتوانی فۆڵۆوەکان بار بکات.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ckb;

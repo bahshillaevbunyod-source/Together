@@ -171,6 +171,11 @@ const d_sl = {
   "profile.relForbidden": "Tega ne morete storiti s tem uporabnikom.",
   "profile.blockError": "Tega uporabnika ni bilo mogoče blokirati. poskusi ponovno",
   "profile.unblockError": "Tega uporabnika ni bilo mogoče odblokirati. poskusi ponovno",
+  "profile.close": "Zapri",
+  "profile.noFollowers": "Ni še sledilcev.",
+  "profile.noFollowing": "Ne spremljam še nikogar.",
+  "profile.followListErrorFollowers": "Spremljevalcev ni bilo mogoče naložiti.",
+  "profile.followListErrorFollowing": "Spremljanja ni bilo mogoče naložiti.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sl;

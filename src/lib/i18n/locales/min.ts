@@ -171,6 +171,11 @@ const d_min = {
   "profile.relForbidden": "Indak bisa awak mangarajoan itu jo pangguno ko.",
   "profile.blockError": "Indak bisa mamblokir pangguno ko. Cubolah baliak.",
   "profile.unblockError": "Indak dapek mambukak blokir pangguno ko. Cubolah baliak.",
+  "profile.close": "Tutuik",
+  "profile.noFollowers": "Alun ado pengikutnyo lai.",
+  "profile.noFollowing": "Alun ikuik urang lai.",
+  "profile.followListErrorFollowers": "Indak bisa mamuek pengikut.",
+  "profile.followListErrorFollowing": "Indak bisa mamuek manuruik.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_min;

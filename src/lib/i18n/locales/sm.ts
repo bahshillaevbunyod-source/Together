@@ -171,6 +171,11 @@ const d_sm = {
   "profile.relForbidden": "E le mafai ona e faia lena mea i lenei tagata faʻaoga.",
   "profile.blockError": "Le mafai ona poloka lenei tagata fa'aoga. Toe taumafai.",
   "profile.unblockError": "Le mafai ona tatala le poloka o lenei tagata fa'aoga. Toe taumafai.",
+  "profile.close": "Tapuni",
+  "profile.noFollowers": "Leai ni tagata mulimuli.",
+  "profile.noFollowing": "E le'i mulimuli i se tasi.",
+  "profile.followListErrorFollowers": "Le mafai ona utaina tagata mulimuli.",
+  "profile.followListErrorFollowing": "Le mafai ona utaina le mulimuli.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_sm;

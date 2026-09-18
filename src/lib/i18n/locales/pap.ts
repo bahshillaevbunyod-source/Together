@@ -171,6 +171,11 @@ const d_pap = {
   "profile.relForbidden": "Bo no por hasi esei ku e usuario aki.",
   "profile.blockError": "No por a blòkia e usuario aki. Purba atrobe.",
   "profile.unblockError": "No por a desblokeá e usuario aki. Purba atrobe.",
+  "profile.close": "Sera",
+  "profile.noFollowers": "No tin siguidó ainda.",
+  "profile.noFollowing": "No ta sigui niun hende ainda.",
+  "profile.followListErrorFollowers": "No por a karga siguidónan.",
+  "profile.followListErrorFollowing": "No por a karga e siguiente.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pap;

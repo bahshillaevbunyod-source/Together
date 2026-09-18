@@ -171,6 +171,11 @@ const d_ceb = {
   "profile.relForbidden": "Dili nimo mahimo kana sa kini nga tiggamit.",
   "profile.blockError": "Dili ma-block kini nga tiggamit. Sulayi pag-usab.",
   "profile.unblockError": "Dili ma-unblock kini nga tiggamit. Sulayi pag-usab.",
+  "profile.close": "Duol",
+  "profile.noFollowers": "Wala pay followers.",
+  "profile.noFollowing": "Wala pa nagsunod bisan kinsa.",
+  "profile.followListErrorFollowers": "Dili makarga ang mga sumusunod.",
+  "profile.followListErrorFollowing": "Dili makarga ang pagsunod.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ceb;

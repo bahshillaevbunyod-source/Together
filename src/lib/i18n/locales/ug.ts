@@ -171,6 +171,11 @@ const d_ug = {
   "profile.relForbidden": "بۇ ئىشلەتكۈچى بىلەن ئۇنى قىلالمايسىز.",
   "profile.blockError": "بۇ ئىشلەتكۈچىنى توسىيالمىدى. قايتا سىناڭ.",
   "profile.unblockError": "بۇ ئىشلەتكۈچىنى چەكلىيەلمىدى. قايتا سىناڭ.",
+  "profile.close": "تاقاش",
+  "profile.noFollowers": "ئەگەشكۈچىلەر يوق.",
+  "profile.noFollowing": "تېخى ھېچكىمگە ئەگەشمەيدۇ.",
+  "profile.followListErrorFollowers": "ئەگەشكۈچىلەرنى يۈكلىيەلمىدى.",
+  "profile.followListErrorFollowing": "تۆۋەندىكىنى يۈكلىيەلمىدى.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ug;

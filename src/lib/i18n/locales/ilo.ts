@@ -171,6 +171,11 @@ const d_ilo = {
   "profile.relForbidden": "Dimo maaramid dayta iti daytoy nga agus-usar.",
   "profile.blockError": "Saan a ma-block daytoy nga user. Padasem manen.",
   "profile.unblockError": "Saan a mabalin nga i-unblock daytoy nga user. Padasem manen.",
+  "profile.close": "Agserra",
+  "profile.noFollowers": "Awan pay ti pasurot.",
+  "profile.noFollowing": "Saan pay a sumursurot iti asinoman.",
+  "profile.followListErrorFollowers": "Saan a maka-load kadagiti pasurot.",
+  "profile.followListErrorFollowing": "Saan a makaikarga iti sumaganad.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ilo;

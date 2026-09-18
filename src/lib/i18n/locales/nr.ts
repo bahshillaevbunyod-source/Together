@@ -171,6 +171,11 @@ const d_nr = {
   "profile.relForbidden": "Angeze wakwenza lokho ngomsebenzisi lo.",
   "profile.blockError": "Angeze kwakghona ukuvimba umsebenzisi lo. Linga godu.",
   "profile.unblockError": "Angeze kwakghona ukuvula umsebenzisi lo. Linga godu.",
+  "profile.close": "Vala",
+  "profile.noFollowers": "Akunabalandeli okwanje.",
+  "profile.noFollowing": "Angikalandeli muntu okwanje.",
+  "profile.followListErrorFollowers": "Bekungakghoni ukulayisha abalandeli.",
+  "profile.followListErrorFollowing": "Bekungakghoni ukulayisha okulandelako.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_nr;

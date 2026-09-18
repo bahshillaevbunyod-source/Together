@@ -171,6 +171,11 @@ const d_te = {
   "profile.relForbidden": "మీరు ఈ వినియోగదారుతో అలా చేయలేరు.",
   "profile.blockError": "ఈ వినియోగదారుని బ్లాక్ చేయడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
   "profile.unblockError": "ఈ వినియోగదారుని అన్‌బ్లాక్ చేయడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
+  "profile.close": "మూసివేయి",
+  "profile.noFollowers": "ఇంకా అనుచరులు లేరు.",
+  "profile.noFollowing": "ఇంకా ఎవరినీ అనుసరించడం లేదు.",
+  "profile.followListErrorFollowers": "అనుచరులను లోడ్ చేయడం సాధ్యపడలేదు.",
+  "profile.followListErrorFollowing": "కింది వాటిని లోడ్ చేయడం సాధ్యపడలేదు.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_te;

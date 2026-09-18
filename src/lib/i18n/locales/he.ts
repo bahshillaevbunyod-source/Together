@@ -171,6 +171,11 @@ const d_he = {
   "profile.relForbidden": "אתה לא יכול לעשות את זה עם המשתמש הזה.",
   "profile.blockError": "לא ניתן לחסום את המשתמש הזה. נסה שוב.",
   "profile.unblockError": "לא ניתן לבטל את חסימת המשתמש הזה. נסה שוב.",
+  "profile.close": "סגור",
+  "profile.noFollowers": "עדיין אין עוקבים.",
+  "profile.noFollowing": "עדיין לא עוקב אחרי אף אחד.",
+  "profile.followListErrorFollowers": "לא ניתן לטעון עוקבים.",
+  "profile.followListErrorFollowing": "לא ניתן לטעון את העוקבים.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_he;

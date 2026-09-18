@@ -171,6 +171,11 @@ const d_id = {
   "profile.relForbidden": "Anda tidak dapat melakukan itu dengan pengguna ini.",
   "profile.blockError": "Tidak dapat memblokir pengguna ini. Coba lagi.",
   "profile.unblockError": "Tidak dapat membatalkan pemblokiran pengguna ini. Coba lagi.",
+  "profile.close": "Tutup",
+  "profile.noFollowers": "Belum ada pengikut.",
+  "profile.noFollowing": "Belum mengikuti siapa pun.",
+  "profile.followListErrorFollowers": "Tidak dapat memuat pengikut.",
+  "profile.followListErrorFollowing": "Tidak dapat memuat yang berikut ini.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_id;

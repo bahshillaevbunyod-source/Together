@@ -171,6 +171,11 @@ const d_din = {
   "profile.relForbidden": "Yïn acïï lëu ba kën looi kek raan ë luɔi kënë.",
   "profile.blockError": "Acï lëu bï raan kënë gël. Dhɔ̈l them.",
   "profile.unblockError": "Acï lëu bï raan kënë gël. Dhɔ̈l them.",
+  "profile.close": "Thiök",
+  "profile.noFollowers": "Acïn kɔc cï ye kuanycök ëmɛn.",
+  "profile.noFollowing": "Acïn raan cï kuanycök ëmɛn.",
+  "profile.followListErrorFollowers": "Acïï lëu bï kɔc kuany ye cök tääu thïn.",
+  "profile.followListErrorFollowing": "Acï lëu bï lööŋ kuanycök.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_din;

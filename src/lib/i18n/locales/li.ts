@@ -171,6 +171,11 @@ const d_li = {
   "profile.relForbidden": "Dat kinste neet mit deze gebroeker doen.",
   "profile.blockError": "Kon deze gebroeker neet blokkere. Probeer nog ummer.",
   "profile.unblockError": "Kon deze gebroeker neet deblokkere. Probeer nog ummer.",
+  "profile.close": "Sluite",
+  "profile.noFollowers": "Nog gein volgers.",
+  "profile.noFollowing": "Nog niemand volg.",
+  "profile.followListErrorFollowers": "Kon gein volgers lade.",
+  "profile.followListErrorFollowing": "Kon de volgende neet lade.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_li;

@@ -171,6 +171,11 @@ const d_pa = {
   "profile.relForbidden": "ਤੁਸੀਂ ਇਸ ਉਪਭੋਗਤਾ ਨਾਲ ਅਜਿਹਾ ਨਹੀਂ ਕਰ ਸਕਦੇ.",
   "profile.blockError": "ਇਸ ਵਰਤੋਂਕਾਰ ਨੂੰ ਬਲਾਕ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ.",
   "profile.unblockError": "ਇਸ ਉਪਭੋਗਤਾ ਨੂੰ ਅਨਬਲੌਕ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ.",
+  "profile.close": "ਬੰਦ ਕਰੋ",
+  "profile.noFollowers": "ਅਜੇ ਤੱਕ ਕੋਈ ਅਨੁਯਾਈ ਨਹੀਂ ਹੈ।",
+  "profile.noFollowing": "ਅਜੇ ਤੱਕ ਕਿਸੇ ਦਾ ਪਿੱਛਾ ਨਹੀਂ ਕਰ ਰਿਹਾ।",
+  "profile.followListErrorFollowers": "ਪੈਰੋਕਾਰਾਂ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।",
+  "profile.followListErrorFollowing": "ਅੱਗੇ ਦਿੱਤੇ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।",
 } satisfies Record<TranslationKey, string>;
 
 export default d_pa;

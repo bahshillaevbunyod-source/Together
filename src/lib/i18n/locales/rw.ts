@@ -171,6 +171,11 @@ const d_rw = {
   "profile.relForbidden": "Ntushobora kubikora hamwe nuyu mukoresha.",
   "profile.blockError": "Ntushobora guhagarika uyu ukoresha. Ongera ugerageze.",
   "profile.unblockError": "Ntushobora guhagarika uyu ukoresha. Ongera ugerageze.",
+  "profile.close": "Funga",
+  "profile.noFollowers": "Nta bayoboke.",
+  "profile.noFollowing": "Ntabwo ukurikira umuntu.",
+  "profile.followListErrorFollowers": "Ntushobora kwikorera abayoboke.",
+  "profile.followListErrorFollowing": "Ntushobora kwikorera ibikurikira.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_rw;

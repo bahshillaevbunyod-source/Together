@@ -171,6 +171,11 @@ const d_ms = {
   "profile.relForbidden": "Anda tidak boleh melakukannya dengan pengguna ini.",
   "profile.blockError": "Tidak dapat menyekat pengguna ini. Cuba lagi.",
   "profile.unblockError": "Tidak dapat menyahsekat pengguna ini. Cuba lagi.",
+  "profile.close": "tutup",
+  "profile.noFollowers": "Tiada pengikut lagi.",
+  "profile.noFollowing": "Belum mengikuti sesiapa lagi.",
+  "profile.followListErrorFollowers": "Tidak dapat memuatkan pengikut.",
+  "profile.followListErrorFollowing": "Tidak dapat memuatkan ikutan.",
 } satisfies Record<TranslationKey, string>;
 
 export default d_ms;
