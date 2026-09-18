@@ -40,6 +40,7 @@ const d_mak = {
   "composer.visibility.privateHint": "Ikau bawang",
   "composer.audience": "Anciniki postinga: {audience}",
   "composer.post": "Kirimi",
+  "post.title": "posting media sosial",
   "composer.posting": "Nakirimi…",
   "composer.uploading": "Naunggahi {current} battu ri {total}…",
   "composer.tooManyPhotos": "Akkulleko antambai sa'genna 8 rupa.",

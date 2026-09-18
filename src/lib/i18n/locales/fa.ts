@@ -40,6 +40,7 @@ const d_fa = {
   "composer.visibility.privateHint": "فقط خودت",
   "composer.audience": "مخاطبان پست: {audience}",
   "composer.post": "انتشار",
+  "post.title": "پست رسانه های اجتماعی",
   "composer.posting": "در حال انتشار…",
   "composer.uploading": "در حال بارگذاری {current} از {total}…",
   "composer.tooManyPhotos": "می‌توانی تا ۸ عکس اضافه کنی.",

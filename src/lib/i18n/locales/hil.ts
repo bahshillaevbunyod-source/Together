@@ -40,6 +40,7 @@ const d_hil = {
   "composer.visibility.privateHint": "Ikaw lang",
   "composer.audience": "Mga nagatan-aw sa post: {audience}",
   "composer.post": "I-post",
+  "post.title": "I-post",
   "composer.posting": "Nagapost…",
   "composer.uploading": "Nag-upload sang {current} sa {total}…",
   "composer.tooManyPhotos": "Makadugang ka sang tubtob 8 ka litrato.",

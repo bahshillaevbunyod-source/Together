@@ -40,6 +40,7 @@ const d_fj = {
   "composer.visibility.privateHint": "O iko ga",
   "composer.audience": "Era raica na itukutuku: {audience}",
   "composer.post": "Vakau",
+  "post.title": "itukutuku ni veimaliwai raraba",
   "composer.posting": "Sa vakauta…",
   "composer.uploading": "Sa laveta cake {current} mai na {total}…",
   "composer.tooManyPhotos": "O rawa ni kuria e yacova e 8 na iyaloyalo.",

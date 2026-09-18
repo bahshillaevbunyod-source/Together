@@ -40,6 +40,7 @@ const d_sn = {
   "composer.visibility.privateHint": "Iwe chete",
   "composer.audience": "Vanoona chinyorwa: {audience}",
   "composer.post": "Isa",
+  "post.title": "Isa",
   "composer.posting": "Iri kuisa…",
   "composer.uploading": "Iri kukwidza {current} pane {total}…",
   "composer.tooManyPhotos": "Unogona kuwedzera mifananidzo inosvika 8.",

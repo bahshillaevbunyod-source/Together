@@ -40,6 +40,7 @@ const d_km = {
   "composer.visibility.privateHint": "តែអ្នក",
   "composer.audience": "ទស្សនិកជននៃការបង្ហោះ៖ {audience}",
   "composer.post": "បង្ហោះ",
+  "post.title": "ការបង្ហោះប្រព័ន្ធផ្សព្វផ្សាយសង្គម",
   "composer.posting": "កំពុងបង្ហោះ…",
   "composer.uploading": "កំពុងផ្ទុកឡើង {current} ក្នុងចំណោម {total}…",
   "composer.tooManyPhotos": "អ្នកអាចបន្ថែមរូបថតបានរហូតដល់ 8 សន្លឹក។",

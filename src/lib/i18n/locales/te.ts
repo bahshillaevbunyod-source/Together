@@ -40,6 +40,7 @@ const d_te = {
   "composer.visibility.privateHint": "మీరు మాత్రమే",
   "composer.audience": "పోస్ట్ ప్రేక్షకులు: {audience}",
   "composer.post": "పోస్ట్ చేయి",
+  "post.title": "సోషల్ మీడియా పోస్ట్",
   "composer.posting": "పోస్ట్ అవుతోంది…",
   "composer.uploading": "{total}లో {current} అప్‌లోడ్ అవుతోంది…",
   "composer.tooManyPhotos": "మీరు గరిష్ఠంగా 8 ఫోటోలు జోడించవచ్చు.",

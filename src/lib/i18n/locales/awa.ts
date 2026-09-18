@@ -40,6 +40,7 @@ const d_awa = {
   "composer.visibility.privateHint": "खाली तू",
   "composer.audience": "पोस्ट का दर्शक: {audience}",
   "composer.post": "पोस्ट करउ",
+  "post.title": "सोशल मीडिया पोस्ट",
   "composer.posting": "पोस्ट होत हय…",
   "composer.uploading": "{total} मँ से {current} अपलोड होत हय…",
   "composer.tooManyPhotos": "तू जादा से जादा 8 फोटो जोरि सकत हउ।",

@@ -40,6 +40,7 @@ const d_oc = {
   "composer.visibility.privateHint": "Sonque tu",
   "composer.audience": "Public de la publicacion: {audience}",
   "composer.post": "Publicar",
+  "post.title": "messatge sus las rets socialas",
   "composer.posting": "Publicacion…",
   "composer.uploading": "Cargament de {current} sus {total}…",
   "composer.tooManyPhotos": "Pòs apondre fins a 8 fòtos.",

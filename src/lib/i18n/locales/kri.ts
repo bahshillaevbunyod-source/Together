@@ -40,6 +40,7 @@ const d_kri = {
   "composer.visibility.privateHint": "Nɔmɔ yu",
   "composer.audience": "Dɛn we go si di pos: {audience}",
   "composer.post": "Pos",
+  "post.title": "soshal midia post",
   "composer.posting": "De pos…",
   "composer.uploading": "De ɔplod {current} pan {total}…",
   "composer.tooManyPhotos": "Yu go ebul put te 8 foto.",

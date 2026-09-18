@@ -40,6 +40,7 @@ const d_my = {
   "composer.visibility.privateHint": "သင်သာ",
   "composer.audience": "ပို့စ်ကြည့်ရှုသူများ- {audience}",
   "composer.post": "ပို့စ်တင်ရန်",
+  "post.title": "ဆိုရှယ်မီဒီယာပို့စ်",
   "composer.posting": "ပို့စ်တင်နေသည်…",
   "composer.uploading": "{total} အနက် {current} တင်နေသည်…",
   "composer.tooManyPhotos": "ဓာတ်ပုံ ၈ ပုံအထိ ထည့်နိုင်သည်။",

@@ -40,6 +40,7 @@ const d_et = {
   "composer.visibility.privateHint": "Ainult sina",
   "composer.audience": "Postituse sihtrühm: {audience}",
   "composer.post": "Postita",
+  "post.title": "sotsiaalmeedia postitus",
   "composer.posting": "Postitamine…",
   "composer.uploading": "Üleslaadimine {current}/{total}…",
   "composer.tooManyPhotos": "Saad lisada kuni 8 fotot.",

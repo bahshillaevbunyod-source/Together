@@ -40,6 +40,7 @@ const d_bew = {
   "composer.visibility.privateHint": "Cuma lu",
   "composer.audience": "Yang liat postingan: {audience}",
   "composer.post": "Kirim",
+  "post.title": "postingan media sosial",
   "composer.posting": "Lagi ngirim…",
   "composer.uploading": "Lagi ngunggah {current} dari {total}…",
   "composer.tooManyPhotos": "Lu bisa nambahin sampe 8 poto.",

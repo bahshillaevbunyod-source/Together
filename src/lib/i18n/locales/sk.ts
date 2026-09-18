@@ -40,6 +40,7 @@ const d_sk = {
   "composer.visibility.privateHint": "Len ty",
   "composer.audience": "Publikum príspevku: {audience}",
   "composer.post": "Pridať",
+  "post.title": "príspevok na sociálnych sieťach",
   "composer.posting": "Pridávanie…",
   "composer.uploading": "Nahrávanie {current} z {total}…",
   "composer.tooManyPhotos": "Môžeš pridať až 8 fotiek.",

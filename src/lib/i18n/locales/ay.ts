@@ -40,6 +40,7 @@ const d_ay = {
   "composer.visibility.privateHint": "Jumakiwa",
   "composer.audience": "Yatiyaw uñjirinaka: {audience}",
   "composer.post": "Apsuña",
+  "post.title": "medios sociales ukan qillqt’ata",
   "composer.posting": "Apsuskiwa…",
   "composer.uploading": "{current} {total}-ta apsusa…",
   "composer.tooManyPhotos": "8 fotonakkama yapt'añ atkta.",

@@ -40,6 +40,7 @@ const d_as = {
   "composer.visibility.privateHint": "কেৱল আপুনি",
   "composer.audience": "পʼষ্টৰ দৰ্শক: {audience}",
   "composer.post": "পʼষ্ট কৰক",
+  "post.title": "ছ'চিয়েল মিডিয়া পোষ্ট",
   "composer.posting": "পʼষ্ট হৈ আছে…",
   "composer.uploading": "{total}ৰ ভিতৰত {current} আপলʼড হৈ আছে…",
   "composer.tooManyPhotos": "আপুনি সৰ্বাধিক 8টা ফটো যোগ কৰিব পাৰে।",

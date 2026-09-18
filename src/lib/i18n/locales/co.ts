@@ -40,6 +40,7 @@ const d_co = {
   "composer.visibility.privateHint": "Solu tù",
   "composer.audience": "Pùblicu di a publicazione: {audience}",
   "composer.post": "Publicà",
+  "post.title": "post di media suciale",
   "composer.posting": "Publicazione…",
   "composer.uploading": "Caricamentu di {current} nantu à {total}…",
   "composer.tooManyPhotos": "Pòi aghjunghje finu à 8 fotografie.",

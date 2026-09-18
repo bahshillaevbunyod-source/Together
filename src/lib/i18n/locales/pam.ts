@@ -40,6 +40,7 @@ const d_pam = {
   "composer.visibility.privateHint": "Ika mu",
   "composer.audience": "Ding manenmap king post: {audience}",
   "composer.post": "I-post",
+  "post.title": "I-post",
   "composer.posting": "Mag-po-post…",
   "composer.uploading": "Miya-upload {current} king {total}…",
   "composer.tooManyPhotos": "Malyari kang mag-adya angga king 8 a litratu.",

@@ -40,6 +40,7 @@ const d_ms = {
   "composer.visibility.privateHint": "Hanya anda",
   "composer.audience": "Khalayak hantaran: {audience}",
   "composer.post": "Hantar",
+  "post.title": "siaran media sosial",
   "composer.posting": "Menghantar…",
   "composer.uploading": "Memuat naik {current} daripada {total}…",
   "composer.tooManyPhotos": "Anda boleh menambah sehingga 8 foto.",

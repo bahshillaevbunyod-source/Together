@@ -40,6 +40,7 @@ const d_ps = {
   "composer.visibility.privateHint": "یوازې ته",
   "composer.audience": "د پوسټ لیدونکي: {audience}",
   "composer.post": "خپرول",
+  "post.title": "د ټولنیزو رسنیو پوسټ",
   "composer.posting": "خپریږي…",
   "composer.uploading": "{total} څخه {current} اپلوډ کیږي…",
   "composer.tooManyPhotos": "تر ۸ انځورونو پورې اضافه کولی شې.",

@@ -40,6 +40,7 @@ const d_hi = {
   "composer.visibility.privateHint": "सिर्फ़ आप",
   "composer.audience": "पोस्ट के दर्शक: {audience}",
   "composer.post": "पोस्ट करें",
+  "post.title": "सोशल मीडिया पोस्ट",
   "composer.posting": "पोस्ट हो रहा है…",
   "composer.uploading": "{total} में से {current} अपलोड हो रहा है…",
   "composer.tooManyPhotos": "आप ज़्यादा से ज़्यादा 8 फ़ोटो जोड़ सकते हैं।",

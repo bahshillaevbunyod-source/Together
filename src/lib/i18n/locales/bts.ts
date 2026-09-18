@@ -40,6 +40,7 @@ const d_bts = {
   "composer.visibility.privateHint": "Pitah ho",
   "composer.audience": "Na mangidah postingan: {audience}",
   "composer.post": "Kirim",
+  "post.title": "postingan media sosial",
   "composer.posting": "Sanggah mangirim…",
   "composer.uploading": "Sanggah mangunggah {current} humbani {total}…",
   "composer.tooManyPhotos": "Boi itambahi ham das bani 8 gambar.",

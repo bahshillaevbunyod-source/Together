@@ -40,6 +40,7 @@ const d_vi = {
   "composer.visibility.privateHint": "Chỉ mình bạn",
   "composer.audience": "Đối tượng bài viết: {audience}",
   "composer.post": "Đăng",
+  "post.title": "bài đăng trên mạng xã hội",
   "composer.posting": "Đang đăng…",
   "composer.uploading": "Đang tải lên {current}/{total}…",
   "composer.tooManyPhotos": "Bạn có thể thêm tối đa 8 ảnh.",

@@ -40,6 +40,7 @@ const d_pag = {
   "composer.visibility.privateHint": "Sika labat",
   "composer.audience": "Saray mannengneng ed post: {audience}",
   "composer.post": "I-post",
+  "post.title": "post ed social media",
   "composer.posting": "Mi-post…",
   "composer.uploading": "Mangi-upload na {current} ed {total}…",
   "composer.tooManyPhotos": "Sarag mon mangiyarum na anggad 8 a litrato.",

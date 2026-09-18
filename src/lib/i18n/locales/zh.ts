@@ -40,6 +40,7 @@ const zh = {
   "composer.visibility.privateHint": "仅自己",
   "composer.audience": "帖子受众：{audience}",
   "composer.post": "发布",
+  "post.title": "社交媒体帖子",
   "composer.posting": "正在发布…",
   "composer.uploading": "正在上传第 {current} 张，共 {total} 张…",
   "composer.tooManyPhotos": "最多可添加 8 张照片。",

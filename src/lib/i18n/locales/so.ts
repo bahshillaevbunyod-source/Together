@@ -40,6 +40,7 @@ const d_so = {
   "composer.visibility.privateHint": "Adiga oo kaliya",
   "composer.audience": "Daawadayaasha boostada: {audience}",
   "composer.post": "Dir",
+  "post.title": "baraha bulshada la soo dhigo",
   "composer.posting": "Waa la dirayaa…",
   "composer.uploading": "Waxaa la soo gelinayaa {current} ka mid ah {total}…",
   "composer.tooManyPhotos": "Waxaad ku dari kartaa ilaa 8 sawir.",

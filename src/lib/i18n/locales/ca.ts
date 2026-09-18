@@ -40,6 +40,7 @@ const d_ca = {
   "composer.visibility.privateHint": "Només tu",
   "composer.audience": "Públic de la publicació: {audience}",
   "composer.post": "Publica",
+  "post.title": "publicació a les xarxes socials",
   "composer.posting": "S'està publicant…",
   "composer.uploading": "S'està pujant {current} de {total}…",
   "composer.tooManyPhotos": "Pots afegir fins a 8 fotos.",

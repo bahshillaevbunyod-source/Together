@@ -40,6 +40,7 @@ const d_ts = {
   "composer.visibility.privateHint": "Wena ntsena",
   "composer.audience": "Valanguteri va post: {audience}",
   "composer.post": "Posa",
+  "post.title": "post ya swihangalasamahungu swa le ka social media",
   "composer.posting": "Ya posa…",
   "composer.uploading": "Ku rhurhumeta {current} eka {total}…",
   "composer.tooManyPhotos": "U nga engetela swifaniso ku fikela eka 8.",

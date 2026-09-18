@@ -40,6 +40,7 @@ const d_bn = {
   "composer.visibility.privateHint": "শুধু আপনি",
   "composer.audience": "পোস্টের দর্শক: {audience}",
   "composer.post": "পোস্ট করুন",
+  "post.title": "সামাজিক মিডিয়া পোস্ট",
   "composer.posting": "পোস্ট হচ্ছে…",
   "composer.uploading": "{total}টির মধ্যে {current}টি আপলোড হচ্ছে…",
   "composer.tooManyPhotos": "আপনি সর্বোচ্চ ৮টি ছবি যোগ করতে পারেন।",

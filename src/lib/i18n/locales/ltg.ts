@@ -40,6 +40,7 @@ const d_ltg = {
   "composer.visibility.privateHint": "Tikai tu",
   "composer.audience": "Zjinis skatuotuoji: {audience}",
   "composer.post": "Publiceit",
+  "post.title": "socialūs medeju īroksts .",
   "composer.posting": "Publicej…",
   "composer.uploading": "Aukšuplōdej {current} nu {total}…",
   "composer.tooManyPhotos": "Tu vari pīvīnuot da 8 fotografejom.",

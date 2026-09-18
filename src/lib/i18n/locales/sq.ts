@@ -40,6 +40,7 @@ const d_sq = {
   "composer.visibility.privateHint": "Vetëm ti",
   "composer.audience": "Audienca e postimit: {audience}",
   "composer.post": "Posto",
+  "post.title": "postim në rrjetet sociale",
   "composer.posting": "Duke postuar…",
   "composer.uploading": "Duke ngarkuar {current} nga {total}…",
   "composer.tooManyPhotos": "Mund të shtosh deri në 8 foto.",

@@ -40,6 +40,7 @@ const d_kk = {
   "composer.visibility.privateHint": "Тек сен",
   "composer.audience": "Жазба аудиториясы: {audience}",
   "composer.post": "Жариялау",
+  "post.title": "әлеуметтік желідегі жазба",
   "composer.posting": "Жариялануда…",
   "composer.uploading": "{total} ішінен {current} жүктелуде…",
   "composer.tooManyPhotos": "8 фотоға дейін қосуға болады.",

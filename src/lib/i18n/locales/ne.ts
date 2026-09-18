@@ -40,6 +40,7 @@ const d_ne = {
   "composer.visibility.privateHint": "तपाईं मात्र",
   "composer.audience": "पोस्टका दर्शक: {audience}",
   "composer.post": "पोस्ट गर्नुहोस्",
+  "post.title": "सामाजिक मिडिया पोस्ट",
   "composer.posting": "पोस्ट हुँदै…",
   "composer.uploading": "{total} मध्ये {current} अपलोड हुँदै…",
   "composer.tooManyPhotos": "तपाईं बढीमा 8 फोटो थप्न सक्नुहुन्छ।",

@@ -40,6 +40,7 @@ const d_lus = {
   "composer.visibility.privateHint": "Nangmah chauh",
   "composer.audience": "Post entute: {audience}",
   "composer.post": "Post rawh",
+  "post.title": "social media-a post a ni",
   "composer.posting": "Post mek…",
   "composer.uploading": "{total} zinga {current} thawh mek…",
   "composer.tooManyPhotos": "Thlalak 8 thleng i telh belh thei.",

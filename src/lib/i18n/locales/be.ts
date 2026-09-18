@@ -40,6 +40,7 @@ const d_be = {
   "composer.visibility.privateHint": "Толькі вы",
   "composer.audience": "Аўдыторыя публікацыі: {audience}",
   "composer.post": "Апублікаваць",
+  "post.title": "пост у сацыяльных сетках",
   "composer.posting": "Публікацыя…",
   "composer.uploading": "Запампоўка {current} з {total}…",
   "composer.tooManyPhotos": "Можна дадаць да 8 фота.",

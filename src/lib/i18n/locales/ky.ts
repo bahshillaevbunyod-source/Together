@@ -40,6 +40,7 @@ const d_ky = {
   "composer.visibility.privateHint": "Сен гана",
   "composer.audience": "Жазуунун аудиториясы: {audience}",
   "composer.post": "Жарыялоо",
+  "post.title": "коомдук медиа билдирүү",
   "composer.posting": "Жарыяланууда…",
   "composer.uploading": "{total} ичинен {current} жүктөлүүдө…",
   "composer.tooManyPhotos": "8 сүрөткө чейин кошо аласың.",

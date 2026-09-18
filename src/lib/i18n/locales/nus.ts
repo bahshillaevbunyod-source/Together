@@ -40,6 +40,7 @@ const d_nus = {
   "composer.visibility.privateHint": "Jiɛn lɔc",
   "composer.audience": "Ji nyuɔ̈ɔ̈th post: {audience}",
   "composer.post": "Jak",
+  "post.title": "thöcial midia la̱th",
   "composer.posting": "Ci jak…",
   "composer.uploading": "Ci {current} kä {total} jat nhial…",
   "composer.tooManyPhotos": "Ji bi nyuɔth kɔɔr agɔaa 8.",

@@ -40,6 +40,7 @@ const d_bm = {
   "composer.visibility.privateHint": "E dɔrɔn",
   "composer.audience": "Sɛbɛnni filɛlaw: {audience}",
   "composer.post": "A ci",
+  "post.title": "sosiyete ka kunnafonidilanw kan",
   "composer.posting": "A bɛ ci…",
   "composer.uploading": "{current} bɛ yɛlɛma {total} la…",
   "composer.tooManyPhotos": "I bɛ se ka ja 8 fara a kan.",

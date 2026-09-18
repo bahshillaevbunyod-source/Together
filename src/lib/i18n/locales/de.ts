@@ -40,6 +40,7 @@ const de = {
   "composer.visibility.privateHint": "Nur du",
   "composer.audience": "Zielgruppe des Beitrags: {audience}",
   "composer.post": "Posten",
+  "post.title": "Social-Media-Beitrag",
   "composer.posting": "Wird gepostet…",
   "composer.uploading": "{current} von {total} werden hochgeladen…",
   "composer.tooManyPhotos": "Du kannst bis zu 8 Fotos hinzufügen.",

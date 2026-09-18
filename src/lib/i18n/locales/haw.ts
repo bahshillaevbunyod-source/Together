@@ -40,6 +40,7 @@ const d_haw = {
   "composer.visibility.privateHint": "ʻO ʻoe wale nō",
   "composer.audience": "Ka poʻe nānā i ka kūkala: {audience}",
   "composer.post": "Hoʻouna",
+  "post.title": "hoʻolaha pāpili",
   "composer.posting": "Ke hoʻouna nei…",
   "composer.uploading": "Ke hoʻouka nei iā {current} o {total}…",
   "composer.tooManyPhotos": "Hiki iā ʻoe ke hoʻohui a hiki i 8 mau kiʻi.",

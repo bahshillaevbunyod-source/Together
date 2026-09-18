@@ -40,6 +40,7 @@ const d_no = {
   "composer.visibility.privateHint": "Bare deg",
   "composer.audience": "Målgruppe for innlegg: {audience}",
   "composer.post": "Publiser",
+  "post.title": "innlegg i sosiale medier",
   "composer.posting": "Publiserer…",
   "composer.uploading": "Laster opp {current} av {total}…",
   "composer.tooManyPhotos": "Du kan legge til opptil 8 bilder.",

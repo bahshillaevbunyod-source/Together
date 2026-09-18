@@ -40,6 +40,7 @@ const d_ga = {
   "composer.visibility.privateHint": "Tusa amháin",
   "composer.audience": "Lucht féachana na postála: {audience}",
   "composer.post": "Postáil",
+  "post.title": "post meáin shóisialta",
   "composer.posting": "Á phostáil…",
   "composer.uploading": "{current} as {total} á uaslódáil…",
   "composer.tooManyPhotos": "Is féidir leat suas le 8 ngrianghraf a chur leis.",

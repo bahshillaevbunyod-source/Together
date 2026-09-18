@@ -40,6 +40,7 @@ const d_sm = {
   "composer.visibility.privateHint": "Naʻo oe",
   "composer.audience": "Ē matamata i le posi: {audience}",
   "composer.post": "Lafo",
+  "post.title": "fa'asalalauga fa'asalalau lautele",
   "composer.posting": "O loʻo lafoina…",
   "composer.uploading": "O loʻo utaina le {current} mai le {total}…",
   "composer.tooManyPhotos": "E mafai ona e faaopoopoina e oʻo i le 8 ata.",

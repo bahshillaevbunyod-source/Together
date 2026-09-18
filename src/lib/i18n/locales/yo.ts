@@ -40,6 +40,7 @@ const d_yo = {
   "composer.visibility.privateHint": "Ìwọ nìkan",
   "composer.audience": "Àwọn olùwòran ìfìwéránṣẹ́: {audience}",
   "composer.post": "Fìwéránṣẹ́",
+  "post.title": "awujo media post",
   "composer.posting": "Ń fìwéránṣẹ́…",
   "composer.uploading": "Ń gbé {current} nínú {total} sókè…",
   "composer.tooManyPhotos": "O lè fi fọ́tò tó pọ̀ dé 8 kún un.",

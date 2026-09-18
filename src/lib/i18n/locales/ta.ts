@@ -40,6 +40,7 @@ const d_ta = {
   "composer.visibility.privateHint": "நீங்கள் மட்டும்",
   "composer.audience": "இடுகையின் பார்வையாளர்கள்: {audience}",
   "composer.post": "இடு",
+  "post.title": "சமூக ஊடக இடுகை",
   "composer.posting": "இடப்படுகிறது…",
   "composer.uploading": "{total} இல் {current} பதிவேற்றப்படுகிறது…",
   "composer.tooManyPhotos": "அதிகபட்சம் 8 புகைப்படங்கள் சேர்க்கலாம்.",

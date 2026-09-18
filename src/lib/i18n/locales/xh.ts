@@ -40,6 +40,7 @@ const d_xh = {
   "composer.visibility.privateHint": "Wena kuphela",
   "composer.audience": "Ababukeli bepost: {audience}",
   "composer.post": "Thumela",
+  "post.title": "iposti yemidiya yoluntu",
   "composer.posting": "Iyathumela…",
   "composer.uploading": "Ilayisha i-{current} kwezi-{total}…",
   "composer.tooManyPhotos": "Ungongeza imifanekiso engade ibe li-8.",

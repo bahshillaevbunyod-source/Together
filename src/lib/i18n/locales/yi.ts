@@ -40,6 +40,7 @@ const d_yi = {
   "composer.visibility.privateHint": "נאָר דו",
   "composer.audience": "עולם פֿונעם פּאָסט: {audience}",
   "composer.post": "פּאָסטן",
+  "post.title": "געזעלשאַפטלעך מידיאַ פּאָסטן",
   "composer.posting": "פּאָסטן…",
   "composer.uploading": "אַרויפֿלאָדן {current} פֿון {total}…",
   "composer.tooManyPhotos": "דו קענסט צולייגן ביז 8 בילדער.",

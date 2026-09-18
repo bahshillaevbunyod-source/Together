@@ -40,6 +40,7 @@ const d_st = {
   "composer.visibility.privateHint": "Uena feela",
   "composer.audience": "Babali ba poso: {audience}",
   "composer.post": "Posa",
+  "post.title": "poso ea litaba tsa sechaba",
   "composer.posting": "Ea posa…",
   "composer.uploading": "E kenya {current} ho {total}…",
   "composer.tooManyPhotos": "U ka eketsa litšoantšo tse fihlang ho 8.",

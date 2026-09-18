@@ -40,6 +40,7 @@ const d_mg = {
   "composer.visibility.privateHint": "Ianao ihany",
   "composer.audience": "Mpijery ny lahatsoratra: {audience}",
   "composer.post": "Alefaso",
+  "post.title": "lahatsoratry ny media sosialy",
   "composer.posting": "Alefa…",
   "composer.uploading": "Mampiakatra {current} amin'ny {total}…",
   "composer.tooManyPhotos": "Afaka manampy sary hatramin'ny 8 ianao.",

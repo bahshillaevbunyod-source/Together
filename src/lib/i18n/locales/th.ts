@@ -40,6 +40,7 @@ const d_th = {
   "composer.visibility.privateHint": "เฉพาะคุณ",
   "composer.audience": "ผู้ชมโพสต์: {audience}",
   "composer.post": "โพสต์",
+  "post.title": "โพสต์โซเชียลมีเดีย",
   "composer.posting": "กำลังโพสต์…",
   "composer.uploading": "กำลังอัปโหลด {current} จาก {total}…",
   "composer.tooManyPhotos": "คุณเพิ่มรูปได้สูงสุด 8 รูป",

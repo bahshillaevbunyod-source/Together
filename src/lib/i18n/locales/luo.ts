@@ -40,6 +40,7 @@ const d_luo = {
   "composer.visibility.privateHint": "In kende",
   "composer.audience": "Joma neno post: {audience}",
   "composer.post": "Or",
+  "post.title": "Oboke mar mbui",
   "composer.posting": "Iorogi…",
   "composer.uploading": "Iketo malo {current} kuom {total}…",
   "composer.tooManyPhotos": "Inyalo medo picha nyaka 8.",

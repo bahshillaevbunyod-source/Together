@@ -40,6 +40,7 @@ const d_li = {
   "composer.visibility.privateHint": "Allein diech",
   "composer.audience": "Publiek van de pos: {audience}",
   "composer.post": "Plaatse",
+  "post.title": "Plaatse",
   "composer.posting": "Wörd geplaats…",
   "composer.uploading": "{current} van {total} wörd gelaje…",
   "composer.tooManyPhotos": "Se kins tot 8 foto's toeveuge.",

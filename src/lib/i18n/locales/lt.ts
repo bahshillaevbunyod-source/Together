@@ -40,6 +40,7 @@ const d_lt = {
   "composer.visibility.privateHint": "Tik tu",
   "composer.audience": "Įrašo auditorija: {audience}",
   "composer.post": "Skelbti",
+  "post.title": "socialinių tinklų įrašas",
   "composer.posting": "Skelbiama…",
   "composer.uploading": "Įkeliama {current} iš {total}…",
   "composer.tooManyPhotos": "Gali pridėti iki 8 nuotraukų.",

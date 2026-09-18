@@ -40,6 +40,7 @@ const d_tet = {
   "composer.visibility.privateHint": "Ita deʼit",
   "composer.audience": "Ema haree publikasaun: {audience}",
   "composer.post": "Publika",
+  "post.title": "publikasaun iha mídia sosiál",
   "composer.posting": "Publika hela…",
   "composer.uploading": "Karrega hela {current} husi {total}…",
   "composer.tooManyPhotos": "Ita bele aumenta foto toʼo 8.",

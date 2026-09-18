@@ -40,6 +40,7 @@ const d_hu = {
   "composer.visibility.privateHint": "Csak te",
   "composer.audience": "A bejegyzés közönsége: {audience}",
   "composer.post": "Közzététel",
+  "post.title": "közösségi média poszt",
   "composer.posting": "Közzététel…",
   "composer.uploading": "Feltöltés: {current}/{total}…",
   "composer.tooManyPhotos": "Legfeljebb 8 fényképet adhatsz hozzá.",

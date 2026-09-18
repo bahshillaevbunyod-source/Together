@@ -40,6 +40,7 @@ const uz = {
   "composer.visibility.privateHint": "Faqat sen",
   "composer.audience": "Post auditoriyasi: {audience}",
   "composer.post": "Joylash",
+  "post.title": "ijtimoiy tarmoqdagi post",
   "composer.posting": "Joylanmoqda…",
   "composer.uploading": "{total} tadan {current} yuklanmoqda…",
   "composer.tooManyPhotos": "Eng ko'pi 8 ta rasm qo'sha olasan.",

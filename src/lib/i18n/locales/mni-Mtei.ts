@@ -40,6 +40,7 @@ const d_mni_Mtei = {
   "composer.visibility.privateHint": "ꯅꯍꯥꯛ ꯈꯛꯇ",
   "composer.audience": "ꯄꯣꯁ꯭ꯠꯀꯤ ꯌꯦꯡꯕꯁꯤꯡ: {audience}",
   "composer.post": "ꯄꯣꯁ꯭ꯠ ꯇꯧ",
+  "post.title": "ꯁꯣꯁꯤꯌꯦꯜ ꯃꯤꯗꯤꯌꯥ ꯄꯣꯁ꯭ꯠ꯫",
   "composer.posting": "ꯄꯣꯁ꯭ꯠ ꯇꯧꯔꯤ…",
   "composer.uploading": "{total} ꯗꯒꯤ {current} ꯑꯄꯂꯣꯗ ꯇꯧꯔꯤ…",
   "composer.tooManyPhotos": "ꯅꯍꯥꯛꯅ ꯐꯣꯇꯓ ꯸ ꯐꯥꯎꯕ ꯍꯥꯄꯆꯤꯜꯂꯛꯄ ꯌꯥꯏ।",

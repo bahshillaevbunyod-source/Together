@@ -40,6 +40,7 @@ const d_lb = {
   "composer.visibility.privateHint": "Nëmmen du",
   "composer.audience": "Zilgrupp vum Post: {audience}",
   "composer.post": "Posten",
+  "post.title": "sozialen Medien Post",
   "composer.posting": "Gëtt gepost…",
   "composer.uploading": "{current} vu(n) {total} gëtt eropgelueden…",
   "composer.tooManyPhotos": "Du kanns bis zu 8 Fotoen dobäisetzen.",

@@ -40,6 +40,7 @@ const d_lmo = {
   "composer.visibility.privateHint": "Domà ti",
   "composer.audience": "Spettador del post: {audience}",
   "composer.post": "Pubblega",
+  "post.title": "post süi social media",
   "composer.posting": "El pubblega…",
   "composer.uploading": "El cargia {current} de {total}…",
   "composer.tooManyPhotos": "Te pòdet giontà fina a 8 fotografii.",

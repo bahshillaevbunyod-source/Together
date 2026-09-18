@@ -40,6 +40,7 @@ const d_cs = {
   "composer.visibility.privateHint": "Jen ty",
   "composer.audience": "Publikum příspěvku: {audience}",
   "composer.post": "Přidat",
+  "post.title": "příspěvek na sociálních sítích",
   "composer.posting": "Přidávání…",
   "composer.uploading": "Nahrávání {current} z {total}…",
   "composer.tooManyPhotos": "Můžeš přidat až 8 fotek.",

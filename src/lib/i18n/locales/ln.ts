@@ -40,6 +40,7 @@ const d_ln = {
   "composer.visibility.privateHint": "Kaka yo",
   "composer.audience": "Batali ba lisolo: {audience}",
   "composer.post": "Tinda",
+  "post.title": "poste ya ba médias sociaux",
   "composer.posting": "Ezali kotinda…",
   "composer.uploading": "Ezali kotombola {current} na {total}…",
   "composer.tooManyPhotos": "Okoki kobakisa bililingi tii 8.",

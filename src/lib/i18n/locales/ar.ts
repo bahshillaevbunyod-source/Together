@@ -40,6 +40,7 @@ const ar = {
   "composer.visibility.privateHint": "أنت فقط",
   "composer.audience": "جمهور المنشور: {audience}",
   "composer.post": "نشر",
+  "post.title": "مشاركة وسائل الاعلام الاجتماعية",
   "composer.posting": "جارٍ النشر…",
   "composer.uploading": "جارٍ رفع {current} من {total}…",
   "composer.tooManyPhotos": "يمكنك إضافة ما يصل إلى 8 صور.",

@@ -40,6 +40,7 @@ const d_az = {
   "composer.visibility.privateHint": "Yalnız sən",
   "composer.audience": "Paylaşımın auditoriyası: {audience}",
   "composer.post": "Paylaş",
+  "post.title": "sosial media yazısı",
   "composer.posting": "Paylaşılır…",
   "composer.uploading": "{total} şəkildən {current} yüklənir…",
   "composer.tooManyPhotos": "Ən çox 8 şəkil əlavə edə bilərsən.",

@@ -40,6 +40,7 @@ const d_lv = {
   "composer.visibility.privateHint": "Tikai tu",
   "composer.audience": "Ieraksta auditorija: {audience}",
   "composer.post": "Publicēt",
+  "post.title": "sociālo mediju ieraksts",
   "composer.posting": "Notiek publicēšana…",
   "composer.uploading": "Augšupielādē {current} no {total}…",
   "composer.tooManyPhotos": "Vari pievienot līdz 8 fotoattēliem.",

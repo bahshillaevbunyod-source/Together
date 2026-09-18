@@ -40,6 +40,7 @@ const d_lij = {
   "composer.visibility.privateHint": "Solo ti",
   "composer.audience": "Speostatoî do post: {audience}",
   "composer.post": "Pubrica",
+  "post.title": "post in scê redes soçiale",
   "composer.posting": "O pubrica…",
   "composer.uploading": "O carega {current} de {total}…",
   "composer.tooManyPhotos": "Ti pöi azonze fin a 8 fotografie.",

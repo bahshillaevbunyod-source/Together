@@ -40,6 +40,7 @@ const d_ach = {
   "composer.visibility.privateHint": "In keken",
   "composer.audience": "Jo ma neno pos: {audience}",
   "composer.post": "Cwal",
+  "post.title": "lok ma ki coyo i intanet",
   "composer.posting": "Tye ka cwalo…",
   "composer.uploading": "Tye ka gamo {current} me {total}…",
   "composer.tooManyPhotos": "Itwero medo cal nio wa 8.",

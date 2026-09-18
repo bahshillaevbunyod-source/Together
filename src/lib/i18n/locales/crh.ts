@@ -40,6 +40,7 @@ const d_crh = {
   "composer.visibility.privateHint": "Faqat sen",
   "composer.audience": "Paylaşım hedef kütlesi: {audience}",
   "composer.post": "Paylaş",
+  "post.title": "ичтимаий агълардаки язма",
   "composer.posting": "Paylaşıla…",
   "composer.uploading": "{total} resimden {current} yüklene…",
   "composer.tooManyPhotos": "8 resimge qadar ekleybilesiñ.",

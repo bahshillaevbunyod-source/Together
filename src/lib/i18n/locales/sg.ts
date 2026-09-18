@@ -40,6 +40,7 @@ const d_sg = {
   "composer.visibility.privateHint": "Gï mo",
   "composer.audience": "Azo so ayeke bâ post: {audience}",
   "composer.post": "Sïgïgî",
+  "post.title": "aréseaux sociaux",
   "composer.posting": "A yeke sïgïgî…",
   "composer.uploading": "A yeke tokua {current} na yâ ti {total}…",
   "composer.tooManyPhotos": "Mo lingbi ti gue na afoto jusqu'à 8.",

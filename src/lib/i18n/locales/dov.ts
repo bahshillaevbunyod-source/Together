@@ -40,6 +40,7 @@ const d_dov = {
   "composer.visibility.privateHint": "Nduwe biyo",
   "composer.audience": "Aabo babona cintu: {audience}",
   "composer.post": "Amutumine",
+  "post.title": "zilembedwe aaIntaneti",
   "composer.posting": "Ilatumina…",
   "composer.uploading": "Ilanyampula {current} kuli {total}…",
   "composer.tooManyPhotos": "Ulakonzya kuyungizya zifwanikiso zisikila ku 8.",

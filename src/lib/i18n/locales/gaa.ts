@@ -40,6 +40,7 @@ const d_gaa = {
   "composer.visibility.privateHint": "Bo pɛ",
   "composer.audience": "Mɛi ni kwɛɔ post lɛ: {audience}",
   "composer.post": "Ŋmaa",
+  "post.title": "social media nɔ saji",
   "composer.posting": "Eeŋmaa…",
   "composer.uploading": "Miikɛ {current} yɛ {total} mli miiwo…",
   "composer.tooManyPhotos": "Obaanyɛ okɛ mfonirii ni shɛɔ 8 aafata he.",

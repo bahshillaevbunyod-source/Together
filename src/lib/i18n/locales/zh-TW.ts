@@ -40,6 +40,7 @@ const d_zh_TW = {
   "composer.visibility.privateHint": "僅自己",
   "composer.audience": "貼文對象：{audience}",
   "composer.post": "發佈",
+  "post.title": "社群媒體貼文",
   "composer.posting": "正在發佈…",
   "composer.uploading": "正在上傳第 {current} 張，共 {total} 張…",
   "composer.tooManyPhotos": "最多可加入 8 張相片。",

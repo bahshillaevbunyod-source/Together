@@ -40,6 +40,7 @@ const d_ilo = {
   "composer.visibility.privateHint": "Sika laeng",
   "composer.audience": "Dagiti agbuya iti post: {audience}",
   "composer.post": "I-post",
+  "post.title": "post iti social media",
   "composer.posting": "Agip-post…",
   "composer.uploading": "Agi-upload iti {current} kadagiti {total}…",
   "composer.tooManyPhotos": "Mabalinmo ti agnayon iti agingga iti 8 a ladawan.",

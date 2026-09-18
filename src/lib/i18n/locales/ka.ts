@@ -40,6 +40,7 @@ const d_ka = {
   "composer.visibility.privateHint": "მხოლოდ შენ",
   "composer.audience": "პოსტის აუდიტორია: {audience}",
   "composer.post": "გამოქვეყნება",
+  "post.title": "სოციალური მედიის პოსტი",
   "composer.posting": "ქვეყნდება…",
   "composer.uploading": "იტვირთება {current} / {total}…",
   "composer.tooManyPhotos": "შეგიძლია დაამატო 8 ფოტომდე.",

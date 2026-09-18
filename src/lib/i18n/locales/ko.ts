@@ -40,6 +40,7 @@ const ko = {
   "composer.visibility.privateHint": "나만",
   "composer.audience": "게시물 대상: {audience}",
   "composer.post": "게시",
+  "post.title": "소셜 미디어 게시물",
   "composer.posting": "게시 중…",
   "composer.uploading": "{total}개 중 {current}개 업로드 중…",
   "composer.tooManyPhotos": "사진은 최대 8장까지 추가할 수 있습니다.",

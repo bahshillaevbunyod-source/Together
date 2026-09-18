@@ -40,6 +40,7 @@ const d_alz = {
   "composer.visibility.privateHint": "In kende",
   "composer.audience": "Dhanu ma neno post: {audience}",
   "composer.post": "Or",
+  "post.title": "lembe ma jukyewo iwi yamu",
   "composer.posting": "Tie ka oro…",
   "composer.uploading": "Tie ka gamo {current} kud {total}…",
   "composer.tooManyPhotos": "Icopo medo cal nyaka 8.",

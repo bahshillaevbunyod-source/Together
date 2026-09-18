@@ -40,6 +40,7 @@ const d_tg = {
   "composer.visibility.privateHint": "Танҳо ту",
   "composer.audience": "Аудиторияи паём: {audience}",
   "composer.post": "Нашр",
+  "post.title": "пости шабакаҳои иҷтимоӣ",
   "composer.posting": "Нашр шуда истодааст…",
   "composer.uploading": "{current} аз {total} бор шуда истодааст…",
   "composer.tooManyPhotos": "То 8 акс илова карда метавонӣ.",

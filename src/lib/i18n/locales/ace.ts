@@ -40,6 +40,7 @@ const d_ace = {
   "composer.visibility.privateHint": "Kheun droeneuh",
   "composer.audience": "Ureueng nyang kalon postingan: {audience}",
   "composer.post": "Kirem",
+  "post.title": "postingan bak media sosial",
   "composer.posting": "Teungoh geukirem…",
   "composer.uploading": "Teungoh geuupload {current} nibak {total}…",
   "composer.tooManyPhotos": "Droeneuh jeuet tamah sampoe 8 boh foto.",

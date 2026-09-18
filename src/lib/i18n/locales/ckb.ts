@@ -40,6 +40,7 @@ const d_ckb = {
   "composer.visibility.privateHint": "تەنها خۆت",
   "composer.audience": "ئامانجداری پۆست: {audience}",
   "composer.post": "بڵاوکردنەوە",
+  "post.title": "پۆستێکی سۆشیال میدیا",
   "composer.posting": "بڵاودەکرێتەوە…",
   "composer.uploading": "{current} لە {total} باردەکرێت…",
   "composer.tooManyPhotos": "دەتوانیت تا ٨ وێنە زیاد بکەیت.",

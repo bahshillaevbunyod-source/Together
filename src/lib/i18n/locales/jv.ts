@@ -40,6 +40,7 @@ const d_jv = {
   "composer.visibility.privateHint": "Mung kowe",
   "composer.audience": "Pamirsa kiriman: {audience}",
   "composer.post": "Kirim",
+  "post.title": "postingan media sosial",
   "composer.posting": "Ngirim…",
   "composer.uploading": "Ngunggah {current} saka {total}…",
   "composer.tooManyPhotos": "Kowe bisa nambah nganti 8 foto.",

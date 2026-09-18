@@ -40,6 +40,7 @@ const d_eo = {
   "composer.visibility.privateHint": "Nur vi",
   "composer.audience": "Spektantaro de la afiŝo: {audience}",
   "composer.post": "Afiŝi",
+  "post.title": "afiŝo en sociaj amaskomunikiloj",
   "composer.posting": "Afiŝante…",
   "composer.uploading": "Alŝutante {current} el {total}…",
   "composer.tooManyPhotos": "Vi povas aldoni ĝis 8 fotojn.",

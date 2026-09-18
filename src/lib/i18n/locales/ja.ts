@@ -40,6 +40,7 @@ const ja = {
   "composer.visibility.privateHint": "自分のみ",
   "composer.audience": "投稿の公開範囲：{audience}",
   "composer.post": "投稿",
+  "post.title": "ソーシャルメディアの投稿",
   "composer.posting": "投稿中…",
   "composer.uploading": "{total} 件中 {current} 件をアップロード中…",
   "composer.tooManyPhotos": "写真は最大 8 枚まで追加できます。",

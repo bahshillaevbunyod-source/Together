@@ -40,6 +40,7 @@ const d_ab = {
   "composer.visibility.privateHint": "Уара умацара",
   "composer.audience": "Апост избо: {audience}",
   "composer.post": "Акьыԥхьра",
+  "post.title": "асоциалтә медиа апост",
   "composer.posting": "Икьыԥхьуеит…",
   "composer.uploading": "Иҭагалахоит {current} {total} рҟынтә…",
   "composer.tooManyPhotos": "Уара уалԥшьар ауеит 8-нӡа асахьақәа.",

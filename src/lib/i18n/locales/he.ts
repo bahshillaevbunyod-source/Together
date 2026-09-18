@@ -40,6 +40,7 @@ const d_he = {
   "composer.visibility.privateHint": "רק אתה",
   "composer.audience": "קהל הפוסט: {audience}",
   "composer.post": "פרסם",
+  "post.title": "פוסט במדיה החברתית",
   "composer.posting": "מפרסם…",
   "composer.uploading": "מעלה {current} מתוך {total}…",
   "composer.tooManyPhotos": "אפשר להוסיף עד 8 תמונות.",

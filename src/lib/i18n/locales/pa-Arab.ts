@@ -40,6 +40,7 @@ const d_pa_Arab = {
   "composer.visibility.privateHint": "صرف تسیں",
   "composer.audience": "پوسٹ دے ناظرین: {audience}",
   "composer.post": "پوسٹ کرو",
+  "post.title": "سوشل میڈیا پوسٹ",
   "composer.posting": "پوسٹ ہو رہی اے…",
   "composer.uploading": "{total} وچوں {current} اپ لوڈ ہو رہی اے…",
   "composer.tooManyPhotos": "تسیں ودھ توں ودھ 8 تصویراں شامل کر سکدے او۔",

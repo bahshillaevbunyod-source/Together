@@ -40,6 +40,7 @@ const d_nso = {
   "composer.visibility.privateHint": "Wena fela",
   "composer.audience": "Babogedi ba poso: {audience}",
   "composer.post": "Posa",
+  "post.title": "poso ya ditaba tša leago",
   "composer.posting": "E a posa…",
   "composer.uploading": "E laodiša {current} ya {total}…",
   "composer.tooManyPhotos": "O ka oketša diswantšho go fihla go tše 8.",

@@ -40,6 +40,7 @@ const d_eu = {
   "composer.visibility.privateHint": "Zuk soilik",
   "composer.audience": "Argitalpenaren hartzailea: {audience}",
   "composer.post": "Argitaratu",
+  "post.title": "sare sozialetako mezua",
   "composer.posting": "Argitaratzen…",
   "composer.uploading": "{current}/{total} igotzen…",
   "composer.tooManyPhotos": "Gehienez 8 argazki gehi ditzakezu.",

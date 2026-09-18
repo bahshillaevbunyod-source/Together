@@ -40,6 +40,7 @@ const d_hr = {
   "composer.visibility.privateHint": "Samo ti",
   "composer.audience": "Publika objave: {audience}",
   "composer.post": "Objavi",
+  "post.title": "objava na društvenim mrežama",
   "composer.posting": "Objavljivanje…",
   "composer.uploading": "Učitavanje {current} od {total}…",
   "composer.tooManyPhotos": "Možeš dodati do 8 fotografija.",

@@ -40,6 +40,7 @@ const d_new = {
   "composer.visibility.privateHint": "खालि छि",
   "composer.audience": "पोस्तया दर्शक: {audience}",
   "composer.post": "पोस्त यायेगु",
+  "post.title": "सामाजिक सन्जाल पोष्ट",
   "composer.posting": "पोस्त जुयाच्वंगु…",
   "composer.uploading": "{total} मध्ये {current} अपलोड जुयाच्वंगु…",
   "composer.tooManyPhotos": "छिं तताः धाःसा ८ फोतो तयेगु ज्यू।",

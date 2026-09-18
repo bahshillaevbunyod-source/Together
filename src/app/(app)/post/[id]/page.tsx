@@ -27,7 +27,7 @@ export default function PostPermalinkPage() {
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-4">
       <header>
-        <h1 className="text-xl font-semibold text-foreground">Post</h1>
+        <h1 className="text-xl font-semibold text-foreground">{t("post.title")}</h1>
       </header>
       <FeedProvider fetchPage={fetchPage}>
         <Feed

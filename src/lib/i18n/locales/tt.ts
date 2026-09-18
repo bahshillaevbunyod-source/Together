@@ -40,6 +40,7 @@ const d_tt = {
   "composer.visibility.privateHint": "Тик син",
   "composer.audience": "Язма аудиториясе: {audience}",
   "composer.post": "Бастыру",
+  "post.title": "социаль медиа посты",
   "composer.posting": "Бастырыла…",
   "composer.uploading": "{total} рәсемнең {current} йөкләнә…",
   "composer.tooManyPhotos": "8 фотога кадәр өсти аласың.",

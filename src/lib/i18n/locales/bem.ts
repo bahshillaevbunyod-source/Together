@@ -40,6 +40,7 @@ const d_bem = {
   "composer.visibility.privateHint": "Iwe fye",
   "composer.audience": "Abamona post: {audience}",
   "composer.post": "Tumako",
+  "post.title": "ukutuma pa fitunshitunshi",
   "composer.posting": "Iletumako…",
   "composer.uploading": "Iletwala {current} pa {total}…",
   "composer.tooManyPhotos": "Kuti wakonkanyapo ifikope ukufika ku 8.",

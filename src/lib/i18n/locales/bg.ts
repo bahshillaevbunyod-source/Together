@@ -40,6 +40,7 @@ const d_bg = {
   "composer.visibility.privateHint": "Само ти",
   "composer.audience": "Аудитория на публикацията: {audience}",
   "composer.post": "Публикувай",
+  "post.title": "публикация в социалните медии",
   "composer.posting": "Публикуване…",
   "composer.uploading": "Качване на {current} от {total}…",
   "composer.tooManyPhotos": "Можеш да добавиш до 8 снимки.",

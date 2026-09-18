@@ -40,6 +40,7 @@ const d_gom = {
   "composer.visibility.privateHint": "फकत तूं",
   "composer.audience": "पोस्टाचे प्रेक्षक: {audience}",
   "composer.post": "पोस्ट कर",
+  "post.title": "सोशल मिडियाचेर पोस्ट",
   "composer.posting": "पोस्ट जाता…",
   "composer.uploading": "{total} पैकी {current} अपलोड जाता…",
   "composer.tooManyPhotos": "तुमी चडांत चड 8 फोटो जोडूंक शकता.",

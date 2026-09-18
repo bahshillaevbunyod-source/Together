@@ -40,6 +40,7 @@ const d_ug = {
   "composer.visibility.privateHint": "پەقەت سىز",
   "composer.audience": "يازما ئاۋدىتورىيەسى: {audience}",
   "composer.post": "يوللاش",
+  "post.title": "يوللاش",
   "composer.posting": "يوللىنىۋاتىدۇ…",
   "composer.uploading": "{total} دىن {current} يۈكلىنىۋاتىدۇ…",
   "composer.tooManyPhotos": "ئەڭ كۆپ بولغاندا 8 رەسىم قوشالايسىز.",

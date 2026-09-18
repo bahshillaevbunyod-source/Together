@@ -40,6 +40,7 @@ const d_cy = {
   "composer.visibility.privateHint": "Ti yn unig",
   "composer.audience": "Cynulleidfa'r post: {audience}",
   "composer.post": "Postio",
+  "post.title": "post cyfryngau cymdeithasol",
   "composer.posting": "Yn postio…",
   "composer.uploading": "Yn llwytho {current} o {total}…",
   "composer.tooManyPhotos": "Gelli di ychwanegu hyd at 8 llun.",

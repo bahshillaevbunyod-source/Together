@@ -40,6 +40,7 @@ const d_hrx = {
   "composer.visibility.privateHint": "Nòr du",
   "composer.audience": "Publikum vom Post: {audience}",
   "composer.post": "Poste",
+  "post.title": "sosiaale weepe",
   "composer.posting": "Am poste…",
   "composer.uploading": "Am {current} vun {total} lade…",
   "composer.tooManyPhotos": "Du kannst bis 8 Fottos dsuufiche.",

@@ -40,6 +40,7 @@ const d_cv = {
   "composer.visibility.privateHint": "Эсĕ анчах",
   "composer.audience": "Пост аудиторийĕ: {audience}",
   "composer.post": "Публикацилес",
+  "post.title": "социаллӑ сетьсенчи пост",
   "composer.posting": "Публикацилет…",
   "composer.uploading": "{total} çинчен {current} тиенет…",
   "composer.tooManyPhotos": "Эсĕ 8 сӑнӳкерчĕк таран хушма пултаратăн.",

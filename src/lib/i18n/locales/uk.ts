@@ -40,6 +40,7 @@ const d_uk = {
   "composer.visibility.privateHint": "Лише ви",
   "composer.audience": "Аудиторія публікації: {audience}",
   "composer.post": "Опублікувати",
+  "post.title": "публікація в соціальних мережах",
   "composer.posting": "Публікація…",
   "composer.uploading": "Завантаження {current} з {total}…",
   "composer.tooManyPhotos": "Можна додати до 8 фото.",

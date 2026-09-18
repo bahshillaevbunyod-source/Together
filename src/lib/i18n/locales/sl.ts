@@ -40,6 +40,7 @@ const d_sl = {
   "composer.visibility.privateHint": "Samo ti",
   "composer.audience": "Občinstvo objave: {audience}",
   "composer.post": "Objavi",
+  "post.title": "objava na družbenem omrežju",
   "composer.posting": "Objavljanje…",
   "composer.uploading": "Nalaganje {current} od {total}…",
   "composer.tooManyPhotos": "Dodaš lahko največ 8 fotografij.",

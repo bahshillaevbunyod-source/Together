@@ -40,6 +40,7 @@ const d_ff = {
   "composer.visibility.privateHint": "Ko aan tan",
   "composer.audience": "Yiyooɓe winndannde: {audience}",
   "composer.post": "Neldu",
+  "post.title": "posto lowre renndo",
   "composer.posting": "Ina nelda…",
   "composer.uploading": "Ina ɓamta {current} e {total}…",
   "composer.tooManyPhotos": "A waawi ɓeydude haa 8 nate.",

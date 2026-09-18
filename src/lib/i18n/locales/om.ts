@@ -40,6 +40,7 @@ const d_om = {
   "composer.visibility.privateHint": "Si qofa",
   "composer.audience": "Ilaaltota barreeffamaa: {audience}",
   "composer.post": "Maxxansi",
+  "post.title": "maxxansa miidiyaa hawaasaa",
   "composer.posting": "Maxxansaa jira…",
   "composer.uploading": "{total} keessaa {current} olkaa'aa jira…",
   "composer.tooManyPhotos": "Suuraa hanga 8 dabaluu dandeessa.",

@@ -40,6 +40,7 @@ const d_kn = {
   "composer.visibility.privateHint": "ನೀವು ಮಾತ್ರ",
   "composer.audience": "ಪೋಸ್ಟ್‌ನ ಪ್ರೇಕ್ಷಕರು: {audience}",
   "composer.post": "ಪೋಸ್ಟ್ ಮಾಡಿ",
+  "post.title": "ಸಾಮಾಜಿಕ ಮಾಧ್ಯಮ ಪೋಸ್ಟ್",
   "composer.posting": "ಪೋಸ್ಟ್ ಆಗುತ್ತಿದೆ…",
   "composer.uploading": "{total}ರಲ್ಲಿ {current} ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
   "composer.tooManyPhotos": "ನೀವು ಗರಿಷ್ಠ 8 ಫೋಟೋಗಳನ್ನು ಸೇರಿಸಬಹುದು.",

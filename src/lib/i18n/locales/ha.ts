@@ -40,6 +40,7 @@ const d_ha = {
   "composer.visibility.privateHint": "Kai kaɗai",
   "composer.audience": "Masu kallon shafin: {audience}",
   "composer.post": "Yi shafi",
+  "post.title": "Yi shafi",
   "composer.posting": "Ana yin shafi…",
   "composer.uploading": "Ana loda {current} daga {total}…",
   "composer.tooManyPhotos": "Za ka iya ƙara hotuna har 8.",

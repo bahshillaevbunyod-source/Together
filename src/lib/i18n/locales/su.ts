@@ -40,6 +40,7 @@ const d_su = {
   "composer.visibility.privateHint": "Ngan anjeun",
   "composer.audience": "Nu nempo kiriman: {audience}",
   "composer.post": "Kirim",
+  "post.title": "pos média sosial",
   "composer.posting": "Ngirim…",
   "composer.uploading": "Ngunggah {current} ti {total}…",
   "composer.tooManyPhotos": "Anjeun tiasa nambahan dugi ka 8 poto.",

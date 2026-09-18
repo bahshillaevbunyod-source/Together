@@ -40,6 +40,7 @@ const d_ur = {
   "composer.visibility.privateHint": "صرف آپ",
   "composer.audience": "پوسٹ کے سامعین: {audience}",
   "composer.post": "پوسٹ کریں",
+  "post.title": "سوشل میڈیا پوسٹ",
   "composer.posting": "پوسٹ ہو رہی ہے…",
   "composer.uploading": "{total} میں سے {current} اپ لوڈ ہو رہی ہے…",
   "composer.tooManyPhotos": "آپ زیادہ سے زیادہ 8 تصاویر شامل کر سکتے ہیں۔",

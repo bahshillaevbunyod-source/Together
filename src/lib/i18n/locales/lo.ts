@@ -40,6 +40,7 @@ const d_lo = {
   "composer.visibility.privateHint": "ສະເພາະເຈົ້າ",
   "composer.audience": "ຜູ້ຊົມໂພສ: {audience}",
   "composer.post": "ໂພສ",
+  "post.title": "ໂພດສື່ມວນຊົນສັງຄົມ",
   "composer.posting": "ກຳລັງໂພສ…",
   "composer.uploading": "ກຳລັງອັບໂຫຼດ {current} ຈາກ {total}…",
   "composer.tooManyPhotos": "ເຈົ້າເພີ່ມຮູບໄດ້ສູງສຸດ 8 ຮູບ.",

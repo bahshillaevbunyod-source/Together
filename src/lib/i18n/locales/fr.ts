@@ -40,6 +40,7 @@ const fr = {
   "composer.visibility.privateHint": "Vous uniquement",
   "composer.audience": "Audience de la publication : {audience}",
   "composer.post": "Publier",
+  "post.title": "publication sur les réseaux sociaux",
   "composer.posting": "Publication…",
   "composer.uploading": "Envoi de {current} sur {total}…",
   "composer.tooManyPhotos": "Vous pouvez ajouter jusqu'à 8 photos.",

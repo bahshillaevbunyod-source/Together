@@ -40,6 +40,7 @@ const d_dz = {
   "composer.visibility.privateHint": "ཁྱོད་རྐྱངམ",
   "composer.audience": "སྤེལ་གཏམ་གྱི་ལྟ་མཁན: {audience}",
   "composer.post": "སྤེལ",
+  "post.title": "སྤྱི་ཚགས་དྲ་རྒྱའི་སྤེལ།",
   "composer.posting": "སྤེལ་བཞིན་པ…",
   "composer.uploading": "{total} ནང་ལས་ {current} ཡར་མངགས་བཞིན་པ…",
   "composer.tooManyPhotos": "ཁྱོད་ཀྱིས་པར་ ༨ ཚུན་ཁ་སྣོན་འབད་ཚུགས།",

@@ -40,6 +40,7 @@ const d_bik = {
   "composer.visibility.privateHint": "Ika sana",
   "composer.audience": "Mga naghihiling sa post: {audience}",
   "composer.post": "I-post",
+  "post.title": "post sa social media",
   "composer.posting": "Nagpo-post…",
   "composer.uploading": "Nag-a-upload nin {current} sa {total}…",
   "composer.tooManyPhotos": "Puwede kang magdagdag nin abot 8 na ladawan.",

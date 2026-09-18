@@ -40,6 +40,7 @@ const d_ti = {
   "composer.visibility.privateHint": "ንስኻ ጥራይ",
   "composer.audience": "ተመልከቲ ጽሑፍ፦ {audience}",
   "composer.post": "ጽሓፍ",
+  "post.title": "ኣብ ማሕበራዊ ሚድያ ፖስት",
   "composer.posting": "ይጽሕፍ ኣሎ…",
   "composer.uploading": "ካብ {total} {current} ይስቀል ኣሎ…",
   "composer.tooManyPhotos": "ክሳብ 8 ስእልታት ክትውስኽ ትኽእል።",

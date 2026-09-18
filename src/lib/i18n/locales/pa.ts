@@ -40,6 +40,7 @@ const d_pa = {
   "composer.visibility.privateHint": "ਸਿਰਫ਼ ਤੁਸੀਂ",
   "composer.audience": "ਪੋਸਟ ਦੇ ਦਰਸ਼ਕ: {audience}",
   "composer.post": "ਪੋਸਟ ਕਰੋ",
+  "post.title": "ਸੋਸ਼ਲ ਮੀਡੀਆ ਪੋਸਟ",
   "composer.posting": "ਪੋਸਟ ਹੋ ਰਹੀ ਹੈ…",
   "composer.uploading": "{total} ਵਿੱਚੋਂ {current} ਅੱਪਲੋਡ ਹੋ ਰਹੀ ਹੈ…",
   "composer.tooManyPhotos": "ਤੁਸੀਂ ਵੱਧ ਤੋਂ ਵੱਧ 8 ਫ਼ੋਟੋ ਜੋੜ ਸਕਦੇ ਹੋ।",

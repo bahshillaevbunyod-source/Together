@@ -40,6 +40,7 @@ const d_el = {
   "composer.visibility.privateHint": "Μόνο εσύ",
   "composer.audience": "Κοινό δημοσίευσης: {audience}",
   "composer.post": "Δημοσίευση",
+  "post.title": "ανάρτηση στα μέσα κοινωνικής δικτύωσης",
   "composer.posting": "Δημοσίευση…",
   "composer.uploading": "Μεταφόρτωση {current} από {total}…",
   "composer.tooManyPhotos": "Μπορείς να προσθέσεις έως 8 φωτογραφίες.",

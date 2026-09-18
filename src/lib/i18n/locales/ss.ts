@@ -40,6 +40,7 @@ const d_ss = {
   "composer.visibility.privateHint": "Wena kuphela",
   "composer.audience": "Bafundzi besitfunyelwe: {audience}",
   "composer.post": "Tfumela",
+  "post.title": "lokushicilelwe etindzabeni tekuchumana",
   "composer.posting": "Iyatfumela…",
   "composer.uploading": "Ilodza {current} kuletingu-{total}…",
   "composer.tooManyPhotos": "Ungangeta titfombe letifika ku-8.",

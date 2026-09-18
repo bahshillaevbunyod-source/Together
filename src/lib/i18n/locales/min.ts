@@ -40,6 +40,7 @@ const d_min = {
   "composer.visibility.privateHint": "Hanyo waang",
   "composer.audience": "Nan mancaliak kiriman: {audience}",
   "composer.post": "Kirim",
+  "post.title": "postingan di media sosial",
   "composer.posting": "Mangirim…",
   "composer.uploading": "Mangunggah {current} dari {total}…",
   "composer.tooManyPhotos": "Waang bisa manambah sampai 8 foto.",

@@ -40,6 +40,7 @@ const d_sw = {
   "composer.visibility.privateHint": "Wewe pekee",
   "composer.audience": "Hadhira ya chapisho: {audience}",
   "composer.post": "Chapisha",
+  "post.title": "chapisho la media ya kijamii",
   "composer.posting": "Inachapisha…",
   "composer.uploading": "Inapakia {current} kati ya {total}…",
   "composer.tooManyPhotos": "Unaweza kuongeza hadi picha 8.",

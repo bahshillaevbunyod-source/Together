@@ -40,6 +40,7 @@ const d_ba = {
   "composer.visibility.privateHint": "Тик һин",
   "composer.audience": "Яҙма аудиторияһы: {audience}",
   "composer.post": "Баҫтырыу",
+  "post.title": "социаль селтәрҙәрҙә яҙма",
   "composer.posting": "Баҫтырыла…",
   "composer.uploading": "{total} рәсемдән {current} тейәлә…",
   "composer.tooManyPhotos": "8 фотоға тиклем өҫтәй алаһың.",

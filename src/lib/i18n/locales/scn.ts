@@ -40,6 +40,7 @@ const d_scn = {
   "composer.visibility.privateHint": "Sulu tu",
   "composer.audience": "Spittaturi dû post: {audience}",
   "composer.post": "Pubblica",
+  "post.title": "post supra li riti suciali",
   "composer.posting": "Sta pubblicannu…",
   "composer.uploading": "Sta carricannu {current} di {total}…",
   "composer.tooManyPhotos": "Poi junciri finu a 8 ritratti.",

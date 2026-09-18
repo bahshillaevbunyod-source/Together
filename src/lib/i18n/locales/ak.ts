@@ -40,6 +40,7 @@ const d_ak = {
   "composer.visibility.privateHint": "Wo nko ara",
   "composer.audience": "Wɔn a wɔhwɛ post no: {audience}",
   "composer.post": "To",
+  "post.title": "social media so nsɛm a wɔde too gua",
   "composer.posting": "Ɛreto…",
   "composer.uploading": "Ɛde {current} wɔ {total} mu resoma…",
   "composer.tooManyPhotos": "Wobɛtumi de mfonini a ɛboro 8 aka ho.",

@@ -40,6 +40,7 @@ const d_crs = {
   "composer.visibility.privateHint": "Zis ou",
   "composer.audience": "Bann ki get post: {audience}",
   "composer.post": "Poste",
+  "post.title": "post lo medya sosyal",
   "composer.posting": "Pe poste…",
   "composer.uploading": "Pe telsarz {current} lo {total}…",
   "composer.tooManyPhotos": "Ou kapab azout ziska 8 foto.",

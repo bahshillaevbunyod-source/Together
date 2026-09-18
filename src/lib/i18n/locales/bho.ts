@@ -40,6 +40,7 @@ const d_bho = {
   "composer.visibility.privateHint": "खाली रउआ",
   "composer.audience": "पोस्ट के दर्शक: {audience}",
   "composer.post": "पोस्ट करीं",
+  "post.title": "सोशल मीडिया पर पोस्ट कइल गइल बा",
   "composer.posting": "पोस्ट होखत बा…",
   "composer.uploading": "{total} में से {current} अपलोड होखत बा…",
   "composer.tooManyPhotos": "रउआ बहुते से बहुत 8 फोटो जोड़ सकेनी।",

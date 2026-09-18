@@ -40,6 +40,7 @@ const d_rom = {
   "composer.visibility.privateHint": "Ferdi tu",
   "composer.audience": "Kola so dikhen o posto: {audience}",
   "composer.post": "Bičhav",
+  "post.title": "socialo medijaqo lil",
   "composer.posting": "Bičhavel pe…",
   "composer.uploading": "Vazdel pe {current} andar {total}…",
   "composer.tooManyPhotos": "Šaj te thos dži ka 8 chitre.",

@@ -40,6 +40,7 @@ const d_sv = {
   "composer.visibility.privateHint": "Endast du",
   "composer.audience": "Målgrupp för inlägg: {audience}",
   "composer.post": "Publicera",
+  "post.title": "inlägg på sociala medier",
   "composer.posting": "Publicerar…",
   "composer.uploading": "Laddar upp {current} av {total}…",
   "composer.tooManyPhotos": "Du kan lägga till upp till 8 foton.",

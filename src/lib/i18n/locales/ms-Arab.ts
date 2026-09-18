@@ -40,6 +40,7 @@ const d_ms_Arab = {
   "composer.visibility.privateHint": "هاڽ اند",
   "composer.audience": "خالايق هنترن: {audience}",
   "composer.post": "هنتر",
+  "post.title": "ڤوست ميديا ​​سوسيال",
   "composer.posting": "مڠهنتر…",
   "composer.uploading": "ممواتنائيق {current} درڤد {total}…",
   "composer.tooManyPhotos": "اند بوليه تمبه سهيڠڬ ۸ ڬمبر.",

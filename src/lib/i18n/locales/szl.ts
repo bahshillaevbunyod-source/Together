@@ -40,6 +40,7 @@ const d_szl = {
   "composer.visibility.privateHint": "Ino ty",
   "composer.audience": "Ôdbiorcy wpisu: {audience}",
   "composer.post": "Ôpublikuj",
+  "post.title": "post na mediach społecznościowych",
   "composer.posting": "Publikowanie…",
   "composer.uploading": "Wgrowanie {current} z {total}…",
   "composer.tooManyPhotos": "Możesz przidać do 8 ôbrozkōw.",

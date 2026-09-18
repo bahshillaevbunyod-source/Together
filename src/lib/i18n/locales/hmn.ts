@@ -40,6 +40,7 @@ const d_hmn = {
   "composer.visibility.privateHint": "Koj xwb",
   "composer.audience": "Cov saib ncej: {audience}",
   "composer.post": "Tshaj tawm",
+  "post.title": "Tshaj tawm",
   "composer.posting": "Tab tom tshaj tawm…",
   "composer.uploading": "Tab tom xa {current} ntawm {total}…",
   "composer.tooManyPhotos": "Koj tuaj yeem ntxiv txog 8 daim duab.",

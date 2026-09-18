@@ -40,6 +40,7 @@ const d_cgg = {
   "composer.visibility.privateHint": "Iwe wenka",
   "composer.audience": "Abarikureeba ekihandiiko: {audience}",
   "composer.post": "Handiika",
+  "post.title": "Okuhandiika aha mikutu ya intaneeti",
   "composer.posting": "Nikihandiika…",
   "composer.uploading": "Nikwongyera {current} aha {total}…",
   "composer.tooManyPhotos": "Noosobora kwongyeraho ebifaananiso okuhika aha 8.",

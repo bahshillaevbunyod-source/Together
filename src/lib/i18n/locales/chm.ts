@@ -40,6 +40,7 @@ const d_chm = {
   "composer.visibility.privateHint": "Тый веле",
   "composer.audience": "Постым ужшо-влак: {audience}",
   "composer.post": "Колташ",
+  "post.title": "социальный сетьлаште возымо",
   "composer.posting": "Колталтеш…",
   "composer.uploading": "{total} гыч {current} нӧлталтеш…",
   "composer.tooManyPhotos": "Тый 8 марте сӱретым ешарен кертат.",

@@ -40,6 +40,7 @@ const d_si = {
   "composer.visibility.privateHint": "ඔබ පමණි",
   "composer.audience": "පළකිරීමේ ප්‍රේක්ෂකයන්: {audience}",
   "composer.post": "පළ කරන්න",
+  "post.title": "සමාජ මාධ්ය පෝස්ට්",
   "composer.posting": "පළ කරමින්…",
   "composer.uploading": "{total}න් {current} උඩුගත කරමින්…",
   "composer.tooManyPhotos": "ඔබට වැඩිම වශයෙන් ඡායාරූප 8ක් එක් කළ හැක.",

@@ -40,6 +40,7 @@ const d_id = {
   "composer.visibility.privateHint": "Hanya kamu",
   "composer.audience": "Audiens postingan: {audience}",
   "composer.post": "Posting",
+  "post.title": "postingan media sosial",
   "composer.posting": "Memposting…",
   "composer.uploading": "Mengunggah {current} dari {total}…",
   "composer.tooManyPhotos": "Kamu dapat menambahkan hingga 8 foto.",

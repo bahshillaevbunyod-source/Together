@@ -40,6 +40,7 @@ const d_yua = {
   "composer.visibility.privateHint": "Chéen teech",
   "composer.audience": "Máaxoʼob ku yiliko: {audience}",
   "composer.post": "Postar",
+  "post.title": "ts'íib ti' redes sociales",
   "composer.posting": "Táan u postartaʼal…",
   "composer.uploading": "Táan u kaʼanal {current} tiʼ {total}…",
   "composer.tooManyPhotos": "Jeʼel u páajtal a tsʼáaik tak 8 oochel.",

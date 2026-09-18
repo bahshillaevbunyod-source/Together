@@ -40,6 +40,7 @@ const d_ro = {
   "composer.visibility.privateHint": "Doar tu",
   "composer.audience": "Publicul postării: {audience}",
   "composer.post": "Postează",
+  "post.title": "postare pe rețelele sociale",
   "composer.posting": "Se postează…",
   "composer.uploading": "Se încarcă {current} din {total}…",
   "composer.tooManyPhotos": "Poți adăuga până la 8 fotografii.",

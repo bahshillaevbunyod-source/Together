@@ -40,6 +40,7 @@ const d_sr = {
   "composer.visibility.privateHint": "Само ти",
   "composer.audience": "Публика објаве: {audience}",
   "composer.post": "Објави",
+  "post.title": "објава на друштвеним мрежама",
   "composer.posting": "Објављивање…",
   "composer.uploading": "Отпремање {current} од {total}…",
   "composer.tooManyPhotos": "Можеш да додаш до 8 фотографија.",

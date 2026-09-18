@@ -40,6 +40,7 @@ const d_tk = {
   "composer.visibility.privateHint": "Diňe sen",
   "composer.audience": "Ýazgynyň diňleýjisi: {audience}",
   "composer.post": "Ýerleşdir",
+  "post.title": "sosial media ýazgysy",
   "composer.posting": "Ýerleşdirilýär…",
   "composer.uploading": "{total} suratdan {current} ýüklenýär…",
   "composer.tooManyPhotos": "8 surata çenli goşup bilersiň.",

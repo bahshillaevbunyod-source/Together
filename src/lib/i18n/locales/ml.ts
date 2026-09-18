@@ -40,6 +40,7 @@ const d_ml = {
   "composer.visibility.privateHint": "നിങ്ങൾ മാത്രം",
   "composer.audience": "പോസ്റ്റിന്റെ പ്രേക്ഷകർ: {audience}",
   "composer.post": "പോസ്റ്റ് ചെയ്യുക",
+  "post.title": "സോഷ്യൽ മീഡിയ പോസ്റ്റ്",
   "composer.posting": "പോസ്റ്റ് ചെയ്യുന്നു…",
   "composer.uploading": "{total}ൽ {current} അപ്‌ലോഡ് ചെയ്യുന്നു…",
   "composer.tooManyPhotos": "നിങ്ങൾക്ക് പരമാവധി 8 ഫോട്ടോകൾ ചേർക്കാം.",

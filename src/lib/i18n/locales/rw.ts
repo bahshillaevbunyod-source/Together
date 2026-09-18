@@ -40,6 +40,7 @@ const d_rw = {
   "composer.visibility.privateHint": "Wowe gusa",
   "composer.audience": "Ababireba: {audience}",
   "composer.post": "Tangaza",
+  "post.title": "imbuga nkoranyambaga",
   "composer.posting": "Iratangaza…",
   "composer.uploading": "Yohereza {current} kuri {total}…",
   "composer.tooManyPhotos": "Ushobora kongeraho amafoto agera kuri 8.",

@@ -40,6 +40,7 @@ const d_mt = {
   "composer.visibility.privateHint": "Int biss",
   "composer.audience": "Udjenza tal-post: {audience}",
   "composer.post": "Ippostja",
+  "post.title": "post fuq il-midja soċjali",
   "composer.posting": "Qed jippostja…",
   "composer.uploading": "Qed jittella' {current} minn {total}…",
   "composer.tooManyPhotos": "Tista' żżid sa 8 ritratti.",

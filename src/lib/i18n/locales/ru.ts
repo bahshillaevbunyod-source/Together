@@ -40,6 +40,7 @@ const ru = {
   "composer.visibility.privateHint": "Только вы",
   "composer.audience": "Аудитория публикации: {audience}",
   "composer.post": "Опубликовать",
+  "post.title": "пост в социальных сетях",
   "composer.posting": "Публикация…",
   "composer.uploading": "Загрузка {current} из {total}…",
   "composer.tooManyPhotos": "Можно добавить до 8 фото.",

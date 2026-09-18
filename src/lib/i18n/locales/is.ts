@@ -40,6 +40,7 @@ const d_is = {
   "composer.visibility.privateHint": "Aðeins þú",
   "composer.audience": "Markhópur færslu: {audience}",
   "composer.post": "Birta",
+  "post.title": "færslu á samfélagsmiðlum",
   "composer.posting": "Birti…",
   "composer.uploading": "Hleð upp {current} af {total}…",
   "composer.tooManyPhotos": "Þú getur bætt við allt að 8 myndum.",

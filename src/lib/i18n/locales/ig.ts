@@ -40,6 +40,7 @@ const d_ig = {
   "composer.visibility.privateHint": "Naanị gị",
   "composer.audience": "Ndị na-ekiri post: {audience}",
   "composer.post": "Bipụta",
+  "post.title": "mgbasa ozi mgbasa ozi",
   "composer.posting": "Na-ebipụta…",
   "composer.uploading": "Na-ebugo {current} nke {total}…",
   "composer.tooManyPhotos": "Ị nwere ike ịgbakwụnye ihe ruru foto 8.",

@@ -40,6 +40,7 @@ const d_dv = {
   "composer.visibility.privateHint": "ހަމައެކަނި ތިބާ",
   "composer.audience": "ޕޯސްޓު ބަލާ ފަރާތްތައް: {audience}",
   "composer.post": "ޕޯސްޓް",
+  "post.title": "ސޯޝަލް މީޑިއާ ޕޯސްޓެއް",
   "composer.posting": "ޕޯސްޓް ކުރަނީ…",
   "composer.uploading": "{total} ން {current} އަޕްލޯޑް ކުރަނީ…",
   "composer.tooManyPhotos": "ގިނަވެގެން 8 ފޮޓޯ އިތުރުކުރެވިދާނެ.",

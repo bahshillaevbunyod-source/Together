@@ -40,6 +40,7 @@ const d_pt_BR = {
   "composer.visibility.privateHint": "Apenas você",
   "composer.audience": "Público da publicação: {audience}",
   "composer.post": "Publicar",
+  "post.title": "postagem nas redes sociais",
   "composer.posting": "Publicando…",
   "composer.uploading": "Enviando {current} de {total}…",
   "composer.tooManyPhotos": "Você pode adicionar até 8 fotos.",

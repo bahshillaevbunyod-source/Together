@@ -40,6 +40,7 @@ const d_ee = {
   "composer.visibility.privateHint": "Wò ɖeka ko",
   "composer.audience": "Nuŋlɔɖi ƒe nukpɔlawo: {audience}",
   "composer.post": "Da ɖe dzi",
+  "post.title": "hadomenyatakakadzraɖoƒewo ƒe nyatakaka",
   "composer.posting": "Le edam ɖe dzi…",
   "composer.uploading": "Le {current} le {total} me dom ɖe dzi…",
   "composer.tooManyPhotos": "Àte ŋu atsɔ foto siwo de 8 akpe ɖe eŋu.",

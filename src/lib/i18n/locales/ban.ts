@@ -40,6 +40,7 @@ const d_ban = {
   "composer.visibility.privateHint": "Wantah ragane",
   "composer.audience": "Sane nyingakin postingan: {audience}",
   "composer.post": "Kirim",
+  "post.title": "pos ring media sosial",
   "composer.posting": "Ngirim…",
   "composer.uploading": "Ngunggah {current} saking {total}…",
   "composer.tooManyPhotos": "Ragane prasida nambahin ngantos 8 poto.",

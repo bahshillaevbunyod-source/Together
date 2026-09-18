@@ -40,6 +40,7 @@ const d_nr = {
   "composer.visibility.privateHint": "Wena kwaphela",
   "composer.audience": "Ababukeli bokuthunyelweko: {audience}",
   "composer.post": "Thumela",
+  "post.title": "okuthunyelwe eenkundleni zokuthintana",
   "composer.posting": "Iyathumela…",
   "composer.uploading": "Ilayitjha {current} kwabangu-{total}…",
   "composer.tooManyPhotos": "Ungangezelela iinthombe ezifikela ku-8.",

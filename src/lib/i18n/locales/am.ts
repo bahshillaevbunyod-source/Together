@@ -40,6 +40,7 @@ const d_am = {
   "composer.visibility.privateHint": "እርስዎ ብቻ",
   "composer.audience": "የልጥፉ ተመልካቾች፦ {audience}",
   "composer.post": "ለጥፍ",
+  "post.title": "ማህበራዊ ሚዲያ ልጥፍ",
   "composer.posting": "በመለጠፍ ላይ…",
   "composer.uploading": "{total} ውስጥ {current} በመስቀል ላይ…",
   "composer.tooManyPhotos": "እስከ 8 ፎቶዎች ማከል ይችላሉ።",

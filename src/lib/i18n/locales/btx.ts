@@ -40,6 +40,7 @@ const d_btx = {
   "composer.visibility.privateHint": "Kam saja",
   "composer.audience": "Singidah postingen: {audience}",
   "composer.post": "Kirim",
+  "post.title": "postingen media sosial .",
   "composer.posting": "Sedang ngirim…",
   "composer.uploading": "Sedang ngunggah {current} bas {total}…",
   "composer.tooManyPhotos": "Banci itambahkenndu seh 8 gambar.",

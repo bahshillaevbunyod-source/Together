@@ -40,6 +40,7 @@ const d_doi = {
   "composer.visibility.privateHint": "सिर्फ तुस",
   "composer.audience": "पोस्ट दे दर्शक: {audience}",
   "composer.post": "पोस्ट करो",
+  "post.title": "सोशल मीडिया पोस्ट",
   "composer.posting": "पोस्ट होआ करदा ऐ…",
   "composer.uploading": "{total} चा {current} अपलोड होआ करदा ऐ…",
   "composer.tooManyPhotos": "तुस मता चा मता 8 फोटो जोड़ी सकदे ओ।",

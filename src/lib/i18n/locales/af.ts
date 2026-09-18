@@ -40,6 +40,7 @@ const d_af = {
   "composer.visibility.privateHint": "Net jy",
   "composer.audience": "Gehoor van plasing: {audience}",
   "composer.post": "Plaas",
+  "post.title": "sosiale media plasing",
   "composer.posting": "Plaas tans…",
   "composer.uploading": "Laai tans {current} van {total} op…",
   "composer.tooManyPhotos": "Jy kan tot 8 foto's byvoeg.",

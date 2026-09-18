@@ -40,6 +40,7 @@ const d_gu = {
   "composer.visibility.privateHint": "ફક્ત તમે",
   "composer.audience": "પોસ્ટના પ્રેક્ષક: {audience}",
   "composer.post": "પોસ્ટ કરો",
+  "post.title": "સોશિયલ મીડિયા પોસ્ટ",
   "composer.posting": "પોસ્ટ થઈ રહ્યું છે…",
   "composer.uploading": "{total} માંથી {current} અપલોડ થઈ રહ્યું છે…",
   "composer.tooManyPhotos": "તમે વધુમાં વધુ 8 ફોટા ઉમેરી શકો છો.",

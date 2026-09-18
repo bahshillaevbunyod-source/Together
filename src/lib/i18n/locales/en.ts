@@ -100,6 +100,7 @@ export const en = {
   "post.deleteBody": "This can’t be undone. The post and its media will be removed.",
   "post.deleting": "Deleting…",
   "post.deleteDialog": "Delete post",
+  "post.title": "Post",
 
   "comment.loading": "Loading comments…",
   "comment.error": "Couldn’t load comments.",

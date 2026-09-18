@@ -40,6 +40,7 @@ const d_gd = {
   "composer.visibility.privateHint": "Thusa a-mhàin",
   "composer.audience": "Luchd-amais a' phuist: {audience}",
   "composer.post": "Postaich",
+  "post.title": "post meadhanan sòisealta",
   "composer.posting": "'Ga phostachadh…",
   "composer.uploading": "A' luchdadh suas {current} à {total}…",
   "composer.tooManyPhotos": "'S urrainn dhut suas ri 8 dealbhan a chur ris.",

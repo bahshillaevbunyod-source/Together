@@ -40,6 +40,7 @@ const d_ktu = {
   "composer.visibility.privateHint": "Kaka nge",
   "composer.audience": "Bantu ke mona post: {audience}",
   "composer.post": "Tinda",
+  "post.title": "poste ya réseaux sociaux",
   "composer.posting": "Ke tinda…",
   "composer.uploading": "Ke tombula {current} na {total}…",
   "composer.tooManyPhotos": "Nge lenda yika tii na 8 foto.",

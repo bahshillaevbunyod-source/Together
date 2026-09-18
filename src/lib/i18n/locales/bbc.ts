@@ -40,6 +40,7 @@ const d_bbc = {
   "composer.visibility.privateHint": "Holan ho",
   "composer.audience": "Na mangida postingan: {audience}",
   "composer.post": "Kirim",
+  "post.title": "postingan media sosial",
   "composer.posting": "Sedang mangirim…",
   "composer.uploading": "Sedang mangunggah {current} sian {total}…",
   "composer.tooManyPhotos": "Boi tambaanmu sahat tu 8 gambar.",

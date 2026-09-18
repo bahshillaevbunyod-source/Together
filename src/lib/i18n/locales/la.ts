@@ -40,6 +40,7 @@ const d_la = {
   "composer.visibility.privateHint": "Tantum tu",
   "composer.audience": "Spectatores rei: {audience}",
   "composer.post": "Mittere",
+  "post.title": "socialis instrumentis post",
   "composer.posting": "Mittitur…",
   "composer.uploading": "{current} de {total} onerantur…",
   "composer.tooManyPhotos": "Usque ad 8 imagines addere potes.",

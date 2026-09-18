@@ -40,6 +40,7 @@ const d_hy = {
   "composer.visibility.privateHint": "Միայն դու",
   "composer.audience": "Գրառման լսարան՝ {audience}",
   "composer.post": "Հրապարակել",
+  "post.title": "սոցիալական մեդիայի գրառումը",
   "composer.posting": "Հրապարակվում է…",
   "composer.uploading": "Վերբեռնվում է {current}՝ {total}-ից…",
   "composer.tooManyPhotos": "Կարող ես ավելացնել մինչև 8 լուսանկար։",

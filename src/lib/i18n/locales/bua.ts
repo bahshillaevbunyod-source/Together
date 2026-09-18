@@ -40,6 +40,7 @@ const d_bua = {
   "composer.visibility.privateHint": "Ганса ши",
   "composer.audience": "Бэшэгэй харагшад: {audience}",
   "composer.post": "Толилуулха",
+  "post.title": "социальна холбооной бэшэг",
   "composer.posting": "Толилуулна…",
   "composer.uploading": "{total}-һаа {current} ашаална…",
   "composer.tooManyPhotos": "Ши 8 хүрэтэр зураг нэмэжэ болохош.",

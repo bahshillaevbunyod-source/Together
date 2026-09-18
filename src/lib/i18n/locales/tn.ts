@@ -40,6 +40,7 @@ const d_tn = {
   "composer.visibility.privateHint": "Wena fela",
   "composer.audience": "Babogedi ba poso: {audience}",
   "composer.post": "Posa",
+  "post.title": "poso ya media wa botsalano",
   "composer.posting": "E a posa…",
   "composer.uploading": "E tsenya {current} mo go {total}…",
   "composer.tooManyPhotos": "O ka oketsa ditshwantsho go fitlha go 8.",

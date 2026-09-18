@@ -40,6 +40,7 @@ const d_nl = {
   "composer.visibility.privateHint": "Alleen jij",
   "composer.audience": "Doelgroep van bericht: {audience}",
   "composer.post": "Plaatsen",
+  "post.title": "sociale media bericht",
   "composer.posting": "Plaatsen…",
   "composer.uploading": "{current} van {total} uploaden…",
   "composer.tooManyPhotos": "Je kunt maximaal 8 foto's toevoegen.",

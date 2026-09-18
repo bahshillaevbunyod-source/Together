@@ -40,6 +40,7 @@ const d_mi = {
   "composer.visibility.privateHint": "Ko koe anake",
   "composer.audience": "Ngā kaimātakitaki o te pou: {audience}",
   "composer.post": "Tukua",
+  "post.title": "pou pāpāho pāpori",
   "composer.posting": "Kei te tuku…",
   "composer.uploading": "Kei te tuku ake i te {current} o te {total}…",
   "composer.tooManyPhotos": "Ka taea e koe te tāpiri whakaahua tae atu ki te 8.",

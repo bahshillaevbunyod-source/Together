@@ -40,6 +40,7 @@ const d_lg = {
   "composer.visibility.privateHint": "Ggwe wekka",
   "composer.audience": "Abalaba ekiwandiiko: {audience}",
   "composer.post": "Teeka",
+  "post.title": "ekiwandiiko ku mikutu gya yintaneeti",
   "composer.posting": "Etekawo…",
   "composer.uploading": "Etikka {current} ku {total}…",
   "composer.tooManyPhotos": "Osobola okwongerako ebifaananyi okutuuka ku 8.",

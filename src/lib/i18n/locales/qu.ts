@@ -40,6 +40,7 @@ const d_qu = {
   "composer.visibility.privateHint": "Qamllam",
   "composer.audience": "Willakuyta rikuqkuna: {audience}",
   "composer.post": "Churay",
+  "post.title": "social media nisqapi qillqasqa",
   "composer.posting": "Churachkan…",
   "composer.uploading": "{current} {total}-manta huqarichkan…",
   "composer.tooManyPhotos": "8 fotokama yapayta atinki.",

@@ -40,6 +40,7 @@ const d_gl = {
   "composer.visibility.privateHint": "Só ti",
   "composer.audience": "Público da publicación: {audience}",
   "composer.post": "Publicar",
+  "post.title": "publicación en redes sociais",
   "composer.posting": "Publicando…",
   "composer.uploading": "Subindo {current} de {total}…",
   "composer.tooManyPhotos": "Podes engadir ata 8 fotos.",

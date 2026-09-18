@@ -40,6 +40,7 @@ const d_ku = {
   "composer.visibility.privateHint": "Tenê tu",
   "composer.audience": "Temaşevanên şandiyê: {audience}",
   "composer.post": "Biweşîne",
+  "post.title": "post medya civakî",
   "composer.posting": "Tê weşandin…",
   "composer.uploading": "{current} ji {total} tê barkirin…",
   "composer.tooManyPhotos": "Tu dikarî heta 8 wêneyan lê zêde bikî.",

@@ -40,6 +40,7 @@ const d_fil = {
   "composer.visibility.privateHint": "Ikaw lang",
   "composer.audience": "Awdiyens ng post: {audience}",
   "composer.post": "I-post",
+  "post.title": "post sa social media",
   "composer.posting": "Nagpo-post…",
   "composer.uploading": "Nag-a-upload ng {current} ng {total}…",
   "composer.tooManyPhotos": "Maaari kang magdagdag ng hanggang 8 larawan.",

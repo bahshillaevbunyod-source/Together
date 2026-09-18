@@ -40,6 +40,7 @@ const d_fi = {
   "composer.visibility.privateHint": "Vain sinä",
   "composer.audience": "Julkaisun yleisö: {audience}",
   "composer.post": "Julkaise",
+  "post.title": "sosiaalisessa mediassa postaus",
   "composer.posting": "Julkaistaan…",
   "composer.uploading": "Ladataan {current}/{total}…",
   "composer.tooManyPhotos": "Voit lisätä enintään 8 kuvaa.",

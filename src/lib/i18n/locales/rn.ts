@@ -40,6 +40,7 @@ const d_rn = {
   "composer.visibility.privateHint": "Wewe gusa",
   "composer.audience": "Abaraba iyi post: {audience}",
   "composer.post": "Sohora",
+  "post.title": "gushirwa ku mbuga ngurukanabumenyi",
   "composer.posting": "Iriko irasohora…",
   "composer.uploading": "Iriko irarungika {current} kuri {total}…",
   "composer.tooManyPhotos": "Urashobora kwongerako amafoto agera kuri 8.",

@@ -40,6 +40,7 @@ const d_da = {
   "composer.visibility.privateHint": "Kun dig",
   "composer.audience": "Målgruppe for opslag: {audience}",
   "composer.post": "Slå op",
+  "post.title": "opslag på sociale medier",
   "composer.posting": "Slår op…",
   "composer.uploading": "Uploader {current} af {total}…",
   "composer.tooManyPhotos": "Du kan tilføje op til 8 fotos.",

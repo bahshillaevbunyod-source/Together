@@ -40,6 +40,7 @@ const d_din = {
   "composer.visibility.privateHint": "Yïn kapac",
   "composer.audience": "Kɔc tiŋ pos: {audience}",
   "composer.post": "Tɔ̈ɔ̈u",
+  "post.title": "kë ye tääu në wël ke aliiric",
   "composer.posting": "Aa tɔ̈ɔ̈u…",
   "composer.uploading": "Aa jat nhial {current} bä {total}…",
   "composer.tooManyPhotos": "Yïn alëu ba mat nyuoth agut 8.",

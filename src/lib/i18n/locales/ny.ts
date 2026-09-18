@@ -40,6 +40,7 @@ const d_ny = {
   "composer.visibility.privateHint": "Inu nokha",
   "composer.audience": "Owonera positi: {audience}",
   "composer.post": "Tumizani",
+  "post.title": "positi yapa social media",
   "composer.posting": "Ikutumiza…",
   "composer.uploading": "Ikukweza {current} mwa {total}…",
   "composer.tooManyPhotos": "Mukhoza kuwonjezera zithunzi zosaposa 8.",

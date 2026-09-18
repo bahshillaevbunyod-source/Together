@@ -40,6 +40,7 @@ const d_mai = {
   "composer.visibility.privateHint": "केवल अहाँ",
   "composer.audience": "पोस्टक दर्शक: {audience}",
   "composer.post": "पोस्ट करू",
+  "post.title": "सोशल मीडिया पोस्ट",
   "composer.posting": "पोस्ट भ' रहल अछि…",
   "composer.uploading": "{total} मे सँ {current} अपलोड भ' रहल अछि…",
   "composer.tooManyPhotos": "अहाँ बेसी सँ बेसी 8 फोटो जोड़ि सकैत छी।",

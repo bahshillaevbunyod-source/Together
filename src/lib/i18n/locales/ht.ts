@@ -40,6 +40,7 @@ const d_ht = {
   "composer.visibility.privateHint": "Sèlman ou",
   "composer.audience": "Moun k ap gade pòs la: {audience}",
   "composer.post": "Pibliye",
+  "post.title": "post medya sosyal",
   "composer.posting": "Ap pibliye…",
   "composer.uploading": "Ap telechaje {current} sou {total}…",
   "composer.tooManyPhotos": "Ou ka ajoute jiska 8 foto.",

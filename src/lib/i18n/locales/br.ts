@@ -40,6 +40,7 @@ const d_br = {
   "composer.visibility.privateHint": "Te hepken",
   "composer.audience": "Sell ar bostadenn: {audience}",
   "composer.post": "Embann",
+  "post.title": "kemennadenn war ar rouedadoù sokial",
   "composer.posting": "O embann…",
   "composer.uploading": "O pellgargañ {current} eus {total}…",
   "composer.tooManyPhotos": "Gallout a rez ouzhpennañ betek 8 luc'hskeudenn.",

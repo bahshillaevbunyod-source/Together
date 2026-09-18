@@ -40,6 +40,7 @@ const d_zu = {
   "composer.visibility.privateHint": "Wena kuphela",
   "composer.audience": "Izilaleli zokuthunyelwe: {audience}",
   "composer.post": "Thumela",
+  "post.title": "okuthunyelwe ezinkundleni zokuxhumana",
   "composer.posting": "Iyathumela…",
   "composer.uploading": "Ilayisha okungu-{current} kokungu-{total}…",
   "composer.tooManyPhotos": "Ungangeza izithombe ezingafinyeleli ku-8.",

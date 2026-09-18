@@ -40,6 +40,7 @@ const d_or = {
   "composer.visibility.privateHint": "କେବଳ ଆପଣ",
   "composer.audience": "ପୋଷ୍ଟର ଦର୍ଶକ: {audience}",
   "composer.post": "ପୋଷ୍ଟ କରନ୍ତୁ",
+  "post.title": "ସୋସିଆଲ ମିଡିଆ ପୋଷ୍ଟ |",
   "composer.posting": "ପୋଷ୍ଟ ହେଉଛି…",
   "composer.uploading": "{total}ରୁ {current} ଅପଲୋଡ୍ ହେଉଛି…",
   "composer.tooManyPhotos": "ଆପଣ ସର୍ବାଧିକ 8ଟି ଫଟୋ ଯୋଡ଼ିପାରିବେ।",

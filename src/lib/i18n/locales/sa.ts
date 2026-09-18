@@ -40,6 +40,7 @@ const d_sa = {
   "composer.visibility.privateHint": "केवलं त्वम्",
   "composer.audience": "प्रकाशनस्य दर्शकाः: {audience}",
   "composer.post": "प्रकाशय",
+  "post.title": "प्रकाशय",
   "composer.posting": "प्रकाश्यते…",
   "composer.uploading": "{total} मध्ये {current} आरोप्यते…",
   "composer.tooManyPhotos": "त्वं अधिकतमं 8 छायाचित्राणि योजयितुं शक्नोषि।",

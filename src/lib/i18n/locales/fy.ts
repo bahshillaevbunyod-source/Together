@@ -40,6 +40,7 @@ const d_fy = {
   "composer.visibility.privateHint": "Allinnich do",
   "composer.audience": "Publyk fan post: {audience}",
   "composer.post": "Pleatse",
+  "post.title": "sosjale media post",
   "composer.posting": "Wurdt pleatst…",
   "composer.uploading": "{current} fan {total} oplade…",
   "composer.tooManyPhotos": "Do kinst oant 8 foto's tafoegje.",

@@ -40,6 +40,7 @@ const d_mn = {
   "composer.visibility.privateHint": "Зөвхөн та",
   "composer.audience": "Нийтлэлийн үзэгчид: {audience}",
   "composer.post": "Нийтлэх",
+  "post.title": "сошиал медиа бичлэг",
   "composer.posting": "Нийтэлж байна…",
   "composer.uploading": "{total}-с {current}-г байршуулж байна…",
   "composer.tooManyPhotos": "Та 8 хүртэл зураг нэмж болно.",

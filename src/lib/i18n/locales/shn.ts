@@ -40,6 +40,7 @@ const d_shn = {
   "composer.visibility.privateHint": "ၸဝ်ႈၵူၺ်း",
   "composer.audience": "ၽူႈတူၺ်းပုၶ်ႈ: {audience}",
   "composer.post": "တၢင်ႇ",
+  "post.title": "ပိုၼ်ၽႄ ၼိူဝ်သိုဝ်ႇတူင်ႇဝူင်းၵူၼ်း",
   "composer.posting": "တၢင်ႇဝႆႉ…",
   "composer.uploading": "တၢင်ႇ {current} ၼႂ်း {total}…",
   "composer.tooManyPhotos": "ၸဝ်ႈသႂ်ႇၶႅပ်းႁၢင်ႈလႆႈထိုင် 8 ၶႅပ်း။",

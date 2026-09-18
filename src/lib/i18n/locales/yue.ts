@@ -40,6 +40,7 @@ const d_yue = {
   "composer.visibility.privateHint": "淨係你",
   "composer.audience": "帖子對象：{audience}",
   "composer.post": "發佈",
+  "post.title": "社交媒體帖子",
   "composer.posting": "發佈緊…",
   "composer.uploading": "上載緊第 {current} 張，共 {total} 張…",
   "composer.tooManyPhotos": "最多可以加 8 張相。",

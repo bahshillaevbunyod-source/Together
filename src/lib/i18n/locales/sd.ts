@@ -40,6 +40,7 @@ const d_sd = {
   "composer.visibility.privateHint": "صرف توهان",
   "composer.audience": "پوسٽ جا سامعين: {audience}",
   "composer.post": "پوسٽ ڪريو",
+  "post.title": "سوشل ميڊيا پوسٽ",
   "composer.posting": "پوسٽ ٿي رهي آهي…",
   "composer.uploading": "{total} مان {current} اپلوڊ ٿي رهي آهي…",
   "composer.tooManyPhotos": "توهان وڌ ۾ وڌ 8 تصويرون شامل ڪري سگهو ٿا.",

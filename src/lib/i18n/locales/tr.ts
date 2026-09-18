@@ -40,6 +40,7 @@ const tr = {
   "composer.visibility.privateHint": "Yalnızca sen",
   "composer.audience": "Gönderi kitlesi: {audience}",
   "composer.post": "Paylaş",
+  "post.title": "sosyal medya gönderisi",
   "composer.posting": "Paylaşılıyor…",
   "composer.uploading": "{total} görselden {current} yükleniyor…",
   "composer.tooManyPhotos": "En fazla 8 fotoğraf ekleyebilirsin.",

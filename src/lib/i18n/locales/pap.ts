@@ -40,6 +40,7 @@ const d_pap = {
   "composer.visibility.privateHint": "Solamente abo",
   "composer.audience": "Públiko di e post: {audience}",
   "composer.post": "Postia",
+  "post.title": "post riba medionan sosial",
   "composer.posting": "Ta postiando…",
   "composer.uploading": "Ta subiendo {current} di {total}…",
   "composer.tooManyPhotos": "Bo por agregá te ku 8 potrèt.",

@@ -40,6 +40,7 @@ const d_ceb = {
   "composer.visibility.privateHint": "Ikaw lang",
   "composer.audience": "Mga tumatan-aw sa post: {audience}",
   "composer.post": "I-post",
+  "post.title": "post sa social media",
   "composer.posting": "Nag-post…",
   "composer.uploading": "Nag-upload sa {current} sa {total}…",
   "composer.tooManyPhotos": "Makadugang ka og hangtod 8 ka litrato.",

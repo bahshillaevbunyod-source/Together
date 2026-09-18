@@ -40,6 +40,7 @@ const d_gn = {
   "composer.visibility.privateHint": "Nde añónte",
   "composer.audience": "Umi ohecháva marandu: {audience}",
   "composer.post": "Emondo",
+  "post.title": "post medios sociales-pe",
   "composer.posting": "Oñemondo hína…",
   "composer.uploading": "Ojehupi {current} {total}-gui…",
   "composer.tooManyPhotos": "Ikatu emoĩve 8 taʼanga peve.",

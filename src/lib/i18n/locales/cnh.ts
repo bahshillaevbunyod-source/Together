@@ -40,6 +40,7 @@ const d_cnh = {
   "composer.visibility.privateHint": "Nangmah lawng",
   "composer.audience": "Post a zohtu hna: {audience}",
   "composer.post": "Chuahpi",
+  "post.title": "social media ah thlahmi",
   "composer.posting": "Chuahpi lio…",
   "composer.uploading": "{total} chungin {current} kan thawh lio…",
   "composer.tooManyPhotos": "Hmanthlak 8 tiang na chiah khawh.",
