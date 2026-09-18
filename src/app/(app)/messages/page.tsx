@@ -15,6 +15,7 @@ import {
 import { formatTimeAgo } from "@/lib/format";
 import { useAuth } from "@/lib/auth-context";
 import { useRealtime } from "@/lib/realtime-context";
+import { useLanguage } from "@/lib/language-context";
 import { ConversationThread } from "@/components/messages/ConversationThread";
 
 type Status = "loading" | "ready" | "error";
@@ -34,6 +35,7 @@ export default function MessagesPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const { user } = useAuth();
   const { subscribeMessageCreated } = useRealtime();
+  const { t } = useLanguage();
 
   // Zero the unread badge for a conversation once it has been read.
   const clearUnread = useCallback((id: string) => {
@@ -159,7 +161,7 @@ export default function MessagesPage() {
       setNewUsername("");
     } catch (err) {
       setOpenError(
-        err instanceof ApiError ? err.message : "Couldn’t open conversation.",
+        err instanceof ApiError ? err.message : t("messages.openError"),
       );
     } finally {
       setOpening(false);
@@ -171,13 +173,13 @@ export default function MessagesPage() {
       {/* Conversation list */}
       <div className={`${selected ? "hidden" : "flex"} w-full flex-col border-border sm:flex sm:w-80 sm:border-r`}>
         <div className="border-b border-border px-4 py-3">
-          <h1 className="text-base font-semibold text-foreground">Messages</h1>
+          <h1 className="text-base font-semibold text-foreground">{t("navigation.messages")}</h1>
           <form onSubmit={openNew} className="mt-3 flex items-center gap-2">
             <input
               type="text"
               value={newUsername}
               onChange={(e) => setNewUsername(e.target.value)}
-              placeholder="Start a chat by @username"
+              placeholder={t("messages.startChatPlaceholder")}
               className="h-9 flex-1 rounded-full bg-background px-3 text-sm text-foreground placeholder:text-muted-soft"
             />
             <button
@@ -185,7 +187,7 @@ export default function MessagesPage() {
               disabled={newUsername.trim().length === 0 || opening}
               className="shrink-0 rounded-full bg-primary px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
             >
-              {opening ? "…" : "New"}
+              {opening ? "…" : t("messages.newButton")}
             </button>
           </form>
           {openError ? (
@@ -198,28 +200,28 @@ export default function MessagesPage() {
         <div className="flex-1 overflow-y-auto">
           {status === "loading" ? (
             <p className="px-4 py-8 text-center text-sm text-muted">
-              Loading conversations…
+              {t("messages.loadingConversations")}
             </p>
           ) : null}
 
           {status === "error" ? (
             <div className="px-4 py-8 text-center">
               <p className="text-sm text-muted">
-                Couldn’t load conversations.
+                {t("messages.loadError")}
               </p>
               <button
                 type="button"
                 onClick={() => load()}
                 className="mt-2 text-sm text-primary hover:underline"
               >
-                Try again
+                {t("search.tryAgain")}
               </button>
             </div>
           ) : null}
 
           {status === "ready" && items.length === 0 ? (
             <p className="px-4 py-8 text-center text-sm text-muted-soft">
-              No conversations yet.
+              {t("messages.emptyConversations")}
             </p>
           ) : null}
 
@@ -235,7 +237,7 @@ export default function MessagesPage() {
                   <button
                     type="button"
                     onClick={() => setSelectedId(c.id)}
-                    aria-label={`Open conversation with ${c.otherUser.displayName}`}
+                    aria-label={t("messages.openConversationAria", { name: c.otherUser.displayName })}
                     className={`absolute inset-0 h-full w-full transition-colors hover:bg-background ${
                       selectedId === c.id ? "bg-background" : ""
                     }`}
@@ -246,7 +248,7 @@ export default function MessagesPage() {
                   <div className="pointer-events-none relative flex items-center gap-3 px-4 py-3">
                     <Link
                       href={`/u/${encodeURIComponent(c.otherUser.username)}`}
-                      aria-label={`View ${c.otherUser.displayName}'s profile`}
+                      aria-label={t("messages.viewProfileAria", { name: c.otherUser.displayName })}
                       className="pointer-events-auto shrink-0 rounded-full"
                     >
                       <Image
@@ -274,7 +276,7 @@ export default function MessagesPage() {
                         <span className="truncate text-sm text-muted">
                           {c.lastMessage
                             ? c.lastMessage.content
-                            : "No messages yet"}
+                            : t("messages.lastMessageNone")}
                         </span>
                         {c.unreadCount > 0 ? (
                           <span className="flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-primary px-1.5 text-xs font-semibold text-white">
@@ -296,7 +298,7 @@ export default function MessagesPage() {
               disabled={loadingMore}
               className="w-full border-t border-border px-4 py-2.5 text-center text-sm text-muted transition-colors hover:text-foreground disabled:opacity-50"
             >
-              {loadingMore ? "Loading…" : "Load more"}
+              {loadingMore ? t("feed.loadingMore") : t("feed.loadMore")}
             </button>
           ) : null}
         </div>
@@ -310,14 +312,14 @@ export default function MessagesPage() {
               <button
                 type="button"
                 onClick={() => setSelectedId(null)}
-                aria-label="Back to conversations"
+                aria-label={t("messages.backAria")}
                 className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-background sm:hidden"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <Link
                 href={`/u/${encodeURIComponent(selected.otherUser.username)}`}
-                aria-label={`View ${selected.otherUser.displayName}'s profile`}
+                aria-label={t("messages.viewProfileAria", { name: selected.otherUser.displayName })}
                 className="flex items-center gap-3 rounded-lg transition-colors hover:opacity-80"
               >
                 <Image
@@ -349,7 +351,7 @@ export default function MessagesPage() {
         ) : (
           <div className="flex flex-1 items-center justify-center px-6 text-center">
             <p className="text-sm text-muted-soft">
-              Select a conversation to open it.
+              {t("messages.selectConversation")}
             </p>
           </div>
         )}

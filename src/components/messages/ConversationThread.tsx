@@ -12,6 +12,7 @@ import {
 } from "@/lib/api";
 import { formatTimeAgo } from "@/lib/format";
 import { useRealtime } from "@/lib/realtime-context";
+import { useLanguage } from "@/lib/language-context";
 
 type Status = "loading" | "ready" | "error";
 
@@ -43,6 +44,7 @@ export function ConversationThread({
   const [sendError, setSendError] = useState<string | null>(null);
 
   const { subscribeMessageCreated } = useRealtime();
+  const { t } = useLanguage();
   const bottomRef = useRef<HTMLDivElement>(null);
   // Tracks message ids currently in the thread, to ignore duplicates.
   const seenIdsRef = useRef<Set<string>>(new Set());
@@ -154,7 +156,7 @@ export function ConversationThread({
       onSent?.(conversationId, created);
       scrollToBottom();
     } catch {
-      setSendError("Couldn’t send message. Try again."); // keep input on failure
+      setSendError(t("messages.sendError")); // keep input on failure
     } finally {
       setSending(false);
     }
@@ -163,7 +165,7 @@ export function ConversationThread({
   if (status === "loading") {
     return (
       <div className="flex flex-1 items-center justify-center px-6 text-center">
-        <p className="text-sm text-muted">Loading messages…</p>
+        <p className="text-sm text-muted">{t("messages.loadingMessages")}</p>
       </div>
     );
   }
@@ -171,13 +173,13 @@ export function ConversationThread({
   if (status === "error") {
     return (
       <div className="flex flex-1 flex-col items-center justify-center gap-2 px-6 text-center">
-        <p className="text-sm text-muted">Couldn’t load messages.</p>
+        <p className="text-sm text-muted">{t("messages.messagesLoadError")}</p>
         <button
           type="button"
           onClick={() => load()}
           className="text-sm text-primary hover:underline"
         >
-          Try again
+          {t("search.tryAgain")}
         </button>
       </div>
     );
@@ -189,7 +191,7 @@ export function ConversationThread({
       <div className="flex flex-1 flex-col gap-2 overflow-y-auto px-5 py-4">
         {messages.length === 0 ? (
           <div className="flex flex-1 items-center justify-center px-1 text-center">
-            <p className="text-sm text-muted-soft">No messages yet.</p>
+            <p className="text-sm text-muted-soft">{t("messages.threadEmpty")}</p>
           </div>
         ) : (
           <>
@@ -200,7 +202,7 @@ export function ConversationThread({
                 disabled={loadingOlder}
                 className="mx-auto mb-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs text-muted transition-colors hover:text-foreground disabled:opacity-50"
               >
-                {loadingOlder ? "Loading…" : "Load older messages"}
+                {loadingOlder ? t("feed.loadingMore") : t("messages.loadOlder")}
               </button>
             ) : null}
 
@@ -228,13 +230,13 @@ export function ConversationThread({
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Write a message…"
+            placeholder={t("messages.composerPlaceholder")}
             className="h-10 flex-1 rounded-full bg-background px-4 text-sm text-foreground placeholder:text-muted-soft"
           />
           <button
             type="submit"
             disabled={!canSend}
-            aria-label="Send message"
+            aria-label={t("messages.sendAria")}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
           >
             <Send className="h-4 w-4" />
@@ -255,6 +257,7 @@ function MessageBubble({
   message: ApiMessage;
   mine: boolean;
 }) {
+  const { t } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
 
   const translated = message.translatedContent;
@@ -295,7 +298,7 @@ function MessageBubble({
                 mine ? "text-white/80" : "text-primary"
               }`}
             >
-              {showOriginal ? "Show translation" : "Show original"}
+              {showOriginal ? t("post.showTranslation") : t("post.showOriginal")}
             </button>
           ) : null}
         </div>

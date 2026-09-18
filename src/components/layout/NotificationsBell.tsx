@@ -13,6 +13,7 @@ import {
   type ApiNotification,
 } from "@/lib/api";
 import { formatTimeAgo } from "@/lib/format";
+import { useLanguage, type TranslationKey } from "@/lib/language-context";
 
 type Status = "idle" | "loading" | "ready" | "error";
 
@@ -23,21 +24,24 @@ const FALLBACK_AVATAR =
     '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><circle cx="16" cy="16" r="16" fill="#d4d4d8"/></svg>',
   );
 
-// Human-readable action text per notification type.
-function actionText(type: string): string {
+// Translation key for the static action fragment per notification type. The
+// actor name is rendered separately (bold) and never translated; this maps the
+// stable event type id to its localized predicate.
+function actionTextKey(type: string): TranslationKey {
   switch (type) {
     case "follow":
-      return "started following you";
+      return "notifications.action.follow";
     case "post_like":
-      return "liked your post";
+      return "notifications.action.postLike";
     case "post_comment":
-      return "commented on your post";
+      return "notifications.action.postComment";
     default:
-      return "sent you a notification";
+      return "notifications.action.default";
   }
 }
 
 export function NotificationsBell() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState<ApiNotification[]>([]);
   const [status, setStatus] = useState<Status>("idle");
@@ -158,7 +162,7 @@ export function NotificationsBell() {
     <div className="relative" ref={panelRef}>
       <button
         type="button"
-        aria-label="Notifications"
+        aria-label={t("notifications.title")}
         aria-expanded={open}
         aria-haspopup="menu"
         onClick={() => setOpen((prev) => !prev)}
@@ -179,7 +183,7 @@ export function NotificationsBell() {
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-3">
             <span className="text-sm font-semibold text-foreground">
-              Notifications
+              {t("notifications.title")}
             </span>
             <button
               type="button"
@@ -187,40 +191,40 @@ export function NotificationsBell() {
               disabled={unread === 0}
               className="text-xs text-primary transition-colors hover:underline disabled:cursor-not-allowed disabled:text-muted-soft disabled:no-underline"
             >
-              Mark all as read
+              {t("notifications.markAllRead")}
             </button>
           </div>
 
           <div className="max-h-96 overflow-y-auto">
             {status === "loading" ? (
               <p className="px-4 py-6 text-center text-sm text-muted">
-                Loading…
+                {t("feed.loadingMore")}
               </p>
             ) : null}
 
             {status === "error" ? (
               <div className="px-4 py-6 text-center">
-                <p className="text-sm text-muted">Couldn’t load notifications.</p>
+                <p className="text-sm text-muted">{t("notifications.error")}</p>
                 <button
                   type="button"
                   onClick={() => load()}
                   className="mt-2 text-sm text-primary hover:underline"
                 >
-                  Try again
+                  {t("search.tryAgain")}
                 </button>
               </div>
             ) : null}
 
             {status === "ready" && items.length === 0 ? (
               <p className="px-4 py-6 text-center text-sm text-muted-soft">
-                No notifications yet.
+                {t("notifications.empty")}
               </p>
             ) : null}
 
             {items.length > 0 ? (
               <ul className="flex flex-col">
                 {items.map((n) => {
-                  const actorName = n.actor?.displayName ?? "Someone";
+                  const actorName = n.actor?.displayName ?? t("notifications.someone");
                   // Follow notifications with a known actor link to that
                   // profile; other types keep the mark-read-only button.
                   const canNavigate =
@@ -241,7 +245,7 @@ export function NotificationsBell() {
                       <span className="min-w-0 flex-1">
                         <span className="text-sm text-foreground">
                           <span className="font-semibold">{actorName}</span>{" "}
-                          {actionText(n.type)}
+                          {t(actionTextKey(n.type))}
                         </span>
                         <span className="mt-0.5 block text-xs text-muted-soft">
                           {formatTimeAgo(n.createdAt)}
@@ -289,7 +293,7 @@ export function NotificationsBell() {
                 disabled={loadingMore}
                 className="w-full border-t border-border px-4 py-2.5 text-center text-sm text-muted transition-colors hover:text-foreground disabled:opacity-50"
               >
-                {loadingMore ? "Loading…" : "Load more"}
+                {loadingMore ? t("feed.loadingMore") : t("feed.loadMore")}
               </button>
             ) : null}
           </div>
