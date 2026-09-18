@@ -228,5 +228,15 @@ const d_eu = {
   "discover.followers": "jarraitzaileak",
   "topic.postsInTopic": "Gai honetako mezuak.",
   "bookmarks.description": "Gerorako gorde dituzun argitalpenak.",
+  "settings.translation": "Itzulpena",
+  "settings.preferredLanguage": "Itzulpen hizkuntza hobetsia",
+  "settings.useNativeLanguage": "Erabili jatorrizko hizkuntza",
+  "settings.autoTranslate": "Itzulpen automatikoa",
+  "settings.autoTranslateDescription": "Jasotako edukia automatikoki itzul daiteke nahi duzun hizkuntzara.",
+  "settings.loading": "Ezarpenak kargatzen…",
+  "settings.loadError": "Ezin izan dira zure ezarpenak kargatu.",
+  "settings.saved": "Ezarpenak gorde dira.",
+  "settings.error400": "Mesedez, egiaztatu itzulpen-ezarpenak.",
+  "settings.saveError": "Ezin izan dira gorde ezarpenak. Saiatu berriro.",
 } satisfies Record<TranslationKey, string>;
 export default d_eu;

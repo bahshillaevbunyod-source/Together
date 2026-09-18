@@ -228,5 +228,15 @@ const d_tt = {
   "discover.followers": "иярүчеләр",
   "topic.postsInTopic": "Бу темада язмалар.",
   "bookmarks.description": "Соңрак саклаган язмалар.",
+  "settings.translation": "Тәрҗемә",
+  "settings.preferredLanguage": "Сайланган тәрҗемә теле",
+  "settings.useNativeLanguage": "Туган телне кулланыгыз",
+  "settings.autoTranslate": "Авто тәрҗемә итү",
+  "settings.autoTranslateDescription": "Килгән эчтәлек сезнең теләгән телгә автоматик рәвештә тәрҗемә ителергә мөмкин.",
+  "settings.loading": "Йөкләү көйләүләре…",
+  "settings.loadError": "Сезнең көйләүләрне йөкләп булмый.",
+  "settings.saved": "Көйләүләр сакланган.",
+  "settings.error400": "Зинһар, тәрҗемә көйләүләрен тикшерегез.",
+  "settings.saveError": "Көйләүләрне саклап булмый. Кабатлап карагыз.",
 } satisfies Record<TranslationKey, string>;
 export default d_tt;

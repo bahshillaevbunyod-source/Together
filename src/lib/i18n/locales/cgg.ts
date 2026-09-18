@@ -228,5 +228,15 @@ const d_cgg = {
   "discover.followers": "abakuratsi",
   "topic.postsInTopic": "Ebihandiiko omu mutwe ogu.",
   "bookmarks.description": "Ebihandiiko ebi obiikire ahabw’okubikoresa bwanyima.",
+  "settings.translation": "Okuvunuura",
+  "settings.preferredLanguage": "Orurimi rw'okuvunuura orurikukunda",
+  "settings.useNativeLanguage": "Kozesa orurimi rw'enzaarwa",
+  "settings.autoTranslate": "Okuvunuura",
+  "settings.autoTranslateDescription": "Ebirikuza omu simu nibibaasa kuhindurwa omu rurimi oru orikwenda.",
+  "settings.loading": "Okutaho ebitebeekanisiibwe...",
+  "settings.loadError": "Tikirikubaasa kutaho ebitebeekanisiibwe byawe.",
+  "settings.saved": "Ebitebeekanisiibwe bibiikire.",
+  "settings.error400": "Nyabura we reeba oku otebeekaniise okuvunuura.",
+  "settings.saveError": "Tikirikubaasa kubiika ebitebeekanisiibwe. Gyezaho ogundi murundi.",
 } satisfies Record<TranslationKey, string>;
 export default d_cgg;

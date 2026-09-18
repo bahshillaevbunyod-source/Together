@@ -228,5 +228,15 @@ const d_ky = {
   "discover.followers": "жолдоочулары",
   "topic.postsInTopic": "Бул темадагы билдирүүлөр.",
   "bookmarks.description": "Сиз кийинчерээк үчүн сактаган посттор.",
+  "settings.translation": "Котормо",
+  "settings.preferredLanguage": "Тандалган котормо тили",
+  "settings.useNativeLanguage": "Эне тилин колдон",
+  "settings.autoTranslate": "Автоматтык которуу",
+  "settings.autoTranslateDescription": "Кирүүчү мазмун автоматтык түрдө сиз каалаган тилге которулушу мүмкүн.",
+  "settings.loading": "Жөндөөлөр жүктөлүүдө…",
+  "settings.loadError": "Жөндөөлөрүңүз жүктөлгөн жок.",
+  "settings.saved": "Орнотуулар сакталды.",
+  "settings.error400": "Котормо жөндөөлөрүңүздү текшериңиз.",
+  "settings.saveError": "Жөндөөлөр сакталган жок. Кайра аракет кыл.",
 } satisfies Record<TranslationKey, string>;
 export default d_ky;

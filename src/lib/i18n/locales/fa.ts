@@ -228,5 +228,15 @@ const d_fa = {
   "discover.followers": "پیروان",
   "topic.postsInTopic": "پست های این موضوع",
   "bookmarks.description": "پست هایی که برای بعد ذخیره کرده اید.",
+  "settings.translation": "ترجمه",
+  "settings.preferredLanguage": "زبان ترجمه ترجیحی",
+  "settings.useNativeLanguage": "از زبان مادری استفاده کنید",
+  "settings.autoTranslate": "ترجمه خودکار",
+  "settings.autoTranslateDescription": "محتوای ورودی می تواند به طور خودکار به زبان دلخواه شما ترجمه شود.",
+  "settings.loading": "در حال بارگیری تنظیمات…",
+  "settings.loadError": "تنظیمات شما بارگیری نشد.",
+  "settings.saved": "تنظیمات ذخیره شد.",
+  "settings.error400": "لطفا تنظیمات ترجمه خود را بررسی کنید.",
+  "settings.saveError": "تنظیمات ذخیره نشد. دوباره امتحان کنید.",
 } satisfies Record<TranslationKey, string>;
 export default d_fa;

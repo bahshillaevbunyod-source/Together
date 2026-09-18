@@ -228,5 +228,15 @@ const d_zh_TW = {
   "discover.followers": "追蹤者",
   "topic.postsInTopic": "此主題中的貼文。",
   "bookmarks.description": "您已儲存以供日後使用的貼文。",
+  "settings.translation": "翻譯",
+  "settings.preferredLanguage": "首選翻譯語言",
+  "settings.useNativeLanguage": "使用母語",
+  "settings.autoTranslate": "自動翻譯",
+  "settings.autoTranslateDescription": "傳入的內容可以自動翻譯成您的首選語言。",
+  "settings.loading": "正在加載設定...",
+  "settings.loadError": "無法載入您的設定。",
+  "settings.saved": "設定已儲存。",
+  "settings.error400": "請檢查您的翻譯設定。",
+  "settings.saveError": "無法儲存設定。再試一次。",
 } satisfies Record<TranslationKey, string>;
 export default d_zh_TW;

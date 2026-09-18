@@ -228,5 +228,15 @@ const d_haw = {
   "discover.followers": "poe hahai",
   "topic.postsInTopic": "Nā pou ma kēia kumuhana.",
   "bookmarks.description": "Nā memo āu i mālama ai ma hope.",
+  "settings.translation": "Unuhi",
+  "settings.preferredLanguage": "ʻŌlelo unuhi makemake ʻia",
+  "settings.useNativeLanguage": "E hoʻohana i ka ʻōlelo ʻōiwi",
+  "settings.autoTranslate": "Unuhi ʻakomi",
+  "settings.autoTranslateDescription": "Hiki ke unuhi 'akomi 'ia ka ma'i'o i kāu 'ōlelo makemake.",
+  "settings.loading": "Ke hoʻouka nei i nā hoʻonohonoho…",
+  "settings.loadError": "ʻAʻole hiki ke hoʻouka i kāu mau hoʻonohonoho.",
+  "settings.saved": "Mālama ʻia nā ʻōkuhi.",
+  "settings.error400": "E ʻoluʻolu e nānā i kāu hoʻonohonoho unuhi.",
+  "settings.saveError": "ʻAʻole hiki ke mālama i nā hoʻonohonoho. Hana hou.",
 } satisfies Record<TranslationKey, string>;
 export default d_haw;

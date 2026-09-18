@@ -228,5 +228,15 @@ const d_fi = {
   "discover.followers": "seuraajia",
   "topic.postsInTopic": "Viestit tässä aiheessa.",
   "bookmarks.description": "Viestit, jotka olet tallentanut myöhempää käyttöä varten.",
+  "settings.translation": "Käännös",
+  "settings.preferredLanguage": "Suositeltu käännöskieli",
+  "settings.useNativeLanguage": "Käytä äidinkieltä",
+  "settings.autoTranslate": "Automaattinen käännös",
+  "settings.autoTranslateDescription": "Saapuva sisältö voidaan kääntää automaattisesti haluamallesi kielelle.",
+  "settings.loading": "Ladataan asetuksia…",
+  "settings.loadError": "Asetuksiasi ei voitu ladata.",
+  "settings.saved": "Asetukset tallennettu.",
+  "settings.error400": "Tarkista käännösasetukset.",
+  "settings.saveError": "Asetuksia ei voitu tallentaa. Yritä uudelleen.",
 } satisfies Record<TranslationKey, string>;
 export default d_fi;

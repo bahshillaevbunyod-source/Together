@@ -228,5 +228,15 @@ const ar = {
   "discover.followers": "المتابعون",
   "topic.postsInTopic": "المشاركات في هذا الموضوع.",
   "bookmarks.description": "المشاركات التي حفظتها لوقت لاحق.",
+  "settings.translation": "الترجمة",
+  "settings.preferredLanguage": "لغة الترجمة المفضلة",
+  "settings.useNativeLanguage": "استخدم اللغة الأم",
+  "settings.autoTranslate": "ترجمة تلقائية",
+  "settings.autoTranslateDescription": "يمكن ترجمة المحتوى الوارد تلقائيًا إلى لغتك المفضلة.",
+  "settings.loading": "جارٍ تحميل الإعدادات…",
+  "settings.loadError": "تعذر تحميل إعداداتك.",
+  "settings.saved": "تم حفظ الإعدادات.",
+  "settings.error400": "يرجى التحقق من إعدادات الترجمة الخاصة بك.",
+  "settings.saveError": "لا يمكن حفظ الإعدادات. حاول ثانية.",
 } satisfies Record<TranslationKey, string>;
 export default ar;

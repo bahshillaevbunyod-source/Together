@@ -228,5 +228,15 @@ const d_ak = {
   "discover.followers": "akyidifo",
   "topic.postsInTopic": "Posts in saa asɛmti yi.",
   "bookmarks.description": "Posts a woakora so ama akyiri yi.",
+  "settings.translation": "Nkyerɛaseɛ",
+  "settings.preferredLanguage": "Nkyerɛase kasa a wɔpɛ",
+  "settings.useNativeLanguage": "Fa kurom kasa di dwuma",
+  "settings.autoTranslate": "Auto nkyerɛase",
+  "settings.autoTranslateDescription": "Wobetumi akyerɛ nsɛm a ɛba no ase akɔ kasa a wopɛ mu.",
+  "settings.loading": "Loading nhyehyɛe ahorow...",
+  "settings.loadError": "Entumi n’ahyɛ wo nhyehyɛe ahorow no.",
+  "settings.saved": "Nsiesiei ahorow a wɔakora so.",
+  "settings.error400": "Yɛsrɛ sɛ hwɛ wo nkyerɛase nhyehyɛe no.",
+  "settings.saveError": "Entumi nkora nhyehyɛe ahorow so. Bɔ mmɔden bio.",
 } satisfies Record<TranslationKey, string>;
 export default d_ak;

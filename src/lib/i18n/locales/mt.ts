@@ -228,5 +228,15 @@ const d_mt = {
   "discover.followers": "segwaċi",
   "topic.postsInTopic": "Postijiet f'dan is-suġġett.",
   "bookmarks.description": "Postijiet li ssejvjajt għal aktar tard.",
+  "settings.translation": "Traduzzjoni",
+  "settings.preferredLanguage": "Lingwa tat-traduzzjoni preferuta",
+  "settings.useNativeLanguage": "Uża lingwa nattiva",
+  "settings.autoTranslate": "Traduzzjoni awtomatika",
+  "settings.autoTranslateDescription": "Il-kontenut li jkun dieħel jista' jiġi tradott awtomatikament fil-lingwa preferuta tiegħek.",
+  "settings.loading": "Tagħbija s-settings...",
+  "settings.loadError": "Ma setgħetx tagħbija s-settings tiegħek.",
+  "settings.saved": "Settings salvati.",
+  "settings.error400": "Jekk jogħġbok iċċekkja s-settings tat-traduzzjoni tiegħek.",
+  "settings.saveError": "Ma setgħetx tissejvja s-settings. Erġa' pprova.",
 } satisfies Record<TranslationKey, string>;
 export default d_mt;

@@ -228,5 +228,15 @@ const d_ilo = {
   "discover.followers": "dagiti pasurot",
   "topic.postsInTopic": "Posts in daytoy a topiko.",
   "bookmarks.description": "Dagiti post nga in-save-mo para inton agangay.",
+  "settings.translation": "Panagpatarus",
+  "settings.preferredLanguage": "Kaykayat a pagsasao ti panagipatarus",
+  "settings.useNativeLanguage": "Usaren ti katutubo a pagsasao",
+  "settings.autoTranslate": "Auto nga ipatarus",
+  "settings.autoTranslateDescription": "Mabalin nga automatiko a maipatarus ti sumsumrek a linaon iti kaykayatmo a pagsasao.",
+  "settings.loading": "Karga dagiti settings...",
+  "settings.loadError": "Saan a mai-load dagiti settings-mo.",
+  "settings.saved": "Naidulin dagiti setting.",
+  "settings.error400": "Pangngaasiyo ta kitaenyo dagiti setting ti panagipatarusyo.",
+  "settings.saveError": "Saan a maka-save kadagiti setting. Padasem manen.",
 } satisfies Record<TranslationKey, string>;
 export default d_ilo;

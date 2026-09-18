@@ -228,5 +228,15 @@ const d_bik = {
   "discover.followers": "mga parasunod",
   "topic.postsInTopic": "Mga post sa topic na ini.",
   "bookmarks.description": "Mga post na saimong itinagama para sa masunod.",
+  "settings.translation": "Pagsalin",
+  "settings.preferredLanguage": "Mas gustong tataramon sa pagtradusir",
+  "settings.useNativeLanguage": "Gamiton an katutubong tataramon",
+  "settings.autoTranslate": "Awtomatikong pagsasalin",
+  "settings.autoTranslateDescription": "An naglalaog na laog puwedeng awtomatikong itradusir sa saimong gustong tataramon.",
+  "settings.loading": "Mga setting nin pagkarga...",
+  "settings.loadError": "Dai na-load an saimong mga setting.",
+  "settings.saved": "Na-save an mga setting.",
+  "settings.error400": "Hilingon tabi an saimong mga setting nin pagsasalin.",
+  "settings.saveError": "Dai na-save an mga setting. Probaran giraray.",
 } satisfies Record<TranslationKey, string>;
 export default d_bik;

@@ -228,5 +228,15 @@ const ru = {
   "discover.followers": "подписчики",
   "topic.postsInTopic": "Сообщения в этом тема.",
   "bookmarks.description": "Сообщения, которые вы сохранили на будущее.",
+  "settings.translation": "Перевод",
+  "settings.preferredLanguage": "Предпочитаемый язык перевода",
+  "settings.useNativeLanguage": "Используйте родной язык",
+  "settings.autoTranslate": "Автоматический перевод",
+  "settings.autoTranslateDescription": "Входящий контент может быть автоматически переведен на предпочитаемый вами язык.",
+  "settings.loading": "Загрузка настроек…",
+  "settings.loadError": "Не удалось загрузить настройки.",
+  "settings.saved": "Настройки сохранены.",
+  "settings.error400": "Пожалуйста, проверьте настройки перевода.",
+  "settings.saveError": "Не удалось сохранить настройки. Попробуйте еще раз.",
 } satisfies Record<TranslationKey, string>;
 export default ru;

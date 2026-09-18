@@ -228,5 +228,15 @@ const d_ur = {
   "discover.followers": "پیروکار",
   "topic.postsInTopic": "اس موضوع میں پوسٹس۔",
   "bookmarks.description": "پوسٹس جو آپ نے بعد کے لیے محفوظ کی ہیں۔",
+  "settings.translation": "ترجمہ",
+  "settings.preferredLanguage": "ترجمے کی ترجیحی زبان",
+  "settings.useNativeLanguage": "مادری زبان استعمال کریں۔",
+  "settings.autoTranslate": "خودکار ترجمہ",
+  "settings.autoTranslateDescription": "آنے والے مواد کا خود بخود آپ کی پسندیدہ زبان میں ترجمہ کیا جا سکتا ہے۔",
+  "settings.loading": "ترتیبات لوڈ ہو رہی ہیں…",
+  "settings.loadError": "آپ کی ترتیبات کو لوڈ نہیں کیا جا سکا۔",
+  "settings.saved": "ترتیبات محفوظ ہو گئیں۔",
+  "settings.error400": "براہ کرم اپنی ترجمے کی ترتیبات چیک کریں۔",
+  "settings.saveError": "ترتیبات کو محفوظ نہیں کیا جا سکا۔ دوبارہ کوشش کریں۔",
 } satisfies Record<TranslationKey, string>;
 export default d_ur;

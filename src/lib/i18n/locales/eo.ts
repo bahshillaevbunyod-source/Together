@@ -228,5 +228,15 @@ const d_eo = {
   "discover.followers": "sekvantoj",
   "topic.postsInTopic": "Afiŝoj en ĉi tiu temo.",
   "bookmarks.description": "Afiŝoj, kiujn vi konservis por poste.",
+  "settings.translation": "Traduko",
+  "settings.preferredLanguage": "Preferata traduklingvo",
+  "settings.useNativeLanguage": "Uzu gepatran lingvon",
+  "settings.autoTranslate": "Aŭtomata tradukado",
+  "settings.autoTranslateDescription": "Envenanta enhavo povas esti aŭtomate tradukita en vian preferatan lingvon.",
+  "settings.loading": "Ŝargante agordojn...",
+  "settings.loadError": "Ne eblis ŝargi viajn agordojn.",
+  "settings.saved": "Agordoj konservitaj.",
+  "settings.error400": "Bonvolu kontroli viajn tradukajn agordojn.",
+  "settings.saveError": "Ne eblis konservi agordojn. Provu denove.",
 } satisfies Record<TranslationKey, string>;
 export default d_eo;

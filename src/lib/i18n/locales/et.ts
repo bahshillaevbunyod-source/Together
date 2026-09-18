@@ -228,5 +228,15 @@ const d_et = {
   "discover.followers": "järgijaid",
   "topic.postsInTopic": "Selle teema postitused.",
   "bookmarks.description": "Postitused, mille olete salvestanud hilisemaks kasutamiseks.",
+  "settings.translation": "Tõlge",
+  "settings.preferredLanguage": "Eelistatud tõlkekeel",
+  "settings.useNativeLanguage": "Kasutage emakeelt",
+  "settings.autoTranslate": "Automaatne tõlge",
+  "settings.autoTranslateDescription": "Sissetuleva sisu saab automaatselt tõlkida teie eelistatud keelde.",
+  "settings.loading": "Seadete laadimine…",
+  "settings.loadError": "Teie seadeid ei saanud laadida.",
+  "settings.saved": "Seaded salvestatud.",
+  "settings.error400": "Kontrollige oma tõlkeseadeid.",
+  "settings.saveError": "Seadeid ei saanud salvestada. Proovi uuesti.",
 } satisfies Record<TranslationKey, string>;
 export default d_et;

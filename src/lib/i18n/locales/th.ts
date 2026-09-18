@@ -228,5 +228,15 @@ const d_th = {
   "discover.followers": "ผู้ติดตาม",
   "topic.postsInTopic": "โพสต์ในหัวข้อนี้",
   "bookmarks.description": "โพสต์ที่คุณบันทึกไว้สำหรับ ในภายหลัง",
+  "settings.translation": "การแปล",
+  "settings.preferredLanguage": "ภาษาการแปลที่ต้องการ",
+  "settings.useNativeLanguage": "ใช้ภาษาพื้นเมือง",
+  "settings.autoTranslate": "แปลอัตโนมัติ",
+  "settings.autoTranslateDescription": "เนื้อหาที่เข้ามาสามารถแปลเป็นภาษาที่คุณต้องการได้โดยอัตโนมัติ",
+  "settings.loading": "กำลังโหลดการตั้งค่า...",
+  "settings.loadError": "ไม่สามารถโหลดการตั้งค่าของคุณ",
+  "settings.saved": "บันทึกการตั้งค่าแล้ว",
+  "settings.error400": "โปรดตรวจสอบการตั้งค่าการแปลของคุณ",
+  "settings.saveError": "ไม่สามารถบันทึกการตั้งค่า ลองอีกครั้ง",
 } satisfies Record<TranslationKey, string>;
 export default d_th;

@@ -228,5 +228,15 @@ const d_cv = {
   "discover.followers": "хыҫҫӑн пыракансем",
   "topic.postsInTopic": "Ку темӑри ҫырусем.",
   "bookmarks.description": "Кайран валли упранӑ ҫырусем.",
+  "settings.translation": "Куҫару",
+  "settings.preferredLanguage": "Куҫару чӗлхи",
+  "settings.useNativeLanguage": "Тӑван чӗлхепе усӑ кур",
+  "settings.autoTranslate": "Авто куҫару",
+  "settings.autoTranslateDescription": "Кӗрекен контента хӑвӑр кӑмӑллакан чӗлхене автоматла майпа куҫарма пулать.",
+  "settings.loading": "Загрузка настройки...",
+  "settings.loadError": "Настройкӑсене ҫӗклеймерӗм.",
+  "settings.saved": "Настройкӑсем упраннӑ.",
+  "settings.error400": "Куҫару настройкисене тӗрӗслӗр.",
+  "settings.saveError": "Настройкӑсене упраса хӑварма май килмерӗ. Тепӗр хут тытӑнса пӑхӑр.",
 } satisfies Record<TranslationKey, string>;
 export default d_cv;

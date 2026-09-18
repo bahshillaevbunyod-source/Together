@@ -228,5 +228,15 @@ const d_yi = {
   "discover.followers": "אנהענגערס",
   "topic.postsInTopic": "הודעות אין דעם טעמע.",
   "bookmarks.description": "אַרטיקלען וואָס איר האָט געראטעוועט פֿאַר שפּעטער.",
+  "settings.translation": "איבערזעצונג",
+  "settings.preferredLanguage": "בילכער איבערזעצונג שפּראַך",
+  "settings.useNativeLanguage": "ניצן געבוירן שפּראַך",
+  "settings.autoTranslate": "אַוטאָ איבערזעצן",
+  "settings.autoTranslateDescription": "ינקאַמינג אינהאַלט קענען ווערן אויטאָמאַטיש איבערגעזעצט אין דיין בילכער שפּראַך.",
+  "settings.loading": "לאָדן סעטטינגס...",
+  "settings.loadError": "קען נישט לאָדן דיין סעטטינגס.",
+  "settings.saved": "סעטטינגס געראטעוועט.",
+  "settings.error400": "ביטע טשעק דיין איבערזעצונג סעטטינגס.",
+  "settings.saveError": "קען נישט ראַטעווען סעטטינגס. פּרוּווט ווידער.",
 } satisfies Record<TranslationKey, string>;
 export default d_yi;

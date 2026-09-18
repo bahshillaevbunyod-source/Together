@@ -228,5 +228,15 @@ const d_mak = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "Posting ri anne topik.",
   "bookmarks.description": "Posting nu simpan untuk sallang.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Bahasa terjemahan yang disukai",
+  "settings.useNativeLanguage": "Pakei bahasa asli",
+  "settings.autoTranslate": "Terjemahan otomatis",
+  "settings.autoTranslateDescription": "Konten antama akkullei ni terjemahkan secara otomatis mange ri bahasa nu ero.",
+  "settings.loading": "Pa'sadiaang pa'muattang...",
+  "settings.loadError": "Tena nakkulle antama settingnu.",
+  "settings.saved": "Pangngatoro ni simpan.",
+  "settings.error400": "Paressai setting terjemahannu.",
+  "settings.saveError": "Tena nakkulle anjagai setting. Cobai pole.",
 } satisfies Record<TranslationKey, string>;
 export default d_mak;

@@ -228,5 +228,15 @@ const d_sm = {
   "discover.followers": "soo",
   "topic.postsInTopic": "Posts i lenei autu.",
   "bookmarks.description": "Fa'asalalauga na e teuina mo se taimi mulimuli ane.",
+  "settings.translation": "Fa'aliliuga",
+  "settings.preferredLanguage": "Gagana faaliliu e mana'omia",
+  "settings.useNativeLanguage": "Fa'aaogā le gagana fa'apitoa",
+  "settings.autoTranslate": "Fa'aliliu otometi",
+  "settings.autoTranslateDescription": "E mafai ona otometi ona fa'aliliu mea o lo'o sau i lau gagana e te mana'o ai.",
+  "settings.loading": "O lo'o utaina fa'atulagaga...",
+  "settings.loadError": "Le mafai ona la'uina au fa'atulagaga.",
+  "settings.saved": "Fa'asaoina tulaga.",
+  "settings.error400": "Fa'amolemole siaki au fa'aliliuga tulaga.",
+  "settings.saveError": "Le mafai ona sefe fa'atulagaga. Toe taumafai.",
 } satisfies Record<TranslationKey, string>;
 export default d_sm;

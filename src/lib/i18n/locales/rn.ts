@@ -228,5 +228,15 @@ const d_rn = {
   "discover.followers": "abayoboke",
   "topic.postsInTopic": "Ivyo mwashize muri iki ciyumviro.",
   "bookmarks.description": "Ivyo wabitse kugira ngo uzobikoreshe mu nyuma.",
+  "settings.translation": "Ubuhinduzi",
+  "settings.preferredLanguage": "Ururimi rwo guhindura rwo gukunda",
+  "settings.useNativeLanguage": "Koresha ururimi kavukire",
+  "settings.autoTranslate": "Guhindura ubwavyo",
+  "settings.autoTranslateDescription": "Ibirimwo birashobora guhindurwa mu rurimi ukunda.",
+  "settings.loading": "Gushiramwo amagenamiterere...",
+  "settings.loadError": "Ntishobora gushiramwo amasetingi yawe.",
+  "settings.saved": "Amagenamiterere yabitswe.",
+  "settings.error400": "Urasabwa gusuzuma uko ubuhinduzi bwawe bugenda.",
+  "settings.saveError": "Ntiyashobora kubika amagenamiterere. Subira ugerageze.",
 } satisfies Record<TranslationKey, string>;
 export default d_rn;

@@ -228,5 +228,15 @@ const d_ne = {
   "discover.followers": "अनुयायीहरू",
   "topic.postsInTopic": "यस विषयमा पोस्टहरू।",
   "bookmarks.description": "तपाईंले पछिका लागि सुरक्षित गर्नुभएको पोस्टहरू।",
+  "settings.translation": "अनुवाद",
+  "settings.preferredLanguage": "रुचाइएको अनुवाद भाषा",
+  "settings.useNativeLanguage": "मातृभाषा प्रयोग गर्नुहोस्",
+  "settings.autoTranslate": "स्वत: अनुवाद",
+  "settings.autoTranslateDescription": "आगमन सामग्री स्वचालित रूपमा तपाइँको मनपर्ने भाषामा अनुवाद गर्न सकिन्छ।",
+  "settings.loading": "सेटिङहरू लोड गर्दै...",
+  "settings.loadError": "तपाईंका सेटिङहरू लोड गर्न सकिएन।",
+  "settings.saved": "सेटिङहरू सुरक्षित गरियो।",
+  "settings.error400": "कृपया आफ्नो अनुवाद सेटिङ जाँच गर्नुहोस्।",
+  "settings.saveError": "सेटिङहरू सुरक्षित गर्न सकिएन। पुन: प्रयास गर्नुहोस्।",
 } satisfies Record<TranslationKey, string>;
 export default d_ne;

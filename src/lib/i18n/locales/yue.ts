@@ -228,5 +228,15 @@ const d_yue = {
   "discover.followers": "追隨者",
   "topic.postsInTopic": "呢個主題入面嘅帖子。",
   "bookmarks.description": "你儲存咗嚟遲啲用嘅帖子。",
+  "settings.translation": "翻譯",
+  "settings.preferredLanguage": "首選嘅翻譯語言",
+  "settings.useNativeLanguage": "用母語",
+  "settings.autoTranslate": "自動翻譯",
+  "settings.autoTranslateDescription": "收到嘅內容可以自動翻譯成你喜愛嘅語言。",
+  "settings.loading": "載入緊設定 …",
+  "settings.loadError": "載入唔到你嘅設定。",
+  "settings.saved": "儲存咗嘅設定。",
+  "settings.error400": "請檢查你嘅翻譯設定。",
+  "settings.saveError": "儲存唔到設定。再試多次。",
 } satisfies Record<TranslationKey, string>;
 export default d_yue;

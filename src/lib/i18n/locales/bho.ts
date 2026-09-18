@@ -228,5 +228,15 @@ const d_bho = {
   "discover.followers": "फॉलोअर",
   "topic.postsInTopic": "पोस्ट में this topic.",
   "bookmarks.description": "पोस्ट जवना के रउरा बाद में सेव कइले बानी.",
+  "settings.translation": "अनुवाद के बा",
+  "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा के बा",
+  "settings.useNativeLanguage": "मूल भाषा के प्रयोग करीं",
+  "settings.autoTranslate": "ऑटो अनुवाद करे के बा",
+  "settings.autoTranslateDescription": "आवे वाली सामग्री के स्वचालित रूप से रउरा पसंदीदा भाषा में अनुवाद कइल जा सकेला.",
+  "settings.loading": "सेटिंग लोड हो रहल बा...",
+  "settings.loadError": "राउर सेटिंग लोड ना हो पावल.",
+  "settings.saved": "सेटिंग्स सेव हो गइल बा.",
+  "settings.error400": "कृपया आपन अनुवाद सेटिंग्स के जांच करीं।",
+  "settings.saveError": "सेटिंग सेव ना हो पावल. एक बेर फेरु से कोशिश करीं।",
 } satisfies Record<TranslationKey, string>;
 export default d_bho;

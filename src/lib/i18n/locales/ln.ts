@@ -228,5 +228,15 @@ const d_ln = {
   "discover.followers": "balandi",
   "topic.postsInTopic": "Ba posts na sujet oyo.",
   "bookmarks.description": "Ba posts oyo o’bombi pona sima.",
+  "settings.translation": "Bobongoli",
+  "settings.preferredLanguage": "Monoko ya kobongola oyo balingi mingi",
+  "settings.useNativeLanguage": "Salelá monɔkɔ ya mboka",
+  "settings.autoTranslate": "Auto traduire",
+  "settings.autoTranslateDescription": "Makambo oyo ekoti ekoki kobongolama na ndenge ya automatique na monɔkɔ oyo olingi.",
+  "settings.loading": "Ba paramètres ya chargement...",
+  "settings.loadError": "Ekokaki ko charger ba paramètres na yo te.",
+  "settings.saved": "Ba paramètres ebombami.",
+  "settings.error400": "Tosɛngi yo otala ba paramètres na yo ya libongoli.",
+  "settings.saveError": "Ekokaki kobomba ba paramètres te. Meká lisusu.",
 } satisfies Record<TranslationKey, string>;
 export default d_ln;

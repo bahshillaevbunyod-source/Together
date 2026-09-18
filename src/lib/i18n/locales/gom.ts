@@ -228,5 +228,15 @@ const d_gom = {
   "discover.followers": "फॉलोअर्स",
   "topic.postsInTopic": "पोस्ट इन हो विशय.",
   "bookmarks.description": "तुमी फुडें जतनाय घेतिल्लीं पोस्टां.",
+  "settings.translation": "अणकार करप",
+  "settings.preferredLanguage": "पसंत केल्ली अणकार भास",
+  "settings.useNativeLanguage": "मूळ भास वापरात",
+  "settings.autoTranslate": "ऑटो अणकारप",
+  "settings.autoTranslateDescription": "येवपी सामुग्री आपोआप तुमच्या आवडीच्या भाशेंत अणकारीत करूं येता.",
+  "settings.loading": "सेटिंग्ज लोड करप...",
+  "settings.loadError": "तुमचीं मांडावळी लोड करूंक शकले नात.",
+  "settings.saved": "सेटिंग्ज जतनाय घेतल्या.",
+  "settings.error400": "उपकार करून तुमचीं अणकार मांडावळी तपासात.",
+  "settings.saveError": "सेटिंग्ज जतनाय घेवंक शकली ना. परतून यत्न करात.",
 } satisfies Record<TranslationKey, string>;
 export default d_gom;

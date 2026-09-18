@@ -228,5 +228,15 @@ const d_ta = {
   "discover.followers": "பின்பற்றுபவர்கள்",
   "topic.postsInTopic": "இந்த தலைப்பில் இடுகைகள்.",
   "bookmarks.description": "நீங்கள் சேமித்த இடுகைகள்.",
+  "settings.translation": "மொழிபெயர்ப்பு",
+  "settings.preferredLanguage": "விருப்பமான மொழிபெயர்ப்பு மொழி",
+  "settings.useNativeLanguage": "தாய்மொழியைப் பயன்படுத்துங்கள்",
+  "settings.autoTranslate": "தானியங்கு மொழிபெயர்ப்பு",
+  "settings.autoTranslateDescription": "உள்வரும் உள்ளடக்கத்தை நீங்கள் விரும்பும் மொழியில் தானாக மொழிபெயர்க்கலாம்.",
+  "settings.loading": "அமைப்புகளை ஏற்றுகிறது…",
+  "settings.loadError": "உங்கள் அமைப்புகளை ஏற்ற முடியவில்லை.",
+  "settings.saved": "அமைப்புகள் சேமிக்கப்பட்டன.",
+  "settings.error400": "உங்கள் மொழிபெயர்ப்பு அமைப்புகளைச் சரிபார்க்கவும்.",
+  "settings.saveError": "அமைப்புகளைச் சேமிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
 } satisfies Record<TranslationKey, string>;
 export default d_ta;

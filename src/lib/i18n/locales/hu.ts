@@ -228,5 +228,15 @@ const d_hu = {
   "discover.followers": "követői",
   "topic.postsInTopic": "Hozzászólások ebben a témában.",
   "bookmarks.description": "Bejegyzések, amelyeket későbbi használatra mentett el.",
+  "settings.translation": "Fordítás",
+  "settings.preferredLanguage": "Előnyben részesített fordítási nyelv",
+  "settings.useNativeLanguage": "Használjon anyanyelvet",
+  "settings.autoTranslate": "Automatikus fordítás",
+  "settings.autoTranslateDescription": "A beérkező tartalom automatikusan lefordítható a kívánt nyelvre.",
+  "settings.loading": "Beállítások betöltése…",
+  "settings.loadError": "Nem sikerült betölteni a beállításokat.",
+  "settings.saved": "A beállítások mentve.",
+  "settings.error400": "Kérjük, ellenőrizze fordítási beállításait.",
+  "settings.saveError": "Nem sikerült menteni a beállításokat. Próbáld újra.",
 } satisfies Record<TranslationKey, string>;
 export default d_hu;

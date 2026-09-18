@@ -228,5 +228,15 @@ const d_lv = {
   "discover.followers": "sekotāji",
   "topic.postsInTopic": "Ziņas šajā tēmā.",
   "bookmarks.description": "Ziņas, kuras esat saglabājis vēlākai lietošanai.",
+  "settings.translation": "Tulkošana",
+  "settings.preferredLanguage": "Vēlamā tulkošanas valoda",
+  "settings.useNativeLanguage": "Izmantojiet dzimto valodu",
+  "settings.autoTranslate": "Automātiski tulkot",
+  "settings.autoTranslateDescription": "Ienākošo saturu var automātiski tulkot jūsu vēlamajā valodā.",
+  "settings.loading": "Notiek iestatījumu ielāde…",
+  "settings.loadError": "Nevarēja ielādēt jūsu iestatījumus.",
+  "settings.saved": "Iestatījumi saglabāti.",
+  "settings.error400": "Lūdzu, pārbaudiet savus tulkošanas iestatījumus.",
+  "settings.saveError": "Nevarēja saglabāt iestatījumus. Mēģiniet vēlreiz.",
 } satisfies Record<TranslationKey, string>;
 export default d_lv;

@@ -228,5 +228,15 @@ const tr = {
   "discover.followers": "takipçiler",
   "topic.postsInTopic": "Bu konudaki gönderiler.",
   "bookmarks.description": "Gönderiler sonrası için sakladınız.",
+  "settings.translation": "Çeviri",
+  "settings.preferredLanguage": "Tercih edilen çeviri dili",
+  "settings.useNativeLanguage": "Ana dili kullan",
+  "settings.autoTranslate": "Otomatik çeviri",
+  "settings.autoTranslateDescription": "Gelen içerik otomatik olarak tercih ettiğiniz dile çevrilebilir.",
+  "settings.loading": "Ayarlar yükleniyor…",
+  "settings.loadError": "Ayarlarınız yüklenemedi.",
+  "settings.saved": "Ayarlar kaydedildi.",
+  "settings.error400": "Lütfen çeviri ayarlarınızı kontrol edin.",
+  "settings.saveError": "Ayarlar kaydedilemedi. Tekrar deneyin.",
 } satisfies Record<TranslationKey, string>;
 export default tr;

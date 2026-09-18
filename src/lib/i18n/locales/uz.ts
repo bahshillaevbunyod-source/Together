@@ -228,5 +228,15 @@ const uz = {
   "discover.followers": "izdoshlar",
   "topic.postsInTopic": "Ushbu mavzudagi xabarlar.",
   "bookmarks.description": "Siz keyinroq saqlash uchun saqlangan postlar.",
+  "settings.translation": "Tarjima",
+  "settings.preferredLanguage": "Afzal tarjima tili",
+  "settings.useNativeLanguage": "Ona tilidan foydalaning",
+  "settings.autoTranslate": "Avtomatik tarjima",
+  "settings.autoTranslateDescription": "Kiruvchi kontent avtomatik ravishda siz tanlagan tilga tarjima qilinishi mumkin.",
+  "settings.loading": "Sozlamalar yuklanmoqda…",
+  "settings.loadError": "Sozlamalaringizni yuklab bo‘lmadi.",
+  "settings.saved": "Sozlamalar saqlandi.",
+  "settings.error400": "Tarjima sozlamalarini tekshiring.",
+  "settings.saveError": "Sozlamalarni saqlab bo‘lmadi. Qayta urinib ko'ring.",
 } satisfies Record<TranslationKey, string>;
 export default uz;

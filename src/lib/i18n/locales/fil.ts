@@ -228,5 +228,15 @@ const d_fil = {
   "discover.followers": "mga tagasunod",
   "topic.postsInTopic": "Mga post sa paksang ito.",
   "bookmarks.description": "Mga post na na-save mo para sa ibang pagkakataon.",
+  "settings.translation": "Pagsasalin",
+  "settings.preferredLanguage": "Mas gustong wika ng pagsasalin",
+  "settings.useNativeLanguage": "Gumamit ng katutubong wika",
+  "settings.autoTranslate": "Awtomatikong isalin",
+  "settings.autoTranslateDescription": "Ang papasok na nilalaman ay maaaring awtomatikong isalin sa iyong gustong wika.",
+  "settings.loading": "Nilo-load ang mga setting...",
+  "settings.loadError": "Hindi ma-load ang iyong mga setting.",
+  "settings.saved": "Na-save ang mga setting.",
+  "settings.error400": "Pakisuri ang iyong mga setting ng pagsasalin.",
+  "settings.saveError": "Hindi ma-save ang mga setting. Subukan muli.",
 } satisfies Record<TranslationKey, string>;
 export default d_fil;

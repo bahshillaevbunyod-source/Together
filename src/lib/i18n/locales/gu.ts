@@ -228,5 +228,15 @@ const d_gu = {
   "discover.followers": "અનુયાયીઓ",
   "topic.postsInTopic": "આ વિષયમાં પોસ્ટ્સ.",
   "bookmarks.description": "તમે પછી માટે સાચવેલી પોસ્ટ્સ.",
+  "settings.translation": "અનુવાદ",
+  "settings.preferredLanguage": "પસંદગીની ભાષાંતર",
+  "settings.useNativeLanguage": "મૂળ ભાષાનો ઉપયોગ કરો",
+  "settings.autoTranslate": "સ્વતઃ અનુવાદ",
+  "settings.autoTranslateDescription": "આવનારી સામગ્રી આપમેળે તમારી પસંદગીની ભાષામાં અનુવાદિત થઈ શકે છે.",
+  "settings.loading": "સેટિંગ્સ લોડ કરી રહ્યું છે...",
+  "settings.loadError": "તમારી સેટિંગ્સ લોડ કરી શકાઈ નથી.",
+  "settings.saved": "સેટિંગ્સ સાચવી.",
+  "settings.error400": "કૃપા કરીને તમારી અનુવાદ સેટિંગ્સ તપાસો.",
+  "settings.saveError": "સેટિંગ્સ સાચવી શક્યાં નથી. ફરી પ્રયાસ કરો.",
 } satisfies Record<TranslationKey, string>;
 export default d_gu;

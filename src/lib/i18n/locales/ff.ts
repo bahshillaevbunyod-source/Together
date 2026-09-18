@@ -228,5 +228,15 @@ const d_ff = {
   "discover.followers": "almuɓɓe",
   "topic.postsInTopic": "Postooji e nder ndee toɓɓere.",
   "bookmarks.description": "Postooji ɗi resndu-ɗaa ngam caggal.",
+  "settings.translation": "Firo",
+  "settings.preferredLanguage": "Ɗemngal firo ɓurngal yiɗeede",
+  "settings.useNativeLanguage": "Huutoro ɗemngal neeniwal",
+  "settings.autoTranslate": "Firo oto",
+  "settings.autoTranslateDescription": "Loowdi naatndi ina waawi firteede e ɗemngal ɓurngal welde.",
+  "settings.loading": "Lowre dottaaɗe...",
+  "settings.loadError": "Waawaa loowde dottaaɗe maa.",
+  "settings.saved": "Dottaaɗe ɗee ndartinaama.",
+  "settings.error400": "Tiiɗno ƴeewto dottaaɗe firo maa.",
+  "settings.saveError": "Waawaa hisnude dottaaɗe. Enndu kadi.",
 } satisfies Record<TranslationKey, string>;
 export default d_ff;

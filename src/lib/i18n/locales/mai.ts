@@ -228,5 +228,15 @@ const d_mai = {
   "discover.followers": "अनुयायी",
   "topic.postsInTopic": "Posts in ई विषय.",
   "bookmarks.description": "पोस्ट जे अहाँ बाद मे सेव क’ लेने छी.",
+  "settings.translation": "अनुवाद",
+  "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा",
+  "settings.useNativeLanguage": "मूल भाषा का प्रयोग करे",
+  "settings.autoTranslate": "ऑटो अनुवाद करू",
+  "settings.autoTranslateDescription": "आबै वाला सामग्री कें स्वचालित रूप सं अहां कें पसंदीदा भाषा मे अनुवाद कैल जा सकय छै.",
+  "settings.loading": "सेटिंग्स लोड भ रहल अछि...",
+  "settings.loadError": "अहाँक सेटिंग लोड नहि भ’ सकल.",
+  "settings.saved": "सेटिंग्स सहेजल गेल।",
+  "settings.error400": "कृपया अपन अनुवाद सेटिंग्स देखू।",
+  "settings.saveError": "सेटिंग्स सेव नहि क’ सकल. फेर कोशिश करू।",
 } satisfies Record<TranslationKey, string>;
 export default d_mai;

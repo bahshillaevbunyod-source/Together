@@ -228,5 +228,15 @@ const d_ts = {
   "discover.followers": "valandzeri",
   "topic.postsInTopic": "Ti post eka topic leyi.",
   "bookmarks.description": "Ti post leti u ti hlayiseke endzhaku.",
+  "settings.translation": "Vuhundzuluxi",
+  "settings.preferredLanguage": "Ririmi ra vuhundzuluxeri leri rhandzekaka",
+  "settings.useNativeLanguage": "Tirhisa ririmi ra rikwavo",
+  "settings.autoTranslate": "Ku hundzuluxela hi ku tisungulela",
+  "settings.autoTranslateDescription": "Swilo leswi nghenaka swi nga hundzuluxeriwa hi ku tisungulela eka ririmi leri u ri tsakelaka.",
+  "settings.loading": "Ku layicha swiyimiso...",
+  "settings.loadError": "A swi swi kotanga ku layicha swiyimiso swa wena.",
+  "settings.saved": "Switirhisiwa swi hlayisiwile.",
+  "settings.error400": "Hi kombela u kambisisa swiyimiso swa wena swa vuhundzuluxeri.",
+  "settings.saveError": "A swi swi kotanga ku hlayisa swiyimiso. Ringeta nakambe.",
 } satisfies Record<TranslationKey, string>;
 export default d_ts;

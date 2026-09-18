@@ -228,5 +228,15 @@ const d_ti = {
   "discover.followers": "ተኸታተልቲ",
   "topic.postsInTopic": "ፖስትታት ኣብ እዚ ኣርእስቲ’ዚ።",
   "bookmarks.description": "ንደሓር ዝዓቀብካዮም ጽሑፋት።",
+  "settings.translation": "ትርጉም",
+  "settings.preferredLanguage": "ተመራጺ ቋንቋ ትርጉም",
+  "settings.useNativeLanguage": "ቋንቋ መበቆል ተጠቐም",
+  "settings.autoTranslate": "ኣውቶ ትርጉም",
+  "settings.autoTranslateDescription": "ዝኣቱ ትሕዝቶ ብኣውቶማቲክ ናብቲ ዝመረጽካዮ ቋንቋ ክትርጎም ይኽእል።",
+  "settings.loading": "ቅጥዕታት ኣብ ምጽዓን...",
+  "settings.loadError": "ቅጥዕታትካ ክጽዕን ኣይከኣለን።",
+  "settings.saved": "ቅጥዕታት ተዓቂቦም።",
+  "settings.error400": "በጃኹም ናይ ትርጉም ቅጥዕታትኩም ርኣዩ።",
+  "settings.saveError": "ቅጥዕታት ክዕቅብ ኣይከኣለን። እንደገና ፈትን።",
 } satisfies Record<TranslationKey, string>;
 export default d_ti;

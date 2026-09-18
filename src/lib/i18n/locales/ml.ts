@@ -228,5 +228,15 @@ const d_ml = {
   "discover.followers": "അനുയായികൾ",
   "topic.postsInTopic": "ഈ വിഷയത്തിലെ പോസ്റ്റുകൾ.",
   "bookmarks.description": "നിങ്ങൾ പിന്നീട് സംരക്ഷിച്ച പോസ്റ്റുകൾ.",
+  "settings.translation": "വിവർത്തനം",
+  "settings.preferredLanguage": "തിരഞ്ഞെടുത്ത വിവർത്തന ഭാഷ",
+  "settings.useNativeLanguage": "മാതൃഭാഷ ഉപയോഗിക്കുക",
+  "settings.autoTranslate": "യാന്ത്രിക വിവർത്തനം",
+  "settings.autoTranslateDescription": "ഇൻകമിംഗ് ഉള്ളടക്കം നിങ്ങൾ തിരഞ്ഞെടുത്ത ഭാഷയിലേക്ക് സ്വയമേവ വിവർത്തനം ചെയ്യാൻ കഴിയും.",
+  "settings.loading": "ക്രമീകരണങ്ങൾ ലോഡുചെയ്യുന്നു...",
+  "settings.loadError": "നിങ്ങളുടെ ക്രമീകരണങ്ങൾ ലോഡ് ചെയ്യാനായില്ല.",
+  "settings.saved": "ക്രമീകരണങ്ങൾ സംരക്ഷിച്ചു.",
+  "settings.error400": "നിങ്ങളുടെ വിവർത്തന ക്രമീകരണങ്ങൾ പരിശോധിക്കുക.",
+  "settings.saveError": "ക്രമീകരണങ്ങൾ സംരക്ഷിക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക.",
 } satisfies Record<TranslationKey, string>;
 export default d_ml;

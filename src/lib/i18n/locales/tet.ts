@@ -228,5 +228,15 @@ const d_tet = {
   "discover.followers": "seguidor sira",
   "topic.postsInTopic": "Post sira iha tópiku ida-ne'e.",
   "bookmarks.description": "Post sira ne'ebé ita-boot rai ona ba tuirmai.",
+  "settings.translation": "Tradusaun",
+  "settings.preferredLanguage": "Lian tradusaun ne'ebé prefere",
+  "settings.useNativeLanguage": "Uza lian rasik",
+  "settings.autoTranslate": "Tradusaun automátika",
+  "settings.autoTranslateDescription": "Konteúdu ne'ebé tama bele tradús automatikamente ba ita-boot nia lian preferidu.",
+  "settings.loading": "Karregamentu ba konfigurasaun sira...",
+  "settings.loadError": "La konsege hatama ita-boot nia konfigurasaun sira.",
+  "settings.saved": "Konfigurasaun sira rai ona.",
+  "settings.error400": "Favor verifika ita-boot nia konfigurasaun tradusaun nian.",
+  "settings.saveError": "Labele rai konfigurasaun sira. Koko fali.",
 } satisfies Record<TranslationKey, string>;
 export default d_tet;

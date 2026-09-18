@@ -228,5 +228,15 @@ const d_tg = {
   "discover.followers": "пайравон",
   "topic.postsInTopic": "Мақолаҳо дар ин мавзӯъ.",
   "bookmarks.description": "Хабарҳое, ки шумо барои дертар захира кардаед.",
+  "settings.translation": "Тарҷума",
+  "settings.preferredLanguage": "Забони тарҷумаи афзалиятнок",
+  "settings.useNativeLanguage": "Забони модариро истифода баред",
+  "settings.autoTranslate": "Тарҷумаи худкор",
+  "settings.autoTranslateDescription": "Мундариҷаи воридотӣ метавонад ба таври худкор ба забони дилхоҳатон тарҷума карда шавад.",
+  "settings.loading": "Танзимот бор карда мешавад…",
+  "settings.loadError": "Танзимоти шуморо бор карда натавонист.",
+  "settings.saved": "Танзимот захира карда шуд.",
+  "settings.error400": "Лутфан танзимоти тарҷумаи худро санҷед.",
+  "settings.saveError": "Танзимотро захира карда натавонист. Як бори дигар санҷед.",
 } satisfies Record<TranslationKey, string>;
 export default d_tg;

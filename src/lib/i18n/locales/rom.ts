@@ -228,5 +228,15 @@ const d_rom = {
   "discover.followers": "śerutne",
   "topic.postsInTopic": "Postura ande kadi tema.",
   "bookmarks.description": "Postura save garavden palal.",
+  "settings.translation": "Translàcia",
+  "settings.preferredLanguage": "Preferime ćhib e ćhibăqi",
+  "settings.useNativeLanguage": "Keren buti e dajake ćhibjasa",
+  "settings.autoTranslate": "Auto-translàcia",
+  "settings.autoTranslateDescription": "O sasto so avela shaj te avel automatichno boldino ki chib savi kames.",
+  "settings.loading": "Te ćhives e paramètrură...",
+  "settings.loadError": "Nashti te lav tumare paramètrură.",
+  "settings.saved": "Le paramètrură garavde.",
+  "settings.error400": "Mangav tumen te dikhen tumare paramètrură vaś i translàcia.",
+  "settings.saveError": "Nashti te garavav e paramètrură. Zumav pale.",
 } satisfies Record<TranslationKey, string>;
 export default d_rom;

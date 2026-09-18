@@ -228,5 +228,15 @@ const d_fj = {
   "discover.followers": "daumuri",
   "topic.postsInTopic": "Posts ena ulutaga oqo.",
   "bookmarks.description": "Na itukutuku o sa maroroya me baleta na gauna e muri.",
+  "settings.translation": "Vakadewa",
+  "settings.preferredLanguage": "Vosa ni vakadewa vinakati",
+  "settings.useNativeLanguage": "Vakayagataka na vosa ni vanua",
+  "settings.autoTranslate": "Vakadewa vakataki koya",
+  "settings.autoTranslateDescription": "Na itukutuku e curu mai e rawa ni vakadewataki vakataki koya ki na nomu vosa o vinakata.",
+  "settings.loading": "Na ituvatuva ni vakavodoki...",
+  "settings.loadError": "E sega ni rawa ni vakavodoki na nomu ituvatuva.",
+  "settings.saved": "Vakabulai na ituvatuva.",
+  "settings.error400": "Yalovinaka raica na nomu ituvatuva ni vakadewa.",
+  "settings.saveError": "E sega ni rawa ni maroroi na ituvatuva. Tovolea tale.",
 } satisfies Record<TranslationKey, string>;
 export default d_fj;

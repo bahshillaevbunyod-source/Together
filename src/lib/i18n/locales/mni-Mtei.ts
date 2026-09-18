@@ -228,5 +228,15 @@ const d_mni_Mtei = {
   "discover.followers": "ꯐꯣꯂꯣꯋꯔꯁꯤꯡ ꯌꯥꯑꯣꯔꯤ꯫",
   "topic.postsInTopic": "ꯍꯤꯔꯝ ꯑꯁꯤꯗꯥ ꯄꯣꯁ꯭ꯇꯁꯤꯡ꯫",
   "bookmarks.description": "ꯇꯨꯡꯗꯥ ꯁꯦꯚ ꯇꯧꯔꯕꯥ ꯄꯣꯁ꯭ꯇꯁꯤꯡ꯫",
+  "settings.translation": "ꯍꯟꯗꯣꯀꯄꯥ꯫",
+  "settings.preferredLanguage": "ꯄꯁꯟꯗꯒꯤ ꯍꯟꯗꯣꯀꯄꯒꯤ ꯂꯣꯜ꯫",
+  "settings.useNativeLanguage": "ꯅꯦꯇꯤꯚ ꯂꯣꯜ ꯁꯤꯖꯤꯟꯅꯧ꯫",
+  "settings.autoTranslate": "ꯑꯣꯇꯣ ꯇ꯭ꯔꯥꯟꯁꯂꯦꯠ ꯇꯧꯕꯥ꯫",
+  "settings.autoTranslateDescription": "ꯂꯥꯀꯄꯥ ꯀꯟꯇꯦꯟꯇ ꯑꯗꯨ ꯅꯍꯥꯛꯅꯥ ꯄꯥꯝꯂꯤꯕꯥ ꯂꯣꯟꯗꯥ ꯑꯣꯇꯣꯃꯦꯇꯦꯗ ꯑꯣꯏꯅꯥ ꯍꯟꯗꯣꯀꯄꯥ ꯌꯥꯏ꯫",
+  "settings.loading": "ꯁꯦꯇꯤꯡꯁꯤꯡ ꯂꯣꯗ ꯇꯧꯔꯤ...",
+  "settings.loadError": "ꯅꯍꯥꯛꯀꯤ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯑꯗꯨ ꯂꯣꯗ ꯇꯧꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫",
+  "settings.saved": "ꯁꯦꯇꯤꯡꯁꯤꯡ ꯁꯦꯚ ꯇꯧꯈ꯭ꯔꯦ꯫",
+  "settings.error400": "ꯆꯥꯅꯕꯤꯗꯨꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯍꯟꯗꯣꯀꯄꯒꯤ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯑꯗꯨ ꯆꯦꯛ ꯇꯧꯕꯤꯌꯨ꯫",
+  "settings.saveError": "ꯁꯦꯇꯤꯡꯁꯤꯡ ꯁꯦꯚ ꯇꯧꯕꯥ ꯉꯃꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯧ꯫",
 } satisfies Record<TranslationKey, string>;
 export default d_mni_Mtei;

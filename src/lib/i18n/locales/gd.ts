@@ -228,5 +228,15 @@ const d_gd = {
   "discover.followers": "luchd-leanmhuinn",
   "topic.postsInTopic": "Postan sa chuspair seo.",
   "bookmarks.description": "Postan a shàbhail thu airson nas fhaide air adhart.",
+  "settings.translation": "Eadar-theangachadh",
+  "settings.preferredLanguage": "Cànan eadar-theangachaidh as fheàrr leotha",
+  "settings.useNativeLanguage": "Cleachd cànan dùthchasach",
+  "settings.autoTranslate": "Eadar-theangachadh fèin-ghluasadach",
+  "settings.autoTranslateDescription": "Faodar susbaint a thig a-steach eadar-theangachadh gu fèin-ghluasadach chun chànan as fheàrr leat.",
+  "settings.loading": "A’ luchdachadh nan roghainnean…",
+  "settings.loadError": "Cha b' urrainn dhuinn na roghainnean agad a luchdadh.",
+  "settings.saved": "Roghainnean air an sàbhaladh.",
+  "settings.error400": "Feuch an toir thu sùil air na roghainnean eadar-theangachaidh agad.",
+  "settings.saveError": "Cha b' urrainn dhuinn na roghainnean a shàbhaladh. Feuch ris a-rithist.",
 } satisfies Record<TranslationKey, string>;
 export default d_gd;

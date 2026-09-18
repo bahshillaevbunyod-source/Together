@@ -228,5 +228,15 @@ const d_hi = {
   "discover.followers": "अनुयायियों",
   "topic.postsInTopic": "इस विषय में पोस्ट.",
   "bookmarks.description": "पोस्ट जिन्हें आपने बाद के लिए सहेजा है।",
+  "settings.translation": "अनुवाद",
+  "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा",
+  "settings.useNativeLanguage": "देशी भाषा का प्रयोग करें",
+  "settings.autoTranslate": "स्वतः अनुवाद",
+  "settings.autoTranslateDescription": "आने वाली सामग्री का स्वचालित रूप से आपकी पसंदीदा भाषा में अनुवाद किया जा सकता है।",
+  "settings.loading": "सेटिंग लोड हो रही है...",
+  "settings.loadError": "आपकी सेटिंग लोड नहीं हो सकी.",
+  "settings.saved": "सेटिंग्स को सहेजा गया।",
+  "settings.error400": "कृपया अपनी अनुवाद सेटिंग जांचें.",
+  "settings.saveError": "सेटिंग्स सहेजी नहीं जा सकीं. पुनः प्रयास करें।",
 } satisfies Record<TranslationKey, string>;
 export default d_hi;

@@ -228,5 +228,15 @@ const d_bts = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "Postingan bani topik on.",
   "bookmarks.description": "Postingan na dob isimpan nasiam bani panorang na legan.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Bahasa terjemahan na iharosuhkon",
+  "settings.useNativeLanguage": "Manggunahon sahap asli",
+  "settings.autoTranslate": "Terjemahan otomatis",
+  "settings.autoTranslateDescription": "Isi na masuk boi iterjemahkon secara otomatis hubani bahasa na iharosuhkon nassiam.",
+  "settings.loading": "Pengaturan mamuat...",
+  "settings.loadError": "Lang boi i muat pengaturan nassiam.",
+  "settings.saved": "Pengaturan domma isimpan.",
+  "settings.error400": "Tolong pareksa nasiam pengaturan terjemahan nasiam.",
+  "settings.saveError": "Lang boi isimpan pengaturan. Coba use.",
 } satisfies Record<TranslationKey, string>;
 export default d_bts;

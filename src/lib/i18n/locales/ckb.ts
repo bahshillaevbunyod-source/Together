@@ -228,5 +228,15 @@ const d_ckb = {
   "discover.followers": "فۆڵۆوەرەکان",
   "topic.postsInTopic": "Posts in ئەم بابەتە.",
   "bookmarks.description": "ئەو پۆستانەی کە بۆ دواتر پاشەکەوتت کردووە.",
+  "settings.translation": "وەرگێڕان",
+  "settings.preferredLanguage": "زمانی وەرگێڕانی پەسەندکراو",
+  "settings.useNativeLanguage": "زمانی زگماکی بەکاربهێنە",
+  "settings.autoTranslate": "وەرگێڕانی ئۆتۆماتیکی",
+  "settings.autoTranslateDescription": "ناوەڕۆکی هاتوو دەتوانرێت بە شێوەیەکی ئۆتۆماتیکی وەربگێڕدرێت بۆ زمانی دڵخوازی خۆت.",
+  "settings.loading": "بارکردنی ڕێکخستنەکان...",
+  "settings.loadError": "نەیتوانی ڕێکخستنەکانت باربکات.",
+  "settings.saved": "ڕێکخستنەکان پاشەکەوتکراون.",
+  "settings.error400": "تکایە ڕێکخستنەکانی وەرگێڕانەکەت بپشکنە.",
+  "settings.saveError": "نەتوانرا ڕێکخستنەکان پاشەکەوت بکات. دووبارە هەوڵبدەرەوە.",
 } satisfies Record<TranslationKey, string>;
 export default d_ckb;

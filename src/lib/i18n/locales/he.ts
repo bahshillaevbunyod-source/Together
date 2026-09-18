@@ -228,5 +228,15 @@ const d_he = {
   "discover.followers": "עוקבים",
   "topic.postsInTopic": "פוסטים בנושא זה.",
   "bookmarks.description": "פוסטים ששמרת למועד מאוחר יותר.",
+  "settings.translation": "תרגום",
+  "settings.preferredLanguage": "שפת תרגום מועדפת",
+  "settings.useNativeLanguage": "השתמש בשפת אם",
+  "settings.autoTranslate": "תרגום אוטומטי",
+  "settings.autoTranslateDescription": "ניתן לתרגם תוכן נכנס באופן אוטומטי לשפה המועדפת עליך.",
+  "settings.loading": "טוען הגדרות...",
+  "settings.loadError": "לא ניתן היה לטעון את ההגדרות שלך.",
+  "settings.saved": "ההגדרות נשמרו.",
+  "settings.error400": "אנא בדוק את הגדרות התרגום שלך.",
+  "settings.saveError": "לא ניתן לשמור את ההגדרות. נסה שוב.",
 } satisfies Record<TranslationKey, string>;
 export default d_he;

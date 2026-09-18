@@ -228,5 +228,15 @@ const d_hy = {
   "discover.followers": "հետևորդներ",
   "topic.postsInTopic": "Գրառումներ այս թեմայում.",
   "bookmarks.description": "Գրառումներ, որոնք պահել եք ավելի ուշ:",
+  "settings.translation": "Թարգմանություն",
+  "settings.preferredLanguage": "Նախընտրելի թարգմանության լեզուն",
+  "settings.useNativeLanguage": "Օգտագործեք մայրենի լեզուն",
+  "settings.autoTranslate": "Ավտոմատ թարգմանություն",
+  "settings.autoTranslateDescription": "Մուտքային բովանդակությունը կարող է ավտոմատ կերպով թարգմանվել ձեր նախընտրած լեզվով:",
+  "settings.loading": "Կարգավորումների բեռնում…",
+  "settings.loadError": "Չհաջողվեց բեռնել ձեր կարգավորումները:",
+  "settings.saved": "Կարգավորումները պահված են:",
+  "settings.error400": "Խնդրում ենք ստուգել ձեր թարգմանության կարգավորումները:",
+  "settings.saveError": "Չհաջողվեց պահել կարգավորումները: Կրկին փորձեք:",
 } satisfies Record<TranslationKey, string>;
 export default d_hy;

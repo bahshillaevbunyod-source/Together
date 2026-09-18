@@ -228,5 +228,15 @@ const d_pa = {
   "discover.followers": "ਪੈਰੋਕਾਰ",
   "topic.postsInTopic": "ਇਸ ਵਿਸ਼ੇ ਵਿੱਚ ਪੋਸਟ.",
   "bookmarks.description": "ਪੋਸਟਾਂ ਜੋ ਤੁਸੀਂ ਬਾਅਦ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕੀਤੀਆਂ ਹਨ।",
+  "settings.translation": "ਅਨੁਵਾਦ",
+  "settings.preferredLanguage": "ਤਰਜੀਹੀ ਅਨੁਵਾਦ ਭਾਸ਼ਾ",
+  "settings.useNativeLanguage": "ਮੂਲ ਭਾਸ਼ਾ ਦੀ ਵਰਤੋਂ ਕਰੋ",
+  "settings.autoTranslate": "ਸਵੈਚਲਿਤ ਅਨੁਵਾਦ",
+  "settings.autoTranslateDescription": "ਆਉਣ ਵਾਲੀ ਸਮੱਗਰੀ ਨੂੰ ਤੁਹਾਡੀ ਪਸੰਦੀਦਾ ਭਾਸ਼ਾ ਵਿੱਚ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਅਨੁਵਾਦ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।",
+  "settings.loading": "ਸੈਟਿੰਗਾਂ ਲੋਡ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ...",
+  "settings.loadError": "ਤੁਹਾਡੀਆਂ ਸੈਟਿੰਗਾਂ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।",
+  "settings.saved": "ਸੈਟਿੰਗਾਂ ਰੱਖਿਅਤ ਕੀਤੀਆਂ ਗਈਆਂ।",
+  "settings.error400": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀਆਂ ਅਨੁਵਾਦ ਸੈਟਿੰਗਾਂ ਦੀ ਜਾਂਚ ਕਰੋ।",
+  "settings.saveError": "ਸੈਟਿੰਗਾਂ ਨੂੰ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ.",
 } satisfies Record<TranslationKey, string>;
 export default d_pa;

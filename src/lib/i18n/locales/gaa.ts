@@ -228,5 +228,15 @@ const d_gaa = {
   "discover.followers": "sɛɛnyiɛlɔi",
   "topic.postsInTopic": "Posts yɛ saneyitso nɛɛ mli.",
   "bookmarks.description": "Posts ni okɛto kɛha sɛɛ mli.",
+  "settings.translation": "Wiemɔ shishitsɔɔmɔ",
+  "settings.preferredLanguage": "Wiemɔ shishitsɔɔmɔ ni asumɔɔ",
+  "settings.useNativeLanguage": "Okɛ maŋ wiemɔ atsu nii",
+  "settings.autoTranslate": "Auto shishitsɔɔmɔ",
+  "settings.autoTranslateDescription": "Abaanyɛ atsɔɔ nibii ni baa lɛ shishi kɛya wiemɔ ni osumɔɔ lɛ mli.",
+  "settings.loading": "Hetooi ni akɛwoɔ mli...",
+  "settings.loadError": "Enyɛɛɛ ekɛ ogbɛjianɔtoo lɛ awo mli.",
+  "settings.saved": "Akɛ gbɛjianɔtoo lɛ eto.",
+  "settings.error400": "Ofainɛ kwɛmɔ oshishitsɔɔmɔ gbɛjianɔtoo lɛ.",
+  "settings.saveError": "Enyɛɛɛ ekɛ gbɛjianɔtoo lɛ ato. Kaa ekoŋŋ.",
 } satisfies Record<TranslationKey, string>;
 export default d_gaa;

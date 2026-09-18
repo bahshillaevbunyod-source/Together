@@ -228,5 +228,15 @@ const d_hmn = {
   "discover.followers": "cov thwjtim",
   "topic.postsInTopic": "Cov lus hauv lub ncauj lus no.",
   "bookmarks.description": "Cov ntawv koj tau khaws cia rau yav tom ntej.",
+  "settings.translation": "Kev txhais lus",
+  "settings.preferredLanguage": "Nyiam hom lus txhais",
+  "settings.useNativeLanguage": "Siv hom lus",
+  "settings.autoTranslate": "Tsis siv neeg txhais lus",
+  "settings.autoTranslateDescription": "Cov ntsiab lus nkag tuaj yeem muab txhais ua koj hom lus nyiam.",
+  "settings.loading": "Thauj koj qhov chaw",
+  "settings.loadError": "Tsis tuaj yeem thauj koj cov kev teeb tsa.",
+  "settings.saved": "Chaw khaws tseg.",
+  "settings.error400": "Thov xyuas koj qhov chaw txhais lus.",
+  "settings.saveError": "Tsis tuaj yeem khaws cov kev teeb tsa. Sim dua.",
 } satisfies Record<TranslationKey, string>;
 export default d_hmn;

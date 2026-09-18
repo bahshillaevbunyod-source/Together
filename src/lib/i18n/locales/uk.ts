@@ -228,5 +228,15 @@ const d_uk = {
   "discover.followers": "послідовників",
   "topic.postsInTopic": "Публікації в цій темі.",
   "bookmarks.description": "Публікації, які ви зберегли на потім.",
+  "settings.translation": "Переклад",
+  "settings.preferredLanguage": "Бажана мова перекладу",
+  "settings.useNativeLanguage": "Використовуйте рідну мову",
+  "settings.autoTranslate": "Автоматичний переклад",
+  "settings.autoTranslateDescription": "Вхідний вміст може бути автоматично перекладено на вашу бажану мову.",
+  "settings.loading": "Завантаження налаштувань…",
+  "settings.loadError": "Не вдалося завантажити налаштування.",
+  "settings.saved": "Налаштування збережено.",
+  "settings.error400": "Перевірте налаштування перекладу.",
+  "settings.saveError": "Не вдалося зберегти налаштування. Спробуйте знову.",
 } satisfies Record<TranslationKey, string>;
 export default d_uk;

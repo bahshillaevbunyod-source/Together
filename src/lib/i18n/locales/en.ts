@@ -236,6 +236,17 @@ export const en = {
 
   "topic.postsInTopic": "Posts in this topic.",
   "bookmarks.description": "Posts you’ve saved for later.",
+
+  "settings.translation": "Translation",
+  "settings.preferredLanguage": "Preferred translation language",
+  "settings.useNativeLanguage": "Use native language",
+  "settings.autoTranslate": "Auto translate",
+  "settings.autoTranslateDescription": "Incoming content can be automatically translated into your preferred language.",
+  "settings.loading": "Loading settings…",
+  "settings.loadError": "Couldn’t load your settings.",
+  "settings.saved": "Settings saved.",
+  "settings.error400": "Please check your translation settings.",
+  "settings.saveError": "Couldn’t save settings. Try again.",
 } as const;
 
 export type TranslationKey = keyof typeof en;

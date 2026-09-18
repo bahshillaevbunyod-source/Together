@@ -228,5 +228,15 @@ const d_nl = {
   "discover.followers": "volgers",
   "topic.postsInTopic": "Berichten in dit onderwerp.",
   "bookmarks.description": "Berichten die je hebt opgeslagen voor later.",
+  "settings.translation": "Vertaling",
+  "settings.preferredLanguage": "Voorkeurstaal voor vertaling",
+  "settings.useNativeLanguage": "Gebruik moedertaal",
+  "settings.autoTranslate": "Automatisch vertalen",
+  "settings.autoTranslateDescription": "Binnenkomende inhoud kan automatisch worden vertaald in de taal van uw voorkeur.",
+  "settings.loading": "Instellingen laden…",
+  "settings.loadError": "Kan je instellingen niet laden.",
+  "settings.saved": "Instellingen opgeslagen.",
+  "settings.error400": "Controleer uw vertaalinstellingen.",
+  "settings.saveError": "Kan instellingen niet opslaan. Probeer het opnieuw.",
 } satisfies Record<TranslationKey, string>;
 export default d_nl;

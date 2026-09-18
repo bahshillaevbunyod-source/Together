@@ -228,5 +228,15 @@ const d_cnh = {
   "discover.followers": "zultu hna",
   "topic.postsInTopic": "Hi topic chung i ttialmi hna.",
   "bookmarks.description": "Hmailei caah na chiahmi ttialmi hna.",
+  "settings.translation": "Lehnak",
+  "settings.preferredLanguage": "Lehnak holh duh deuhmi",
+  "settings.useNativeLanguage": "Ramchung holh hmang",
+  "settings.autoTranslate": "Mah tein leh",
+  "settings.autoTranslateDescription": "A lutmi konglam cu na duhmi holh ah amah tein leh khawh a si.",
+  "settings.loading": "Setting pawl luhternak...",
+  "settings.loadError": "Na setting pawl kha a luhter kho lo.",
+  "settings.saved": "Setting pawl chiah an si.",
+  "settings.error400": "Na lehnak setting kha zoh.",
+  "settings.saveError": "Setting pawl kha chiah khawh a si lo. I zuam tthan.",
 } satisfies Record<TranslationKey, string>;
 export default d_cnh;

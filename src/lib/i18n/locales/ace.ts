@@ -228,5 +228,15 @@ const d_ace = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "Postingan lam topik nyoe.",
   "bookmarks.description": "Postingan nyang ka neu simpan keu ukeu.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Bahasa terjemahan nyang geupiléh",
+  "settings.useNativeLanguage": "Pakèk basa asli",
+  "settings.autoTranslate": "Neuterjeumah otomatis",
+  "settings.autoTranslateDescription": "Konten nyang tamong jeuet geuterjeumah seucara otomatis u dalam basa nyang geupiléh.",
+  "settings.loading": "Meumuat pengaturan...",
+  "settings.loadError": "Hana jeuet ta load setting droeneuh.",
+  "settings.saved": "Setting nyang ka disimpan.",
+  "settings.error400": "Neupareksa setélan terjemahan droeneuh.",
+  "settings.saveError": "Hana jeuet ta simpan setting. Cuba lom.",
 } satisfies Record<TranslationKey, string>;
 export default d_ace;

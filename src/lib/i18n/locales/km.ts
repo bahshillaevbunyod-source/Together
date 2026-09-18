@@ -228,5 +228,15 @@ const d_km = {
   "discover.followers": "អ្នកដើរតាម",
   "topic.postsInTopic": "ប្រកាសនៅក្នុងប្រធានបទនេះ។",
   "bookmarks.description": "ប្រកាសដែលអ្នកបានរក្សាទុកសម្រាប់ពេលក្រោយ។",
+  "settings.translation": "ការបកប្រែ",
+  "settings.preferredLanguage": "ភាសាបកប្រែដែលពេញចិត្ត",
+  "settings.useNativeLanguage": "ប្រើភាសាកំណើត",
+  "settings.autoTranslate": "បកប្រែដោយស្វ័យប្រវត្តិ",
+  "settings.autoTranslateDescription": "មាតិកាចូលអាចត្រូវបានបកប្រែដោយស្វ័យប្រវត្តិទៅជាភាសាដែលអ្នកពេញចិត្ត។",
+  "settings.loading": "កំពុងផ្ទុកការកំណត់...",
+  "settings.loadError": "មិនអាចផ្ទុកការកំណត់របស់អ្នកបានទេ។",
+  "settings.saved": "ការកំណត់ត្រូវបានរក្សាទុក។",
+  "settings.error400": "សូមពិនិត្យមើលការកំណត់ការបកប្រែរបស់អ្នក។",
+  "settings.saveError": "មិនអាចរក្សាទុកការកំណត់បានទេ។ ព្យាយាមម្តងទៀត។",
 } satisfies Record<TranslationKey, string>;
 export default d_km;

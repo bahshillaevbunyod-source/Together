@@ -228,5 +228,15 @@ const d_bg = {
   "discover.followers": "последователи",
   "topic.postsInTopic": "Публикации в тази тема.",
   "bookmarks.description": "Публикации, които сте запазили за по-късно.",
+  "settings.translation": "Превод",
+  "settings.preferredLanguage": "Предпочитан език за превод",
+  "settings.useNativeLanguage": "Използвайте роден език",
+  "settings.autoTranslate": "Автоматичен превод",
+  "settings.autoTranslateDescription": "Входящото съдържание може да бъде автоматично преведено на предпочитания от вас език.",
+  "settings.loading": "Настройките се зареждат...",
+  "settings.loadError": "Настройките ви не можаха да бъдат заредени.",
+  "settings.saved": "Настройките са запазени.",
+  "settings.error400": "Моля, проверете настройките си за превод.",
+  "settings.saveError": "Настройките не можаха да бъдат запазени. Опитайте отново.",
 } satisfies Record<TranslationKey, string>;
 export default d_bg;

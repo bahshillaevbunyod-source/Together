@@ -228,5 +228,15 @@ const d_ceb = {
   "discover.followers": "mga sumusunod",
   "topic.postsInTopic": "Mga post niini nga hilisgutan.",
   "bookmarks.description": "Mga post nga imong gitipigan para sa ulahi.",
+  "settings.translation": "Paghubad",
+  "settings.preferredLanguage": "Gipalabi nga pinulongan sa paghubad",
+  "settings.useNativeLanguage": "Gamita ang lumad nga pinulongan",
+  "settings.autoTranslate": "Awtomatikong paghubad",
+  "settings.autoTranslateDescription": "Ang umaabot nga sulod mahimong awtomatik nga mahubad sa imong gusto nga pinulongan.",
+  "settings.loading": "Nag-load sa mga setting…",
+  "settings.loadError": "Dili ma-load ang imong mga setting.",
+  "settings.saved": "Gitipigan ang mga setting.",
+  "settings.error400": "Palihug susiha ang imong mga setting sa paghubad.",
+  "settings.saveError": "Dili ma-save ang mga setting. Sulayi pag-usab.",
 } satisfies Record<TranslationKey, string>;
 export default d_ceb;

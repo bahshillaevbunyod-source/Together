@@ -228,5 +228,15 @@ const d_xh = {
   "discover.followers": "abalandeli",
   "topic.postsInTopic": "Izithuba kwesi sihloko.",
   "bookmarks.description": "Iiposti ozigcinele kamva.",
+  "settings.translation": "Uguqulo",
+  "settings.preferredLanguage": "Ulwimi loguqulelo olukhethwayo",
+  "settings.useNativeLanguage": "Sebenzisa ulwimi lwenkobe",
+  "settings.autoTranslate": "Ukuguqulela ngokuzenzekela",
+  "settings.autoTranslateDescription": "Isiqulatho esingenayo sinokuguqulelwa ngokuzenzekelayo kulwimi olukhethayo.",
+  "settings.loading": "Ilayisha iisetingi...",
+  "settings.loadError": "Ayikwazanga ukulayisha iisetingi zakho.",
+  "settings.saved": "Iisetingi zigciniwe.",
+  "settings.error400": "Nceda ujonge iisetingi zakho zenguqulelo.",
+  "settings.saveError": "Ayikwazanga ukugcina imimiselo. Zama kwakhona.",
 } satisfies Record<TranslationKey, string>;
 export default d_xh;

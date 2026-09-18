@@ -228,5 +228,15 @@ const d_ss = {
   "discover.followers": "balandzeli",
   "topic.postsInTopic": "Lokufakwe kulesihloko.",
   "bookmarks.description": "Lokufakwe lokugcinele kamuva.",
+  "settings.translation": "Lihumusho",
+  "settings.preferredLanguage": "Lulwimi lwekuhumusha lolukhetsiwe",
+  "settings.useNativeLanguage": "Sebentisa lulwimi lwemdzabu",
+  "settings.autoTranslate": "Kuhumusha lokuzenzakalelayo",
+  "settings.autoTranslateDescription": "Lokucuketfwe lokungenako kungahunyushwa ngekuzenzakalela ngelulwimi lolutsandzako.",
+  "settings.loading": "Kulayisha emasethingi...",
+  "settings.loadError": "Ayikhoni kulayisha emasethingi akho.",
+  "settings.saved": "Emasethingi agciniwe.",
+  "settings.error400": "Sicela uhlole emasethingi akho ekuhumusha.",
+  "settings.saveError": "Ayikhoni kugcina emasethingi. Yetama futsi.",
 } satisfies Record<TranslationKey, string>;
 export default d_ss;

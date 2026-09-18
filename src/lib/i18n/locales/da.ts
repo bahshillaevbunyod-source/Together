@@ -228,5 +228,15 @@ const d_da = {
   "discover.followers": "følgere",
   "topic.postsInTopic": "Indlæg i dette emne.",
   "bookmarks.description": "Indlæg, du har gemt til senere.",
+  "settings.translation": "Oversættelse",
+  "settings.preferredLanguage": "Foretrukken oversættelsessprog",
+  "settings.useNativeLanguage": "Brug modersmål",
+  "settings.autoTranslate": "Automatisk oversættelse",
+  "settings.autoTranslateDescription": "Indgående indhold kan automatisk oversættes til dit foretrukne sprog.",
+  "settings.loading": "Indlæser indstillinger...",
+  "settings.loadError": "Kunne ikke indlæse dine indstillinger.",
+  "settings.saved": "Indstillinger gemt.",
+  "settings.error400": "Tjek venligst dine oversættelsesindstillinger.",
+  "settings.saveError": "Indstillingerne kunne ikke gemmes. Prøv igen.",
 } satisfies Record<TranslationKey, string>;
 export default d_da;

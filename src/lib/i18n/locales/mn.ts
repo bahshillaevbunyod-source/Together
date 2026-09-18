@@ -228,5 +228,15 @@ const d_mn = {
   "discover.followers": "дагалдагчид",
   "topic.postsInTopic": "Энэ сэдэв дэх нийтлэлүүд.",
   "bookmarks.description": "Таны дараа хадгалахаар хадгалсан нийтлэлүүд.",
+  "settings.translation": "Орчуулга",
+  "settings.preferredLanguage": "Орчуулахыг илүүд үздэг хэл",
+  "settings.useNativeLanguage": "Төрөлх хэлээ ашигла",
+  "settings.autoTranslate": "Автоматаар орчуулах",
+  "settings.autoTranslateDescription": "Ирж буй контентыг таны хүссэн хэл рүү автоматаар орчуулах боломжтой.",
+  "settings.loading": "Тохиргоог ачаалж байна...",
+  "settings.loadError": "Таны тохиргоог ачаалж чадсангүй.",
+  "settings.saved": "Тохиргоог хадгалсан.",
+  "settings.error400": "Орчуулгын тохиргоогоо шалгана уу.",
+  "settings.saveError": "Тохиргоог хадгалж чадсангүй. Дахин оролдоно уу.",
 } satisfies Record<TranslationKey, string>;
 export default d_mn;

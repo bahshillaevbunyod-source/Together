@@ -228,5 +228,15 @@ const d_alz = {
   "discover.followers": "julub",
   "topic.postsInTopic": "Lembe ma jukiewo i wi lembe eni.",
   "bookmarks.description": "Lembe ma igwoko pi anyim.",
+  "settings.translation": "Lokruok",
+  "settings.preferredLanguage": "Dhok mi loko dhok ma jumaru",
+  "settings.useNativeLanguage": "Ti ku dhok mi thek",
+  "settings.autoTranslate": "Lok lembe kende",
+  "settings.autoTranslateDescription": "Lembe ma bino copo loko gire gire i dhok ma imaru.",
+  "settings.loading": "Kethu piny...",
+  "settings.loadError": "Acopo ketho ngo yub peri.",
+  "settings.saved": "Lembe ma jugwoko.",
+  "settings.error400": "Kwayu nen kit mi loko dhok peri.",
+  "settings.saveError": "Acopo gwoko ngo lembe ma juketho. Tem kendu.",
 } satisfies Record<TranslationKey, string>;
 export default d_alz;

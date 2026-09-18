@@ -228,5 +228,15 @@ const d_kri = {
   "discover.followers": "pipul dɛn we de fala am",
   "topic.postsInTopic": "Posts in dis tɔpik.",
   "bookmarks.description": "Post dɛn we yu dɔn kip fɔ leta.",
+  "settings.translation": "Transleshɔn",
+  "settings.preferredLanguage": "Di langwej we dɛn kin lɛk fɔ translet",
+  "settings.useNativeLanguage": "Yuz yu yon langwej",
+  "settings.autoTranslate": "Fɔ translet ɔtomɛtik wan",
+  "settings.autoTranslateDescription": "Di tin dɛn we de kam kin translet ɔtomɛtik wan insay di langwej we yu lɛk.",
+  "settings.loading": "We yu de lod di sɛtin dɛn...",
+  "settings.loadError": "I nɔ bin ebul fɔ lod yu sɛtin dɛn.",
+  "settings.saved": "Setin dɛn we dɛn dɔn kip.",
+  "settings.error400": "Duya chɛk yu transleshɔn sɛtin dɛn.",
+  "settings.saveError": "I nɔ bin ebul fɔ sev di sɛtin dɛn. Tray bak.",
 } satisfies Record<TranslationKey, string>;
 export default d_kri;

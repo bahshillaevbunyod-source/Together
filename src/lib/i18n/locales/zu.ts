@@ -228,5 +228,15 @@ const d_zu = {
   "discover.followers": "abalandeli",
   "topic.postsInTopic": "Okuthunyelwe kulesi sihloko.",
   "bookmarks.description": "Okuthunyelwe okulondolozele kamuva.",
+  "settings.translation": "Ukuhumusha",
+  "settings.preferredLanguage": "Ulimi lokuhumusha oluncanyelwayo",
+  "settings.useNativeLanguage": "Sebenzisa ulimi lwendabuko",
+  "settings.autoTranslate": "Humusha ngokuzenzakalela",
+  "settings.autoTranslateDescription": "Okuqukethwe okungenayo kungahunyushwa ngokuzenzakalelayo ngolimi oluncamelayo.",
+  "settings.loading": "Ilayisha izilungiselelo...",
+  "settings.loadError": "Ayikwazanga ukulayisha izilungiselelo zakho.",
+  "settings.saved": "Izilungiselelo zilondoloziwe.",
+  "settings.error400": "Sicela uhlole izilungiselelo zakho zokuhumusha.",
+  "settings.saveError": "Ayikwazanga ukulondoloza izilungiselelo. Zama futhi.",
 } satisfies Record<TranslationKey, string>;
 export default d_zu;

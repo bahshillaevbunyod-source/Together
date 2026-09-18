@@ -228,5 +228,15 @@ const d_ro = {
   "discover.followers": "urmași",
   "topic.postsInTopic": "Postări în acest subiect.",
   "bookmarks.description": "Postări pe care le-ați salvat pentru mai târziu.",
+  "settings.translation": "Traducere",
+  "settings.preferredLanguage": "Limba de traducere preferată",
+  "settings.useNativeLanguage": "Folosește limba maternă",
+  "settings.autoTranslate": "Traducere automată",
+  "settings.autoTranslateDescription": "Conținutul primit poate fi tradus automat în limba preferată.",
+  "settings.loading": "Se încarcă setările…",
+  "settings.loadError": "Nu s-au putut încărca setările.",
+  "settings.saved": "Setările au fost salvate.",
+  "settings.error400": "Vă rugăm să verificați setările de traducere.",
+  "settings.saveError": "Nu s-au putut salva setările. Încearcă din nou.",
 } satisfies Record<TranslationKey, string>;
 export default d_ro;

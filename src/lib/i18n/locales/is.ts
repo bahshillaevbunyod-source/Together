@@ -228,5 +228,15 @@ const d_is = {
   "discover.followers": "fylgjendur",
   "topic.postsInTopic": "Færslur í þessu efni.",
   "bookmarks.description": "Færslur sem þú hefur vistað til síðar.",
+  "settings.translation": "Þýðing",
+  "settings.preferredLanguage": "Æskilegt þýðingarmál",
+  "settings.useNativeLanguage": "Notaðu móðurmál",
+  "settings.autoTranslate": "Sjálfvirk þýðing",
+  "settings.autoTranslateDescription": "Innkomandi efni er hægt að þýða sjálfkrafa á það tungumál sem þú vilt.",
+  "settings.loading": "Hleður stillingum...",
+  "settings.loadError": "Ekki tókst að hlaða stillingunum þínum.",
+  "settings.saved": "Stillingar vistaðar.",
+  "settings.error400": "Athugaðu þýðingarstillingarnar þínar.",
+  "settings.saveError": "Ekki tókst að vista stillingar. Reyndu aftur.",
 } satisfies Record<TranslationKey, string>;
 export default d_is;

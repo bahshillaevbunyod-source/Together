@@ -228,5 +228,15 @@ const d_or = {
   "discover.followers": "ଅନୁସରଣକାରୀ |",
   "topic.postsInTopic": "ଏହି ପ୍ରସଙ୍ଗରେ ପୋଷ୍ଟଗୁଡିକ |",
   "bookmarks.description": "ପୋଷ୍ଟଗୁଡିକ ଆପଣ ପରେ ସଞ୍ଚୟ କରିଛନ୍ତି |",
+  "settings.translation": "ଅନୁବାଦ",
+  "settings.preferredLanguage": "ପସନ୍ଦ ଅନୁବାଦ ଭାଷା |",
+  "settings.useNativeLanguage": "ମାତୃଭାଷା ବ୍ୟବହାର କରନ୍ତୁ |",
+  "settings.autoTranslate": "ଅଟୋ ଅନୁବାଦ |",
+  "settings.autoTranslateDescription": "ଆସୁଥିବା ବିଷୟବସ୍ତୁ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଆପଣଙ୍କର ପସନ୍ଦିତ ଭାଷାରେ ଅନୁବାଦ ହୋଇପାରିବ |",
+  "settings.loading": "ସେଟିଂ ଲୋଡିଂ…",
+  "settings.loadError": "ଆପଣଙ୍କର ସେଟିଂସମୂହ ଲୋଡ୍ ହୋଇପାରିବ ନାହିଁ |",
+  "settings.saved": "ସେଟିଂସମୂହ ସଞ୍ଚୟ ହୋଇଛି |",
+  "settings.error400": "ଦୟାକରି ଆପଣଙ୍କର ଅନୁବାଦ ସେଟିଂସମୂହ ଯାଞ୍ଚ କରନ୍ତୁ |",
+  "settings.saveError": "ସେଟିଂସମୂହ ସଞ୍ଚୟ କରିପାରିଲା ନାହିଁ | ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
 } satisfies Record<TranslationKey, string>;
 export default d_or;

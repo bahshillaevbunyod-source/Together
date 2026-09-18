@@ -228,5 +228,15 @@ const d_lg = {
   "discover.followers": "abagoberezi",
   "topic.postsInTopic": "Posts in omulamwa guno.",
   "bookmarks.description": "Ebiwandiiko by’otereka oluvannyuma.",
+  "settings.translation": "Okuvvuunula",
+  "settings.preferredLanguage": "Olulimi lw’okuvvuunula olusinga okwagalibwa",
+  "settings.useNativeLanguage": "Kozesa olulimi oluzaaliranwa",
+  "settings.autoTranslate": "Auto okuvvuunula",
+  "settings.autoTranslateDescription": "Ebintu ebiyingira bisobola okuvvuunulwa mu lulimi lw’oyagala mu ngeri ey’otoma.",
+  "settings.loading": "Okutikka ensengeka...",
+  "settings.loadError": "Teyasobodde kutikka nteekateeka zo.",
+  "settings.saved": "Ensengeka ziterekeddwa.",
+  "settings.error400": "Nkusaba okebere ensengeka zo ez'okuvvuunula.",
+  "settings.saveError": "Teyasobodde kutereka nteekateeka. Gezaako nate.",
 } satisfies Record<TranslationKey, string>;
 export default d_lg;

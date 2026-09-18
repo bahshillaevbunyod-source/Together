@@ -228,5 +228,15 @@ const d_hil = {
   "discover.followers": "mga sumulunod",
   "topic.postsInTopic": "Mga post sa sini nga topiko.",
   "bookmarks.description": "Mga post nga imo gin-save para sa ulihi.",
+  "settings.translation": "Paglubad",
+  "settings.preferredLanguage": "Mas gusto nga lenguahe sa paghubad",
+  "settings.useNativeLanguage": "Gamita ang tumandok nga lenguahe",
+  "settings.autoTranslate": "Awtomatiko nga pagbadbad",
+  "settings.autoTranslateDescription": "Ang nagasulod nga kaundan mahimo nga awtomatiko nga mabadbad sa imo luyag nga lenguahe.",
+  "settings.loading": "Naga-load sang imo mga setting",
+  "settings.loadError": "Indi ma-load ang imo mga setting.",
+  "settings.saved": "Naluwas ang mga setting.",
+  "settings.error400": "Palihog tan-awa ang imo mga setting sa paglubad.",
+  "settings.saveError": "Indi ma-save ang mga setting. Tilawi liwat.",
 } satisfies Record<TranslationKey, string>;
 export default d_hil;

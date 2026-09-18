@@ -228,5 +228,15 @@ const d_so = {
   "discover.followers": "kuwa raacsan",
   "topic.postsInTopic": "Qoraallada mawduucan.",
   "bookmarks.description": "Qoraalada aad kaydisay hadhow",
+  "settings.translation": "Turjumaada",
+  "settings.preferredLanguage": "Luuqada tarjumaada ee la door biday",
+  "settings.useNativeLanguage": "Isticmaal luqadda hooyo",
+  "settings.autoTranslate": "Toos utarjum",
+  "settings.autoTranslateDescription": "Waxyaabaha soo galaya si toos ah ayaa loogu tarjumi karaa luqadda aad doorbidayso.",
+  "settings.loading": "Dejinta dejinta...",
+  "settings.loadError": "Ma rari karo dejintaada",
+  "settings.saved": "Dejinta waa la keydiyay",
+  "settings.error400": "Fadlan hubi dejinta tarjumaada",
+  "settings.saveError": "Ma kaydin kari waayay dejinta Isku day mar kale",
 } satisfies Record<TranslationKey, string>;
 export default d_so;

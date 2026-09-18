@@ -228,5 +228,15 @@ const d_btx = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "Postingen i bas topik enda.",
   "bookmarks.description": "Postingen si enggo isimpanndu guna pudi wari.",
+  "settings.translation": "Terjemahen",
+  "settings.preferredLanguage": "Bahasa terjemahen si ipilih .",
+  "settings.useNativeLanguage": "Gunakenlah bahasa asli .",
+  "settings.autoTranslate": "Terjemahen otomatis",
+  "settings.autoTranslateDescription": "Isi si masuk banci iterjemahken secara otomatis ku bahasa si ipilihndu.",
+  "settings.loading": "Muat pengaturen...",
+  "settings.loadError": "La banci i muatndu pengaturenndu.",
+  "settings.saved": "Pengaturan si isimpan.",
+  "settings.error400": "Periksalah pengaturen terjemahenndu.",
+  "settings.saveError": "La banci isimpan pengaturen. Cubakenndu mulihi.",
 } satisfies Record<TranslationKey, string>;
 export default d_btx;

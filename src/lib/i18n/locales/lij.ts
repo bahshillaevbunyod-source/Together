@@ -228,5 +228,15 @@ const d_lij = {
   "discover.followers": "seguitoî",
   "topic.postsInTopic": "Post in sce sto argomento.",
   "bookmarks.description": "I post che l'æ sarvou pe ciù tardi.",
+  "settings.translation": "Traduçion",
+  "settings.preferredLanguage": "Lengua de traduçion preferia",
+  "settings.useNativeLanguage": "Utilizzâ a lengua nativa",
+  "settings.autoTranslate": "Traduçion automatica",
+  "settings.autoTranslateDescription": "O contegnuo ch'o l'arriva o peu ëse traduto automaticamente inta lengua che ti veu.",
+  "settings.loading": "Caricamento de impostaçioin...",
+  "settings.loadError": "No l'é stæto poscibile carregâ e vòstre impostaçioin.",
+  "settings.saved": "Impostaçioin sarvæ.",
+  "settings.error400": "Pe favô, controlla e impostaçioin de traduçion.",
+  "settings.saveError": "No l'é stæto poscibile sarvâ e impostaçioin. Prova torna.",
 } satisfies Record<TranslationKey, string>;
 export default d_lij;

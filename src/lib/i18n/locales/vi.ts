@@ -228,5 +228,15 @@ const d_vi = {
   "discover.followers": "người theo dõi",
   "topic.postsInTopic": "Bài đăng trong chủ đề này.",
   "bookmarks.description": "Bài đăng bạn đã lưu để sử dụng sau.",
+  "settings.translation": "Dịch thuật",
+  "settings.preferredLanguage": "Ngôn ngữ dịch ưa thích",
+  "settings.useNativeLanguage": "Sử dụng ngôn ngữ bản địa",
+  "settings.autoTranslate": "Dịch tự động",
+  "settings.autoTranslateDescription": "Nội dung đến có thể được dịch tự động sang ngôn ngữ ưa thích của bạn.",
+  "settings.loading": "Đang tải cài đặt…",
+  "settings.loadError": "Không thể tải cài đặt của bạn.",
+  "settings.saved": "Đã lưu cài đặt.",
+  "settings.error400": "Vui lòng kiểm tra cài đặt dịch của bạn.",
+  "settings.saveError": "Không thể lưu cài đặt. Hãy thử lại.",
 } satisfies Record<TranslationKey, string>;
 export default d_vi;

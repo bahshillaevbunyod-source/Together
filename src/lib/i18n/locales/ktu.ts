@@ -228,5 +228,15 @@ const d_ktu = {
   "discover.followers": "balongoki",
   "topic.postsInTopic": "Ba poste na ntu-dyambu yai.",
   "bookmarks.description": "Ba poste yina nge me bumba sambu na nima.",
+  "settings.translation": "Kubalula",
+  "settings.preferredLanguage": "Ndinga ya kubalula yina bo ke zolaka",
+  "settings.useNativeLanguage": "Sadila ndinga ya kisina",
+  "settings.autoTranslate": "Kubalula yo mosi",
+  "settings.autoTranslateDescription": "Mambu yina ke kota lenda baluka na mbala mosi na ndinga yina nge ke zolaka.",
+  "settings.loading": "Kutula baparametre...",
+  "settings.loadError": "Kukonda kutula baparametre na nge.",
+  "settings.saved": "Baparametre me bumbana.",
+  "settings.error400": "Pardo tala baparametre na nge ya kubalula.",
+  "settings.saveError": "Kubumba ve baparametre. Meka diaka.",
 } satisfies Record<TranslationKey, string>;
 export default d_ktu;

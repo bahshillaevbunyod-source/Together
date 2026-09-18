@@ -228,5 +228,15 @@ const d_af = {
   "discover.followers": "volgelinge",
   "topic.postsInTopic": "Plasings in hierdie onderwerp.",
   "bookmarks.description": "Plasings wat jy gestoor het vir later.",
+  "settings.translation": "Vertaling",
+  "settings.preferredLanguage": "Voorkeurvertaaltaal",
+  "settings.useNativeLanguage": "Gebruik moedertaal",
+  "settings.autoTranslate": "Outo-vertaal",
+  "settings.autoTranslateDescription": "Inkomende inhoud kan outomaties in jou voorkeurtaal vertaal word.",
+  "settings.loading": "Laai tans instellings …",
+  "settings.loadError": "Kon nie jou instellings laai nie.",
+  "settings.saved": "Instellings gestoor.",
+  "settings.error400": "Gaan asseblief jou vertalinginstellings na.",
+  "settings.saveError": "Kon nie instellings stoor nie. Probeer weer.",
 } satisfies Record<TranslationKey, string>;
 export default d_af;

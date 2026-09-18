@@ -228,5 +228,15 @@ const d_co = {
   "discover.followers": "seguitori",
   "topic.postsInTopic": "Posts in questu tema.",
   "bookmarks.description": "Posti chì avete salvatu per più tardi.",
+  "settings.translation": "Traduzzione",
+  "settings.preferredLanguage": "Lingua di traduzzione preferita",
+  "settings.useNativeLanguage": "Aduprà a lingua nativa",
+  "settings.autoTranslate": "Traduce automaticamente",
+  "settings.autoTranslateDescription": "U cuntenutu in entrata pò esse traduttu automaticamente in a vostra lingua preferita.",
+  "settings.loading": "Caricamentu di i paràmetri…",
+  "settings.loadError": "Ùn pudia micca carricà i vostri paràmetri.",
+  "settings.saved": "Paràmetri salvati.",
+  "settings.error400": "Per piacè verificate i vostri paràmetri di traduzzione.",
+  "settings.saveError": "Ùn pudia micca salvà i paràmetri. Prova dinò.",
 } satisfies Record<TranslationKey, string>;
 export default d_co;

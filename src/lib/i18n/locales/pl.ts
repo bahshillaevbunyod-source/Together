@@ -228,5 +228,15 @@ const d_pl = {
   "discover.followers": "obserwujący",
   "topic.postsInTopic": "Posty w tym temat.",
   "bookmarks.description": "Posty, które zapisałeś na później.",
+  "settings.translation": "Tłumaczenie",
+  "settings.preferredLanguage": "Preferowany język tłumaczenia",
+  "settings.useNativeLanguage": "Używaj języka ojczystego",
+  "settings.autoTranslate": "Automatyczne tłumaczenie",
+  "settings.autoTranslateDescription": "Przychodzące treści mogą być automatycznie tłumaczone na preferowany język.",
+  "settings.loading": "Ładowanie ustawień…",
+  "settings.loadError": "Nie udało się wczytać ustawień.",
+  "settings.saved": "Ustawienia zostały zapisane.",
+  "settings.error400": "Sprawdź ustawienia tłumaczenia.",
+  "settings.saveError": "Nie udało się zapisać ustawień. Spróbuj ponownie.",
 } satisfies Record<TranslationKey, string>;
 export default d_pl;

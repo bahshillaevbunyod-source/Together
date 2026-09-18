@@ -228,5 +228,15 @@ const d_dov = {
   "discover.followers": "batobeli",
   "topic.postsInTopic": "Malembe aali mumutwe ooyu.",
   "bookmarks.description": "Malembe ngowabamba kuti akabelesegwe kumbele.",
+  "settings.translation": "Busanduluzi",
+  "settings.preferredLanguage": "Mwaambo wakusandulula uuyandwa",
+  "settings.useNativeLanguage": "Belesya mwaambo wakuzyalwa",
+  "settings.autoTranslate": "Kusandulula",
+  "settings.autoTranslateDescription": "Makani aaboola alakonzya kusandululwa mumwaambo ngoyanda.",
+  "settings.loading": "Kubikka zintu...",
+  "settings.loadError": "Tachikonzeka pe kujokolosya mabambe aako.",
+  "settings.saved": "Zibikkidwe zyakabambwa.",
+  "settings.error400": "Kolanga zyintu zyako zyakusandulula.",
+  "settings.saveError": "Tachikonzeka kubamba mabambe. Kosola alimwi.",
 } satisfies Record<TranslationKey, string>;
 export default d_dov;

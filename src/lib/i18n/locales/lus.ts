@@ -228,5 +228,15 @@ const d_lus = {
   "discover.followers": "followers te an ni",
   "topic.postsInTopic": "He thupuiah hian post a awm.",
   "bookmarks.description": "Post i save tawh te chu a hnua i dah theih nan.",
+  "settings.translation": "Lehlin a ni",
+  "settings.preferredLanguage": "Lehlin tawng duh zawk",
+  "settings.useNativeLanguage": "Native language hmang rawh",
+  "settings.autoTranslate": "Auto lehlin theih a ni",
+  "settings.autoTranslateDescription": "Incoming content chu i duhzawng tawngin automatic in i letling thei ang.",
+  "settings.loading": "Settings load mek a ni...",
+  "settings.loadError": "I settings a load thei lo.",
+  "settings.saved": "Settings te chu save a ni.",
+  "settings.error400": "I lehlin settings kha lo en ve teh.",
+  "settings.saveError": "Settings a save thei lo. Ti leh teh.",
 } satisfies Record<TranslationKey, string>;
 export default d_lus;

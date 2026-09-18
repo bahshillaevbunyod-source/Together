@@ -228,5 +228,15 @@ const d_si = {
   "discover.followers": "අනුගාමිකයින්",
   "topic.postsInTopic": "මෙම මාතෘකාවේ පළ කිරීම්.",
   "bookmarks.description": "ඔබ පසුව සුරැකි පළ කිරීම්.",
+  "settings.translation": "පරිවර්තනය",
+  "settings.preferredLanguage": "කැමති පරිවර්තන භාෂාව",
+  "settings.useNativeLanguage": "මව් භාෂාව භාවිතා කරන්න",
+  "settings.autoTranslate": "ස්වයංක්‍රීය පරිවර්තනය",
+  "settings.autoTranslateDescription": "එන අන්තර්ගතය ඔබ කැමති භාෂාවට ස්වයංක්‍රීයව පරිවර්තනය කළ හැක.",
+  "settings.loading": "සැකසුම් පූරණය වෙමින්...",
+  "settings.loadError": "ඔබගේ සැකසීම් පූරණය කළ නොහැකි විය.",
+  "settings.saved": "සැකසීම් සුරකින ලදී.",
+  "settings.error400": "කරුණාකර ඔබගේ පරිවර්තන සැකසීම් පරීක්ෂා කරන්න.",
+  "settings.saveError": "සැකසීම් සුරැකීමට නොහැකි විය. නැවත උත්සාහ කරන්න.",
 } satisfies Record<TranslationKey, string>;
 export default d_si;

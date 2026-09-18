@@ -228,5 +228,15 @@ const d_hr = {
   "discover.followers": "sljedbenici",
   "topic.postsInTopic": "Postovi u ovoj temi.",
   "bookmarks.description": "Postovi koje ste spremili za kasnije.",
+  "settings.translation": "Prijevod",
+  "settings.preferredLanguage": "Željeni jezik prijevoda",
+  "settings.useNativeLanguage": "Koristite materinji jezik",
+  "settings.autoTranslate": "Automatski prijevod",
+  "settings.autoTranslateDescription": "Dolazni sadržaj može se automatski prevesti na vaš željeni jezik.",
+  "settings.loading": "Učitavanje postavki...",
+  "settings.loadError": "Nije moguće učitati vaše postavke.",
+  "settings.saved": "Postavke su spremljene.",
+  "settings.error400": "Provjerite svoje postavke prijevoda.",
+  "settings.saveError": "Nije moguće spremiti postavke. Pokušajte ponovno.",
 } satisfies Record<TranslationKey, string>;
 export default d_hr;

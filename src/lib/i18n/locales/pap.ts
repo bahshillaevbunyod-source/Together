@@ -228,5 +228,15 @@ const d_pap = {
   "discover.followers": "siguidónan",
   "topic.postsInTopic": "Postnan den e tópiko aki.",
   "bookmarks.description": "Postnan ku bo a warda pa despues.",
+  "settings.translation": "Tradukshon",
+  "settings.preferredLanguage": "Idioma di tradukshon preferí",
+  "settings.useNativeLanguage": "Usa idioma nativo",
+  "settings.autoTranslate": "Tradusí outomátiko",
+  "settings.autoTranslateDescription": "Kontenido ku ta drenta por wòrdu tradusí outomatikamente na bo idioma preferí.",
+  "settings.loading": "Settingnan di kargamentu…",
+  "settings.loadError": "No por a karga bo settingnan.",
+  "settings.saved": "Settingnan wardá.",
+  "settings.error400": "Por fabor, kontrolá bo settingnan di tradukshon.",
+  "settings.saveError": "No por a warda e settingnan. Purba atrobe.",
 } satisfies Record<TranslationKey, string>;
 export default d_pap;

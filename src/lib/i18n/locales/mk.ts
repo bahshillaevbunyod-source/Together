@@ -228,5 +228,15 @@ const d_mk = {
   "discover.followers": "следбеници",
   "topic.postsInTopic": "Објави во оваа тема.",
   "bookmarks.description": "Објави што сте ги зачувале за подоцна.",
+  "settings.translation": "Превод",
+  "settings.preferredLanguage": "Претпочитан јазик за преведување",
+  "settings.useNativeLanguage": "Користете мајчин јазик",
+  "settings.autoTranslate": "Автоматско преведување",
+  "settings.autoTranslateDescription": "Дојдовните содржини може автоматски да се преведат на вашиот претпочитан јазик.",
+  "settings.loading": "Се вчитуваат поставките…",
+  "settings.loadError": "Не може да се вчитаат вашите поставки.",
+  "settings.saved": "Поставките се зачувани.",
+  "settings.error400": "Проверете ги поставките за превод.",
+  "settings.saveError": "Не може да се зачуваат поставките. Обидете се повторно.",
 } satisfies Record<TranslationKey, string>;
 export default d_mk;

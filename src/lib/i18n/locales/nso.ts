@@ -228,5 +228,15 @@ const d_nso = {
   "discover.followers": "balatedi",
   "topic.postsInTopic": "Posts in sehlogo se.",
   "bookmarks.description": "Diposo tšeo o di bolokilego ka morago.",
+  "settings.translation": "Phetolelo",
+  "settings.preferredLanguage": "Polelo ya phetolelo ye e kgethilwego",
+  "settings.useNativeLanguage": "Diriša polelo ya setlogo",
+  "settings.autoTranslate": "Auto fetolela",
+  "settings.autoTranslateDescription": "Diteng tše di tsenago di ka fetolelwa ka go itiragalela lelemeng leo o le ratago.",
+  "settings.loading": "Go laetša dipeakanyo...",
+  "settings.loadError": "Couldn’t load dipeakanyo tša gago.",
+  "settings.saved": "Di-setting di bolokilwe.",
+  "settings.error400": "Hle hlahloba dipeakanyo tša gago tša phetolelo.",
+  "settings.saveError": "Couldn’t go boloka dipeakanyo. Leka gape.",
 } satisfies Record<TranslationKey, string>;
 export default d_nso;

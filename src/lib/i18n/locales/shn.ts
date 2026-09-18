@@ -228,5 +228,15 @@ const d_shn = {
   "discover.followers": "ၽူႈၸွမ်းလင်",
   "topic.postsInTopic": "လိၵ်ႈပိုၼ်ၽၢဝ်ႇ ၼႂ်းႁူဝ်ၶေႃႈၼႆႉ။",
   "bookmarks.description": "လိၵ်ႈပိုၼ်ၽၢဝ်ႇ ဢၼ်ၸဝ်ႈၵဝ်ႇ သိမ်းဝႆႉ တႃႇဝၢႆးလင်။",
+  "settings.translation": "ပိၼ်ႇၽႃႇသႃႇ",
+  "settings.preferredLanguage": "ၽႃႇသႃႇပိၼ်ႇၽႃႇသႃႇ ဢၼ်ထုၵ်ႇၸႂ်",
+  "settings.useNativeLanguage": "ၸႂ်ႉၵႂၢမ်းမႄႈ",
+  "settings.autoTranslate": "ပိၼ်ႇၽႃႇသႃႇႁင်းၵူၺ်း",
+  "settings.autoTranslateDescription": "ၶေႃႈမုၼ်းဢၼ်ၶဝ်ႈမႃးၼၼ်ႉ ၸၢင်ႈပိၼ်ႇပဵၼ်ၽႃႇသႃႇဢၼ်ၸဝ်ႈၵဝ်ႇ ထုၵ်ႇၸႂ်ၼၼ်ႉ ႁင်းမၼ်းလႆႈယူႇ။",
+  "settings.loading": "လွင်ႈတင်ႈၶိုၼ်ႈ...",
+  "settings.loadError": "ဢမ်ႇၸၢင်ႈ load လွင်ႈတမ်းဝၢင်း ၸဝ်ႈၵဝ်ႇလႆႈ။",
+  "settings.saved": "သိမ်းဝႆႉ လွင်ႈတမ်းဝၢင်း။",
+  "settings.error400": "ၶႅၼ်းတေႃႈ ထတ်းတူၺ်း လွင်ႈတမ်းဝၢင်း ၵၢၼ်ပိၼ်ႇၽႃႇသႃႇ ၸဝ်ႈၵဝ်ႇသေၵမ်း။",
+  "settings.saveError": "ဢမ်ႇၸၢင်ႈသိမ်းဝႆႉ လွင်ႈတမ်းဝၢင်း။ ၶိုၼ်းၶတ်းၸႂ်တူၺ်းလႄႈ။",
 } satisfies Record<TranslationKey, string>;
 export default d_shn;

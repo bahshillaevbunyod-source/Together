@@ -228,5 +228,15 @@ const d_bn = {
   "discover.followers": "অনুসারী",
   "topic.postsInTopic": "এই বিষয়ে পোস্ট.",
   "bookmarks.description": "আপনি পরে জন্য সংরক্ষণ করেছেন পোস্ট.",
+  "settings.translation": "অনুবাদ",
+  "settings.preferredLanguage": "পছন্দের অনুবাদ ভাষা",
+  "settings.useNativeLanguage": "মাতৃভাষা ব্যবহার করুন",
+  "settings.autoTranslate": "স্বয়ংক্রিয় অনুবাদ",
+  "settings.autoTranslateDescription": "ইনকামিং কন্টেন্ট স্বয়ংক্রিয়ভাবে আপনার পছন্দের ভাষায় অনুবাদ করা যেতে পারে।",
+  "settings.loading": "সেটিংস লোড হচ্ছে...",
+  "settings.loadError": "আপনার সেটিংস লোড করা যায়নি।",
+  "settings.saved": "সেটিংস সংরক্ষিত।",
+  "settings.error400": "আপনার অনুবাদ সেটিংস চেক করুন.",
+  "settings.saveError": "সেটিংস সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন",
 } satisfies Record<TranslationKey, string>;
 export default d_bn;

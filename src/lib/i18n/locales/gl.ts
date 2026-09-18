@@ -228,5 +228,15 @@ const d_gl = {
   "discover.followers": "seguidores",
   "topic.postsInTopic": "Publicacións neste tema.",
   "bookmarks.description": "Publicacións que gardaches para máis tarde.",
+  "settings.translation": "Tradución",
+  "settings.preferredLanguage": "Idioma de tradución preferido",
+  "settings.useNativeLanguage": "Usa a lingua nativa",
+  "settings.autoTranslate": "Tradución automática",
+  "settings.autoTranslateDescription": "O contido entrante pódese traducir automaticamente ao teu idioma preferido.",
+  "settings.loading": "Cargando a configuración...",
+  "settings.loadError": "Non se puido cargar a túa configuración.",
+  "settings.saved": "Configuración gardada.",
+  "settings.error400": "Comproba a túa configuración de tradución.",
+  "settings.saveError": "Non se puido gardar a configuración. Téntao de novo.",
 } satisfies Record<TranslationKey, string>;
 export default d_gl;

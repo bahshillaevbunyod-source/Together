@@ -228,5 +228,15 @@ const d_min = {
   "discover.followers": "pangikuik",
   "topic.postsInTopic": "Postingan nan ado di topik ko.",
   "bookmarks.description": "Postingan nan alah sanak simpan untuak nanti.",
+  "settings.translation": "Tarjamahan",
+  "settings.preferredLanguage": "Bahaso panarjamahan nan disukoi",
+  "settings.useNativeLanguage": "Gunokan bahaso asli",
+  "settings.autoTranslate": "Tarjamah otomatis",
+  "settings.autoTranslateDescription": "Konten nan masuak dapek ditarjamahan sacaro otomatis ka dalam bahaso nan disukoi.",
+  "settings.loading": "Pangaturan mamuek...",
+  "settings.loadError": "Indak bisa mamuek pangaturan Sanak.",
+  "settings.saved": "Pangaturan disimpan.",
+  "settings.error400": "Tolong pareso pangaturan panarjamahan Sanak.",
+  "settings.saveError": "Indak bisa manyimpan pangaturan. Cubolah baliak.",
 } satisfies Record<TranslationKey, string>;
 export default d_min;

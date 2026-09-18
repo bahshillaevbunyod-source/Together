@@ -228,5 +228,15 @@ const d_ba = {
   "discover.followers": "эйәреүселәр",
   "topic.postsInTopic": "Был темаға яҙмалар.",
   "bookmarks.description": "Яҙмалар һеҙ&#8217;ве һаҡланған өсөн һуңыраҡ.",
+  "settings.translation": "Тәржемә",
+  "settings.preferredLanguage": "Өҫтөнлөк бирелгән тәржемә теле",
+  "settings.useNativeLanguage": "Туған телде ҡулланыу .",
+  "settings.autoTranslate": "Автотәржемә",
+  "settings.autoTranslateDescription": "Килгән йөкмәткене автоматик рәүештә һеҙ теләгән телгә тәржемә итергә мөмкин.",
+  "settings.loading": "Йөкләү параметрҙары...",
+  "settings.loadError": "Һеҙҙең параметрҙарҙы тейәп булманы.",
+  "settings.saved": "Настройки сохранены.",
+  "settings.error400": "Зинһар, тәржемә параметрҙарығыҙҙы тикшерегеҙ.",
+  "settings.saveError": "Көйләүҙәрҙе һаҡлай алманы. Тағы ла тырышып ҡарағыҙ.",
 } satisfies Record<TranslationKey, string>;
 export default d_ba;

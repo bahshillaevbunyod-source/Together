@@ -228,5 +228,15 @@ const d_ka = {
   "discover.followers": "მიმდევრები",
   "topic.postsInTopic": "პოსტები ამ თემაში.",
   "bookmarks.description": "პოსტები, რომლებიც მოგვიანებით შეინახეთ.",
+  "settings.translation": "თარგმანი",
+  "settings.preferredLanguage": "სასურველი თარგმანის ენა",
+  "settings.useNativeLanguage": "გამოიყენეთ მშობლიური ენა",
+  "settings.autoTranslate": "ავტომატური თარგმნა",
+  "settings.autoTranslateDescription": "შემომავალი შინაარსი შეიძლება ავტომატურად ითარგმნოს თქვენს სასურველ ენაზე.",
+  "settings.loading": "პარამეტრების ჩატვირთვა…",
+  "settings.loadError": "თქვენი პარამეტრების ჩატვირთვა ვერ მოხერხდა.",
+  "settings.saved": "პარამეტრები შენახულია.",
+  "settings.error400": "გთხოვთ, შეამოწმოთ თქვენი თარგმანის პარამეტრები.",
+  "settings.saveError": "პარამეტრების შენახვა ვერ მოხერხდა. სცადეთ ხელახლა.",
 } satisfies Record<TranslationKey, string>;
 export default d_ka;

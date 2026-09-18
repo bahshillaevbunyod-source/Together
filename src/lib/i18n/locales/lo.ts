@@ -228,5 +228,15 @@ const d_lo = {
   "discover.followers": "ຜູ້ຕິດຕາມ",
   "topic.postsInTopic": "ປະກາດໃນຫົວຂໍ້ນີ້.",
   "bookmarks.description": "ໂພສທີ່ທ່ານບັນທຶກໄວ້ໃນພາຍຫຼັງ.",
+  "settings.translation": "ການແປ",
+  "settings.preferredLanguage": "ພາສາການແປພາສາທີ່ຕ້ອງການ",
+  "settings.useNativeLanguage": "ໃຊ້ພາສາພື້ນເມືອງ",
+  "settings.autoTranslate": "ແປອັດຕະໂນມັດ",
+  "settings.autoTranslateDescription": "ເນື້ອໃນທີ່ເຂົ້າມາສາມາດຖືກແປໂດຍອັດຕະໂນມັດເປັນພາສາທີ່ທ່ານຕ້ອງການ.",
+  "settings.loading": "ກຳລັງໂຫຼດການຕັ້ງຄ່າ...",
+  "settings.loadError": "ບໍ່ສາມາດໂຫຼດການຕັ້ງຄ່າຂອງທ່ານໄດ້.",
+  "settings.saved": "ບັນທຶກການຕັ້ງຄ່າແລ້ວ.",
+  "settings.error400": "ກະລຸນາກວດເບິ່ງການຕັ້ງຄ່າການແປຂອງທ່ານ.",
+  "settings.saveError": "ບໍ່ສາມາດບັນທຶກການຕັ້ງຄ່າໄດ້. ລອງອີກຄັ້ງ.",
 } satisfies Record<TranslationKey, string>;
 export default d_lo;

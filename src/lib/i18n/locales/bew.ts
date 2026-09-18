@@ -228,5 +228,15 @@ const d_bew = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "Postingan di topik ini.",
   "bookmarks.description": "Postingan yang udah lu simpen buat nanti.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Bahasa terjemahan yang disukai",
+  "settings.useNativeLanguage": "Pake bahasa asli",
+  "settings.autoTranslate": "Terjemahin otomatis",
+  "settings.autoTranslateDescription": "Konten yang masuk bisa diterjemahin secara otomatis ke bahasa yang lu suka.",
+  "settings.loading": "Lagi muat pengaturan...",
+  "settings.loadError": "Gak bisa muat pengaturan lu.",
+  "settings.saved": "Pengaturan udah disimpan.",
+  "settings.error400": "Tolong cek pengaturan terjemahan lu.",
+  "settings.saveError": "Gak bisa nyimpen pengaturan. Coba lagi.",
 } satisfies Record<TranslationKey, string>;
 export default d_bew;

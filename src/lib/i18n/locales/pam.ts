@@ -228,5 +228,15 @@ const d_pam = {
   "discover.followers": "talatuki",
   "topic.postsInTopic": "Posts keng topic ayni.",
   "bookmarks.description": "Posts a tinipun mu para keng tutuki.",
+  "settings.translation": "Pamagsalin",
+  "settings.preferredLanguage": "Mas buri kung amanu ning pamagsalin",
+  "settings.useNativeLanguage": "Gamitan ing katutubung amanu",
+  "settings.autoTranslate": "Awtomatikung pamagsalin",
+  "settings.autoTranslateDescription": "Ing incoming content malyari yang automatic a i-translate keng buri mung amanu.",
+  "settings.loading": "Magkarga kareng kekang setting",
+  "settings.loadError": "Eku agyung ikarga ing kekang setting.",
+  "settings.saved": "Naka-itabi la reng kekang setting.",
+  "settings.error400": "Pakisuri me ing kekang pamagsalin a setting.",
+  "settings.saveError": "Eku agyung itabi ing kekang setting. Subukan meng pasibayu.",
 } satisfies Record<TranslationKey, string>;
 export default d_pam;

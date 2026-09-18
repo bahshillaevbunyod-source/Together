@@ -228,5 +228,15 @@ const d_dv = {
   "discover.followers": "ފޮލޯވަރުން",
   "topic.postsInTopic": "ޕޯސްޓްތައް އިން މި މައުޟޫޢު.",
   "bookmarks.description": "ފަހުން ސޭވްކޮށްފައިވާ ޕޯސްޓްތައް.",
+  "settings.translation": "ތަރުޖަމާ",
+  "settings.preferredLanguage": "އިސްކަންދޭ ތަރުޖަމާ ބަހެވެ",
+  "settings.useNativeLanguage": "ދިވެހިބަސް ބޭނުންކުރުން",
+  "settings.autoTranslate": "އޮޓޯ ޓްރާންސްލެޓް ކުރުން",
+  "settings.autoTranslateDescription": "ވަންނަ ކޮންޓެންޓް އޮޓޮމެޓިކުން ތިމާ ބޭނުންވާ ބަހަށް ތަރުޖަމާ ކުރެވޭނެއެވެ.",
+  "settings.loading": "ލޯޑިންގ ސެޓިންގސް...",
+  "settings.loadError": "ސެޓިންގްސް ލޯޑް ނުކުރެވުނެވެ.",
+  "settings.saved": "ސެޓިންގސް ސޭވް ކުރެވިއްޖެއެވެ.",
+  "settings.error400": "ތަރުޖަމާ ސެޓިންގސް ޗެކް ކުރައްވާށެވެ.",
+  "settings.saveError": "ސެޓިންގްސް ސޭވް ނުކުރެވުނެވެ. އަނެއްކާވެސް މަސައްކަތް ކުރާށެވެ.",
 } satisfies Record<TranslationKey, string>;
 export default d_dv;

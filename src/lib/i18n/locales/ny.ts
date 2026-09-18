@@ -228,5 +228,15 @@ const d_ny = {
   "discover.followers": "otsatira",
   "topic.postsInTopic": "Zolemba pamutuwu.",
   "bookmarks.description": "Zolemba zomwe mwasungira mtsogolo.",
+  "settings.translation": "Kumasulira",
+  "settings.preferredLanguage": "Chiyankhulo chomasulira chomwe mumakonda",
+  "settings.useNativeLanguage": "Gwiritsani ntchito chilankhulo chawo",
+  "settings.autoTranslate": "Tanthauzirani zokha",
+  "settings.autoTranslateDescription": "Zomwe zikubwera zitha kumasuliridwa m'chilankhulo chomwe mumakonda.",
+  "settings.loading": "Tikutsegula zokonda…",
+  "settings.loadError": "Sitinathe kutsegula zokonda zanu.",
+  "settings.saved": "Zokonda zasungidwa.",
+  "settings.error400": "Chonde onani makonda anu omasulira.",
+  "settings.saveError": "Sitinathe kusunga zokonda. Yesaninso.",
 } satisfies Record<TranslationKey, string>;
 export default d_ny;

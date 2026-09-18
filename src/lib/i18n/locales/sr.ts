@@ -228,5 +228,15 @@ const d_sr = {
   "discover.followers": "следбеника",
   "topic.postsInTopic": "Објаве у овој теми.",
   "bookmarks.description": "Постови које сте сачували за касније.",
+  "settings.translation": "Превод",
+  "settings.preferredLanguage": "Жељени језик превода",
+  "settings.useNativeLanguage": "Користите матерњи језик",
+  "settings.autoTranslate": "Аутоматски превод",
+  "settings.autoTranslateDescription": "Долазни садржај се може аутоматски превести на жељени језик.",
+  "settings.loading": "Учитавање подешавања…",
+  "settings.loadError": "Учитавање подешавања није успело.",
+  "settings.saved": "Подешавања су сачувана.",
+  "settings.error400": "Проверите подешавања превода.",
+  "settings.saveError": "Није могуће сачувати подешавања. Покушајте поново.",
 } satisfies Record<TranslationKey, string>;
 export default d_sr;

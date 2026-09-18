@@ -228,5 +228,15 @@ const d_lb = {
   "discover.followers": "Matleefer",
   "topic.postsInTopic": "Posts an dësem Thema.",
   "bookmarks.description": "Posts déi Dir fir spéider gespäichert hutt.",
+  "settings.translation": "Iwwersetzung",
+  "settings.preferredLanguage": "Preferenz Iwwersetzung Sprooch",
+  "settings.useNativeLanguage": "Benotzt Mammesprooch",
+  "settings.autoTranslate": "Auto Iwwersetzer",
+  "settings.autoTranslateDescription": "Entréeën Inhalt kann automatesch an Är gewënschte Sprooch iwwersat ginn.",
+  "settings.loading": "Lueden Astellunge…",
+  "settings.loadError": "Konnt Är Astellunge net lueden.",
+  "settings.saved": "Astellunge gespäichert.",
+  "settings.error400": "Kuckt w.e.g. Är Iwwersetzungsastellungen.",
+  "settings.saveError": "Konnt d'Astellunge net späicheren. Probéiert nach eng Kéier.",
 } satisfies Record<TranslationKey, string>;
 export default d_lb;

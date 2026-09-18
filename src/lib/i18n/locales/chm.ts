@@ -228,5 +228,15 @@ const d_chm = {
   "discover.followers": "почеш кайыше-влак",
   "topic.postsInTopic": "Тиде теме дене кылдалтше возымаш-влак.",
   "bookmarks.description": "Варараклан арален кодымо возымаш-влак.",
+  "settings.translation": "Кусарымаш",
+  "settings.preferredLanguage": "Йӧратыме кусарыме йылме",
+  "settings.useNativeLanguage": "Шочмо йылмым кучылтса",
+  "settings.autoTranslate": "Автоматически кусарымаш",
+  "settings.autoTranslateDescription": "Пурышо контент тендан йӧратыме йылмыш автоматически кусаралтеш.",
+  "settings.loading": "Параметр-влакым загрузка...",
+  "settings.loadError": "Настройко-влакым загрузитлен кертын огыл.",
+  "settings.saved": "Параметр-влак аралалтыт.",
+  "settings.error400": "Пожалуйста, кусарыме параметр-влакым тергыза.",
+  "settings.saveError": "Настройко-влакым аралаш ок лий. Эше ик гана тӧчен ончо.",
 } satisfies Record<TranslationKey, string>;
 export default d_chm;

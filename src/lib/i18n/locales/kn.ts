@@ -228,5 +228,15 @@ const d_kn = {
   "discover.followers": "ಅನುಯಾಯಿಗಳು",
   "topic.postsInTopic": "ಈ ವಿಷಯದ ಪೋಸ್ಟ್‌ಗಳು.",
   "bookmarks.description": "ನೀವು ನಂತರ ಉಳಿಸಿದ ಪೋಸ್ಟ್‌ಗಳು.",
+  "settings.translation": "ಅನುವಾದ",
+  "settings.preferredLanguage": "ಆದ್ಯತೆಯ ಅನುವಾದ ಭಾಷೆ",
+  "settings.useNativeLanguage": "ಸ್ಥಳೀಯ ಭಾಷೆ ಬಳಸಿ",
+  "settings.autoTranslate": "ಸ್ವಯಂ ಅನುವಾದ",
+  "settings.autoTranslateDescription": "ಒಳಬರುವ ವಿಷಯವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನಿಮ್ಮ ಆದ್ಯತೆಯ ಭಾಷೆಗೆ ಅನುವಾದಿಸಬಹುದು.",
+  "settings.loading": "ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...",
+  "settings.loadError": "ನಿಮ್ಮ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+  "settings.saved": "ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಉಳಿಸಲಾಗಿದೆ.",
+  "settings.error400": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಅನುವಾದ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.",
+  "settings.saveError": "ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
 } satisfies Record<TranslationKey, string>;
 export default d_kn;

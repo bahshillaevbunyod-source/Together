@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ApiError, getProfile, updateProfile } from "@/lib/api";
 import { LANGUAGES } from "@/lib/languages";
+import { useLanguage, type TranslationKey } from "@/lib/language-context";
 
 type Status = "loading" | "ready" | "error";
 
@@ -11,16 +12,18 @@ type Status = "loading" | "ready" | "error";
 // language" (and, with auto-translate, effectively no translation target).
 const NATIVE_VALUE = ""; // select value representing null / use-native
 
-function friendlySettingsError(err: unknown): string {
+// Map on stable HTTP status so the displayed copy stays translatable without
+// changing which error surfaces for a given failure.
+function friendlySettingsErrorKey(err: unknown): TranslationKey {
   if (err instanceof ApiError) {
-    if (err.status === 400) return "Please check your translation settings.";
-    if (err.status === 401)
-      return "Your session has expired. Please sign in again.";
+    if (err.status === 400) return "settings.error400";
+    if (err.status === 401) return "edit.sessionExpired";
   }
-  return "Couldn’t save settings. Try again.";
+  return "settings.saveError";
 }
 
 export default function SettingsPage() {
+  const { t } = useLanguage();
   const [status, setStatus] = useState<Status>("loading");
   const [preferredLanguage, setPreferredLanguage] = useState<string>(NATIVE_VALUE);
   const [autoTranslate, setAutoTranslate] = useState(false);
@@ -81,7 +84,7 @@ export default function SettingsPage() {
       setNativeLanguage(updated.nativeLanguage);
       setSaved(true);
     } catch (err) {
-      setError(friendlySettingsError(err)); // keep entered values
+      setError(t(friendlySettingsErrorKey(err))); // keep entered values
     } finally {
       setSaving(false);
     }
@@ -89,20 +92,20 @@ export default function SettingsPage() {
 
   if (status === "loading") {
     return (
-      <p className="py-16 text-center text-sm text-muted">Loading settings…</p>
+      <p className="py-16 text-center text-sm text-muted">{t("settings.loading")}</p>
     );
   }
 
   if (status === "error") {
     return (
       <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-8 text-center shadow-sm">
-        <p className="text-sm text-muted">Couldn’t load your settings.</p>
+        <p className="text-sm text-muted">{t("settings.loadError")}</p>
         <button
           type="button"
           onClick={() => load()}
           className="mt-3 rounded-full bg-primary px-4 py-1.5 text-sm text-white transition-colors hover:bg-primary-hover"
         >
-          Try again
+          {t("search.tryAgain")}
         </button>
       </div>
     );
@@ -112,15 +115,15 @@ export default function SettingsPage() {
     <div className="mx-auto max-w-2xl">
       <section className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
         <h1 className="text-lg font-bold tracking-tight text-foreground">
-          Settings
+          {t("navigation.settings")}
         </h1>
-        <h2 className="mt-1 text-sm text-muted">Translation</h2>
+        <h2 className="mt-1 text-sm text-muted">{t("settings.translation")}</h2>
 
         <form onSubmit={onSave} className="mt-5 flex flex-col gap-5">
           {/* Preferred language */}
           <label className="flex flex-col gap-1.5">
             <span className="text-sm font-medium text-foreground">
-              Preferred translation language
+              {t("settings.preferredLanguage")}
             </span>
             <select
               value={preferredLanguage}
@@ -131,7 +134,7 @@ export default function SettingsPage() {
               }}
               className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
             >
-              <option value={NATIVE_VALUE}>Use native language</option>
+              <option value={NATIVE_VALUE}>{t("settings.useNativeLanguage")}</option>
               {options.map((l) => (
                 <option key={l.code} value={l.code}>
                   {l.label} — {l.code}
@@ -154,18 +157,17 @@ export default function SettingsPage() {
             />
             <span>
               <span className="block text-sm font-medium text-foreground">
-                Auto translate
+                {t("settings.autoTranslate")}
               </span>
               <span className="block text-xs text-muted">
-                Incoming content can be automatically translated into your
-                preferred language.
+                {t("settings.autoTranslateDescription")}
               </span>
             </span>
           </label>
 
           {/* Native language (informational) */}
           <div className="border-t border-border pt-4 text-sm">
-            <span className="text-muted-soft">Native language</span>
+            <span className="text-muted-soft">{t("profile.nativeLanguage")}</span>
             <div className="text-foreground">{nativeLanguage}</div>
           </div>
 
@@ -176,7 +178,7 @@ export default function SettingsPage() {
           ) : null}
           {saved && !error ? (
             <p className="text-sm text-emerald-600" role="status">
-              Settings saved.
+              {t("settings.saved")}
             </p>
           ) : null}
 
@@ -186,7 +188,7 @@ export default function SettingsPage() {
               disabled={saving}
               className="rounded-full bg-primary px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
             >
-              {saving ? "Saving…" : "Save"}
+              {saving ? t("post.saving") : t("post.save")}
             </button>
           </div>
         </form>

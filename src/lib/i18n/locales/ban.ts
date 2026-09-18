@@ -228,5 +228,15 @@ const d_ban = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "Pos ring topik puniki.",
   "bookmarks.description": "Pos sané sampun kasimpen Sameton anggén salanturnyané.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Basa terjemahan sané kasenengin",
+  "settings.useNativeLanguage": "Anggén basa asli",
+  "settings.autoTranslate": "Terjemahan otomatis",
+  "settings.autoTranslateDescription": "Kontén sané ngranjing prasida katerjemahang otomatis ka basa sané senengin Sameton.",
+  "settings.loading": "Setélan ngunggahang...",
+  "settings.loadError": "Nénten prasida ngunggahang setélan Sametoné.",
+  "settings.saved": "Setélan sampun kasimpen.",
+  "settings.error400": "Cingakin setélan terjemahan Sametoné.",
+  "settings.saveError": "Nénten prasida nyimpen setélan. Indayang malih.",
 } satisfies Record<TranslationKey, string>;
 export default d_ban;

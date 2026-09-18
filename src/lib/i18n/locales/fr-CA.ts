@@ -228,5 +228,15 @@ const d_fr_CA = {
   "discover.followers": "abonnés",
   "topic.postsInTopic": "Messages dans ce sujet.",
   "bookmarks.description": "Publications que vous avez enregistrées pour plus tard.",
+  "settings.translation": "Traduction",
+  "settings.preferredLanguage": "Langue de traduction préférée",
+  "settings.useNativeLanguage": "Utiliser la langue maternelle",
+  "settings.autoTranslate": "Traduction automatique",
+  "settings.autoTranslateDescription": "Le contenu entrant peut être traduit automatiquement dans votre langue préférée.",
+  "settings.loading": "Chargement des paramètres…",
+  "settings.loadError": "Impossible de charger vos paramètres.",
+  "settings.saved": "Paramètres enregistrés.",
+  "settings.error400": "Veuillez vérifier vos paramètres de traduction.",
+  "settings.saveError": "Impossible d'enregistrer les paramètres. Essayer de nouveau.",
 } satisfies Record<TranslationKey, string>;
 export default d_fr_CA;

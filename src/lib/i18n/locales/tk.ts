@@ -228,5 +228,15 @@ const d_tk = {
   "discover.followers": "yzarlaýanlar",
   "topic.postsInTopic": "Bu mowzukdaky ýazgylar.",
   "bookmarks.description": "Soňrak ýazdyran ýazgylaryňyz.",
+  "settings.translation": "Terjime",
+  "settings.preferredLanguage": "Iň gowy görülýän terjime dili",
+  "settings.useNativeLanguage": "Ene dilini ulanyň",
+  "settings.autoTranslate": "Awto terjime",
+  "settings.autoTranslateDescription": "Gelýän mazmun awtomatiki usulda halaýan diliňize terjime edilip bilner.",
+  "settings.loading": "Sazlamalary ýüklemek…",
+  "settings.loadError": "Sazlamalaryňyzy ýükläp bolmaýar",
+  "settings.saved": "Sazlamalar saklandy",
+  "settings.error400": "Terjime sazlamalaryňyzy barlaň.",
+  "settings.saveError": "Sazlamalary ýatda saklap bolmaýar Gaýtadan synanyşyň.",
 } satisfies Record<TranslationKey, string>;
 export default d_tk;

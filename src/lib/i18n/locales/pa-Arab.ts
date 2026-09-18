@@ -228,5 +228,15 @@ const d_pa_Arab = {
   "discover.followers": "پیروکار",
   "topic.postsInTopic": "اس موضوع تے پوسٹاں۔",
   "bookmarks.description": "اوہ پوسٹاں جہڑیاں تسی بعد چ محفوظ کیتیاں نیں۔",
+  "settings.translation": "ترجمہ",
+  "settings.preferredLanguage": "ترجیحی ترجمہ بولی",
+  "settings.useNativeLanguage": "ماں بولی ورتو",
+  "settings.autoTranslate": "خودکار ترجمہ",
+  "settings.autoTranslateDescription": "آن آلا مواد خودبخود تہاڈی پسندیدہ زبان چ ترجمہ کیتا جا سکدا اے۔",
+  "settings.loading": "ترتیبات لوڈ ہو رہیاں نیں...",
+  "settings.loadError": "تہاڈی ترتیبات لوڈ نئیں ہو سکی۔",
+  "settings.saved": "ترتیبات محفوظ کر لئیاں گئیاں۔",
+  "settings.error400": "مہربانی کر کے اپنی ترجمے دی ترتیب ویکھو۔",
+  "settings.saveError": "ترتیبات محفوظ نئیں کر سکے۔ فیر کوشش کرو۔",
 } satisfies Record<TranslationKey, string>;
 export default d_pa_Arab;

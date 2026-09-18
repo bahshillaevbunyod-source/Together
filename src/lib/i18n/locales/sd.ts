@@ -228,5 +228,15 @@ const d_sd = {
   "discover.followers": "پوئلڳ",
   "topic.postsInTopic": "هن موضوع ۾ پوسٽون.",
   "bookmarks.description": "پوسٽون جيڪي توهان بعد ۾ محفوظ ڪيون آهن.",
+  "settings.translation": "ترجمو",
+  "settings.preferredLanguage": "ترجيحي ترجمي جي ٻولي",
+  "settings.useNativeLanguage": "مادري ٻولي استعمال ڪريو",
+  "settings.autoTranslate": "خودڪار ترجمو",
+  "settings.autoTranslateDescription": "ايندڙ مواد خودڪار طريقي سان ترجمو ڪري سگھجي ٿو توھان جي پسنديده ٻولي ۾.",
+  "settings.loading": "لوڊ ڪندي سيٽنگون...",
+  "settings.loadError": "توھان جي سيٽنگ لوڊ نه ٿي سگھي.",
+  "settings.saved": "سيٽنگون محفوظ ڪيون ويون.",
+  "settings.error400": "مھرباني ڪري پنھنجي ترجمي جي سيٽنگ چيڪ ڪريو.",
+  "settings.saveError": "سيٽنگون محفوظ نه ٿي سگھيون. ٻيهر ڪوشش ڪريو.",
 } satisfies Record<TranslationKey, string>;
 export default d_sd;

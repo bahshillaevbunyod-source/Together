@@ -228,5 +228,15 @@ const d_az = {
   "discover.followers": "izləyicilər",
   "topic.postsInTopic": "Bu mövzuda yazılar.",
   "bookmarks.description": "Sonrakı üçün saxladığınız postlar.",
+  "settings.translation": "Tərcümə",
+  "settings.preferredLanguage": "Tərcümə dilinə üstünlük verilir",
+  "settings.useNativeLanguage": "Ana dilindən istifadə edin",
+  "settings.autoTranslate": "Avtomatik tərcümə",
+  "settings.autoTranslateDescription": "Daxil olan məzmun avtomatik olaraq seçdiyiniz dilə tərcümə edilə bilər.",
+  "settings.loading": "Parametrlər yüklənir...",
+  "settings.loadError": "Parametrlərinizi yükləmək mümkün olmadı.",
+  "settings.saved": "Parametrlər yadda saxlandı.",
+  "settings.error400": "Tərcümə parametrlərinizi yoxlayın.",
+  "settings.saveError": "Parametrləri saxlamaq mümkün olmadı. Yenidən cəhd edin.",
 } satisfies Record<TranslationKey, string>;
 export default d_az;

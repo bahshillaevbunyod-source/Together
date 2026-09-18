@@ -228,5 +228,15 @@ const d_cy = {
   "discover.followers": "dilynwyr",
   "topic.postsInTopic": "Postiadau yn y pwnc hwn.",
   "bookmarks.description": "Postiadau rydych chi wedi'u cadw ar eu cyfer yn nes ymlaen.",
+  "settings.translation": "Cyfieithiad",
+  "settings.preferredLanguage": "Dewis iaith gyfieithu",
+  "settings.useNativeLanguage": "Defnyddiwch iaith frodorol",
+  "settings.autoTranslate": "Cyfieithu awtomatig",
+  "settings.autoTranslateDescription": "Gellir cyfieithu cynnwys sy'n dod i mewn yn awtomatig i'ch dewis iaith.",
+  "settings.loading": "Wrthi'n llwytho gosodiadau…",
+  "settings.loadError": "Methu â llwytho'ch gosodiadau.",
+  "settings.saved": "Gosodiadau wedi'u cadw.",
+  "settings.error400": "Gwiriwch eich gosodiadau cyfieithu.",
+  "settings.saveError": "Methu â chadw gosodiadau. Ceisiwch eto.",
 } satisfies Record<TranslationKey, string>;
 export default d_cy;

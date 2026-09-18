@@ -228,5 +228,15 @@ const it = {
   "discover.followers": "seguaci",
   "topic.postsInTopic": "Post in questo argomento.",
   "bookmarks.description": "Post che hai salvato per dopo.",
+  "settings.translation": "Traduzione",
+  "settings.preferredLanguage": "Lingua di traduzione preferita",
+  "settings.useNativeLanguage": "Usa la lingua madre",
+  "settings.autoTranslate": "Traduzione automatica",
+  "settings.autoTranslateDescription": "I contenuti in arrivo possono essere tradotti automaticamente nella tua lingua preferita.",
+  "settings.loading": "Caricamento impostazioni…",
+  "settings.loadError": "Impossibile caricare le impostazioni.",
+  "settings.saved": "Impostazioni salvate.",
+  "settings.error400": "Controlla le impostazioni di traduzione.",
+  "settings.saveError": "Impossibile salvare le impostazioni. Riprova.",
 } satisfies Record<TranslationKey, string>;
 export default it;

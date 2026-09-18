@@ -228,5 +228,15 @@ const d_mg = {
   "discover.followers": "MPANARA-DIA AZY",
   "topic.postsInTopic": "Lahatsoratra amin'ity lohahevitra ity.",
   "bookmarks.description": "Hafatra voatahiry ho any aoriana.",
+  "settings.translation": "Fandikan-teny",
+  "settings.preferredLanguage": "Fiteny fandikan-teny tiana",
+  "settings.useNativeLanguage": "Mampiasà fitenin-drazana",
+  "settings.autoTranslate": "Mandika mandeha ho azy",
+  "settings.autoTranslateDescription": "Ny votoaty miditra dia azo adika ho azy amin'ny fiteny tianao.",
+  "settings.loading": "Mametraka kira…",
+  "settings.loadError": "Tsy afaka nampiditra ny kiranao.",
+  "settings.saved": "Voatahiry ny fika.",
+  "settings.error400": "Hamarino azafady ny firafitry ny fandikan-teny.",
+  "settings.saveError": "Tsy afaka mitahiry kira. Andramo indray mandeha.",
 } satisfies Record<TranslationKey, string>;
 export default d_mg;

@@ -228,5 +228,15 @@ const d_sw = {
   "discover.followers": "wafuasi",
   "topic.postsInTopic": "Machapisho katika mada hii.",
   "bookmarks.description": "Machapisho ambayo umehifadhi kwa ajili ya baadaye.",
+  "settings.translation": "Tafsiri",
+  "settings.preferredLanguage": "Lugha ya tafsiri inayopendekezwa",
+  "settings.useNativeLanguage": "Tumia lugha ya asili",
+  "settings.autoTranslate": "Tafsiri kiotomatiki",
+  "settings.autoTranslateDescription": "Maudhui yanayoingia yanaweza kutafsiriwa kiotomatiki katika lugha unayopendelea.",
+  "settings.loading": "Inapakia mipangilio...",
+  "settings.loadError": "Haikuweza kupakia mipangilio yako.",
+  "settings.saved": "Mipangilio imehifadhiwa.",
+  "settings.error400": "Tafadhali angalia mipangilio yako ya tafsiri.",
+  "settings.saveError": "Haikuweza kuhifadhi mipangilio. Jaribu tena.",
 } satisfies Record<TranslationKey, string>;
 export default d_sw;

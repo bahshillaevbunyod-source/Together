@@ -228,5 +228,15 @@ const d_lt = {
   "discover.followers": "sekėtojai",
   "topic.postsInTopic": "Įrašai šioje temoje.",
   "bookmarks.description": "Įrašai, kuriuos išsaugojote vėliau.",
+  "settings.translation": "Vertimas",
+  "settings.preferredLanguage": "Pageidautina vertimo kalba",
+  "settings.useNativeLanguage": "Naudokite gimtąją kalbą",
+  "settings.autoTranslate": "Automatinis vertimas",
+  "settings.autoTranslateDescription": "Gaunamas turinys gali būti automatiškai išverstas į pageidaujamą kalbą.",
+  "settings.loading": "Įkeliami nustatymai…",
+  "settings.loadError": "Nepavyko įkelti nustatymų.",
+  "settings.saved": "Nustatymai išsaugoti.",
+  "settings.error400": "Patikrinkite vertimo nustatymus.",
+  "settings.saveError": "Nepavyko išsaugoti nustatymų. Bandykite dar kartą.",
 } satisfies Record<TranslationKey, string>;
 export default d_lt;

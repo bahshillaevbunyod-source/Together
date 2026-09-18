@@ -228,5 +228,15 @@ const d_sn = {
   "discover.followers": "vateveri",
   "topic.postsInTopic": "Zvinyorwa munyaya iyi.",
   "bookmarks.description": "Zvinyorwa zvawakachengeta kuitira gare gare.",
+  "settings.translation": "Shanduro",
+  "settings.preferredLanguage": "Mutauro weshanduro waunofarira",
+  "settings.useNativeLanguage": "Shandisa mutauro wekuzvarwa",
+  "settings.autoTranslate": "Shandura wega",
+  "settings.autoTranslateDescription": "Zvirikuuya zvinokwanisa kushandurirwa mumutauro waunofarira.",
+  "settings.loading": "Kurodha zvigadziriso…",
+  "settings.loadError": "Tatadza kurodha marongero ako.",
+  "settings.saved": "Settings dzachengetwa.",
+  "settings.error400": "Ndokumbira utarise marongero ako eshanduro.",
+  "settings.saveError": "Tatadza kuchengetedza. Edza zvakare.",
 } satisfies Record<TranslationKey, string>;
 export default d_sn;

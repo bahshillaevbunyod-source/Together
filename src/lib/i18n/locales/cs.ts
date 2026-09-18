@@ -228,5 +228,15 @@ const d_cs = {
   "discover.followers": "v profilu",
   "topic.postsInTopic": "sledujících",
   "bookmarks.description": "jste si uložili na později.",
+  "settings.translation": "Překlad",
+  "settings.preferredLanguage": "Preferovaný jazyk překladu",
+  "settings.useNativeLanguage": "Používejte rodný jazyk",
+  "settings.autoTranslate": "Automatický překlad",
+  "settings.autoTranslateDescription": "Příchozí obsah lze automaticky přeložit do vašeho preferovaného jazyka.",
+  "settings.loading": "Načítání nastavení…",
+  "settings.loadError": "Nastavení se nepodařilo načíst.",
+  "settings.saved": "Nastavení uloženo.",
+  "settings.error400": "Zkontrolujte prosím nastavení překladu.",
+  "settings.saveError": "Nastavení se nepodařilo uložit. Zkuste to znovu.",
 } satisfies Record<TranslationKey, string>;
 export default d_cs;

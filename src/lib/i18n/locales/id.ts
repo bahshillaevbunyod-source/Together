@@ -228,5 +228,15 @@ const d_id = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "Postingan dalam topik ini.",
   "bookmarks.description": "Postingan yang Anda simpan untuk nanti.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Bahasa terjemahan pilihan",
+  "settings.useNativeLanguage": "Gunakan bahasa ibu",
+  "settings.autoTranslate": "Terjemahan otomatis",
+  "settings.autoTranslateDescription": "Konten yang masuk dapat diterjemahkan secara otomatis ke bahasa pilihan Anda.",
+  "settings.loading": "Memuat pengaturan…",
+  "settings.loadError": "Tidak dapat memuat setelan Anda.",
+  "settings.saved": "Pengaturan disimpan.",
+  "settings.error400": "Silakan periksa pengaturan terjemahan Anda.",
+  "settings.saveError": "Tidak dapat menyimpan setelan. Coba lagi.",
 } satisfies Record<TranslationKey, string>;
 export default d_id;

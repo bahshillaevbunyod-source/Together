@@ -228,5 +228,15 @@ const d_ga = {
   "discover.followers": "leanúna",
   "topic.postsInTopic": "Poist san ábhar seo.",
   "bookmarks.description": "Postálacha a shábháil tú le haghaidh níos déanaí.",
+  "settings.translation": "Aistriúchán",
+  "settings.preferredLanguage": "Teanga aistriúcháin is fearr leat",
+  "settings.useNativeLanguage": "Úsáid teanga dhúchais",
+  "settings.autoTranslate": "Aistriú uathoibríoch",
+  "settings.autoTranslateDescription": "Is féidir ábhar a thagann isteach a aistriú go huathoibríoch chuig do rogha teanga.",
+  "settings.loading": "Socruithe á lódáil…",
+  "settings.loadError": "Níorbh fhéidir do shocruithe a lódáil.",
+  "settings.saved": "Socruithe sábháilte.",
+  "settings.error400": "Seiceáil do shocruithe aistriúcháin.",
+  "settings.saveError": "Níorbh fhéidir na socruithe a shábháil. Bain triail eile as.",
 } satisfies Record<TranslationKey, string>;
 export default d_ga;

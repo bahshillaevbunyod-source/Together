@@ -228,5 +228,15 @@ const d_qu = {
   "discover.followers": "qatiqninkuna",
   "topic.postsInTopic": "Qatichisqakuna kay tema.",
   "bookmarks.description": "Qhipaman waqaychasqa qillqakuna.",
+  "settings.translation": "Traducción",
+  "settings.preferredLanguage": "Aswan allin tikray simi",
+  "settings.useNativeLanguage": "Mama simita apaykachana",
+  "settings.autoTranslate": "Auto tikray",
+  "settings.autoTranslateDescription": "Yaykusqa contenidoqa kikillanmantam tikrasqa kanman munasqayki simiman.",
+  "settings.loading": "Ajustes nisqakunata cargaspa...",
+  "settings.loadError": "Mana atirqanchu churasqaykita kargayta.",
+  "settings.saved": "Waqaychasqa churasqakuna.",
+  "settings.error400": "Ama hina kaspa, tikraypaq churasqaykita qhaway.",
+  "settings.saveError": "Mana atirqanchu churaykunata waqaychayta. Hukmanta kallpachakuy.",
 } satisfies Record<TranslationKey, string>;
 export default d_qu;

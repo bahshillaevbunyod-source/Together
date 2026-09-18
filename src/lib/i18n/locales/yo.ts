@@ -228,5 +228,15 @@ const d_yo = {
   "discover.followers": "omoleyin",
   "topic.postsInTopic": "Awọn ifiweranṣẹ ni koko yii.",
   "bookmarks.description": "Awọn ifiweranṣẹ ti o ti fipamọ fun nigbamii.",
+  "settings.translation": "Itumọ",
+  "settings.preferredLanguage": "Ede itumọ ti o fẹ",
+  "settings.useNativeLanguage": "Lo ede abinibi",
+  "settings.autoTranslate": "Tumọ laifọwọyi",
+  "settings.autoTranslateDescription": "Akoonu ti nwọle le ṣe itumọ laifọwọyi si ede ti o fẹ.",
+  "settings.loading": "Awọn eto ikojọpọ…",
+  "settings.loadError": "Ko le kojọpọ awọn eto rẹ.",
+  "settings.saved": "Eto ti a fipamọ.",
+  "settings.error400": "Jọwọ ṣayẹwo awọn eto itumọ rẹ.",
+  "settings.saveError": "Ko le fi eto pamọ. Gbiyanju lẹẹkansi.",
 } satisfies Record<TranslationKey, string>;
 export default d_yo;

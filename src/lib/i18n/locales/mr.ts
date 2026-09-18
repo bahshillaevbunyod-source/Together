@@ -228,5 +228,15 @@ const d_mr = {
   "discover.followers": "अनुयायी",
   "topic.postsInTopic": "या विषयातील पोस्ट.",
   "bookmarks.description": "तुम्ही नंतरसाठी जतन केलेल्या पोस्ट.",
+  "settings.translation": "भाषांतर",
+  "settings.preferredLanguage": "पसंतीची भाषांतर भाषा",
+  "settings.useNativeLanguage": "मातृभाषा वापरा",
+  "settings.autoTranslate": "स्वयं भाषांतर",
+  "settings.autoTranslateDescription": "येणारी सामग्री आपोआप तुमच्या पसंतीच्या भाषेत अनुवादित केली जाऊ शकते.",
+  "settings.loading": "सेटिंग्ज लोड करत आहे...",
+  "settings.loadError": "तुमची सेटिंग्ज लोड करू शकलो नाही.",
+  "settings.saved": "सेटिंग्ज सेव्ह केल्या.",
+  "settings.error400": "कृपया तुमची भाषांतर सेटिंग्ज तपासा.",
+  "settings.saveError": "सेटिंग्ज सेव्ह करू शकलो नाही. पुन्हा प्रयत्न करा.",
 } satisfies Record<TranslationKey, string>;
 export default d_mr;

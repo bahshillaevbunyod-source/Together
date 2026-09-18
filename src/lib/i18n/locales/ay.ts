@@ -228,5 +228,15 @@ const d_ay = {
   "discover.followers": "arkirinaka",
   "topic.postsInTopic": "Posts in aka tema.",
   "bookmarks.description": "Posts ukax qhipa pachatakiw imatäski.",
+  "settings.translation": "Jaqukipaña",
+  "settings.preferredLanguage": "Jaqukipaña aru munata",
+  "settings.useNativeLanguage": "Nayra aru apnaqaña",
+  "settings.autoTranslate": "Auto jaqukipaña",
+  "settings.autoTranslateDescription": "Uka mantaniri contenido ukaxa automáticamente jaqukipataspawa jumana munata arumaru.",
+  "settings.loading": "Ukax mä configuración...",
+  "settings.loadError": "Janiwa utt’ayatanakaxa apkatañjamäkiti.",
+  "settings.saved": "Configuración ukanakax imatäxiwa.",
+  "settings.error400": "Jaqukipañ tuqit wakichtʼatanakam uñakiptʼañamawa.",
+  "settings.saveError": "Janiwa utt’ayatanakaxa qhispiyañjamäkiti. Mayampiw yantʼañama.",
 } satisfies Record<TranslationKey, string>;
 export default d_ay;

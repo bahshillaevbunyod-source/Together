@@ -228,5 +228,15 @@ const d_ach = {
   "discover.followers": "lulub kor",
   "topic.postsInTopic": "Coc ma tye i wi lok man.",
   "bookmarks.description": "Coc ma i gwoko pi anyim.",
+  "settings.translation": "gonyo leb",
+  "settings.preferredLanguage": "Leb me gonyo leb ma ki maro",
+  "settings.useNativeLanguage": "Tii ki leb ma ki nywalo",
+  "settings.autoTranslate": "gonyo leb ma piire tek",
+  "settings.autoTranslateDescription": "Gin ma tye ka bino ki twero gonyo ne i leb ma in imaro.",
+  "settings.loading": "Kit me keto...",
+  "settings.loadError": "Pe atwero keto jami ni.",
+  "settings.saved": "Ki gwoko jami ma ki keto.",
+  "settings.error400": "Tim ber inen kit ma ki loko kwede leb ni.",
+  "settings.saveError": "Pe twero gwoko jami ma ki keto. Tem doki.",
 } satisfies Record<TranslationKey, string>;
 export default d_ach;

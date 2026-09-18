@@ -228,5 +228,15 @@ const d_br = {
   "discover.followers": "heulierien",
   "topic.postsInTopic": "Kemennadoù war an danvez-mañ.",
   "bookmarks.description": "Kemennadoù hoc'h eus enrollet evit diwezhatoc'h.",
+  "settings.translation": "Troidigezh",
+  "settings.preferredLanguage": "Yezh troidigezh gwellañ",
+  "settings.useNativeLanguage": "Implijout ar yezh orin",
+  "settings.autoTranslate": "Troidigezh emgefre",
+  "settings.autoTranslateDescription": "An endalc'hadoù deuet a c'hall bezañ troet ent emgefre er yezh a blij deoc'h.",
+  "settings.loading": "O kargañ arventennoù...",
+  "settings.loadError": "N'haller ket kargañ ho arventennoù.",
+  "settings.saved": "Arventennoù enrollet.",
+  "settings.error400": "Gwiriit ho arventennoù troidigezh mar plij.",
+  "settings.saveError": "N'haller ket enrollañ an arventennoù. Klaskit en-dro.",
 } satisfies Record<TranslationKey, string>;
 export default d_br;

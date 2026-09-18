@@ -228,5 +228,15 @@ const d_ht = {
   "discover.followers": "disip yo",
   "topic.postsInTopic": "Posts nan sijè sa a.",
   "bookmarks.description": "Posts ou te sove pou pita.",
+  "settings.translation": "Tradiksyon",
+  "settings.preferredLanguage": "Lang tradiksyon pi pito",
+  "settings.useNativeLanguage": "Sèvi ak lang natif natal",
+  "settings.autoTranslate": "Tradiksyon otomatik",
+  "settings.autoTranslateDescription": "Kontni kap vini yo ka otomatikman tradui nan lang ou pi pito.",
+  "settings.loading": "Chaje paramèt...",
+  "settings.loadError": "Pa t 'kapab chaje paramèt ou yo.",
+  "settings.saved": "Anviwònman yo sove.",
+  "settings.error400": "Tanpri tcheke paramèt tradiksyon ou yo.",
+  "settings.saveError": "Pa t 'kapab sove paramèt yo. Eseye ankò.",
 } satisfies Record<TranslationKey, string>;
 export default d_ht;

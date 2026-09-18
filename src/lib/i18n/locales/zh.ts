@@ -228,5 +228,15 @@ const zh = {
   "discover.followers": "关注者",
   "topic.postsInTopic": "此主题中的帖子。",
   "bookmarks.description": "您已保存供以后使用的帖子。",
+  "settings.translation": "翻译",
+  "settings.preferredLanguage": "首选翻译语言",
+  "settings.useNativeLanguage": "使用母语",
+  "settings.autoTranslate": "自动翻译",
+  "settings.autoTranslateDescription": "传入的内容可以自动翻译成您的首选语言。",
+  "settings.loading": "正在加载设置...",
+  "settings.loadError": "无法加载您的设置。",
+  "settings.saved": "设置已保存。",
+  "settings.error400": "请检查您的翻译设置。",
+  "settings.saveError": "无法保存设置。再试一次。",
 } satisfies Record<TranslationKey, string>;
 export default zh;

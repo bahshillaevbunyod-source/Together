@@ -228,5 +228,15 @@ const d_oc = {
   "discover.followers": "seguidors",
   "topic.postsInTopic": "Messatges dins aqueste tèma.",
   "bookmarks.description": "Messatges qu'avètz enregistrats per mai tard.",
+  "settings.translation": "Traduccion",
+  "settings.preferredLanguage": "Lenga de traduccion preferida",
+  "settings.useNativeLanguage": "Utilizar la lenga mairala",
+  "settings.autoTranslate": "Traduccion automatica",
+  "settings.autoTranslateDescription": "Lo contengut entrant pòt èsser automaticament revirat dins vòstra lenga preferida.",
+  "settings.loading": "Los paramètres en cargament...",
+  "settings.loadError": "Impossible de cargar vòstres paramètres.",
+  "settings.saved": "Paramètres enregistrats.",
+  "settings.error400": "Mercés de verificar vòstres paramètres de traduccion.",
+  "settings.saveError": "Pogut pas enregistrar los paramètres. Ensajatz tornarmai.",
 } satisfies Record<TranslationKey, string>;
 export default d_oc;

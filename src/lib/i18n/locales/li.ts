@@ -228,5 +228,15 @@ const d_li = {
   "discover.followers": "volgers",
   "topic.postsInTopic": "Posts in dit oonderwerp.",
   "bookmarks.description": "Posts die geer heet opgesjlage veur later.",
+  "settings.translation": "Vertaoling",
+  "settings.preferredLanguage": "Veurkäör vertaoltaol",
+  "settings.useNativeLanguage": "Gebruuk de moedertaal",
+  "settings.autoTranslate": "Automatisch vertaole",
+  "settings.autoTranslateDescription": "Inkoumende inhoud kin automatisch weure vertaold in de taol die geer wilt.",
+  "settings.loading": "Insjtellinge laden…",
+  "settings.loadError": "Kon dien insjtellinge neet lade.",
+  "settings.saved": "Insjtellinge opgeslage.",
+  "settings.error400": "Controleer de vertaolingsinstellinge.",
+  "settings.saveError": "Kon de insjtellinge neet opsjlaon. Probeer nog ummer.",
 } satisfies Record<TranslationKey, string>;
 export default d_li;

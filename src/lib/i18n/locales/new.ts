@@ -228,5 +228,15 @@ const d_new = {
   "discover.followers": "अनुयायीत",
   "topic.postsInTopic": "थुगु बिषयस पोष्ट ।",
   "bookmarks.description": "लिपाया निंतिं छिं सेभ यानातःगु पोस्ट ।",
+  "settings.translation": "भाय् हिलेगु",
+  "settings.preferredLanguage": "यःगु भाय् हिलेगु भाय्",
+  "settings.useNativeLanguage": "मातृ भाय् छ्य ।",
+  "settings.autoTranslate": "अटो भाय् हिलेगु",
+  "settings.autoTranslateDescription": "दुहां वइगु सामग्रीयात छन्त यःगु भासं थःथम्हं भाय् हिलेफै ।",
+  "settings.loading": "सेटिङ्ग लोड जुयाच्वन ...",
+  "settings.loadError": "छिगु सेटिङ्ग लोड याये मफुत ।",
+  "settings.saved": "सेटिङ्गत बचे जुल ।",
+  "settings.error400": "छिगु भाय् हिलेगु सेटिङ्ग स्वयादिसँ ।",
+  "settings.saveError": "सेटिङ्ग सेभ याये मफुत । हाकनं कुतः या ।",
 } satisfies Record<TranslationKey, string>;
 export default d_new;

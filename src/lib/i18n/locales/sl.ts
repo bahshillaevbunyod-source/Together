@@ -228,5 +228,15 @@ const d_sl = {
   "discover.followers": "sledilci",
   "topic.postsInTopic": "Objave v tej temi.",
   "bookmarks.description": "Objave, ki ste jih shranili za pozneje.",
+  "settings.translation": "Prevajanje",
+  "settings.preferredLanguage": "Prednostni jezik prevoda",
+  "settings.useNativeLanguage": "Uporabljaj materni jezik",
+  "settings.autoTranslate": "Samodejni prevod",
+  "settings.autoTranslateDescription": "Dohodna vsebina se lahko samodejno prevede v vaš želeni jezik.",
+  "settings.loading": "Nalaganje nastavitev ...",
+  "settings.loadError": "Vaših nastavitev ni bilo mogoče naložiti.",
+  "settings.saved": "Nastavitve shranjene.",
+  "settings.error400": "Preverite nastavitve prevajanja.",
+  "settings.saveError": "Nastavitev ni bilo mogoče shraniti. poskusi ponovno",
 } satisfies Record<TranslationKey, string>;
 export default d_sl;

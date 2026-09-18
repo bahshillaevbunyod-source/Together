@@ -228,5 +228,15 @@ const d_doi = {
   "discover.followers": "फॉलोअर",
   "topic.postsInTopic": "पोस्ट च इस विषय गी।",
   "bookmarks.description": "पोस्टें गी तुसें बाद च सेव कीता ऐ।",
+  "settings.translation": "अनुवाद करना",
+  "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा",
+  "settings.useNativeLanguage": "मातृभाषा दा प्रयोग करो",
+  "settings.autoTranslate": "ऑटो अनुवाद करो",
+  "settings.autoTranslateDescription": "आने आह् ली सामग्री दा स्वतः तुंदी पसंदीदा भाशा च अनुवाद कीता जाई सकदा ऐ।",
+  "settings.loading": "सेटिंग्स लोड होआ करदी ऐ...",
+  "settings.loadError": "तुंदी सेटिंग्स लोड नेईं होई सकेआ।",
+  "settings.saved": "सेटिंग्स सेव कीती गेई।",
+  "settings.error400": "कृपा करियै अपनी अनुवाद सेटिंग्स दी जांच करो।",
+  "settings.saveError": "सेटिंग्स गी सेव नेईं करी सकेआ। फिर कोशिश करो।",
 } satisfies Record<TranslationKey, string>;
 export default d_doi;

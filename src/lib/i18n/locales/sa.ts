@@ -228,5 +228,15 @@ const d_sa = {
   "discover.followers": "अनुयायिनः",
   "topic.postsInTopic": "पोस्ट्स् इत्यत्र this topic.",
   "bookmarks.description": "भवता पश्चात् कृते रक्षिताः पोस्ट्।",
+  "settings.translation": "अनुवाद",
+  "settings.preferredLanguage": "प्राधान्यानुवादभाषा",
+  "settings.useNativeLanguage": "देशीभाषायाः प्रयोगं कुर्वन्तु",
+  "settings.autoTranslate": "स्वतः अनुवादं कुर्वन्तु",
+  "settings.autoTranslateDescription": "आगच्छन्ती सामग्री स्वयमेव भवतः इष्टभाषायां अनुवादयितुं शक्यते।",
+  "settings.loading": "सेटिंग्स् लोड् भवति...",
+  "settings.loadError": "भवतः सेटिङ्ग्स् लोड् कर्तुं न शक्तवान् ।",
+  "settings.saved": "सेटिंग्स् रक्षितानि।",
+  "settings.error400": "कृपया स्वस्य अनुवादसेटिंग्स् पश्यन्तु।",
+  "settings.saveError": "सेटिङ्ग्स् रक्षितुं न शक्तवान् । पुनः प्रयासं कुर्वन्तु।",
 } satisfies Record<TranslationKey, string>;
 export default d_sa;

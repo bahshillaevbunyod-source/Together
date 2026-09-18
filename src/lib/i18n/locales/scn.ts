@@ -228,5 +228,15 @@ const d_scn = {
   "discover.followers": "seguituri",
   "topic.postsInTopic": "Pubbricazzioni nna stu argumentu.",
   "bookmarks.description": "Pubblicazzioni ca hai sarbatu pi doppu.",
+  "settings.translation": "Traduzzioni",
+  "settings.preferredLanguage": "Lingua di traduzzioni prifiruta",
+  "settings.useNativeLanguage": "Usa la lingua matri",
+  "settings.autoTranslate": "Traduzzioni autumàtica",
+  "settings.autoTranslateDescription": "Lu cuntinutu ca arriva pò èssiri traduttu automaticamenti ntâ lingua ca prifirisci.",
+  "settings.loading": "Caricamentu dî paràmitri...",
+  "settings.loadError": "Nun putìa carricari li paràmitri.",
+  "settings.saved": "Li paràmitri sarbati.",
+  "settings.error400": "Cuntrolla li paràmitri di traduzzioni.",
+  "settings.saveError": "Nun si putìa sarbari li paràmitri. Pruva n'autra vota.",
 } satisfies Record<TranslationKey, string>;
 export default d_scn;

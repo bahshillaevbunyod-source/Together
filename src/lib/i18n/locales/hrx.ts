@@ -228,5 +228,15 @@ const d_hrx = {
   "discover.followers": "nookhomer",
   "topic.postsInTopic": "Poste in tiise theema.",
   "bookmarks.description": "Posts woos tuu fer xpeeter kexpaart host.",
+  "settings.translation": "Iwersetsung",
+  "settings.preferredLanguage": "Preferëns iwersëtsungs xprooch",
+  "settings.useNativeLanguage": "Tuu ti muter xprooch penutse .",
+  "settings.autoTranslate": "Auto iwersetsung",
+  "settings.autoTranslateDescription": "Inhalte woo khom sin, khëne automaatix in tayn xprooch woos tuu kërn host, iwersetst wëre.",
+  "settings.loading": "Instellunge laate...",
+  "settings.loadError": "Konnt net tayn instellunge laate.",
+  "settings.saved": "Instellunge sin kexpaart.",
+  "settings.error400": "Tuu tayn iwersëtsungs instellunge noo kuke.",
+  "settings.saveError": "Konnt net ti instellunge xpaare. Proop noch mool.",
 } satisfies Record<TranslationKey, string>;
 export default d_hrx;

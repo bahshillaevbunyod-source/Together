@@ -228,5 +228,15 @@ const d_awa = {
   "discover.followers": "अनुयायी",
   "topic.postsInTopic": "यहि विषय मा पोस्ट।",
   "bookmarks.description": "पोस्ट जवन आप बाद मा सहेजे अहैं।",
+  "settings.translation": "अनुवाद",
+  "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा",
+  "settings.useNativeLanguage": "देशी भाषा का प्रयोग करे",
+  "settings.autoTranslate": "स्वचालित अनुवाद",
+  "settings.autoTranslateDescription": "आवै वाली सामग्री का स्वचालित रूप से आपकी पसंदीदा भाषा मा अनुवाद कीन जा सकत है।",
+  "settings.loading": "सेटिंग्स लोड हो रही है...",
+  "settings.loadError": "आपक सेटिंग्स लोड नाहीं होइ पाइन।",
+  "settings.saved": "सेटिंग सहेजी गै।",
+  "settings.error400": "कृपया आपन अनुवाद सेटिंग्स जाँच करा।",
+  "settings.saveError": "सेटिंग्स सहेज नाहीं पावा। फिर से कोशिश करा।",
 } satisfies Record<TranslationKey, string>;
 export default d_awa;

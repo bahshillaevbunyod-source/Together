@@ -228,5 +228,15 @@ const d_ee = {
   "discover.followers": "eyomedzelawo",
   "topic.postsInTopic": "Posts in tanya sia.",
   "bookmarks.description": "Nyatakaka siwo nèdzra ɖo ɖe emegbe.",
+  "settings.translation": "Gbegɔmeɖeɖe",
+  "settings.preferredLanguage": "Gbegɔmeɖeɖe gbe si wodi wu",
+  "settings.useNativeLanguage": "Zã gbe si wodona le dukɔa me",
+  "settings.autoTranslate": "Auto gɔmeɖeɖe",
+  "settings.autoTranslateDescription": "Woate ŋu aɖe nyatakaka siwo va la gɔme le wo ɖokui si ɖe gbe si nèdi me.",
+  "settings.loading": "Wole ɖoɖowo tsɔm...",
+  "settings.loadError": "Mete ŋu tsɔ wò ɖoɖowo de eme o.",
+  "settings.saved": "Wodzra ɖoɖowo ɖo.",
+  "settings.error400": "Taflatse lé ŋku ɖe wò gbegɔmeɖeɖe ƒe ɖoɖowo ŋu.",
+  "settings.saveError": "Mete ŋu dzra ɖoɖowo ɖo o. Gadze agbagba ake.",
 } satisfies Record<TranslationKey, string>;
 export default d_ee;

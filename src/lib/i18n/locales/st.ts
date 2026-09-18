@@ -228,5 +228,15 @@ const d_st = {
   "discover.followers": "balateli",
   "topic.postsInTopic": "Melaetsa sehloohong sena.",
   "bookmarks.description": "Melaetsa eo u e bolokileng bakeng sa nako e tlang.",
+  "settings.translation": "Phetolelo",
+  "settings.preferredLanguage": "Puo ea phetolelo e ratoang",
+  "settings.useNativeLanguage": "Sebelisa puo ea tlhaho",
+  "settings.autoTranslate": "Fetolela ka boiketsetso",
+  "settings.autoTranslateDescription": "Litaba tse kenang li ka fetoleloa ka bo eona puong eo u e ratang.",
+  "settings.loading": "E kenya litlhophiso...",
+  "settings.loadError": "E hlolehile ho kenya litlhophiso tsa hau.",
+  "settings.saved": "Litlhophiso li bolokiloe.",
+  "settings.error400": "Ka kopo, sheba litlhophiso tsa phetolelo ea hau.",
+  "settings.saveError": "E hlolehile ho boloka litlhophiso. Leka hape.",
 } satisfies Record<TranslationKey, string>;
 export default d_st;

@@ -228,5 +228,15 @@ const d_ha = {
   "discover.followers": "mabiya",
   "topic.postsInTopic": "Posts a cikin wannan batu.",
   "bookmarks.description": "Saƙonnin da kuka adana na gaba.",
+  "settings.translation": "Fassara",
+  "settings.preferredLanguage": "Harshen fassarar da aka fi so",
+  "settings.useNativeLanguage": "Yi amfani da yare na asali",
+  "settings.autoTranslate": "Fassara ta atomatik",
+  "settings.autoTranslateDescription": "Ana iya fassara abun ciki mai shigowa ta atomatik zuwa yaren da kuka fi so.",
+  "settings.loading": "Ana loda saitunan…",
+  "settings.loadError": "An kasa loda saitunan ku.",
+  "settings.saved": "Ajiye saituna.",
+  "settings.error400": "Da fatan za a duba saitunan fassarar ku.",
+  "settings.saveError": "An kasa ajiye saituna. Gwada kuma.",
 } satisfies Record<TranslationKey, string>;
 export default d_ha;

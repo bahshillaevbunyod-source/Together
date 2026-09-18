@@ -228,5 +228,15 @@ const d_luo = {
   "discover.followers": "jolup",
   "topic.postsInTopic": "Oboke e wi wachni.",
   "bookmarks.description": "Gik ma iserito mondo itigodo bang’e.",
+  "settings.translation": "Loko dhok",
+  "settings.preferredLanguage": "Dhok mar loko dhok ma ihero",
+  "settings.useNativeLanguage": "Ti kod dhok ma owuok",
+  "settings.autoTranslate": "Loko dhok owuon",
+  "settings.autoTranslateDescription": "Gik ma biro inyalo lokore giwegi e dhok ma ihero.",
+  "settings.loading": "Sete mag keto...",
+  "settings.loadError": "Ok nyal keto chenro mari.",
+  "settings.saved": "Sete oserit.",
+  "settings.error400": "Yie mondo irang kaka iketo weche mag loko dhok.",
+  "settings.saveError": "Ok nyal kano chenro. Tem kendo.",
 } satisfies Record<TranslationKey, string>;
 export default d_luo;

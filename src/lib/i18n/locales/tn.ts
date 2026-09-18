@@ -228,5 +228,15 @@ const d_tn = {
   "discover.followers": "balatedi",
   "topic.postsInTopic": "Diphousete mo setlhogong seno.",
   "bookmarks.description": "Diphousete tse o di boloketseng moragonyana.",
+  "settings.translation": "Thanolo",
+  "settings.preferredLanguage": "Puo ya thanolo e ke e ratang",
+  "settings.useNativeLanguage": "Dirisa puo ya mono",
+  "settings.autoTranslate": "Thanolo e e itirisang",
+  "settings.autoTranslateDescription": "Diteng tse di tsenang di ka ranolelwa ka itiriso mo puong e o e ratang.",
+  "settings.loading": "Go laisa diseting...",
+  "settings.loadError": "Ga e kgone go laisa diseting tsa gago.",
+  "settings.saved": "Diseting di bolokilwe.",
+  "settings.error400": "Tsweetswee tlhola diseting tsa thanolo ya gago.",
+  "settings.saveError": "Ga e kgone go boloka diseting. Leka gape.",
 } satisfies Record<TranslationKey, string>;
 export default d_tn;

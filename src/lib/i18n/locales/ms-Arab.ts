@@ -228,5 +228,15 @@ const d_ms_Arab = {
   "discover.followers": "ڤڠيكوت",
   "topic.postsInTopic": "ڤوستيڠ دالم تاجوق اين.",
   "bookmarks.description": "ڤوست يڠ تله اندا سيمڤن اونتوق ننتي.",
+  "settings.translation": "ترجمهن",
+  "settings.preferredLanguage": "بهاس ترجمهن يڠ دڬالقكن",
+  "settings.useNativeLanguage": "ڬوناكن بهاس ايبوندا",
+  "settings.autoTranslate": "ترجمهن سچارا اوتوماتيس",
+  "settings.autoTranslateDescription": "ايسي كندوڠن يڠ ماسوق بوليه دترجمهكن سچارا اوتوماتيس ك دالم بهاس يڠ دڬالقكن.",
+  "settings.loading": "سيتيڠ ڤمواتن...",
+  "settings.loadError": "تيدق داڤت ممواتكن سيتيڠ اندا.",
+  "settings.saved": "سيتيڠ دسيمڤن.",
+  "settings.error400": "سيلا چيك سيتيڠ ترجمهن اندا.",
+  "settings.saveError": "تيدق داڤت مڽيمڤن سيتيڠ. چوبا لاڬي.",
 } satisfies Record<TranslationKey, string>;
 export default d_ms_Arab;

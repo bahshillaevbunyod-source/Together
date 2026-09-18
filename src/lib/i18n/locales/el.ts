@@ -228,5 +228,15 @@ const d_el = {
   "discover.followers": "οπαδούς",
   "topic.postsInTopic": "Δημοσιεύσεις σε αυτό το θέμα.",
   "bookmarks.description": "Αναρτήσεις που έχετε αποθηκεύσει για αργότερα.",
+  "settings.translation": "Μετάφραση",
+  "settings.preferredLanguage": "Προτιμώμενη γλώσσα μετάφρασης",
+  "settings.useNativeLanguage": "Χρησιμοποιήστε τη μητρική γλώσσα",
+  "settings.autoTranslate": "Αυτόματη μετάφραση",
+  "settings.autoTranslateDescription": "Το εισερχόμενο περιεχόμενο μπορεί να μεταφραστεί αυτόματα στη γλώσσα που προτιμάτε.",
+  "settings.loading": "Φόρτωση ρυθμίσεων…",
+  "settings.loadError": "Δεν ήταν δυνατή η φόρτωση των ρυθμίσεών σας.",
+  "settings.saved": "Οι ρυθμίσεις αποθηκεύτηκαν.",
+  "settings.error400": "Ελέγξτε τις ρυθμίσεις μετάφρασης.",
+  "settings.saveError": "Δεν ήταν δυνατή η αποθήκευση των ρυθμίσεων. Προσπαθήστε ξανά.",
 } satisfies Record<TranslationKey, string>;
 export default d_el;

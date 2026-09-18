@@ -228,5 +228,15 @@ const ko = {
   "discover.followers": "팔로어",
   "topic.postsInTopic": "이 주제의 게시물.",
   "bookmarks.description": "귀하가 저장한 게시물 나중에.",
+  "settings.translation": "번역",
+  "settings.preferredLanguage": "선호하는 번역 언어",
+  "settings.useNativeLanguage": "모국어를 사용하세요",
+  "settings.autoTranslate": "자동 번역",
+  "settings.autoTranslateDescription": "수신되는 콘텐츠는 자동으로 원하는 언어로 번역될 수 있습니다.",
+  "settings.loading": "설정 로드 중…",
+  "settings.loadError": "설정을 로드할 수 없습니다.",
+  "settings.saved": "설정이 저장되었습니다.",
+  "settings.error400": "번역 설정을 확인하세요.",
+  "settings.saveError": "설정을 저장할 수 없습니다. 다시 시도해 보세요.",
 } satisfies Record<TranslationKey, string>;
 export default ko;

@@ -228,5 +228,15 @@ const ja = {
   "discover.followers": "フォロワー",
   "topic.postsInTopic": "このトピックの投稿。",
   "bookmarks.description": "後で使用するために保存した投稿。",
+  "settings.translation": "翻訳",
+  "settings.preferredLanguage": "希望する翻訳言語",
+  "settings.useNativeLanguage": "母国語を使用する",
+  "settings.autoTranslate": "自動翻訳",
+  "settings.autoTranslateDescription": "受信したコンテンツは、好みの言語に自動的に翻訳できます。",
+  "settings.loading": "設定を読み込み中…",
+  "settings.loadError": "設定を読み込めませんでした。",
+  "settings.saved": "設定が保存されました。",
+  "settings.error400": "翻訳設定を確認してください。",
+  "settings.saveError": "設定を保存できませんでした。もう一度やり直してください。",
 } satisfies Record<TranslationKey, string>;
 export default ja;

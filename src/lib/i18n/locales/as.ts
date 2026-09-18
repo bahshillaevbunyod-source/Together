@@ -228,5 +228,15 @@ const d_as = {
   "discover.followers": "অনুগামীসকল",
   "topic.postsInTopic": "এই বিষয়ত পোষ্ট।",
   "bookmarks.description": "আপুনি পিছৰ বাবে সংৰক্ষণ কৰা পোষ্টসমূহ৷",
+  "settings.translation": "অনুবাদ",
+  "settings.preferredLanguage": "পছন্দৰ অনুবাদ ভাষা",
+  "settings.useNativeLanguage": "থলুৱা ভাষা ব্যৱহাৰ কৰক",
+  "settings.autoTranslate": "অটো অনুবাদ কৰক",
+  "settings.autoTranslateDescription": "অহা বিষয়বস্তু স্বয়ংক্ৰিয়ভাৱে আপোনাৰ পছন্দৰ ভাষালৈ অনুবাদ কৰিব পাৰি।",
+  "settings.loading": "ছেটিংছ লোড কৰি আছে...",
+  "settings.loadError": "আপোনাৰ ছেটিংছ লোড কৰিব পৰা নগ’ল৷",
+  "settings.saved": "ছেটিংছ সংৰক্ষণ কৰা হৈছে।",
+  "settings.error400": "অনুগ্ৰহ কৰি আপোনাৰ অনুবাদৰ ছেটিংছ পৰীক্ষা কৰক।",
+  "settings.saveError": "ছেটিংছ সংৰক্ষণ কৰিব পৰা নগ’ল৷ আকৌ এবাৰ চেষ্টা কৰক।",
 } satisfies Record<TranslationKey, string>;
 export default d_as;

@@ -228,5 +228,15 @@ const d_gn = {
   "discover.followers": "seguidores",
   "topic.postsInTopic": "Posts en ko tema.",
   "bookmarks.description": "Umi post reñongatuva’ekue upe rire g̃uarã.",
+  "settings.translation": "Ñembohasaha",
+  "settings.preferredLanguage": "Ñe’ẽ ñembohasa ojeiporavóva",
+  "settings.useNativeLanguage": "Eipuru ñe’ẽ tee",
+  "settings.autoTranslate": "Auto traducir",
+  "settings.autoTranslateDescription": "Umi mba’e oúva ikatu oñembohasa ijeheguiete ne ñe’ẽ reipotávape.",
+  "settings.loading": "Ojekargávo ñemboheko...",
+  "settings.loadError": "Ndaikatúi okargá ne ñemboheko.",
+  "settings.saved": "Ñemboheko oñeñongatúva.",
+  "settings.error400": "Ehechákena ne ñembohasa ñemboheko.",
+  "settings.saveError": "Ndaikatúi oñongatu ñemboheko. Eñeha’ã jey.",
 } satisfies Record<TranslationKey, string>;
 export default d_gn;

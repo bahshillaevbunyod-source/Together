@@ -228,5 +228,15 @@ const d_lmo = {
   "discover.followers": "seguitor",
   "topic.postsInTopic": "Post in questo argomento.",
   "bookmarks.description": "I post che g’he salvà per dopu.",
+  "settings.translation": "Traduziun",
+  "settings.preferredLanguage": "Lingua de traduziun preferida",
+  "settings.useNativeLanguage": "Duperà la lengua nativa",
+  "settings.autoTranslate": "Traduziun automatich",
+  "settings.autoTranslateDescription": "El contenù che riva pœu vèss tradott automaticamente in de la lengua che g’he pias.",
+  "settings.loading": "Caricament di impostaziun...",
+  "settings.loadError": "Pudeva minga cargà i impostaziun.",
+  "settings.saved": "Impostaziun salvà.",
+  "settings.error400": "Per piasé cuntrulà i impostaziun de traduziun.",
+  "settings.saveError": "Pudeva minga salvà i impostaziun. Pruva ancamò.",
 } satisfies Record<TranslationKey, string>;
 export default d_lmo;

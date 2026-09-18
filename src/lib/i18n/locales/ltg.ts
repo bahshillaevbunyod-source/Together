@@ -228,5 +228,15 @@ const d_ltg = {
   "discover.followers": "sekuotuojus",
   "topic.postsInTopic": "Īroksti itamā temā.",
   "bookmarks.description": "Īroksti, kurus esi saglobuojs vāluok.",
+  "settings.translation": "Tulkuojums .",
+  "settings.preferredLanguage": "Vālamuo tulkuošonys volūda .",
+  "settings.useNativeLanguage": "Lītuot dzymtū volūdu .",
+  "settings.autoTranslate": "Auto tulkuošona",
+  "settings.autoTranslateDescription": "Īnuokūšū saturu var automatiski puortulkuot iz vālamū volūdu.",
+  "settings.loading": "Īluodeišonys īstatejumi...",
+  "settings.loadError": "Navarēja īluodēt sovus īstatejumus.",
+  "settings.saved": "Saglobuoti īstatejumi.",
+  "settings.error400": "Lyudzu, puorbaudi sovus tulkuošonys īstatejumus.",
+  "settings.saveError": "Navarēja saglobuot īstatejumus. Raugi vēļreiz.",
 } satisfies Record<TranslationKey, string>;
 export default d_ltg;

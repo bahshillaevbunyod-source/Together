@@ -228,5 +228,15 @@ const d_nus = {
   "discover.followers": "nɛy tin guɔ̱ɔ̱rkɛ",
   "topic.postsInTopic": "Postni̱ rɛy topik ɛmɛ.",
   "bookmarks.description": "Posts tin ci̱ ji̱n kɛ tɔ̱w kɛ kɔrɛ.",
+  "settings.translation": "Luɔ̱c ŋɔaani̱",
+  "settings.preferredLanguage": "Thok in ca luɔc kɛ jɛ",
+  "settings.useNativeLanguage": "La̱tdɛ thok nath",
+  "settings.autoTranslate": "Luɔ̱c kärɔa",
+  "settings.autoTranslateDescription": "Kä min bëë rɛydɛ derɛ rɔ luɔc kärɔa kɛ thok in go̱o̱ri.",
+  "settings.loading": "Löading thɛttiŋni̱...",
+  "settings.loadError": "/Cɛ rɔ luäŋ kɛ loc lät.",
+  "settings.saved": "Kä thɛtiŋni̱ tin ca tɔ̱w.",
+  "settings.error400": "Ɣän göörä ɣöö bä ca̱p lucädu guic.",
+  "settings.saveError": "/Ka̱n thɛttiŋni̱ luäŋ kɛ ga̱ŋ. Ɣɔ̱n ɛ nyɔk.",
 } satisfies Record<TranslationKey, string>;
 export default d_nus;

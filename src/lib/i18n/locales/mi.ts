@@ -228,5 +228,15 @@ const d_mi = {
   "discover.followers": "kaiwhaiwhai",
   "topic.postsInTopic": "Nga panui i roto i tenei kaupapa.",
   "bookmarks.description": "Ko nga panui kua tiakina e koe mo muri mai.",
+  "settings.translation": "Whakamaoritanga",
+  "settings.preferredLanguage": "Te reo whakamaori pai",
+  "settings.useNativeLanguage": "Whakamahia te reo maori",
+  "settings.autoTranslate": "Whakamaori aunoa",
+  "settings.autoTranslateDescription": "Ka taea te whakamaori aunoa i nga ihirangi taumai ki roto i to reo pai.",
+  "settings.loading": "Uta ana i nga tautuhinga…",
+  "settings.loadError": "Kaore i taea te uta i o tautuhinga.",
+  "settings.saved": "Tautuhinga kua tiakina.",
+  "settings.error400": "Tena koa tirohia o tautuhinga whakamaoritanga.",
+  "settings.saveError": "Kaore i taea te tiaki i nga tautuhinga. Ngana ano.",
 } satisfies Record<TranslationKey, string>;
 export default d_mi;

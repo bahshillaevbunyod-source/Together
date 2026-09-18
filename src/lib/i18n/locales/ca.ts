@@ -228,5 +228,15 @@ const d_ca = {
   "discover.followers": "seguidors",
   "topic.postsInTopic": "Publicacions en aquest tema.",
   "bookmarks.description": "Publicacions que has desat per a més endavant.",
+  "settings.translation": "Traducció",
+  "settings.preferredLanguage": "Idioma de traducció preferit",
+  "settings.useNativeLanguage": "Utilitzar la llengua materna",
+  "settings.autoTranslate": "Traducció automàtica",
+  "settings.autoTranslateDescription": "El contingut entrant es pot traduir automàticament al vostre idioma preferit.",
+  "settings.loading": "S'està carregant la configuració...",
+  "settings.loadError": "No s'ha pogut carregar la configuració.",
+  "settings.saved": "S'ha desat la configuració.",
+  "settings.error400": "Comproveu la vostra configuració de traducció.",
+  "settings.saveError": "No s'ha pogut desar la configuració. Torna-ho a provar.",
 } satisfies Record<TranslationKey, string>;
 export default d_ca;

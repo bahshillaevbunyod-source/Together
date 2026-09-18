@@ -228,5 +228,15 @@ const d_la = {
   "discover.followers": "sectatores",
   "topic.postsInTopic": "Inscriptiones in hoc argumento.",
   "bookmarks.description": "Posts pro postea servavisti.",
+  "settings.translation": "Translatio",
+  "settings.preferredLanguage": "Lingua translationis praelata",
+  "settings.useNativeLanguage": "Utere lingua vernacula",
+  "settings.autoTranslate": "Conversio automatica",
+  "settings.autoTranslateDescription": "Contentus adveniens automatice in linguam praelatam transferri potest.",
+  "settings.loading": "Oneratisque occasus",
+  "settings.loadError": "Non poterant tuas unctiones onerare.",
+  "settings.saved": "Occasus servavit.",
+  "settings.error400": "Quaeso reprehendo tuum translationem occasus.",
+  "settings.saveError": "Optiones tuas non salvas. Iterum tenta.",
 } satisfies Record<TranslationKey, string>;
 export default d_la;

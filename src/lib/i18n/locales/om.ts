@@ -228,5 +228,15 @@ const d_om = {
   "discover.followers": "hordoftoota",
   "topic.postsInTopic": "Posts in mata duree kana.",
   "bookmarks.description": "Maxxansa boodaaf save goote.",
+  "settings.translation": "Hiikaa",
+  "settings.preferredLanguage": "Afaan hiikkaa filatamaa",
+  "settings.useNativeLanguage": "Afaan dhalootaa fayyadamuu",
+  "settings.autoTranslate": "Ofiin hiikuu",
+  "settings.autoTranslateDescription": "Qabiyyeen dhufu ofumaan gara afaan filatteetti hiikamuu danda'a.",
+  "settings.loading": "Sajoo fe'aa jira...",
+  "settings.loadError": "Sajoo kee fe’uu hin dandeenye.",
+  "settings.saved": "Sajoo qusatameera.",
+  "settings.error400": "Mee qindaa'ina hiikkaa keessan ilaalaa.",
+  "settings.saveError": "Sajoo qusachuu hin dandeenye. Ammas yaalaa.",
 } satisfies Record<TranslationKey, string>;
 export default d_om;

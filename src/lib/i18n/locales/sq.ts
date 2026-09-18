@@ -228,5 +228,15 @@ const d_sq = {
   "discover.followers": "ndjekësit",
   "topic.postsInTopic": "Postimet në këtë temë.",
   "bookmarks.description": "Postimet që keni ruajtur për më vonë.",
+  "settings.translation": "Përkthimi",
+  "settings.preferredLanguage": "Gjuha e preferuar e përkthimit",
+  "settings.useNativeLanguage": "Përdorni gjuhën amtare",
+  "settings.autoTranslate": "Përkthim automatik",
+  "settings.autoTranslateDescription": "Përmbajtja hyrëse mund të përkthehet automatikisht në gjuhën tuaj të preferuar.",
+  "settings.loading": "Po ngarkon cilësimet…",
+  "settings.loadError": "Cilësimet e tua nuk mund të ngarkoheshin.",
+  "settings.saved": "Cilësimet u ruajtën.",
+  "settings.error400": "Ju lutemi kontrolloni cilësimet tuaja të përkthimit.",
+  "settings.saveError": "Cilësimet nuk mund të ruheshin. Provo sërish.",
 } satisfies Record<TranslationKey, string>;
 export default d_sq;

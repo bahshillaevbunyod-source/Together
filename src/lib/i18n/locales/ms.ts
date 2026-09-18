@@ -228,5 +228,15 @@ const d_ms = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "{name} ini topik.",
   "bookmarks.description": "Siaran yang telah anda simpan untuk kemudian.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Bahasa terjemahan pilihan",
+  "settings.useNativeLanguage": "Gunakan bahasa ibunda",
+  "settings.autoTranslate": "Auto terjemah",
+  "settings.autoTranslateDescription": "Kandungan masuk boleh diterjemahkan secara automatik ke dalam bahasa pilihan anda.",
+  "settings.loading": "Memuatkan tetapan…",
+  "settings.loadError": "Tidak dapat memuatkan tetapan anda.",
+  "settings.saved": "Tetapan disimpan.",
+  "settings.error400": "Sila semak tetapan terjemahan anda.",
+  "settings.saveError": "Tidak dapat menyimpan tetapan. Cuba lagi.",
 } satisfies Record<TranslationKey, string>;
 export default d_ms;

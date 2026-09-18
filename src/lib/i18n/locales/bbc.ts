@@ -228,5 +228,15 @@ const d_bbc = {
   "discover.followers": "pangihut",
   "topic.postsInTopic": "Pos di topik on.",
   "bookmarks.description": "Pos na disimpan hamu laho di pudian ni ari.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Bahasa terjemahan na dihalomohon",
+  "settings.useNativeLanguage": "Manggunahon bahasa asli .",
+  "settings.autoTranslate": "Terjemahan otomatis",
+  "settings.autoTranslateDescription": "Isi na masuk boi otomatis diterjemahon tu bahasa na dihalomohon hamu.",
+  "settings.loading": "Mamuat pengaturan...",
+  "settings.loadError": "Ndang boi dibahen hamu pengaturanmuna.",
+  "settings.saved": "Pengaturan na disimpan.",
+  "settings.error400": "Parrohahon ma pengaturan terjemahanmuna.",
+  "settings.saveError": "Ndang boi disimpan pengaturan. Coba ma muse.",
 } satisfies Record<TranslationKey, string>;
 export default d_bbc;

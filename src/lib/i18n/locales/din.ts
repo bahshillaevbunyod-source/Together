@@ -228,5 +228,15 @@ const d_din = {
   "discover.followers": "kɔc kuany ye cök",
   "topic.postsInTopic": "Kä cï keek gɔ̈t në ye wɛ̈t kënë yic.",
   "bookmarks.description": "Kä cï keek gɔ̈t cï keek tɔ̈ɔ̈u në thɛɛr kɔ̈k bï bɛ̈n.",
+  "settings.translation": "Wɛ̈ɛ̈rë yic",
+  "settings.preferredLanguage": "Thoŋ de wɛ̈ɛ̈rë yic ye lɔc",
+  "settings.useNativeLanguage": "Luɔ̈ɔ̈i de thoŋ de baai",
+  "settings.autoTranslate": "Wɛ̈ɛ̈rë yic yetök",
+  "settings.autoTranslateDescription": "Käk bɔ̈ thïn alëu bïk röt waaric në thoŋdu yic.",
+  "settings.loading": "Luɔɔi de kä cïke looi...",
+  "settings.loadError": "Acï lëu bï käku tääu thïn.",
+  "settings.saved": "Kä cïke tääu thïn acï keek tɔ̈ɔ̈u.",
+  "settings.error400": "Tïŋ lööŋkuun ke gɛ̈tgɛ̈t.",
+  "settings.saveError": "Acï lëu bï tɔ̈ɔ̈u tɔ̈ɔ̈u. Dhɔ̈l them.",
 } satisfies Record<TranslationKey, string>;
 export default d_din;

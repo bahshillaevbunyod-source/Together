@@ -228,5 +228,15 @@ const d_ku = {
   "discover.followers": "şagirtan",
   "topic.postsInTopic": "Mesajên di vê mijarê de.",
   "bookmarks.description": "Mesajên ku we ji bo paşê tomar kirine.",
+  "settings.translation": "Wergerandin",
+  "settings.preferredLanguage": "Zimanê wergerê yê bijarte",
+  "settings.useNativeLanguage": "Zimanê zikmakî bikar bînin",
+  "settings.autoTranslate": "Wergera otomatîkî",
+  "settings.autoTranslateDescription": "Naveroka gihîştî dikare bixweber bi zimanê weya bijartî were wergerandin.",
+  "settings.loading": "Mîhengan tê barkirin…",
+  "settings.loadError": "Nekarî mîhengên te bar bike.",
+  "settings.saved": "Mîhengên xilas kirin.",
+  "settings.error400": "Ji kerema xwe mîhengên wergera xwe kontrol bikin.",
+  "settings.saveError": "Mîhengan nehat tomarkirin. Dubare bixebitin.",
 } satisfies Record<TranslationKey, string>;
 export default d_ku;

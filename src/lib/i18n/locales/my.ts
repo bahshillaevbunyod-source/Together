@@ -228,5 +228,15 @@ const d_my = {
   "discover.followers": "နောက်လိုက်များ",
   "topic.postsInTopic": "ဤအကြောင်းအရာအတွက် ပို့စ်များ။",
   "bookmarks.description": "နောင်တွင် သင်သိမ်းဆည်းထားသော ပို့စ်များ။",
+  "settings.translation": "ဘာသာပြန်ခြင်း။",
+  "settings.preferredLanguage": "နှစ်သက်ရာ ဘာသာပြန်ဘာသာစကား",
+  "settings.useNativeLanguage": "မိခင်ဘာသာစကားကို အသုံးပြုပါ။",
+  "settings.autoTranslate": "အလိုအလျောက်ဘာသာပြန်ပါ။",
+  "settings.autoTranslateDescription": "ဝင်လာသောအကြောင်းအရာကို သင်နှစ်သက်ရာဘာသာစကားသို့ အလိုအလျောက်ပြန်ဆိုနိုင်ပါသည်။",
+  "settings.loading": "ဆက်တင်များကို ဖွင့်နေသည်…",
+  "settings.loadError": "သင်၏ဆက်တင်များကို တင်၍မရပါ။",
+  "settings.saved": "ဆက်တင်များကို သိမ်းဆည်းထားသည်။",
+  "settings.error400": "သင်၏ ဘာသာပြန်ဆိုခြင်း ဆက်တင်များကို စစ်ဆေးပါ။",
+  "settings.saveError": "ဆက်တင်များကို မသိမ်းဆည်းနိုင်ပါ။ ထပ်ကြိုးစားပါ။",
 } satisfies Record<TranslationKey, string>;
 export default d_my;

@@ -228,5 +228,15 @@ const d_te = {
   "discover.followers": "అనుచరులు",
   "topic.postsInTopic": "ఈ అంశంలో పోస్ట్‌లు.",
   "bookmarks.description": "మీరు తర్వాత సేవ్ చేసిన పోస్ట్‌లు.",
+  "settings.translation": "అనువాదం",
+  "settings.preferredLanguage": "ప్రాధాన్య అనువాద భాష",
+  "settings.useNativeLanguage": "మాతృభాషను ఉపయోగించండి",
+  "settings.autoTranslate": "స్వయంచాలకంగా అనువదించండి",
+  "settings.autoTranslateDescription": "ఇన్‌కమింగ్ కంటెంట్ మీ ప్రాధాన్య భాషలోకి స్వయంచాలకంగా అనువదించబడుతుంది.",
+  "settings.loading": "సెట్టింగ్‌లను లోడ్ చేస్తోంది...",
+  "settings.loadError": "మీ సెట్టింగ్‌లను లోడ్ చేయడం సాధ్యపడలేదు.",
+  "settings.saved": "సెట్టింగ్‌లు సేవ్ చేయబడ్డాయి.",
+  "settings.error400": "దయచేసి మీ అనువాద సెట్టింగ్‌లను తనిఖీ చేయండి.",
+  "settings.saveError": "సెట్టింగ్‌లను సేవ్ చేయడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి.",
 } satisfies Record<TranslationKey, string>;
 export default d_te;

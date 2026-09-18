@@ -228,5 +228,15 @@ const d_pag = {
   "discover.followers": "saray patumbok",
   "topic.postsInTopic": "Posts ed sayan topic.",
   "bookmarks.description": "Posts ya in-save mo parad saginonor.",
+  "settings.translation": "Panagpatalos",
+  "settings.preferredLanguage": "Mas labay ya lenguahe na panagpatalos",
+  "settings.useNativeLanguage": "Usaren so katutubon lenguahe",
+  "settings.autoTranslate": "Automatikon mangipatalos",
+  "settings.autoTranslateDescription": "Saray onloob ya content et nayarin automatikon ipatalos ed labay mon lenguahe.",
+  "settings.loading": "Mankarga na saray pag-aareglo mo",
+  "settings.loadError": "Agko naikarga iray pag-aareglo mo.",
+  "settings.saved": "Naimpake iray pag-aareglo.",
+  "settings.error400": "Nengnengen iray pag-aareglo na panagpatalos mo.",
+  "settings.saveError": "Agko naimpake iray pag-aareglo mo. Salien lamet.",
 } satisfies Record<TranslationKey, string>;
 export default d_pag;

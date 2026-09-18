@@ -228,5 +228,15 @@ const d_jv = {
   "discover.followers": "pandherekipun",
   "topic.postsInTopic": "Kiriman ing topik iki.",
   "bookmarks.description": "Kiriman sing wis disimpen mengko.",
+  "settings.translation": "Terjemahan",
+  "settings.preferredLanguage": "Basa terjemahan sing disenengi",
+  "settings.useNativeLanguage": "Gunakake basa asli",
+  "settings.autoTranslate": "Auto nerjemahake",
+  "settings.autoTranslateDescription": "Konten sing mlebu bisa diterjemahake kanthi otomatis menyang basa sing disenengi.",
+  "settings.loading": "Setelan dimuat…",
+  "settings.loadError": "Ora bisa mbukak setelan sampeyan.",
+  "settings.saved": "Setelan disimpen.",
+  "settings.error400": "Priksa setelan terjemahan sampeyan.",
+  "settings.saveError": "Ora bisa nyimpen setelan. Coba maneh.",
 } satisfies Record<TranslationKey, string>;
 export default d_jv;

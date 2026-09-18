@@ -228,5 +228,15 @@ const d_bua = {
   "discover.followers": "дахагшад",
   "topic.postsInTopic": "Энэ сэдэбтэ бэшэгүүд.",
   "bookmarks.description": "Хожомдо хадагалһан бэшэгүүдтнай.",
+  "settings.translation": "Оршуулга",
+  "settings.preferredLanguage": "Дуратай оршуулгын хэлэн",
+  "settings.useNativeLanguage": "Түрэл хэлэеэ хэрэглэхэ",
+  "settings.autoTranslate": "Автомат оршуулга",
+  "settings.autoTranslateDescription": "Оролсоһон агуулга танай дуратай хэлэн дээрэ автоматаар оршуулагдаха аргатай.",
+  "settings.loading": "Тохиргоонуудые ашаглажа байна...",
+  "settings.loadError": "Танай тохиргоонуудые ашаглажа шадаагүй.",
+  "settings.saved": "Тохиргоонууд хадагалагдаа.",
+  "settings.error400": "Оршуулгаяа шалгажа үзэгты.",
+  "settings.saveError": "Тохиргоонуудые хадагалжа шадаагүй. Дахин туршагты.",
 } satisfies Record<TranslationKey, string>;
 export default d_bua;

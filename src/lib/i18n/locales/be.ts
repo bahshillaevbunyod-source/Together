@@ -228,5 +228,15 @@ const d_be = {
   "discover.followers": "паслядоўнікаў",
   "topic.postsInTopic": "Паведамленні ў гэтай тэме.",
   "bookmarks.description": "Паведамленні, якія вы захавалі на потым.",
+  "settings.translation": "Пераклад",
+  "settings.preferredLanguage": "Пераважная мова перакладу",
+  "settings.useNativeLanguage": "Карыстайцеся роднай мовай",
+  "settings.autoTranslate": "Аўтаматычны пераклад",
+  "settings.autoTranslateDescription": "Уваходнае змесціва можа быць аўтаматычна перакладзена на абраную мову.",
+  "settings.loading": "Загрузка налад...",
+  "settings.loadError": "Не ўдалося загрузіць налады.",
+  "settings.saved": "Налады захаваны.",
+  "settings.error400": "Праверце налады перакладу.",
+  "settings.saveError": "Не ўдалося захаваць налады. Паспрабуйце яшчэ раз.",
 } satisfies Record<TranslationKey, string>;
 export default d_be;

@@ -228,5 +228,15 @@ const d_su = {
   "discover.followers": "pengikut",
   "topic.postsInTopic": "Tulisan dina topik ieu.",
   "bookmarks.description": "Tulisan anu anjeun simpen pikeun engké.",
+  "settings.translation": "Tarjamahan",
+  "settings.preferredLanguage": "Basa tarjamah anu dipikaresep",
+  "settings.useNativeLanguage": "Paké basa asli",
+  "settings.autoTranslate": "Otomatis narjamahkeun",
+  "settings.autoTranslateDescription": "Eusi anu asup tiasa otomatis ditarjamahkeun kana basa anu anjeun pikaresep.",
+  "settings.loading": "Ngamuat setelan…",
+  "settings.loadError": "Teu tiasa ngamuat setélan anjeun.",
+  "settings.saved": "Setélan disimpen.",
+  "settings.error400": "Mangga parios setélan tarjamahan anjeun.",
+  "settings.saveError": "Teu bisa nyimpen setelan. Cobian deui.",
 } satisfies Record<TranslationKey, string>;
 export default d_su;

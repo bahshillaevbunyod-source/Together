@@ -228,5 +228,15 @@ const d_sg = {
   "discover.followers": "azo ti peko",
   "topic.postsInTopic": "A-article na yâ ti sujet so.",
   "bookmarks.description": "A-article so mo bata ni ndali ti mbeni ngoi.",
+  "settings.translation": "Traduction",
+  "settings.preferredLanguage": "Ayanga ti kodoro ti traduction so a ye ni mingi",
+  "settings.useNativeLanguage": "Lo yeke yanga ti kodoro .",
+  "settings.autoTranslate": "Traduction automatique",
+  "settings.autoTranslateDescription": "A lingbi ti kiri peko ti atënë so ayeke lï na yâ ni na yanga ti kodoro so mo ye.",
+  "settings.loading": "A-paramètre ti chargement...",
+  "settings.loadError": "A lingbi ti zia paramètre ti mo pëpe.",
+  "settings.saved": "A bata a-paramètre.",
+  "settings.error400": "Zia e bâ a-paramètre ti traduction ti e.",
+  "settings.saveError": "A lingbi ti bata a-paramètre ni pëpe. Tara encore.",
 } satisfies Record<TranslationKey, string>;
 export default d_sg;

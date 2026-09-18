@@ -228,5 +228,15 @@ const d_no = {
   "discover.followers": "følgere",
   "topic.postsInTopic": "Innlegg i dette emnet.",
   "bookmarks.description": "Innlegg du har lagret for senere.",
+  "settings.translation": "Oversettelse",
+  "settings.preferredLanguage": "Foretrukket oversettelsesspråk",
+  "settings.useNativeLanguage": "Bruk morsmål",
+  "settings.autoTranslate": "Automatisk oversettelse",
+  "settings.autoTranslateDescription": "Innkommende innhold kan automatisk oversettes til ditt foretrukne språk.",
+  "settings.loading": "Laster inn innstillinger …",
+  "settings.loadError": "Kunne ikke laste inn innstillingene dine.",
+  "settings.saved": "Innstillinger lagret.",
+  "settings.error400": "Vennligst sjekk oversettelsesinnstillingene dine.",
+  "settings.saveError": "Kunne ikke lagre innstillingene. Prøv igjen.",
 } satisfies Record<TranslationKey, string>;
 export default d_no;

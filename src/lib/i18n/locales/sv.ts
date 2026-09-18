@@ -228,5 +228,15 @@ const d_sv = {
   "discover.followers": "anhängare",
   "topic.postsInTopic": "Inlägg i detta ämne.",
   "bookmarks.description": "Inlägg som du har sparat för senare.",
+  "settings.translation": "Översättning",
+  "settings.preferredLanguage": "Föredraget översättningsspråk",
+  "settings.useNativeLanguage": "Använd modersmål",
+  "settings.autoTranslate": "Automatisk översättning",
+  "settings.autoTranslateDescription": "Inkommande innehåll kan automatiskt översättas till ditt föredragna språk.",
+  "settings.loading": "Läser in inställningar...",
+  "settings.loadError": "Det gick inte att ladda dina inställningar.",
+  "settings.saved": "Inställningar sparade.",
+  "settings.error400": "Kontrollera dina översättningsinställningar.",
+  "settings.saveError": "Det gick inte att spara inställningarna. Försök igen.",
 } satisfies Record<TranslationKey, string>;
 export default d_sv;

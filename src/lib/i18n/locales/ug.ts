@@ -228,5 +228,15 @@ const d_ug = {
   "discover.followers": "ئەگەشكۈچىلەر",
   "topic.postsInTopic": "بۇ تېمىدىكى يازمىلار.",
   "bookmarks.description": "كېيىن ساقلىغان يازمىلار.",
+  "settings.translation": "تەرجىمە",
+  "settings.preferredLanguage": "ياقتۇرىدىغان تەرجىمە تىلى",
+  "settings.useNativeLanguage": "ئانا تىل ئىشلىتىڭ",
+  "settings.autoTranslate": "ئاپتوماتىك تەرجىمە قىلىش",
+  "settings.autoTranslateDescription": "كەلگەن مەزمۇنلارنى ئۆزىڭىز ياقتۇرىدىغان تىلغا ئاپتوماتىك تەرجىمە قىلىشقا بولىدۇ.",
+  "settings.loading": "تەڭشەكلەرنى يۈكلەۋاتىدۇ…",
+  "settings.loadError": "تەڭشەكلىرىڭىزنى يۈكلىيەلمىدىڭىز.",
+  "settings.saved": "تەڭشەكلەر ساقلاندى.",
+  "settings.error400": "تەرجىمە تەڭشەكلىرىڭىزنى تەكشۈرۈڭ.",
+  "settings.saveError": "تەڭشەكلەرنى ساقلىيالمىدى. قايتا سىناڭ.",
 } satisfies Record<TranslationKey, string>;
 export default d_ug;

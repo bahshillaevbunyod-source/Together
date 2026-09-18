@@ -228,5 +228,15 @@ const d_szl = {
   "discover.followers": "ôbozowcōw",
   "topic.postsInTopic": "Posty w tym tymacie.",
   "bookmarks.description": "Posty, kere zachowałeś na niyskorzij.",
+  "settings.translation": "Przekład",
+  "settings.preferredLanguage": "Preferowany jynzyk przekładowy",
+  "settings.useNativeLanguage": "Używaj rodzimyj godki",
+  "settings.autoTranslate": "Automatyczne przekłod",
+  "settings.autoTranslateDescription": "Przichodzōnce treści mogōm być autōmatycznie przełożōne na ulubiōny jynzyk.",
+  "settings.loading": "Ładowanie ustawiyń...",
+  "settings.loadError": "Niy mōg załadować ustawiyń.",
+  "settings.saved": "Ustawiynia zapisane.",
+  "settings.error400": "Proszōm sprawdź ustawiynia przekładu.",
+  "settings.saveError": "Niy mōg zapisać ustawiyń. Sprōbuj jeszcze raz.",
 } satisfies Record<TranslationKey, string>;
 export default d_szl;

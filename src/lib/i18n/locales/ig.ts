@@ -228,5 +228,15 @@ const d_ig = {
   "discover.followers": "ndị na-eso ụzọ",
   "topic.postsInTopic": "Ederede n'isiokwu a.",
   "bookmarks.description": "Ozi ndị ị chekwara maka emechaa.",
+  "settings.translation": "Ntụgharị asụsụ",
+  "settings.preferredLanguage": "Asụsụ ntụgharị asụsụ masịrị",
+  "settings.useNativeLanguage": "Jiri asụsụ obodo",
+  "settings.autoTranslate": "Ntụgharị asụsụ na-akpaghị aka",
+  "settings.autoTranslateDescription": "Enwere ike ịtụgharị asụsụ ọdịnaya na-abata na-akpaghị aka ka ọ bụrụ asụsụ masịrị gị.",
+  "settings.loading": "Na-ebu ntọala…",
+  "settings.loadError": "Enweghị ike ibunye ntọala gị.",
+  "settings.saved": "echekwara ntọala.",
+  "settings.error400": "Biko lelee ntọala ntụgharị asụsụ gị.",
+  "settings.saveError": "Enweghị ike ichekwa ntọala. Nwaa ọzọ.",
 } satisfies Record<TranslationKey, string>;
 export default d_ig;

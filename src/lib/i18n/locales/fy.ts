@@ -228,5 +228,15 @@ const d_fy = {
   "discover.followers": "folgers",
   "topic.postsInTopic": "Posts yn dit ûnderwerp.",
   "bookmarks.description": "Berjochten dy't jo hawwe bewarre foar letter.",
+  "settings.translation": "Oersetting",
+  "settings.preferredLanguage": "Foarkar oersettaal",
+  "settings.useNativeLanguage": "Brûk memmetaal",
+  "settings.autoTranslate": "Auto oersette",
+  "settings.autoTranslateDescription": "Ynkommende ynhâld kin automatysk oerset wurde yn jo foarkarstaal.",
+  "settings.loading": "Ynstellings laden…",
+  "settings.loadError": "Koe jo ynstellings net lade.",
+  "settings.saved": "Ynstellings bewarre.",
+  "settings.error400": "Kontrolearje asjebleaft jo oersetynstellingen.",
+  "settings.saveError": "Koe ynstellings net bewarje. Besykje opnij.",
 } satisfies Record<TranslationKey, string>;
 export default d_fy;

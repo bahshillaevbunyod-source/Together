@@ -228,5 +228,15 @@ const d_crs = {
   "discover.followers": "bann swiver",
   "topic.postsInTopic": "Post dan sa topik.",
   "bookmarks.description": "Post ki ou’n prezerve pour pli tar.",
+  "settings.translation": "tradiksyon",
+  "settings.preferredLanguage": "langaz tradiksyon prefere",
+  "settings.useNativeLanguage": "servi langaz maternel",
+  "settings.autoTranslate": "tradiksyon otomatik",
+  "settings.autoTranslateDescription": "konteni ki antre i kapab ganny tradwir otomatikman dan ou langaz prefere.",
+  "settings.loading": "pe load bann seting...",
+  "settings.loadError": "pa'n kapab load ou bann seting.",
+  "settings.saved": "bann laranzman in ganny prezerve.",
+  "settings.error400": "silvouple tyek ou bann laranzman tradiksyon.",
+  "settings.saveError": "pa’n kapab prezerv bann laranzman. esey ankor.",
 } satisfies Record<TranslationKey, string>;
 export default d_crs;

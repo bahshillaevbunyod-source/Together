@@ -228,5 +228,15 @@ const d_kk = {
   "discover.followers": "ізбасарлары",
   "topic.postsInTopic": "Осы тақырыптағы жазбалар.",
   "bookmarks.description": "Кейінірек үшін сақтаған жазбалар.",
+  "settings.translation": "Аударма",
+  "settings.preferredLanguage": "Таңдаулы аударма тілі",
+  "settings.useNativeLanguage": "Ана тілін қолданыңыз",
+  "settings.autoTranslate": "Автоматты аудару",
+  "settings.autoTranslateDescription": "Кіріс мазмұнды автоматты түрде қалаған тіліңізге аударуға болады.",
+  "settings.loading": "Параметрлер жүктелуде…",
+  "settings.loadError": "Параметрлеріңіз жүктелмеді.",
+  "settings.saved": "Параметрлер сақталды.",
+  "settings.error400": "Аударма параметрлерін тексеріңіз.",
+  "settings.saveError": "Параметрлерді сақтау мүмкін болмады. Қайтадан байқап көріңіз.",
 } satisfies Record<TranslationKey, string>;
 export default d_kk;

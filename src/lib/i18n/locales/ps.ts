@@ -228,5 +228,15 @@ const d_ps = {
   "discover.followers": "پیروان",
   "topic.postsInTopic": "په دې موضوع کې پوسټونه.",
   "bookmarks.description": "هغه پوسټونه چې تاسو یې د وروسته لپاره خوندي کړي دي.",
+  "settings.translation": "ژباړه",
+  "settings.preferredLanguage": "د ژباړې غوره ژبه",
+  "settings.useNativeLanguage": "مورنۍ ژبه وکاروئ",
+  "settings.autoTranslate": "اتومات ژباړه",
+  "settings.autoTranslateDescription": "راتلونکی مینځپانګه په اوتومات ډول ستاسو غوره ژبه ته ژباړل کیدی شي.",
+  "settings.loading": "ترتیبات پورته کول…",
+  "settings.loadError": "ستاسو ترتیبات نشي پورته کولی.",
+  "settings.saved": "ترتیبات خوندي شوي.",
+  "settings.error400": "مهرباني وکړئ خپل د ژباړې ترتیبات وګورئ.",
+  "settings.saveError": "ترتیبات نشي خوندي کولی. بیا هڅه وکړئ.",
 } satisfies Record<TranslationKey, string>;
 export default d_ps;

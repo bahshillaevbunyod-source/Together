@@ -228,5 +228,15 @@ const d_crh = {
   "discover.followers": "излейиджилер",
   "topic.postsInTopic": "Бу мевзудаки язмалар.",
   "bookmarks.description": "Сонъра ичюн сакълагъан язмалар.",
+  "settings.translation": "Терджиме .",
+  "settings.preferredLanguage": "Устюнлик берильген терджиме тили .",
+  "settings.useNativeLanguage": "Ана тилинден файдаланынъыз .",
+  "settings.autoTranslate": "Авто терджиме",
+  "settings.autoTranslateDescription": "Келген контентни автоматик оларакъ озь сечип алгъан тилинъизге чевирмек мумкюн.",
+  "settings.loading": "Параметрлерни юклемек...",
+  "settings.loadError": "Параметрлеринъизни юклеп оламады.",
+  "settings.saved": "Параметрлер сакъланды.",
+  "settings.error400": "Лютфен, терджиме параметрлеринъизни тешкеринъиз.",
+  "settings.saveError": "Параметрлерни сакълап оламады. Кене тырышынъыз.",
 } satisfies Record<TranslationKey, string>;
 export default d_crh;

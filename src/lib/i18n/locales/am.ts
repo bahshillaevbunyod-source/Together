@@ -228,5 +228,15 @@ const d_am = {
   "discover.followers": "ተከታዮች",
   "topic.postsInTopic": "በዚህ ርዕስ ውስጥ ልጥፎች.",
   "bookmarks.description": "ለበኋላ ያስቀመጥካቸው ልጥፎች።",
+  "settings.translation": "ትርጉም",
+  "settings.preferredLanguage": "ተመራጭ የትርጉም ቋንቋ",
+  "settings.useNativeLanguage": "የአፍ መፍቻ ቋንቋ ተጠቀም",
+  "settings.autoTranslate": "በራስ-ሰር መተርጎም",
+  "settings.autoTranslateDescription": "ገቢ ይዘት በራስ-ሰር ወደ ተመራጭ ቋንቋ ሊተረጎም ይችላል።",
+  "settings.loading": "ቅንብሮችን በመጫን ላይ…",
+  "settings.loadError": "ቅንብሮችዎን መጫን አልተቻለም።",
+  "settings.saved": "ቅንብሮች ተቀምጠዋል።",
+  "settings.error400": "እባክዎ የትርጉም ቅንብሮችዎን ያረጋግጡ።",
+  "settings.saveError": "ቅንብሮችን ማስቀመጥ አልተቻለም። እንደገና ይሞክሩ።",
 } satisfies Record<TranslationKey, string>;
 export default d_am;

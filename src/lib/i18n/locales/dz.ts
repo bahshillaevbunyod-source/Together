@@ -228,5 +228,15 @@ const d_dz = {
   "discover.followers": "རྗེས་འཇུག་ཚུ།",
   "topic.postsInTopic": "དོན་ཚན་འདིའི་ནང་བཀོད་ཡོད།",
   "bookmarks.description": "ཁྱོད་ཀྱིས་ཤུལ་ལས་སྲུང་བཞག་འབད་ཡོད་པའི་བརྡ་བསྐུལ།",
+  "settings.translation": "ཡིག་སྒྱུར།",
+  "settings.preferredLanguage": "དགའ་གདམ་ཅན་གྱི་སྐད་སྒྱུར་སྐད་ཡིག།",
+  "settings.useNativeLanguage": "ཕ་སྐད་ལག་ལེན་འཐབ།",
+  "settings.autoTranslate": "རང་བཞིན་སྐད་སྒྱུར།",
+  "settings.autoTranslateDescription": "ནང་འབྱོར་ནང་དོན་ཚུ་ ཁྱོད་རའི་དགའ་གདམ་གྱི་སྐད་ཡིག་ནང་ རང་བཞིན་གྱིས་ སྐད་སྒྱུར་འབད་ཚུགས།",
+  "settings.loading": "སྒྲིག་སྟངས་ཚུ་མངོན་གསལ་འབད་དོ།",
+  "settings.loadError": "ཁྱོད་ཀྱི་སྒྲིག་སྟངས་ཚུ་མངོན་གསལ་འབད་མ་ཚུགས།",
+  "settings.saved": "སྒྲིག་སྟངས་ཚུ་སྲུང་བཞག་འབད་ཡོདཔ།",
+  "settings.error400": "ཁྱོད་རའི་སྐད་སྒྱུར་སྒྲིག་སྟངས་ཚུ་ཞིབ་དཔྱད་འབད་གནང་།",
+  "settings.saveError": "སྒྲིག་སྟངས་ཚུ་སྲུང་བཞག་འབད་མ་ཚུགས། ལོག་སྟེ་འབད་རྩོལ་བསྐྱེད།",
 } satisfies Record<TranslationKey, string>;
 export default d_dz;

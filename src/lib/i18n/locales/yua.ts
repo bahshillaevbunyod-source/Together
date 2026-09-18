@@ -228,5 +228,15 @@ const d_yua = {
   "discover.followers": "u tsaypacho'ob",
   "topic.postsInTopic": "Posts ti' le chun tuukulo'.",
   "bookmarks.description": "Le ts'íibo'ob ts'o'ok a ta'akikubáa uti'al ka'ache'.",
+  "settings.translation": "Traducción",
+  "settings.preferredLanguage": "T'aan u sutk'esiko'ob ma'alob",
+  "settings.useNativeLanguage": "Meyajt u t'aan síijil",
+  "settings.autoTranslate": "Auto traducción",
+  "settings.autoTranslateDescription": "Le ba'ax ku taalo' je'el u páajtal u sutk'esiko'ob automáticamente ti' u t'aan a k'áat.",
+  "settings.loading": "Táan u kuuch le configuración...",
+  "settings.loadError": "Ma' páajchaj u kuuch a configuración.",
+  "settings.saved": "Configuración guardada.",
+  "settings.error400": "Ilawil a configuración u traducción.",
+  "settings.saveError": "Ma' páajchaj u ooks le configuración. Ilawil tu ka'atéen.",
 } satisfies Record<TranslationKey, string>;
 export default d_yua;

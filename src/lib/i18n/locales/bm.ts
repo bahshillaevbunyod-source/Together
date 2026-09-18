@@ -228,5 +228,15 @@ const d_bm = {
   "discover.followers": "tugubagaw",
   "topic.postsInTopic": "Poste minnu bɛ nin barokun in na.",
   "bookmarks.description": "Postes (postes) minnu b’i mara ka kɛ kɔfɛ.",
+  "settings.translation": "Bamanankan baarakɛcogo",
+  "settings.preferredLanguage": "Bamanankan baarakɛcogo min ka di a ye kosɛbɛ",
+  "settings.useNativeLanguage": "Baara kɛ ni fasokan ye",
+  "settings.autoTranslate": "Auto bamanankan na",
+  "settings.autoTranslateDescription": "Kɔnɔkow minnu bɛ na, olu bɛ se ka baara kɛ u yɛrɛma i ka kan fɛ min ka di i ye.",
+  "settings.loading": "Loading settings...",
+  "settings.loadError": "A ma se k’i ka settings (dakunw) doni.",
+  "settings.saved": "Settings (labɛnniw) maralen don.",
+  "settings.error400": "Aw ye aw ka bamanankan baarakɛcogo lajɛ.",
+  "settings.saveError": "A ma se ka settings (daɲɛw) mara. Aw bɛ segin ka a lajɛ.",
 } satisfies Record<TranslationKey, string>;
 export default d_bm;

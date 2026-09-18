@@ -228,5 +228,15 @@ const d_sk = {
   "discover.followers": "nasledovníkov",
   "topic.postsInTopic": "Príspevky v tejto téme.",
   "bookmarks.description": "Príspevky, ktoré ste si uložili na neskôr.",
+  "settings.translation": "Preklad",
+  "settings.preferredLanguage": "Preferovaný jazyk prekladu",
+  "settings.useNativeLanguage": "Používajte rodný jazyk",
+  "settings.autoTranslate": "Automatický preklad",
+  "settings.autoTranslateDescription": "Prichádzajúci obsah môže byť automaticky preložený do vášho preferovaného jazyka.",
+  "settings.loading": "Načítavajú sa nastavenia…",
+  "settings.loadError": "Nepodarilo sa načítať vaše nastavenia.",
+  "settings.saved": "Nastavenia boli uložené.",
+  "settings.error400": "Skontrolujte nastavenia prekladu.",
+  "settings.saveError": "Nastavenia sa nepodarilo uložiť. Skúste to znova.",
 } satisfies Record<TranslationKey, string>;
 export default d_sk;

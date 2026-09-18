@@ -228,5 +228,15 @@ const d_bem = {
   "discover.followers": "abakonshi",
   "topic.postsInTopic": "Ifyalembwa muli uyu mutwe.",
   "bookmarks.description": "Ifilembelwe ifyo mwasunga pakuti fibe ifyakukonkapo.",
+  "settings.translation": "Ukupilibula",
+  "settings.preferredLanguage": "Ululimi lwakupilibula ulwatemwa",
+  "settings.useNativeLanguage": "Bomfyeni ululimi lwa cikaya",
+  "settings.autoTranslate": "Ukupilibula ukwaibela",
+  "settings.autoTranslateDescription": "Ifileisa kuti fyapilibulwa fye mu lulimi ulwatemwa.",
+  "settings.loading": "Ukubika imitantikile...",
+  "settings.loadError": "Teti fibike imitantikile yenu.",
+  "settings.saved": "Ifipekanishiwe fyasungwa.",
+  "settings.error400": "Mukwai moneni imitantikile yenu iya bupilibulo.",
+  "settings.saveError": "Teti fisunge ifibikilwepo. Esheni nakabili.",
 } satisfies Record<TranslationKey, string>;
 export default d_bem;
