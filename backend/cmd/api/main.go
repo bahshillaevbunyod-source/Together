@@ -32,6 +32,7 @@ import (
 	"together/backend/internal/server"
 	"together/backend/internal/session"
 	"together/backend/internal/storage"
+	"together/backend/internal/story"
 	"together/backend/internal/topic"
 	"together/backend/internal/user"
 )
@@ -79,7 +80,8 @@ func main() {
 	registrar := registration.New(pool, users, sessions)
 	followRequests := followrequest.NewPostgresRepository(pool)
 	followRequester := followrequestservice.New(pool, followRequests, follows, notifications)
-	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, topicRepo, registrar, followRequests, followRequester)
+	stories := story.NewPostgresRepository(pool)
+	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, topicRepo, registrar, followRequests, followRequester, stories)
 
 	// Start the server in the background.
 	go func() {

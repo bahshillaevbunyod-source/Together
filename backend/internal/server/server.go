@@ -25,6 +25,7 @@ import (
 	"together/backend/internal/registration"
 	"together/backend/internal/session"
 	"together/backend/internal/storage"
+	"together/backend/internal/story"
 	"together/backend/internal/topic"
 	"together/backend/internal/translation"
 	"together/backend/internal/user"
@@ -46,6 +47,7 @@ type Server struct {
 	followRequests  followrequest.Repository
 	followReq       followRequestService
 	blocks          block.Repository
+	stories         story.Repository
 	posts           post.Repository
 	topics          topic.Repository
 	likes           like.Repository
@@ -122,6 +124,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 	var topics topic.Repository
 	var followRequests followrequest.Repository
 	var followReq followRequestService
+	var stories story.Repository
 	for _, dependency := range dependencies {
 		switch dependency := dependency.(type) {
 		case registration.Creator:
@@ -132,6 +135,8 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 			followRequests = dependency
 		case followRequestService:
 			followReq = dependency
+		case story.Repository:
+			stories = dependency
 		}
 	}
 	s := &Server{
@@ -143,6 +148,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		followRequests: followRequests,
 		followReq:      followReq,
 		blocks:         blocks,
+		stories:        stories,
 		posts:          posts,
 		topics:         topics,
 		likes:          likes,
@@ -266,6 +272,14 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	// Block graph (authenticated, state-changing).
 	mux.HandleFunc("POST /api/v1/users/{username}/block", s.requireAuth(s.csrfProtect(s.handleBlock)))
 	mux.HandleFunc("DELETE /api/v1/users/{username}/block", s.requireAuth(s.csrfProtect(s.handleUnblock)))
+
+	// Stories (private, ephemeral). All authenticated; mutations CSRF-protected.
+	mux.HandleFunc("POST /api/v1/stories", s.requireAuth(s.csrfProtect(s.handleCreateStory)))
+	mux.HandleFunc("GET /api/v1/stories", s.requireAuth(s.handleListStoriesFeed))
+	mux.HandleFunc("GET /api/v1/stories/{id}", s.requireAuth(s.handleGetStory))
+	mux.HandleFunc("POST /api/v1/stories/{id}/view", s.requireAuth(s.csrfProtect(s.handleViewStory)))
+	mux.HandleFunc("DELETE /api/v1/stories/{id}", s.requireAuth(s.csrfProtect(s.handleDeleteStory)))
+	mux.HandleFunc("GET /api/v1/users/{username}/stories", s.requireAuth(s.handleUserStories))
 
 	// Posts.
 	mux.HandleFunc("POST /api/v1/posts", s.requireAuth(s.csrfProtect(s.handleCreatePost)))
