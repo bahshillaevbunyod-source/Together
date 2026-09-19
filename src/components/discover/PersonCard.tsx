@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 
-import { ApiError, followUser } from "@/lib/api";
+import { ApiError, cancelFollowRequest, followUser } from "@/lib/api";
 import { formatCount } from "@/lib/format";
 import { useLanguage } from "@/lib/language-context";
 
@@ -69,6 +69,7 @@ export function PersonCard({
 }) {
   const { t } = useLanguage();
   const [following, setFollowing] = useState(false);
+  const [requested, setRequested] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(false);
 
@@ -83,9 +84,23 @@ export function PersonCard({
     setPending(true);
     setError(false);
     try {
-      await followUser(user.username);
-      setFollowing(true);
-      onFollowed?.(user.id);
+      if (requested) {
+        // Cancel a pending request to a private account. The card stays visible
+        // and returns to the Follow state; follower counts are unaffected.
+        await cancelFollowRequest(user.username);
+        setRequested(false);
+        return;
+      }
+      const res = await followUser(user.username);
+      if (res.following) {
+        // Public account: now an accepted follow. Drop the suggestion.
+        setFollowing(true);
+        onFollowed?.(user.id);
+      } else {
+        // Private account: a pending request. Keep the card; never mark it as
+        // Following and never drop it as if the user were followed.
+        setRequested(true);
+      }
     } catch (err) {
       // Ignore "already following" races; surface anything else quietly.
       if (!(err instanceof ApiError && err.status === 409)) setError(true);
@@ -147,9 +162,9 @@ export function PersonCard({
         type="button"
         onClick={onFollow}
         disabled={pending || following}
-        aria-pressed={following}
+        aria-pressed={following || requested}
         className={`shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed ${
-          following
+          following || requested
             ? "border border-border text-muted"
             : "bg-primary text-white hover:bg-primary-hover disabled:opacity-60"
         }`}
@@ -158,9 +173,11 @@ export function PersonCard({
           ? t("profile.followingState")
           : pending
             ? "…"
-            : error
-              ? t("search.tryAgain")
-              : t("profile.follow")}
+            : requested
+              ? t("profile.requested")
+              : error
+                ? t("search.tryAgain")
+                : t("profile.follow")}
       </button>
     </article>
   );

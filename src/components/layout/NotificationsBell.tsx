@@ -35,6 +35,8 @@ function actionTextKey(type: string): TranslationKey {
       return "notifications.action.postLike";
     case "post_comment":
       return "notifications.action.postComment";
+    case "follow_request":
+      return "notifications.action.followRequest";
     default:
       return "notifications.action.default";
   }
@@ -225,10 +227,12 @@ export function NotificationsBell() {
               <ul className="flex flex-col">
                 {items.map((n) => {
                   const actorName = n.actor?.displayName ?? t("notifications.someone");
-                  // Follow notifications with a known actor link to that
-                  // profile; other types keep the mark-read-only button.
+                  // Follow / follow-request notifications with a known actor
+                  // link to that profile; other types keep the mark-read-only
+                  // button.
                   const canNavigate =
-                    n.type === "follow" && !!n.actor?.username;
+                    (n.type === "follow" || n.type === "follow_request") &&
+                    !!n.actor?.username;
                   const rowClass = `flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-background ${
                     n.readAt ? "" : "bg-background/60"
                   }`;

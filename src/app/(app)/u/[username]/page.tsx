@@ -9,6 +9,7 @@ import { MoreHorizontal, Ban } from "lucide-react";
 import {
   ApiError,
   blockUser,
+  cancelFollowRequest,
   followUser,
   getUserProfile,
   openConversation,
@@ -127,23 +128,39 @@ export default function PublicProfilePage() {
     setFollowError(null);
     try {
       if (profile.isFollowing) {
+        // Accepted follower: unfollow (follower count decreases).
         await unfollowUser(profile.username);
         setProfile((p) =>
           p
             ? {
                 ...p,
                 isFollowing: false,
+                followRequested: false,
                 followersCount: Math.max(0, p.followersCount - 1),
               }
             : p,
         );
+      } else if (profile.followRequested) {
+        // Pending request to a private account: cancel it. A pending request
+        // never counted toward followers, so the count does not change.
+        await cancelFollowRequest(profile.username);
+        setProfile((p) => (p ? { ...p, followRequested: false } : p));
       } else {
-        await followUser(profile.username);
-        setProfile((p) =>
-          p
-            ? { ...p, isFollowing: true, followersCount: p.followersCount + 1 }
-            : p,
-        );
+        // Follow: public accounts become followers immediately (count +1);
+        // private accounts return a pending request (no count change).
+        const res = await followUser(profile.username);
+        setProfile((p) => {
+          if (!p) return p;
+          if (res.following) {
+            return {
+              ...p,
+              isFollowing: true,
+              followRequested: false,
+              followersCount: p.followersCount + 1,
+            };
+          }
+          return { ...p, isFollowing: false, followRequested: res.requested };
+        });
       }
     } catch (err) {
       // Preserve current state; show a safe message (never raw backend text).
@@ -301,14 +318,18 @@ export default function PublicProfilePage() {
                     type="button"
                     onClick={onToggleFollow}
                     disabled={followPending}
-                    aria-pressed={profile.isFollowing}
+                    aria-pressed={profile.isFollowing || profile.followRequested}
                     className={`rounded-full px-5 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
-                      profile.isFollowing
+                      profile.isFollowing || profile.followRequested
                         ? "border border-border text-foreground hover:bg-background"
                         : "bg-primary text-white hover:bg-primary-hover"
                     }`}
                   >
-                    {profile.isFollowing ? t("profile.followingState") : t("profile.follow")}
+                    {profile.isFollowing
+                      ? t("profile.followingState")
+                      : profile.followRequested
+                        ? t("profile.requested")
+                        : t("profile.follow")}
                   </button>
                   <button
                     type="button"

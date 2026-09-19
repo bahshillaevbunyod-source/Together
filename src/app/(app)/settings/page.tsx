@@ -28,6 +28,7 @@ export default function SettingsPage() {
   const [preferredLanguage, setPreferredLanguage] = useState<string>(NATIVE_VALUE);
   const [autoTranslate, setAutoTranslate] = useState(false);
   const [nativeLanguage, setNativeLanguage] = useState("");
+  const [isPrivate, setIsPrivate] = useState(false);
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,6 +41,7 @@ export default function SettingsPage() {
         setPreferredLanguage(p.preferredLanguage ?? NATIVE_VALUE);
         setAutoTranslate(p.autoTranslateEnabled);
         setNativeLanguage(p.nativeLanguage);
+        setIsPrivate(p.isPrivate);
         setStatus("ready");
       })
       .catch((err) => {
@@ -77,11 +79,13 @@ export default function SettingsPage() {
         preferredLanguage:
           preferredLanguage === NATIVE_VALUE ? null : preferredLanguage,
         autoTranslateEnabled: autoTranslate,
+        isPrivate,
       });
       // Re-sync from the response so the form is never stale after saving.
       setPreferredLanguage(updated.preferredLanguage ?? NATIVE_VALUE);
       setAutoTranslate(updated.autoTranslateEnabled);
       setNativeLanguage(updated.nativeLanguage);
+      setIsPrivate(updated.isPrivate);
       setSaved(true);
     } catch (err) {
       setError(t(friendlySettingsErrorKey(err))); // keep entered values
@@ -161,6 +165,28 @@ export default function SettingsPage() {
               </span>
               <span className="block text-xs text-muted">
                 {t("settings.autoTranslateDescription")}
+              </span>
+            </span>
+          </label>
+
+          {/* Private account */}
+          <label className="flex items-start gap-3 border-t border-border pt-4">
+            <input
+              type="checkbox"
+              checked={isPrivate}
+              onChange={(e) => {
+                setIsPrivate(e.target.checked);
+                setSaved(false);
+                setError(null);
+              }}
+              className="mt-0.5 h-4 w-4 rounded border-border text-primary focus:ring-primary/20"
+            />
+            <span>
+              <span className="block text-sm font-medium text-foreground">
+                {t("settings.privateAccount")}
+              </span>
+              <span className="block text-xs text-muted">
+                {t("settings.privateAccountDescription")}
               </span>
             </span>
           </label>

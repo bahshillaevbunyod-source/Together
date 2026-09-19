@@ -13,6 +13,7 @@ import {
 import { LANGUAGES } from "@/lib/languages";
 import { useLanguage } from "@/lib/language-context";
 import { FollowListModal } from "@/components/profile/FollowListModal";
+import { FollowRequestsModal } from "@/components/profile/FollowRequestsModal";
 
 type Status = "loading" | "ready" | "error";
 
@@ -68,6 +69,7 @@ export default function ProfilePage() {
   const [followModal, setFollowModal] = useState<
     "followers" | "following" | null
   >(null);
+  const [requestsOpen, setRequestsOpen] = useState(false);
 
   const load = useCallback((signal?: AbortSignal) => {
     setStatus("loading");
@@ -179,6 +181,17 @@ export default function ProfilePage() {
                 <span className="text-muted">{t("profile.following")}</span>
               </button>
             </div>
+
+            {/* Follow requests inbox entry — only for private accounts. */}
+            {profile.isPrivate ? (
+              <button
+                type="button"
+                onClick={() => setRequestsOpen(true)}
+                className="mt-2 text-sm font-medium text-primary transition-colors hover:text-primary-hover"
+              >
+                {t("profile.followRequests")}
+              </button>
+            ) : null}
           </div>
         </div>
 
@@ -217,6 +230,15 @@ export default function ProfilePage() {
           username={profile.username}
           mode={followModal}
           onClose={() => setFollowModal(null)}
+        />
+      ) : null}
+
+      {requestsOpen ? (
+        <FollowRequestsModal
+          onClose={() => setRequestsOpen(false)}
+          onAccepted={() =>
+            setFollowers((n) => (typeof n === "number" ? n + 1 : n))
+          }
         />
       ) : null}
     </div>

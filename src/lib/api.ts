@@ -152,6 +152,7 @@ export interface ProfileResponse {
   platformLanguage: string | null;
   preferredLanguage: string | null;
   autoTranslateEnabled: boolean;
+  isPrivate: boolean;
 }
 
 /** A user's public profile (GET /api/v1/users/{username}). */
@@ -170,6 +171,8 @@ export interface PublicUserProfile {
   isFollowing: boolean;
   isBlocked: boolean;
   isSelf: boolean;
+  isPrivate: boolean;
+  followRequested: boolean;
 }
 
 /** A partial profile update. Nullable fields accept null to clear them. */
@@ -183,6 +186,7 @@ export interface UpdateProfileInput {
   platformLanguage?: string | null;
   preferredLanguage?: string | null;
   autoTranslateEnabled?: boolean;
+  isPrivate?: boolean;
 }
 
 /** Fetch the authenticated user's own profile. */
@@ -200,18 +204,37 @@ export function updateProfile(
   });
 }
 
-/** Follow a user by username. */
-export function followUser(username: string): Promise<{ following: boolean }> {
-  return apiFetch<{ following: boolean }>(
+/**
+ * Result of a follow mutation. For a public account `following` becomes true
+ * immediately; for a private account `requested` becomes true (a pending
+ * request) while `following` stays false. A pending request never grants
+ * follower access and never changes follower counts.
+ */
+export interface FollowResult {
+  following: boolean;
+  requested: boolean;
+}
+
+/** Follow a user by username (or, for a private account, request to follow). */
+export function followUser(username: string): Promise<FollowResult> {
+  return apiFetch<FollowResult>(
     `/api/v1/users/${encodeURIComponent(username)}/follow`,
     { method: "POST" },
   );
 }
 
 /** Unfollow a user by username. */
-export function unfollowUser(username: string): Promise<{ following: boolean }> {
-  return apiFetch<{ following: boolean }>(
+export function unfollowUser(username: string): Promise<FollowResult> {
+  return apiFetch<FollowResult>(
     `/api/v1/users/${encodeURIComponent(username)}/follow`,
+    { method: "DELETE" },
+  );
+}
+
+/** Cancel the viewer's own pending follow request to a private account. */
+export function cancelFollowRequest(username: string): Promise<FollowResult> {
+  return apiFetch<FollowResult>(
+    `/api/v1/users/${encodeURIComponent(username)}/follow-request`,
     { method: "DELETE" },
   );
 }
@@ -292,6 +315,54 @@ export function getFollowing(
   signal?: AbortSignal,
 ): Promise<FollowListPage> {
   return getFollowList("following", username, params, signal);
+}
+
+/** One incoming follow request (a private account's inbox item). */
+export interface FollowRequestItem {
+  id: string;
+  username: string;
+  displayName: string;
+  avatarUrl: string | null;
+  createdAt: string;
+}
+
+/** One page of incoming follow requests. `nextCursor` is "" when exhausted. */
+export interface FollowRequestPage {
+  items: FollowRequestItem[];
+  nextCursor: string;
+}
+
+/** Fetch a page of the authenticated user's incoming follow requests. */
+export function getFollowRequests(
+  params: { cursor?: string; limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<FollowRequestPage> {
+  const query = new URLSearchParams();
+  if (params.cursor) query.set("cursor", params.cursor);
+  if (params.limit) query.set("limit", String(params.limit));
+  const qs = query.toString();
+  return apiFetch<FollowRequestPage>(
+    `/api/v1/follow-requests${qs ? `?${qs}` : ""}`,
+    { signal },
+  );
+}
+
+/** Accept an incoming follow request from `username` (the requester). */
+export function acceptFollowRequest(username: string): Promise<FollowResult> {
+  return apiFetch<FollowResult>(
+    `/api/v1/follow-requests/${encodeURIComponent(username)}/accept`,
+    { method: "POST" },
+  );
+}
+
+/** Decline an incoming follow request from `username` (the requester). */
+export function declineFollowRequest(
+  username: string,
+): Promise<FollowResult> {
+  return apiFetch<FollowResult>(
+    `/api/v1/follow-requests/${encodeURIComponent(username)}/decline`,
+    { method: "POST" },
+  );
 }
 
 /** A user row returned by the global people-search endpoint. */
