@@ -35,9 +35,23 @@ type Beginner interface {
 }
 
 // RequestDeleter deletes a pending request within a transaction, reporting
-// whether a row existed.
+// whether a row existed. RequestCreator inserts one, reporting whether it was
+// newly created. *followrequest.PostgresRepository satisfies both.
 type RequestDeleter interface {
 	DeleteTx(ctx context.Context, q followrequest.DBTX, requesterID, targetID string) (bool, error)
+}
+
+// RequestCreator inserts a pending request within a transaction, reporting
+// whether a new row was created.
+type RequestCreator interface {
+	CreateTx(ctx context.Context, q followrequest.DBTX, requesterID, targetID string) (bool, error)
+}
+
+// RequestStore is the pending-request persistence the service needs within a
+// transaction: create (for Request) and delete (for Accept).
+type RequestStore interface {
+	RequestCreator
+	RequestDeleter
 }
 
 // FollowCreator inserts a follow edge within a transaction, reporting whether a
@@ -51,17 +65,52 @@ type NotificationCreator interface {
 	CreateTx(ctx context.Context, q notification.DBTX, in notification.CreateInput) error
 }
 
-// Service accepts a pending follow request atomically.
+// Service creates and accepts pending follow requests atomically.
 type Service struct {
 	db       Beginner
-	requests RequestDeleter
+	requests RequestStore
 	follows  FollowCreator
 	notifs   NotificationCreator
 }
 
 // New builds a Service. The pool is wrapped so its transactions satisfy Tx.
-func New(pool *pgxpool.Pool, requests RequestDeleter, follows FollowCreator, notifs NotificationCreator) *Service {
+func New(pool *pgxpool.Pool, requests RequestStore, follows FollowCreator, notifs NotificationCreator) *Service {
 	return &Service{db: poolBeginner{pool: pool}, requests: requests, follows: follows, notifs: notifs}
+}
+
+// Request records a pending follow request from requesterID to targetID and,
+// only when the request is newly created, records a "follow_request"
+// notification for the target — both in one transaction. A duplicate request
+// creates no duplicate notification. It reports whether a new request was
+// created. The caller is responsible for rejecting self-requests, blocked pairs,
+// and already-following requesters before calling this. On any error the
+// transaction is rolled back.
+func (s *Service) Request(ctx context.Context, requesterID, targetID string) (bool, error) {
+	tx, err := s.db.Begin(ctx)
+	if err != nil {
+		return false, err
+	}
+	defer tx.Rollback(ctx) // no-op after a successful Commit
+
+	created, err := s.requests.CreateTx(ctx, tx, requesterID, targetID)
+	if err != nil {
+		return false, err
+	}
+	if created {
+		actor := requesterID
+		in := notification.CreateInput{
+			UserID:  targetID,
+			ActorID: &actor,
+			Type:    notification.TypeFollowRequest,
+		}
+		if err := s.notifs.CreateTx(ctx, tx, in); err != nil {
+			return false, err
+		}
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return false, err
+	}
+	return created, nil
 }
 
 // Accept approves the pending request from requesterID to targetID. In one

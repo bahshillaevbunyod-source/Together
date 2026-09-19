@@ -52,13 +52,15 @@ type ProfileUpdate struct {
 	PlatformLanguage     OptionalString // nullable; nil clears (onboarding incomplete)
 	PreferredLanguage    OptionalString // nullable; independent preference
 	AutoTranslateEnabled *bool          // non-null column
+	IsPrivate            *bool          // non-null column; account privacy toggle
 }
 
 // HasChanges reports whether at least one field will be updated.
 func (p ProfileUpdate) HasChanges() bool {
 	return p.DisplayName != nil || p.NativeLanguage != nil ||
 		p.Bio.Set || p.CountryCode.Set || p.City.Set || p.AvatarURL.Set ||
-		p.PlatformLanguage.Set || p.PreferredLanguage.Set || p.AutoTranslateEnabled != nil
+		p.PlatformLanguage.Set || p.PreferredLanguage.Set || p.AutoTranslateEnabled != nil ||
+		p.IsPrivate != nil
 }
 
 // SearchResult is a public-safe user row returned by SearchUsers. It never

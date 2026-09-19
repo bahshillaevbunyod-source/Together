@@ -12,20 +12,22 @@ import (
 // publicUserResponse is the public view of a user. It never exposes email,
 // phone or password_hash.
 type publicUserResponse struct {
-	ID             string  `json:"id"`
-	Username       string  `json:"username"`
-	DisplayName    string  `json:"displayName"`
-	AvatarURL      *string `json:"avatarUrl"`
-	Bio            *string `json:"bio"`
-	CountryCode    *string `json:"countryCode"`
-	City           *string `json:"city"`
-	NativeLanguage string  `json:"nativeLanguage"`
-	CreatedAt      string  `json:"createdAt"`
-	FollowersCount int64   `json:"followersCount"`
-	FollowingCount int64   `json:"followingCount"`
-	IsFollowing    bool    `json:"isFollowing"`
-	IsBlocked      bool    `json:"isBlocked"`
-	IsSelf         bool    `json:"isSelf"`
+	ID              string  `json:"id"`
+	Username        string  `json:"username"`
+	DisplayName     string  `json:"displayName"`
+	AvatarURL       *string `json:"avatarUrl"`
+	Bio             *string `json:"bio"`
+	CountryCode     *string `json:"countryCode"`
+	City            *string `json:"city"`
+	NativeLanguage  string  `json:"nativeLanguage"`
+	CreatedAt       string  `json:"createdAt"`
+	FollowersCount  int64   `json:"followersCount"`
+	FollowingCount  int64   `json:"followingCount"`
+	IsFollowing     bool    `json:"isFollowing"`
+	IsBlocked       bool    `json:"isBlocked"`
+	IsSelf          bool    `json:"isSelf"`
+	IsPrivate       bool    `json:"isPrivate"`
+	FollowRequested bool    `json:"followRequested"`
 }
 
 func toPublicUserResponse(u *user.User) publicUserResponse {
@@ -39,6 +41,7 @@ func toPublicUserResponse(u *user.User) publicUserResponse {
 		City:           u.City,
 		NativeLanguage: u.NativeLanguage,
 		CreatedAt:      u.CreatedAt.Format(time.RFC3339),
+		IsPrivate:      u.IsPrivate,
 	}
 }
 
@@ -106,6 +109,20 @@ func (s *Server) handlePublicProfile(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			resp.IsFollowing = isFollowing
+
+			// A pending follow request from the viewer to this (private) user, so
+			// the profile can show a "Requested" state. This reads follow_requests
+			// only and never affects isFollowing or any access decision. (The
+			// nil check keeps handlers that don't wire this dependency safe; it is
+			// always wired in production.)
+			if s.followRequests != nil {
+				requested, err := s.followRequests.Exists(r.Context(), viewer.ID, u.ID)
+				if err != nil {
+					writeError(w, http.StatusInternalServerError, "internal error")
+					return
+				}
+				resp.FollowRequested = requested
+			}
 
 			// Whether the viewer has blocked this user (one direction), so the
 			// profile can show Block vs Unblock and survive a refresh.

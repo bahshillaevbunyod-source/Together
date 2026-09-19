@@ -48,6 +48,9 @@ type Repository interface {
 	// Create records a pending request from requesterID to targetID. Idempotent:
 	// a duplicate request reports created=false and adds no row.
 	Create(ctx context.Context, requesterID, targetID string) (bool, error)
+	// CreateTx records a pending request using the given executor so it can share
+	// a transaction with its notification. Reports whether a new row was created.
+	CreateTx(ctx context.Context, q DBTX, requesterID, targetID string) (bool, error)
 	// Exists reports whether a pending request from requesterID to targetID
 	// currently exists.
 	Exists(ctx context.Context, requesterID, targetID string) (bool, error)

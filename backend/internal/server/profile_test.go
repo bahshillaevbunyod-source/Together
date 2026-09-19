@@ -349,3 +349,35 @@ func TestAvatarOtherUserKeyNeverDeleted(t *testing.T) {
 		t.Fatalf("another user's key must never be deleted, got %v", sr.deleted)
 	}
 }
+
+func TestGetProfileIncludesIsPrivate(t *testing.T) {
+	u := userWithPassword(t, "strongpass")
+	u.IsPrivate = true
+	srv := profileServer(&fakeUserRepo{byIDUser: u, updateUser: u})
+	rec := getProfile(srv, true)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", rec.Code)
+	}
+	if !strings.Contains(rec.Body.String(), `"isPrivate":true`) {
+		t.Fatalf("profile must expose isPrivate, got %s", rec.Body.String())
+	}
+}
+
+func TestPatchProfileSetsIsPrivate(t *testing.T) {
+	u := userWithPassword(t, "strongpass")
+	updated := userWithPassword(t, "strongpass")
+	updated.IsPrivate = true
+	users := &fakeUserRepo{byIDUser: u, updateUser: updated}
+	srv := profileServer(users)
+
+	rec := patchProfile(srv, `{"isPrivate":true}`, true, true)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", rec.Code)
+	}
+	if users.lastUpdate.IsPrivate == nil || *users.lastUpdate.IsPrivate != true {
+		t.Fatalf("PATCH must set IsPrivate=true in the update, got %+v", users.lastUpdate.IsPrivate)
+	}
+	if !strings.Contains(rec.Body.String(), `"isPrivate":true`) {
+		t.Fatalf("response must reflect isPrivate:true, got %s", rec.Body.String())
+	}
+}

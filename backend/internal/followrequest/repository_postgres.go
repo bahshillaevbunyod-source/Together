@@ -35,6 +35,17 @@ func (r *PostgresRepository) Create(ctx context.Context, requesterID, targetID s
 	return tag.RowsAffected() > 0, nil
 }
 
+// CreateTx inserts a pending request using the given executor (so it can share a
+// transaction) and reports whether a new row was created. A duplicate hits
+// ON CONFLICT DO NOTHING and returns created=false.
+func (r *PostgresRepository) CreateTx(ctx context.Context, q DBTX, requesterID, targetID string) (bool, error) {
+	tag, err := q.Exec(ctx, createQuery, requesterID, targetID)
+	if err != nil {
+		return false, err
+	}
+	return tag.RowsAffected() > 0, nil
+}
+
 const existsQuery = `
 SELECT EXISTS (
     SELECT 1 FROM follow_requests WHERE requester_id = $1 AND target_id = $2

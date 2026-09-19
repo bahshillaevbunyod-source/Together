@@ -435,6 +435,9 @@ func (r *PostgresRepository) UpdateProfile(ctx context.Context, id string, in Pr
 	if in.AutoTranslateEnabled != nil {
 		add("auto_translate_enabled", *in.AutoTranslateEnabled)
 	}
+	if in.IsPrivate != nil {
+		add("is_private", *in.IsPrivate)
+	}
 	set = append(set, "updated_at = now()")
 
 	query := fmt.Sprintf(

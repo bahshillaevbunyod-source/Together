@@ -55,13 +55,47 @@ func (s *Server) handleFollow(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Follow and its "follow" notification are created atomically; a duplicate
-	// follow creates no duplicate notification.
+	// Private target: never insert a follows edge here. Create a pending request
+	// instead (unless already following), so restricted access is unaffected.
+	if target.IsPrivate {
+		// If already following (e.g. followed before the account went private),
+		// report that state idempotently — no request is created.
+		following, err := s.follows.IsFollowing(r.Context(), me.ID, target.ID)
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, "internal error")
+			return
+		}
+		if following {
+			writeJSON(w, http.StatusOK, followResponse{Following: true, Requested: false})
+			return
+		}
+
+		// Create (idempotently) the pending request and, only when newly
+		// created, its follow_request notification — atomically.
+		if _, err := s.followReq.Request(r.Context(), me.ID, target.ID); err != nil {
+			writeError(w, http.StatusInternalServerError, "internal error")
+			return
+		}
+		writeJSON(w, http.StatusOK, followResponse{Following: false, Requested: true})
+		return
+	}
+
+	// Public target: unchanged immediate follow. Follow and its "follow"
+	// notification are created atomically; a duplicate follow creates no
+	// duplicate notification.
 	if err := s.followNotify.Follow(r.Context(), me.ID, target.ID); err != nil {
 		writeError(w, http.StatusInternalServerError, "internal error")
 		return
 	}
-	writeJSON(w, http.StatusOK, map[string]bool{"following": true})
+	writeJSON(w, http.StatusOK, followResponse{Following: true, Requested: false})
+}
+
+// followResponse is the shape of follow / follow-request mutations. Requested is
+// true only when a pending request exists (or was just created) for a private
+// target; Following reflects the accepted `follows` relationship.
+type followResponse struct {
+	Following bool `json:"following"`
+	Requested bool `json:"requested"`
 }
 
 func (s *Server) handleUnfollow(w http.ResponseWriter, r *http.Request) {

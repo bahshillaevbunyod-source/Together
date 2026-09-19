@@ -15,6 +15,7 @@ import (
 	"together/backend/internal/config"
 	"together/backend/internal/conversation"
 	"together/backend/internal/follow"
+	"together/backend/internal/followrequest"
 	"together/backend/internal/like"
 	"together/backend/internal/media"
 	"together/backend/internal/notification"
@@ -42,6 +43,8 @@ type Server struct {
 	users           user.Repository
 	sessions        session.Repository
 	follows         follow.Repository
+	followRequests  followrequest.Repository
+	followReq       followRequestService
 	blocks          block.Repository
 	posts           post.Repository
 	topics          topic.Repository
@@ -76,6 +79,16 @@ type followNotifier interface {
 	Follow(ctx context.Context, followerID, followingID string) error
 }
 
+// followRequestService creates and accepts pending follow requests atomically.
+// Request inserts a pending request and (only when newly created) its
+// follow_request notification; Accept deletes the request, inserts the accepted
+// follows edge, and records the follow notification. *followrequestservice.Service
+// satisfies it.
+type followRequestService interface {
+	Request(ctx context.Context, requesterID, targetID string) (bool, error)
+	Accept(ctx context.Context, requesterID, targetID string) error
+}
+
 // likeNotifier creates a post like and its notification atomically.
 // *likeservice.Service satisfies it.
 type likeNotifier interface {
@@ -107,37 +120,45 @@ func New(cfg config.Config, db Pinger, users user.Repository, sessions session.R
 func newServer(cfg config.Config, db Pinger, users user.Repository, sessions session.Repository, follows follow.Repository, blocks block.Repository, posts post.Repository, likes like.Repository, comments comment.Repository, media media.Repository, storageRepo storage.Repository, bookmarks bookmark.Repository, notifications notification.Repository, postCreate postWithMediaCreator, followNotify followNotifier, likeNotify likeNotifier, commentNotify commentNotifier, conversations conversation.Repository, dependencies ...any) *Server {
 	var registrar registration.Creator
 	var topics topic.Repository
+	var followRequests followrequest.Repository
+	var followReq followRequestService
 	for _, dependency := range dependencies {
 		switch dependency := dependency.(type) {
 		case registration.Creator:
 			registrar = dependency
 		case topic.Repository:
 			topics = dependency
+		case followrequest.Repository:
+			followRequests = dependency
+		case followRequestService:
+			followReq = dependency
 		}
 	}
 	s := &Server{
-		cfg:           cfg,
-		db:            db,
-		users:         users,
-		sessions:      sessions,
-		follows:       follows,
-		blocks:        blocks,
-		posts:         posts,
-		topics:        topics,
-		likes:         likes,
-		comments:      comments,
-		media:         media,
-		storage:       storageRepo,
-		bookmarks:     bookmarks,
-		notifications: notifications,
-		postCreate:    postCreate,
-		followNotify:  followNotify,
-		likeNotify:    likeNotify,
-		commentNotify: commentNotify,
-		conversations: conversations,
-		registrar:     registrar,
-		translator:    newTranslator(cfg),
-		hub:           realtime.NewHub(),
+		cfg:            cfg,
+		db:             db,
+		users:          users,
+		sessions:       sessions,
+		follows:        follows,
+		followRequests: followRequests,
+		followReq:      followReq,
+		blocks:         blocks,
+		posts:          posts,
+		topics:         topics,
+		likes:          likes,
+		comments:       comments,
+		media:          media,
+		storage:        storageRepo,
+		bookmarks:      bookmarks,
+		notifications:  notifications,
+		postCreate:     postCreate,
+		followNotify:   followNotify,
+		likeNotify:     likeNotify,
+		commentNotify:  commentNotify,
+		conversations:  conversations,
+		registrar:      registrar,
+		translator:     newTranslator(cfg),
+		hub:            realtime.NewHub(),
 		wsUpgrader: websocket.Upgrader{
 			// Only accept handshakes from the configured app origin.
 			CheckOrigin: func(r *http.Request) bool {
@@ -235,6 +256,12 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	// Follow graph (authenticated, state-changing).
 	mux.HandleFunc("POST /api/v1/users/{username}/follow", s.requireAuth(s.csrfProtect(s.handleFollow)))
 	mux.HandleFunc("DELETE /api/v1/users/{username}/follow", s.requireAuth(s.csrfProtect(s.handleUnfollow)))
+
+	// Follow requests (private accounts).
+	mux.HandleFunc("DELETE /api/v1/users/{username}/follow-request", s.requireAuth(s.csrfProtect(s.handleCancelFollowRequest)))
+	mux.HandleFunc("GET /api/v1/follow-requests", s.requireAuth(s.handleListFollowRequests))
+	mux.HandleFunc("POST /api/v1/follow-requests/{username}/accept", s.requireAuth(s.csrfProtect(s.handleAcceptFollowRequest)))
+	mux.HandleFunc("POST /api/v1/follow-requests/{username}/decline", s.requireAuth(s.csrfProtect(s.handleDeclineFollowRequest)))
 
 	// Block graph (authenticated, state-changing).
 	mux.HandleFunc("POST /api/v1/users/{username}/block", s.requireAuth(s.csrfProtect(s.handleBlock)))

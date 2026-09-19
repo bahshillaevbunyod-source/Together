@@ -31,6 +31,7 @@ var editableProfileFields = map[string]bool{
 	"platformLanguage":     true,
 	"preferredLanguage":    true,
 	"autoTranslateEnabled": true,
+	"isPrivate":            true,
 }
 
 // profileResponse is the safe profile shape (never password_hash).
@@ -49,6 +50,7 @@ type profileResponse struct {
 	PlatformLanguage     *string `json:"platformLanguage"`
 	PreferredLanguage    *string `json:"preferredLanguage"`
 	AutoTranslateEnabled bool    `json:"autoTranslateEnabled"`
+	IsPrivate            bool    `json:"isPrivate"`
 }
 
 func toProfileResponse(u *user.User) profileResponse {
@@ -66,6 +68,7 @@ func toProfileResponse(u *user.User) profileResponse {
 		PlatformLanguage:     u.PlatformLanguage,
 		PreferredLanguage:    u.PreferredLanguage,
 		AutoTranslateEnabled: u.AutoTranslateEnabled,
+		IsPrivate:            u.IsPrivate,
 	}
 }
 
@@ -296,6 +299,14 @@ func buildProfileUpdate(raw map[string]json.RawMessage) (user.ProfileUpdate, boo
 			return up, false
 		}
 		up.AutoTranslateEnabled = &b
+	}
+
+	if v, present := raw["isPrivate"]; present {
+		var b bool
+		if err := json.Unmarshal(v, &b); err != nil {
+			return up, false
+		}
+		up.IsPrivate = &b
 	}
 
 	return up, true

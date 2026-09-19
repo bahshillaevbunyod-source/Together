@@ -19,6 +19,8 @@ import (
 	"together/backend/internal/conversation"
 	"together/backend/internal/db"
 	"together/backend/internal/follow"
+	"together/backend/internal/followrequest"
+	"together/backend/internal/followrequestservice"
 	"together/backend/internal/followservice"
 	"together/backend/internal/like"
 	"together/backend/internal/likeservice"
@@ -75,7 +77,9 @@ func main() {
 	commentNotifier := commentservice.New(pool, comments, notifications)
 	conversations := conversation.NewPostgresRepository(pool)
 	registrar := registration.New(pool, users, sessions)
-	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, topicRepo, registrar)
+	followRequests := followrequest.NewPostgresRepository(pool)
+	followRequester := followrequestservice.New(pool, followRequests, follows, notifications)
+	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, topicRepo, registrar, followRequests, followRequester)
 
 	// Start the server in the background.
 	go func() {
