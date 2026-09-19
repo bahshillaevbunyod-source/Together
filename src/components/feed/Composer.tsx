@@ -365,18 +365,23 @@ export function Composer() {
       />
 
       <div className="mt-4 flex flex-wrap items-center gap-1 border-t border-border pt-3">
-        {actions.map(({ id, labelKey, icon: Icon, color }) => (
-          <button
-            key={id}
-            type="button"
-            onClick={id === "photo" ? openImagePicker : undefined}
-            disabled={id === "photo" && posting}
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            <Icon className={`h-4 w-4 ${color}`} />
-            {t(labelKey)}
-          </button>
-        ))}
+        {actions.map(({ id, labelKey, icon: Icon, color }) => {
+          // Only Photo is implemented; the others stay visible for layout but are
+          // honestly disabled (non-interactive, no fake click) until built.
+          const isPhoto = id === "photo";
+          return (
+            <button
+              key={id}
+              type="button"
+              onClick={isPhoto ? openImagePicker : undefined}
+              disabled={!isPhoto || posting}
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent"
+            >
+              <Icon className={`h-4 w-4 ${color}`} />
+              {t(labelKey)}
+            </button>
+          );
+        })}
 
         <div className="ml-auto flex items-center gap-2">
           <div className="relative" ref={visibilityMenuRef}>

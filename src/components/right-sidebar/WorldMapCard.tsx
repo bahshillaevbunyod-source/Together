@@ -27,7 +27,9 @@ export function WorldMapCard() {
         />
         <button
           type="button"
-          className="absolute bottom-4 left-4 flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-2 text-xs font-medium text-foreground shadow-sm transition-colors hover:bg-background"
+          disabled
+          aria-disabled="true"
+          className="absolute bottom-4 left-4 flex cursor-not-allowed items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-2 text-xs font-medium text-foreground opacity-70 shadow-sm"
         >
           {t("world.exploreMap")}
           <ArrowRight className="h-3.5 w-3.5" />

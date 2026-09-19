@@ -78,17 +78,23 @@ export function SuggestedPeople() {
                 {person.interests}
               </div>
             </div>
+            {/* Suggested People is a placeholder surface (real follow lives on
+                Discover); its controls are non-interactive until wired. */}
             <div className="flex shrink-0 items-center gap-1.5">
               <button
                 type="button"
-                className="rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/10"
+                disabled
+                aria-disabled="true"
+                className="cursor-not-allowed rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-primary opacity-60"
               >
                 {t("sidebar.follow")}
               </button>
               <button
                 type="button"
+                disabled
+                aria-disabled="true"
                 aria-label={t("sidebar.dismiss", { name: person.name })}
-                className="flex h-6 w-6 items-center justify-center rounded-full text-muted-soft transition-colors hover:bg-background hover:text-muted"
+                className="flex h-6 w-6 cursor-not-allowed items-center justify-center rounded-full text-muted-soft opacity-60"
               >
                 <X className="h-4 w-4" />
               </button>

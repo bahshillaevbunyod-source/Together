@@ -31,7 +31,7 @@ type NavItem = {
 const navItems: NavItem[] = [
   { labelKey: "navigation.home", icon: Home, href: "/" },
   { labelKey: "navigation.discover", icon: Search, href: "/discover" },
-  { labelKey: "navigation.messages", icon: MessageCircle, href: "/messages", badge: "3" },
+  { labelKey: "navigation.messages", icon: MessageCircle, href: "/messages" },
   { labelKey: "navigation.calls", icon: Phone },
   { labelKey: "navigation.groups", icon: Users },
   { labelKey: "navigation.explore", icon: Compass },
@@ -56,11 +56,8 @@ export function Sidebar() {
           {navItems.map(({ labelKey, icon: Icon, href, badge }) => {
             const label = t(labelKey);
             const active = href ? pathname === href : false;
-            const className = `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
-              active
-                ? "bg-primary-soft text-primary"
-                : "text-muted hover:bg-primary-soft/60 hover:text-foreground"
-            }`;
+            const base =
+              "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium";
             const inner = (
               <>
                 <Icon className="h-5 w-5 shrink-0" />
@@ -73,14 +70,33 @@ export function Sidebar() {
               </>
             );
 
-            return href ? (
-              <Link key={labelKey} href={href} className={className}>
+            // Items without a route are not built yet: keep them visible for
+            // layout but honestly non-interactive (never a control that silently
+            // does nothing).
+            if (!href) {
+              return (
+                <span
+                  key={labelKey}
+                  aria-disabled="true"
+                  className={`${base} cursor-not-allowed text-muted opacity-50`}
+                >
+                  {inner}
+                </span>
+              );
+            }
+
+            return (
+              <Link
+                key={labelKey}
+                href={href}
+                className={`${base} transition-colors ${
+                  active
+                    ? "bg-primary-soft text-primary"
+                    : "text-muted hover:bg-primary-soft/60 hover:text-foreground"
+                }`}
+              >
                 {inner}
               </Link>
-            ) : (
-              <button key={labelKey} type="button" className={className}>
-                {inner}
-              </button>
             );
           })}
         </nav>
@@ -103,7 +119,9 @@ export function Sidebar() {
               </p>
               <button
                 type="button"
-                className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90"
+                disabled
+                aria-disabled="true"
+                className="mt-3 inline-flex cursor-not-allowed items-center gap-1.5 rounded-full bg-foreground/80 px-3 py-1.5 text-xs font-medium text-white opacity-70"
               >
                 {t("world.exploreNow")}
                 <ArrowRight className="h-3.5 w-3.5" />
