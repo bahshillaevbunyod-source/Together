@@ -33,8 +33,17 @@ WHERE (follower_id = $1 AND following_id = $2)
    OR (follower_id = $2 AND following_id = $1)
 `
 
-// Block inserts the block edge and removes follow edges in both directions,
-// atomically in a single transaction. Idempotent.
+// deleteFollowRequestsBothWays removes any pending follow request in either
+// direction between the two users. A block must clear pending requests as well
+// as accepted edges, so a blocked pair has no lingering way to gain access.
+const deleteFollowRequestsBothWays = `
+DELETE FROM follow_requests
+WHERE (requester_id = $1 AND target_id = $2)
+   OR (requester_id = $2 AND target_id = $1)
+`
+
+// Block inserts the block edge and removes both follow edges and pending follow
+// requests in both directions, atomically in a single transaction. Idempotent.
 func (r *PostgresRepository) Block(ctx context.Context, blockerID, blockedID string) error {
 	tx, err := r.pool.Begin(ctx)
 	if err != nil {
@@ -46,6 +55,9 @@ func (r *PostgresRepository) Block(ctx context.Context, blockerID, blockedID str
 		return err
 	}
 	if _, err := tx.Exec(ctx, deleteFollowsBothWays, blockerID, blockedID); err != nil {
+		return err
+	}
+	if _, err := tx.Exec(ctx, deleteFollowRequestsBothWays, blockerID, blockedID); err != nil {
 		return err
 	}
 	return tx.Commit(ctx)

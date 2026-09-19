@@ -29,7 +29,7 @@ INSERT INTO users (email, username, display_name, native_language, password_hash
 VALUES ($1, $2, $3, $4, $5)
 RETURNING id, email, phone, username, display_name, avatar_url, bio,
           country_code, city, native_language, created_at, updated_at,
-          platform_language, preferred_language, auto_translate_enabled
+          platform_language, preferred_language, auto_translate_enabled, is_private
 `
 
 // Create inserts a new user and returns the stored row (without password_hash).
@@ -66,6 +66,7 @@ func createUser(ctx context.Context, q DBTX, in CreateInput) (*User, error) {
 		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
+		&u.IsPrivate,
 	); err != nil {
 		return nil, mapCreateError(err)
 	}
@@ -76,7 +77,7 @@ func createUser(ctx context.Context, q DBTX, in CreateInput) (*User, error) {
 const getUserByEmailQuery = `
 SELECT id, email, phone, username, display_name, avatar_url, bio,
        country_code, city, native_language, password_hash, created_at, updated_at,
-       platform_language, preferred_language, auto_translate_enabled
+       platform_language, preferred_language, auto_translate_enabled, is_private
 FROM users
 WHERE email = $1
 `
@@ -104,6 +105,7 @@ func (r *PostgresRepository) GetByEmail(ctx context.Context, email string) (*Use
 		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
+		&u.IsPrivate,
 	); err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
 			return nil, ErrNotFound
@@ -117,7 +119,7 @@ func (r *PostgresRepository) GetByEmail(ctx context.Context, email string) (*Use
 const getUserByIDQuery = `
 SELECT id, email, phone, username, display_name, avatar_url, bio,
        country_code, city, native_language, password_hash, created_at, updated_at,
-       platform_language, preferred_language, auto_translate_enabled
+       platform_language, preferred_language, auto_translate_enabled, is_private
 FROM users
 WHERE id = $1
 `
@@ -144,6 +146,7 @@ func (r *PostgresRepository) GetByID(ctx context.Context, id string) (*User, err
 		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
+		&u.IsPrivate,
 	); err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
 			return nil, ErrNotFound
@@ -156,7 +159,7 @@ func (r *PostgresRepository) GetByID(ctx context.Context, id string) (*User, err
 const getUserByUsernameQuery = `
 SELECT id, email, phone, username, display_name, avatar_url, bio,
        country_code, city, native_language, password_hash, created_at, updated_at,
-       platform_language, preferred_language, auto_translate_enabled
+       platform_language, preferred_language, auto_translate_enabled, is_private
 FROM users
 WHERE username = $1
 `
@@ -184,6 +187,7 @@ func (r *PostgresRepository) GetByUsername(ctx context.Context, username string)
 		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
+		&u.IsPrivate,
 	); err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
 			return nil, ErrNotFound
@@ -389,7 +393,7 @@ LIMIT $7`, ForYouCountryBoost, ForYouLanguageBoost, discoverCandidate)
 // (password_hash is intentionally excluded).
 const profileReturningColumns = `id, email, phone, username, display_name,
 	avatar_url, bio, country_code, city, native_language, created_at, updated_at,
-	platform_language, preferred_language, auto_translate_enabled`
+	platform_language, preferred_language, auto_translate_enabled, is_private`
 
 // UpdateProfile applies a partial update to the editable profile columns and
 // returns the updated row. Only provided fields are written. Returns
@@ -456,6 +460,7 @@ func (r *PostgresRepository) UpdateProfile(ctx context.Context, id string, in Pr
 		&u.PlatformLanguage,
 		&u.PreferredLanguage,
 		&u.AutoTranslateEnabled,
+		&u.IsPrivate,
 	); err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
 			return nil, ErrNotFound

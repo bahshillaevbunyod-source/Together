@@ -1,14 +1,15 @@
 // Package notification stores user notifications (follow, post_like,
-// post_comment) and their persistence.
+// post_comment, follow_request) and their persistence.
 package notification
 
 import "time"
 
 // Notification types allowed by the notifications_type_valid constraint.
 const (
-	TypeFollow      = "follow"
-	TypePostLike    = "post_like"
-	TypePostComment = "post_comment"
+	TypeFollow        = "follow"
+	TypePostLike      = "post_like"
+	TypePostComment   = "post_comment"
+	TypeFollowRequest = "follow_request"
 )
 
 // Notification mirrors a row in the `notifications` table.

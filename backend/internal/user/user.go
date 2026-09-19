@@ -25,4 +25,9 @@ type User struct {
 	PlatformLanguage     *string // nullable until onboarding; UI and translation target
 	PreferredLanguage    *string // nullable; independent translation preference
 	AutoTranslateEnabled bool    // default false
+
+	// Account privacy. false = public (default); true = private, whose follows
+	// require approval. It never affects follower access on its own — access is
+	// still decided solely by the `follows` table.
+	IsPrivate bool
 }
