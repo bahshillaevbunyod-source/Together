@@ -29,6 +29,7 @@ import (
 	"together/backend/internal/post"
 	"together/backend/internal/postservice"
 	"together/backend/internal/registration"
+	"together/backend/internal/schema"
 	"together/backend/internal/server"
 	"together/backend/internal/session"
 	"together/backend/internal/storage"
@@ -57,6 +58,16 @@ func main() {
 		log.Printf("warning: database not reachable at startup: %v", err)
 	} else {
 		log.Println("database connection OK")
+		// Fail loudly on schema drift (unapplied migrations) instead of letting
+		// every request 500 opaquely. Names only — never data or secrets.
+		if missing, err := schema.Verify(pingCtx, pool); err != nil {
+			log.Printf("warning: schema compatibility check could not run: %v", err)
+		} else if len(missing) > 0 {
+			log.Printf("WARNING: database schema is INCOMPATIBLE — missing %d required object(s): %v. "+
+				"Apply pending migrations; /ready will report not-ready until resolved.", len(missing), missing)
+		} else {
+			log.Println("database schema compatible")
+		}
 	}
 	cancelPing()
 

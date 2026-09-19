@@ -4,6 +4,7 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"log"
 	"net/http"
 	"time"
 
@@ -322,4 +323,15 @@ func writeJSON(w http.ResponseWriter, status int, v any) {
 // writeError writes a safe JSON error response ({"error": message}).
 func writeError(w http.ResponseWriter, status int, message string) {
 	writeJSON(w, status, map[string]string{"error": message})
+}
+
+// internalError records the real cause of a 500 server-side and returns the
+// generic, non-leaking error to the client. `op` is a short operation label
+// (e.g. "auth login: GetByEmail"); the logged error must never contain secrets,
+// tokens, cookies, the DSN, or raw request bodies. This keeps client responses
+// safe while making schema/DB failures diagnosable in server logs instead of
+// vanishing into an opaque "internal error".
+func (s *Server) internalError(w http.ResponseWriter, op string, err error) {
+	log.Printf("%s: %v", op, err)
+	writeError(w, http.StatusInternalServerError, "internal error")
 }

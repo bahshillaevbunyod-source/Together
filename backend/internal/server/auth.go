@@ -114,8 +114,9 @@ func (s *Server) handleRegister(w http.ResponseWriter, r *http.Request) {
 		case errors.Is(err, user.ErrDuplicateEmail), errors.Is(err, user.ErrDuplicateUsername):
 			writeError(w, http.StatusConflict, "email or username already in use")
 		default:
-			// Never leak SQL / driver / credential details.
-			writeError(w, http.StatusInternalServerError, "internal error")
+			// Never leak SQL / driver / credential details to the client; record
+			// the real cause server-side for diagnosis.
+			s.internalError(w, "auth register: Register", err)
 		}
 		return
 	}
@@ -160,8 +161,10 @@ func (s *Server) handleLogin(w http.ResponseWriter, r *http.Request) {
 			unauthorized(w)
 			return
 		}
-		// Never leak SQL / driver / credential details.
-		writeError(w, http.StatusInternalServerError, "internal error")
+		// Never leak SQL / driver / credential details to the client, but record
+		// the real cause server-side for diagnosis (this is exactly the path
+		// that failed silently under schema drift).
+		s.internalError(w, "auth login: GetByEmail", err)
 		return
 	}
 
@@ -180,12 +183,12 @@ func (s *Server) handleLogin(w http.ResponseWriter, r *http.Request) {
 	// token goes to the client in an HttpOnly cookie.
 	rawToken, err := session.GenerateToken()
 	if err != nil {
-		writeError(w, http.StatusInternalServerError, "internal error")
+		s.internalError(w, "auth login: GenerateToken", err)
 		return
 	}
 	expiresAt := time.Now().Add(sessionTTL)
 	if _, err := s.sessions.Create(r.Context(), u.ID, session.HashToken(rawToken), expiresAt); err != nil {
-		writeError(w, http.StatusInternalServerError, "internal error")
+		s.internalError(w, "auth login: session create", err)
 		return
 	}
 	s.setSessionCookie(w, rawToken, expiresAt)
