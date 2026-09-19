@@ -5,6 +5,8 @@
  * cookie is carried, and share one JSON/error handling path.
  */
 
+import type { Story, StoryPage } from "@/types/story";
+
 /** Base URL of the Go backend. Override with NEXT_PUBLIC_API_BASE_URL. */
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
@@ -857,11 +859,49 @@ export function getBookmarks(
   return apiFetch<FeedPage>(`/api/v1/bookmarks${qs ? `?${qs}` : ""}`, { signal });
 }
 
+/* ------------------------------ Stories --------------------------------- */
+
+/** Fetch the authenticated viewer's active, access-controlled story feed. */
+export function getStories(
+  params: { cursor?: string; limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<StoryPage> {
+  const query = new URLSearchParams();
+  if (params.cursor) query.set("cursor", params.cursor);
+  if (params.limit) query.set("limit", String(params.limit));
+  const qs = query.toString();
+  return apiFetch<StoryPage>(`/api/v1/stories${qs ? `?${qs}` : ""}`, { signal });
+}
+
+/** Mark an authorized active story as viewed. The backend operation is idempotent. */
+export function viewStory(id: string): Promise<{ viewed: boolean }> {
+  return apiFetch<{ viewed: boolean }>(
+    `/api/v1/stories/${encodeURIComponent(id)}/view`,
+    { method: "POST" },
+  );
+}
+
+/** Create a story from a server-confirmed private storage key. */
+export function createStory(storageKey: string): Promise<Story> {
+  return apiFetch<Story>("/api/v1/stories", {
+    method: "POST",
+    body: { storageKey },
+  });
+}
+
+/** Delete one of the authenticated user's stories. */
+export function deleteStory(id: string): Promise<{ deleted: boolean }> {
+  return apiFetch<{ deleted: boolean }>(
+    `/api/v1/stories/${encodeURIComponent(id)}`,
+    { method: "DELETE" },
+  );
+}
+
 /* ------------------------------ Media ----------------------------------- */
 
 /** Ask the backend for a presigned upload URL for one image. */
 export interface MediaUploadUrlInput {
-  type: "image";
+  type: "image" | "video";
   mimeType: string;
   sizeBytes: number;
   /**
