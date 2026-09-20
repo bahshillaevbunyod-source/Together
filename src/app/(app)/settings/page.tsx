@@ -23,8 +23,9 @@ function friendlySettingsErrorKey(err: unknown): TranslationKey {
 }
 
 export default function SettingsPage() {
-  const { t } = useLanguage();
+  const { t, setLanguage } = useLanguage();
   const [status, setStatus] = useState<Status>("loading");
+  const [platformLanguage, setPlatformLanguage] = useState<string>("");
   const [preferredLanguage, setPreferredLanguage] = useState<string>(NATIVE_VALUE);
   const [autoTranslate, setAutoTranslate] = useState(false);
   const [nativeLanguage, setNativeLanguage] = useState("");
@@ -34,10 +35,16 @@ export default function SettingsPage() {
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
 
+  // Platform language applies immediately on change (its own save), separate
+  // from the translation form's Save button.
+  const [platformSaving, setPlatformSaving] = useState(false);
+  const [platformError, setPlatformError] = useState<string | null>(null);
+
   const load = useCallback((signal?: AbortSignal) => {
     setStatus("loading");
     getProfile(signal)
       .then((p) => {
+        setPlatformLanguage(p.platformLanguage ?? "");
         setPreferredLanguage(p.preferredLanguage ?? NATIVE_VALUE);
         setAutoTranslate(p.autoTranslateEnabled);
         setNativeLanguage(p.nativeLanguage);
@@ -67,6 +74,38 @@ export default function SettingsPage() {
     }
     return LANGUAGES;
   }, [preferredLanguage]);
+
+  // Platform-language options come only from the canonical catalog; a stored
+  // value outside it (unlikely) is surfaced so the select reflects reality.
+  const platformOptions = useMemo(() => {
+    if (platformLanguage && !LANGUAGES.some((l) => l.code === platformLanguage)) {
+      return [{ code: platformLanguage, label: platformLanguage }, ...LANGUAGES];
+    }
+    return LANGUAGES;
+  }, [platformLanguage]);
+
+  // Change the whole UI language. Persists via the existing partial PATCH
+  // (platformLanguage only — never touches native/preferred/autoTranslate) and,
+  // on success, switches the live LanguageProvider immediately. On failure the
+  // previous value is kept so UI state and persisted state never diverge.
+  const onPlatformChange = async (next: string) => {
+    if (!next || next === platformLanguage || platformSaving) return;
+    const previous = platformLanguage;
+    setPlatformLanguage(next); // optimistic; reverted on failure
+    setPlatformSaving(true);
+    setPlatformError(null);
+    try {
+      const updated = await updateProfile({ platformLanguage: next });
+      const applied = updated.platformLanguage ?? next;
+      setPlatformLanguage(applied);
+      setLanguage(applied); // live UI switch (LanguageProvider source of truth)
+    } catch (err) {
+      setPlatformLanguage(previous); // keep previous; no divergence
+      setPlatformError(t(friendlySettingsErrorKey(err)));
+    } finally {
+      setPlatformSaving(false);
+    }
+  };
 
   const onSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,7 +160,39 @@ export default function SettingsPage() {
         <h1 className="text-lg font-bold tracking-tight text-foreground">
           {t("navigation.settings")}
         </h1>
-        <h2 className="mt-1 text-sm text-muted">{t("settings.translation")}</h2>
+
+        {/* Platform language = the language of Together's interface. Distinct
+            from the preferred (content translation) language below. Applies
+            immediately on selection. */}
+        <label className="mt-4 flex flex-col gap-1.5">
+          <span className="text-sm font-medium text-foreground">
+            {t("settings.platformLanguage")}
+          </span>
+          <span className="text-xs text-muted">
+            {t("settings.platformLanguageDescription")}
+          </span>
+          <select
+            value={platformLanguage}
+            disabled={platformSaving}
+            onChange={(e) => void onPlatformChange(e.target.value)}
+            className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {platformOptions.map((l) => (
+              <option key={l.code} value={l.code}>
+                {l.label} — {l.code}
+              </option>
+            ))}
+          </select>
+          {platformError ? (
+            <span className="text-xs text-red-500" role="alert">
+              {platformError}
+            </span>
+          ) : null}
+        </label>
+
+        <h2 className="mt-6 border-t border-border pt-4 text-sm text-muted">
+          {t("settings.translation")}
+        </h2>
 
         <form onSubmit={onSave} className="mt-5 flex flex-col gap-5">
           {/* Preferred language */}

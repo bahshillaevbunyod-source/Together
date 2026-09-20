@@ -262,6 +262,8 @@ export const en = {
   "bookmarks.description": "Posts you’ve saved for later.",
 
   "settings.translation": "Translation",
+  "settings.platformLanguage": "Platform language",
+  "settings.platformLanguageDescription": "The language the Together interface is shown in.",
   "settings.preferredLanguage": "Preferred translation language",
   "settings.useNativeLanguage": "Use native language",
   "settings.autoTranslate": "Auto translate",
