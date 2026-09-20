@@ -253,6 +253,8 @@ const d_hi = {
   "topic.postsInTopic": "इस विषय में पोस्ट.",
   "bookmarks.description": "पोस्ट जिन्हें आपने बाद के लिए सहेजा है।",
   "settings.translation": "अनुवाद",
+  "settings.platformLanguage": "प्लेटफ़ॉर्म की भाषा",
+  "settings.platformLanguageDescription": "वह भाषा जिसमें Together इंटरफ़ेस प्रदर्शित होता है।",
   "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा",
   "settings.useNativeLanguage": "देशी भाषा का प्रयोग करें",
   "settings.autoTranslate": "स्वतः अनुवाद",

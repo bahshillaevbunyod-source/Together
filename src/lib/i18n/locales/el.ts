@@ -253,6 +253,8 @@ const d_el = {
   "topic.postsInTopic": "Δημοσιεύσεις σε αυτό το θέμα.",
   "bookmarks.description": "Αναρτήσεις που έχετε αποθηκεύσει για αργότερα.",
   "settings.translation": "Μετάφραση",
+  "settings.platformLanguage": "Γλώσσα πλατφόρμας",
+  "settings.platformLanguageDescription": "Η γλώσσα στην οποία εμφανίζεται η διεπαφή του Together.",
   "settings.preferredLanguage": "Προτιμώμενη γλώσσα μετάφρασης",
   "settings.useNativeLanguage": "Χρησιμοποιήστε τη μητρική γλώσσα",
   "settings.autoTranslate": "Αυτόματη μετάφραση",

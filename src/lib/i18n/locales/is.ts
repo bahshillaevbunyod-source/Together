@@ -253,6 +253,8 @@ const d_is = {
   "topic.postsInTopic": "Færslur í þessu efni.",
   "bookmarks.description": "Færslur sem þú hefur vistað til síðar.",
   "settings.translation": "Þýðing",
+  "settings.platformLanguage": "Tungumál vettvangs",
+  "settings.platformLanguageDescription": "Tungumálið sem Together-viðmótið er birt á.",
   "settings.preferredLanguage": "Æskilegt þýðingarmál",
   "settings.useNativeLanguage": "Notaðu móðurmál",
   "settings.autoTranslate": "Sjálfvirk þýðing",

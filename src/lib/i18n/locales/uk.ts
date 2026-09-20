@@ -253,6 +253,8 @@ const d_uk = {
   "topic.postsInTopic": "Публікації в цій темі.",
   "bookmarks.description": "Публікації, які ви зберегли на потім.",
   "settings.translation": "Переклад",
+  "settings.platformLanguage": "Мова платформи",
+  "settings.platformLanguageDescription": "Мова, якою відображається інтерфейс Together.",
   "settings.preferredLanguage": "Бажана мова перекладу",
   "settings.useNativeLanguage": "Використовуйте рідну мову",
   "settings.autoTranslate": "Автоматичний переклад",

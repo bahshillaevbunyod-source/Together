@@ -253,6 +253,8 @@ const d_tk = {
   "topic.postsInTopic": "Bu mowzukdaky ýazgylar.",
   "bookmarks.description": "Soňrak ýazdyran ýazgylaryňyz.",
   "settings.translation": "Terjime",
+  "settings.platformLanguage": "Platformanyň dili",
+  "settings.platformLanguageDescription": "Together interfeýsiniň görkezilýän dili.",
   "settings.preferredLanguage": "Iň gowy görülýän terjime dili",
   "settings.useNativeLanguage": "Ene dilini ulanyň",
   "settings.autoTranslate": "Awto terjime",

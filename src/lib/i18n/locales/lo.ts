@@ -253,6 +253,8 @@ const d_lo = {
   "topic.postsInTopic": "ປະກາດໃນຫົວຂໍ້ນີ້.",
   "bookmarks.description": "ໂພສທີ່ທ່ານບັນທຶກໄວ້ໃນພາຍຫຼັງ.",
   "settings.translation": "ການແປ",
+  "settings.platformLanguage": "ພາສາແພລດຟອມ",
+  "settings.platformLanguageDescription": "ພາສາທີ່ໃຊ້ສະແດງອິນເຕີເຟດຂອງ Together.",
   "settings.preferredLanguage": "ພາສາການແປພາສາທີ່ຕ້ອງການ",
   "settings.useNativeLanguage": "ໃຊ້ພາສາພື້ນເມືອງ",
   "settings.autoTranslate": "ແປອັດຕະໂນມັດ",

@@ -253,6 +253,8 @@ const d_ace = {
   "topic.postsInTopic": "Postingan lam topik nyoe.",
   "bookmarks.description": "Postingan nyang ka neu simpan keu ukeu.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Bahasa platform",
+  "settings.platformLanguageDescription": "Bahasa yang digunakan pada antara muka Together.",
   "settings.preferredLanguage": "Bahasa terjemahan nyang geupiléh",
   "settings.useNativeLanguage": "Pakèk basa asli",
   "settings.autoTranslate": "Neuterjeumah otomatis",

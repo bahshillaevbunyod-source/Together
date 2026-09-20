@@ -253,6 +253,8 @@ const d_ak = {
   "topic.postsInTopic": "Posts in saa asɛmti yi.",
   "bookmarks.description": "Posts a woakora so ama akyiri yi.",
   "settings.translation": "Nkyerɛaseɛ",
+  "settings.platformLanguage": "Platform kasa",
+  "settings.platformLanguageDescription": "Kasa a wɔde kyerɛ Together interface no.",
   "settings.preferredLanguage": "Nkyerɛase kasa a wɔpɛ",
   "settings.useNativeLanguage": "Fa kurom kasa di dwuma",
   "settings.autoTranslate": "Auto nkyerɛase",

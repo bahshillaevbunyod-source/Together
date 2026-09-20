@@ -253,6 +253,8 @@ const d_nus = {
   "topic.postsInTopic": "Postni̱ rɛy topik ɛmɛ.",
   "bookmarks.description": "Posts tin ci̱ ji̱n kɛ tɔ̱w kɛ kɔrɛ.",
   "settings.translation": "Luɔ̱c ŋɔaani̱",
+  "settings.platformLanguage": "Thuɔŋ platform",
+  "settings.platformLanguageDescription": "Thuɔŋ ci Together interface yök.",
   "settings.preferredLanguage": "Thok in ca luɔc kɛ jɛ",
   "settings.useNativeLanguage": "La̱tdɛ thok nath",
   "settings.autoTranslate": "Luɔ̱c kärɔa",

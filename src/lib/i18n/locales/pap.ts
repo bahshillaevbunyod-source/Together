@@ -253,6 +253,8 @@ const d_pap = {
   "topic.postsInTopic": "Postnan den e tópiko aki.",
   "bookmarks.description": "Postnan ku bo a warda pa despues.",
   "settings.translation": "Tradukshon",
+  "settings.platformLanguage": "Idioma di plataforma",
+  "settings.platformLanguageDescription": "E idioma ku ta mustra e interfaz di Together kun dje.",
   "settings.preferredLanguage": "Idioma di tradukshon preferí",
   "settings.useNativeLanguage": "Usa idioma nativo",
   "settings.autoTranslate": "Tradusí outomátiko",

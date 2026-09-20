@@ -253,6 +253,8 @@ const zh = {
   "topic.postsInTopic": "此主题中的帖子。",
   "bookmarks.description": "您已保存供以后使用的帖子。",
   "settings.translation": "翻译",
+  "settings.platformLanguage": "平台语言",
+  "settings.platformLanguageDescription": "显示 Together 界面的语言。",
   "settings.preferredLanguage": "首选翻译语言",
   "settings.useNativeLanguage": "使用母语",
   "settings.autoTranslate": "自动翻译",

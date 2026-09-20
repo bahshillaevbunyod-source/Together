@@ -253,6 +253,8 @@ const d_sd = {
   "topic.postsInTopic": "هن موضوع ۾ پوسٽون.",
   "bookmarks.description": "پوسٽون جيڪي توهان بعد ۾ محفوظ ڪيون آهن.",
   "settings.translation": "ترجمو",
+  "settings.platformLanguage": "پليٽ فارم جي ٻولي",
+  "settings.platformLanguageDescription": "اها ٻولي جنهن ۾ Together جو انٽرفيس ڏيکاريو وڃي ٿو.",
   "settings.preferredLanguage": "ترجيحي ترجمي جي ٻولي",
   "settings.useNativeLanguage": "مادري ٻولي استعمال ڪريو",
   "settings.autoTranslate": "خودڪار ترجمو",

@@ -253,6 +253,8 @@ const d_fa = {
   "topic.postsInTopic": "پست های این موضوع",
   "bookmarks.description": "پست هایی که برای بعد ذخیره کرده اید.",
   "settings.translation": "ترجمه",
+  "settings.platformLanguage": "زبان پلتفرم",
+  "settings.platformLanguageDescription": "زبانی که رابط Together به آن نمایش داده می‌شود.",
   "settings.preferredLanguage": "زبان ترجمه ترجیحی",
   "settings.useNativeLanguage": "از زبان مادری استفاده کنید",
   "settings.autoTranslate": "ترجمه خودکار",

@@ -253,6 +253,8 @@ const d_co = {
   "topic.postsInTopic": "Posts in questu tema.",
   "bookmarks.description": "Posti chì avete salvatu per più tardi.",
   "settings.translation": "Traduzzione",
+  "settings.platformLanguage": "Lingua di a piattaforma",
+  "settings.platformLanguageDescription": "A lingua in quale hè mostrata l'interfaccia Together.",
   "settings.preferredLanguage": "Lingua di traduzzione preferita",
   "settings.useNativeLanguage": "Aduprà a lingua nativa",
   "settings.autoTranslate": "Traduce automaticamente",

@@ -253,6 +253,8 @@ const d_th = {
   "topic.postsInTopic": "โพสต์ในหัวข้อนี้",
   "bookmarks.description": "โพสต์ที่คุณบันทึกไว้สำหรับ ในภายหลัง",
   "settings.translation": "การแปล",
+  "settings.platformLanguage": "ภาษาของแพลตฟอร์ม",
+  "settings.platformLanguageDescription": "ภาษาที่ใช้แสดงอินเทอร์เฟซของ Together",
   "settings.preferredLanguage": "ภาษาการแปลที่ต้องการ",
   "settings.useNativeLanguage": "ใช้ภาษาพื้นเมือง",
   "settings.autoTranslate": "แปลอัตโนมัติ",

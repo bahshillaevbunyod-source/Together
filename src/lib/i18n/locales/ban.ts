@@ -253,6 +253,8 @@ const d_ban = {
   "topic.postsInTopic": "Pos ring topik puniki.",
   "bookmarks.description": "Pos sané sampun kasimpen Sameton anggén salanturnyané.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Basa platform",
+  "settings.platformLanguageDescription": "Basa sane Together ka antarmuka kapintonang.",
   "settings.preferredLanguage": "Basa terjemahan sané kasenengin",
   "settings.useNativeLanguage": "Anggén basa asli",
   "settings.autoTranslate": "Terjemahan otomatis",

@@ -253,6 +253,8 @@ const d_yua = {
   "topic.postsInTopic": "Posts ti' le chun tuukulo'.",
   "bookmarks.description": "Le ts'íibo'ob ts'o'ok a ta'akikubáa uti'al ka'ache'.",
   "settings.translation": "Traducción",
+  "settings.platformLanguage": "U t'aanil plataforma",
+  "settings.platformLanguageDescription": "U t'aanil u p'atik' u tsikbal Together.",
   "settings.preferredLanguage": "T'aan u sutk'esiko'ob ma'alob",
   "settings.useNativeLanguage": "Meyajt u t'aan síijil",
   "settings.autoTranslate": "Auto traducción",

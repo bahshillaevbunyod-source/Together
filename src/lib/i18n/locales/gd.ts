@@ -253,6 +253,8 @@ const d_gd = {
   "topic.postsInTopic": "Postan sa chuspair seo.",
   "bookmarks.description": "Postan a shàbhail thu airson nas fhaide air adhart.",
   "settings.translation": "Eadar-theangachadh",
+  "settings.platformLanguage": "Cànan an àrd-ùrlair",
+  "settings.platformLanguageDescription": "An cànan anns a bheil eadar-aghaidh Together air a thaisbeanadh.",
   "settings.preferredLanguage": "Cànan eadar-theangachaidh as fheàrr leotha",
   "settings.useNativeLanguage": "Cleachd cànan dùthchasach",
   "settings.autoTranslate": "Eadar-theangachadh fèin-ghluasadach",

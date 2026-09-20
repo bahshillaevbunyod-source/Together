@@ -253,6 +253,8 @@ const d_ab = {
   "topic.postsInTopic": "Ари атемаҿы иҟоу апостқәа.",
   "bookmarks.description": "Анаҩс азы иҵәахыз апостқәа.",
   "settings.translation": "Аиҭагара",
+  "settings.platformLanguage": "Абызшәареи",
+  "settings.platformLanguageDescription": "Абызшәареи аҭаӡаразы Together интерфеис аҿы ишәылшо аҭыҧ",
   "settings.preferredLanguage": "Еиӷьу аиҭагаратә бызшәа",
   "settings.useNativeLanguage": "Ахатәы бызшәа ахархәара",
   "settings.autoTranslate": "Автоиҭагара",

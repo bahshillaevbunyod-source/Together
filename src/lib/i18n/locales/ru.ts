@@ -253,6 +253,8 @@ const ru = {
   "topic.postsInTopic": "Сообщения в этом тема.",
   "bookmarks.description": "Сообщения, которые вы сохранили на будущее.",
   "settings.translation": "Перевод",
+  "settings.platformLanguage": "Язык платформы",
+  "settings.platformLanguageDescription": "Язык, на котором отображается интерфейс Together.",
   "settings.preferredLanguage": "Предпочитаемый язык перевода",
   "settings.useNativeLanguage": "Используйте родной язык",
   "settings.autoTranslate": "Автоматический перевод",

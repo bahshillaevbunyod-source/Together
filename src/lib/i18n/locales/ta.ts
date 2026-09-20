@@ -253,6 +253,8 @@ const d_ta = {
   "topic.postsInTopic": "இந்த தலைப்பில் இடுகைகள்.",
   "bookmarks.description": "நீங்கள் சேமித்த இடுகைகள்.",
   "settings.translation": "மொழிபெயர்ப்பு",
+  "settings.platformLanguage": "தள மொழி",
+  "settings.platformLanguageDescription": "Together இடைமுகம் காட்டப்படும் மொழி.",
   "settings.preferredLanguage": "விருப்பமான மொழிபெயர்ப்பு மொழி",
   "settings.useNativeLanguage": "தாய்மொழியைப் பயன்படுத்துங்கள்",
   "settings.autoTranslate": "தானியங்கு மொழிபெயர்ப்பு",

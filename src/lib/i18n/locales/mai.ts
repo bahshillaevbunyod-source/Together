@@ -253,6 +253,8 @@ const d_mai = {
   "topic.postsInTopic": "Posts in ई विषय.",
   "bookmarks.description": "पोस्ट जे अहाँ बाद मे सेव क’ लेने छी.",
   "settings.translation": "अनुवाद",
+  "settings.platformLanguage": "प्लेटफॉर्मक भाषा",
+  "settings.platformLanguageDescription": "जे भाषामे Together केर इंटरफेस देखाओल जाइत अछि।",
   "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा",
   "settings.useNativeLanguage": "मूल भाषा का प्रयोग करे",
   "settings.autoTranslate": "ऑटो अनुवाद करू",

@@ -253,6 +253,8 @@ const d_ceb = {
   "topic.postsInTopic": "Mga post niini nga hilisgutan.",
   "bookmarks.description": "Mga post nga imong gitipigan para sa ulahi.",
   "settings.translation": "Paghubad",
+  "settings.platformLanguage": "Pinulongan sa plataporma",
+  "settings.platformLanguageDescription": "Pinulongan diin gipakita ang interface sa Together.",
   "settings.preferredLanguage": "Gipalabi nga pinulongan sa paghubad",
   "settings.useNativeLanguage": "Gamita ang lumad nga pinulongan",
   "settings.autoTranslate": "Awtomatikong paghubad",

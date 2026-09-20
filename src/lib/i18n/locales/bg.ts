@@ -253,6 +253,8 @@ const d_bg = {
   "topic.postsInTopic": "Публикации в тази тема.",
   "bookmarks.description": "Публикации, които сте запазили за по-късно.",
   "settings.translation": "Превод",
+  "settings.platformLanguage": "Език на платформата",
+  "settings.platformLanguageDescription": "Езикът, на който се показва интерфейсът на Together.",
   "settings.preferredLanguage": "Предпочитан език за превод",
   "settings.useNativeLanguage": "Използвайте роден език",
   "settings.autoTranslate": "Автоматичен превод",

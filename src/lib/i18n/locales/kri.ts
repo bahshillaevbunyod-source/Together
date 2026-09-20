@@ -253,6 +253,8 @@ const d_kri = {
   "topic.postsInTopic": "Posts in dis tɔpik.",
   "bookmarks.description": "Post dɛn we yu dɔn kip fɔ leta.",
   "settings.translation": "Transleshɔn",
+  "settings.platformLanguage": "Platform langwej",
+  "settings.platformLanguageDescription": "Di langwej we di Together interface sho.",
   "settings.preferredLanguage": "Di langwej we dɛn kin lɛk fɔ translet",
   "settings.useNativeLanguage": "Yuz yu yon langwej",
   "settings.autoTranslate": "Fɔ translet ɔtomɛtik wan",

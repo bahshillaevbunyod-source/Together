@@ -253,6 +253,8 @@ const d_chm = {
   "topic.postsInTopic": "Тиде теме дене кылдалтше возымаш-влак.",
   "bookmarks.description": "Варараклан арален кодымо возымаш-влак.",
   "settings.translation": "Кусарымаш",
+  "settings.platformLanguage": "Платформын йылме",
+  "settings.platformLanguageDescription": "Together интерфейсым шке йылме дене ончыктымаш.",
   "settings.preferredLanguage": "Йӧратыме кусарыме йылме",
   "settings.useNativeLanguage": "Шочмо йылмым кучылтса",
   "settings.autoTranslate": "Автоматически кусарымаш",

@@ -253,6 +253,8 @@ const d_cv = {
   "topic.postsInTopic": "Ку темӑри ҫырусем.",
   "bookmarks.description": "Кайран валли упранӑ ҫырусем.",
   "settings.translation": "Куҫару",
+  "settings.platformLanguage": "Платформа чĕлхи",
+  "settings.platformLanguageDescription": "Together интерфейсĕ мĕнле чĕлхепе курӑнать.",
   "settings.preferredLanguage": "Куҫару чӗлхи",
   "settings.useNativeLanguage": "Тӑван чӗлхепе усӑ кур",
   "settings.autoTranslate": "Авто куҫару",

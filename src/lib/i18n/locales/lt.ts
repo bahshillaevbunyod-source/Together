@@ -253,6 +253,8 @@ const d_lt = {
   "topic.postsInTopic": "Įrašai šioje temoje.",
   "bookmarks.description": "Įrašai, kuriuos išsaugojote vėliau.",
   "settings.translation": "Vertimas",
+  "settings.platformLanguage": "Platformos kalba",
+  "settings.platformLanguageDescription": "Kalba, kuria rodoma Together sąsaja.",
   "settings.preferredLanguage": "Pageidautina vertimo kalba",
   "settings.useNativeLanguage": "Naudokite gimtąją kalbą",
   "settings.autoTranslate": "Automatinis vertimas",

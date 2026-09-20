@@ -253,6 +253,8 @@ const d_bm = {
   "topic.postsInTopic": "Poste minnu bɛ nin barokun in na.",
   "bookmarks.description": "Postes (postes) minnu b’i mara ka kɛ kɔfɛ.",
   "settings.translation": "Bamanankan baarakɛcogo",
+  "settings.platformLanguage": "Kan platforme",
+  "settings.platformLanguageDescription": "Kan min bɛ Together ka interface jira min na.",
   "settings.preferredLanguage": "Bamanankan baarakɛcogo min ka di a ye kosɛbɛ",
   "settings.useNativeLanguage": "Baara kɛ ni fasokan ye",
   "settings.autoTranslate": "Auto bamanankan na",

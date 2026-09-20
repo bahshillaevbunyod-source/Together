@@ -253,6 +253,8 @@ const d_ay = {
   "topic.postsInTopic": "Posts in aka tema.",
   "bookmarks.description": "Posts ukax qhipa pachatakiw imatäski.",
   "settings.translation": "Jaqukipaña",
+  "settings.platformLanguage": "Plataforma aru",
+  "settings.platformLanguageDescription": "Together interfaz ukax kuna arut uñachtʼayasi uka aru.",
   "settings.preferredLanguage": "Jaqukipaña aru munata",
   "settings.useNativeLanguage": "Nayra aru apnaqaña",
   "settings.autoTranslate": "Auto jaqukipaña",

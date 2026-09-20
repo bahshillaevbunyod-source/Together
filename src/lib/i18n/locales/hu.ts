@@ -253,6 +253,8 @@ const d_hu = {
   "topic.postsInTopic": "Hozzászólások ebben a témában.",
   "bookmarks.description": "Bejegyzések, amelyeket későbbi használatra mentett el.",
   "settings.translation": "Fordítás",
+  "settings.platformLanguage": "Platform nyelve",
+  "settings.platformLanguageDescription": "Az a nyelv, amelyen a Together felülete megjelenik.",
   "settings.preferredLanguage": "Előnyben részesített fordítási nyelv",
   "settings.useNativeLanguage": "Használjon anyanyelvet",
   "settings.autoTranslate": "Automatikus fordítás",

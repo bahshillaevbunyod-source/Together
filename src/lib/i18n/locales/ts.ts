@@ -253,6 +253,8 @@ const d_ts = {
   "topic.postsInTopic": "Ti post eka topic leyi.",
   "bookmarks.description": "Ti post leti u ti hlayiseke endzhaku.",
   "settings.translation": "Vuhundzuluxi",
+  "settings.platformLanguage": "Ririmi ra pulatifomo",
+  "settings.platformLanguageDescription": "Ririmi leri ku interface ya Together yi kombisiwaka hi rona.",
   "settings.preferredLanguage": "Ririmi ra vuhundzuluxeri leri rhandzekaka",
   "settings.useNativeLanguage": "Tirhisa ririmi ra rikwavo",
   "settings.autoTranslate": "Ku hundzuluxela hi ku tisungulela",

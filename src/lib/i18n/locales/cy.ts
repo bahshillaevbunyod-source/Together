@@ -253,6 +253,8 @@ const d_cy = {
   "topic.postsInTopic": "Postiadau yn y pwnc hwn.",
   "bookmarks.description": "Postiadau rydych chi wedi'u cadw ar eu cyfer yn nes ymlaen.",
   "settings.translation": "Cyfieithiad",
+  "settings.platformLanguage": "Iaith y platfform",
+  "settings.platformLanguageDescription": "Yr iaith y dangosir rhyngwyneb Together ynddi.",
   "settings.preferredLanguage": "Dewis iaith gyfieithu",
   "settings.useNativeLanguage": "Defnyddiwch iaith frodorol",
   "settings.autoTranslate": "Cyfieithu awtomatig",

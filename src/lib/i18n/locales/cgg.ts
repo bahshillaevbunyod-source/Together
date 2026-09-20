@@ -253,6 +253,8 @@ const d_cgg = {
   "topic.postsInTopic": "Ebihandiiko omu mutwe ogu.",
   "bookmarks.description": "Ebihandiiko ebi obiikire ahabw’okubikoresa bwanyima.",
   "settings.translation": "Okuvunuura",
+  "settings.platformLanguage": "Orurimi rwʼekibanja",
+  "settings.platformLanguageDescription": "Orurimi oru Together interface erwerekiremu.",
   "settings.preferredLanguage": "Orurimi rw'okuvunuura orurikukunda",
   "settings.useNativeLanguage": "Kozesa orurimi rw'enzaarwa",
   "settings.autoTranslate": "Okuvunuura",

@@ -253,6 +253,8 @@ const d_qu = {
   "topic.postsInTopic": "Qatichisqakuna kay tema.",
   "bookmarks.description": "Qhipaman waqaychasqa qillqakuna.",
   "settings.translation": "Traducción",
+  "settings.platformLanguage": "Plataforma simi",
+  "settings.platformLanguageDescription": "Interfaz de Together, ima simipi rikuchikun.",
   "settings.preferredLanguage": "Aswan allin tikray simi",
   "settings.useNativeLanguage": "Mama simita apaykachana",
   "settings.autoTranslate": "Auto tikray",

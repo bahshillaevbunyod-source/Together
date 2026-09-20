@@ -253,6 +253,8 @@ const d_kn = {
   "topic.postsInTopic": "ಈ ವಿಷಯದ ಪೋಸ್ಟ್‌ಗಳು.",
   "bookmarks.description": "ನೀವು ನಂತರ ಉಳಿಸಿದ ಪೋಸ್ಟ್‌ಗಳು.",
   "settings.translation": "ಅನುವಾದ",
+  "settings.platformLanguage": "ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಭಾಷೆ",
+  "settings.platformLanguageDescription": "Together ಇಂಟರ್ಫೇಸ್ ಅನ್ನು ಪ್ರದರ್ಶಿಸುವ ಭಾಷೆ.",
   "settings.preferredLanguage": "ಆದ್ಯತೆಯ ಅನುವಾದ ಭಾಷೆ",
   "settings.useNativeLanguage": "ಸ್ಥಳೀಯ ಭಾಷೆ ಬಳಸಿ",
   "settings.autoTranslate": "ಸ್ವಯಂ ಅನುವಾದ",

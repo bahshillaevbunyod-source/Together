@@ -253,6 +253,8 @@ const d_yo = {
   "topic.postsInTopic": "Awọn ifiweranṣẹ ni koko yii.",
   "bookmarks.description": "Awọn ifiweranṣẹ ti o ti fipamọ fun nigbamii.",
   "settings.translation": "Itumọ",
+  "settings.platformLanguage": "Èdè pẹpẹ",
+  "settings.platformLanguageDescription": "Èdè tí a fi ńfi ìtọ́jú Together hàn.",
   "settings.preferredLanguage": "Ede itumọ ti o fẹ",
   "settings.useNativeLanguage": "Lo ede abinibi",
   "settings.autoTranslate": "Tumọ laifọwọyi",

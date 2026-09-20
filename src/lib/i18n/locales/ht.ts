@@ -253,6 +253,8 @@ const d_ht = {
   "topic.postsInTopic": "Posts nan sijè sa a.",
   "bookmarks.description": "Posts ou te sove pou pita.",
   "settings.translation": "Tradiksyon",
+  "settings.platformLanguage": "Lang platfòm nan",
+  "settings.platformLanguageDescription": "Lang kote koòdone Together la parèt.",
   "settings.preferredLanguage": "Lang tradiksyon pi pito",
   "settings.useNativeLanguage": "Sèvi ak lang natif natal",
   "settings.autoTranslate": "Tradiksyon otomatik",

@@ -253,6 +253,8 @@ const d_scn = {
   "topic.postsInTopic": "Pubbricazzioni nna stu argumentu.",
   "bookmarks.description": "Pubblicazzioni ca hai sarbatu pi doppu.",
   "settings.translation": "Traduzzioni",
+  "settings.platformLanguage": "Lingua dâ piattaforma",
+  "settings.platformLanguageDescription": "La lingua unni veni mustrata l'interfaccia di Together.",
   "settings.preferredLanguage": "Lingua di traduzzioni prifiruta",
   "settings.useNativeLanguage": "Usa la lingua matri",
   "settings.autoTranslate": "Traduzzioni autumàtica",

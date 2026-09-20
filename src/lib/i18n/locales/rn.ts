@@ -253,6 +253,8 @@ const d_rn = {
   "topic.postsInTopic": "Ivyo mwashize muri iki ciyumviro.",
   "bookmarks.description": "Ivyo wabitse kugira ngo uzobikoreshe mu nyuma.",
   "settings.translation": "Ubuhinduzi",
+  "settings.platformLanguage": "Ururimi rwa platform",
+  "settings.platformLanguageDescription": "Ururimi interface ya Together yerekanwamwo.",
   "settings.preferredLanguage": "Ururimi rwo guhindura rwo gukunda",
   "settings.useNativeLanguage": "Koresha ururimi kavukire",
   "settings.autoTranslate": "Guhindura ubwavyo",

@@ -253,6 +253,8 @@ const d_vi = {
   "topic.postsInTopic": "Bài đăng trong chủ đề này.",
   "bookmarks.description": "Bài đăng bạn đã lưu để sử dụng sau.",
   "settings.translation": "Dịch thuật",
+  "settings.platformLanguage": "Ngôn ngữ nền tảng",
+  "settings.platformLanguageDescription": "Ngôn ngữ hiển thị giao diện Together.",
   "settings.preferredLanguage": "Ngôn ngữ dịch ưa thích",
   "settings.useNativeLanguage": "Sử dụng ngôn ngữ bản địa",
   "settings.autoTranslate": "Dịch tự động",

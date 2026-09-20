@@ -253,6 +253,8 @@ const d_my = {
   "topic.postsInTopic": "ဤအကြောင်းအရာအတွက် ပို့စ်များ။",
   "bookmarks.description": "နောင်တွင် သင်သိမ်းဆည်းထားသော ပို့စ်များ။",
   "settings.translation": "ဘာသာပြန်ခြင်း။",
+  "settings.platformLanguage": "ပလက်ဖောင်းဘာသာစကား",
+  "settings.platformLanguageDescription": "Together အင်တာဖေ့စ်ကို ပြသသည့် ဘာသာစကား။",
   "settings.preferredLanguage": "နှစ်သက်ရာ ဘာသာပြန်ဘာသာစကား",
   "settings.useNativeLanguage": "မိခင်ဘာသာစကားကို အသုံးပြုပါ။",
   "settings.autoTranslate": "အလိုအလျောက်ဘာသာပြန်ပါ။",

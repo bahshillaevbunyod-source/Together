@@ -253,6 +253,8 @@ const d_om = {
   "topic.postsInTopic": "Posts in mata duree kana.",
   "bookmarks.description": "Maxxansa boodaaf save goote.",
   "settings.translation": "Hiikaa",
+  "settings.platformLanguage": "Afaaniiwwan pilaatoformii",
+  "settings.platformLanguageDescription": "Afaaniiwwan ittiin interfeesii Together mul'atu.",
   "settings.preferredLanguage": "Afaan hiikkaa filatamaa",
   "settings.useNativeLanguage": "Afaan dhalootaa fayyadamuu",
   "settings.autoTranslate": "Ofiin hiikuu",

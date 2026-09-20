@@ -253,6 +253,8 @@ const d_fi = {
   "topic.postsInTopic": "Viestit tässä aiheessa.",
   "bookmarks.description": "Viestit, jotka olet tallentanut myöhempää käyttöä varten.",
   "settings.translation": "Käännös",
+  "settings.platformLanguage": "Alustan kieli",
+  "settings.platformLanguageDescription": "Kieli, jolla Together-käyttöliittymä näytetään.",
   "settings.preferredLanguage": "Suositeltu käännöskieli",
   "settings.useNativeLanguage": "Käytä äidinkieltä",
   "settings.autoTranslate": "Automaattinen käännös",

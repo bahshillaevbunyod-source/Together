@@ -253,6 +253,8 @@ const d_fj = {
   "topic.postsInTopic": "Posts ena ulutaga oqo.",
   "bookmarks.description": "Na itukutuku o sa maroroya me baleta na gauna e muri.",
   "settings.translation": "Vakadewa",
+  "settings.platformLanguage": "Vosa ni platform",
+  "settings.platformLanguageDescription": "Na vosa e vakaraitaki kina na interface ni Together.",
   "settings.preferredLanguage": "Vosa ni vakadewa vinakati",
   "settings.useNativeLanguage": "Vakayagataka na vosa ni vanua",
   "settings.autoTranslate": "Vakadewa vakataki koya",

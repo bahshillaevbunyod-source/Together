@@ -253,6 +253,8 @@ const d_bn = {
   "topic.postsInTopic": "এই বিষয়ে পোস্ট.",
   "bookmarks.description": "আপনি পরে জন্য সংরক্ষণ করেছেন পোস্ট.",
   "settings.translation": "অনুবাদ",
+  "settings.platformLanguage": "প্ল্যাটফর্মের ভাষা",
+  "settings.platformLanguageDescription": "Together ইন্টারফেস যে ভাষায় প্রদর্শিত হয়।",
   "settings.preferredLanguage": "পছন্দের অনুবাদ ভাষা",
   "settings.useNativeLanguage": "মাতৃভাষা ব্যবহার করুন",
   "settings.autoTranslate": "স্বয়ংক্রিয় অনুবাদ",

@@ -253,6 +253,8 @@ const d_hr = {
   "topic.postsInTopic": "Postovi u ovoj temi.",
   "bookmarks.description": "Postovi koje ste spremili za kasnije.",
   "settings.translation": "Prijevod",
+  "settings.platformLanguage": "Jezik platforme",
+  "settings.platformLanguageDescription": "Jezik na kojem se prikazuje sučelje Together.",
   "settings.preferredLanguage": "Željeni jezik prijevoda",
   "settings.useNativeLanguage": "Koristite materinji jezik",
   "settings.autoTranslate": "Automatski prijevod",

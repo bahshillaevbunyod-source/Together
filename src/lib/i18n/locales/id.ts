@@ -253,6 +253,8 @@ const d_id = {
   "topic.postsInTopic": "Postingan dalam topik ini.",
   "bookmarks.description": "Postingan yang Anda simpan untuk nanti.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Bahasa platform",
+  "settings.platformLanguageDescription": "Bahasa yang digunakan untuk menampilkan antarmuka Together.",
   "settings.preferredLanguage": "Bahasa terjemahan pilihan",
   "settings.useNativeLanguage": "Gunakan bahasa ibu",
   "settings.autoTranslate": "Terjemahan otomatis",

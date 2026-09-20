@@ -253,6 +253,8 @@ const d_min = {
   "topic.postsInTopic": "Postingan nan ado di topik ko.",
   "bookmarks.description": "Postingan nan alah sanak simpan untuak nanti.",
   "settings.translation": "Tarjamahan",
+  "settings.platformLanguage": "Baso platform",
+  "settings.platformLanguageDescription": "Baso nan dipakai untuak manampakkan antarmuka Together.",
   "settings.preferredLanguage": "Bahaso panarjamahan nan disukoi",
   "settings.useNativeLanguage": "Gunokan bahaso asli",
   "settings.autoTranslate": "Tarjamah otomatis",

@@ -253,6 +253,8 @@ const d_zh_TW = {
   "topic.postsInTopic": "此主題中的貼文。",
   "bookmarks.description": "您已儲存以供日後使用的貼文。",
   "settings.translation": "翻譯",
+  "settings.platformLanguage": "平台語言",
+  "settings.platformLanguageDescription": "顯示 Together 介面所使用的語言。",
   "settings.preferredLanguage": "首選翻譯語言",
   "settings.useNativeLanguage": "使用母語",
   "settings.autoTranslate": "自動翻譯",

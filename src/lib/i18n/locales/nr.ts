@@ -253,6 +253,8 @@ const d_nr = {
   "topic.postsInTopic": "Amaphosti ngalesi sihloko.",
   "bookmarks.description": "Iiphosti ozilondolozileko ukuze uzozisebenzisa ngemva kwesikhathi.",
   "settings.translation": "Ukutjhugulula",
+  "settings.platformLanguage": "Ilimi yeplatifomu",
+  "settings.platformLanguageDescription": "Ilimi esetjenziswa ukukhombisa i-interface ye Together.",
   "settings.preferredLanguage": "Ilimi lokutjhugulula elikhethwako",
   "settings.useNativeLanguage": "Sebenzisa ilimi lomdabu",
   "settings.autoTranslate": "Ukutjhugulula ngokuzenzakalelako",

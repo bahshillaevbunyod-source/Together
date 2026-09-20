@@ -253,6 +253,8 @@ const ja = {
   "topic.postsInTopic": "このトピックの投稿。",
   "bookmarks.description": "後で使用するために保存した投稿。",
   "settings.translation": "翻訳",
+  "settings.platformLanguage": "プラットフォームの言語",
+  "settings.platformLanguageDescription": "Together のインターフェースを表示する言語。",
   "settings.preferredLanguage": "希望する翻訳言語",
   "settings.useNativeLanguage": "母国語を使用する",
   "settings.autoTranslate": "自動翻訳",

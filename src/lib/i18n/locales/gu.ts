@@ -253,6 +253,8 @@ const d_gu = {
   "topic.postsInTopic": "આ વિષયમાં પોસ્ટ્સ.",
   "bookmarks.description": "તમે પછી માટે સાચવેલી પોસ્ટ્સ.",
   "settings.translation": "અનુવાદ",
+  "settings.platformLanguage": "પ્લેટફોર્મની ભાષા",
+  "settings.platformLanguageDescription": "Together ઇન્ટરફેસ જે ભાષામાં દર્શાવવામાં આવે છે.",
   "settings.preferredLanguage": "પસંદગીની ભાષાંતર",
   "settings.useNativeLanguage": "મૂળ ભાષાનો ઉપયોગ કરો",
   "settings.autoTranslate": "સ્વતઃ અનુવાદ",

@@ -253,6 +253,8 @@ const d_sw = {
   "topic.postsInTopic": "Machapisho katika mada hii.",
   "bookmarks.description": "Machapisho ambayo umehifadhi kwa ajili ya baadaye.",
   "settings.translation": "Tafsiri",
+  "settings.platformLanguage": "Lugha ya jukwaa",
+  "settings.platformLanguageDescription": "Lugha ambayo kiolesura cha Together kinaonyeshwa.",
   "settings.preferredLanguage": "Lugha ya tafsiri inayopendekezwa",
   "settings.useNativeLanguage": "Tumia lugha ya asili",
   "settings.autoTranslate": "Tafsiri kiotomatiki",

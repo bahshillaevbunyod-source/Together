@@ -253,6 +253,8 @@ const d_pa_Arab = {
   "topic.postsInTopic": "اس موضوع تے پوسٹاں۔",
   "bookmarks.description": "اوہ پوسٹاں جہڑیاں تسی بعد چ محفوظ کیتیاں نیں۔",
   "settings.translation": "ترجمہ",
+  "settings.platformLanguage": "پلیٹ فارم دی بھاشا",
+  "settings.platformLanguageDescription": "اوہ بھاشا جیہڑی وچ Together دا انٹرفیس وکھایا جاندا اے۔",
   "settings.preferredLanguage": "ترجیحی ترجمہ بولی",
   "settings.useNativeLanguage": "ماں بولی ورتو",
   "settings.autoTranslate": "خودکار ترجمہ",

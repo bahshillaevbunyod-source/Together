@@ -253,6 +253,8 @@ const d_ha = {
   "topic.postsInTopic": "Posts a cikin wannan batu.",
   "bookmarks.description": "Saƙonnin da kuka adana na gaba.",
   "settings.translation": "Fassara",
+  "settings.platformLanguage": "Harshen dandamali",
+  "settings.platformLanguageDescription": "Harshen da ake nuna manhajar Together da shi.",
   "settings.preferredLanguage": "Harshen fassarar da aka fi so",
   "settings.useNativeLanguage": "Yi amfani da yare na asali",
   "settings.autoTranslate": "Fassara ta atomatik",

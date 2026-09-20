@@ -253,6 +253,8 @@ const d_ln = {
   "topic.postsInTopic": "Ba posts na sujet oyo.",
   "bookmarks.description": "Ba posts oyo o’bombi pona sima.",
   "settings.translation": "Bobongoli",
+  "settings.platformLanguage": "Lokótá ya plateforme",
+  "settings.platformLanguageDescription": "Lokótá oyo basalelaka mpo na kolakisa interface ya Together.",
   "settings.preferredLanguage": "Monoko ya kobongola oyo balingi mingi",
   "settings.useNativeLanguage": "Salelá monɔkɔ ya mboka",
   "settings.autoTranslate": "Auto traduire",

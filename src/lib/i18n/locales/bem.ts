@@ -253,6 +253,8 @@ const d_bem = {
   "topic.postsInTopic": "Ifyalembwa muli uyu mutwe.",
   "bookmarks.description": "Ifilembelwe ifyo mwasunga pakuti fibe ifyakukonkapo.",
   "settings.translation": "Ukupilibula",
+  "settings.platformLanguage": "Ululimi bwa platform",
+  "settings.platformLanguageDescription": "Ululimi mwingi balalolesha Together interface.",
   "settings.preferredLanguage": "Ululimi lwakupilibula ulwatemwa",
   "settings.useNativeLanguage": "Bomfyeni ululimi lwa cikaya",
   "settings.autoTranslate": "Ukupilibula ukwaibela",

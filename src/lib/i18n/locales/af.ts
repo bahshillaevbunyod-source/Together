@@ -253,6 +253,8 @@ const d_af = {
   "topic.postsInTopic": "Plasings in hierdie onderwerp.",
   "bookmarks.description": "Plasings wat jy gestoor het vir later.",
   "settings.translation": "Vertaling",
+  "settings.platformLanguage": "Platformtaal",
+  "settings.platformLanguageDescription": "Die taal waarin die Together-koppelvlak vertoon word.",
   "settings.preferredLanguage": "Voorkeurvertaaltaal",
   "settings.useNativeLanguage": "Gebruik moedertaal",
   "settings.autoTranslate": "Outo-vertaal",

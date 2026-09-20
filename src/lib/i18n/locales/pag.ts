@@ -253,6 +253,8 @@ const d_pag = {
   "topic.postsInTopic": "Posts ed sayan topic.",
   "bookmarks.description": "Posts ya in-save mo parad saginonor.",
   "settings.translation": "Panagpatalos",
+  "settings.platformLanguage": "Salita na platform",
+  "settings.platformLanguageDescription": "Salita a gamit ed panangipakita na interface na Together.",
   "settings.preferredLanguage": "Mas labay ya lenguahe na panagpatalos",
   "settings.useNativeLanguage": "Usaren so katutubon lenguahe",
   "settings.autoTranslate": "Automatikon mangipatalos",

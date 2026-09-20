@@ -253,6 +253,8 @@ const d_su = {
   "topic.postsInTopic": "Tulisan dina topik ieu.",
   "bookmarks.description": "Tulisan anu anjeun simpen pikeun engké.",
   "settings.translation": "Tarjamahan",
+  "settings.platformLanguage": "Basa platform",
+  "settings.platformLanguageDescription": "Basa pikeun mintonkeun antarbeungeut Together.",
   "settings.preferredLanguage": "Basa tarjamah anu dipikaresep",
   "settings.useNativeLanguage": "Paké basa asli",
   "settings.autoTranslate": "Otomatis narjamahkeun",

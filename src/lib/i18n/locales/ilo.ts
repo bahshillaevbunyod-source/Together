@@ -253,6 +253,8 @@ const d_ilo = {
   "topic.postsInTopic": "Posts in daytoy a topiko.",
   "bookmarks.description": "Dagiti post nga in-save-mo para inton agangay.",
   "settings.translation": "Panagpatarus",
+  "settings.platformLanguage": "Lengguahe ti plataporma",
+  "settings.platformLanguageDescription": "Lengguahe a pagiparang ti interface ti Together.",
   "settings.preferredLanguage": "Kaykayat a pagsasao ti panagipatarus",
   "settings.useNativeLanguage": "Usaren ti katutubo a pagsasao",
   "settings.autoTranslate": "Auto nga ipatarus",

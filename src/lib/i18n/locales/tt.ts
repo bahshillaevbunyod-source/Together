@@ -253,6 +253,8 @@ const d_tt = {
   "topic.postsInTopic": "Бу темада язмалар.",
   "bookmarks.description": "Соңрак саклаган язмалар.",
   "settings.translation": "Тәрҗемә",
+  "settings.platformLanguage": "Платформа теле",
+  "settings.platformLanguageDescription": "Together интерфейсы күрсәтелә торган тел.",
   "settings.preferredLanguage": "Сайланган тәрҗемә теле",
   "settings.useNativeLanguage": "Туган телне кулланыгыз",
   "settings.autoTranslate": "Авто тәрҗемә итү",

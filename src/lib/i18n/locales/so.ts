@@ -253,6 +253,8 @@ const d_so = {
   "topic.postsInTopic": "Qoraallada mawduucan.",
   "bookmarks.description": "Qoraalada aad kaydisay hadhow",
   "settings.translation": "Turjumaada",
+  "settings.platformLanguage": "Luqadda madasha",
+  "settings.platformLanguageDescription": "Luqadda lagu muujiyo is-dhexgalka Together.",
   "settings.preferredLanguage": "Luuqada tarjumaada ee la door biday",
   "settings.useNativeLanguage": "Isticmaal luqadda hooyo",
   "settings.autoTranslate": "Toos utarjum",

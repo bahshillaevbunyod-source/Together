@@ -253,6 +253,8 @@ const d_dv = {
   "topic.postsInTopic": "ޕޯސްޓްތައް އިން މި މައުޟޫޢު.",
   "bookmarks.description": "ފަހުން ސޭވްކޮށްފައިވާ ޕޯސްޓްތައް.",
   "settings.translation": "ތަރުޖަމާ",
+  "settings.platformLanguage": "ޕްލެޓްފޯމް ބަސް",
+  "settings.platformLanguageDescription": "Together ގެ އިންޓަރފޭސް ދެއްކޭ ބަސް.",
   "settings.preferredLanguage": "އިސްކަންދޭ ތަރުޖަމާ ބަހެވެ",
   "settings.useNativeLanguage": "ދިވެހިބަސް ބޭނުންކުރުން",
   "settings.autoTranslate": "އޮޓޯ ޓްރާންސްލެޓް ކުރުން",

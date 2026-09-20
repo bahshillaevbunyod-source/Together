@@ -253,6 +253,8 @@ const d_cs = {
   "topic.postsInTopic": "sledujících",
   "bookmarks.description": "jste si uložili na později.",
   "settings.translation": "Překlad",
+  "settings.platformLanguage": "Jazyk platformy",
+  "settings.platformLanguageDescription": "Jazyk, ve kterém se zobrazuje rozhraní Together.",
   "settings.preferredLanguage": "Preferovaný jazyk překladu",
   "settings.useNativeLanguage": "Používejte rodný jazyk",
   "settings.autoTranslate": "Automatický překlad",

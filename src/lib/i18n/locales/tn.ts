@@ -253,6 +253,8 @@ const d_tn = {
   "topic.postsInTopic": "Diphousete mo setlhogong seno.",
   "bookmarks.description": "Diphousete tse o di boloketseng moragonyana.",
   "settings.translation": "Thanolo",
+  "settings.platformLanguage": "Puo ya polatefomo",
+  "settings.platformLanguageDescription": "Puo e Together interface e bontshiwang ka yone.",
   "settings.preferredLanguage": "Puo ya thanolo e ke e ratang",
   "settings.useNativeLanguage": "Dirisa puo ya mono",
   "settings.autoTranslate": "Thanolo e e itirisang",

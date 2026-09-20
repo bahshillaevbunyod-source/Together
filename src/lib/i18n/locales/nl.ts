@@ -253,6 +253,8 @@ const d_nl = {
   "topic.postsInTopic": "Berichten in dit onderwerp.",
   "bookmarks.description": "Berichten die je hebt opgeslagen voor later.",
   "settings.translation": "Vertaling",
+  "settings.platformLanguage": "Platformtaal",
+  "settings.platformLanguageDescription": "De taal waarin de Together-interface wordt weergegeven.",
   "settings.preferredLanguage": "Voorkeurstaal voor vertaling",
   "settings.useNativeLanguage": "Gebruik moedertaal",
   "settings.autoTranslate": "Automatisch vertalen",

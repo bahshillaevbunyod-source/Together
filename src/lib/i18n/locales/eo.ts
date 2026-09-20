@@ -253,6 +253,8 @@ const d_eo = {
   "topic.postsInTopic": "Afiŝoj en ĉi tiu temo.",
   "bookmarks.description": "Afiŝoj, kiujn vi konservis por poste.",
   "settings.translation": "Traduko",
+  "settings.platformLanguage": "Platforma lingvo",
+  "settings.platformLanguageDescription": "La lingvo, en kiu estas montrata la interfaco de Together.",
   "settings.preferredLanguage": "Preferata traduklingvo",
   "settings.useNativeLanguage": "Uzu gepatran lingvon",
   "settings.autoTranslate": "Aŭtomata tradukado",

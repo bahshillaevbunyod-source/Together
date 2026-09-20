@@ -253,6 +253,8 @@ const d_ach = {
   "topic.postsInTopic": "Coc ma tye i wi lok man.",
   "bookmarks.description": "Coc ma i gwoko pi anyim.",
   "settings.translation": "gonyo leb",
+  "settings.platformLanguage": "Leb me acako",
+  "settings.platformLanguageDescription": "Leb ma me acako i Together aye kato pa.",
   "settings.preferredLanguage": "Leb me gonyo leb ma ki maro",
   "settings.useNativeLanguage": "Tii ki leb ma ki nywalo",
   "settings.autoTranslate": "gonyo leb ma piire tek",

@@ -253,6 +253,8 @@ const uz = {
   "topic.postsInTopic": "Ushbu mavzudagi xabarlar.",
   "bookmarks.description": "Siz keyinroq saqlash uchun saqlangan postlar.",
   "settings.translation": "Tarjima",
+  "settings.platformLanguage": "Platforma tili",
+  "settings.platformLanguageDescription": "Together interfeysi ko‘rsatiladigan til.",
   "settings.preferredLanguage": "Afzal tarjima tili",
   "settings.useNativeLanguage": "Ona tilidan foydalaning",
   "settings.autoTranslate": "Avtomatik tarjima",

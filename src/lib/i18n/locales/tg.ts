@@ -253,6 +253,8 @@ const d_tg = {
   "topic.postsInTopic": "Мақолаҳо дар ин мавзӯъ.",
   "bookmarks.description": "Хабарҳое, ки шумо барои дертар захира кардаед.",
   "settings.translation": "Тарҷума",
+  "settings.platformLanguage": "Забони платформа",
+  "settings.platformLanguageDescription": "Забоне, ки интерфейси Together бо он нишон дода мешавад.",
   "settings.preferredLanguage": "Забони тарҷумаи афзалиятнок",
   "settings.useNativeLanguage": "Забони модариро истифода баред",
   "settings.autoTranslate": "Тарҷумаи худкор",

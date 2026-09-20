@@ -253,6 +253,8 @@ const d_lus = {
   "topic.postsInTopic": "He thupuiah hian post a awm.",
   "bookmarks.description": "Post i save tawh te chu a hnua i dah theih nan.",
   "settings.translation": "Lehlin a ni",
+  "settings.platformLanguage": "Platform ṭawng",
+  "settings.platformLanguageDescription": "Together interface lantirna ṭawng.",
   "settings.preferredLanguage": "Lehlin tawng duh zawk",
   "settings.useNativeLanguage": "Native language hmang rawh",
   "settings.autoTranslate": "Auto lehlin theih a ni",

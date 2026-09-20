@@ -253,6 +253,8 @@ const ko = {
   "topic.postsInTopic": "이 주제의 게시물.",
   "bookmarks.description": "귀하가 저장한 게시물 나중에.",
   "settings.translation": "번역",
+  "settings.platformLanguage": "플랫폼 언어",
+  "settings.platformLanguageDescription": "Together 인터페이스가 표시되는 언어입니다.",
   "settings.preferredLanguage": "선호하는 번역 언어",
   "settings.useNativeLanguage": "모국어를 사용하세요",
   "settings.autoTranslate": "자동 번역",

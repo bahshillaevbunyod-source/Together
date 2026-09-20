@@ -253,6 +253,8 @@ const d_mak = {
   "topic.postsInTopic": "Posting ri anne topik.",
   "bookmarks.description": "Posting nu simpan untuk sallang.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Basa platform",
+  "settings.platformLanguageDescription": "Basa na dipake antuk nampilkang antarmuka Together.",
   "settings.preferredLanguage": "Bahasa terjemahan yang disukai",
   "settings.useNativeLanguage": "Pakei bahasa asli",
   "settings.autoTranslate": "Terjemahan otomatis",

@@ -253,6 +253,8 @@ const d_ky = {
   "topic.postsInTopic": "Бул темадагы билдирүүлөр.",
   "bookmarks.description": "Сиз кийинчерээк үчүн сактаган посттор.",
   "settings.translation": "Котормо",
+  "settings.platformLanguage": "Платформанын тили",
+  "settings.platformLanguageDescription": "Together интерфейси көрсөтүлгөн тил.",
   "settings.preferredLanguage": "Тандалган котормо тили",
   "settings.useNativeLanguage": "Эне тилин колдон",
   "settings.autoTranslate": "Автоматтык которуу",

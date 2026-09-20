@@ -253,6 +253,8 @@ const d_kk = {
   "topic.postsInTopic": "Осы тақырыптағы жазбалар.",
   "bookmarks.description": "Кейінірек үшін сақтаған жазбалар.",
   "settings.translation": "Аударма",
+  "settings.platformLanguage": "Платформа тілі",
+  "settings.platformLanguageDescription": "Together интерфейсі көрсетілетін тіл.",
   "settings.preferredLanguage": "Таңдаулы аударма тілі",
   "settings.useNativeLanguage": "Ана тілін қолданыңыз",
   "settings.autoTranslate": "Автоматты аудару",

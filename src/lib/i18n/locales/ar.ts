@@ -253,6 +253,8 @@ const ar = {
   "topic.postsInTopic": "المشاركات في هذا الموضوع.",
   "bookmarks.description": "المشاركات التي حفظتها لوقت لاحق.",
   "settings.translation": "الترجمة",
+  "settings.platformLanguage": "لغة المنصة",
+  "settings.platformLanguageDescription": "اللغة التي تُعرض بها واجهة Together.",
   "settings.preferredLanguage": "لغة الترجمة المفضلة",
   "settings.useNativeLanguage": "استخدم اللغة الأم",
   "settings.autoTranslate": "ترجمة تلقائية",

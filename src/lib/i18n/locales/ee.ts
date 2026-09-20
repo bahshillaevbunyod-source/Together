@@ -253,6 +253,8 @@ const d_ee = {
   "topic.postsInTopic": "Posts in tanya sia.",
   "bookmarks.description": "Nyatakaka siwo nèdzra ɖo ɖe emegbe.",
   "settings.translation": "Gbegɔmeɖeɖe",
+  "settings.platformLanguage": "Dziɖuƒe ƒe gbe",
+  "settings.platformLanguageDescription": "Gbe si wɔna be Together ƒe interface nàna kple eme.",
   "settings.preferredLanguage": "Gbegɔmeɖeɖe gbe si wodi wu",
   "settings.useNativeLanguage": "Zã gbe si wodona le dukɔa me",
   "settings.autoTranslate": "Auto gɔmeɖeɖe",

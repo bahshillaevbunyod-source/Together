@@ -253,6 +253,8 @@ const d_bbc = {
   "topic.postsInTopic": "Pos di topik on.",
   "bookmarks.description": "Pos na disimpan hamu laho di pudian ni ari.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Hata platform",
+  "settings.platformLanguageDescription": "Hata na dipake di antarmuka Together.",
   "settings.preferredLanguage": "Bahasa terjemahan na dihalomohon",
   "settings.useNativeLanguage": "Manggunahon bahasa asli .",
   "settings.autoTranslate": "Terjemahan otomatis",

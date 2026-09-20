@@ -253,6 +253,8 @@ const d_sv = {
   "topic.postsInTopic": "Inlägg i detta ämne.",
   "bookmarks.description": "Inlägg som du har sparat för senare.",
   "settings.translation": "Översättning",
+  "settings.platformLanguage": "Plattformsspråk",
+  "settings.platformLanguageDescription": "Språket som Together-gränssnittet visas på.",
   "settings.preferredLanguage": "Föredraget översättningsspråk",
   "settings.useNativeLanguage": "Använd modersmål",
   "settings.autoTranslate": "Automatisk översättning",

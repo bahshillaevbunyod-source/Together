@@ -253,6 +253,8 @@ const d_ti = {
   "topic.postsInTopic": "ፖስትታት ኣብ እዚ ኣርእስቲ’ዚ።",
   "bookmarks.description": "ንደሓር ዝዓቀብካዮም ጽሑፋት።",
   "settings.translation": "ትርጉም",
+  "settings.platformLanguage": "ቋንቋ መድረኽ",
+  "settings.platformLanguageDescription": "መሳርሒ Together ዝርአየሉ ቋንቋ።",
   "settings.preferredLanguage": "ተመራጺ ቋንቋ ትርጉም",
   "settings.useNativeLanguage": "ቋንቋ መበቆል ተጠቐም",
   "settings.autoTranslate": "ኣውቶ ትርጉም",

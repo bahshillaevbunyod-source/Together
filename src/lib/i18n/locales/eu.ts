@@ -253,6 +253,8 @@ const d_eu = {
   "topic.postsInTopic": "Gai honetako mezuak.",
   "bookmarks.description": "Gerorako gorde dituzun argitalpenak.",
   "settings.translation": "Itzulpena",
+  "settings.platformLanguage": "Plataformaren hizkuntza",
+  "settings.platformLanguageDescription": "Together interfazea zein hizkuntzatan bistaratzen den.",
   "settings.preferredLanguage": "Itzulpen hizkuntza hobetsia",
   "settings.useNativeLanguage": "Erabili jatorrizko hizkuntza",
   "settings.autoTranslate": "Itzulpen automatikoa",

@@ -253,6 +253,8 @@ const d_ltg = {
   "topic.postsInTopic": "Īroksti itamā temā.",
   "bookmarks.description": "Īroksti, kurus esi saglobuojs vāluok.",
   "settings.translation": "Tulkuojums .",
+  "settings.platformLanguage": "Platformys volūda",
+  "settings.platformLanguageDescription": "Volūda, kurā tīk parādīta Together saskarne.",
   "settings.preferredLanguage": "Vālamuo tulkuošonys volūda .",
   "settings.useNativeLanguage": "Lītuot dzymtū volūdu .",
   "settings.autoTranslate": "Auto tulkuošona",

@@ -253,6 +253,8 @@ const d_sa = {
   "topic.postsInTopic": "पोस्ट्स् इत्यत्र this topic.",
   "bookmarks.description": "भवता पश्चात् कृते रक्षिताः पोस्ट्।",
   "settings.translation": "अनुवाद",
+  "settings.platformLanguage": "मञ्चभाषा",
+  "settings.platformLanguageDescription": "या भाषया Together अन्तारफलकं प्रदर्श्यते।",
   "settings.preferredLanguage": "प्राधान्यानुवादभाषा",
   "settings.useNativeLanguage": "देशीभाषायाः प्रयोगं कुर्वन्तु",
   "settings.autoTranslate": "स्वतः अनुवादं कुर्वन्तु",

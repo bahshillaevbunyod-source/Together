@@ -253,6 +253,8 @@ const d_gaa = {
   "topic.postsInTopic": "Posts yɛ saneyitso nɛɛ mli.",
   "bookmarks.description": "Posts ni okɛto kɛha sɛɛ mli.",
   "settings.translation": "Wiemɔ shishitsɔɔmɔ",
+  "settings.platformLanguage": "Platformi kasa",
+  "settings.platformLanguageDescription": "Kasa nɔ ni Together interface no ba nɛ.",
   "settings.preferredLanguage": "Wiemɔ shishitsɔɔmɔ ni asumɔɔ",
   "settings.useNativeLanguage": "Okɛ maŋ wiemɔ atsu nii",
   "settings.autoTranslate": "Auto shishitsɔɔmɔ",

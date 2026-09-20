@@ -253,6 +253,8 @@ const d_km = {
   "topic.postsInTopic": "ប្រកាសនៅក្នុងប្រធានបទនេះ។",
   "bookmarks.description": "ប្រកាសដែលអ្នកបានរក្សាទុកសម្រាប់ពេលក្រោយ។",
   "settings.translation": "ការបកប្រែ",
+  "settings.platformLanguage": "ភាសាវេទិកា",
+  "settings.platformLanguageDescription": "ភាសាដែលចំណុចប្រទាក់ Together ត្រូវបានបង្ហាញ។",
   "settings.preferredLanguage": "ភាសាបកប្រែដែលពេញចិត្ត",
   "settings.useNativeLanguage": "ប្រើភាសាកំណើត",
   "settings.autoTranslate": "បកប្រែដោយស្វ័យប្រវត្តិ",

@@ -253,6 +253,8 @@ const d_bik = {
   "topic.postsInTopic": "Mga post sa topic na ini.",
   "bookmarks.description": "Mga post na saimong itinagama para sa masunod.",
   "settings.translation": "Pagsalin",
+  "settings.platformLanguage": "Tataramon kan plataporma",
+  "settings.platformLanguageDescription": "Tataramon na ginagamit sa pagpakita kan interface kan Together.",
   "settings.preferredLanguage": "Mas gustong tataramon sa pagtradusir",
   "settings.useNativeLanguage": "Gamiton an katutubong tataramon",
   "settings.autoTranslate": "Awtomatikong pagsasalin",

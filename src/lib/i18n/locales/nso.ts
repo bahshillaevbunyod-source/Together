@@ -253,6 +253,8 @@ const d_nso = {
   "topic.postsInTopic": "Posts in sehlogo se.",
   "bookmarks.description": "Diposo tšeo o di bolokilego ka morago.",
   "settings.translation": "Phetolelo",
+  "settings.platformLanguage": "Polelo ya sehlopha",
+  "settings.platformLanguageDescription": "Polelo yeo segokaganyi sa Together se bontšhwago ka yona.",
   "settings.preferredLanguage": "Polelo ya phetolelo ye e kgethilwego",
   "settings.useNativeLanguage": "Diriša polelo ya setlogo",
   "settings.autoTranslate": "Auto fetolela",

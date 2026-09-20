@@ -253,6 +253,8 @@ const d_bts = {
   "topic.postsInTopic": "Postingan bani topik on.",
   "bookmarks.description": "Postingan na dob isimpan nasiam bani panorang na legan.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Hata platform",
+  "settings.platformLanguageDescription": "Hata na dipake di antarmuka Together.",
   "settings.preferredLanguage": "Bahasa terjemahan na iharosuhkon",
   "settings.useNativeLanguage": "Manggunahon sahap asli",
   "settings.autoTranslate": "Terjemahan otomatis",

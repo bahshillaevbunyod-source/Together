@@ -253,6 +253,8 @@ const d_sm = {
   "topic.postsInTopic": "Posts i lenei autu.",
   "bookmarks.description": "Fa'asalalauga na e teuina mo se taimi mulimuli ane.",
   "settings.translation": "Fa'aliliuga",
+  "settings.platformLanguage": "Gagana o le tulaga",
+  "settings.platformLanguageDescription": "Le gagana e fa'aalia ai le fa'aoga o le Together.",
   "settings.preferredLanguage": "Gagana faaliliu e mana'omia",
   "settings.useNativeLanguage": "Fa'aaogā le gagana fa'apitoa",
   "settings.autoTranslate": "Fa'aliliu otometi",

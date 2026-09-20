@@ -253,6 +253,8 @@ const d_gom = {
   "topic.postsInTopic": "पोस्ट इन हो विशय.",
   "bookmarks.description": "तुमी फुडें जतनाय घेतिल्लीं पोस्टां.",
   "settings.translation": "अणकार करप",
+  "settings.platformLanguage": "प्लॅटफॉर्माची भास",
+  "settings.platformLanguageDescription": "Together इंटरफेस ज्या भाशेंत दाखयतात ती भास.",
   "settings.preferredLanguage": "पसंत केल्ली अणकार भास",
   "settings.useNativeLanguage": "मूळ भास वापरात",
   "settings.autoTranslate": "ऑटो अणकारप",

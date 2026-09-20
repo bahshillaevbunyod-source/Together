@@ -253,6 +253,8 @@ const d_az = {
   "topic.postsInTopic": "Bu mövzuda yazılar.",
   "bookmarks.description": "Sonrakı üçün saxladığınız postlar.",
   "settings.translation": "Tərcümə",
+  "settings.platformLanguage": "Platform dili",
+  "settings.platformLanguageDescription": "Together interfeysinin göstərildiyi dil.",
   "settings.preferredLanguage": "Tərcümə dilinə üstünlük verilir",
   "settings.useNativeLanguage": "Ana dilindən istifadə edin",
   "settings.autoTranslate": "Avtomatik tərcümə",

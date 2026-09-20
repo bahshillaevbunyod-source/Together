@@ -253,6 +253,8 @@ const d_ckb = {
   "topic.postsInTopic": "Posts in ئەم بابەتە.",
   "bookmarks.description": "ئەو پۆستانەی کە بۆ دواتر پاشەکەوتت کردووە.",
   "settings.translation": "وەرگێڕان",
+  "settings.platformLanguage": "زمانی پلاتفۆرم",
+  "settings.platformLanguageDescription": "ئەو زمانەی ڕووکاری Together پێی پیشان دەدرێت.",
   "settings.preferredLanguage": "زمانی وەرگێڕانی پەسەندکراو",
   "settings.useNativeLanguage": "زمانی زگماکی بەکاربهێنە",
   "settings.autoTranslate": "وەرگێڕانی ئۆتۆماتیکی",

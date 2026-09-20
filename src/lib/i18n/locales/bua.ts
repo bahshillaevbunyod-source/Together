@@ -253,6 +253,8 @@ const d_bua = {
   "topic.postsInTopic": "Энэ сэдэбтэ бэшэгүүд.",
   "bookmarks.description": "Хожомдо хадагалһан бэшэгүүдтнай.",
   "settings.translation": "Оршуулга",
+  "settings.platformLanguage": "Платформын хэлэн",
+  "settings.platformLanguageDescription": "Together интерфейс харуулагдадаг хэлэн.",
   "settings.preferredLanguage": "Дуратай оршуулгын хэлэн",
   "settings.useNativeLanguage": "Түрэл хэлэеэ хэрэглэхэ",
   "settings.autoTranslate": "Автомат оршуулга",

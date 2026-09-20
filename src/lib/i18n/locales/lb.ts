@@ -253,6 +253,8 @@ const d_lb = {
   "topic.postsInTopic": "Posts an dësem Thema.",
   "bookmarks.description": "Posts déi Dir fir spéider gespäichert hutt.",
   "settings.translation": "Iwwersetzung",
+  "settings.platformLanguage": "Plattformsprooch",
+  "settings.platformLanguageDescription": "D'Sprooch, an där d'Together-Oberfläch ugewisen gëtt.",
   "settings.preferredLanguage": "Preferenz Iwwersetzung Sprooch",
   "settings.useNativeLanguage": "Benotzt Mammesprooch",
   "settings.autoTranslate": "Auto Iwwersetzer",

@@ -253,6 +253,8 @@ const d_ro = {
   "topic.postsInTopic": "Postări în acest subiect.",
   "bookmarks.description": "Postări pe care le-ați salvat pentru mai târziu.",
   "settings.translation": "Traducere",
+  "settings.platformLanguage": "Limba platformei",
+  "settings.platformLanguageDescription": "Limba în care este afișată interfața Together.",
   "settings.preferredLanguage": "Limba de traducere preferată",
   "settings.useNativeLanguage": "Folosește limba maternă",
   "settings.autoTranslate": "Traducere automată",

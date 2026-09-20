@@ -253,6 +253,8 @@ const d_ug = {
   "topic.postsInTopic": "بۇ تېمىدىكى يازمىلار.",
   "bookmarks.description": "كېيىن ساقلىغان يازمىلار.",
   "settings.translation": "تەرجىمە",
+  "settings.platformLanguage": "مەيدان تىلى",
+  "settings.platformLanguageDescription": "Together كۆرۈنمە يۈزى كۆرسىتىلىدىغان تىل.",
   "settings.preferredLanguage": "ياقتۇرىدىغان تەرجىمە تىلى",
   "settings.useNativeLanguage": "ئانا تىل ئىشلىتىڭ",
   "settings.autoTranslate": "ئاپتوماتىك تەرجىمە قىلىش",

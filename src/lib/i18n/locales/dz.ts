@@ -253,6 +253,8 @@ const d_dz = {
   "topic.postsInTopic": "དོན་ཚན་འདིའི་ནང་བཀོད་ཡོད།",
   "bookmarks.description": "ཁྱོད་ཀྱིས་ཤུལ་ལས་སྲུང་བཞག་འབད་ཡོད་པའི་བརྡ་བསྐུལ།",
   "settings.translation": "ཡིག་སྒྱུར།",
+  "settings.platformLanguage": "གཞི་རྟེན་སྐད",
+  "settings.platformLanguageDescription": "Together གི་ངོས་འདྲ་དེ་སྟོན་པའི་སྐད།",
   "settings.preferredLanguage": "དགའ་གདམ་ཅན་གྱི་སྐད་སྒྱུར་སྐད་ཡིག།",
   "settings.useNativeLanguage": "ཕ་སྐད་ལག་ལེན་འཐབ།",
   "settings.autoTranslate": "རང་བཞིན་སྐད་སྒྱུར།",

@@ -253,6 +253,8 @@ const d_lg = {
   "topic.postsInTopic": "Posts in omulamwa guno.",
   "bookmarks.description": "Ebiwandiiko by’otereka oluvannyuma.",
   "settings.translation": "Okuvvuunula",
+  "settings.platformLanguage": "Olulimi lwa pulatifomu",
+  "settings.platformLanguageDescription": "Olulimi oluwanirwamu okulaga Together interface.",
   "settings.preferredLanguage": "Olulimi lw’okuvvuunula olusinga okwagalibwa",
   "settings.useNativeLanguage": "Kozesa olulimi oluzaaliranwa",
   "settings.autoTranslate": "Auto okuvvuunula",

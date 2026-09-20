@@ -253,6 +253,8 @@ const d_hil = {
   "topic.postsInTopic": "Mga post sa sini nga topiko.",
   "bookmarks.description": "Mga post nga imo gin-save para sa ulihi.",
   "settings.translation": "Paglubad",
+  "settings.platformLanguage": "Lenggwahe kang plataporma",
+  "settings.platformLanguageDescription": "Lenggwahe nga ginapakita ang interface kang Together.",
   "settings.preferredLanguage": "Mas gusto nga lenguahe sa paghubad",
   "settings.useNativeLanguage": "Gamita ang tumandok nga lenguahe",
   "settings.autoTranslate": "Awtomatiko nga pagbadbad",

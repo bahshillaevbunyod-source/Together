@@ -253,6 +253,8 @@ const d_yi = {
   "topic.postsInTopic": "הודעות אין דעם טעמע.",
   "bookmarks.description": "אַרטיקלען וואָס איר האָט געראטעוועט פֿאַר שפּעטער.",
   "settings.translation": "איבערזעצונג",
+  "settings.platformLanguage": "פּלאַטפאָרמע שפּראַך",
+  "settings.platformLanguageDescription": "די שפּראַך אין וועלכער דער Together צובינד ווערט געוויזן.",
   "settings.preferredLanguage": "בילכער איבערזעצונג שפּראַך",
   "settings.useNativeLanguage": "ניצן געבוירן שפּראַך",
   "settings.autoTranslate": "אַוטאָ איבערזעצן",

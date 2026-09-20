@@ -253,6 +253,8 @@ const d_ga = {
   "topic.postsInTopic": "Poist san ábhar seo.",
   "bookmarks.description": "Postálacha a shábháil tú le haghaidh níos déanaí.",
   "settings.translation": "Aistriúchán",
+  "settings.platformLanguage": "Teanga an ardáin",
+  "settings.platformLanguageDescription": "An teanga ina dtaispeántar comhéadan Together.",
   "settings.preferredLanguage": "Teanga aistriúcháin is fearr leat",
   "settings.useNativeLanguage": "Úsáid teanga dhúchais",
   "settings.autoTranslate": "Aistriú uathoibríoch",

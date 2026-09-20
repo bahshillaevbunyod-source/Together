@@ -253,6 +253,8 @@ const d_crh = {
   "topic.postsInTopic": "Бу мевзудаки язмалар.",
   "bookmarks.description": "Сонъра ичюн сакълагъан язмалар.",
   "settings.translation": "Терджиме .",
+  "settings.platformLanguage": "Platforma tili",
+  "settings.platformLanguageDescription": "Together arayüziniñ körsetilgen tili.",
   "settings.preferredLanguage": "Устюнлик берильген терджиме тили .",
   "settings.useNativeLanguage": "Ана тилинден файдаланынъыз .",
   "settings.autoTranslate": "Авто терджиме",

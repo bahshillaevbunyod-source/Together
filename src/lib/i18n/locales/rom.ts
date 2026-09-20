@@ -253,6 +253,8 @@ const d_rom = {
   "topic.postsInTopic": "Postura ande kadi tema.",
   "bookmarks.description": "Postura save garavden palal.",
   "settings.translation": "Translàcia",
+  "settings.platformLanguage": "Čhib platformako",
+  "settings.platformLanguageDescription": "Čhib ande savo si sikavdi i Together interfața.",
   "settings.preferredLanguage": "Preferime ćhib e ćhibăqi",
   "settings.useNativeLanguage": "Keren buti e dajake ćhibjasa",
   "settings.autoTranslate": "Auto-translàcia",

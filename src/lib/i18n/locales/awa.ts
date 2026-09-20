@@ -253,6 +253,8 @@ const d_awa = {
   "topic.postsInTopic": "यहि विषय मा पोस्ट।",
   "bookmarks.description": "पोस्ट जवन आप बाद मा सहेजे अहैं।",
   "settings.translation": "अनुवाद",
+  "settings.platformLanguage": "प्लेटफारम भाषा",
+  "settings.platformLanguageDescription": "Together इंटरफेस जउन भाषा मा देखावा जात है।",
   "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा",
   "settings.useNativeLanguage": "देशी भाषा का प्रयोग करे",
   "settings.autoTranslate": "स्वचालित अनुवाद",

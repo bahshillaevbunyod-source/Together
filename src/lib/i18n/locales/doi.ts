@@ -253,6 +253,8 @@ const d_doi = {
   "topic.postsInTopic": "पोस्ट च इस विषय गी।",
   "bookmarks.description": "पोस्टें गी तुसें बाद च सेव कीता ऐ।",
   "settings.translation": "अनुवाद करना",
+  "settings.platformLanguage": "प्लेटफार्म दी भाशा",
+  "settings.platformLanguageDescription": "जेस भाशा च Together दा इंटरफेस दस्सेआ जंदा ऐ।",
   "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा",
   "settings.useNativeLanguage": "मातृभाषा दा प्रयोग करो",
   "settings.autoTranslate": "ऑटो अनुवाद करो",

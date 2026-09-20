@@ -253,6 +253,8 @@ const d_ff = {
   "topic.postsInTopic": "Postooji e nder ndee toɓɓere.",
   "bookmarks.description": "Postooji ɗi resndu-ɗaa ngam caggal.",
   "settings.translation": "Firo",
+  "settings.platformLanguage": "Ɗemngal platform",
+  "settings.platformLanguageDescription": "Ɗemngal ngal Together hollirte e ngal.",
   "settings.preferredLanguage": "Ɗemngal firo ɓurngal yiɗeede",
   "settings.useNativeLanguage": "Huutoro ɗemngal neeniwal",
   "settings.autoTranslate": "Firo oto",

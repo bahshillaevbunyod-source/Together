@@ -253,6 +253,8 @@ const d_bho = {
   "topic.postsInTopic": "पोस्ट में this topic.",
   "bookmarks.description": "पोस्ट जवना के रउरा बाद में सेव कइले बानी.",
   "settings.translation": "अनुवाद के बा",
+  "settings.platformLanguage": "प्लेटफार्म के भाषा",
+  "settings.platformLanguageDescription": "जे भाषा में Together के इंटरफेस देखावल जाला।",
   "settings.preferredLanguage": "पसंदीदा अनुवाद भाषा के बा",
   "settings.useNativeLanguage": "मूल भाषा के प्रयोग करीं",
   "settings.autoTranslate": "ऑटो अनुवाद करे के बा",

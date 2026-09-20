@@ -253,6 +253,8 @@ const d_pam = {
   "topic.postsInTopic": "Posts keng topic ayni.",
   "bookmarks.description": "Posts a tinipun mu para keng tutuki.",
   "settings.translation": "Pamagsalin",
+  "settings.platformLanguage": "Amanung platform",
+  "settings.platformLanguageDescription": "Amanung a gagamitan para ipakitá ing interface ning Together.",
   "settings.preferredLanguage": "Mas buri kung amanu ning pamagsalin",
   "settings.useNativeLanguage": "Gamitan ing katutubung amanu",
   "settings.autoTranslate": "Awtomatikung pamagsalin",

@@ -253,6 +253,8 @@ const d_hy = {
   "topic.postsInTopic": "Գրառումներ այս թեմայում.",
   "bookmarks.description": "Գրառումներ, որոնք պահել եք ավելի ուշ:",
   "settings.translation": "Թարգմանություն",
+  "settings.platformLanguage": "Հարթակի լեզու",
+  "settings.platformLanguageDescription": "Լեզուն, որով ցուցադրվում է Together-ի միջերեսը։",
   "settings.preferredLanguage": "Նախընտրելի թարգմանության լեզուն",
   "settings.useNativeLanguage": "Օգտագործեք մայրենի լեզուն",
   "settings.autoTranslate": "Ավտոմատ թարգմանություն",

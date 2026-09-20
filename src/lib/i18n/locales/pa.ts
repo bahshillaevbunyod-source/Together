@@ -253,6 +253,8 @@ const d_pa = {
   "topic.postsInTopic": "ਇਸ ਵਿਸ਼ੇ ਵਿੱਚ ਪੋਸਟ.",
   "bookmarks.description": "ਪੋਸਟਾਂ ਜੋ ਤੁਸੀਂ ਬਾਅਦ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕੀਤੀਆਂ ਹਨ।",
   "settings.translation": "ਅਨੁਵਾਦ",
+  "settings.platformLanguage": "ਪਲੇਟਫਾਰਮ ਦੀ ਭਾਸ਼ਾ",
+  "settings.platformLanguageDescription": "ਉਹ ਭਾਸ਼ਾ ਜਿਸ ਵਿੱਚ Together ਇੰਟਰਫੇਸ ਦਿਖਾਇਆ ਜਾਂਦਾ ਹੈ।",
   "settings.preferredLanguage": "ਤਰਜੀਹੀ ਅਨੁਵਾਦ ਭਾਸ਼ਾ",
   "settings.useNativeLanguage": "ਮੂਲ ਭਾਸ਼ਾ ਦੀ ਵਰਤੋਂ ਕਰੋ",
   "settings.autoTranslate": "ਸਵੈਚਲਿਤ ਅਨੁਵਾਦ",

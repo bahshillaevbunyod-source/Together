@@ -253,6 +253,8 @@ const d_br = {
   "topic.postsInTopic": "Kemennadoù war an danvez-mañ.",
   "bookmarks.description": "Kemennadoù hoc'h eus enrollet evit diwezhatoc'h.",
   "settings.translation": "Troidigezh",
+  "settings.platformLanguage": "Yezh ar savenn",
+  "settings.platformLanguageDescription": "Ar yezh ma vez diskouezet etrefas Together.",
   "settings.preferredLanguage": "Yezh troidigezh gwellañ",
   "settings.useNativeLanguage": "Implijout ar yezh orin",
   "settings.autoTranslate": "Troidigezh emgefre",

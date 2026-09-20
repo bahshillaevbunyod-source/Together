@@ -253,6 +253,8 @@ const d_luo = {
   "topic.postsInTopic": "Oboke e wi wachni.",
   "bookmarks.description": "Gik ma iserito mondo itigodo bang’e.",
   "settings.translation": "Loko dhok",
+  "settings.platformLanguage": "Dhok platform",
+  "settings.platformLanguageDescription": "Dhok ma Together interface ochungoree-go.",
   "settings.preferredLanguage": "Dhok mar loko dhok ma ihero",
   "settings.useNativeLanguage": "Ti kod dhok ma owuok",
   "settings.autoTranslate": "Loko dhok owuon",

@@ -253,6 +253,8 @@ const d_sg = {
   "topic.postsInTopic": "A-article na yâ ti sujet so.",
   "bookmarks.description": "A-article so mo bata ni ndali ti mbeni ngoi.",
   "settings.translation": "Traduction",
+  "settings.platformLanguage": "Ngunu ti platforme",
+  "settings.platformLanguageDescription": "Ngunu na ni a vê Together interface ti.",
   "settings.preferredLanguage": "Ayanga ti kodoro ti traduction so a ye ni mingi",
   "settings.useNativeLanguage": "Lo yeke yanga ti kodoro .",
   "settings.autoTranslate": "Traduction automatique",

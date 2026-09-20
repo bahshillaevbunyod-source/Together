@@ -253,6 +253,8 @@ const d_mr = {
   "topic.postsInTopic": "या विषयातील पोस्ट.",
   "bookmarks.description": "तुम्ही नंतरसाठी जतन केलेल्या पोस्ट.",
   "settings.translation": "भाषांतर",
+  "settings.platformLanguage": "प्लॅटफॉर्मची भाषा",
+  "settings.platformLanguageDescription": "Together इंटरफेस ज्या भाषेत दाखवला जातो ती भाषा.",
   "settings.preferredLanguage": "पसंतीची भाषांतर भाषा",
   "settings.useNativeLanguage": "मातृभाषा वापरा",
   "settings.autoTranslate": "स्वयं भाषांतर",

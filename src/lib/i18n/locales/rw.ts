@@ -253,6 +253,8 @@ const d_rw = {
   "topic.postsInTopic": "Inyandiko muriyi ngingo.",
   "bookmarks.description": "Inyandiko wabitse nyuma.",
   "settings.translation": "Ubuhinduzi",
+  "settings.platformLanguage": "Ururimi rwa porogaramu",
+  "settings.platformLanguageDescription": "Ururimi interineti ya Together igaragarizwamo.",
   "settings.preferredLanguage": "Ururimi rwubuhinduzi",
   "settings.useNativeLanguage": "Koresha ururimi kavukire",
   "settings.autoTranslate": "Guhindura imodoka",

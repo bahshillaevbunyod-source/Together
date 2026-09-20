@@ -253,6 +253,8 @@ const d_alz = {
   "topic.postsInTopic": "Lembe ma jukiewo i wi lembe eni.",
   "bookmarks.description": "Lembe ma igwoko pi anyim.",
   "settings.translation": "Lokruok",
+  "settings.platformLanguage": "Basa platform",
+  "settings.platformLanguageDescription": "Basa yang dipakai di antarmuka Together.",
   "settings.preferredLanguage": "Dhok mi loko dhok ma jumaru",
   "settings.useNativeLanguage": "Ti ku dhok mi thek",
   "settings.autoTranslate": "Lok lembe kende",

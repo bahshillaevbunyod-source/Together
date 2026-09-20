@@ -253,6 +253,8 @@ const d_sq = {
   "topic.postsInTopic": "Postimet në këtë temë.",
   "bookmarks.description": "Postimet që keni ruajtur për më vonë.",
   "settings.translation": "Përkthimi",
+  "settings.platformLanguage": "Gjuha e platformës",
+  "settings.platformLanguageDescription": "Gjuha në të cilën shfaqet ndërfaqja e Together.",
   "settings.preferredLanguage": "Gjuha e preferuar e përkthimit",
   "settings.useNativeLanguage": "Përdorni gjuhën amtare",
   "settings.autoTranslate": "Përkthim automatik",

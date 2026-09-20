@@ -253,6 +253,8 @@ const d_dov = {
   "topic.postsInTopic": "Malembe aali mumutwe ooyu.",
   "bookmarks.description": "Malembe ngowabamba kuti akabelesegwe kumbele.",
   "settings.translation": "Busanduluzi",
+  "settings.platformLanguage": "भाषा ने प्लेटफॉर्म",
+  "settings.platformLanguageDescription": "भाषा जीस में Together इंटरफेस देखारो जांदो आहे।",
   "settings.preferredLanguage": "Mwaambo wakusandulula uuyandwa",
   "settings.useNativeLanguage": "Belesya mwaambo wakuzyalwa",
   "settings.autoTranslate": "Kusandulula",

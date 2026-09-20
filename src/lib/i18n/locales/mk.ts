@@ -253,6 +253,8 @@ const d_mk = {
   "topic.postsInTopic": "Објави во оваа тема.",
   "bookmarks.description": "Објави што сте ги зачувале за подоцна.",
   "settings.translation": "Превод",
+  "settings.platformLanguage": "Јазик на платформата",
+  "settings.platformLanguageDescription": "Јазикот на кој се прикажува интерфејсот на Together.",
   "settings.preferredLanguage": "Претпочитан јазик за преведување",
   "settings.useNativeLanguage": "Користете мајчин јазик",
   "settings.autoTranslate": "Автоматско преведување",

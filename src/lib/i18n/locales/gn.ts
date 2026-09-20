@@ -253,6 +253,8 @@ const d_gn = {
   "topic.postsInTopic": "Posts en ko tema.",
   "bookmarks.description": "Umi post reñongatuva’ekue upe rire g̃uarã.",
   "settings.translation": "Ñembohasaha",
+  "settings.platformLanguage": "Plataforma ñeʼẽ",
+  "settings.platformLanguageDescription": "Ñeʼẽme ojehechauka Together rekokatu.",
   "settings.preferredLanguage": "Ñe’ẽ ñembohasa ojeiporavóva",
   "settings.useNativeLanguage": "Eipuru ñe’ẽ tee",
   "settings.autoTranslate": "Auto traducir",

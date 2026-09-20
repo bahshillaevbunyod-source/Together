@@ -253,6 +253,8 @@ const d_ka = {
   "topic.postsInTopic": "პოსტები ამ თემაში.",
   "bookmarks.description": "პოსტები, რომლებიც მოგვიანებით შეინახეთ.",
   "settings.translation": "თარგმანი",
+  "settings.platformLanguage": "პლატფორმის ენა",
+  "settings.platformLanguageDescription": "ენა, რომელზეც Together-ის ინტერფეისი ნაჩვენებია.",
   "settings.preferredLanguage": "სასურველი თარგმანის ენა",
   "settings.useNativeLanguage": "გამოიყენეთ მშობლიური ენა",
   "settings.autoTranslate": "ავტომატური თარგმნა",

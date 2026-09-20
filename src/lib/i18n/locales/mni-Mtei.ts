@@ -253,6 +253,8 @@ const d_mni_Mtei = {
   "topic.postsInTopic": "ꯍꯤꯔꯝ ꯑꯁꯤꯗꯥ ꯄꯣꯁ꯭ꯇꯁꯤꯡ꯫",
   "bookmarks.description": "ꯇꯨꯡꯗꯥ ꯁꯦꯚ ꯇꯧꯔꯕꯥ ꯄꯣꯁ꯭ꯇꯁꯤꯡ꯫",
   "settings.translation": "ꯍꯟꯗꯣꯀꯄꯥ꯫",
+  "settings.platformLanguage": "ꯄ꯭ꯂꯦꯠꯐꯣꯔꯝꯒꯤ ꯂꯣꯟ",
+  "settings.platformLanguageDescription": "Together ꯏꯟꯇꯔꯐꯦꯁ ꯌꯥꯎꯅ ꯎꯠꯄꯥ ꯂꯣꯟ.",
   "settings.preferredLanguage": "ꯄꯁꯟꯗꯒꯤ ꯍꯟꯗꯣꯀꯄꯒꯤ ꯂꯣꯜ꯫",
   "settings.useNativeLanguage": "ꯅꯦꯇꯤꯚ ꯂꯣꯜ ꯁꯤꯖꯤꯟꯅꯧ꯫",
   "settings.autoTranslate": "ꯑꯣꯇꯣ ꯇ꯭ꯔꯥꯟꯁꯂꯦꯠ ꯇꯧꯕꯥ꯫",

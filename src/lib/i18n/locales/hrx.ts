@@ -253,6 +253,8 @@ const d_hrx = {
   "topic.postsInTopic": "Poste in tiise theema.",
   "bookmarks.description": "Posts woos tuu fer xpeeter kexpaart host.",
   "settings.translation": "Iwersetsung",
+  "settings.platformLanguage": "Plattform-Sprooch",
+  "settings.platformLanguageDescription": "D'Sprooch, an där d'Together-Oberfläch ugewisen gëtt.",
   "settings.preferredLanguage": "Preferëns iwersëtsungs xprooch",
   "settings.useNativeLanguage": "Tuu ti muter xprooch penutse .",
   "settings.autoTranslate": "Auto iwersetsung",

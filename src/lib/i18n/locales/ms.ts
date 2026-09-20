@@ -253,6 +253,8 @@ const d_ms = {
   "topic.postsInTopic": "{name} ini topik.",
   "bookmarks.description": "Siaran yang telah anda simpan untuk kemudian.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Bahasa platform",
+  "settings.platformLanguageDescription": "Bahasa yang digunakan untuk memaparkan antara muka Together.",
   "settings.preferredLanguage": "Bahasa terjemahan pilihan",
   "settings.useNativeLanguage": "Gunakan bahasa ibunda",
   "settings.autoTranslate": "Auto terjemah",

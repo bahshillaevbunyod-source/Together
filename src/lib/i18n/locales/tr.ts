@@ -253,6 +253,8 @@ const tr = {
   "topic.postsInTopic": "Bu konudaki gönderiler.",
   "bookmarks.description": "Gönderiler sonrası için sakladınız.",
   "settings.translation": "Çeviri",
+  "settings.platformLanguage": "Platform dili",
+  "settings.platformLanguageDescription": "Together arayüzünün görüntülendiği dil.",
   "settings.preferredLanguage": "Tercih edilen çeviri dili",
   "settings.useNativeLanguage": "Ana dili kullan",
   "settings.autoTranslate": "Otomatik çeviri",

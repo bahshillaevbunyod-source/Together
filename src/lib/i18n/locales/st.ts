@@ -253,6 +253,8 @@ const d_st = {
   "topic.postsInTopic": "Melaetsa sehloohong sena.",
   "bookmarks.description": "Melaetsa eo u e bolokileng bakeng sa nako e tlang.",
   "settings.translation": "Phetolelo",
+  "settings.platformLanguage": "Puo ya sethala",
+  "settings.platformLanguageDescription": "Puo eo sebopeho sa Together se bontshwang ka yona.",
   "settings.preferredLanguage": "Puo ea phetolelo e ratoang",
   "settings.useNativeLanguage": "Sebelisa puo ea tlhaho",
   "settings.autoTranslate": "Fetolela ka boiketsetso",

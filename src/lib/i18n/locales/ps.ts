@@ -253,6 +253,8 @@ const d_ps = {
   "topic.postsInTopic": "په دې موضوع کې پوسټونه.",
   "bookmarks.description": "هغه پوسټونه چې تاسو یې د وروسته لپاره خوندي کړي دي.",
   "settings.translation": "ژباړه",
+  "settings.platformLanguage": "د پلیټفارم ژبه",
+  "settings.platformLanguageDescription": "هغه ژبه چې د Together انټرېفېس پرې ښودل کېږي.",
   "settings.preferredLanguage": "د ژباړې غوره ژبه",
   "settings.useNativeLanguage": "مورنۍ ژبه وکاروئ",
   "settings.autoTranslate": "اتومات ژباړه",

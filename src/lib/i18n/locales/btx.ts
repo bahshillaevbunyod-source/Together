@@ -253,6 +253,8 @@ const d_btx = {
   "topic.postsInTopic": "Postingen i bas topik enda.",
   "bookmarks.description": "Postingen si enggo isimpanndu guna pudi wari.",
   "settings.translation": "Terjemahen",
+  "settings.platformLanguage": "Hata platform",
+  "settings.platformLanguageDescription": "Hata na dipake di antarmuka Together.",
   "settings.preferredLanguage": "Bahasa terjemahen si ipilih .",
   "settings.useNativeLanguage": "Gunakenlah bahasa asli .",
   "settings.autoTranslate": "Terjemahen otomatis",

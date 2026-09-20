@@ -253,6 +253,8 @@ const d_shn = {
   "topic.postsInTopic": "လိၵ်ႈပိုၼ်ၽၢဝ်ႇ ၼႂ်းႁူဝ်ၶေႃႈၼႆႉ။",
   "bookmarks.description": "လိၵ်ႈပိုၼ်ၽၢဝ်ႇ ဢၼ်ၸဝ်ႈၵဝ်ႇ သိမ်းဝႆႉ တႃႇဝၢႆးလင်။",
   "settings.translation": "ပိၼ်ႇၽႃႇသႃႇ",
+  "settings.platformLanguage": "ၽႃႇသႃႇပလႅတ်ႉၾွမ်ႇ",
+  "settings.platformLanguageDescription": "ၽႃႇသႃႇဢၼ်ၼႄ Together interface ၼၼ်ႉ။",
   "settings.preferredLanguage": "ၽႃႇသႃႇပိၼ်ႇၽႃႇသႃႇ ဢၼ်ထုၵ်ႇၸႂ်",
   "settings.useNativeLanguage": "ၸႂ်ႉၵႂၢမ်းမႄႈ",
   "settings.autoTranslate": "ပိၼ်ႇၽႃႇသႃႇႁင်းၵူၺ်း",

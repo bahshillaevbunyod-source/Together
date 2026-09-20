@@ -253,6 +253,8 @@ const d_et = {
   "topic.postsInTopic": "Selle teema postitused.",
   "bookmarks.description": "Postitused, mille olete salvestanud hilisemaks kasutamiseks.",
   "settings.translation": "Tõlge",
+  "settings.platformLanguage": "Platvormi keel",
+  "settings.platformLanguageDescription": "Keel, milles kuvatakse Together liidest.",
   "settings.preferredLanguage": "Eelistatud tõlkekeel",
   "settings.useNativeLanguage": "Kasutage emakeelt",
   "settings.autoTranslate": "Automaatne tõlge",

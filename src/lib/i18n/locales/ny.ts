@@ -253,6 +253,8 @@ const d_ny = {
   "topic.postsInTopic": "Zolemba pamutuwu.",
   "bookmarks.description": "Zolemba zomwe mwasungira mtsogolo.",
   "settings.translation": "Kumasulira",
+  "settings.platformLanguage": "Chilankhulo cha pulatifomu",
+  "settings.platformLanguageDescription": "Chilankhulo chimene mawonekedwe a Together amawonetsedwa nacho.",
   "settings.preferredLanguage": "Chiyankhulo chomasulira chomwe mumakonda",
   "settings.useNativeLanguage": "Gwiritsani ntchito chilankhulo chawo",
   "settings.autoTranslate": "Tanthauzirani zokha",

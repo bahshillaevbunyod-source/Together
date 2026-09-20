@@ -253,6 +253,8 @@ const d_mn = {
   "topic.postsInTopic": "Энэ сэдэв дэх нийтлэлүүд.",
   "bookmarks.description": "Таны дараа хадгалахаар хадгалсан нийтлэлүүд.",
   "settings.translation": "Орчуулга",
+  "settings.platformLanguage": "Платформын хэл",
+  "settings.platformLanguageDescription": "Together интерфэйсийг харуулах хэл.",
   "settings.preferredLanguage": "Орчуулахыг илүүд үздэг хэл",
   "settings.useNativeLanguage": "Төрөлх хэлээ ашигла",
   "settings.autoTranslate": "Автоматаар орчуулах",

@@ -253,6 +253,8 @@ const d_sk = {
   "topic.postsInTopic": "Príspevky v tejto téme.",
   "bookmarks.description": "Príspevky, ktoré ste si uložili na neskôr.",
   "settings.translation": "Preklad",
+  "settings.platformLanguage": "Jazyk platformy",
+  "settings.platformLanguageDescription": "Jazyk, v ktorom sa zobrazuje rozhranie Together.",
   "settings.preferredLanguage": "Preferovaný jazyk prekladu",
   "settings.useNativeLanguage": "Používajte rodný jazyk",
   "settings.autoTranslate": "Automatický preklad",

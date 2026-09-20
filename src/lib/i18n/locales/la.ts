@@ -253,6 +253,8 @@ const d_la = {
   "topic.postsInTopic": "Inscriptiones in hoc argumento.",
   "bookmarks.description": "Posts pro postea servavisti.",
   "settings.translation": "Translatio",
+  "settings.platformLanguage": "Lingua suggestus",
+  "settings.platformLanguageDescription": "Lingua qua interfacies Together ostenditur.",
   "settings.preferredLanguage": "Lingua translationis praelata",
   "settings.useNativeLanguage": "Utere lingua vernacula",
   "settings.autoTranslate": "Conversio automatica",

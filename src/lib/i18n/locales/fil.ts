@@ -253,6 +253,8 @@ const d_fil = {
   "topic.postsInTopic": "Mga post sa paksang ito.",
   "bookmarks.description": "Mga post na na-save mo para sa ibang pagkakataon.",
   "settings.translation": "Pagsasalin",
+  "settings.platformLanguage": "Wika ng platform",
+  "settings.platformLanguageDescription": "Ang wikang ginagamit sa pagpapakita ng interface ng Together.",
   "settings.preferredLanguage": "Mas gustong wika ng pagsasalin",
   "settings.useNativeLanguage": "Gumamit ng katutubong wika",
   "settings.autoTranslate": "Awtomatikong isalin",

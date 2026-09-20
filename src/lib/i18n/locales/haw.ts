@@ -253,6 +253,8 @@ const d_haw = {
   "topic.postsInTopic": "Nā pou ma kēia kumuhana.",
   "bookmarks.description": "Nā memo āu i mālama ai ma hope.",
   "settings.translation": "Unuhi",
+  "settings.platformLanguage": "ʻŌlelo paepae",
+  "settings.platformLanguageDescription": "ʻO ka ʻōlelo e hōʻike ʻia ai ke kikowaena Together.",
   "settings.preferredLanguage": "ʻŌlelo unuhi makemake ʻia",
   "settings.useNativeLanguage": "E hoʻohana i ka ʻōlelo ʻōiwi",
   "settings.autoTranslate": "Unuhi ʻakomi",

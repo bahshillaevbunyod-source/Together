@@ -253,6 +253,8 @@ const d_mg = {
   "topic.postsInTopic": "Lahatsoratra amin'ity lohahevitra ity.",
   "bookmarks.description": "Hafatra voatahiry ho any aoriana.",
   "settings.translation": "Fandikan-teny",
+  "settings.platformLanguage": "Fitenin'ny sehatra",
+  "settings.platformLanguageDescription": "Ny fiteny anehoana ny interface Together.",
   "settings.preferredLanguage": "Fiteny fandikan-teny tiana",
   "settings.useNativeLanguage": "Mampiasà fitenin-drazana",
   "settings.autoTranslate": "Mandika mandeha ho azy",

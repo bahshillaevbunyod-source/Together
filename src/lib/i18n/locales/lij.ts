@@ -253,6 +253,8 @@ const d_lij = {
   "topic.postsInTopic": "Post in sce sto argomento.",
   "bookmarks.description": "I post che l'æ sarvou pe ciù tardi.",
   "settings.translation": "Traduçion",
+  "settings.platformLanguage": "Léngoa da piattaforma",
+  "settings.platformLanguageDescription": "A léngoa inte a quale a l'interfàixe de Together a l'é mostrâ.",
   "settings.preferredLanguage": "Lengua de traduçion preferia",
   "settings.useNativeLanguage": "Utilizzâ a lengua nativa",
   "settings.autoTranslate": "Traduçion automatica",

@@ -253,6 +253,8 @@ const d_sr = {
   "topic.postsInTopic": "Објаве у овој теми.",
   "bookmarks.description": "Постови које сте сачували за касније.",
   "settings.translation": "Превод",
+  "settings.platformLanguage": "Језик платформе",
+  "settings.platformLanguageDescription": "Језик на коме се приказује интерфејс апликације Together.",
   "settings.preferredLanguage": "Жељени језик превода",
   "settings.useNativeLanguage": "Користите матерњи језик",
   "settings.autoTranslate": "Аутоматски превод",

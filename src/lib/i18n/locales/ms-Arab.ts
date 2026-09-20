@@ -253,6 +253,8 @@ const d_ms_Arab = {
   "topic.postsInTopic": "ڤوستيڠ دالم تاجوق اين.",
   "bookmarks.description": "ڤوست يڠ تله اندا سيمڤن اونتوق ننتي.",
   "settings.translation": "ترجمهن",
+  "settings.platformLanguage": "بهاس ڤلتفورم",
+  "settings.platformLanguageDescription": "بهاس يڠ منونجوقکن انترفيس Together.",
   "settings.preferredLanguage": "بهاس ترجمهن يڠ دڬالقكن",
   "settings.useNativeLanguage": "ڬوناكن بهاس ايبوندا",
   "settings.autoTranslate": "ترجمهن سچارا اوتوماتيس",

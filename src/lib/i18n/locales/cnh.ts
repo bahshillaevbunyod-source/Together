@@ -253,6 +253,8 @@ const d_cnh = {
   "topic.postsInTopic": "Hi topic chung i ttialmi hna.",
   "bookmarks.description": "Hmailei caah na chiahmi ttialmi hna.",
   "settings.translation": "Lehnak",
+  "settings.platformLanguage": "Platform holh",
+  "settings.platformLanguageDescription": "Together interface i a hmuh khawh na holh.",
   "settings.preferredLanguage": "Lehnak holh duh deuhmi",
   "settings.useNativeLanguage": "Ramchung holh hmang",
   "settings.autoTranslate": "Mah tein leh",

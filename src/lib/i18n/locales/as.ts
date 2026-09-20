@@ -253,6 +253,8 @@ const d_as = {
   "topic.postsInTopic": "এই বিষয়ত পোষ্ট।",
   "bookmarks.description": "আপুনি পিছৰ বাবে সংৰক্ষণ কৰা পোষ্টসমূহ৷",
   "settings.translation": "অনুবাদ",
+  "settings.platformLanguage": "প্লেটফৰ্মৰ ভাষা",
+  "settings.platformLanguageDescription": "Together আন্তঃপৃষ্ঠ যি ভাষাত দেখুওৱা হয়।",
   "settings.preferredLanguage": "পছন্দৰ অনুবাদ ভাষা",
   "settings.useNativeLanguage": "থলুৱা ভাষা ব্যৱহাৰ কৰক",
   "settings.autoTranslate": "অটো অনুবাদ কৰক",

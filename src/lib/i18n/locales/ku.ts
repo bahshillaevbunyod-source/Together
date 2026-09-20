@@ -253,6 +253,8 @@ const d_ku = {
   "topic.postsInTopic": "Mesajên di vê mijarê de.",
   "bookmarks.description": "Mesajên ku we ji bo paşê tomar kirine.",
   "settings.translation": "Wergerandin",
+  "settings.platformLanguage": "Zimanê platformê",
+  "settings.platformLanguageDescription": "Zimanê ku navrûya Together pê tê nîşandan.",
   "settings.preferredLanguage": "Zimanê wergerê yê bijarte",
   "settings.useNativeLanguage": "Zimanê zikmakî bikar bînin",
   "settings.autoTranslate": "Wergera otomatîkî",

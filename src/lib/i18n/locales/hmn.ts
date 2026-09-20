@@ -253,6 +253,8 @@ const d_hmn = {
   "topic.postsInTopic": "Cov lus hauv lub ncauj lus no.",
   "bookmarks.description": "Cov ntawv koj tau khaws cia rau yav tom ntej.",
   "settings.translation": "Kev txhais lus",
+  "settings.platformLanguage": "Lus platform",
+  "settings.platformLanguageDescription": "Lus uas qhia Together interface.",
   "settings.preferredLanguage": "Nyiam hom lus txhais",
   "settings.useNativeLanguage": "Siv hom lus",
   "settings.autoTranslate": "Tsis siv neeg txhais lus",

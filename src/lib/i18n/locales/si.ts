@@ -253,6 +253,8 @@ const d_si = {
   "topic.postsInTopic": "මෙම මාතෘකාවේ පළ කිරීම්.",
   "bookmarks.description": "ඔබ පසුව සුරැකි පළ කිරීම්.",
   "settings.translation": "පරිවර්තනය",
+  "settings.platformLanguage": "වේදිකා භාෂාව",
+  "settings.platformLanguageDescription": "Together අතුරුමුහුණත පෙන්වන භාෂාව.",
   "settings.preferredLanguage": "කැමති පරිවර්තන භාෂාව",
   "settings.useNativeLanguage": "මව් භාෂාව භාවිතා කරන්න",
   "settings.autoTranslate": "ස්වයංක්‍රීය පරිවර්තනය",

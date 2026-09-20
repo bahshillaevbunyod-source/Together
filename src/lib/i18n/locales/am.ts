@@ -253,6 +253,8 @@ const d_am = {
   "topic.postsInTopic": "በዚህ ርዕስ ውስጥ ልጥፎች.",
   "bookmarks.description": "ለበኋላ ያስቀመጥካቸው ልጥፎች።",
   "settings.translation": "ትርጉም",
+  "settings.platformLanguage": "የመድረክ ቋንቋ",
+  "settings.platformLanguageDescription": "የTogether በይነገጽ የሚታይበት ቋንቋ።",
   "settings.preferredLanguage": "ተመራጭ የትርጉም ቋንቋ",
   "settings.useNativeLanguage": "የአፍ መፍቻ ቋንቋ ተጠቀም",
   "settings.autoTranslate": "በራስ-ሰር መተርጎም",

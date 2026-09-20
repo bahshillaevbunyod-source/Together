@@ -253,6 +253,8 @@ const d_fr_CA = {
   "topic.postsInTopic": "Messages dans ce sujet.",
   "bookmarks.description": "Publications que vous avez enregistrées pour plus tard.",
   "settings.translation": "Traduction",
+  "settings.platformLanguage": "Langue de la plateforme",
+  "settings.platformLanguageDescription": "La langue dans laquelle l’interface de Together est affichée.",
   "settings.preferredLanguage": "Langue de traduction préférée",
   "settings.useNativeLanguage": "Utiliser la langue maternelle",
   "settings.autoTranslate": "Traduction automatique",

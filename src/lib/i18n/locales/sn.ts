@@ -253,6 +253,8 @@ const d_sn = {
   "topic.postsInTopic": "Zvinyorwa munyaya iyi.",
   "bookmarks.description": "Zvinyorwa zvawakachengeta kuitira gare gare.",
   "settings.translation": "Shanduro",
+  "settings.platformLanguage": "Mutauro wepuratifomu",
+  "settings.platformLanguageDescription": "Mutauro unoratidzwa nawo chimiro che Together.",
   "settings.preferredLanguage": "Mutauro weshanduro waunofarira",
   "settings.useNativeLanguage": "Shandisa mutauro wekuzvarwa",
   "settings.autoTranslate": "Shandura wega",

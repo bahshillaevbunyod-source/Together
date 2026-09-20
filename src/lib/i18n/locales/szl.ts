@@ -253,6 +253,8 @@ const d_szl = {
   "topic.postsInTopic": "Posty w tym tymacie.",
   "bookmarks.description": "Posty, kere zachowałeś na niyskorzij.",
   "settings.translation": "Przekład",
+  "settings.platformLanguage": "Gŏdka platformy",
+  "settings.platformLanguageDescription": "Gŏdka, we kery je pokŏzane interfejs Together.",
   "settings.preferredLanguage": "Preferowany jynzyk przekładowy",
   "settings.useNativeLanguage": "Używaj rodzimyj godki",
   "settings.autoTranslate": "Automatyczne przekłod",

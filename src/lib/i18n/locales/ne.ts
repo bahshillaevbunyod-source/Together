@@ -253,6 +253,8 @@ const d_ne = {
   "topic.postsInTopic": "यस विषयमा पोस्टहरू।",
   "bookmarks.description": "तपाईंले पछिका लागि सुरक्षित गर्नुभएको पोस्टहरू।",
   "settings.translation": "अनुवाद",
+  "settings.platformLanguage": "प्लेटफर्म भाषा",
+  "settings.platformLanguageDescription": "Together इन्टरफेस देखाइने भाषा।",
   "settings.preferredLanguage": "रुचाइएको अनुवाद भाषा",
   "settings.useNativeLanguage": "मातृभाषा प्रयोग गर्नुहोस्",
   "settings.autoTranslate": "स्वत: अनुवाद",

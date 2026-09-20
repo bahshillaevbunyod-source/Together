@@ -253,6 +253,8 @@ const d_ca = {
   "topic.postsInTopic": "Publicacions en aquest tema.",
   "bookmarks.description": "Publicacions que has desat per a més endavant.",
   "settings.translation": "Traducció",
+  "settings.platformLanguage": "Idioma de la plataforma",
+  "settings.platformLanguageDescription": "L'idioma en què es mostra la interfície de Together.",
   "settings.preferredLanguage": "Idioma de traducció preferit",
   "settings.useNativeLanguage": "Utilitzar la llengua materna",
   "settings.autoTranslate": "Traducció automàtica",

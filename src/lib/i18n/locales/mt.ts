@@ -253,6 +253,8 @@ const d_mt = {
   "topic.postsInTopic": "Postijiet f'dan is-suġġett.",
   "bookmarks.description": "Postijiet li ssejvjajt għal aktar tard.",
   "settings.translation": "Traduzzjoni",
+  "settings.platformLanguage": "Lingwa tal-pjattaforma",
+  "settings.platformLanguageDescription": "Il-lingwa li biha tintwera l-interfaċċa ta’ Together.",
   "settings.preferredLanguage": "Lingwa tat-traduzzjoni preferuta",
   "settings.useNativeLanguage": "Uża lingwa nattiva",
   "settings.autoTranslate": "Traduzzjoni awtomatika",

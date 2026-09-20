@@ -253,6 +253,8 @@ const d_da = {
   "topic.postsInTopic": "Indlæg i dette emne.",
   "bookmarks.description": "Indlæg, du har gemt til senere.",
   "settings.translation": "Oversættelse",
+  "settings.platformLanguage": "Platformsprog",
+  "settings.platformLanguageDescription": "Det sprog, som Together-grænsefladen vises på.",
   "settings.preferredLanguage": "Foretrukken oversættelsessprog",
   "settings.useNativeLanguage": "Brug modersmål",
   "settings.autoTranslate": "Automatisk oversættelse",

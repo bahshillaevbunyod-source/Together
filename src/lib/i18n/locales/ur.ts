@@ -253,6 +253,8 @@ const d_ur = {
   "topic.postsInTopic": "اس موضوع میں پوسٹس۔",
   "bookmarks.description": "پوسٹس جو آپ نے بعد کے لیے محفوظ کی ہیں۔",
   "settings.translation": "ترجمہ",
+  "settings.platformLanguage": "پلیٹ فارم کی زبان",
+  "settings.platformLanguageDescription": "وہ زبان جس میں Together کا انٹرفیس دکھایا جاتا ہے۔",
   "settings.preferredLanguage": "ترجمے کی ترجیحی زبان",
   "settings.useNativeLanguage": "مادری زبان استعمال کریں۔",
   "settings.autoTranslate": "خودکار ترجمہ",

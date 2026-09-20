@@ -253,6 +253,8 @@ const d_lv = {
   "topic.postsInTopic": "Ziņas šajā tēmā.",
   "bookmarks.description": "Ziņas, kuras esat saglabājis vēlākai lietošanai.",
   "settings.translation": "Tulkošana",
+  "settings.platformLanguage": "Platformas valoda",
+  "settings.platformLanguageDescription": "Valoda, kurā tiek rādīta Together saskarne.",
   "settings.preferredLanguage": "Vēlamā tulkošanas valoda",
   "settings.useNativeLanguage": "Izmantojiet dzimto valodu",
   "settings.autoTranslate": "Automātiski tulkot",

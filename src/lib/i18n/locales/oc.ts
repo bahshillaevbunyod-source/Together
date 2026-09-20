@@ -253,6 +253,8 @@ const d_oc = {
   "topic.postsInTopic": "Messatges dins aqueste tèma.",
   "bookmarks.description": "Messatges qu'avètz enregistrats per mai tard.",
   "settings.translation": "Traduccion",
+  "settings.platformLanguage": "Lenga de la plataforma",
+  "settings.platformLanguageDescription": "La lenga dins la quala l'interfàcia de Together es afichada.",
   "settings.preferredLanguage": "Lenga de traduccion preferida",
   "settings.useNativeLanguage": "Utilizar la lenga mairala",
   "settings.autoTranslate": "Traduccion automatica",

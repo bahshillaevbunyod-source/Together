@@ -253,6 +253,8 @@ const d_crs = {
   "topic.postsInTopic": "Post dan sa topik.",
   "bookmarks.description": "Post ki ou’n prezerve pour pli tar.",
   "settings.translation": "tradiksyon",
+  "settings.platformLanguage": "Lanngaz platform",
+  "settings.platformLanguageDescription": "Lanngaz ki entèfas Together i ganny montre ladan.",
   "settings.preferredLanguage": "langaz tradiksyon prefere",
   "settings.useNativeLanguage": "servi langaz maternel",
   "settings.autoTranslate": "tradiksyon otomatik",

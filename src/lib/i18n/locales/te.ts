@@ -253,6 +253,8 @@ const d_te = {
   "topic.postsInTopic": "ఈ అంశంలో పోస్ట్‌లు.",
   "bookmarks.description": "మీరు తర్వాత సేవ్ చేసిన పోస్ట్‌లు.",
   "settings.translation": "అనువాదం",
+  "settings.platformLanguage": "ప్లాట్‌ఫారమ్ భాష",
+  "settings.platformLanguageDescription": "Together ఇంటర్‌ఫేస్ ప్రదర్శించబడే భాష.",
   "settings.preferredLanguage": "ప్రాధాన్య అనువాద భాష",
   "settings.useNativeLanguage": "మాతృభాషను ఉపయోగించండి",
   "settings.autoTranslate": "స్వయంచాలకంగా అనువదించండి",

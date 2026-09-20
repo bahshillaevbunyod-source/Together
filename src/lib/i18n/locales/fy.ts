@@ -253,6 +253,8 @@ const d_fy = {
   "topic.postsInTopic": "Posts yn dit ûnderwerp.",
   "bookmarks.description": "Berjochten dy't jo hawwe bewarre foar letter.",
   "settings.translation": "Oersetting",
+  "settings.platformLanguage": "Platfoarmtaal",
+  "settings.platformLanguageDescription": "De taal wêryn de Together-ynterface werjûn wurdt.",
   "settings.preferredLanguage": "Foarkar oersettaal",
   "settings.useNativeLanguage": "Brûk memmetaal",
   "settings.autoTranslate": "Auto oersette",

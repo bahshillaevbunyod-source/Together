@@ -253,6 +253,8 @@ const d_be = {
   "topic.postsInTopic": "Паведамленні ў гэтай тэме.",
   "bookmarks.description": "Паведамленні, якія вы захавалі на потым.",
   "settings.translation": "Пераклад",
+  "settings.platformLanguage": "Мова платформы",
+  "settings.platformLanguageDescription": "Мова, на якой адлюстроўваецца інтэрфейс Together.",
   "settings.preferredLanguage": "Пераважная мова перакладу",
   "settings.useNativeLanguage": "Карыстайцеся роднай мовай",
   "settings.autoTranslate": "Аўтаматычны пераклад",

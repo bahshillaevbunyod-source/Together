@@ -253,6 +253,8 @@ const d_he = {
   "topic.postsInTopic": "פוסטים בנושא זה.",
   "bookmarks.description": "פוסטים ששמרת למועד מאוחר יותר.",
   "settings.translation": "תרגום",
+  "settings.platformLanguage": "שפת הפלטפורמה",
+  "settings.platformLanguageDescription": "השפה שבה מוצג הממשק של Together.",
   "settings.preferredLanguage": "שפת תרגום מועדפת",
   "settings.useNativeLanguage": "השתמש בשפת אם",
   "settings.autoTranslate": "תרגום אוטומטי",

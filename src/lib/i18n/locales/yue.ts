@@ -253,6 +253,8 @@ const d_yue = {
   "topic.postsInTopic": "呢個主題入面嘅帖子。",
   "bookmarks.description": "你儲存咗嚟遲啲用嘅帖子。",
   "settings.translation": "翻譯",
+  "settings.platformLanguage": "平台語言",
+  "settings.platformLanguageDescription": "顯示 Together 介面所用嘅語言。",
   "settings.preferredLanguage": "首選嘅翻譯語言",
   "settings.useNativeLanguage": "用母語",
   "settings.autoTranslate": "自動翻譯",

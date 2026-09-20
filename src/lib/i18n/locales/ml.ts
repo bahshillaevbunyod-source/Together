@@ -253,6 +253,8 @@ const d_ml = {
   "topic.postsInTopic": "ഈ വിഷയത്തിലെ പോസ്റ്റുകൾ.",
   "bookmarks.description": "നിങ്ങൾ പിന്നീട് സംരക്ഷിച്ച പോസ്റ്റുകൾ.",
   "settings.translation": "വിവർത്തനം",
+  "settings.platformLanguage": "പ്ലാറ്റ്ഫോം ഭാഷ",
+  "settings.platformLanguageDescription": "Together ഇന്റർഫേസ് പ്രദർശിപ്പിക്കുന്ന ഭാഷ.",
   "settings.preferredLanguage": "തിരഞ്ഞെടുത്ത വിവർത്തന ഭാഷ",
   "settings.useNativeLanguage": "മാതൃഭാഷ ഉപയോഗിക്കുക",
   "settings.autoTranslate": "യാന്ത്രിക വിവർത്തനം",

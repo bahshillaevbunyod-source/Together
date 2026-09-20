@@ -253,6 +253,8 @@ const d_ig = {
   "topic.postsInTopic": "Ederede n'isiokwu a.",
   "bookmarks.description": "Ozi ndị ị chekwara maka emechaa.",
   "settings.translation": "Ntụgharị asụsụ",
+  "settings.platformLanguage": "Asụsụ ikpo okwu",
+  "settings.platformLanguageDescription": "Asụsụ e ji egosi interface Together.",
   "settings.preferredLanguage": "Asụsụ ntụgharị asụsụ masịrị",
   "settings.useNativeLanguage": "Jiri asụsụ obodo",
   "settings.autoTranslate": "Ntụgharị asụsụ na-akpaghị aka",

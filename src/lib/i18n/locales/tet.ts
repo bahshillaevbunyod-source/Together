@@ -253,6 +253,8 @@ const d_tet = {
   "topic.postsInTopic": "Post sira iha tópiku ida-ne'e.",
   "bookmarks.description": "Post sira ne'ebé ita-boot rai ona ba tuirmai.",
   "settings.translation": "Tradusaun",
+  "settings.platformLanguage": "Lian plataforma",
+  "settings.platformLanguageDescription": "Lian ne'ebé interface Together hatudu ba.",
   "settings.preferredLanguage": "Lian tradusaun ne'ebé prefere",
   "settings.useNativeLanguage": "Uza lian rasik",
   "settings.autoTranslate": "Tradusaun automátika",

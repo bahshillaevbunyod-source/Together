@@ -253,6 +253,8 @@ const d_lmo = {
   "topic.postsInTopic": "Post in questo argomento.",
   "bookmarks.description": "I post che g’he salvà per dopu.",
   "settings.translation": "Traduziun",
+  "settings.platformLanguage": "Lengua de la piattaforma",
+  "settings.platformLanguageDescription": "La lengua in cui l'interfàcia de Together la vegn mostrada.",
   "settings.preferredLanguage": "Lingua de traduziun preferida",
   "settings.useNativeLanguage": "Duperà la lengua nativa",
   "settings.autoTranslate": "Traduziun automatich",

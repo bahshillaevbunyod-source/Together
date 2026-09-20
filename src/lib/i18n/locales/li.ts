@@ -253,6 +253,8 @@ const d_li = {
   "topic.postsInTopic": "Posts in dit oonderwerp.",
   "bookmarks.description": "Posts die geer heet opgesjlage veur later.",
   "settings.translation": "Vertaoling",
+  "settings.platformLanguage": "Platformtaal",
+  "settings.platformLanguageDescription": "De taal wo de Together-interface in getoond waerd.",
   "settings.preferredLanguage": "Veurkäör vertaoltaol",
   "settings.useNativeLanguage": "Gebruuk de moedertaal",
   "settings.autoTranslate": "Automatisch vertaole",

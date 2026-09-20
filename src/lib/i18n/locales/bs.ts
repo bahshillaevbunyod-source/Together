@@ -253,6 +253,8 @@ const d_bs = {
   "topic.postsInTopic": "Objave u ovoj temi.",
   "bookmarks.description": "Objave koje ste sačuvali za kasnije.",
   "settings.translation": "Prevod",
+  "settings.platformLanguage": "Jezik platforme",
+  "settings.platformLanguageDescription": "Jezik na kojem se prikazuje Together interfejs.",
   "settings.preferredLanguage": "Željeni jezik prijevoda",
   "settings.useNativeLanguage": "Koristite maternji jezik",
   "settings.autoTranslate": "Automatski prevod",

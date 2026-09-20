@@ -253,6 +253,8 @@ const d_ss = {
   "topic.postsInTopic": "Lokufakwe kulesihloko.",
   "bookmarks.description": "Lokufakwe lokugcinele kamuva.",
   "settings.translation": "Lihumusho",
+  "settings.platformLanguage": "Lulwimi lwelipulatifomu",
+  "settings.platformLanguageDescription": "Lulwimi lokukhonjiswa ngalo i-interface ye Together.",
   "settings.preferredLanguage": "Lulwimi lwekuhumusha lolukhetsiwe",
   "settings.useNativeLanguage": "Sebentisa lulwimi lwemdzabu",
   "settings.autoTranslate": "Kuhumusha lokuzenzakalelayo",

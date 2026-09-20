@@ -253,6 +253,8 @@ const d_bew = {
   "topic.postsInTopic": "Postingan di topik ini.",
   "bookmarks.description": "Postingan yang udah lu simpen buat nanti.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Basa platform",
+  "settings.platformLanguageDescription": "Basa kang dienggo kanggo tampilan Together.",
   "settings.preferredLanguage": "Bahasa terjemahan yang disukai",
   "settings.useNativeLanguage": "Pake bahasa asli",
   "settings.autoTranslate": "Terjemahin otomatis",

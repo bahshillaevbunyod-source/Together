@@ -253,6 +253,8 @@ const d_new = {
   "topic.postsInTopic": "थुगु बिषयस पोष्ट ।",
   "bookmarks.description": "लिपाया निंतिं छिं सेभ यानातःगु पोस्ट ।",
   "settings.translation": "भाय् हिलेगु",
+  "settings.platformLanguage": "प्लेटफर्मया भाषा",
+  "settings.platformLanguageDescription": "ज्या भाषाय् Together इन्टरफेस देखाइन्छ।",
   "settings.preferredLanguage": "यःगु भाय् हिलेगु भाय्",
   "settings.useNativeLanguage": "मातृ भाय् छ्य ।",
   "settings.autoTranslate": "अटो भाय् हिलेगु",

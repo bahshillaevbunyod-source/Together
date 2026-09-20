@@ -253,6 +253,8 @@ const d_jv = {
   "topic.postsInTopic": "Kiriman ing topik iki.",
   "bookmarks.description": "Kiriman sing wis disimpen mengko.",
   "settings.translation": "Terjemahan",
+  "settings.platformLanguage": "Basa platform",
+  "settings.platformLanguageDescription": "Basa sing digunakake kanggo nampilake antarmuka Together.",
   "settings.preferredLanguage": "Basa terjemahan sing disenengi",
   "settings.useNativeLanguage": "Gunakake basa asli",
   "settings.autoTranslate": "Auto nerjemahake",

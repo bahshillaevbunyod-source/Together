@@ -253,6 +253,8 @@ const d_gl = {
   "topic.postsInTopic": "Publicacións neste tema.",
   "bookmarks.description": "Publicacións que gardaches para máis tarde.",
   "settings.translation": "Tradución",
+  "settings.platformLanguage": "Idioma da plataforma",
+  "settings.platformLanguageDescription": "O idioma no que se mostra a interface de Together.",
   "settings.preferredLanguage": "Idioma de tradución preferido",
   "settings.useNativeLanguage": "Usa a lingua nativa",
   "settings.autoTranslate": "Tradución automática",

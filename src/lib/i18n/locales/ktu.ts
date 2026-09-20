@@ -253,6 +253,8 @@ const d_ktu = {
   "topic.postsInTopic": "Ba poste na ntu-dyambu yai.",
   "bookmarks.description": "Ba poste yina nge me bumba sambu na nima.",
   "settings.translation": "Kubalula",
+  "settings.platformLanguage": "Lugha ya platform",
+  "settings.platformLanguageDescription": "Lugha yina Together interface ke monana na yo.",
   "settings.preferredLanguage": "Ndinga ya kubalula yina bo ke zolaka",
   "settings.useNativeLanguage": "Sadila ndinga ya kisina",
   "settings.autoTranslate": "Kubalula yo mosi",

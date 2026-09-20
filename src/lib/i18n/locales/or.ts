@@ -253,6 +253,8 @@ const d_or = {
   "topic.postsInTopic": "ଏହି ପ୍ରସଙ୍ଗରେ ପୋଷ୍ଟଗୁଡିକ |",
   "bookmarks.description": "ପୋଷ୍ଟଗୁଡିକ ଆପଣ ପରେ ସଞ୍ଚୟ କରିଛନ୍ତି |",
   "settings.translation": "ଅନୁବାଦ",
+  "settings.platformLanguage": "ପ୍ଲାଟଫର୍ମ ଭାଷା",
+  "settings.platformLanguageDescription": "Together ଇଣ୍ଟରଫେସ୍ ଯେଉଁ ଭାଷାରେ ଦେଖାଯାଏ।",
   "settings.preferredLanguage": "ପସନ୍ଦ ଅନୁବାଦ ଭାଷା |",
   "settings.useNativeLanguage": "ମାତୃଭାଷା ବ୍ୟବହାର କରନ୍ତୁ |",
   "settings.autoTranslate": "ଅଟୋ ଅନୁବାଦ |",

@@ -253,6 +253,8 @@ const d_mi = {
   "topic.postsInTopic": "Nga panui i roto i tenei kaupapa.",
   "bookmarks.description": "Ko nga panui kua tiakina e koe mo muri mai.",
   "settings.translation": "Whakamaoritanga",
+  "settings.platformLanguage": "Reo pūhara",
+  "settings.platformLanguageDescription": "Ko te reo e whakaaturia ai te atanga Together.",
   "settings.preferredLanguage": "Te reo whakamaori pai",
   "settings.useNativeLanguage": "Whakamahia te reo maori",
   "settings.autoTranslate": "Whakamaori aunoa",

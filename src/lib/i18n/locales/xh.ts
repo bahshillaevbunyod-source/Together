@@ -253,6 +253,8 @@ const d_xh = {
   "topic.postsInTopic": "Izithuba kwesi sihloko.",
   "bookmarks.description": "Iiposti ozigcinele kamva.",
   "settings.translation": "Uguqulo",
+  "settings.platformLanguage": "Ulwimi lweqonga",
+  "settings.platformLanguageDescription": "Ulwimi ekuboniswa ngalo ujongano lwe Together.",
   "settings.preferredLanguage": "Ulwimi loguqulelo olukhethwayo",
   "settings.useNativeLanguage": "Sebenzisa ulwimi lwenkobe",
   "settings.autoTranslate": "Ukuguqulela ngokuzenzekela",

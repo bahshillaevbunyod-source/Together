@@ -253,6 +253,8 @@ const d_ba = {
   "topic.postsInTopic": "Был темаға яҙмалар.",
   "bookmarks.description": "Яҙмалар һеҙ&#8217;ве һаҡланған өсөн һуңыраҡ.",
   "settings.translation": "Тәржемә",
+  "settings.platformLanguage": "Платформа теле",
+  "settings.platformLanguageDescription": "Together интерфейсы күрһәтелгән тел.",
   "settings.preferredLanguage": "Өҫтөнлөк бирелгән тәржемә теле",
   "settings.useNativeLanguage": "Туған телде ҡулланыу .",
   "settings.autoTranslate": "Автотәржемә",
