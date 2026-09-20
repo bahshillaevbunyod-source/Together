@@ -68,3 +68,11 @@ html[dir="rtl"] .app-mobile-nav {
 html[dir="rtl"] .app-shell-cols > * {
   direction: rtl;
 }
+/* Sidebar nav rows keep their physical order (icon left, label right) in every
+   language; only the label's own text direction follows the locale. */
+html[dir="rtl"] .app-nav-row {
+  direction: ltr;
+}
+html[dir="rtl"] .app-nav-row .app-nav-label {
+  direction: rtl;
+}

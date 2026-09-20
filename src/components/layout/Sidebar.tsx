@@ -57,11 +57,11 @@ export function Sidebar() {
             const label = t(labelKey);
             const active = href ? pathname === href : false;
             const base =
-              "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium";
+              "app-nav-row flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium";
             const inner = (
               <>
                 <Icon className="h-5 w-5 shrink-0" />
-                <span>{label}</span>
+                <span className="app-nav-label">{label}</span>
                 {badge ? (
                   <span className="ml-auto flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1.5 text-xs font-semibold text-white">
                     {badge}
