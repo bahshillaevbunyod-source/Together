@@ -99,8 +99,8 @@ export function StoriesRow() {
   }, []);
 
   return (
-    <section>
-      <div className="flex items-start gap-4 overflow-x-auto">
+    <section className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
+      <div className="flex min-h-[5.5rem] items-start gap-4 overflow-x-auto">
         {/* Add story */}
         <button
           type="button"
