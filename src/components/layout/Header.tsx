@@ -11,7 +11,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 h-16 w-full border-b border-border bg-surface">
-      <div className="mx-auto flex h-16 max-w-[1536px] items-center gap-2 px-4 sm:gap-4 sm:px-6">
+      <div className="app-header-bar mx-auto flex h-16 max-w-[1536px] items-center gap-2 px-4 sm:gap-4 sm:px-6">
         {/* Logo / wordmark */}
         <div className="flex min-w-0 shrink-0 items-center gap-2 lg:w-64 lg:gap-3">
           <Image

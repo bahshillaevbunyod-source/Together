@@ -49,3 +49,22 @@
     outline: none;
   }
 }
+
+/* --- Structural direction vs. text direction ---------------------------------
+   RTL locales set <html dir="rtl"> so text, alignment, inputs and localized
+   controls read right-to-left. But `dir` also reverses flex/grid ORDER, which
+   would mirror the whole app shell (sidebar, center, right sidebar) and header.
+   The app's physical column structure must stay the same in every language, so
+   the major layout rows are pinned to physical LTR ordering while their content
+   keeps the RTL text direction. Scoped to html[dir="rtl"] only — LTR is
+   untouched. See AppShell / Header / MobileNavigation for the class hooks. */
+html[dir="rtl"] .app-shell-cols,
+html[dir="rtl"] .app-header-bar,
+html[dir="rtl"] .app-mobile-nav {
+  direction: ltr;
+}
+/* Re-assert RTL text direction inside each fixed column (sidebar / main /
+   right sidebar), without affecting their physical order in the LTR row. */
+html[dir="rtl"] .app-shell-cols > * {
+  direction: rtl;
+}

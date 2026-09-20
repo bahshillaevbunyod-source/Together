@@ -143,7 +143,7 @@ export function MobileNavigation() {
       aria-label={t("navigation.primary")}
       className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-surface/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur lg:hidden"
     >
-      <div className="mx-auto flex max-w-lg items-stretch justify-between">
+      <div className="app-mobile-nav mx-auto flex max-w-lg items-stretch justify-between">
         {primaryNavItems.map(({ labelKey, icon: Icon, href }) => {
           const label = t(labelKey);
           const active = pathname === href;
