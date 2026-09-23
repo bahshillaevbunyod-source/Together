@@ -1,21 +1,19 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import {
   AlertCircle,
-  BarChart3,
   Check,
   ChevronDown,
   Globe,
   Image as ImageIcon,
   Lock,
-  Mic,
-  Smile,
   Users,
-  Video,
   X,
   type LucideIcon,
 } from "lucide-react";
+import { StoryComposer } from "./StoryComposer";
 import {
   ApiError,
   confirmMediaUpload,
@@ -25,6 +23,7 @@ import {
 } from "@/lib/api";
 import { mapApiPost } from "@/lib/map-post";
 import { useFeed } from "@/lib/feed-context";
+import { useAuth } from "@/lib/auth-context";
 import { useLanguage, type TranslationKey } from "@/lib/language-context";
 
 // Client-side image constraints, mirroring the backend media policy. The picker
@@ -32,9 +31,14 @@ import { useLanguage, type TranslationKey } from "@/lib/language-context";
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const MAX_IMAGE_BYTES = 15 * 1024 * 1024; // 15 MiB
 const MAX_IMAGES = 8; // product limit: at most 8 images per post
+const FALLBACK_AVATAR =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#d4d4d8"/></svg>',
+  );
 
 type Action = {
-  id: "photo" | "video" | "voice" | "poll" | "feeling";
+  id: "photo";
   labelKey: TranslationKey;
   icon: LucideIcon;
   color: string;
@@ -42,10 +46,6 @@ type Action = {
 
 const actions: Action[] = [
   { id: "photo", labelKey: "composer.action.photo", icon: ImageIcon, color: "text-emerald-500" },
-  { id: "video", labelKey: "composer.action.video", icon: Video, color: "text-rose-500" },
-  { id: "voice", labelKey: "composer.action.voice", icon: Mic, color: "text-violet-500" },
-  { id: "poll", labelKey: "composer.action.poll", icon: BarChart3, color: "text-sky-500" },
-  { id: "feeling", labelKey: "composer.action.feeling", icon: Smile, color: "text-amber-500" },
 ];
 
 type Visibility = "everyone" | "friends" | "private";
@@ -91,6 +91,7 @@ type SelectedImage = {
 export function Composer() {
   const { prependPost } = useFeed();
   const { t } = useLanguage();
+  const { user } = useAuth();
   const [content, setContent] = useState("");
   const [visibility, setVisibility] = useState<Visibility>("everyone");
   const [visibilityOpen, setVisibilityOpen] = useState(false);
@@ -98,6 +99,8 @@ export function Composer() {
   const [posting, setPosting] = useState(false);
   const [uploadingIndex, setUploadingIndex] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState<"post" | "story">("post");
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const visibilityMenuRef = useRef<HTMLDivElement>(null);
@@ -139,6 +142,15 @@ export function Composer() {
     },
     [],
   );
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !posting) setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, posting]);
 
   // Close the visibility menu on outside click.
   useEffect(() => {
@@ -277,6 +289,7 @@ export function Composer() {
       setContent("");
       if (fileInputRef.current) fileInputRef.current.value = "";
       clearError();
+      setOpen(false);
     } catch (err) {
       // Preserve text, previews, and every completed storageKey/confirmed flag so
       // a retry continues where it left off. Never delete R2 objects on failure.
@@ -299,10 +312,37 @@ export function Composer() {
       : t("composer.posting")
     : t("composer.post");
 
+  if (!open) {
+    return (
+      <section className="rounded-2xl border border-border bg-surface p-3 shadow-sm">
+        <button
+          type="button"
+          onClick={() => { setMode("post"); setOpen(true); }}
+          className="flex w-full items-center gap-3 rounded-xl p-2 text-left transition-colors hover:bg-background focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-lg font-semibold text-primary">+</span>
+          <span className="flex-1 rounded-full bg-background px-4 py-2.5 text-sm text-muted-soft">{t("composer.placeholder")}</span>
+        </button>
+      </section>
+    );
+  }
+
   return (
-    <section className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" role="dialog" aria-modal="true" aria-label={t("post.title")} onMouseDown={() => { if (!posting) setOpen(false); }}>
+    <section className="max-h-[94vh] w-full overflow-y-auto rounded-t-2xl border border-border bg-surface p-4 shadow-xl sm:max-w-2xl sm:rounded-2xl sm:p-5" onMouseDown={(event) => event.stopPropagation()}>
+      <div className="mb-4 flex items-center justify-between border-b border-border pb-3">
+        <div className="flex gap-1 rounded-lg bg-background p-1" role="tablist" aria-label={t("post.title")}>
+          <button type="button" role="tab" aria-selected={mode === "post"} onClick={() => setMode("post")} disabled={posting} className={`rounded-md px-3 py-1.5 text-sm font-medium ${mode === "post" ? "bg-surface text-foreground shadow-sm" : "text-muted"}`}>{t("post.title")}</button>
+          <button type="button" role="tab" aria-selected={mode === "story"} onClick={() => setMode("story")} disabled={posting} className={`rounded-md px-3 py-1.5 text-sm font-medium ${mode === "story" ? "bg-surface text-foreground shadow-sm" : "text-muted"}`}>{t("stories.add")}</button>
+        </div>
+        <button type="button" aria-label={t("profile.close")} onClick={() => setOpen(false)} disabled={posting} className="flex h-8 w-8 items-center justify-center rounded-full text-muted hover:bg-background disabled:opacity-50"><X className="h-5 w-5" /></button>
+      </div>
+      {mode === "story" ? <StoryComposer inline onClose={() => setOpen(false)} onCreated={() => setOpen(false)} /> : <>
+      <div className="mb-4 flex items-center gap-3">
+        <Image src={user?.avatarUrl ?? FALLBACK_AVATAR} alt={user?.displayName ?? ""} width={40} height={40} unoptimized={Boolean(user?.avatarUrl)} className="h-10 w-10 rounded-full object-cover" />
+        <div className="min-w-0 leading-tight"><div className="truncate text-sm font-semibold text-foreground">{user?.displayName ?? ""}</div><div className="truncate text-xs text-muted">{user?.username ? `@${user.username}` : ""}</div></div>
+      </div>
       <div className="flex items-center gap-3">
-        <span className="h-10 w-10 shrink-0 rounded-full bg-background" />
         <input
           type="text"
           value={content}
@@ -366,15 +406,12 @@ export function Composer() {
 
       <div className="mt-4 flex flex-wrap items-center gap-1 border-t border-border pt-3">
         {actions.map(({ id, labelKey, icon: Icon, color }) => {
-          // Only Photo is implemented; the others stay visible for layout but are
-          // honestly disabled (non-interactive, no fake click) until built.
-          const isPhoto = id === "photo";
           return (
             <button
               key={id}
               type="button"
-              onClick={isPhoto ? openImagePicker : undefined}
-              disabled={!isPhoto || posting}
+              onClick={openImagePicker}
+              disabled={posting}
               className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent"
             >
               <Icon className={`h-4 w-4 ${color}`} />
@@ -449,6 +486,8 @@ export function Composer() {
           </button>
         </div>
       </div>
+      </>}
     </section>
+    </div>
   );
 }

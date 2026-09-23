@@ -25,9 +25,12 @@ const ALLOWED_TYPES = new Set([
 export function StoryComposer({
   onClose,
   onCreated,
+  inline = false,
 }: {
   onClose: () => void;
   onCreated: () => void;
+  /** Render inside the unified create dialog instead of its own overlay. */
+  inline?: boolean;
 }) {
   const { t } = useLanguage();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -93,12 +96,12 @@ export function StoryComposer({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
-      role="dialog"
-      aria-modal="true"
+      className={inline ? "" : "fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"}
+      role={inline ? undefined : "dialog"}
+      aria-modal={inline || undefined}
       aria-label={t("stories.add")}
       onClick={() => {
-        if (!uploading) onClose();
+        if (!inline && !uploading) onClose();
       }}
     >
       <div
