@@ -22,7 +22,7 @@ type validatedMedia struct {
 	StorageKey string
 	MimeType   string
 	SizeBytes  int64
-	Type       string // "image" | "video"
+	Type       string // "image" | "video" | "file" | "voice"
 }
 
 // validateUploadedObject confirms an uploaded object belongs to userID, lives
@@ -90,6 +90,9 @@ func (s *Server) validateUploadedObject(ctx context.Context, userID, storageKey 
 	if mediaType == "file" && info.SizeBytes > maxFileBytes {
 		return nil, errUnsupportedMedia
 	}
+	if mediaType == "voice" && info.SizeBytes > maxFileBytes {
+		return nil, errUnsupportedMedia
+	}
 
 	return &validatedMedia{
 		StorageKey: storageKey,
@@ -109,6 +112,9 @@ func mediaTypeForMime(mime string) (string, bool) {
 	}
 	if _, ok := fileMimeExt[mime]; ok {
 		return "file", true
+	}
+	if _, ok := voiceMimeExt[mime]; ok {
+		return "voice", true
 	}
 	return "", false
 }

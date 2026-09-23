@@ -577,7 +577,7 @@ export interface ApiMessage {
 	attachment: ApiMessageAttachment | null;
 }
 
-export interface ApiMessageAttachment { id: string; filename: string; type: "image" | "file"; mimeType: string; sizeBytes: number; url: string; }
+export interface ApiMessageAttachment { id: string; filename: string; type: "image" | "file" | "voice"; mimeType: string; sizeBytes: number; url: string; }
 
 export interface ApiMessageSearchResult extends ApiMessage {
 	conversationId: string;
@@ -630,8 +630,8 @@ export function sendMessage(
   );
 }
 
-export async function uploadMessageAttachment(file: File): Promise<{ storageKey: string; filename: string }> {
-	const type = file.type.startsWith("image/") ? "image" : "file";
+export async function uploadMessageAttachment(file: File, attachmentType?: "image" | "file" | "voice"): Promise<{ storageKey: string; filename: string }> {
+	const type = attachmentType ?? (file.type.startsWith("image/") ? "image" : "file");
 	const upload = await requestMediaUploadUrl({ type, mimeType: file.type, sizeBytes: file.size, purpose: "post", visibility: "private" });
 	await uploadFileToPresignedUrl(upload.uploadUrl, file);
 	await confirmMediaUpload(upload.storageKey);
@@ -961,7 +961,7 @@ export function deleteStory(id: string): Promise<{ deleted: boolean }> {
 
 /** Ask the backend for a presigned upload URL for one image. */
 export interface MediaUploadUrlInput {
-  type: "image" | "video" | "file";
+  type: "image" | "video" | "file" | "voice";
   mimeType: string;
   sizeBytes: number;
   /**

@@ -1097,7 +1097,7 @@ func TestRealtimeAttachmentPayloadUsesPersistedMetadata(t *testing.T) {
 	s := convDeliveryServer(&fakeConversationRepo{})
 	recipient := realtime.NewClient("u2", 2)
 	s.hub.Register(recipient)
-	s.publishMessageCreated(context.Background(), validPostID, "u2", messageResponse{ID: "m1", SenderID: "me-id", Content: "", CreatedAt: time.Now().Format(time.RFC3339), Attachment: &messageAttachmentResponse{ID: "a1", Filename: "report.pdf", Type: "file", MimeType: "application/pdf", SizeBytes: 42, URL: "https://signed.example/file"}})
+	s.publishMessageCreated(context.Background(), validPostID, "u2", messageResponse{ID: "m1", SenderID: "me-id", Content: "", CreatedAt: time.Now().Format(time.RFC3339), Attachment: &messageAttachmentResponse{ID: "a1", Filename: "voice.webm", Type: "voice", MimeType: "audio/webm", SizeBytes: 42, URL: "https://signed.example/file"}})
 	raw := <-recipient.Send()
 	var ev struct {
 		Data struct {
@@ -1107,7 +1107,7 @@ func TestRealtimeAttachmentPayloadUsesPersistedMetadata(t *testing.T) {
 	if err := json.Unmarshal(raw, &ev); err != nil {
 		t.Fatal(err)
 	}
-	if ev.Data.Attachment == nil || ev.Data.Attachment.Filename != "report.pdf" || ev.Data.Attachment.SizeBytes != 42 {
+	if ev.Data.Attachment == nil || ev.Data.Attachment.Filename != "voice.webm" || ev.Data.Attachment.Type != "voice" || ev.Data.Attachment.MimeType != "audio/webm" || ev.Data.Attachment.SizeBytes != 42 {
 		t.Fatalf("attachment metadata missing from realtime payload: %+v", ev.Data.Attachment)
 	}
 }

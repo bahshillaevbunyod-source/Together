@@ -488,6 +488,18 @@ func TestCreateMessageWithAttachmentAllowsTextAndAttachment(t *testing.T) {
 	}
 }
 
+func TestCreateMessageWithVoiceAttachmentAllowsAttachmentOnly(t *testing.T) {
+	tx := &fakeTx{recipient: ptr("u2")}
+	repo, _ := newRepo(tx)
+	m, recipient, err := repo.CreateMessageWithAttachment(context.Background(), "conv-1", "u1", "", Attachment{StorageKey: "users/u1/private/voice.webm", Filename: "voice.webm", Type: "voice", MimeType: "audio/webm", SizeBytes: 42})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if recipient != "u2" || m.Content != "" || m.Attachment == nil || m.Attachment.Type != "voice" {
+		t.Fatalf("unexpected voice message: %+v", m)
+	}
+}
+
 func TestUpdateMessageEmptyTextRequiresAttachmentRelation(t *testing.T) {
 	if !strings.Contains(updateMessageQuery, "message_attachments") || !strings.Contains(updateMessageQuery, "length(btrim($3)) > 0") {
 		t.Fatal("empty-text edit must be guarded by the persisted attachment relation")

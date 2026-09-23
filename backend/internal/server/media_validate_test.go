@@ -48,6 +48,23 @@ func TestAttachmentUploadPolicy(t *testing.T) {
 	if _, ok := allowedExtension("file", "application/pdf", maxFileBytes+1); ok {
 		t.Fatal("oversized file must be rejected")
 	}
+	if ext, ok := allowedExtension("voice", "audio/webm", 100); !ok || ext != "webm" {
+		t.Fatal("webm voice should be accepted")
+	}
+	if ext, ok := allowedExtension("voice", "audio/ogg", 100); !ok || ext != "ogg" {
+		t.Fatal("ogg voice should be accepted")
+	}
+	if _, ok := allowedExtension("voice", "audio/wav", 100); ok {
+		t.Fatal("unsupported audio MIME must be rejected")
+	}
+}
+
+func TestValidateUploadedObjectVoice(t *testing.T) {
+	sr := &fakeStorageRepo{headInfo: &storage.ObjectInfo{ContentType: "audio/webm", SizeBytes: 2048}}
+	got, err := validateServer(sr).validateUploadedObject(context.Background(), "me-id", "users/me-id/private/voice.webm", "private")
+	if err != nil || got.Type != "voice" || got.MimeType != "audio/webm" {
+		t.Fatalf("expected validated voice, got=%+v err=%v", got, err)
+	}
 }
 
 func TestValidateUploadedObjectVideo(t *testing.T) {

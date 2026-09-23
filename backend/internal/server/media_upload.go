@@ -40,6 +40,12 @@ var fileMimeExt = map[string]string{
 	"application/zip": "zip",
 }
 
+var voiceMimeExt = map[string]string{
+	"audio/webm": "webm",
+	"audio/ogg":  "ogg",
+	"audio/mp4":  "m4a",
+}
+
 type uploadURLRequest struct {
 	Type      string `json:"type"`
 	MimeType  string `json:"mimeType"`
@@ -241,6 +247,12 @@ func allowedExtension(mediaType, mimeType string, sizeBytes int64) (string, bool
 		return ext, true
 	case "file":
 		ext, ok := fileMimeExt[mimeType]
+		if !ok || sizeBytes > maxFileBytes {
+			return "", false
+		}
+		return ext, true
+	case "voice":
+		ext, ok := voiceMimeExt[mimeType]
 		if !ok || sizeBytes > maxFileBytes {
 			return "", false
 		}

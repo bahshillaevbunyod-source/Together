@@ -10,6 +10,7 @@ import {
 } from "react";
 
 import { useAuth } from "@/lib/auth-context";
+import type { ApiMessageAttachment } from "@/lib/api";
 
 /** Payload of a `message.created` realtime event (matches the backend). */
 export interface MessageCreatedEvent {
@@ -22,6 +23,7 @@ export interface MessageCreatedEvent {
   translatedContent: string | null;
   sourceLanguage: string | null;
   targetLanguage: string | null;
+  attachment: ApiMessageAttachment | null;
 }
 
 export interface MessageDeletedEvent { conversationId: string; id: string; deletedAt: string; }
