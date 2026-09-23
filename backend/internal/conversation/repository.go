@@ -16,6 +16,22 @@ type Repository interface {
 	// length limit. Returns the stored message and the other participant's id
 	// (the recipient), both derived server-side.
 	CreateMessage(ctx context.Context, conversationID, senderID, content string) (*Message, string, error)
+	// SetMessageLanguageMetadata persists source-language metadata only for the message sender.
+	SetMessageLanguageMetadata(
+		ctx context.Context,
+		messageID string,
+		senderID string,
+		sourceLanguage *string,
+		confidence *float64,
+		resolution string,
+	) error
+	// RecentSenderContext returns one newest prior message from the same sender.
+	RecentSenderContext(
+		ctx context.Context,
+		conversationID string,
+		senderID string,
+		excludeMessageID string,
+	) (string, error)
 	// ListMessages returns up to `limit` messages in conversationID, newest
 	// first, keyset-paginated by the cursor (nil for the first page). userID
 	// must be a participant; otherwise ErrNotParticipant is returned.

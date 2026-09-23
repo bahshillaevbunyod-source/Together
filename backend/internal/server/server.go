@@ -38,32 +38,39 @@ type Pinger interface {
 	Ping(ctx context.Context) error
 }
 
+type languageResolver interface {
+	Resolve(ctx context.Context, currentText, contextText string) (translation.LanguageResolution, error)
+}
+
 // Server holds handler dependencies.
 type Server struct {
-	cfg             config.Config
-	db              Pinger
-	users           user.Repository
-	sessions        session.Repository
-	follows         follow.Repository
-	followRequests  followrequest.Repository
-	followReq       followRequestService
-	blocks          block.Repository
-	stories         story.Repository
-	posts           post.Repository
-	topics          topic.Repository
-	likes           like.Repository
-	comments        comment.Repository
-	media           media.Repository
-	storage         storage.Repository
-	bookmarks       bookmark.Repository
-	notifications   notification.Repository
-	postCreate      postWithMediaCreator
-	followNotify    followNotifier
-	likeNotify      likeNotifier
-	commentNotify   commentNotifier
-	conversations   conversation.Repository
-	registrar       registration.Creator
-	translator      translation.Service
+	cfg            config.Config
+	db             Pinger
+	users          user.Repository
+	sessions       session.Repository
+	follows        follow.Repository
+	followRequests followrequest.Repository
+	followReq      followRequestService
+	blocks         block.Repository
+	stories        story.Repository
+	posts          post.Repository
+	topics         topic.Repository
+	likes          like.Repository
+	comments       comment.Repository
+	media          media.Repository
+	storage        storage.Repository
+	bookmarks      bookmark.Repository
+	notifications  notification.Repository
+	postCreate     postWithMediaCreator
+	followNotify   followNotifier
+	likeNotify     likeNotifier
+	commentNotify  commentNotifier
+	conversations  conversation.Repository
+	registrar      registration.Creator
+	translator     translation.Service
+
+	languageResolver languageResolver
+
 	hub             *realtime.Hub
 	wsUpgrader      websocket.Upgrader
 	registerLimiter *ratelimit.Limiter
@@ -126,6 +133,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 	var followRequests followrequest.Repository
 	var followReq followRequestService
 	var stories story.Repository
+	var resolver languageResolver
 	for _, dependency := range dependencies {
 		switch dependency := dependency.(type) {
 		case registration.Creator:
@@ -138,6 +146,8 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 			followReq = dependency
 		case story.Repository:
 			stories = dependency
+		case languageResolver:
+			resolver = dependency
 		}
 	}
 	s := &Server{
@@ -165,7 +175,10 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		conversations:  conversations,
 		registrar:      registrar,
 		translator:     newTranslator(cfg),
-		hub:            realtime.NewHub(),
+
+		languageResolver: resolver,
+
+		hub: realtime.NewHub(),
 		wsUpgrader: websocket.Upgrader{
 			// Only accept handshakes from the configured app origin.
 			CheckOrigin: func(r *http.Request) bool {

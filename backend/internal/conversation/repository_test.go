@@ -139,7 +139,7 @@ func newRepo(tx *fakeTx) (*PostgresRepository, *fakeBeginner) {
 
 // fakeRows is a minimal pgx.Rows over scripted message rows.
 type fakeRows struct {
-	rows [][]any // each row: id, sender_id, content, created_at
+	rows [][]any // each row: id, sender_id, content, created_at, source metadata
 	i    int
 	err  error
 }
@@ -174,6 +174,13 @@ func (r *fakeRows) Scan(dest ...any) error {
 				*p = nil
 			} else {
 				v := row[i].(time.Time)
+				*p = &v
+			}
+		case **float64:
+			if row[i] == nil {
+				*p = nil
+			} else {
+				v := row[i].(float64)
 				*p = &v
 			}
 		}
@@ -460,7 +467,7 @@ func TestCreateMessageBeginErrorSafe(t *testing.T) {
 // ---- ListMessages ----
 
 func msgRow(id, sender, content string, t time.Time) []any {
-	return []any{id, sender, content, t}
+	return []any{id, sender, content, t, nil, nil, nil}
 }
 
 func TestListMessagesSuccess(t *testing.T) {

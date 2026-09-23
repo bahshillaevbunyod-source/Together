@@ -19,21 +19,29 @@ import (
 
 // fakeConversationRepo is a test double for conversation.Repository.
 type fakeConversationRepo struct {
-	openConv    *conversation.Conversation
-	openErr     error
-	messages    []conversation.Message
-	listErr     error
-	lastCur     *conversation.MessageCursor
-	lastLimit   int
-	createErr   error
-	recipientID string
-	lastContent string
-	lastSender  string
-	convList    []conversation.ListItem
-	convListErr error
-	lastConvCur *conversation.ConversationCursor
-	markFound   bool
-	markErr     error
+	openConv           *conversation.Conversation
+	openErr            error
+	messages           []conversation.Message
+	listErr            error
+	lastCur            *conversation.MessageCursor
+	lastLimit          int
+	createErr          error
+	recipientID        string
+	lastContent        string
+	lastSender         string
+	message            *conversation.Message
+	contextText        string
+	contextErr         error
+	metadataErr        error
+	metadataCalls      int
+	metadataLanguage   *string
+	metadataConfidence *float64
+	metadataResolution string
+	convList           []conversation.ListItem
+	convListErr        error
+	lastConvCur        *conversation.ConversationCursor
+	markFound          bool
+	markErr            error
 }
 
 func (f *fakeConversationRepo) OpenPrivateConversation(_ context.Context, _, _ string) (*conversation.Conversation, error) {
@@ -51,7 +59,26 @@ func (f *fakeConversationRepo) CreateMessage(_ context.Context, conversationID, 
 		recipient = "u2"
 	}
 	// Mirror the repository's trimming so the handler response reflects it.
-	return &conversation.Message{ID: "m-1", ConversationID: conversationID, SenderID: senderID, Content: strings.TrimSpace(content), CreatedAt: time.Now()}, recipient, nil
+	f.message = &conversation.Message{ID: "m-1", ConversationID: conversationID, SenderID: senderID, Content: strings.TrimSpace(content), CreatedAt: time.Now()}
+	return f.message, recipient, nil
+}
+
+func (f *fakeConversationRepo) SetMessageLanguageMetadata(_ context.Context, _ string, _ string, language *string, confidence *float64, resolution string) error {
+	f.metadataCalls++
+	f.metadataLanguage = language
+	f.metadataConfidence = confidence
+	f.metadataResolution = resolution
+	if f.metadataErr != nil {
+		return f.metadataErr
+	}
+	return nil
+}
+
+func (f *fakeConversationRepo) RecentSenderContext(_ context.Context, _, _, _ string) (string, error) {
+	if f.contextErr != nil {
+		return "", f.contextErr
+	}
+	return f.contextText, nil
 }
 
 func (f *fakeConversationRepo) ListMessages(_ context.Context, _, _ string, cur *conversation.MessageCursor, limit int) ([]conversation.Message, error) {
@@ -84,6 +111,10 @@ func (f *fakeConversationRepo) MarkConversationRead(_ context.Context, _, _ stri
 }
 
 func convServer(conv *fakeConversationRepo) *http.Server {
+	return convServerWithResolver(conv, nil)
+}
+
+func convServerWithResolver(conv *fakeConversationRepo, resolver languageResolver) *http.Server {
 	me := mkUser("me-id", "me_user")
 	users := &fakeUserRepo{byID: map[string]*user.User{"me-id": me}}
 	return New(
@@ -92,6 +123,7 @@ func convServer(conv *fakeConversationRepo) *http.Server {
 		&fakePostRepo{}, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{},
 		&fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{},
 		&fakeLikeNotifier{}, &fakeCommentNotifier{}, conv,
+		resolver,
 	)
 }
 
@@ -131,6 +163,95 @@ func TestListMessagesSuccess(t *testing.T) {
 	// default limit 20 -> fetched with limit+1
 	if conv.lastLimit != 21 {
 		t.Fatalf("expected limit 21, got %d", conv.lastLimit)
+	}
+}
+
+func TestMessageHistoryReturnsPersistedLanguageMetadata(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		language   string
+		confidence float64
+		resolution string
+	}{
+		{name: "current", language: "en", confidence: 0.97, resolution: "current"},
+		{name: "context", language: "ru", confidence: 0.91, resolution: "context"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			language, resolution := tc.language, tc.resolution
+			confidence := tc.confidence
+			conv := &fakeConversationRepo{messages: []conversation.Message{{
+				ID: "m-1", ConversationID: validPostID, SenderID: "me-id", Content: "hello", CreatedAt: time.Now(),
+				SourceLanguage: &language, SourceLanguageConfidence: &confidence, SourceLanguageResolution: &resolution,
+			}}}
+			resp := getMessagesFrom(msgTranslateServer(conv, userWithTranslate(false, nil), nil), true)
+			item := resp.Items[0]
+			if item.SourceLanguage == nil || *item.SourceLanguage != tc.language || item.SourceLanguageConfidence == nil || *item.SourceLanguageConfidence != tc.confidence || item.SourceLanguageResolution == nil || *item.SourceLanguageResolution != tc.resolution {
+				t.Fatalf("history metadata = %+v", item)
+			}
+		})
+	}
+}
+
+func TestMessageHistoryLegacyMetadataStaysNullAndDoesNotDetect(t *testing.T) {
+	conv := &fakeConversationRepo{messages: []conversation.Message{mkMessage("m-legacy", time.Now())}}
+	resolver := &fakeLanguageResolver{resolution: translation.LanguageResolution{LanguageCode: "en", Confidence: 1, Source: translation.ResolutionCurrent}}
+	s := msgTranslateServer(conv, userWithTranslate(false, nil), nil)
+	s.languageResolver = resolver
+	resp := getMessagesFrom(s, true)
+	item := resp.Items[0]
+	if item.SourceLanguage != nil || item.SourceLanguageConfidence != nil || item.SourceLanguageResolution != nil {
+		t.Fatalf("legacy metadata was invented: %+v", item)
+	}
+	if resolver.calls != 0 {
+		t.Fatalf("history detector calls = %d, want 0", resolver.calls)
+	}
+}
+
+func TestHistoryTranslationUsesPersistedCurrentSourceAndPreferredTarget(t *testing.T) {
+	language, confidence, resolution := "en", 0.97, "current"
+	conv := &fakeConversationRepo{messages: []conversation.Message{{
+		ID: "m-1", ConversationID: validPostID, SenderID: "me-id", Content: "hello", CreatedAt: time.Now(),
+		SourceLanguage: &language, SourceLanguageConfidence: &confidence, SourceLanguageResolution: &resolution,
+	}}}
+	translator := &fakeTranslator{}
+	me := userWithTranslate(true, func() *string { value := "es"; return &value }())
+	me.PlatformLanguage = func() *string { value := "ru"; return &value }()
+	me.NativeLanguage = "fr"
+	resp := getMessagesFrom(msgTranslateServer(conv, me, translator), true)
+	if len(translator.requests) != 1 || translator.requests[0].SourceLang != "en" || translator.requests[0].TargetLang != "es" {
+		t.Fatalf("translation request = %+v", translator.requests)
+	}
+	if resp.Items[0].SourceLanguage == nil || *resp.Items[0].SourceLanguage != "en" {
+		t.Fatalf("translated history source = %+v", resp.Items[0].SourceLanguage)
+	}
+}
+
+func TestHistoryTranslationUsesPersistedContextSource(t *testing.T) {
+	language, confidence, resolution := "ru", 0.91, "context"
+	conv := &fakeConversationRepo{messages: []conversation.Message{{
+		ID: "m-1", ConversationID: validPostID, SenderID: "me-id", Content: "привет", CreatedAt: time.Now(),
+		SourceLanguage: &language, SourceLanguageConfidence: &confidence, SourceLanguageResolution: &resolution,
+	}}}
+	translator := &fakeTranslator{}
+	resp := getMessagesFrom(msgTranslateServer(conv, userWithTranslate(true, func() *string { value := "en"; return &value }()), translator), true)
+	if len(translator.requests) != 1 || translator.requests[0].SourceLang != "ru" {
+		t.Fatalf("translation request = %+v", translator.requests)
+	}
+	if resp.Items[0].SourceLanguage == nil || *resp.Items[0].SourceLanguage != "ru" {
+		t.Fatalf("translated context source = %+v", resp.Items[0].SourceLanguage)
+	}
+}
+
+func TestHistoryTranslationDoesNotInventSourceForUnresolvedMetadata(t *testing.T) {
+	resolution := "unresolved"
+	conv := &fakeConversationRepo{messages: []conversation.Message{{
+		ID: "m-1", ConversationID: validPostID, SenderID: "me-id", Content: "hello", CreatedAt: time.Now(),
+		SourceLanguageResolution: &resolution,
+	}}}
+	translator := &fakeTranslator{}
+	_ = getMessagesFrom(msgTranslateServer(conv, userWithTranslate(true, func() *string { value := "es"; return &value }()), translator), true)
+	if len(translator.requests) != 1 || translator.requests[0].SourceLang != "" {
+		t.Fatalf("unresolved source was supplied to v2: %+v", translator.requests)
 	}
 }
 
@@ -224,10 +345,12 @@ func TestListMessagesRepositoryError(t *testing.T) {
 
 // fakeTranslator is a test double for translation.Service.
 type fakeTranslator struct {
-	err error
+	err      error
+	requests []translation.Request
 }
 
 func (f *fakeTranslator) Translate(_ context.Context, req translation.Request) (*translation.Result, error) {
+	f.requests = append(f.requests, req)
 	if f.err != nil {
 		return nil, f.err
 	}
@@ -613,6 +736,115 @@ func TestCreateMessageSuccess(t *testing.T) {
 	}
 }
 
+type fakeLanguageResolver struct {
+	resolution translation.LanguageResolution
+	err        error
+	calls      int
+	current    string
+	context    string
+}
+
+func (f *fakeLanguageResolver) Resolve(_ context.Context, currentText, contextText string) (translation.LanguageResolution, error) {
+	f.calls++
+	f.current = currentText
+	f.context = contextText
+	return f.resolution, f.err
+}
+
+func TestCreateMessageLanguageCurrentMetadata(t *testing.T) {
+	conv := &fakeConversationRepo{contextText: "older message"}
+	resolver := &fakeLanguageResolver{resolution: translation.LanguageResolution{
+		LanguageCode: "en", Confidence: 0.97, Source: translation.ResolutionCurrent,
+	}}
+	var resp messageResponse
+	rec := postMessage(convServerWithResolver(conv, resolver), validPostID, `{"content":"hello"}`, true, true)
+	if rec.Code != http.StatusCreated {
+		t.Fatalf("expected 201, got %d", rec.Code)
+	}
+	if err := json.Unmarshal(rec.Body.Bytes(), &resp); err != nil {
+		t.Fatalf("invalid json: %v", err)
+	}
+	if resolver.calls != 1 || resolver.current != "hello" || resolver.context != "older message" {
+		t.Fatalf("resolver calls/input = %d/%q/%q", resolver.calls, resolver.current, resolver.context)
+	}
+	if conv.metadataCalls != 1 || conv.metadataLanguage == nil || *conv.metadataLanguage != "en" || conv.metadataConfidence == nil || *conv.metadataConfidence != 0.97 || conv.metadataResolution != "current" {
+		t.Fatalf("metadata persistence = calls:%d language:%v confidence:%v resolution:%q", conv.metadataCalls, conv.metadataLanguage, conv.metadataConfidence, conv.metadataResolution)
+	}
+	if resp.SourceLanguage == nil || *resp.SourceLanguage != "en" || resp.SourceLanguageConfidence == nil || *resp.SourceLanguageConfidence != 0.97 || resp.SourceLanguageResolution == nil || *resp.SourceLanguageResolution != "current" {
+		t.Fatalf("response metadata = %+v", resp)
+	}
+}
+
+func TestCreateMessageLanguageContextMetadata(t *testing.T) {
+	conv := &fakeConversationRepo{contextText: "older message"}
+	resolver := &fakeLanguageResolver{resolution: translation.LanguageResolution{
+		LanguageCode: "ru", Confidence: 0.91, Source: translation.ResolutionContext,
+	}}
+	if rec := postMessage(convServerWithResolver(conv, resolver), validPostID, `{"content":"short"}`, true, true); rec.Code != http.StatusCreated {
+		t.Fatalf("expected 201, got %d", rec.Code)
+	}
+	if conv.metadataLanguage == nil || *conv.metadataLanguage != "ru" || conv.metadataResolution != "context" {
+		t.Fatalf("context metadata not persisted: language=%v resolution=%q", conv.metadataLanguage, conv.metadataResolution)
+	}
+}
+
+func TestCreateMessageLanguageUnresolvedMetadata(t *testing.T) {
+	conv := &fakeConversationRepo{}
+	resolver := &fakeLanguageResolver{resolution: translation.LanguageResolution{Source: translation.ResolutionUnresolved}}
+	var resp messageResponse
+	rec := postMessage(convServerWithResolver(conv, resolver), validPostID, `{"content":"unknown"}`, true, true)
+	if rec.Code != http.StatusCreated {
+		t.Fatalf("expected 201, got %d", rec.Code)
+	}
+	_ = json.Unmarshal(rec.Body.Bytes(), &resp)
+	if conv.metadataLanguage != nil || conv.metadataConfidence != nil || conv.metadataResolution != "unresolved" {
+		t.Fatalf("unresolved metadata invented values: language=%v confidence=%v resolution=%q", conv.metadataLanguage, conv.metadataConfidence, conv.metadataResolution)
+	}
+	if resp.SourceLanguage != nil || resp.SourceLanguageConfidence != nil || resp.SourceLanguageResolution == nil || *resp.SourceLanguageResolution != "unresolved" {
+		t.Fatalf("unresolved response metadata = %+v", resp)
+	}
+}
+
+func TestCreateMessageLanguageFailuresAreNonBlocking(t *testing.T) {
+	tests := []struct {
+		name        string
+		resolver    languageResolver
+		contextErr  error
+		metadataErr error
+		wantCalls   int
+	}{
+		{name: "disabled", wantCalls: 0},
+		{name: "detector error", resolver: &fakeLanguageResolver{err: errForTest}, wantCalls: 1},
+		{name: "context error", resolver: &fakeLanguageResolver{}, contextErr: errForTest, wantCalls: 0},
+		{name: "metadata error", resolver: &fakeLanguageResolver{resolution: translation.LanguageResolution{LanguageCode: "en", Confidence: 0.9, Source: translation.ResolutionCurrent}}, metadataErr: errForTest, wantCalls: 1},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			conv := &fakeConversationRepo{contextErr: tt.contextErr, metadataErr: tt.metadataErr}
+			rec := postMessage(convServerWithResolver(conv, tt.resolver), validPostID, `{"content":"hello"}`, true, true)
+			if rec.Code != http.StatusCreated {
+				t.Fatalf("expected 201 despite enrichment failure, got %d", rec.Code)
+			}
+			if tt.resolver != nil {
+				if got := tt.resolver.(*fakeLanguageResolver).calls; got != tt.wantCalls {
+					t.Fatalf("resolver calls = %d, want %d", got, tt.wantCalls)
+				}
+			}
+		})
+	}
+}
+
+func TestCreateMessageSkipsEmptyTextDetection(t *testing.T) {
+	conv := &fakeConversationRepo{}
+	resolver := &fakeLanguageResolver{resolution: translation.LanguageResolution{LanguageCode: "en", Confidence: 1, Source: translation.ResolutionCurrent}}
+	s := convDeliveryServerWith(conv, recipientUser("u2", false, nil), &fakeTranslator{})
+	s.languageResolver = resolver
+	s.resolveCreatedMessageLanguage(context.Background(), &conversation.Message{ID: "m-1", ConversationID: validPostID, Content: "   "}, "me-id")
+	if resolver.calls != 0 || conv.metadataCalls != 0 {
+		t.Fatalf("empty text enrichment calls = resolver:%d metadata:%d", resolver.calls, conv.metadataCalls)
+	}
+}
+
 func TestCreateMessageBlockedReturnsForbidden(t *testing.T) {
 	conv := &fakeConversationRepo{createErr: conversation.ErrBlocked}
 	rec := postMessage(convServer(conv), validPostID, `{"content":"hello"}`, true, true)
@@ -984,6 +1216,25 @@ func TestRealtimeEventTranslated(t *testing.T) {
 	}
 	if ev.Data.SourceLanguage == nil || *ev.Data.SourceLanguage != "auto" {
 		t.Fatalf("source language missing: %v", ev.Data.SourceLanguage)
+	}
+}
+
+func TestRealtimeEventReusesCreatedMessageLanguageMetadata(t *testing.T) {
+	conv := &fakeConversationRepo{}
+	resolver := &fakeLanguageResolver{resolution: translation.LanguageResolution{
+		LanguageCode: "en", Confidence: 0.96, Source: translation.ResolutionCurrent,
+	}}
+	s := convDeliveryServerWith(conv, recipientUser("u2", false, nil), &fakeTranslator{})
+	s.languageResolver = resolver
+	ev := publishAndRead(t, s)
+	if resolver.calls != 1 {
+		t.Fatalf("resolver calls = %d, want 1", resolver.calls)
+	}
+	if conv.metadataCalls != 1 {
+		t.Fatalf("metadata persistence calls = %d, want 1", conv.metadataCalls)
+	}
+	if ev.Data.SourceLanguage == nil || *ev.Data.SourceLanguage != "en" || ev.Data.SourceLanguageConfidence == nil || *ev.Data.SourceLanguageConfidence != 0.96 || ev.Data.SourceLanguageResolution == nil || *ev.Data.SourceLanguageResolution != "current" {
+		t.Fatalf("realtime metadata = %+v", ev.Data)
 	}
 }
 

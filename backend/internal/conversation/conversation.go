@@ -35,11 +35,14 @@ type Conversation struct {
 
 // Message mirrors a row in the `messages` table.
 type Message struct {
-	ID             string
-	ConversationID string
-	SenderID       string
-	Content        string
-	CreatedAt      time.Time
+	ID                       string
+	ConversationID           string
+	SenderID                 string
+	Content                  string
+	CreatedAt                time.Time
+	SourceLanguage           *string
+	SourceLanguageConfidence *float64
+	SourceLanguageResolution *string
 }
 
 // MessageCursor is a stable keyset position: a message's created_at plus id.

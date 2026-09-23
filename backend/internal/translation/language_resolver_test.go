@@ -44,7 +44,7 @@ func TestLanguageResolverConfidentCurrentWinsWithoutContext(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Resolve() error = %v", err)
 	}
-	if want := (LanguageResolution{LanguageCode: "ru", Source: ResolutionCurrent}); !reflect.DeepEqual(resolution, want) {
+	if want := (LanguageResolution{LanguageCode: "ru", Confidence: 0.98, Source: ResolutionCurrent}); !reflect.DeepEqual(resolution, want) {
 		t.Fatalf("Resolve() = %+v, want %+v", resolution, want)
 	}
 	if !reflect.DeepEqual(detector.calls, []string{"current"}) {
@@ -65,7 +65,7 @@ func TestLanguageResolverLowConfidenceCurrentUsesContext(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Resolve() error = %v", err)
 	}
-	if want := (LanguageResolution{LanguageCode: "ru", Source: ResolutionContext}); !reflect.DeepEqual(resolution, want) {
+	if want := (LanguageResolution{LanguageCode: "ru", Confidence: 0.94, Source: ResolutionContext}); !reflect.DeepEqual(resolution, want) {
 		t.Fatalf("Resolve() = %+v, want %+v", resolution, want)
 	}
 	if !reflect.DeepEqual(detector.calls, []string{"current", "context"}) {
@@ -142,7 +142,7 @@ func TestLanguageResolverConfidentCurrentWinsWhenSenderChangesLanguage(t *testin
 	if err != nil {
 		t.Fatalf("Resolve() error = %v", err)
 	}
-	if want := (LanguageResolution{LanguageCode: "uz", Source: ResolutionCurrent}); !reflect.DeepEqual(resolution, want) {
+	if want := (LanguageResolution{LanguageCode: "uz", Confidence: 0.9, Source: ResolutionCurrent}); !reflect.DeepEqual(resolution, want) {
 		t.Fatalf("Resolve() = %+v, want %+v", resolution, want)
 	}
 }
@@ -176,6 +176,21 @@ func TestLanguageResolverUsesInjectedThreshold(t *testing.T) {
 	}
 	if resolution.LanguageCode != "en" || resolution.Source != ResolutionCurrent {
 		t.Fatalf("Resolve() = %+v, want current en resolution", resolution)
+	}
+}
+
+func TestLanguageResolverPropagatesCurrentConfidence(t *testing.T) {
+	detector := &fakeLanguageDetector{results: map[string]Detection{
+		"current": {LanguageCode: "en", Confidence: 0.87},
+	}}
+	resolver := newTestResolver(t, detector, 0.8)
+
+	resolution, err := resolver.Resolve(context.Background(), "current", "")
+	if err != nil {
+		t.Fatalf("Resolve() error = %v", err)
+	}
+	if resolution.LanguageCode != "en" || resolution.Confidence != 0.87 || resolution.Source != ResolutionCurrent {
+		t.Fatalf("Resolve() = %+v, want en/0.87/current", resolution)
 	}
 }
 

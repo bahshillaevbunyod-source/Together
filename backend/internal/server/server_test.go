@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"together/backend/internal/config"
+	"together/backend/internal/translation"
 )
 
 // fakePinger lets us exercise /ready without a real database.
@@ -71,5 +72,16 @@ func TestReadyWhenDBDown(t *testing.T) {
 	}
 	if got := decodeStatus(t, rec); got != "unavailable" {
 		t.Fatalf("expected status \"unavailable\", got %q", got)
+	}
+}
+
+func TestServerAcceptsOptionalLanguageResolver(t *testing.T) {
+	resolver := new(translation.LanguageResolver)
+	s := newServer(
+		config.Config{Env: "test", Port: "8080"}, fakePinger{},
+		nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, resolver,
+	)
+	if s.languageResolver != resolver {
+		t.Fatal("optional language resolver was not wired into Server")
 	}
 }

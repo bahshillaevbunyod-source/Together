@@ -199,7 +199,8 @@ func (r *PostgresRepository) CreateMessage(ctx context.Context, conversationID, 
 // listMessagesQuery returns a conversation's messages newest-first, keyset
 // paginated. conversation_id is a constant here, so there is no per-row lookup.
 const listMessagesQuery = `
-SELECT m.id, m.sender_id, m.content, m.created_at
+SELECT m.id, m.sender_id, m.content, m.created_at,
+       m.source_language, m.source_language_confidence, m.source_language_resolution
 FROM messages m
 WHERE m.conversation_id = $1
   AND ($2::timestamptz IS NULL
@@ -236,12 +237,50 @@ func (r *PostgresRepository) ListMessages(ctx context.Context, conversationID, u
 	items := make([]Message, 0, limit)
 	for rows.Next() {
 		m := Message{ConversationID: conversationID}
-		if err := rows.Scan(&m.ID, &m.SenderID, &m.Content, &m.CreatedAt); err != nil {
+		if err := rows.Scan(
+			&m.ID, &m.SenderID, &m.Content, &m.CreatedAt,
+			&m.SourceLanguage, &m.SourceLanguageConfidence, &m.SourceLanguageResolution,
+		); err != nil {
 			return nil, err
 		}
 		items = append(items, m)
 	}
 	return items, rows.Err()
+}
+
+const setMessageLanguageMetadataQuery = `
+UPDATE messages
+SET source_language = $3,
+    source_language_confidence = $4,
+    source_language_resolution = $5
+WHERE id = $1 AND sender_id = $2
+`
+
+func (r *PostgresRepository) SetMessageLanguageMetadata(ctx context.Context, messageID, senderID string, sourceLanguage *string, confidence *float64, resolution string) error {
+	_, err := r.q.Exec(ctx, setMessageLanguageMetadataQuery, messageID, senderID, sourceLanguage, confidence, resolution)
+	return err
+}
+
+const recentSenderContextQuery = `
+SELECT content
+FROM messages
+WHERE conversation_id = $1
+  AND sender_id = $2
+  AND id <> $3
+ORDER BY created_at DESC, id DESC
+LIMIT 1
+`
+
+func (r *PostgresRepository) RecentSenderContext(ctx context.Context, conversationID, senderID, excludeMessageID string) (string, error) {
+	var content string
+	err := r.q.QueryRow(ctx, recentSenderContextQuery, conversationID, senderID, excludeMessageID).Scan(&content)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return "", nil
+	}
+	if err != nil {
+		return "", err
+	}
+	return content, nil
 }
 
 // listConversationsQuery returns a user's conversations newest-activity first.

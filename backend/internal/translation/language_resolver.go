@@ -31,6 +31,7 @@ const (
 // result always has an empty LanguageCode and must not be treated as a guess.
 type LanguageResolution struct {
 	LanguageCode string
+	Confidence   float64
 	Source       ResolutionSource
 }
 
@@ -63,6 +64,7 @@ func (r *LanguageResolver) Resolve(ctx context.Context, currentText, contextText
 	if usableDetection(current, r.threshold) {
 		return LanguageResolution{
 			LanguageCode: strings.TrimSpace(current.LanguageCode),
+			Confidence:   current.Confidence,
 			Source:       ResolutionCurrent,
 		}, nil
 	}
@@ -78,6 +80,7 @@ func (r *LanguageResolver) Resolve(ctx context.Context, currentText, contextText
 	if usableDetection(contextDetection, r.threshold) {
 		return LanguageResolution{
 			LanguageCode: strings.TrimSpace(contextDetection.LanguageCode),
+			Confidence:   contextDetection.Confidence,
 			Source:       ResolutionContext,
 		}, nil
 	}

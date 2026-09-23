@@ -3,8 +3,12 @@ package config
 
 import (
 	"errors"
+	"math"
 	"os"
+	"strconv"
 )
+
+const defaultSourceLanguageDetectionConfidenceThreshold = 0.80
 
 // devFallbackDatabaseURL is a convenience DSN used only in dev/test when
 // DATABASE_URL is unset. It contains no real secrets.
@@ -41,6 +45,10 @@ type Config struct {
 	TranslationProvider string
 	TranslationAPIKey   string
 	TranslationEndpoint string
+
+	GoogleCloudProjectID                       string
+	SourceLanguageDetectionConfidenceThreshold float64
+	SourceLanguageDetectionEnabled             bool
 }
 
 // Load reads configuration from environment variables, applying fallbacks.
@@ -67,6 +75,19 @@ func Load() (Config, error) {
 		TranslationProvider: getEnv("TRANSLATION_PROVIDER", "stub"),
 		TranslationAPIKey:   os.Getenv("TRANSLATION_API_KEY"),
 		TranslationEndpoint: os.Getenv("TRANSLATION_ENDPOINT"),
+
+		GoogleCloudProjectID:                       os.Getenv("GOOGLE_CLOUD_PROJECT_ID"),
+		SourceLanguageDetectionConfidenceThreshold: defaultSourceLanguageDetectionConfidenceThreshold,
+		SourceLanguageDetectionEnabled:             true,
+	}
+
+	if rawThreshold, ok := os.LookupEnv("SOURCE_LANGUAGE_DETECTION_CONFIDENCE_THRESHOLD"); ok {
+		threshold, err := strconv.ParseFloat(rawThreshold, 64)
+		if err != nil || math.IsNaN(threshold) || math.IsInf(threshold, 0) || threshold < 0 || threshold > 1 {
+			cfg.SourceLanguageDetectionEnabled = false
+		} else {
+			cfg.SourceLanguageDetectionConfidenceThreshold = threshold
+		}
 	}
 
 	if cfg.DatabaseURL == "" {

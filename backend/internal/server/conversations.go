@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"log"
 	"net/http"
 	"strings"
 	"time"
@@ -27,9 +28,11 @@ type messageResponse struct {
 
 	// Translation fields are null unless the viewer opted in and a translation
 	// succeeded. Content always holds the original, untranslated text.
-	TranslatedContent *string `json:"translatedContent"`
-	SourceLanguage    *string `json:"sourceLanguage"`
-	TargetLanguage    *string `json:"targetLanguage"`
+	TranslatedContent        *string  `json:"translatedContent"`
+	SourceLanguage           *string  `json:"sourceLanguage"`
+	SourceLanguageConfidence *float64 `json:"sourceLanguageConfidence"`
+	SourceLanguageResolution *string  `json:"sourceLanguageResolution"`
+	TargetLanguage           *string  `json:"targetLanguage"`
 }
 
 type messageListResponse struct {
@@ -260,10 +263,13 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 	items := make([]messageResponse, 0, len(rows))
 	for _, m := range rows {
 		resp := messageResponse{
-			ID:        m.ID,
-			SenderID:  m.SenderID,
-			Content:   m.Content, // always the original
-			CreatedAt: m.CreatedAt.Format(time.RFC3339),
+			ID:                       m.ID,
+			SenderID:                 m.SenderID,
+			Content:                  m.Content, // always the original
+			CreatedAt:                m.CreatedAt.Format(time.RFC3339),
+			SourceLanguage:           m.SourceLanguage,
+			SourceLanguageConfidence: m.SourceLanguageConfidence,
+			SourceLanguageResolution: m.SourceLanguageResolution,
 		}
 		s.applyTranslation(r.Context(), &resp, m.Content, targetLang)
 		items = append(items, resp)
@@ -279,13 +285,65 @@ func (s *Server) applyTranslation(ctx context.Context, resp *messageResponse, or
 	if targetLang == "" {
 		return
 	}
-	res, err := s.translator.Translate(ctx, translation.Request{Text: original, TargetLang: targetLang})
+	res, err := s.translator.Translate(ctx, translation.Request{
+		Text:       original,
+		SourceLang: persistedSourceLanguage(resp),
+		TargetLang: targetLang,
+	})
 	if err != nil {
 		return // never fail the response over a translation error
 	}
 	resp.TranslatedContent = &res.TranslatedText
-	resp.SourceLanguage = &res.SourceLang
+	if resp.SourceLanguage == nil {
+		resp.SourceLanguage = &res.SourceLang
+	}
 	resp.TargetLanguage = &res.TargetLang
+}
+
+func persistedSourceLanguage(resp *messageResponse) string {
+	if resp == nil || resp.SourceLanguage == nil || resp.SourceLanguageResolution == nil {
+		return ""
+	}
+	resolution := *resp.SourceLanguageResolution
+	if resolution != string(translation.ResolutionCurrent) && resolution != string(translation.ResolutionContext) {
+		return ""
+	}
+	return *resp.SourceLanguage
+}
+
+func (s *Server) resolveCreatedMessageLanguage(ctx context.Context, m *conversation.Message, senderID string) {
+	if s.languageResolver == nil || m == nil || strings.TrimSpace(m.Content) == "" {
+		return
+	}
+
+	contextText, err := s.conversations.RecentSenderContext(ctx, m.ConversationID, senderID, m.ID)
+	if err != nil {
+		log.Printf("source language context lookup unavailable")
+		return
+	}
+	resolution, err := s.languageResolver.Resolve(ctx, m.Content, contextText)
+	if err != nil {
+		log.Printf("source language detection unavailable")
+		return
+	}
+
+	var language *string
+	var confidence *float64
+	if resolution.LanguageCode != "" {
+		code := resolution.LanguageCode
+		language = &code
+		value := resolution.Confidence
+		confidence = &value
+	}
+	resolutionSource := string(resolution.Source)
+	if err := s.conversations.SetMessageLanguageMetadata(ctx, m.ID, senderID, language, confidence, resolutionSource); err != nil {
+		log.Printf("source language metadata persistence unavailable")
+		return
+	}
+
+	m.SourceLanguage = language
+	m.SourceLanguageConfidence = confidence
+	m.SourceLanguageResolution = &resolutionSource
 }
 
 func (s *Server) handleMarkConversationRead(w http.ResponseWriter, r *http.Request) {
@@ -360,12 +418,16 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
+	s.resolveCreatedMessageLanguage(r.Context(), m, me.ID)
 
 	resp := messageResponse{
-		ID:        m.ID,
-		SenderID:  m.SenderID,
-		Content:   m.Content,
-		CreatedAt: m.CreatedAt.Format(time.RFC3339),
+		ID:                       m.ID,
+		SenderID:                 m.SenderID,
+		Content:                  m.Content,
+		CreatedAt:                m.CreatedAt.Format(time.RFC3339),
+		SourceLanguage:           m.SourceLanguage,
+		SourceLanguageConfidence: m.SourceLanguageConfidence,
+		SourceLanguageResolution: m.SourceLanguageResolution,
 	}
 
 	// The DB is the source of truth; realtime delivery happens only after a

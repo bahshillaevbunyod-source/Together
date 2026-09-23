@@ -35,6 +35,7 @@ import (
 	"together/backend/internal/storage"
 	"together/backend/internal/story"
 	"together/backend/internal/topic"
+	"together/backend/internal/translation"
 	"together/backend/internal/user"
 )
 
@@ -92,7 +93,24 @@ func main() {
 	followRequests := followrequest.NewPostgresRepository(pool)
 	followRequester := followrequestservice.New(pool, followRequests, follows, notifications)
 	stories := story.NewPostgresRepository(pool)
-	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, topicRepo, registrar, followRequests, followRequester, stories)
+
+	var languageResolver *translation.LanguageResolver
+	if cfg.SourceLanguageDetectionEnabled && cfg.GoogleCloudProjectID != "" {
+		adcProvider, adcErr := translation.NewGoogleADCTokenProvider(context.Background())
+		if adcErr == nil {
+			detector, detectorErr := translation.NewGoogleV3Detector(cfg.GoogleCloudProjectID, "global", "", nil, adcProvider)
+			if detectorErr == nil {
+				languageResolver, detectorErr = translation.NewLanguageResolver(detector, cfg.SourceLanguageDetectionConfidenceThreshold)
+			}
+			if detectorErr != nil {
+				log.Printf("source language detection disabled: %v", detectorErr)
+			}
+		} else {
+			log.Printf("source language detection disabled: %v", adcErr)
+		}
+	}
+
+	srv := server.New(cfg, pool, users, sessions, follows, blocks, posts, likes, comments, mediaRepo, storageRepo, bookmarks, notifications, postCreator, followNotifier, likeNotifier, commentNotifier, conversations, topicRepo, registrar, followRequests, followRequester, stories, languageResolver)
 
 	// Start the server in the background.
 	go func() {

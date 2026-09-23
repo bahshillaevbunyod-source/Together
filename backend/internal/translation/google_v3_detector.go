@@ -28,6 +28,16 @@ type Detector struct {
 	tokenProvider TokenProvider
 }
 
+// GoogleV3Detector names the Google Cloud Translation Advanced detector
+// explicitly while preserving the existing Detector API.
+type GoogleV3Detector = Detector
+
+// NewGoogleV3Detector constructs the Google Cloud Translation Advanced
+// detector. It does not make a network call until Detect is invoked.
+func NewGoogleV3Detector(projectID, location, endpoint string, client *http.Client, tokenProvider TokenProvider) (*GoogleV3Detector, error) {
+	return NewDetector(projectID, location, endpoint, client, tokenProvider)
+}
+
 func NewDetector(projectID, location, endpoint string, client *http.Client, tokenProvider TokenProvider) (*Detector, error) {
 	projectID = strings.TrimSpace(projectID)
 	if projectID == "" {

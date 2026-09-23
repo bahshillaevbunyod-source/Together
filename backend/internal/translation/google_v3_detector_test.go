@@ -81,6 +81,20 @@ func TestDetectorRequestAndHighestConfidence(t *testing.T) {
 	}
 }
 
+func TestGoogleV3DetectorConstructsLanguageResolver(t *testing.T) {
+	detector, err := NewGoogleV3Detector("test-project", "global", "http://unused", http.DefaultClient, &fakeTokenProvider{token: "token"})
+	if err != nil {
+		t.Fatalf("NewGoogleV3Detector() error = %v", err)
+	}
+	resolver, err := NewLanguageResolver(detector, 0.8)
+	if err != nil {
+		t.Fatalf("NewLanguageResolver() error = %v", err)
+	}
+	if resolver == nil {
+		t.Fatal("NewLanguageResolver() returned nil resolver")
+	}
+}
+
 func TestDetectorRejectsNon2xx(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		http.Error(w, "denied", http.StatusUnauthorized)
