@@ -14,6 +14,10 @@ import {
 } from "@/lib/api";
 import { formatTimeAgo } from "@/lib/format";
 import { useLanguage, type TranslationKey } from "@/lib/language-context";
+import {
+  notificationDestination,
+  notifyNotificationReadStateChanged,
+} from "@/lib/notification-destination";
 
 type Status = "idle" | "loading" | "ready" | "error";
 
@@ -57,13 +61,18 @@ export function NotificationsBell() {
   // Initial unread count.
   useEffect(() => {
     const controller = new AbortController();
-    getUnreadNotificationCount(controller.signal)
+    const refreshUnread = () => getUnreadNotificationCount(controller.signal)
       .then((r) => setUnread(r.unreadCount))
       .catch((err) => {
         if (err instanceof DOMException && err.name === "AbortError") return;
         // Leave the badge hidden on failure.
       });
-    return () => controller.abort();
+    void refreshUnread();
+    window.addEventListener("together:notification-read-state-changed", refreshUnread);
+    return () => {
+      controller.abort();
+      window.removeEventListener("together:notification-read-state-changed", refreshUnread);
+    };
   }, []);
 
   const load = useCallback((signal?: AbortSignal) => {
@@ -133,6 +142,7 @@ export function NotificationsBell() {
     setUnread((c) => Math.max(0, c - 1));
     try {
       await markNotificationRead(n.id);
+      notifyNotificationReadStateChanged();
     } catch {
       // Roll back on failure.
       setItems((prev) =>
@@ -152,6 +162,7 @@ export function NotificationsBell() {
     setUnread(0);
     try {
       await markAllNotificationsRead();
+      notifyNotificationReadStateChanged();
     } catch {
       setItems(prevItems);
       setUnread(prevUnread);
@@ -227,12 +238,7 @@ export function NotificationsBell() {
               <ul className="flex flex-col">
                 {items.map((n) => {
                   const actorName = n.actor?.displayName ?? t("notifications.someone");
-                  // Follow / follow-request notifications with a known actor
-                  // link to that profile; other types keep the mark-read-only
-                  // button.
-                  const canNavigate =
-                    (n.type === "follow" || n.type === "follow_request") &&
-                    !!n.actor?.username;
+                  const destination = notificationDestination(n);
                   const rowClass = `flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-background ${
                     n.readAt ? "" : "bg-background/60"
                   }`;
@@ -263,9 +269,9 @@ export function NotificationsBell() {
 
                   return (
                     <li key={n.id}>
-                      {canNavigate ? (
+                      {destination ? (
                         <Link
-                          href={`/u/${encodeURIComponent(n.actor!.username)}`}
+                          href={destination}
                           onClick={() => {
                             markRead(n);
                             setOpen(false);
@@ -301,6 +307,14 @@ export function NotificationsBell() {
               </button>
             ) : null}
           </div>
+
+          <Link
+            href="/notifications"
+            onClick={() => setOpen(false)}
+            className="block border-t border-border px-4 py-3 text-center text-sm font-medium text-primary transition-colors hover:bg-background hover:underline"
+          >
+            View all
+          </Link>
         </div>
       ) : null}
     </div>

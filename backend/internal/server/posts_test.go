@@ -19,15 +19,18 @@ import (
 
 // fakePostRepo is a test double for post.Repository.
 type fakePostRepo struct {
-	createErr error
-	last      post.CreateInput
-	getPost   *post.Post
-	getErr    error
-	feed      []post.FeedItem
-	feedErr   error
-	updateErr error
-	deleteErr error
-	deleted   []string
+	createErr        error
+	last             post.CreateInput
+	getPost          *post.Post
+	getErr           error
+	feed             []post.FeedItem
+	feedErr          error
+	updateErr        error
+	deleteErr        error
+	repostErr        error
+	repostAuthorID   string
+	repostOriginalID string
+	deleted          []string
 
 	// Discover test controls.
 	discoverPool      []post.FeedItem
@@ -81,6 +84,15 @@ func (f *fakePostRepo) Create(_ context.Context, in post.CreateInput) (*post.Pos
 		CreatedAt:  now,
 		UpdatedAt:  now,
 	}, nil
+}
+
+func (f *fakePostRepo) CreateRepost(_ context.Context, authorID, originalPostID string) (*post.Post, error) {
+	f.repostAuthorID, f.repostOriginalID = authorID, originalPostID
+	if f.repostErr != nil {
+		return nil, f.repostErr
+	}
+	now := time.Now()
+	return &post.Post{ID: "share-1", AuthorID: authorID, Visibility: post.VisibilityPublic, OriginalPostID: &originalPostID, CreatedAt: now, UpdatedAt: now}, nil
 }
 
 func (f *fakePostRepo) GetByID(_ context.Context, _ string) (*post.Post, error) {
@@ -219,6 +231,44 @@ func createPost(srv *http.Server, body string, withCookie, withOrigin bool) *htt
 	rec := httptest.NewRecorder()
 	srv.Handler.ServeHTTP(rec, req)
 	return rec
+}
+
+func sharePostRequest(srv *http.Server, id string) *httptest.ResponseRecorder {
+	req := httptest.NewRequest(http.MethodPost, "/api/v1/posts/"+id+"/share", nil)
+	req.Header.Set("Origin", testOrigin)
+	req.AddCookie(&http.Cookie{Name: sessionCookieName, Value: "raw"})
+	rec := httptest.NewRecorder()
+	srv.Handler.ServeHTTP(rec, req)
+	return rec
+}
+
+func TestSharePostPreservesOriginalReference(t *testing.T) {
+	original := &post.Post{ID: validPostID, AuthorID: "author-id", Visibility: post.VisibilityPublic, CreatedAt: time.Now(), UpdatedAt: time.Now()}
+	repo := &fakePostRepo{getPost: original}
+	users := &fakeUserRepo{byID: map[string]*user.User{"me-id": mkUser("me-id", "me_user"), "author-id": mkUser("author-id", "author")}}
+	srv := New(config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin}, fakePinger{}, users, activeSession("me-id"), &fakeFollowRepo{}, &fakeBlockRepo{}, repo, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{}, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{})
+	rec := sharePostRequest(srv, validPostID)
+	if rec.Code != http.StatusCreated || repo.repostAuthorID != "me-id" || repo.repostOriginalID != validPostID {
+		t.Fatalf("share result=%d author=%q original=%q", rec.Code, repo.repostAuthorID, repo.repostOriginalID)
+	}
+}
+
+func TestSharePostRejectsInaccessibleOriginal(t *testing.T) {
+	repo := &fakePostRepo{getPost: mkPost(post.VisibilityPrivate, "author-id")}
+	users := &fakeUserRepo{byID: map[string]*user.User{"me-id": mkUser("me-id", "me_user"), "author-id": mkUser("author-id", "author")}}
+	srv := New(config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin}, fakePinger{}, users, activeSession("me-id"), &fakeFollowRepo{}, &fakeBlockRepo{}, repo, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{}, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{})
+	if rec := sharePostRequest(srv, validPostID); rec.Code != http.StatusNotFound || repo.repostOriginalID != "" {
+		t.Fatalf("expected inaccessible original rejection, got %d", rec.Code)
+	}
+}
+
+func TestSharePostDuplicateIsConflict(t *testing.T) {
+	repo := &fakePostRepo{getPost: mkPost(post.VisibilityPublic, "author-id"), repostErr: post.ErrAlreadyShared}
+	users := &fakeUserRepo{byID: map[string]*user.User{"me-id": mkUser("me-id", "me_user"), "author-id": mkUser("author-id", "author")}}
+	srv := New(config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin}, fakePinger{}, users, activeSession("me-id"), &fakeFollowRepo{}, &fakeBlockRepo{}, repo, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{}, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{})
+	if rec := sharePostRequest(srv, validPostID); rec.Code != http.StatusConflict {
+		t.Fatalf("expected 409, got %d", rec.Code)
+	}
 }
 
 func okStorage() *fakeStorageRepo {

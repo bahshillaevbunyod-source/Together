@@ -28,6 +28,7 @@ var requiredColumns = []struct{ table, column string }{
 	{"messages", "source_language"},     // 000024
 	{"messages", "source_language_confidence"},
 	{"messages", "source_language_resolution"},
+	{"posts", "original_post_id"}, // 000025
 }
 
 // requiredTables are tables the application depends on from later migrations.

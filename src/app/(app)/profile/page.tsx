@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { CalendarDays, Globe, MapPin } from "lucide-react";
 
 import {
@@ -62,6 +63,7 @@ function countryName(code: string): string {
 
 export default function ProfilePage() {
   const { t, locale } = useLanguage();
+  const searchParams = useSearchParams();
   const [profile, setProfile] = useState<ProfileResponse | null>(null);
   const [followers, setFollowers] = useState<number | null>(null);
   const [following, setFollowing] = useState<number | null>(null);
@@ -99,6 +101,12 @@ export default function ProfilePage() {
     load(controller.signal);
     return () => controller.abort();
   }, [load]);
+
+  useEffect(() => {
+    if (profile?.isPrivate && searchParams.get("followRequests") === "1") {
+      setRequestsOpen(true);
+    }
+  }, [profile?.isPrivate, searchParams]);
 
   if (status === "loading") {
     return (

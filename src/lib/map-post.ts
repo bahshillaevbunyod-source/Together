@@ -50,5 +50,6 @@ export function mapApiPost(api: ApiPost): Post {
     translatedContent: api.translatedContent,
     sourceLanguage: api.sourceLanguage,
     targetLanguage: api.targetLanguage,
+    originalPostId: api.originalPostId,
   };
 }

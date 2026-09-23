@@ -50,17 +50,18 @@ type postAuthorResponse struct {
 }
 
 type postResponse struct {
-	ID            string             `json:"id"`
-	Author        postAuthorResponse `json:"author"`
-	Content       *string            `json:"content"`
-	Visibility    string             `json:"visibility"`
-	CreatedAt     string             `json:"createdAt"`
-	UpdatedAt     string             `json:"updatedAt"`
-	LikesCount    int64              `json:"likesCount"`
-	LikedByMe     bool               `json:"likedByMe"`
-	CommentsCount int64              `json:"commentsCount"`
-	SavedByMe     bool               `json:"savedByMe"`
-	Media         []mediaResponse    `json:"media"`
+	ID             string             `json:"id"`
+	Author         postAuthorResponse `json:"author"`
+	Content        *string            `json:"content"`
+	Visibility     string             `json:"visibility"`
+	CreatedAt      string             `json:"createdAt"`
+	UpdatedAt      string             `json:"updatedAt"`
+	LikesCount     int64              `json:"likesCount"`
+	LikedByMe      bool               `json:"likedByMe"`
+	CommentsCount  int64              `json:"commentsCount"`
+	SavedByMe      bool               `json:"savedByMe"`
+	Media          []mediaResponse    `json:"media"`
+	OriginalPostID *string            `json:"originalPostId"`
 
 	// Translation fields are null unless the viewer opted in and a translation
 	// succeeded. Content always holds the original, untranslated text.
@@ -214,10 +215,11 @@ func toPostResponse(p *post.Post, author *user.User) postResponse {
 			DisplayName: author.DisplayName,
 			AvatarURL:   author.AvatarURL,
 		},
-		Content:    p.Content,
-		Visibility: p.Visibility,
-		CreatedAt:  p.CreatedAt.Format(time.RFC3339),
-		UpdatedAt:  p.UpdatedAt.Format(time.RFC3339),
-		Media:      []mediaResponse{},
+		Content:        p.Content,
+		Visibility:     p.Visibility,
+		CreatedAt:      p.CreatedAt.Format(time.RFC3339),
+		UpdatedAt:      p.UpdatedAt.Format(time.RFC3339),
+		Media:          []mediaResponse{},
+		OriginalPostID: p.OriginalPostID,
 	}
 }

@@ -18,17 +18,21 @@ import {
 } from "lucide-react";
 import type { Post } from "@/types/post";
 import { PostMedia } from "@/components/feed/PostMedia";
+import { SharePostDialog } from "@/components/feed/SharePostDialog";
 import { formatCount, formatTimeAgo } from "@/lib/format";
 import {
   ApiError,
   createComment,
   deletePost,
+  getPost,
   getComments,
   likePost,
   savePost,
+  sharePost,
   unlikePost,
   unsavePost,
   updatePost,
+  type ApiPost,
 } from "@/lib/api";
 import { mapApiPost } from "@/lib/map-post";
 import { useAuth } from "@/lib/auth-context";
@@ -105,6 +109,11 @@ export function PostCard({
 
   const [shareOpen, setShareOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [shareDialogOpen, setShareDialogOpen] = useState(false);
+  const [sharingToProfile, setSharingToProfile] = useState(false);
+  const [shareProfileError, setShareProfileError] = useState(false);
+  const [originalPost, setOriginalPost] = useState<ApiPost | null>(null);
+  const [originalStatus, setOriginalStatus] = useState<"idle" | "loading" | "ready" | "unavailable">("idle");
   const shareRef = useRef<HTMLDivElement>(null);
 
   // Guards against duplicate requests from rapid clicks.
@@ -134,6 +143,16 @@ export function PostCard({
     document.addEventListener("mousedown", onClick);
     return () => document.removeEventListener("mousedown", onClick);
   }, [menuOpen]);
+
+  useEffect(() => {
+    if (!post.originalPostId) { setOriginalPost(null); setOriginalStatus("idle"); return; }
+    const controller = new AbortController();
+    setOriginalStatus("loading");
+    getPost(post.originalPostId, controller.signal)
+      .then((value) => { setOriginalPost(value); setOriginalStatus("ready"); })
+      .catch((err) => { if (!(err instanceof DOMException && err.name === "AbortError")) setOriginalStatus("unavailable"); });
+    return () => controller.abort();
+  }, [post.originalPostId]);
 
   const startEdit = () => {
     setMenuOpen(false);
@@ -200,6 +219,20 @@ export function PostCard({
       setCopied(false);
       setShareOpen(false);
     }, 1200);
+  };
+
+  const shareToProfile = async () => {
+    if (sharingToProfile) return;
+    setSharingToProfile(true);
+    setShareProfileError(false);
+    try {
+      await sharePost(post.id);
+      setShareOpen(false);
+    } catch {
+      setShareProfileError(true);
+    } finally {
+      setSharingToProfile(false);
+    }
   };
 
   const toggleLike = async () => {
@@ -397,7 +430,13 @@ export function PostCard({
       </div>
 
       {/* Text (or inline editor for own posts) */}
-      {editing ? (
+      {post.originalPostId ? (
+        <div className="mt-3 rounded-xl border border-border bg-background p-3">
+          {originalStatus === "loading" ? <div className="h-10 animate-pulse rounded bg-surface" /> : null}
+          {originalStatus === "ready" && originalPost ? <Link href={`/post/${encodeURIComponent(originalPost.id)}`} className="block hover:opacity-80"><p className="text-sm font-semibold text-foreground">{originalPost.author.displayName}<span className="ml-1 text-xs font-normal text-muted">@{originalPost.author.username}</span></p>{originalPost.content ? <p className="mt-1 line-clamp-4 text-sm leading-relaxed text-foreground">{originalPost.content}</p> : null}</Link> : null}
+          {originalStatus === "unavailable" ? <p className="text-sm text-muted">{t("post.shareToProfile")}</p> : null}
+        </div>
+      ) : editing ? (
         <div className="mt-3">
           <textarea
             value={editText}
@@ -468,7 +507,7 @@ export function PostCard({
       ) : null}
 
       {/* Media (single natural-ratio image, or a carousel for 2+) */}
-      <PostMedia media={media} />
+      {!post.originalPostId ? <PostMedia media={media} /> : null}
 
       {/* Actions */}
       <div className="mt-3 flex items-center gap-6 text-sm text-muted">
@@ -529,7 +568,7 @@ export function PostCard({
               <button
                 type="button"
                 role="menuitem"
-                onClick={() => setShareOpen(false)}
+                onClick={() => { setShareOpen(false); setShareDialogOpen(true); }}
                 className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-background"
               >
                 <Send className="h-4 w-4 text-muted" />
@@ -538,12 +577,14 @@ export function PostCard({
               <button
                 type="button"
                 role="menuitem"
-                onClick={() => setShareOpen(false)}
+                onClick={() => void shareToProfile()}
+                disabled={sharingToProfile}
                 className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-foreground transition-colors hover:bg-background"
               >
                 <UserPlus className="h-4 w-4 text-muted" />
                 {t("post.shareToProfile")}
               </button>
+              {shareProfileError ? <p className="px-3 py-1 text-xs text-red-500" role="alert">{t("post.editFailed")}</p> : null}
             </div>
           ) : null}
         </div>
@@ -660,6 +701,7 @@ export function PostCard({
           </div>
         </div>
       ) : null}
+      {shareDialogOpen ? <SharePostDialog postID={post.id} onClose={() => setShareDialogOpen(false)} /> : null}
     </article>
   );
 }

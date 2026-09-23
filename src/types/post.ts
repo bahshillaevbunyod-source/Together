@@ -39,4 +39,6 @@ export type Post = {
   translatedContent?: string | null;
   sourceLanguage?: string | null;
   targetLanguage?: string | null;
+  /** Canonical original post id for a provenance-preserving profile share. */
+  originalPostId?: string | null;
 };

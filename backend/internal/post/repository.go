@@ -5,6 +5,9 @@ import "context"
 // Repository abstracts post persistence so handlers never touch SQL.
 type Repository interface {
 	Create(ctx context.Context, in CreateInput) (*Post, error)
+	// CreateRepost creates a provenance-preserving reference to an accessible
+	// public original. A duplicate author/original pair returns ErrAlreadyShared.
+	CreateRepost(ctx context.Context, authorID, originalPostID string) (*Post, error)
 	// GetByID returns the post by id or ErrNotFound.
 	GetByID(ctx context.Context, id string) (*Post, error)
 	// Update applies a partial update and returns the updated row, or

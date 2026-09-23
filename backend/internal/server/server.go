@@ -297,6 +297,7 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 
 	// Posts.
 	mux.HandleFunc("POST /api/v1/posts", s.requireAuth(s.csrfProtect(s.handleCreatePost)))
+	mux.HandleFunc("POST /api/v1/posts/{id}/share", s.requireAuth(s.csrfProtect(s.handleSharePost)))
 	// Literal "discover" takes precedence over the {id} wildcard in the Go mux.
 	mux.HandleFunc("GET /api/v1/posts/discover", s.requireAuth(s.handleDiscoverPosts))
 	mux.HandleFunc("GET /api/v1/posts/{id}", s.handleGetPost) // public, optional auth

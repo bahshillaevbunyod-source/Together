@@ -698,6 +698,7 @@ export interface ApiPost {
   translatedContent: string | null;
   sourceLanguage: string | null;
   targetLanguage: string | null;
+  originalPostId: string | null;
 }
 
 /** One page of feed results. `nextCursor` is "" when there is no more. */
@@ -794,6 +795,13 @@ export function createPost(input: {
   storageKeys?: string[];
 }): Promise<ApiPost> {
   return apiFetch<ApiPost>("/api/v1/posts", { method: "POST", body: input });
+}
+
+/** Create a provenance-preserving profile share for one public post. */
+export function sharePost(id: string): Promise<ApiPost> {
+  return apiFetch<ApiPost>(`/api/v1/posts/${encodeURIComponent(id)}/share`, {
+    method: "POST",
+  });
 }
 
 /**

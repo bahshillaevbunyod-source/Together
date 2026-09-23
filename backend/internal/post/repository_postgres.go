@@ -32,9 +32,9 @@ func NewPostgresRepository(pool *pgxpool.Pool) *PostgresRepository {
 }
 
 const insertPostQuery = `
-INSERT INTO posts (author_id, content, visibility)
-VALUES ($1, $2, $3)
-RETURNING id, author_id, content, visibility, created_at, updated_at
+INSERT INTO posts (author_id, content, visibility, original_post_id)
+VALUES ($1, $2, $3, $4)
+RETURNING id, author_id, content, visibility, original_post_id, created_at, updated_at
 `
 
 // Create inserts a new post and returns the stored row.
@@ -48,17 +48,17 @@ func (r *PostgresRepository) CreateTx(ctx context.Context, q DBTX, in CreateInpu
 }
 
 func insertPost(ctx context.Context, q DBTX, in CreateInput) (*Post, error) {
-	row := q.QueryRow(ctx, insertPostQuery, in.AuthorID, in.Content, in.Visibility)
+	row := q.QueryRow(ctx, insertPostQuery, in.AuthorID, in.Content, in.Visibility, in.OriginalPostID)
 
 	var p Post
-	if err := row.Scan(&p.ID, &p.AuthorID, &p.Content, &p.Visibility, &p.CreatedAt, &p.UpdatedAt); err != nil {
+	if err := row.Scan(&p.ID, &p.AuthorID, &p.Content, &p.Visibility, &p.OriginalPostID, &p.CreatedAt, &p.UpdatedAt); err != nil {
 		return nil, err
 	}
 	return &p, nil
 }
 
 const getPostByIDQuery = `
-SELECT id, author_id, content, visibility, created_at, updated_at
+SELECT id, author_id, content, visibility, original_post_id, created_at, updated_at
 FROM posts
 WHERE id = $1
 `
@@ -68,10 +68,31 @@ func (r *PostgresRepository) GetByID(ctx context.Context, id string) (*Post, err
 	row := r.pool.QueryRow(ctx, getPostByIDQuery, id)
 
 	var p Post
-	if err := row.Scan(&p.ID, &p.AuthorID, &p.Content, &p.Visibility, &p.CreatedAt, &p.UpdatedAt); err != nil {
+	if err := row.Scan(&p.ID, &p.AuthorID, &p.Content, &p.Visibility, &p.OriginalPostID, &p.CreatedAt, &p.UpdatedAt); err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
 			return nil, ErrNotFound
 		}
+		return nil, err
+	}
+	return &p, nil
+}
+
+const insertRepostQuery = `
+INSERT INTO posts (author_id, content, visibility, original_post_id)
+VALUES ($1, NULL, 'public', $2)
+ON CONFLICT (author_id, original_post_id) WHERE original_post_id IS NOT NULL DO NOTHING
+RETURNING id, author_id, content, visibility, original_post_id, created_at, updated_at
+`
+
+func (r *PostgresRepository) CreateRepost(ctx context.Context, authorID, originalPostID string) (*Post, error) {
+	var p Post
+	err := r.pool.QueryRow(ctx, insertRepostQuery, authorID, originalPostID).Scan(
+		&p.ID, &p.AuthorID, &p.Content, &p.Visibility, &p.OriginalPostID, &p.CreatedAt, &p.UpdatedAt,
+	)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return nil, ErrAlreadyShared
+	}
+	if err != nil {
 		return nil, err
 	}
 	return &p, nil
@@ -99,14 +120,14 @@ func (r *PostgresRepository) Update(ctx context.Context, id string, in PostUpdat
 
 	query := fmt.Sprintf(
 		"UPDATE posts SET %s WHERE id = $%d "+
-			"RETURNING id, author_id, content, visibility, created_at, updated_at",
+			"RETURNING id, author_id, content, visibility, original_post_id, created_at, updated_at",
 		strings.Join(set, ", "), i,
 	)
 	args = append(args, id)
 
 	var p Post
 	if err := r.pool.QueryRow(ctx, query, args...).Scan(
-		&p.ID, &p.AuthorID, &p.Content, &p.Visibility, &p.CreatedAt, &p.UpdatedAt,
+		&p.ID, &p.AuthorID, &p.Content, &p.Visibility, &p.OriginalPostID, &p.CreatedAt, &p.UpdatedAt,
 	); err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
 			return nil, ErrNotFound
@@ -128,7 +149,7 @@ func (r *PostgresRepository) Delete(ctx context.Context, id string) error {
 // Feed is a following timeline: own posts plus public/followers posts of
 // followed authors. Block and follow logic reuse the shared SQL fragments.
 var listFeedQuery = `
-SELECT p.id, p.author_id, p.content, p.visibility, p.created_at, p.updated_at,
+SELECT p.id, p.author_id, p.content, p.visibility, p.original_post_id, p.created_at, p.updated_at,
        u.username, u.display_name, u.avatar_url,
        (SELECT count(*) FROM post_likes pl WHERE pl.post_id = p.id) AS likes_count,
        EXISTS (SELECT 1 FROM post_likes plm WHERE plm.post_id = p.id AND plm.user_id = $1) AS liked_by_me,
@@ -165,7 +186,7 @@ func (r *PostgresRepository) ListFeed(ctx context.Context, viewerID string, cur 
 	for rows.Next() {
 		var it FeedItem
 		if err := rows.Scan(
-			&it.ID, &it.AuthorID, &it.Content, &it.Visibility, &it.CreatedAt, &it.UpdatedAt,
+			&it.ID, &it.AuthorID, &it.Content, &it.Visibility, &it.OriginalPostID, &it.CreatedAt, &it.UpdatedAt,
 			&it.AuthorUsername, &it.AuthorDisplayName, &it.AuthorAvatarURL,
 			&it.LikesCount, &it.LikedByMe, &it.CommentsCount,
 		); err != nil {
@@ -181,7 +202,7 @@ func (r *PostgresRepository) ListFeed(ctx context.Context, viewerID string, cur 
 // fragment; ordering matches the feed (created_at DESC, id DESC) for a stable
 // keyset. Same columns/scan as the feed.
 var listDiscoverQuery = `
-SELECT p.id, p.author_id, p.content, p.visibility, p.created_at, p.updated_at,
+SELECT p.id, p.author_id, p.content, p.visibility, p.original_post_id, p.created_at, p.updated_at,
        u.username, u.display_name, u.avatar_url,
        (SELECT count(*) FROM post_likes pl WHERE pl.post_id = p.id) AS likes_count,
        EXISTS (SELECT 1 FROM post_likes plm WHERE plm.post_id = p.id AND plm.user_id = $1) AS liked_by_me,
@@ -217,7 +238,7 @@ func (r *PostgresRepository) ListDiscover(ctx context.Context, viewerID string, 
 	for rows.Next() {
 		var it FeedItem
 		if err := rows.Scan(
-			&it.ID, &it.AuthorID, &it.Content, &it.Visibility, &it.CreatedAt, &it.UpdatedAt,
+			&it.ID, &it.AuthorID, &it.Content, &it.Visibility, &it.OriginalPostID, &it.CreatedAt, &it.UpdatedAt,
 			&it.AuthorUsername, &it.AuthorDisplayName, &it.AuthorAvatarURL,
 			&it.LikesCount, &it.LikedByMe, &it.CommentsCount,
 		); err != nil {
@@ -233,7 +254,7 @@ func (r *PostgresRepository) ListDiscover(ctx context.Context, viewerID string, 
 // viewerID; an authenticated viewer can additionally see their own private
 // posts and follower-only posts from accounts they follow.
 var listTopicPostsQuery = `
-SELECT p.id, p.author_id, p.content, p.visibility, p.created_at, p.updated_at,
+SELECT p.id, p.author_id, p.content, p.visibility, p.original_post_id, p.created_at, p.updated_at,
        u.username, u.display_name, u.avatar_url,
        (SELECT count(*) FROM post_likes pl WHERE pl.post_id = p.id) AS likes_count,
        EXISTS (SELECT 1 FROM post_likes plm WHERE plm.post_id = p.id AND plm.user_id = $1) AS liked_by_me,
@@ -276,7 +297,7 @@ func (r *PostgresRepository) ListTopicPosts(ctx context.Context, viewerID *strin
 	for rows.Next() {
 		var it FeedItem
 		if err := rows.Scan(
-			&it.ID, &it.AuthorID, &it.Content, &it.Visibility, &it.CreatedAt, &it.UpdatedAt,
+			&it.ID, &it.AuthorID, &it.Content, &it.Visibility, &it.OriginalPostID, &it.CreatedAt, &it.UpdatedAt,
 			&it.AuthorUsername, &it.AuthorDisplayName, &it.AuthorAvatarURL,
 			&it.LikesCount, &it.LikedByMe, &it.CommentsCount,
 		); err != nil {

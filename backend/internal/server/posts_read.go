@@ -223,14 +223,15 @@ func feedItemToResponse(it post.FeedItem) postResponse {
 			DisplayName: it.AuthorDisplayName,
 			AvatarURL:   it.AuthorAvatarURL,
 		},
-		Content:       it.Content,
-		Visibility:    it.Visibility,
-		CreatedAt:     it.CreatedAt.Format(time.RFC3339),
-		UpdatedAt:     it.UpdatedAt.Format(time.RFC3339),
-		LikesCount:    it.LikesCount,
-		LikedByMe:     it.LikedByMe,
-		CommentsCount: it.CommentsCount,
-		Media:         []mediaResponse{},
+		Content:        it.Content,
+		Visibility:     it.Visibility,
+		CreatedAt:      it.CreatedAt.Format(time.RFC3339),
+		UpdatedAt:      it.UpdatedAt.Format(time.RFC3339),
+		LikesCount:     it.LikesCount,
+		LikedByMe:      it.LikedByMe,
+		CommentsCount:  it.CommentsCount,
+		Media:          []mediaResponse{},
+		OriginalPostID: it.OriginalPostID,
 	}
 }
 

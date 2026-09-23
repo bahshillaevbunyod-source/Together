@@ -48,13 +48,17 @@ func (q fakeQueryer) QueryRow(_ context.Context, sql string, args ...any) pgx.Ro
 
 func allPresent() map[string]bool {
 	return map[string]bool{
-		"col:users.platform_language":      true,
-		"col:users.preferred_language":     true,
-		"col:users.auto_translate_enabled": true,
-		"col:users.is_private":             true,
-		"tbl:follow_requests":              true,
-		"tbl:stories":                      true,
-		"tbl:story_views":                  true,
+		"col:users.platform_language":             true,
+		"col:users.preferred_language":            true,
+		"col:users.auto_translate_enabled":        true,
+		"col:users.is_private":                    true,
+		"col:messages.source_language":            true,
+		"col:messages.source_language_confidence": true,
+		"col:messages.source_language_resolution": true,
+		"col:posts.original_post_id":              true,
+		"tbl:follow_requests":                     true,
+		"tbl:stories":                             true,
+		"tbl:story_views":                         true,
 	}
 }
 

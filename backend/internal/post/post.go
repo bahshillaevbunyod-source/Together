@@ -8,6 +8,7 @@ import (
 
 // ErrNotFound is returned when a post does not exist.
 var ErrNotFound = errors.New("post not found")
+var ErrAlreadyShared = errors.New("post already shared")
 
 // Visibility values allowed by the posts_visibility_valid constraint.
 const (
@@ -18,20 +19,22 @@ const (
 
 // Post mirrors a row in the `posts` table.
 type Post struct {
-	ID         string
-	AuthorID   string
-	Content    *string // nullable: a post may be media-only
-	Visibility string
-	CreatedAt  time.Time
-	UpdatedAt  time.Time
+	ID             string
+	AuthorID       string
+	Content        *string // nullable: a post may be media-only
+	Visibility     string
+	OriginalPostID *string
+	CreatedAt      time.Time
+	UpdatedAt      time.Time
 }
 
 // CreateInput carries the validated fields to create a post. AuthorID always
 // comes from the authenticated user, never from the request body.
 type CreateInput struct {
-	AuthorID   string
-	Content    *string // nullable: media-only posts have no text
-	Visibility string
+	AuthorID       string
+	Content        *string // nullable: media-only posts have no text
+	Visibility     string
+	OriginalPostID *string
 }
 
 // PostUpdate is a validated partial update of a post. A nil field is left
@@ -59,6 +62,7 @@ type FeedItem struct {
 	AuthorID          string
 	Content           *string // nullable: a post may be media-only
 	Visibility        string
+	OriginalPostID    *string
 	CreatedAt         time.Time
 	UpdatedAt         time.Time
 	AuthorUsername    string

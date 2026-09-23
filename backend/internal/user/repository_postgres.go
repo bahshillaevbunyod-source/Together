@@ -261,9 +261,10 @@ func (r *PostgresRepository) SearchUsers(ctx context.Context, viewerID, query st
 }
 
 // discoverCandidate is the shared inner SELECT: it excludes the viewer ($1), any
-// block relationship (either direction) and users the viewer already follows,
-// and computes a real follower count per candidate. $2 = viewer country, $3 =
-// viewer language, $4 = optional world country filter (empty string = no filter).
+// block relationship (either direction), users the viewer already follows, and
+// users with an outgoing pending request from the viewer. It computes a real
+// follower count per candidate. $2 = viewer country, $3 = viewer language, $4 =
+// optional world country filter (empty string = no filter).
 // The mode-specific outer query adds keyset predicates and ORDER BY.
 const discoverCandidate = `
 SELECT u.id, u.username, u.display_name, u.avatar_url, u.country_code, u.city,
@@ -279,6 +280,10 @@ WHERE u.id <> $1
   AND NOT EXISTS (
     SELECT 1 FROM follows fol
     WHERE fol.follower_id = $1 AND fol.following_id = u.id
+  )
+  AND NOT EXISTS (
+    SELECT 1 FROM follow_requests fr
+    WHERE fr.requester_id = $1 AND fr.target_id = u.id
   )`
 
 // The 11 output columns, in the order every mode selects and Scan reads them.
