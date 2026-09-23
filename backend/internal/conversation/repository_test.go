@@ -464,10 +464,40 @@ func TestCreateMessageBeginErrorSafe(t *testing.T) {
 	}
 }
 
+func TestCreateMessageWithAttachmentAllowsAttachmentOnly(t *testing.T) {
+	tx := &fakeTx{recipient: ptr("u2")}
+	repo, beginner := newRepo(tx)
+	m, recipient, err := repo.CreateMessageWithAttachment(context.Background(), "conv-1", "u1", "", Attachment{StorageKey: "users/u1/private/a.pdf", Filename: "report.pdf", Type: "file", MimeType: "application/pdf", SizeBytes: 42})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if recipient != "u2" || m.Content != "" || m.Attachment == nil || m.Attachment.Filename != "report.pdf" {
+		t.Fatalf("unexpected attachment message: %+v", m)
+	}
+	if !beginner.tx.committed || !strings.Contains(tx.execSQL, "conversations") {
+		t.Fatal("attachment message must commit its transaction")
+	}
+}
+
+func TestCreateMessageWithAttachmentAllowsTextAndAttachment(t *testing.T) {
+	tx := &fakeTx{recipient: ptr("u2")}
+	repo, _ := newRepo(tx)
+	m, _, err := repo.CreateMessageWithAttachment(context.Background(), "conv-1", "u1", "caption", Attachment{StorageKey: "users/u1/private/a.png", Filename: "photo.png", Type: "image", MimeType: "image/png", SizeBytes: 42})
+	if err != nil || m.Content != "caption" || m.Attachment == nil {
+		t.Fatalf("text plus attachment should persist: %+v %v", m, err)
+	}
+}
+
+func TestUpdateMessageEmptyTextRequiresAttachmentRelation(t *testing.T) {
+	if !strings.Contains(updateMessageQuery, "message_attachments") || !strings.Contains(updateMessageQuery, "length(btrim($3)) > 0") {
+		t.Fatal("empty-text edit must be guarded by the persisted attachment relation")
+	}
+}
+
 // ---- ListMessages ----
 
 func msgRow(id, sender, content string, t time.Time) []any {
-	return []any{id, sender, content, t, t, nil, nil, nil, nil}
+	return []any{id, sender, content, t, t, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil}
 }
 
 func TestListMessagesSuccess(t *testing.T) {

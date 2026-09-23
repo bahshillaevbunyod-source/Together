@@ -62,6 +62,7 @@ func allPresent() map[string]bool {
 		"tbl:follow_requests":                     true,
 		"tbl:stories":                             true,
 		"tbl:story_views":                         true,
+		"tbl:message_attachments":                 true,
 	}
 }
 

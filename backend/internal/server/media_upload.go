@@ -18,6 +18,7 @@ const (
 	maxUploadBodyBytes = 1 << 20 // 1 MiB (metadata only)
 	maxImageBytes      = 15 << 20
 	maxVideoBytes      = 200 << 20
+	maxFileBytes       = 25 << 20
 )
 
 // allowed mime -> safe file extension, per media type.
@@ -30,6 +31,13 @@ var imageMimeExt = map[string]string{
 var videoMimeExt = map[string]string{
 	"video/mp4":  "mp4",
 	"video/webm": "webm",
+}
+
+var fileMimeExt = map[string]string{
+	"application/pdf": "pdf",
+	"text/plain":      "txt",
+	"text/csv":        "csv",
+	"application/zip": "zip",
 }
 
 type uploadURLRequest struct {
@@ -228,6 +236,12 @@ func allowedExtension(mediaType, mimeType string, sizeBytes int64) (string, bool
 	case media.TypeVideo:
 		ext, ok := videoMimeExt[mimeType]
 		if !ok || sizeBytes > maxVideoBytes {
+			return "", false
+		}
+		return ext, true
+	case "file":
+		ext, ok := fileMimeExt[mimeType]
+		if !ok || sizeBytes > maxFileBytes {
 			return "", false
 		}
 		return ext, true

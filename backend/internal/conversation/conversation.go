@@ -20,9 +20,10 @@ var (
 	// ErrContentTooLong is returned when a message exceeds the length limit.
 	ErrContentTooLong = errors.New("conversation: message content is too long")
 	// ErrBlocked is returned when either participant blocks the other.
-	ErrBlocked         = errors.New("conversation: messaging is blocked")
-	ErrMessageNotFound = errors.New("conversation: message not found")
-	ErrNotMessageOwner = errors.New("conversation: message is not owned by user")
+	ErrBlocked           = errors.New("conversation: messaging is blocked")
+	ErrMessageNotFound   = errors.New("conversation: message not found")
+	ErrNotMessageOwner   = errors.New("conversation: message is not owned by user")
+	ErrInvalidAttachment = errors.New("conversation: invalid attachment")
 )
 
 // Conversation mirrors a row in the `conversations` table. Members are stored
@@ -47,6 +48,18 @@ type Message struct {
 	SourceLanguage           *string
 	SourceLanguageConfidence *float64
 	SourceLanguageResolution *string
+	Attachment               *Attachment
+}
+
+type Attachment struct {
+	ID         string
+	MessageID  string
+	StorageKey string
+	Filename   string
+	Type       string
+	MimeType   string
+	SizeBytes  int64
+	CreatedAt  time.Time
 }
 
 // MessageCursor is a stable keyset position: a message's created_at plus id.

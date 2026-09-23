@@ -87,6 +87,9 @@ func (s *Server) validateUploadedObject(ctx context.Context, userID, storageKey 
 	if mediaType == media.TypeVideo && info.SizeBytes > maxVideoBytes {
 		return nil, errUnsupportedMedia
 	}
+	if mediaType == "file" && info.SizeBytes > maxFileBytes {
+		return nil, errUnsupportedMedia
+	}
 
 	return &validatedMedia{
 		StorageKey: storageKey,
@@ -103,6 +106,9 @@ func mediaTypeForMime(mime string) (string, bool) {
 	}
 	if _, ok := videoMimeExt[mime]; ok {
 		return media.TypeVideo, true
+	}
+	if _, ok := fileMimeExt[mime]; ok {
+		return "file", true
 	}
 	return "", false
 }

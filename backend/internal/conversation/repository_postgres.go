@@ -197,12 +197,64 @@ func (r *PostgresRepository) CreateMessage(ctx context.Context, conversationID, 
 	return &m, *recipient, nil
 }
 
+const insertMessageAttachmentQuery = `
+INSERT INTO message_attachments (message_id, storage_key, filename, type, mime_type, size_bytes)
+VALUES ($1, $2, $3, $4, $5, $6)
+`
+
+func (r *PostgresRepository) CreateMessageWithAttachment(ctx context.Context, conversationID, senderID, content string, attachment Attachment) (*Message, string, error) {
+	content = strings.TrimSpace(content)
+	if content != "" && utf8.RuneCountInString(content) > maxMessageContentRunes {
+		return nil, "", ErrContentTooLong
+	}
+	tx, err := r.db.Begin(ctx)
+	if err != nil {
+		return nil, "", err
+	}
+	defer tx.Rollback(ctx)
+	var recipient *string
+	if err := tx.QueryRow(ctx, otherParticipantQuery, conversationID, senderID).Scan(&recipient); err != nil || recipient == nil {
+		if err == nil || errors.Is(err, pgx.ErrNoRows) {
+			return nil, "", ErrNotParticipant
+		}
+		return nil, "", err
+	}
+	var blocked bool
+	if err := tx.QueryRow(ctx, hasBlockBetweenQuery, senderID, *recipient).Scan(&blocked); err != nil {
+		return nil, "", err
+	}
+	if blocked {
+		return nil, "", ErrBlocked
+	}
+	if attachment.Filename == "" || attachment.StorageKey == "" || attachment.SizeBytes <= 0 {
+		return nil, "", ErrInvalidAttachment
+	}
+	var m Message
+	if err := tx.QueryRow(ctx, `INSERT INTO messages (conversation_id, sender_id, content) VALUES ($1,$2,$3) RETURNING id, conversation_id, sender_id, content, created_at`, conversationID, senderID, content).Scan(&m.ID, &m.ConversationID, &m.SenderID, &m.Content, &m.CreatedAt); err != nil {
+		return nil, "", err
+	}
+	attachment.MessageID = m.ID
+	if _, err := tx.Exec(ctx, insertMessageAttachmentQuery, attachment.MessageID, attachment.StorageKey, attachment.Filename, attachment.Type, attachment.MimeType, attachment.SizeBytes); err != nil {
+		return nil, "", err
+	}
+	if _, err := tx.Exec(ctx, touchConversationQuery, conversationID); err != nil {
+		return nil, "", err
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return nil, "", err
+	}
+	m.Attachment = &attachment
+	return &m, *recipient, nil
+}
+
 // listMessagesQuery returns a conversation's messages newest-first, keyset
 // paginated. conversation_id is a constant here, so there is no per-row lookup.
 const listMessagesQuery = `
 SELECT m.id, m.sender_id, m.content, m.created_at, m.updated_at, m.deleted_at,
-       m.source_language, m.source_language_confidence, m.source_language_resolution
+       m.source_language, m.source_language_confidence, m.source_language_resolution,
+       a.id, a.storage_key, a.filename, a.type, a.mime_type, a.size_bytes, a.created_at
 FROM messages m
+LEFT JOIN message_attachments a ON a.message_id = m.id
 WHERE m.conversation_id = $1
   AND ($2::timestamptz IS NULL
        OR m.created_at < $2
@@ -238,11 +290,18 @@ func (r *PostgresRepository) ListMessages(ctx context.Context, conversationID, u
 	items := make([]Message, 0, limit)
 	for rows.Next() {
 		m := Message{ConversationID: conversationID}
+		var attachmentID, attachmentKey, attachmentName, attachmentType, attachmentMime *string
+		var attachmentSize *int64
+		var attachmentCreated *time.Time
 		if err := rows.Scan(
 			&m.ID, &m.SenderID, &m.Content, &m.CreatedAt, &m.UpdatedAt, &m.DeletedAt,
 			&m.SourceLanguage, &m.SourceLanguageConfidence, &m.SourceLanguageResolution,
+			&attachmentID, &attachmentKey, &attachmentName, &attachmentType, &attachmentMime, &attachmentSize, &attachmentCreated,
 		); err != nil {
 			return nil, err
+		}
+		if attachmentID != nil && attachmentKey != nil && attachmentName != nil && attachmentType != nil && attachmentMime != nil && attachmentSize != nil && attachmentCreated != nil {
+			m.Attachment = &Attachment{ID: *attachmentID, MessageID: m.ID, StorageKey: *attachmentKey, Filename: *attachmentName, Type: *attachmentType, MimeType: *attachmentMime, SizeBytes: *attachmentSize, CreatedAt: *attachmentCreated}
 		}
 		items = append(items, m)
 	}
@@ -285,6 +344,7 @@ const updateMessageQuery = `
 UPDATE messages
 SET content = $3, updated_at = now(), source_language = NULL, source_language_confidence = NULL, source_language_resolution = NULL
 WHERE id = $1 AND sender_id = $2 AND deleted_at IS NULL
+  AND (length(btrim($3)) > 0 OR EXISTS (SELECT 1 FROM message_attachments a WHERE a.message_id = messages.id))
 RETURNING id, conversation_id, sender_id, content, created_at, updated_at, deleted_at
 `
 
@@ -307,6 +367,11 @@ func (r *PostgresRepository) UpdateMessage(ctx context.Context, messageID, sende
 			return nil, "", ErrMessageNotFound
 		}
 		return nil, "", err
+	}
+	var attachment Attachment
+	if err := tx.QueryRow(ctx, `SELECT id, storage_key, filename, type, mime_type, size_bytes, created_at FROM message_attachments WHERE message_id=$1`, m.ID).Scan(&attachment.ID, &attachment.StorageKey, &attachment.Filename, &attachment.Type, &attachment.MimeType, &attachment.SizeBytes, &attachment.CreatedAt); err == nil {
+		attachment.MessageID = m.ID
+		m.Attachment = &attachment
 	}
 	var recipient *string
 	if err := tx.QueryRow(ctx, otherParticipantQuery, m.ConversationID, senderID).Scan(&recipient); err != nil || recipient == nil {

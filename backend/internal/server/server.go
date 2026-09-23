@@ -228,7 +228,7 @@ func (s *Server) withCORS(next http.Handler) http.Handler {
 
 		if r.Method == http.MethodOptions {
 			if allowed {
-				w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS")
+				w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS")
 				w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 				w.Header().Set("Access-Control-Max-Age", "600")
 			}

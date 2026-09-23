@@ -574,7 +574,10 @@ export interface ApiMessage {
   translatedContent: string | null;
   sourceLanguage: string | null;
   targetLanguage: string | null;
+	attachment: ApiMessageAttachment | null;
 }
+
+export interface ApiMessageAttachment { id: string; filename: string; type: "image" | "file"; mimeType: string; sizeBytes: number; url: string; }
 
 export interface ApiMessageSearchResult extends ApiMessage {
 	conversationId: string;
@@ -619,11 +622,20 @@ export function markConversationRead(conversationId: string): Promise<void> {
 export function sendMessage(
   conversationId: string,
   content: string,
+  attachment?: { storageKey: string; filename: string },
 ): Promise<ApiMessage> {
   return apiFetch<ApiMessage>(
     `/api/v1/conversations/${conversationId}/messages`,
-    { method: "POST", body: { content } },
+    { method: "POST", body: { content, ...(attachment ? { attachment } : {}) } },
   );
+}
+
+export async function uploadMessageAttachment(file: File): Promise<{ storageKey: string; filename: string }> {
+	const type = file.type.startsWith("image/") ? "image" : "file";
+	const upload = await requestMediaUploadUrl({ type, mimeType: file.type, sizeBytes: file.size, purpose: "post", visibility: "private" });
+	await uploadFileToPresignedUrl(upload.uploadUrl, file);
+	await confirmMediaUpload(upload.storageKey);
+	return { storageKey: upload.storageKey, filename: file.name };
 }
 
 export function updateMessage(messageId: string, content: string): Promise<ApiMessage> {
@@ -949,7 +961,7 @@ export function deleteStory(id: string): Promise<{ deleted: boolean }> {
 
 /** Ask the backend for a presigned upload URL for one image. */
 export interface MediaUploadUrlInput {
-  type: "image" | "video";
+  type: "image" | "video" | "file";
   mimeType: string;
   sizeBytes: number;
   /**

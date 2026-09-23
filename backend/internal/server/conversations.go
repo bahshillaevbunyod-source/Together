@@ -6,8 +6,10 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"path/filepath"
 	"strings"
 	"time"
+	"unicode"
 
 	"together/backend/internal/conversation"
 	"together/backend/internal/translation"
@@ -17,7 +19,21 @@ import (
 const maxMessageBodyBytes = 1 << 20 // 1 MiB
 
 type createMessageRequest struct {
-	Content string `json:"content"`
+	Content    string                          `json:"content"`
+	Attachment *createMessageAttachmentRequest `json:"attachment"`
+}
+
+type createMessageAttachmentRequest struct {
+	StorageKey string `json:"storageKey"`
+	Filename   string `json:"filename"`
+}
+type messageAttachmentResponse struct {
+	ID        string `json:"id"`
+	Filename  string `json:"filename"`
+	Type      string `json:"type"`
+	MimeType  string `json:"mimeType"`
+	SizeBytes int64  `json:"sizeBytes"`
+	URL       string `json:"url"`
 }
 
 type muteConversationRequest struct {
@@ -25,12 +41,13 @@ type muteConversationRequest struct {
 }
 
 type messageResponse struct {
-	ID        string  `json:"id"`
-	SenderID  string  `json:"senderId"`
-	Content   string  `json:"content"`
-	CreatedAt string  `json:"createdAt"`
-	UpdatedAt string  `json:"updatedAt"`
-	DeletedAt *string `json:"deletedAt"`
+	ID         string                     `json:"id"`
+	SenderID   string                     `json:"senderId"`
+	Content    string                     `json:"content"`
+	CreatedAt  string                     `json:"createdAt"`
+	UpdatedAt  string                     `json:"updatedAt"`
+	DeletedAt  *string                    `json:"deletedAt"`
+	Attachment *messageAttachmentResponse `json:"attachment"`
 
 	// Translation fields are null unless the viewer opted in and a translation
 	// succeeded. Content always holds the original, untranslated text.
@@ -276,12 +293,37 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 			SourceLanguage:           m.SourceLanguage,
 			SourceLanguageConfidence: m.SourceLanguageConfidence,
 			SourceLanguageResolution: m.SourceLanguageResolution,
+			Attachment:               s.messageAttachmentResponse(r.Context(), m.Attachment),
 		}
 		s.applyTranslation(r.Context(), &resp, m.Content, targetLang)
 		items = append(items, resp)
 	}
 
 	writeJSON(w, http.StatusOK, messageListResponse{Items: items, NextCursor: next})
+}
+
+func (s *Server) messageAttachmentResponse(ctx context.Context, a *conversation.Attachment) *messageAttachmentResponse {
+	if a == nil {
+		return nil
+	}
+	return &messageAttachmentResponse{ID: a.ID, Filename: a.Filename, Type: a.Type, MimeType: a.MimeType, SizeBytes: a.SizeBytes, URL: s.mediaURLForKey(ctx, a.StorageKey)}
+}
+
+func safeAttachmentFilename(raw string) string {
+	name := strings.TrimSpace(filepath.Base(raw))
+	if name == "." || name == "" {
+		return "attachment"
+	}
+	name = strings.Map(func(r rune) rune {
+		if unicode.IsControl(r) {
+			return -1
+		}
+		return r
+	}, name)
+	if len([]rune(name)) > 255 {
+		name = string([]rune(name)[:255])
+	}
+	return name
 }
 
 type messageSearchResponse struct {
@@ -458,7 +500,19 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 	// Content validation (trim / empty / length) and membership live in the
 	// repository; sender is always the authenticated user, and the recipient is
 	// resolved server-side (never from the client).
-	m, recipientID, err := s.conversations.CreateMessage(r.Context(), id, me.ID, req.Content)
+	var m *conversation.Message
+	var recipientID string
+	var err error
+	if req.Attachment != nil {
+		confirmed, confirmErr := s.validateUploadedObject(r.Context(), me.ID, req.Attachment.StorageKey, "uploads", "private")
+		if confirmErr != nil {
+			writeError(w, http.StatusBadRequest, "invalid attachment")
+			return
+		}
+		m, recipientID, err = s.conversations.CreateMessageWithAttachment(r.Context(), id, me.ID, req.Content, conversation.Attachment{StorageKey: confirmed.StorageKey, Filename: safeAttachmentFilename(req.Attachment.Filename), Type: confirmed.Type, MimeType: confirmed.MimeType, SizeBytes: confirmed.SizeBytes, CreatedAt: time.Now()})
+	} else {
+		m, recipientID, err = s.conversations.CreateMessage(r.Context(), id, me.ID, req.Content)
+	}
 	if err != nil {
 		switch {
 		case errors.Is(err, conversation.ErrEmptyContent), errors.Is(err, conversation.ErrContentTooLong):
@@ -483,6 +537,7 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 		SourceLanguage:           m.SourceLanguage,
 		SourceLanguageConfidence: m.SourceLanguageConfidence,
 		SourceLanguageResolution: m.SourceLanguageResolution,
+		Attachment:               s.messageAttachmentResponse(r.Context(), m.Attachment),
 	}
 
 	// The DB is the source of truth; realtime delivery happens only after a
@@ -534,7 +589,7 @@ func (s *Server) handleUpdateMessage(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-	resp := messageResponse{ID: m.ID, SenderID: m.SenderID, Content: m.Content, CreatedAt: m.CreatedAt.Format(time.RFC3339), UpdatedAt: m.UpdatedAt.Format(time.RFC3339)}
+	resp := messageResponse{ID: m.ID, SenderID: m.SenderID, Content: m.Content, CreatedAt: m.CreatedAt.Format(time.RFC3339), UpdatedAt: m.UpdatedAt.Format(time.RFC3339), Attachment: s.messageAttachmentResponse(r.Context(), m.Attachment)}
 	s.publishMessageUpdated(r.Context(), m.ConversationID, me.ID, recipientID, resp)
 	s.applyTranslation(r.Context(), &resp, resp.Content, translationTarget(me))
 	writeJSON(w, http.StatusOK, resp)

@@ -36,9 +36,10 @@ var requiredColumns = []struct{ table, column string }{
 
 // requiredTables are tables the application depends on from later migrations.
 var requiredTables = []string{
-	"follow_requests", // 000019
-	"stories",         // 000021
-	"story_views",     // 000022
+	"follow_requests",     // 000019
+	"stories",             // 000021
+	"story_views",         // 000022
+	"message_attachments", // 000027
 }
 
 // Verify returns the list of missing required schema objects (human-readable

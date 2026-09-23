@@ -63,6 +63,11 @@ func (f *fakeConversationRepo) CreateMessage(_ context.Context, conversationID, 
 	return f.message, recipient, nil
 }
 
+func (f *fakeConversationRepo) CreateMessageWithAttachment(_ context.Context, conversationID, senderID, content string, attachment conversation.Attachment) (*conversation.Message, string, error) {
+	f.message = &conversation.Message{ID: "m-attachment", ConversationID: conversationID, SenderID: senderID, Content: strings.TrimSpace(content), CreatedAt: time.Now(), Attachment: &attachment}
+	return f.message, "u2", nil
+}
+
 func (f *fakeConversationRepo) SetMessageLanguageMetadata(_ context.Context, _ string, _ string, language *string, confidence *float64, resolution string) error {
 	f.metadataCalls++
 	f.metadataLanguage = language
@@ -752,6 +757,15 @@ func TestCreateMessageSuccess(t *testing.T) {
 	}
 }
 
+func TestAttachmentOnlySkipsLanguageDetection(t *testing.T) {
+	resolver := &fakeLanguageResolver{}
+	s := newServer(config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin}, fakePinger{}, &fakeUserRepo{byID: map[string]*user.User{"me-id": mkUser("me-id", "me_user")}}, activeSession("me-id"), &fakeFollowRepo{}, &fakeBlockRepo{}, &fakePostRepo{}, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{}, &fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{}, &fakeLikeNotifier{}, &fakeCommentNotifier{}, &fakeConversationRepo{}, resolver)
+	s.resolveCreatedMessageLanguage(context.Background(), &conversation.Message{Content: ""}, "me-id")
+	if resolver.calls != 0 {
+		t.Fatalf("attachment-only message invoked detector %d times", resolver.calls)
+	}
+}
+
 type fakeLanguageResolver struct {
 	resolution translation.LanguageResolution
 	err        error
@@ -1076,6 +1090,25 @@ func TestRealtimeRecipientReceivesEvent(t *testing.T) {
 		}
 	case <-time.After(time.Second):
 		t.Fatal("recipient did not receive the event")
+	}
+}
+
+func TestRealtimeAttachmentPayloadUsesPersistedMetadata(t *testing.T) {
+	s := convDeliveryServer(&fakeConversationRepo{})
+	recipient := realtime.NewClient("u2", 2)
+	s.hub.Register(recipient)
+	s.publishMessageCreated(context.Background(), validPostID, "u2", messageResponse{ID: "m1", SenderID: "me-id", Content: "", CreatedAt: time.Now().Format(time.RFC3339), Attachment: &messageAttachmentResponse{ID: "a1", Filename: "report.pdf", Type: "file", MimeType: "application/pdf", SizeBytes: 42, URL: "https://signed.example/file"}})
+	raw := <-recipient.Send()
+	var ev struct {
+		Data struct {
+			Attachment *messageAttachmentResponse `json:"attachment"`
+		} `json:"data"`
+	}
+	if err := json.Unmarshal(raw, &ev); err != nil {
+		t.Fatal(err)
+	}
+	if ev.Data.Attachment == nil || ev.Data.Attachment.Filename != "report.pdf" || ev.Data.Attachment.SizeBytes != 42 {
+		t.Fatalf("attachment metadata missing from realtime payload: %+v", ev.Data.Attachment)
 	}
 }
 

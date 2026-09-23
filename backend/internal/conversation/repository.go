@@ -19,6 +19,7 @@ type Repository interface {
 	// length limit. Returns the stored message and the other participant's id
 	// (the recipient), both derived server-side.
 	CreateMessage(ctx context.Context, conversationID, senderID, content string) (*Message, string, error)
+	CreateMessageWithAttachment(ctx context.Context, conversationID, senderID, content string, attachment Attachment) (*Message, string, error)
 	// SetMessageLanguageMetadata persists source-language metadata only for the message sender.
 	SetMessageLanguageMetadata(
 		ctx context.Context,

@@ -27,6 +27,29 @@ func TestValidateUploadedObjectImage(t *testing.T) {
 	}
 }
 
+func TestValidateUploadedObjectFile(t *testing.T) {
+	sr := &fakeStorageRepo{headInfo: &storage.ObjectInfo{ContentType: "application/pdf", SizeBytes: 2048}}
+	got, err := validateServer(sr).validateUploadedObject(context.Background(), "me-id", "users/me-id/private/report.pdf", "private")
+	if err != nil || got.Type != "file" {
+		t.Fatalf("expected validated file, got=%+v err=%v", got, err)
+	}
+}
+
+func TestAttachmentUploadPolicy(t *testing.T) {
+	if ext, ok := allowedExtension("image", "image/png", 100); !ok || ext != "png" {
+		t.Fatal("png image should be accepted")
+	}
+	if ext, ok := allowedExtension("file", "application/pdf", 100); !ok || ext != "pdf" {
+		t.Fatal("pdf file should be accepted")
+	}
+	if _, ok := allowedExtension("file", "application/x-msdownload", 100); ok {
+		t.Fatal("executable MIME must be rejected")
+	}
+	if _, ok := allowedExtension("file", "application/pdf", maxFileBytes+1); ok {
+		t.Fatal("oversized file must be rejected")
+	}
+}
+
 func TestValidateUploadedObjectVideo(t *testing.T) {
 	sr := &fakeStorageRepo{headInfo: &storage.ObjectInfo{ContentType: "video/mp4", SizeBytes: 1 << 20}}
 	got, err := validateServer(sr).validateUploadedObject(context.Background(), "me-id", "users/me-id/uploads/v.mp4", "uploads")

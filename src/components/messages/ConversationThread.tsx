@@ -1,13 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
-import { Send } from "lucide-react";
+import { Paperclip, Send } from "lucide-react";
 
 import {
   getMessages,
   markConversationRead,
   sendMessage,
+	uploadMessageAttachment,
 	updateMessage,
 	deleteMessage,
   type ApiMessage,
@@ -44,6 +46,9 @@ export function ConversationThread({
   const [text, setText] = useState("");
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
+	const [attachment, setAttachment] = useState<File | null>(null);
+	const [uploading, setUploading] = useState(false);
+	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	const { subscribeMessageCreated, subscribeMessageUpdated, subscribeMessageDeleted } = useRealtime();
   const { t } = useLanguage();
@@ -125,6 +130,7 @@ export function ConversationThread({
         createdAt: event.createdAt,
 		updatedAt: event.updatedAt ?? event.createdAt,
 		deletedAt: null,
+		attachment: null,
         translatedContent: event.translatedContent,
         sourceLanguage: event.sourceLanguage,
         targetLanguage: event.targetLanguage,
@@ -154,26 +160,30 @@ export function ConversationThread({
 		return () => { stopUpdated(); stopDeleted(); };
 	}, [subscribeMessageUpdated, subscribeMessageDeleted, conversationId]);
 
-  const canSend = text.trim().length > 0 && !sending;
+  const canSend = (text.trim().length > 0 || attachment !== null) && !sending && !uploading;
 
-  const onSend = async (e: React.FormEvent) => {
+	const onSend = async (e: React.FormEvent) => {
     e.preventDefault();
     const content = text.trim();
-    if (!content || sending) return; // trim + empty guard + duplicate-submit guard
+	if ((!content && !attachment) || sending) return; // trim + empty guard + duplicate-submit guard
 
     setSending(true);
     setSendError(null);
     try {
-      const created = await sendMessage(conversationId, content);
+      let uploaded: { storageKey: string; filename: string } | undefined;
+		if (attachment) { setUploading(true); uploaded = await uploadMessageAttachment(attachment); setUploading(false); }
+		const created = await sendMessage(conversationId, content, uploaded);
       // Append only the real server response (no optimistic fake message).
       seenIdsRef.current.add(created.id);
       setMessages((prev) => [...prev, created]);
       setText(""); // clear only on success
+		setAttachment(null);
       onSent?.(conversationId, created);
       scrollToBottom();
     } catch {
       setSendError(t("messages.sendError")); // keep input on failure
     } finally {
+      setUploading(false);
       setSending(false);
     }
   };
@@ -243,7 +253,10 @@ export function ConversationThread({
             {sendError}
           </p>
         ) : null}
+        {attachment ? <div className="mb-2 flex items-center gap-2 text-xs text-muted"><span className="truncate">{attachment.name}</span><button type="button" onClick={() => setAttachment(null)} className="text-primary underline">Remove</button></div> : null}
         <form onSubmit={onSend} className="flex items-center gap-2">
+          <input ref={fileInputRef} type="file" accept="image/jpeg,image/png,image/webp,application/pdf,text/plain,text/csv,application/zip" className="hidden" onChange={(e) => { const file = e.target.files?.[0] ?? null; setAttachment(file); e.currentTarget.value = ""; }} />
+          <button type="button" aria-label="Attach file" onClick={() => fileInputRef.current?.click()} disabled={sending || uploading} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-background hover:text-foreground disabled:opacity-50"><Paperclip className="h-4 w-4" /></button>
           <input
             type="text"
             value={text}
@@ -309,7 +322,8 @@ function MessageBubble({
           mine ? "bg-primary text-white" : "bg-background text-foreground"
         }`}
       >
-		{editing ? <div className="flex gap-1"><input value={draft} onChange={(e) => setDraft(e.target.value)} className="min-w-0 flex-1 rounded bg-white/20 px-2 py-1 text-sm" /><button type="button" onClick={save} disabled={saving} className="text-xs underline">Save</button><button type="button" onClick={() => { setDraft(message.content); setEditing(false); }} className="text-xs underline">Cancel</button></div> : <p className="whitespace-pre-wrap break-words text-sm">{primary}</p>}
+		{message.attachment ? <div className="mb-1">{message.attachment.type === "image" ? <a href={message.attachment.url} target="_blank" rel="noreferrer"><Image src={message.attachment.url} alt={message.attachment.filename} width={320} height={224} unoptimized className="max-h-56 max-w-full rounded-lg object-contain" /></a> : <a href={message.attachment.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 underline"><span>📎</span><span className="truncate">{message.attachment.filename}</span><span className="text-xs opacity-70">{Math.ceil(message.attachment.sizeBytes / 1024)} KB</span></a>}</div> : null}
+		{editing ? <div className="flex gap-1"><input value={draft} onChange={(e) => setDraft(e.target.value)} className="min-w-0 flex-1 rounded bg-white/20 px-2 py-1 text-sm" /><button type="button" onClick={save} disabled={saving} className="text-xs underline">Save</button><button type="button" onClick={() => { setDraft(message.content); setEditing(false); }} className="text-xs underline">Cancel</button></div> : message.content ? <p className="whitespace-pre-wrap break-words text-sm">{primary}</p> : null}
 
         <div
           className={`mt-1 flex items-center gap-2 text-[10px] ${
