@@ -280,6 +280,7 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	// Follow requests (private accounts).
 	mux.HandleFunc("DELETE /api/v1/users/{username}/follow-request", s.requireAuth(s.csrfProtect(s.handleCancelFollowRequest)))
 	mux.HandleFunc("GET /api/v1/follow-requests", s.requireAuth(s.handleListFollowRequests))
+	mux.HandleFunc("GET /api/v1/blocks", s.requireAuth(s.handleListBlocked))
 	mux.HandleFunc("POST /api/v1/follow-requests/{username}/accept", s.requireAuth(s.csrfProtect(s.handleAcceptFollowRequest)))
 	mux.HandleFunc("POST /api/v1/follow-requests/{username}/decline", s.requireAuth(s.csrfProtect(s.handleDeclineFollowRequest)))
 

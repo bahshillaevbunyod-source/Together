@@ -257,6 +257,21 @@ export function unblockUser(username: string): Promise<{ blocked: boolean }> {
   );
 }
 
+/** A person directly blocked by the authenticated user. */
+export interface BlockedUser {
+  id: string;
+  username: string;
+  displayName: string;
+  avatarUrl: string | null;
+}
+
+/** Fetch the authenticated user's own blocked-people list. */
+export function getBlockedUsers(signal?: AbortSignal): Promise<BlockedUser[]> {
+  return apiFetch<{ items: BlockedUser[] }>("/api/v1/blocks", { signal }).then(
+    (response) => response.items ?? [],
+  );
+}
+
 /** Fetch a user's public profile by username. */
 export function getUserProfile(
   username: string,

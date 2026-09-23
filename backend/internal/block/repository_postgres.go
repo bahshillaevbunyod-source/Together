@@ -102,3 +102,31 @@ func (r *PostgresRepository) HasBlockBetween(ctx context.Context, userA, userB s
 	}
 	return exists, nil
 }
+
+const listQuery = `
+SELECT u.id, u.username, u.display_name, u.avatar_url
+FROM blocks b
+JOIN users u ON u.id = b.blocked_id
+WHERE b.blocker_id = $1
+ORDER BY u.username ASC, u.id ASC
+LIMIT $2
+`
+
+// List returns only direct outgoing blocks for the authenticated caller.
+func (r *PostgresRepository) List(ctx context.Context, blockerID string, limit int) ([]ListItem, error) {
+	rows, err := r.pool.Query(ctx, listQuery, blockerID, limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	items := make([]ListItem, 0, limit)
+	for rows.Next() {
+		var item ListItem
+		if err := rows.Scan(&item.ID, &item.Username, &item.DisplayName, &item.AvatarURL); err != nil {
+			return nil, err
+		}
+		items = append(items, item)
+	}
+	return items, rows.Err()
+}

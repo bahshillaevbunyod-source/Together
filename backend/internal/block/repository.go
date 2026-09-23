@@ -14,4 +14,15 @@ type Repository interface {
 	IsBlocked(ctx context.Context, blockerID, blockedID string) (bool, error)
 	// HasBlockBetween reports whether either user blocks the other.
 	HasBlockBetween(ctx context.Context, userA, userB string) (bool, error)
+	// List returns the users blocked by blockerID. It never returns incoming
+	// blocks, so a caller can only inspect their own safety choices.
+	List(ctx context.Context, blockerID string, limit int) ([]ListItem, error)
+}
+
+// ListItem is the public-safe identity shown in a user's blocked-people list.
+type ListItem struct {
+	ID          string
+	Username    string
+	DisplayName string
+	AvatarURL   *string
 }

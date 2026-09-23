@@ -8,6 +8,7 @@ import (
 	"testing"
 	"time"
 
+	"together/backend/internal/block"
 	"together/backend/internal/config"
 	"together/backend/internal/session"
 	"together/backend/internal/user"
@@ -25,6 +26,8 @@ type fakeBlockRepo struct {
 	betweenErr   error
 	isBlocked    bool
 	isBlockedErr error
+	list         []block.ListItem
+	listErr      error
 }
 
 func (f *fakeBlockRepo) Block(_ context.Context, a, b string) error {
@@ -52,6 +55,10 @@ func (f *fakeBlockRepo) IsBlocked(_ context.Context, _, _ string) (bool, error) 
 
 func (f *fakeBlockRepo) HasBlockBetween(_ context.Context, _, _ string) (bool, error) {
 	return f.hasBetween, f.betweenErr
+}
+
+func (f *fakeBlockRepo) List(_ context.Context, _ string, _ int) ([]block.ListItem, error) {
+	return f.list, f.listErr
 }
 
 func blockSetup(t *testing.T, target *user.User, blocks *fakeBlockRepo) *http.Server {
@@ -110,6 +117,32 @@ func TestUnblockSuccess(t *testing.T) {
 	}
 	if !strings.Contains(rec.Body.String(), `"blocked":false`) {
 		t.Fatalf("unexpected body: %s", rec.Body.String())
+	}
+}
+
+func TestListBlockedReturnsOnlyCurrentUsersItems(t *testing.T) {
+	blocks := &fakeBlockRepo{list: []block.ListItem{{ID: "target-id", Username: "target_user", DisplayName: "Target User"}}}
+	srv := blockSetup(t, nil, blocks)
+	req := httptest.NewRequest(http.MethodGet, "/api/v1/blocks", nil)
+	req.AddCookie(&http.Cookie{Name: sessionCookieName, Value: "raw"})
+	rec := httptest.NewRecorder()
+	srv.Handler.ServeHTTP(rec, req)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d (%s)", rec.Code, rec.Body.String())
+	}
+	if !strings.Contains(rec.Body.String(), `"username":"target_user"`) {
+		t.Fatalf("expected blocked user response, got %s", rec.Body.String())
+	}
+}
+
+func TestListBlockedRepositoryError(t *testing.T) {
+	srv := blockSetup(t, nil, &fakeBlockRepo{listErr: errForTest})
+	req := httptest.NewRequest(http.MethodGet, "/api/v1/blocks", nil)
+	req.AddCookie(&http.Cookie{Name: sessionCookieName, Value: "raw"})
+	rec := httptest.NewRecorder()
+	srv.Handler.ServeHTTP(rec, req)
+	if rec.Code != http.StatusInternalServerError {
+		t.Fatalf("expected 500, got %d", rec.Code)
 	}
 }
 
