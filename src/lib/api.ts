@@ -529,6 +529,7 @@ export interface ApiConversation {
   lastMessage: ApiConversationLastMessage | null;
   unreadCount: number;
   updatedAt: string;
+	muted: boolean;
 }
 
 /** One page of conversations. `nextCursor` is "" when there is no more. */
@@ -568,9 +569,21 @@ export interface ApiMessage {
   senderId: string;
   content: string;
   createdAt: string;
+	updatedAt: string;
+	deletedAt: string | null;
   translatedContent: string | null;
   sourceLanguage: string | null;
   targetLanguage: string | null;
+}
+
+export interface ApiMessageSearchResult extends ApiMessage {
+	conversationId: string;
+	otherUsername: string;
+	otherDisplayName: string;
+}
+
+export function searchMessages(query: string): Promise<{ items: ApiMessageSearchResult[] }> {
+	return apiFetch(`/api/v1/messages/search?q=${encodeURIComponent(query)}`);
 }
 
 /** One page of messages (newest first). `nextCursor` fetches older messages. */
@@ -611,6 +624,18 @@ export function sendMessage(
     `/api/v1/conversations/${conversationId}/messages`,
     { method: "POST", body: { content } },
   );
+}
+
+export function updateMessage(messageId: string, content: string): Promise<ApiMessage> {
+	return apiFetch(`/api/v1/messages/${messageId}`, { method: "PUT", body: { content } });
+}
+
+export function deleteMessage(messageId: string): Promise<void> {
+	return apiFetch<void>(`/api/v1/messages/${messageId}`, { method: "DELETE" });
+}
+
+export function setConversationMuted(conversationId: string, muted: boolean): Promise<{ muted: boolean }> {
+	return apiFetch(`/api/v1/conversations/${conversationId}/mute`, { method: "PUT", body: { muted } });
 }
 
 /* -------------------------- Notifications -------------------------------- */

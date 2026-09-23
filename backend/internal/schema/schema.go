@@ -28,6 +28,9 @@ var requiredColumns = []struct{ table, column string }{
 	{"messages", "source_language"},     // 000024
 	{"messages", "source_language_confidence"},
 	{"messages", "source_language_resolution"},
+	{"messages", "updated_at"}, // 000026
+	{"messages", "deleted_at"},
+	{"conversation_participants", "muted_at"},
 	{"posts", "original_post_id"}, // 000025
 }
 

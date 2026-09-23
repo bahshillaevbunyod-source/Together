@@ -20,7 +20,9 @@ var (
 	// ErrContentTooLong is returned when a message exceeds the length limit.
 	ErrContentTooLong = errors.New("conversation: message content is too long")
 	// ErrBlocked is returned when either participant blocks the other.
-	ErrBlocked = errors.New("conversation: messaging is blocked")
+	ErrBlocked         = errors.New("conversation: messaging is blocked")
+	ErrMessageNotFound = errors.New("conversation: message not found")
+	ErrNotMessageOwner = errors.New("conversation: message is not owned by user")
 )
 
 // Conversation mirrors a row in the `conversations` table. Members are stored
@@ -40,6 +42,8 @@ type Message struct {
 	SenderID                 string
 	Content                  string
 	CreatedAt                time.Time
+	UpdatedAt                time.Time
+	DeletedAt                *time.Time
 	SourceLanguage           *string
 	SourceLanguageConfidence *float64
 	SourceLanguageResolution *string
@@ -80,4 +84,13 @@ type ListItem struct {
 	// UnreadCount is the number of messages from the other participant that the
 	// viewer has not yet read.
 	UnreadCount int64
+	Muted       bool
+}
+
+// SearchResult is a message found in a conversation the caller participates in.
+type SearchResult struct {
+	Message
+	OtherID          string
+	OtherUsername    string
+	OtherDisplayName string
 }

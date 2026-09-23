@@ -8,6 +8,8 @@ import {
   getMessages,
   markConversationRead,
   sendMessage,
+	updateMessage,
+	deleteMessage,
   type ApiMessage,
 } from "@/lib/api";
 import { formatTimeAgo } from "@/lib/format";
@@ -43,7 +45,7 @@ export function ConversationThread({
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
 
-  const { subscribeMessageCreated } = useRealtime();
+	const { subscribeMessageCreated, subscribeMessageUpdated, subscribeMessageDeleted } = useRealtime();
   const { t } = useLanguage();
   const bottomRef = useRef<HTMLDivElement>(null);
   // Tracks message ids currently in the thread, to ignore duplicates.
@@ -121,6 +123,8 @@ export function ConversationThread({
         senderId: event.senderId,
         content: event.content,
         createdAt: event.createdAt,
+		updatedAt: event.updatedAt ?? event.createdAt,
+		deletedAt: null,
         translatedContent: event.translatedContent,
         sourceLanguage: event.sourceLanguage,
         targetLanguage: event.targetLanguage,
@@ -137,6 +141,18 @@ export function ConversationThread({
     });
     return unsubscribe;
   }, [subscribeMessageCreated, conversationId, onRead, scrollToBottom]);
+
+	useEffect(() => {
+		const stopUpdated = subscribeMessageUpdated((event) => {
+			if (event.conversationId !== conversationId) return;
+			setMessages((prev) => prev.map((m) => m.id === event.id ? { ...m, ...event } : m));
+		});
+		const stopDeleted = subscribeMessageDeleted((event) => {
+			if (event.conversationId !== conversationId) return;
+			setMessages((prev) => prev.map((m) => m.id === event.id ? { ...m, content: "", translatedContent: null, deletedAt: event.deletedAt } : m));
+		});
+		return () => { stopUpdated(); stopDeleted(); };
+	}, [subscribeMessageUpdated, subscribeMessageDeleted, conversationId]);
 
   const canSend = text.trim().length > 0 && !sending;
 
@@ -211,6 +227,8 @@ export function ConversationThread({
                 key={m.id}
                 message={m}
                 mine={currentUserId != null && m.senderId === currentUserId}
+				onUpdate={(message) => setMessages((prev) => prev.map((m) => m.id === message.id ? message : m))}
+				onDelete={(id) => setMessages((prev) => prev.map((m) => m.id === id ? { ...m, content: "", translatedContent: null, deletedAt: new Date().toISOString() } : m))}
               />
             ))}
           </>
@@ -253,12 +271,22 @@ export function ConversationThread({
 function MessageBubble({
   message,
   mine,
+	onUpdate,
+	onDelete,
 }: {
   message: ApiMessage;
   mine: boolean;
+	onUpdate: (message: ApiMessage) => void;
+	onDelete: (id: string) => void;
 }) {
   const { t } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
+	const [editing, setEditing] = useState(false);
+	const [draft, setDraft] = useState(message.content);
+	const [saving, setSaving] = useState(false);
+	if (message.deletedAt) return <div className={`flex ${mine ? "justify-end" : "justify-start"}`}><div className="rounded-2xl bg-background px-3.5 py-2 text-sm italic text-muted">Message deleted</div></div>;
+	const save = async () => { const content = draft.trim(); if (!content || saving) return; setSaving(true); try { onUpdate(await updateMessage(message.id, content)); setEditing(false); } finally { setSaving(false); } };
+	const remove = async () => { if (!window.confirm("Delete this message?")) return; await deleteMessage(message.id); onDelete(message.id); };
 
   const translated = message.translatedContent;
   const hasTranslation =
@@ -281,7 +309,7 @@ function MessageBubble({
           mine ? "bg-primary text-white" : "bg-background text-foreground"
         }`}
       >
-        <p className="whitespace-pre-wrap break-words text-sm">{primary}</p>
+		{editing ? <div className="flex gap-1"><input value={draft} onChange={(e) => setDraft(e.target.value)} className="min-w-0 flex-1 rounded bg-white/20 px-2 py-1 text-sm" /><button type="button" onClick={save} disabled={saving} className="text-xs underline">Save</button><button type="button" onClick={() => { setDraft(message.content); setEditing(false); }} className="text-xs underline">Cancel</button></div> : <p className="whitespace-pre-wrap break-words text-sm">{primary}</p>}
 
         <div
           className={`mt-1 flex items-center gap-2 text-[10px] ${
@@ -289,6 +317,7 @@ function MessageBubble({
           }`}
         >
           <span>{formatTimeAgo(message.createdAt)}</span>
+			{message.updatedAt && message.updatedAt !== message.createdAt ? <span>· edited</span> : null}
           {langHint && !showOriginal ? <span>· {langHint}</span> : null}
           {hasTranslation ? (
             <button
@@ -301,6 +330,7 @@ function MessageBubble({
               {showOriginal ? t("post.showTranslation") : t("post.showOriginal")}
             </button>
           ) : null}
+			{mine && !editing ? <><button type="button" onClick={() => setEditing(true)} className={`underline ${mine ? "text-white/80" : "text-primary"}`}>Edit</button><button type="button" onClick={remove} className={`underline ${mine ? "text-white/80" : "text-primary"}`}>Delete</button></> : null}
         </div>
       </div>
     </div>

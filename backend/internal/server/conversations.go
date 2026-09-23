@@ -20,11 +20,17 @@ type createMessageRequest struct {
 	Content string `json:"content"`
 }
 
+type muteConversationRequest struct {
+	Muted bool `json:"muted"`
+}
+
 type messageResponse struct {
-	ID        string `json:"id"`
-	SenderID  string `json:"senderId"`
-	Content   string `json:"content"`
-	CreatedAt string `json:"createdAt"`
+	ID        string  `json:"id"`
+	SenderID  string  `json:"senderId"`
+	Content   string  `json:"content"`
+	CreatedAt string  `json:"createdAt"`
+	UpdatedAt string  `json:"updatedAt"`
+	DeletedAt *string `json:"deletedAt"`
 
 	// Translation fields are null unless the viewer opted in and a translation
 	// succeeded. Content always holds the original, untranslated text.
@@ -60,6 +66,7 @@ type conversationResponse struct {
 	LastMessage *conversationLastMessage `json:"lastMessage"`
 	UnreadCount int64                    `json:"unreadCount"`
 	UpdatedAt   string                   `json:"updatedAt"`
+	Muted       bool                     `json:"muted"`
 }
 
 type conversationListResponse struct {
@@ -197,6 +204,7 @@ func (s *Server) handleListConversations(w http.ResponseWriter, r *http.Request)
 			},
 			UnreadCount: it.UnreadCount,
 			UpdatedAt:   it.UpdatedAt.Format(time.RFC3339),
+			Muted:       it.Muted,
 		}
 		if it.LastMessageID != nil {
 			resp.LastMessage = &conversationLastMessage{
@@ -255,10 +263,7 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Translate only when the viewer opted in and has a target language.
-	targetLang := ""
-	if me.AutoTranslateEnabled && me.PreferredLanguage != nil {
-		targetLang = *me.PreferredLanguage
-	}
+	targetLang := translationTarget(me)
 
 	items := make([]messageResponse, 0, len(rows))
 	for _, m := range rows {
@@ -267,6 +272,7 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 			SenderID:                 m.SenderID,
 			Content:                  m.Content, // always the original
 			CreatedAt:                m.CreatedAt.Format(time.RFC3339),
+			UpdatedAt:                m.UpdatedAt.Format(time.RFC3339),
 			SourceLanguage:           m.SourceLanguage,
 			SourceLanguageConfidence: m.SourceLanguageConfidence,
 			SourceLanguageResolution: m.SourceLanguageResolution,
@@ -276,6 +282,55 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 	}
 
 	writeJSON(w, http.StatusOK, messageListResponse{Items: items, NextCursor: next})
+}
+
+type messageSearchResponse struct {
+	Items []messageSearchItem `json:"items"`
+}
+type messageSearchItem struct {
+	ConversationID   string `json:"conversationId"`
+	OtherUsername    string `json:"otherUsername"`
+	OtherDisplayName string `json:"otherDisplayName"`
+	messageResponse
+}
+
+func translationTarget(me *user.User) string {
+	if me.AutoTranslateEnabled && me.PreferredLanguage != nil {
+		return *me.PreferredLanguage
+	}
+	return ""
+}
+
+// handleSearchMessages only searches rows joined to the caller's participant
+// record, so a query can never reveal another user's private conversation.
+func (s *Server) handleSearchMessages(w http.ResponseWriter, r *http.Request) {
+	me, ok := CurrentUser(r.Context())
+	if !ok {
+		unauthorized(w)
+		return
+	}
+	query := strings.TrimSpace(r.URL.Query().Get("q"))
+	if query == "" || len([]rune(query)) > 200 {
+		writeError(w, http.StatusBadRequest, "invalid query")
+		return
+	}
+	limit, ok := parseListLimit(r.URL.Query().Get("limit"))
+	if !ok {
+		writeError(w, http.StatusBadRequest, "invalid limit")
+		return
+	}
+	rows, err := s.conversations.SearchMessages(r.Context(), me.ID, query, limit)
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+	items := make([]messageSearchItem, 0, len(rows))
+	for _, m := range rows {
+		resp := messageResponse{ID: m.ID, SenderID: m.SenderID, Content: m.Content, CreatedAt: m.CreatedAt.Format(time.RFC3339), UpdatedAt: m.UpdatedAt.Format(time.RFC3339), SourceLanguage: m.SourceLanguage, SourceLanguageConfidence: m.SourceLanguageConfidence, SourceLanguageResolution: m.SourceLanguageResolution}
+		s.applyTranslation(r.Context(), &resp, m.Content, translationTarget(me))
+		items = append(items, messageSearchItem{ConversationID: m.ConversationID, OtherUsername: m.OtherUsername, OtherDisplayName: m.OtherDisplayName, messageResponse: resp})
+	}
+	writeJSON(w, http.StatusOK, messageSearchResponse{Items: items})
 }
 
 // applyTranslation fills the translation fields of resp when targetLang is set.
@@ -445,6 +500,104 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusCreated, resp)
 }
 
+func (s *Server) handleUpdateMessage(w http.ResponseWriter, r *http.Request) {
+	me, ok := CurrentUser(r.Context())
+	if !ok {
+		unauthorized(w)
+		return
+	}
+	messageID := r.PathValue("id")
+	if !uuidPattern.MatchString(messageID) {
+		writeError(w, http.StatusBadRequest, "invalid message id")
+		return
+	}
+	if ct := r.Header.Get("Content-Type"); !strings.HasPrefix(ct, "application/json") {
+		writeError(w, http.StatusUnsupportedMediaType, "content-type must be application/json")
+		return
+	}
+	dec := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxMessageBodyBytes))
+	dec.DisallowUnknownFields()
+	var req createMessageRequest
+	if err := dec.Decode(&req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid request body")
+		return
+	}
+	m, recipientID, err := s.conversations.UpdateMessage(r.Context(), messageID, me.ID, req.Content)
+	if err != nil {
+		switch {
+		case errors.Is(err, conversation.ErrEmptyContent), errors.Is(err, conversation.ErrContentTooLong):
+			writeError(w, http.StatusBadRequest, "invalid content")
+		case errors.Is(err, conversation.ErrMessageNotFound):
+			writeError(w, http.StatusNotFound, "message not found")
+		default:
+			writeError(w, http.StatusInternalServerError, "internal error")
+		}
+		return
+	}
+	resp := messageResponse{ID: m.ID, SenderID: m.SenderID, Content: m.Content, CreatedAt: m.CreatedAt.Format(time.RFC3339), UpdatedAt: m.UpdatedAt.Format(time.RFC3339)}
+	s.publishMessageUpdated(r.Context(), m.ConversationID, me.ID, recipientID, resp)
+	s.applyTranslation(r.Context(), &resp, resp.Content, translationTarget(me))
+	writeJSON(w, http.StatusOK, resp)
+}
+
+func (s *Server) handleDeleteMessage(w http.ResponseWriter, r *http.Request) {
+	me, ok := CurrentUser(r.Context())
+	if !ok {
+		unauthorized(w)
+		return
+	}
+	messageID := r.PathValue("id")
+	if !uuidPattern.MatchString(messageID) {
+		writeError(w, http.StatusBadRequest, "invalid message id")
+		return
+	}
+	conversationID, recipientID, deletedAt, err := s.conversations.DeleteMessage(r.Context(), messageID, me.ID)
+	if err != nil {
+		if errors.Is(err, conversation.ErrMessageNotFound) {
+			writeError(w, http.StatusNotFound, "message not found")
+		} else {
+			writeError(w, http.StatusInternalServerError, "internal error")
+		}
+		return
+	}
+	s.publishMessageDeleted(conversationID, messageID, me.ID, recipientID, deletedAt)
+	w.WriteHeader(http.StatusNoContent)
+}
+
+func (s *Server) handleSetConversationMuted(w http.ResponseWriter, r *http.Request) {
+	me, ok := CurrentUser(r.Context())
+	if !ok {
+		unauthorized(w)
+		return
+	}
+	id := r.PathValue("id")
+	if !uuidPattern.MatchString(id) {
+		writeError(w, http.StatusBadRequest, "invalid conversation id")
+		return
+	}
+	if ct := r.Header.Get("Content-Type"); !strings.HasPrefix(ct, "application/json") {
+		writeError(w, http.StatusUnsupportedMediaType, "content-type must be application/json")
+		return
+	}
+	var req muteConversationRequest
+	dec := json.NewDecoder(http.MaxBytesReader(w, r.Body, maxMessageBodyBytes))
+	dec.DisallowUnknownFields()
+	if err := dec.Decode(&req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid request body")
+		return
+	}
+	found, err := s.conversations.SetConversationMuted(r.Context(), id, me.ID, req.Muted)
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, "internal error")
+		return
+	}
+	if !found {
+		writeError(w, http.StatusNotFound, "conversation not found")
+		return
+	}
+	writeJSON(w, http.StatusOK, map[string]bool{"muted": req.Muted})
+}
+
 // realtimeEvent is the envelope pushed to WebSocket clients.
 type realtimeEvent struct {
 	Type string `json:"type"`
@@ -457,6 +610,12 @@ type realtimeEvent struct {
 type messageCreatedData struct {
 	ConversationID string `json:"conversationId"`
 	messageResponse
+}
+
+type messageDeletedData struct {
+	ConversationID string `json:"conversationId"`
+	ID             string `json:"id"`
+	DeletedAt      string `json:"deletedAt"`
 }
 
 // publishMessageCreated sends a "message.created" event to the recipient only.
@@ -475,6 +634,28 @@ func (s *Server) publishMessageCreated(ctx context.Context, conversationID, reci
 	if err != nil {
 		return // never fail the request over a serialization problem
 	}
+	s.hub.SendToUser(recipientID, payload)
+}
+
+func (s *Server) publishMessageUpdated(ctx context.Context, conversationID, senderID, recipientID string, msg messageResponse) {
+	for _, userID := range []string{senderID, recipientID} {
+		out := msg
+		if viewer, err := s.users.GetByID(ctx, userID); err == nil {
+			s.applyTranslation(ctx, &out, out.Content, translationTarget(viewer))
+		}
+		payload, err := json.Marshal(realtimeEvent{Type: "message.updated", Data: messageCreatedData{ConversationID: conversationID, messageResponse: out}})
+		if err == nil {
+			s.hub.SendToUser(userID, payload)
+		}
+	}
+}
+
+func (s *Server) publishMessageDeleted(conversationID, messageID, senderID, recipientID string, deletedAt time.Time) {
+	payload, err := json.Marshal(realtimeEvent{Type: "message.deleted", Data: messageDeletedData{ConversationID: conversationID, ID: messageID, DeletedAt: deletedAt.Format(time.RFC3339)}})
+	if err != nil {
+		return
+	}
+	s.hub.SendToUser(senderID, payload)
 	s.hub.SendToUser(recipientID, payload)
 }
 

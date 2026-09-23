@@ -1,6 +1,9 @@
 package conversation
 
-import "context"
+import (
+	"context"
+	"time"
+)
 
 // Repository abstracts conversation persistence so handlers never touch SQL.
 type Repository interface {
@@ -36,6 +39,9 @@ type Repository interface {
 	// first, keyset-paginated by the cursor (nil for the first page). userID
 	// must be a participant; otherwise ErrNotParticipant is returned.
 	ListMessages(ctx context.Context, conversationID, userID string, cur *MessageCursor, limit int) ([]Message, error)
+	SearchMessages(ctx context.Context, userID, query string, limit int) ([]SearchResult, error)
+	UpdateMessage(ctx context.Context, messageID, senderID, content string) (*Message, string, error)
+	DeleteMessage(ctx context.Context, messageID, senderID string) (conversationID, recipientID string, deletedAt time.Time, err error)
 	// ListConversations returns up to `limit` of userID's conversations, newest
 	// activity first, keyset-paginated by the cursor (nil for the first page).
 	// Each item carries the other participant's basic profile and the latest
@@ -45,4 +51,5 @@ type Repository interface {
 	// latest message. It reports whether userID is a participant (false means no
 	// such membership). Idempotent.
 	MarkConversationRead(ctx context.Context, conversationID, userID string) (bool, error)
+	SetConversationMuted(ctx context.Context, conversationID, userID string, muted bool) (bool, error)
 }

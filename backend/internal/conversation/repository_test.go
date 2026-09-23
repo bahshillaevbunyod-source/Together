@@ -137,7 +137,7 @@ func newRepo(tx *fakeTx) (*PostgresRepository, *fakeBeginner) {
 	return &PostgresRepository{db: b}, b
 }
 
-// fakeRows is a minimal pgx.Rows over scripted message rows.
+// fakeRows is a minimal pgx.Rows over scripted query rows.
 type fakeRows struct {
 	rows [][]any // each row: id, sender_id, content, created_at, source metadata
 	i    int
@@ -467,7 +467,7 @@ func TestCreateMessageBeginErrorSafe(t *testing.T) {
 // ---- ListMessages ----
 
 func msgRow(id, sender, content string, t time.Time) []any {
-	return []any{id, sender, content, t, nil, nil, nil}
+	return []any{id, sender, content, t, t, nil, nil, nil, nil}
 }
 
 func TestListMessagesSuccess(t *testing.T) {
@@ -552,7 +552,7 @@ func TestListMessagesRowsError(t *testing.T) {
 // convRow builds a scripted conversation-list row. Pass lastID == nil for a
 // conversation with no messages yet.
 func convRow(id string, updated time.Time, otherID, otherUser, otherName string, otherAvatar any, lastID, lastSender, lastContent any, lastAt any, unread int64) []any {
-	return []any{id, updated, otherID, otherUser, otherName, otherAvatar, lastID, lastSender, lastContent, lastAt, unread}
+	return []any{id, updated, otherID, otherUser, otherName, otherAvatar, lastID, lastSender, lastContent, lastAt, false, unread}
 }
 
 func TestListConversationsSuccess(t *testing.T) {

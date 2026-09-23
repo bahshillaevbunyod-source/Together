@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"strings"
+	"time"
 	"unicode/utf8"
 
 	"github.com/jackc/pgx/v5"
@@ -199,7 +200,7 @@ func (r *PostgresRepository) CreateMessage(ctx context.Context, conversationID, 
 // listMessagesQuery returns a conversation's messages newest-first, keyset
 // paginated. conversation_id is a constant here, so there is no per-row lookup.
 const listMessagesQuery = `
-SELECT m.id, m.sender_id, m.content, m.created_at,
+SELECT m.id, m.sender_id, m.content, m.created_at, m.updated_at, m.deleted_at,
        m.source_language, m.source_language_confidence, m.source_language_resolution
 FROM messages m
 WHERE m.conversation_id = $1
@@ -238,7 +239,7 @@ func (r *PostgresRepository) ListMessages(ctx context.Context, conversationID, u
 	for rows.Next() {
 		m := Message{ConversationID: conversationID}
 		if err := rows.Scan(
-			&m.ID, &m.SenderID, &m.Content, &m.CreatedAt,
+			&m.ID, &m.SenderID, &m.Content, &m.CreatedAt, &m.UpdatedAt, &m.DeletedAt,
 			&m.SourceLanguage, &m.SourceLanguageConfidence, &m.SourceLanguageResolution,
 		); err != nil {
 			return nil, err
@@ -246,6 +247,111 @@ func (r *PostgresRepository) ListMessages(ctx context.Context, conversationID, u
 		items = append(items, m)
 	}
 	return items, rows.Err()
+}
+
+const searchMessagesQuery = `
+SELECT m.id, m.conversation_id, m.sender_id, m.content, m.created_at, m.updated_at, m.deleted_at,
+       m.source_language, m.source_language_confidence, m.source_language_resolution,
+       other.id, other.username, other.display_name
+FROM messages m
+JOIN conversation_participants mine ON mine.conversation_id = m.conversation_id AND mine.user_id = $1
+JOIN conversations c ON c.id = m.conversation_id
+JOIN users other ON other.id = CASE WHEN c.user_low = $1 THEN c.user_high ELSE c.user_low END
+WHERE m.deleted_at IS NULL AND m.content ILIKE '%' || $2 || '%'
+ORDER BY m.created_at DESC, m.id DESC
+LIMIT $3
+`
+
+func (r *PostgresRepository) SearchMessages(ctx context.Context, userID, query string, limit int) ([]SearchResult, error) {
+	rows, err := r.q.Query(ctx, searchMessagesQuery, userID, query, limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	items := make([]SearchResult, 0, limit)
+	for rows.Next() {
+		var item SearchResult
+		if err := rows.Scan(&item.ID, &item.ConversationID, &item.SenderID, &item.Content, &item.CreatedAt, &item.UpdatedAt, &item.DeletedAt,
+			&item.SourceLanguage, &item.SourceLanguageConfidence, &item.SourceLanguageResolution,
+			&item.OtherID, &item.OtherUsername, &item.OtherDisplayName); err != nil {
+			return nil, err
+		}
+		items = append(items, item)
+	}
+	return items, rows.Err()
+}
+
+const updateMessageQuery = `
+UPDATE messages
+SET content = $3, updated_at = now(), source_language = NULL, source_language_confidence = NULL, source_language_resolution = NULL
+WHERE id = $1 AND sender_id = $2 AND deleted_at IS NULL
+RETURNING id, conversation_id, sender_id, content, created_at, updated_at, deleted_at
+`
+
+func (r *PostgresRepository) UpdateMessage(ctx context.Context, messageID, senderID, content string) (*Message, string, error) {
+	content = strings.TrimSpace(content)
+	if content == "" {
+		return nil, "", ErrEmptyContent
+	}
+	if utf8.RuneCountInString(content) > maxMessageContentRunes {
+		return nil, "", ErrContentTooLong
+	}
+	tx, err := r.db.Begin(ctx)
+	if err != nil {
+		return nil, "", err
+	}
+	defer tx.Rollback(ctx)
+	var m Message
+	if err := tx.QueryRow(ctx, updateMessageQuery, messageID, senderID, content).Scan(&m.ID, &m.ConversationID, &m.SenderID, &m.Content, &m.CreatedAt, &m.UpdatedAt, &m.DeletedAt); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return nil, "", ErrMessageNotFound
+		}
+		return nil, "", err
+	}
+	var recipient *string
+	if err := tx.QueryRow(ctx, otherParticipantQuery, m.ConversationID, senderID).Scan(&recipient); err != nil || recipient == nil {
+		if err == nil || errors.Is(err, pgx.ErrNoRows) {
+			return nil, "", ErrMessageNotFound
+		}
+		return nil, "", err
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return nil, "", err
+	}
+	return &m, *recipient, nil
+}
+
+const deleteMessageQuery = `
+UPDATE messages SET deleted_at = now(), updated_at = now()
+WHERE id = $1 AND sender_id = $2 AND deleted_at IS NULL
+RETURNING conversation_id, deleted_at
+`
+
+func (r *PostgresRepository) DeleteMessage(ctx context.Context, messageID, senderID string) (string, string, time.Time, error) {
+	tx, err := r.db.Begin(ctx)
+	if err != nil {
+		return "", "", time.Time{}, err
+	}
+	defer tx.Rollback(ctx)
+	var conversationID string
+	var deletedAt time.Time
+	if err := tx.QueryRow(ctx, deleteMessageQuery, messageID, senderID).Scan(&conversationID, &deletedAt); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return "", "", time.Time{}, ErrMessageNotFound
+		}
+		return "", "", time.Time{}, err
+	}
+	var recipient *string
+	if err := tx.QueryRow(ctx, otherParticipantQuery, conversationID, senderID).Scan(&recipient); err != nil || recipient == nil {
+		if err == nil || errors.Is(err, pgx.ErrNoRows) {
+			return "", "", time.Time{}, ErrMessageNotFound
+		}
+		return "", "", time.Time{}, err
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return "", "", time.Time{}, err
+	}
+	return conversationID, *recipient, deletedAt, nil
 }
 
 const setMessageLanguageMetadataQuery = `
@@ -291,6 +397,7 @@ const listConversationsQuery = `
 SELECT c.id, c.updated_at,
        other.id, other.username, other.display_name, other.avatar_url,
        lm.id, lm.sender_id, lm.content, lm.created_at,
+       me.muted_at IS NOT NULL,
        (SELECT count(*) FROM messages um
          WHERE um.conversation_id = c.id
            AND um.sender_id <> $1
@@ -337,13 +444,27 @@ func (r *PostgresRepository) ListConversations(ctx context.Context, userID strin
 			&it.ID, &it.UpdatedAt,
 			&it.OtherID, &it.OtherUsername, &it.OtherDisplayName, &it.OtherAvatarURL,
 			&it.LastMessageID, &it.LastMessageSenderID, &it.LastMessageContent, &it.LastMessageCreatedAt,
-			&it.UnreadCount,
+			&it.Muted, &it.UnreadCount,
 		); err != nil {
 			return nil, err
 		}
 		items = append(items, it)
 	}
 	return items, rows.Err()
+}
+
+const setConversationMutedQuery = `
+UPDATE conversation_participants
+SET muted_at = CASE WHEN $3 THEN now() ELSE NULL END
+WHERE conversation_id = $1 AND user_id = $2
+`
+
+func (r *PostgresRepository) SetConversationMuted(ctx context.Context, conversationID, userID string, muted bool) (bool, error) {
+	tag, err := r.q.Exec(ctx, setConversationMutedQuery, conversationID, userID, muted)
+	if err != nil {
+		return false, err
+	}
+	return tag.RowsAffected() > 0, nil
 }
 
 // markReadQuery advances the viewer's read markers to the conversation's latest

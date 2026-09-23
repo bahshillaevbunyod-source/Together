@@ -110,6 +110,22 @@ func (f *fakeConversationRepo) MarkConversationRead(_ context.Context, _, _ stri
 	return f.markFound, nil
 }
 
+func (f *fakeConversationRepo) SearchMessages(_ context.Context, _, _ string, _ int) ([]conversation.SearchResult, error) {
+	return nil, nil
+}
+
+func (f *fakeConversationRepo) UpdateMessage(_ context.Context, messageID, senderID, content string) (*conversation.Message, string, error) {
+	return &conversation.Message{ID: messageID, ConversationID: validPostID, SenderID: senderID, Content: strings.TrimSpace(content), CreatedAt: time.Now(), UpdatedAt: time.Now()}, "u2", nil
+}
+
+func (f *fakeConversationRepo) DeleteMessage(_ context.Context, _ string, _ string) (string, string, time.Time, error) {
+	return validPostID, "u2", time.Now(), nil
+}
+
+func (f *fakeConversationRepo) SetConversationMuted(_ context.Context, _, _ string, _ bool) (bool, error) {
+	return true, nil
+}
+
 func convServer(conv *fakeConversationRepo) *http.Server {
 	return convServerWithResolver(conv, nil)
 }

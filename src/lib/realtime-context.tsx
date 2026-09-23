@@ -18,16 +18,22 @@ export interface MessageCreatedEvent {
   senderId: string;
   content: string;
   createdAt: string;
+	updatedAt?: string;
   translatedContent: string | null;
   sourceLanguage: string | null;
   targetLanguage: string | null;
 }
 
+export interface MessageDeletedEvent { conversationId: string; id: string; deletedAt: string; }
+
 type MessageCreatedHandler = (event: MessageCreatedEvent) => void;
+type MessageDeletedHandler = (event: MessageDeletedEvent) => void;
 
 interface RealtimeState {
   /** Subscribe to `message.created` events; returns an unsubscribe function. */
   subscribeMessageCreated: (handler: MessageCreatedHandler) => () => void;
+	subscribeMessageUpdated: (handler: MessageCreatedHandler) => () => void;
+	subscribeMessageDeleted: (handler: MessageDeletedHandler) => () => void;
 }
 
 const RealtimeContext = createContext<RealtimeState | undefined>(undefined);
@@ -46,6 +52,8 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
   const { status } = useAuth();
 
   const handlersRef = useRef<Set<MessageCreatedHandler>>(new Set());
+	const updatedHandlersRef = useRef<Set<MessageCreatedHandler>>(new Set());
+	const deletedHandlersRef = useRef<Set<MessageDeletedHandler>>(new Set());
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const attemptRef = useRef(0);
@@ -60,6 +68,8 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
     },
     [],
   );
+	const subscribeMessageUpdated = useCallback((handler: MessageCreatedHandler) => { updatedHandlersRef.current.add(handler); return () => updatedHandlersRef.current.delete(handler); }, []);
+	const subscribeMessageDeleted = useCallback((handler: MessageDeletedHandler) => { deletedHandlersRef.current.add(handler); return () => deletedHandlersRef.current.delete(handler); }, []);
 
   useEffect(() => {
     // Only maintain a socket while authenticated.
@@ -109,7 +119,12 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
         }
         if (!msg || typeof msg !== "object") return;
         const envelope = msg as { type?: unknown; data?: unknown };
-        if (envelope.type !== "message.created") return; // ignore unknown types
+		if (envelope.type === "message.deleted") {
+			const data = envelope.data as Record<string, unknown> | null;
+			if (data && typeof data.conversationId === "string" && typeof data.id === "string" && typeof data.deletedAt === "string") deletedHandlersRef.current.forEach((h) => { try { h(data as unknown as MessageDeletedEvent); } catch {} });
+			return;
+		}
+		if (envelope.type !== "message.created" && envelope.type !== "message.updated") return;
         const d = envelope.data;
         if (!d || typeof d !== "object") return;
         const data = d as Record<string, unknown>;
@@ -121,7 +136,8 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
           return; // ignore malformed payloads
         }
         const event = data as unknown as MessageCreatedEvent;
-        handlersRef.current.forEach((h) => {
+		const handlers = envelope.type === "message.updated" ? updatedHandlersRef.current : handlersRef.current;
+		handlers.forEach((h) => {
           try {
             h(event);
           } catch {
@@ -158,7 +174,7 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
   }, [status]);
 
   return (
-    <RealtimeContext.Provider value={{ subscribeMessageCreated }}>
+		<RealtimeContext.Provider value={{ subscribeMessageCreated, subscribeMessageUpdated, subscribeMessageDeleted }}>
       {children}
     </RealtimeContext.Provider>
   );

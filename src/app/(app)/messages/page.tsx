@@ -9,6 +9,8 @@ import {
   ApiError,
   getConversations,
   openConversation,
+	searchMessages,
+	setConversationMuted,
   type ApiConversation,
   type ApiMessage,
 } from "@/lib/api";
@@ -33,6 +35,8 @@ export default function MessagesPage() {
   const [loadingMore, setLoadingMore] = useState(false);
   const loadingMoreRef = useRef(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+	const [search, setSearch] = useState("");
+	const [searchResults, setSearchResults] = useState<{ conversationId: string; id: string; content: string; otherDisplayName: string }[]>([]);
   const { user } = useAuth();
   const { subscribeMessageCreated } = useRealtime();
   const { t } = useLanguage();
@@ -168,12 +172,28 @@ export default function MessagesPage() {
     }
   };
 
+	const runSearch = async (e: React.FormEvent) => {
+		e.preventDefault();
+		const query = search.trim();
+		if (!query) { setSearchResults([]); return; }
+		try { const result = await searchMessages(query); setSearchResults(result.items); } catch { setSearchResults([]); }
+	};
+	const toggleMute = async () => {
+		if (!selected) return;
+		const result = await setConversationMuted(selected.id, !selected.muted);
+		setItems((prev) => prev.map((c) => c.id === selected.id ? { ...c, muted: result.muted } : c));
+	};
+
   return (
     <div className="flex h-[calc(100vh-9rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
       {/* Conversation list */}
       <div className={`${selected ? "hidden" : "flex"} w-full flex-col border-border sm:flex sm:w-80 sm:border-r`}>
         <div className="border-b border-border px-4 py-3">
           <h1 className="text-base font-semibold text-foreground">{t("navigation.messages")}</h1>
+		  <form onSubmit={runSearch} className="mt-2">
+			<input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search messages" className="h-9 w-full rounded-full bg-background px-3 text-sm text-foreground placeholder:text-muted-soft" />
+		  </form>
+		  {searchResults.length > 0 ? <ul className="mt-2 max-h-40 overflow-y-auto rounded-lg border border-border bg-surface">{searchResults.map((result) => <li key={result.id}><button type="button" onClick={() => { setSelectedId(result.conversationId); setSearchResults([]); }} className="w-full px-3 py-2 text-left text-sm hover:bg-background"><span className="font-medium">{result.otherDisplayName}: </span><span className="text-muted">{result.content}</span></button></li>)}</ul> : null}
           <form onSubmit={openNew} className="mt-3 flex items-center gap-2">
             <input
               type="text"
@@ -339,6 +359,7 @@ export default function MessagesPage() {
                   </div>
                 </div>
               </Link>
+			  <button type="button" onClick={toggleMute} className="ml-auto rounded-full px-3 py-1.5 text-xs text-muted hover:bg-background hover:text-foreground">{selected.muted ? "Unmute" : "Mute"}</button>
             </div>
             <ConversationThread
               key={selected.id}
