@@ -13,6 +13,7 @@ import (
 	"together/backend/internal/block"
 	"together/backend/internal/bookmark"
 	"together/backend/internal/comment"
+	"together/backend/internal/community"
 	"together/backend/internal/config"
 	"together/backend/internal/conversation"
 	"together/backend/internal/follow"
@@ -66,6 +67,7 @@ type Server struct {
 	likeNotify     likeNotifier
 	commentNotify  commentNotifier
 	conversations  conversation.Repository
+	communities    community.Repository
 	registrar      registration.Creator
 	translator     translation.Service
 
@@ -134,6 +136,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 	var followReq followRequestService
 	var stories story.Repository
 	var resolver languageResolver
+	var communitiesRepo community.Repository
 	for _, dependency := range dependencies {
 		switch dependency := dependency.(type) {
 		case registration.Creator:
@@ -147,7 +150,15 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		case story.Repository:
 			stories = dependency
 		case languageResolver:
+			// main passes a nil *translation.LanguageResolver when detection is
+			// not configured. As an interface that typed nil is non-nil, so it
+			// must be dropped here or every text message panics in Resolve.
+			if r, ok := dependency.(*translation.LanguageResolver); ok && r == nil {
+				continue
+			}
 			resolver = dependency
+		case community.Repository:
+			communitiesRepo = dependency
 		}
 	}
 	s := &Server{
@@ -173,6 +184,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		likeNotify:     likeNotify,
 		commentNotify:  commentNotify,
 		conversations:  conversations,
+		communities:    communitiesRepo,
 		registrar:      registrar,
 		translator:     newTranslator(cfg),
 
@@ -316,6 +328,24 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("PUT /api/v1/messages/{id}", s.requireAuth(s.csrfProtect(s.handleUpdateMessage)))
 	mux.HandleFunc("DELETE /api/v1/messages/{id}", s.requireAuth(s.csrfProtect(s.handleDeleteMessage)))
 	mux.HandleFunc("PUT /api/v1/conversations/{id}/mute", s.requireAuth(s.csrfProtect(s.handleSetConversationMuted)))
+	mux.HandleFunc("GET /api/v1/groups", s.requireAuth(s.handleListGroups))
+	mux.HandleFunc("POST /api/v1/groups", s.requireAuth(s.csrfProtect(s.handleCreateGroup)))
+	mux.HandleFunc("GET /api/v1/groups/{id}", s.requireAuth(s.handleGetGroup))
+	mux.HandleFunc("POST /api/v1/groups/{id}/leave", s.requireAuth(s.csrfProtect(s.handleLeaveGroup)))
+	mux.HandleFunc("GET /api/v1/groups/{id}/members", s.requireAuth(s.handleListCommunityMembers))
+	mux.HandleFunc("POST /api/v1/groups/{id}/members", s.requireAuth(s.csrfProtect(s.handleAddCommunityMembers)))
+	mux.HandleFunc("PATCH /api/v1/groups/{id}/members/{userId}", s.requireAuth(s.csrfProtect(s.handleSetCommunityRole)))
+	mux.HandleFunc("DELETE /api/v1/groups/{id}/members/{userId}", s.requireAuth(s.csrfProtect(s.handleRemoveCommunityMember)))
+	mux.HandleFunc("GET /api/v1/channels", s.requireAuth(s.handleListChannels))
+	mux.HandleFunc("POST /api/v1/channels", s.requireAuth(s.csrfProtect(s.handleCreateChannel)))
+	mux.HandleFunc("GET /api/v1/channels/search", s.requireAuth(s.handleSearchChannels))
+	mux.HandleFunc("GET /api/v1/channels/{id}", s.requireAuth(s.handleGetChannel))
+	mux.HandleFunc("POST /api/v1/channels/{id}/join", s.requireAuth(s.csrfProtect(s.handleJoinChannel)))
+	mux.HandleFunc("POST /api/v1/channels/{id}/leave", s.requireAuth(s.csrfProtect(s.handleLeaveChannel)))
+	mux.HandleFunc("GET /api/v1/channels/{id}/members", s.requireAuth(s.handleListCommunityMembers))
+	mux.HandleFunc("POST /api/v1/channels/{id}/members", s.requireAuth(s.csrfProtect(s.handleAddCommunityMembers)))
+	mux.HandleFunc("PATCH /api/v1/channels/{id}/members/{userId}", s.requireAuth(s.csrfProtect(s.handleSetCommunityRole)))
+	mux.HandleFunc("DELETE /api/v1/channels/{id}/members/{userId}", s.requireAuth(s.csrfProtect(s.handleRemoveCommunityMember)))
 	mux.HandleFunc("GET /api/v1/notifications", s.requireAuth(s.handleListNotifications))
 	mux.HandleFunc("GET /api/v1/notifications/unread-count", s.requireAuth(s.handleUnreadNotificationCount))
 	mux.HandleFunc("POST /api/v1/notifications/{id}/read", s.requireAuth(s.csrfProtect(s.handleMarkNotificationRead)))

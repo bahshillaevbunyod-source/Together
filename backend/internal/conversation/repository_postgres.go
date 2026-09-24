@@ -117,13 +117,20 @@ SELECT EXISTS (
 // otherParticipantQuery returns the other member of the conversation for a
 // given sender. It yields NULL when the sender is not part of the pair, and no
 // row when the conversation does not exist — both mean "not a participant".
+// For group/channel conversations it yields the sender itself when they are a
+// participant. $2 is cast explicitly: a bare "SELECT $2" makes Postgres infer
+// text for it, which conflicts with the uuid comparisons below and fails the
+// statement at prepare time (SQLSTATE 42P08) for every message send.
 const otherParticipantQuery = `
 SELECT CASE
+    WHEN c.type IN ('group', 'channel') THEN (
+        SELECT $2::uuid WHERE EXISTS (SELECT 1 FROM conversation_participants p WHERE p.conversation_id=c.id AND p.user_id=$2::uuid)
+    )
     WHEN user_low = $2 THEN user_high
     WHEN user_high = $2 THEN user_low
 END
-FROM conversations
-WHERE id = $1
+FROM conversations c
+WHERE c.id = $1
 `
 
 const hasBlockBetweenQuery = `
@@ -141,6 +148,31 @@ RETURNING id, conversation_id, sender_id, content, created_at
 `
 
 const touchConversationQuery = `UPDATE conversations SET updated_at = now() WHERE id = $1`
+
+// authorizeMessageActor handles the different authorization contracts for
+// direct and community conversations. Community messages do not require an
+// "other participant"; the current member is sufficient, including for a
+// solo community. Direct conversations retain their block and recipient rules.
+func authorizeMessageActor(ctx context.Context, tx DBTX, conversationID, senderID string) (string, error) {
+	var recipient *string
+	if err := tx.QueryRow(ctx, otherParticipantQuery, conversationID, senderID).Scan(&recipient); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return "", ErrNotParticipant
+		}
+		return "", err
+	}
+	if recipient == nil {
+		return "", ErrNotParticipant
+	}
+	var blocked bool
+	if err := tx.QueryRow(ctx, hasBlockBetweenQuery, senderID, *recipient).Scan(&blocked); err != nil {
+		return "", err
+	}
+	if blocked {
+		return "", ErrBlocked
+	}
+	return *recipient, nil
+}
 
 // CreateMessage validates and stores a message, then bumps the conversation's
 // updated_at, all in one transaction. The sender must be a participant. It
@@ -161,23 +193,9 @@ func (r *PostgresRepository) CreateMessage(ctx context.Context, conversationID, 
 	}
 	defer tx.Rollback(ctx) // no-op after a successful Commit
 
-	var recipient *string
-	if err := tx.QueryRow(ctx, otherParticipantQuery, conversationID, senderID).Scan(&recipient); err != nil {
-		if errors.Is(err, pgx.ErrNoRows) {
-			return nil, "", ErrNotParticipant
-		}
+	recipient, err := authorizeMessageActor(ctx, tx, conversationID, senderID)
+	if err != nil {
 		return nil, "", err
-	}
-	if recipient == nil {
-		return nil, "", ErrNotParticipant
-	}
-
-	var blocked bool
-	if err := tx.QueryRow(ctx, hasBlockBetweenQuery, senderID, *recipient).Scan(&blocked); err != nil {
-		return nil, "", err
-	}
-	if blocked {
-		return nil, "", ErrBlocked
 	}
 
 	var m Message
@@ -194,7 +212,7 @@ func (r *PostgresRepository) CreateMessage(ctx context.Context, conversationID, 
 	if err := tx.Commit(ctx); err != nil {
 		return nil, "", err
 	}
-	return &m, *recipient, nil
+	return &m, recipient, nil
 }
 
 const insertMessageAttachmentQuery = `
@@ -212,19 +230,9 @@ func (r *PostgresRepository) CreateMessageWithAttachment(ctx context.Context, co
 		return nil, "", err
 	}
 	defer tx.Rollback(ctx)
-	var recipient *string
-	if err := tx.QueryRow(ctx, otherParticipantQuery, conversationID, senderID).Scan(&recipient); err != nil || recipient == nil {
-		if err == nil || errors.Is(err, pgx.ErrNoRows) {
-			return nil, "", ErrNotParticipant
-		}
+	recipient, err := authorizeMessageActor(ctx, tx, conversationID, senderID)
+	if err != nil {
 		return nil, "", err
-	}
-	var blocked bool
-	if err := tx.QueryRow(ctx, hasBlockBetweenQuery, senderID, *recipient).Scan(&blocked); err != nil {
-		return nil, "", err
-	}
-	if blocked {
-		return nil, "", ErrBlocked
 	}
 	if attachment.Filename == "" || attachment.StorageKey == "" || attachment.SizeBytes <= 0 {
 		return nil, "", ErrInvalidAttachment
@@ -244,7 +252,7 @@ func (r *PostgresRepository) CreateMessageWithAttachment(ctx context.Context, co
 		return nil, "", err
 	}
 	m.Attachment = &attachment
-	return &m, *recipient, nil
+	return &m, recipient, nil
 }
 
 // listMessagesQuery returns a conversation's messages newest-first, keyset
@@ -373,17 +381,14 @@ func (r *PostgresRepository) UpdateMessage(ctx context.Context, messageID, sende
 		attachment.MessageID = m.ID
 		m.Attachment = &attachment
 	}
-	var recipient *string
-	if err := tx.QueryRow(ctx, otherParticipantQuery, m.ConversationID, senderID).Scan(&recipient); err != nil || recipient == nil {
-		if err == nil || errors.Is(err, pgx.ErrNoRows) {
-			return nil, "", ErrMessageNotFound
-		}
+	recipient, err := authorizeMessageActor(ctx, tx, m.ConversationID, senderID)
+	if err != nil {
 		return nil, "", err
 	}
 	if err := tx.Commit(ctx); err != nil {
 		return nil, "", err
 	}
-	return &m, *recipient, nil
+	return &m, recipient, nil
 }
 
 const deleteMessageQuery = `
@@ -406,17 +411,14 @@ func (r *PostgresRepository) DeleteMessage(ctx context.Context, messageID, sende
 		}
 		return "", "", time.Time{}, err
 	}
-	var recipient *string
-	if err := tx.QueryRow(ctx, otherParticipantQuery, conversationID, senderID).Scan(&recipient); err != nil || recipient == nil {
-		if err == nil || errors.Is(err, pgx.ErrNoRows) {
-			return "", "", time.Time{}, ErrMessageNotFound
-		}
+	recipient, err := authorizeMessageActor(ctx, tx, conversationID, senderID)
+	if err != nil {
 		return "", "", time.Time{}, err
 	}
 	if err := tx.Commit(ctx); err != nil {
 		return "", "", time.Time{}, err
 	}
-	return conversationID, *recipient, deletedAt, nil
+	return conversationID, recipient, deletedAt, nil
 }
 
 const setMessageLanguageMetadataQuery = `
@@ -480,7 +482,8 @@ LEFT JOIN LATERAL (
     ORDER BY m.created_at DESC, m.id DESC
     LIMIT 1
 ) lm ON true
-WHERE ($2::timestamptz IS NULL
+WHERE c.type = 'direct'
+  AND ($2::timestamptz IS NULL
        OR c.updated_at < $2
        OR (c.updated_at = $2 AND c.id < $3::uuid))
 ORDER BY c.updated_at DESC, c.id DESC

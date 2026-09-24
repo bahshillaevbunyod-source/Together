@@ -575,6 +575,18 @@ export interface ApiMessage {
   sourceLanguage: string | null;
   targetLanguage: string | null;
 	attachment: ApiMessageAttachment | null;
+  /**
+   * Sender identity. Provided for group/channel messages so bubbles can show
+   * who wrote them; direct-message payloads may omit it.
+   */
+  sender?: ApiMessageSender | null;
+}
+
+export interface ApiMessageSender {
+  id: string;
+  username: string;
+  displayName: string;
+  avatarUrl: string | null;
 }
 
 export interface ApiMessageAttachment { id: string; filename: string; type: "image" | "file" | "voice"; mimeType: string; sizeBytes: number; url: string; }

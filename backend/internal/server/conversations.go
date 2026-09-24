@@ -11,6 +11,7 @@ import (
 	"time"
 	"unicode"
 
+	"together/backend/internal/community"
 	"together/backend/internal/conversation"
 	"together/backend/internal/translation"
 	"together/backend/internal/user"
@@ -48,6 +49,7 @@ type messageResponse struct {
 	UpdatedAt  string                     `json:"updatedAt"`
 	DeletedAt  *string                    `json:"deletedAt"`
 	Attachment *messageAttachmentResponse `json:"attachment"`
+	Sender     *messageSenderResponse     `json:"sender,omitempty"`
 
 	// Translation fields are null unless the viewer opted in and a translation
 	// succeeded. Content always holds the original, untranslated text.
@@ -56,6 +58,13 @@ type messageResponse struct {
 	SourceLanguageConfidence *float64 `json:"sourceLanguageConfidence"`
 	SourceLanguageResolution *string  `json:"sourceLanguageResolution"`
 	TargetLanguage           *string  `json:"targetLanguage"`
+}
+
+type messageSenderResponse struct {
+	ID          string  `json:"id"`
+	Username    string  `json:"username"`
+	DisplayName string  `json:"displayName"`
+	AvatarURL   *string `json:"avatarUrl"`
 }
 
 type messageListResponse struct {
@@ -249,7 +258,6 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "invalid conversation id")
 		return
 	}
-
 	limit, ok := parseListLimit(r.URL.Query().Get("limit"))
 	if !ok {
 		writeError(w, http.StatusBadRequest, "invalid limit")
@@ -294,6 +302,7 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 			SourceLanguageConfidence: m.SourceLanguageConfidence,
 			SourceLanguageResolution: m.SourceLanguageResolution,
 			Attachment:               s.messageAttachmentResponse(r.Context(), m.Attachment),
+			Sender:                   s.messageSenderResponse(r.Context(), m.SenderID),
 		}
 		s.applyTranslation(r.Context(), &resp, m.Content, targetLang)
 		items = append(items, resp)
@@ -307,6 +316,14 @@ func (s *Server) messageAttachmentResponse(ctx context.Context, a *conversation.
 		return nil
 	}
 	return &messageAttachmentResponse{ID: a.ID, Filename: a.Filename, Type: a.Type, MimeType: a.MimeType, SizeBytes: a.SizeBytes, URL: s.mediaURLForKey(ctx, a.StorageKey)}
+}
+
+func (s *Server) messageSenderResponse(ctx context.Context, id string) *messageSenderResponse {
+	u, err := s.users.GetByID(ctx, id)
+	if err != nil {
+		return nil
+	}
+	return &messageSenderResponse{ID: u.ID, Username: u.Username, DisplayName: u.DisplayName, AvatarURL: u.AvatarURL}
 }
 
 func safeAttachmentFilename(raw string) string {
@@ -481,6 +498,12 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "invalid conversation id")
 		return
 	}
+	if s.communities != nil {
+		if kind, role, authErr := s.communities.Authorize(r.Context(), id, me.ID); authErr == nil && kind == community.Channel && role == community.RoleMember {
+			writeError(w, http.StatusForbidden, "channel is read-only for members")
+			return
+		}
+	}
 
 	if ct := r.Header.Get("Content-Type"); !strings.HasPrefix(ct, "application/json") {
 		writeError(w, http.StatusUnsupportedMediaType, "content-type must be application/json")
@@ -538,6 +561,7 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 		SourceLanguageConfidence: m.SourceLanguageConfidence,
 		SourceLanguageResolution: m.SourceLanguageResolution,
 		Attachment:               s.messageAttachmentResponse(r.Context(), m.Attachment),
+		Sender:                   s.messageSenderResponse(r.Context(), m.SenderID),
 	}
 
 	// The DB is the source of truth; realtime delivery happens only after a
@@ -545,7 +569,7 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 	// non-blocking, so a slow or disconnected recipient cannot stall us. Publish
 	// with the untranslated response so the recipient event is translated for
 	// the recipient, not the sender.
-	s.publishMessageCreated(r.Context(), id, recipientID, resp)
+	s.publishMessageCreatedToConversation(r.Context(), id, me.ID, recipientID, resp)
 
 	// Translate the HTTP response for the CURRENT sender/viewer's preferences.
 	if me.AutoTranslateEnabled && me.PreferredLanguage != nil {
@@ -565,6 +589,16 @@ func (s *Server) handleUpdateMessage(w http.ResponseWriter, r *http.Request) {
 	if !uuidPattern.MatchString(messageID) {
 		writeError(w, http.StatusBadRequest, "invalid message id")
 		return
+	}
+	if s.communities != nil {
+		if err := s.communities.AuthorizeMessage(r.Context(), messageID, me.ID); err != nil {
+			if errors.Is(err, community.ErrNotMember) {
+				writeError(w, http.StatusNotFound, "message not found")
+			} else {
+				writeError(w, http.StatusInternalServerError, "internal error")
+			}
+			return
+		}
 	}
 	if ct := r.Header.Get("Content-Type"); !strings.HasPrefix(ct, "application/json") {
 		writeError(w, http.StatusUnsupportedMediaType, "content-type must be application/json")
@@ -589,8 +623,8 @@ func (s *Server) handleUpdateMessage(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-	resp := messageResponse{ID: m.ID, SenderID: m.SenderID, Content: m.Content, CreatedAt: m.CreatedAt.Format(time.RFC3339), UpdatedAt: m.UpdatedAt.Format(time.RFC3339), Attachment: s.messageAttachmentResponse(r.Context(), m.Attachment)}
-	s.publishMessageUpdated(r.Context(), m.ConversationID, me.ID, recipientID, resp)
+	resp := messageResponse{ID: m.ID, SenderID: m.SenderID, Content: m.Content, CreatedAt: m.CreatedAt.Format(time.RFC3339), UpdatedAt: m.UpdatedAt.Format(time.RFC3339), Attachment: s.messageAttachmentResponse(r.Context(), m.Attachment), Sender: s.messageSenderResponse(r.Context(), m.SenderID)}
+	s.publishMessageUpdatedToConversation(r.Context(), m.ConversationID, me.ID, recipientID, resp)
 	s.applyTranslation(r.Context(), &resp, resp.Content, translationTarget(me))
 	writeJSON(w, http.StatusOK, resp)
 }
@@ -606,6 +640,16 @@ func (s *Server) handleDeleteMessage(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "invalid message id")
 		return
 	}
+	if s.communities != nil {
+		if err := s.communities.AuthorizeMessage(r.Context(), messageID, me.ID); err != nil {
+			if errors.Is(err, community.ErrNotMember) {
+				writeError(w, http.StatusNotFound, "message not found")
+			} else {
+				writeError(w, http.StatusInternalServerError, "internal error")
+			}
+			return
+		}
+	}
 	conversationID, recipientID, deletedAt, err := s.conversations.DeleteMessage(r.Context(), messageID, me.ID)
 	if err != nil {
 		if errors.Is(err, conversation.ErrMessageNotFound) {
@@ -615,7 +659,7 @@ func (s *Server) handleDeleteMessage(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
-	s.publishMessageDeleted(conversationID, messageID, me.ID, recipientID, deletedAt)
+	s.publishMessageDeletedToConversation(r.Context(), conversationID, messageID, me.ID, recipientID, deletedAt)
 	w.WriteHeader(http.StatusNoContent)
 }
 
@@ -692,6 +736,32 @@ func (s *Server) publishMessageCreated(ctx context.Context, conversationID, reci
 	s.hub.SendToUser(recipientID, payload)
 }
 
+func (s *Server) communityRecipients(ctx context.Context, conversationID, senderID, fallback string) []string {
+	if s.communities == nil {
+		return []string{fallback}
+	}
+	ids, err := s.communities.MemberIDs(ctx, conversationID)
+	if err != nil || len(ids) == 0 {
+		return []string{fallback}
+	}
+	out := make([]string, 0, len(ids))
+	for _, id := range ids {
+		if id != senderID {
+			out = append(out, id)
+		}
+	}
+	if len(out) == 0 {
+		return []string{fallback}
+	}
+	return out
+}
+
+func (s *Server) publishMessageCreatedToConversation(ctx context.Context, conversationID, senderID, fallback string, msg messageResponse) {
+	for _, id := range s.communityRecipients(ctx, conversationID, senderID, fallback) {
+		s.publishMessageCreated(ctx, conversationID, id, msg)
+	}
+}
+
 func (s *Server) publishMessageUpdated(ctx context.Context, conversationID, senderID, recipientID string, msg messageResponse) {
 	for _, userID := range []string{senderID, recipientID} {
 		out := msg
@@ -705,6 +775,12 @@ func (s *Server) publishMessageUpdated(ctx context.Context, conversationID, send
 	}
 }
 
+func (s *Server) publishMessageUpdatedToConversation(ctx context.Context, conversationID, senderID, fallback string, msg messageResponse) {
+	for _, id := range append([]string{senderID}, s.communityRecipients(ctx, conversationID, senderID, fallback)...) {
+		s.publishMessageUpdated(ctx, conversationID, senderID, id, msg)
+	}
+}
+
 func (s *Server) publishMessageDeleted(conversationID, messageID, senderID, recipientID string, deletedAt time.Time) {
 	payload, err := json.Marshal(realtimeEvent{Type: "message.deleted", Data: messageDeletedData{ConversationID: conversationID, ID: messageID, DeletedAt: deletedAt.Format(time.RFC3339)}})
 	if err != nil {
@@ -712,6 +788,12 @@ func (s *Server) publishMessageDeleted(conversationID, messageID, senderID, reci
 	}
 	s.hub.SendToUser(senderID, payload)
 	s.hub.SendToUser(recipientID, payload)
+}
+
+func (s *Server) publishMessageDeletedToConversation(ctx context.Context, conversationID, messageID, senderID, fallback string, deletedAt time.Time) {
+	for _, id := range append([]string{senderID}, s.communityRecipients(ctx, conversationID, senderID, fallback)...) {
+		s.publishMessageDeleted(conversationID, messageID, senderID, id, deletedAt)
+	}
 }
 
 // parseMessageCursor decodes a message cursor. Empty -> nil (first page).

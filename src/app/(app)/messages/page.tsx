@@ -19,6 +19,7 @@ import { useAuth } from "@/lib/auth-context";
 import { useRealtime } from "@/lib/realtime-context";
 import { useLanguage } from "@/lib/language-context";
 import { ConversationThread } from "@/components/messages/ConversationThread";
+import { MessagingTabs } from "@/components/community/MessagingTabs";
 
 type Status = "loading" | "ready" | "error";
 
@@ -189,7 +190,8 @@ export default function MessagesPage() {
       {/* Conversation list */}
       <div className={`${selected ? "hidden" : "flex"} w-full flex-col border-border sm:flex sm:w-80 sm:border-r`}>
         <div className="border-b border-border px-4 py-3">
-          <h1 className="text-base font-semibold text-foreground">{t("navigation.messages")}</h1>
+          <MessagingTabs />
+          <h1 className="mt-3 text-base font-semibold text-foreground">{t("navigation.messages")}</h1>
 		  <form onSubmit={runSearch} className="mt-2">
 			<input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search messages" className="h-9 w-full rounded-full bg-background px-3 text-sm text-foreground placeholder:text-muted-soft" />
 		  </form>

@@ -10,7 +10,7 @@ import {
 } from "react";
 
 import { useAuth } from "@/lib/auth-context";
-import type { ApiMessageAttachment } from "@/lib/api";
+import type { ApiMessageAttachment, ApiMessageSender } from "@/lib/api";
 
 /** Payload of a `message.created` realtime event (matches the backend). */
 export interface MessageCreatedEvent {
@@ -24,6 +24,8 @@ export interface MessageCreatedEvent {
   sourceLanguage: string | null;
   targetLanguage: string | null;
   attachment: ApiMessageAttachment | null;
+  /** Sender identity for group/channel messages (optional for direct). */
+  sender?: ApiMessageSender | null;
 }
 
 export interface MessageDeletedEvent { conversationId: string; id: string; deletedAt: string; }

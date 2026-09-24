@@ -9,6 +9,7 @@ import {
   Calendar,
   Compass,
   Home,
+  Megaphone,
   MessageCircle,
   Phone,
   Search,
@@ -26,6 +27,8 @@ type NavItem = {
   /** Route this item navigates to; items without one are not yet wired. */
   href?: string;
   badge?: string;
+  /** Hidden from the compact mobile bottom bar (reached via Messages tabs). */
+  desktopOnly?: boolean;
 };
 
 const navItems: NavItem[] = [
@@ -33,7 +36,8 @@ const navItems: NavItem[] = [
   { labelKey: "navigation.discover", icon: Search, href: "/discover" },
   { labelKey: "navigation.messages", icon: MessageCircle, href: "/messages" },
   { labelKey: "navigation.calls", icon: Phone },
-  { labelKey: "navigation.groups", icon: Users },
+  { labelKey: "navigation.groups", icon: Users, href: "/groups", desktopOnly: true },
+  { labelKey: "navigation.channels", icon: Megaphone, href: "/channels", desktopOnly: true },
   { labelKey: "navigation.explore", icon: Compass },
   { labelKey: "navigation.events", icon: Calendar },
   { labelKey: "navigation.bookmarks", icon: Bookmark, href: "/bookmarks" },
@@ -43,7 +47,11 @@ const navItems: NavItem[] = [
 
 // The real destinations are shared by the desktop sidebar and mobile nav so
 // responsive navigation cannot drift from the established route structure.
-const primaryNavItems = navItems.filter((item) => item.href);
+const primaryNavItems = navItems.filter((item) => item.href && !item.desktopOnly);
+
+// Groups and Channels live inside the messaging area on mobile, so the
+// Messages tab stays highlighted there.
+const MESSAGING_PATHS = ["/messages", "/groups", "/channels"];
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -146,7 +154,9 @@ export function MobileNavigation() {
       <div className="app-mobile-nav mx-auto flex max-w-lg items-stretch justify-between">
         {primaryNavItems.map(({ labelKey, icon: Icon, href }) => {
           const label = t(labelKey);
-          const active = pathname === href;
+          const active =
+            pathname === href ||
+            (href === "/messages" && MESSAGING_PATHS.includes(pathname));
           return (
             <Link
               key={labelKey}

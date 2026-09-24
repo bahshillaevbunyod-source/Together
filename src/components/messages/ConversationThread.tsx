@@ -28,6 +28,14 @@ interface Props {
   onRead: (conversationId: string) => void;
   /** Called after a message is successfully sent, to update the list. */
   onSent?: (conversationId: string, message: ApiMessage) => void;
+  /**
+   * Whether the viewer may post (server-provided). When false the composer is
+   * replaced by `readOnlyNotice`. Defaults to true (direct messages).
+   */
+  canPost?: boolean;
+  readOnlyNotice?: string;
+  /** Show the sender's name above other people's bubbles (groups). */
+  showSenders?: boolean;
 }
 
 export function ConversationThread({
@@ -35,6 +43,9 @@ export function ConversationThread({
   currentUserId,
   onRead,
   onSent,
+  canPost = true,
+  readOnlyNotice,
+  showSenders = false,
 }: Props) {
   // Messages held oldest → newest so they read naturally top-to-bottom.
   const [messages, setMessages] = useState<ApiMessage[]>([]);
@@ -200,6 +211,7 @@ export function ConversationThread({
 		updatedAt: event.updatedAt ?? event.createdAt,
 		deletedAt: null,
 		attachment: event.attachment ?? null,
+        sender: event.sender ?? null,
         translatedContent: event.translatedContent,
         sourceLanguage: event.sourceLanguage,
         targetLanguage: event.targetLanguage,
@@ -307,6 +319,7 @@ export function ConversationThread({
                 key={m.id}
                 message={m}
                 mine={currentUserId != null && m.senderId === currentUserId}
+                showSender={showSenders}
 				onUpdate={(message) => setMessages((prev) => prev.map((m) => m.id === message.id ? message : m))}
 				onDelete={(id) => setMessages((prev) => prev.map((m) => m.id === id ? { ...m, content: "", translatedContent: null, deletedAt: new Date().toISOString() } : m))}
               />
@@ -316,7 +329,14 @@ export function ConversationThread({
         <div ref={bottomRef} />
       </div>
 
-      {/* Composer */}
+      {!canPost ? (
+        readOnlyNotice ? (
+          <div className="border-t border-border px-4 py-3.5 text-center text-xs text-muted">
+            {readOnlyNotice}
+          </div>
+        ) : null
+      ) : (
+      /* Composer */
       <div className="border-t border-border px-4 py-3">
         {sendError ? (
           <p className="mb-2 text-xs text-red-500" role="alert">
@@ -348,6 +368,7 @@ export function ConversationThread({
           </button>
         </form>
       </div>
+      )}
     </div>
   );
 }
@@ -382,11 +403,13 @@ function VoicePlayer({ url }: { url: string }) {
 function MessageBubble({
   message,
   mine,
+  showSender,
 	onUpdate,
 	onDelete,
 }: {
   message: ApiMessage;
   mine: boolean;
+  showSender: boolean;
 	onUpdate: (message: ApiMessage) => void;
 	onDelete: (id: string) => void;
 }) {
@@ -420,6 +443,11 @@ function MessageBubble({
           mine ? "bg-primary text-white" : "bg-background text-foreground"
         }`}
       >
+        {showSender && !mine && message.sender ? (
+          <p className="mb-0.5 truncate text-xs font-semibold text-primary">
+            {message.sender.displayName}
+          </p>
+        ) : null}
 		{message.attachment ? <div className="mb-1">{message.attachment.type === "image" ? <a href={message.attachment.url} target="_blank" rel="noreferrer"><Image src={message.attachment.url} alt={message.attachment.filename} width={320} height={224} unoptimized className="max-h-56 max-w-full rounded-lg object-contain" /></a> : message.attachment.type === "voice" ? <VoicePlayer url={message.attachment.url} /> : <a href={message.attachment.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 underline"><span>📎</span><span className="truncate">{message.attachment.filename}</span><span className="text-xs opacity-70">{Math.ceil(message.attachment.sizeBytes / 1024)} KB</span></a>}</div> : null}
 		{editing ? <div className="flex gap-1"><input value={draft} onChange={(e) => setDraft(e.target.value)} className="min-w-0 flex-1 rounded bg-white/20 px-2 py-1 text-sm" /><button type="button" onClick={save} disabled={saving} className="text-xs underline">Save</button><button type="button" onClick={() => { setDraft(message.content); setEditing(false); }} className="text-xs underline">Cancel</button></div> : message.content ? <p className="whitespace-pre-wrap break-words text-sm">{primary}</p> : null}
 

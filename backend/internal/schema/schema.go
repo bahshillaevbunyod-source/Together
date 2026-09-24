@@ -31,6 +31,10 @@ var requiredColumns = []struct{ table, column string }{
 	{"messages", "updated_at"}, // 000026
 	{"messages", "deleted_at"},
 	{"conversation_participants", "muted_at"},
+	{"conversation_participants", "role"}, // 000030
+	{"conversations", "type"},
+	{"conversations", "name"},
+	{"conversations", "description"},
 	{"posts", "original_post_id"}, // 000025
 }
 

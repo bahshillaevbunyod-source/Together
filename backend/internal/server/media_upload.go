@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"mime"
 	"net/http"
 	"strings"
 	"time"
@@ -232,6 +233,7 @@ func (s *Server) handleConfirmUpload(w http.ResponseWriter, r *http.Request) {
 
 // allowedExtension validates type/mime/size and returns the safe extension.
 func allowedExtension(mediaType, mimeType string, sizeBytes int64) (string, bool) {
+	mimeType = normalizedMIME(mimeType)
 	switch mediaType {
 	case media.TypeImage:
 		ext, ok := imageMimeExt[mimeType]
@@ -260,6 +262,14 @@ func allowedExtension(mediaType, mimeType string, sizeBytes int64) (string, bool
 	default:
 		return "", false
 	}
+}
+
+func normalizedMIME(raw string) string {
+	parsed, _, err := mime.ParseMediaType(strings.TrimSpace(raw))
+	if err == nil {
+		return strings.ToLower(parsed)
+	}
+	return strings.ToLower(strings.TrimSpace(strings.SplitN(raw, ";", 2)[0]))
 }
 
 // newUUIDv4 generates a random RFC 4122 v4 UUID string.

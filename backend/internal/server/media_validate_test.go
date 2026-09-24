@@ -57,6 +57,9 @@ func TestAttachmentUploadPolicy(t *testing.T) {
 	if _, ok := allowedExtension("voice", "audio/wav", 100); ok {
 		t.Fatal("unsupported audio MIME must be rejected")
 	}
+	if ext, ok := allowedExtension("voice", "audio/webm;codecs=opus", 100); !ok || ext != "webm" {
+		t.Fatalf("MediaRecorder webm MIME with codec parameter should be accepted: ext=%q ok=%v", ext, ok)
+	}
 }
 
 func TestValidateUploadedObjectVoice(t *testing.T) {

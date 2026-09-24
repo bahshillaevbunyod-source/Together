@@ -74,7 +74,8 @@ func (s *Server) validateUploadedObject(ctx context.Context, userID, storageKey 
 		return nil, err // internal storage error
 	}
 
-	mediaType, ok := mediaTypeForMime(info.ContentType)
+	mimeType := normalizedMIME(info.ContentType)
+	mediaType, ok := mediaTypeForMime(mimeType)
 	if !ok {
 		return nil, errUnsupportedMedia
 	}
@@ -96,7 +97,7 @@ func (s *Server) validateUploadedObject(ctx context.Context, userID, storageKey 
 
 	return &validatedMedia{
 		StorageKey: storageKey,
-		MimeType:   info.ContentType,
+		MimeType:   mimeType,
 		SizeBytes:  info.SizeBytes,
 		Type:       mediaType,
 	}, nil
@@ -104,6 +105,7 @@ func (s *Server) validateUploadedObject(ctx context.Context, userID, storageKey 
 
 // mediaTypeForMime maps an allowed MIME type to its media category.
 func mediaTypeForMime(mime string) (string, bool) {
+	mime = normalizedMIME(mime)
 	if _, ok := imageMimeExt[mime]; ok {
 		return media.TypeImage, true
 	}
