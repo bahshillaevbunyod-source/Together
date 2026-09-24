@@ -418,7 +418,9 @@ export function CommunityHub({ kind }: { kind: CommunityKind }) {
 
             {detailsOpen && selected.role ? (
               <CommunityDetails
-                key={selected.id}
+                // Sibling of the thread (keyed by the community id), so it needs
+                // its own key; still per-community so member state resets.
+                key={`details:${selected.id}`}
                 community={selected}
                 currentUserId={user?.id}
                 onClose={() => setDetailsOpen(false)}
