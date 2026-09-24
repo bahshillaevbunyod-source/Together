@@ -35,7 +35,7 @@ const navItems: NavItem[] = [
   { labelKey: "navigation.home", icon: Home, href: "/" },
   { labelKey: "navigation.discover", icon: Search, href: "/discover" },
   { labelKey: "navigation.messages", icon: MessageCircle, href: "/messages" },
-  { labelKey: "navigation.calls", icon: Phone },
+  { labelKey: "navigation.calls", icon: Phone, href: "/calls", desktopOnly: true },
   { labelKey: "navigation.groups", icon: Users, href: "/groups", desktopOnly: true },
   { labelKey: "navigation.channels", icon: Megaphone, href: "/channels", desktopOnly: true },
   { labelKey: "navigation.explore", icon: Compass },
@@ -49,9 +49,9 @@ const navItems: NavItem[] = [
 // responsive navigation cannot drift from the established route structure.
 const primaryNavItems = navItems.filter((item) => item.href && !item.desktopOnly);
 
-// Groups and Channels live inside the messaging area on mobile, so the
+// Groups, Channels and Calls live inside the messaging area on mobile, so the
 // Messages tab stays highlighted there.
-const MESSAGING_PATHS = ["/messages", "/groups", "/channels"];
+const MESSAGING_PATHS = ["/messages", "/groups", "/channels", "/calls"];
 
 export function Sidebar() {
   const pathname = usePathname();

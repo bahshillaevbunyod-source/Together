@@ -9,6 +9,8 @@ import { useAuth } from "@/lib/auth-context";
 import { getProfile } from "@/lib/api";
 import { LanguageProvider } from "@/lib/language-context";
 import { RealtimeProvider } from "@/lib/realtime-context";
+import { CallProvider } from "@/lib/calls/call-context";
+import { CallOverlay } from "@/components/calls/CallOverlay";
 // Pre-AppShell gate states render before the LanguageProvider mounts, so they
 // use the canonical English dictionary (English fallback + LTR).
 import en from "@/lib/i18n/locales/en";
@@ -115,7 +117,10 @@ export default function AppGroupLayout({
   return (
     <LanguageProvider platformLanguage={platformLanguage}>
       <RealtimeProvider>
-        <AppShell>{children}</AppShell>
+        <CallProvider>
+          <AppShell>{children}</AppShell>
+          <CallOverlay />
+        </CallProvider>
       </RealtimeProvider>
     </LanguageProvider>
   );

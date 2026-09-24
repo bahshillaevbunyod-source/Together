@@ -20,6 +20,7 @@ import { useRealtime } from "@/lib/realtime-context";
 import { useLanguage } from "@/lib/language-context";
 import { ConversationThread } from "@/components/messages/ConversationThread";
 import { MessagingTabs } from "@/components/community/MessagingTabs";
+import { CallButtons } from "@/components/calls/CallButtons";
 
 type Status = "loading" | "ready" | "error";
 
@@ -361,7 +362,10 @@ export default function MessagesPage() {
                   </div>
                 </div>
               </Link>
-			  <button type="button" onClick={toggleMute} className="ml-auto rounded-full px-3 py-1.5 text-xs text-muted hover:bg-background hover:text-foreground">{selected.muted ? "Unmute" : "Mute"}</button>
+              <div className="ml-auto">
+                <CallButtons conversationId={selected.id} peer={selected.otherUser} />
+              </div>
+			  <button type="button" onClick={toggleMute} className="rounded-full px-3 py-1.5 text-xs text-muted hover:bg-background hover:text-foreground">{selected.muted ? "Unmute" : "Mute"}</button>
             </div>
             <ConversationThread
               key={selected.id}

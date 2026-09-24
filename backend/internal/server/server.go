@@ -12,6 +12,7 @@ import (
 
 	"together/backend/internal/block"
 	"together/backend/internal/bookmark"
+	"together/backend/internal/call"
 	"together/backend/internal/comment"
 	"together/backend/internal/community"
 	"together/backend/internal/config"
@@ -68,6 +69,7 @@ type Server struct {
 	commentNotify  commentNotifier
 	conversations  conversation.Repository
 	communities    community.Repository
+	calls          *call.Registry
 	registrar      registration.Creator
 	translator     translation.Service
 
@@ -185,6 +187,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		commentNotify:  commentNotify,
 		conversations:  conversations,
 		communities:    communitiesRepo,
+		calls:          call.New(45*time.Second, nil),
 		registrar:      registrar,
 		translator:     newTranslator(cfg),
 
@@ -201,6 +204,10 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		registerLimiter: ratelimit.New(5, 10*time.Minute),
 		loginLimiter:    ratelimit.New(10, 10*time.Minute),
 	}
+	s.calls = call.New(45*time.Second, func(e call.Entry) {
+		s.relayCall(e.CallerID, "call.cancel", map[string]any{"callId": e.ID})
+		s.relayCall(e.CalleeID, "call.reject", map[string]any{"callId": e.ID})
+	})
 	return s
 }
 
@@ -319,6 +326,8 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/v1/feed", s.requireAuth(s.handleFeed))
 	mux.HandleFunc("GET /api/v1/bookmarks", s.requireAuth(s.handleListBookmarks))
 	mux.HandleFunc("GET /api/v1/ws", s.handleWebSocket)
+	mux.HandleFunc("GET /api/v1/calls/config", s.requireAuth(s.handleCallConfig))
+	mux.HandleFunc("POST /api/v1/calls", s.requireAuth(s.csrfProtect(s.handleCreateCall)))
 	mux.HandleFunc("GET /api/v1/conversations", s.requireAuth(s.handleListConversations))
 	mux.HandleFunc("GET /api/v1/messages/search", s.requireAuth(s.handleSearchMessages))
 	mux.HandleFunc("POST /api/v1/conversations", s.requireAuth(s.csrfProtect(s.handleOpenConversation)))

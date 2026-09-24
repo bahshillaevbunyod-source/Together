@@ -28,16 +28,24 @@ export interface MessageCreatedEvent {
   sender?: ApiMessageSender | null;
 }
 
+/** A raw call.* frame. Payload validation happens in the call controller. */
+export interface CallSignalEvent { type: string; data: Record<string, unknown>; }
+
 export interface MessageDeletedEvent { conversationId: string; id: string; deletedAt: string; }
 
 type MessageCreatedHandler = (event: MessageCreatedEvent) => void;
 type MessageDeletedHandler = (event: MessageDeletedEvent) => void;
+type CallSignalHandler = (event: CallSignalEvent) => void;
 
 interface RealtimeState {
   /** Subscribe to `message.created` events; returns an unsubscribe function. */
   subscribeMessageCreated: (handler: MessageCreatedHandler) => () => void;
 	subscribeMessageUpdated: (handler: MessageCreatedHandler) => () => void;
 	subscribeMessageDeleted: (handler: MessageDeletedHandler) => () => void;
+  /** Subscribe to call.* signaling frames on the same socket. */
+  subscribeCallSignal: (handler: CallSignalHandler) => () => void;
+  /** Send a {type, data} frame on the existing socket; false when not open. */
+  sendRealtime: (type: string, data: unknown) => boolean;
 }
 
 const RealtimeContext = createContext<RealtimeState | undefined>(undefined);
@@ -45,8 +53,14 @@ const RealtimeContext = createContext<RealtimeState | undefined>(undefined);
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
 
-// http -> ws, https -> wss.
+// http -> ws, https -> wss. An empty base means "same origin" (the Next server
+// proxies /api, e.g. behind an HTTPS dev tunnel): use the page's own host and
+// wss:// on https pages.
 function socketURL(): string {
+  if (!API_BASE_URL) {
+    const scheme = window.location.protocol === "https:" ? "wss" : "ws";
+    return `${scheme}://${window.location.host}/api/v1/ws`;
+  }
   return `${API_BASE_URL.replace(/^http/, "ws")}/api/v1/ws`;
 }
 
@@ -58,6 +72,7 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
   const handlersRef = useRef<Set<MessageCreatedHandler>>(new Set());
 	const updatedHandlersRef = useRef<Set<MessageCreatedHandler>>(new Set());
 	const deletedHandlersRef = useRef<Set<MessageDeletedHandler>>(new Set());
+  const callHandlersRef = useRef<Set<CallSignalHandler>>(new Set());
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const attemptRef = useRef(0);
@@ -74,6 +89,22 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
   );
 	const subscribeMessageUpdated = useCallback((handler: MessageCreatedHandler) => { updatedHandlersRef.current.add(handler); return () => updatedHandlersRef.current.delete(handler); }, []);
 	const subscribeMessageDeleted = useCallback((handler: MessageDeletedHandler) => { deletedHandlersRef.current.add(handler); return () => deletedHandlersRef.current.delete(handler); }, []);
+  const subscribeCallSignal = useCallback((handler: CallSignalHandler) => {
+    callHandlersRef.current.add(handler);
+    return () => {
+      callHandlersRef.current.delete(handler);
+    };
+  }, []);
+  const sendRealtime = useCallback((type: string, data: unknown) => {
+    const ws = wsRef.current;
+    if (!ws || ws.readyState !== WebSocket.OPEN) return false;
+    try {
+      ws.send(JSON.stringify({ type, data }));
+      return true;
+    } catch {
+      return false;
+    }
+  }, []);
 
   useEffect(() => {
     // Only maintain a socket while authenticated.
@@ -123,6 +154,19 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
         }
         if (!msg || typeof msg !== "object") return;
         const envelope = msg as { type?: unknown; data?: unknown };
+        if (typeof envelope.type === "string" && envelope.type.startsWith("call.")) {
+          const data = envelope.data;
+          if (!data || typeof data !== "object") return;
+          const event: CallSignalEvent = { type: envelope.type, data: data as Record<string, unknown> };
+          callHandlersRef.current.forEach((h) => {
+            try {
+              h(event);
+            } catch {
+              // A misbehaving subscriber must not break delivery to others.
+            }
+          });
+          return;
+        }
 		if (envelope.type === "message.deleted") {
 			const data = envelope.data as Record<string, unknown> | null;
 			if (data && typeof data.conversationId === "string" && typeof data.id === "string" && typeof data.deletedAt === "string") deletedHandlersRef.current.forEach((h) => { try { h(data as unknown as MessageDeletedEvent); } catch {} });
@@ -151,6 +195,11 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
       };
 
       ws.onclose = () => {
+        // A superseded socket (e.g. the first one of a Strict Mode double
+        // mount, closing late) must not clear the live socket's ref or start a
+        // second reconnect — that left an orphaned duplicate socket and a
+        // window where sendRealtime (call signaling) silently had no socket.
+        if (wsRef.current !== ws) return;
         wsRef.current = null;
         if (!intentionalCloseRef.current) scheduleReconnect();
       };
@@ -171,14 +220,16 @@ export function RealtimeProvider({ children }: { children: ReactNode }) {
       }
       attemptRef.current = 0;
       if (wsRef.current) {
-        wsRef.current.close();
+        const closing = wsRef.current;
         wsRef.current = null;
+        closing.onmessage = null; // no late deliveries from a retired socket
+        closing.close();
       }
     };
   }, [status]);
 
   return (
-		<RealtimeContext.Provider value={{ subscribeMessageCreated, subscribeMessageUpdated, subscribeMessageDeleted }}>
+		<RealtimeContext.Provider value={{ subscribeMessageCreated, subscribeMessageUpdated, subscribeMessageDeleted, subscribeCallSignal, sendRealtime }}>
       {children}
     </RealtimeContext.Provider>
   );

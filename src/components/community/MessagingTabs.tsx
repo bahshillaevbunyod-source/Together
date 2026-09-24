@@ -9,11 +9,12 @@ const TABS: { href: string; labelKey: TranslationKey }[] = [
   { href: "/messages", labelKey: "navigation.messages" },
   { href: "/groups", labelKey: "navigation.groups" },
   { href: "/channels", labelKey: "navigation.channels" },
+  { href: "/calls", labelKey: "navigation.calls" },
 ];
 
 /**
  * Compact segmented switch between direct messages, groups and channels. It is
- * the mobile entry point to Groups/Channels (the bottom bar stays unchanged)
+ * the mobile entry point to Groups/Channels/Calls (the bottom bar stays unchanged)
  * and a quick switch on desktop.
  */
 export function MessagingTabs() {
