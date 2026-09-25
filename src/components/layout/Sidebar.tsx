@@ -29,6 +29,8 @@ type NavItem = {
   badge?: string;
   /** Hidden from the compact mobile bottom bar (reached via Messages tabs). */
   desktopOnly?: boolean;
+  /** Also active on nested routes (e.g. /events/[eventId]). */
+  matchSubroutes?: boolean;
 };
 
 const navItems: NavItem[] = [
@@ -39,7 +41,7 @@ const navItems: NavItem[] = [
   { labelKey: "navigation.groups", icon: Users, href: "/groups", desktopOnly: true },
   { labelKey: "navigation.channels", icon: Megaphone, href: "/channels", desktopOnly: true },
   { labelKey: "navigation.explore", icon: Compass },
-  { labelKey: "navigation.events", icon: Calendar },
+  { labelKey: "navigation.events", icon: Calendar, href: "/events", matchSubroutes: true },
   { labelKey: "navigation.bookmarks", icon: Bookmark, href: "/bookmarks" },
   { labelKey: "navigation.profile", icon: User, href: "/profile" },
   { labelKey: "navigation.settings", icon: Settings, href: "/settings" },
@@ -53,6 +55,12 @@ const primaryNavItems = navItems.filter((item) => item.href && !item.desktopOnly
 // Messages tab stays highlighted there.
 const MESSAGING_PATHS = ["/messages", "/groups", "/channels", "/calls"];
 
+function isActive(pathname: string, item: NavItem): boolean {
+  if (!item.href) return false;
+  if (pathname === item.href) return true;
+  return Boolean(item.matchSubroutes) && pathname.startsWith(`${item.href}/`);
+}
+
 export function Sidebar() {
   const pathname = usePathname();
   const { t } = useLanguage();
@@ -61,9 +69,10 @@ export function Sidebar() {
     <aside className="hidden w-64 shrink-0 lg:block">
       <div className="sticky top-[5.5rem] flex h-[calc(100vh-7rem)] flex-col">
         <nav className="flex flex-col gap-1">
-          {navItems.map(({ labelKey, icon: Icon, href, badge }) => {
+          {navItems.map((item) => {
+            const { labelKey, icon: Icon, href, badge } = item;
             const label = t(labelKey);
-            const active = href ? pathname === href : false;
+            const active = isActive(pathname, item);
             const base =
               "app-nav-row flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium";
             const inner = (
@@ -152,10 +161,11 @@ export function MobileNavigation() {
       className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-surface/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur lg:hidden"
     >
       <div className="app-mobile-nav mx-auto flex max-w-lg items-stretch justify-between">
-        {primaryNavItems.map(({ labelKey, icon: Icon, href }) => {
+        {primaryNavItems.map((item) => {
+          const { labelKey, icon: Icon, href } = item;
           const label = t(labelKey);
           const active =
-            pathname === href ||
+            isActive(pathname, item) ||
             (href === "/messages" && MESSAGING_PATHS.includes(pathname));
           return (
             <Link

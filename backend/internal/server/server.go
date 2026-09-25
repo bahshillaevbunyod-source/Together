@@ -17,6 +17,7 @@ import (
 	"together/backend/internal/community"
 	"together/backend/internal/config"
 	"together/backend/internal/conversation"
+	"together/backend/internal/event"
 	"together/backend/internal/follow"
 	"together/backend/internal/followrequest"
 	"together/backend/internal/like"
@@ -69,6 +70,7 @@ type Server struct {
 	commentNotify  commentNotifier
 	conversations  conversation.Repository
 	communities    community.Repository
+	events         event.Repository
 	calls          *call.Registry
 	registrar      registration.Creator
 	translator     translation.Service
@@ -139,6 +141,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 	var stories story.Repository
 	var resolver languageResolver
 	var communitiesRepo community.Repository
+	var eventsRepo event.Repository
 	for _, dependency := range dependencies {
 		switch dependency := dependency.(type) {
 		case registration.Creator:
@@ -161,6 +164,8 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 			resolver = dependency
 		case community.Repository:
 			communitiesRepo = dependency
+		case event.Repository:
+			eventsRepo = dependency
 		}
 	}
 	s := &Server{
@@ -187,6 +192,7 @@ func newServer(cfg config.Config, db Pinger, users user.Repository, sessions ses
 		commentNotify:  commentNotify,
 		conversations:  conversations,
 		communities:    communitiesRepo,
+		events:         eventsRepo,
 		calls:          call.New(45*time.Second, nil),
 		registrar:      registrar,
 		translator:     newTranslator(cfg),
@@ -324,6 +330,14 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("PATCH /api/v1/posts/{id}", s.requireAuth(s.csrfProtect(s.handleUpdatePost)))
 	mux.HandleFunc("DELETE /api/v1/posts/{id}", s.requireAuth(s.csrfProtect(s.handleDeletePost)))
 	mux.HandleFunc("GET /api/v1/feed", s.requireAuth(s.handleFeed))
+	mux.HandleFunc("GET /api/v1/events", s.requireAuth(s.handleListEvents))
+	mux.HandleFunc("POST /api/v1/events", s.requireAuth(s.csrfProtect(s.handleCreateEvent)))
+	mux.HandleFunc("GET /api/v1/events/{id}", s.requireAuth(s.handleGetEvent))
+	mux.HandleFunc("PATCH /api/v1/events/{id}", s.requireAuth(s.csrfProtect(s.handleUpdateEvent)))
+	mux.HandleFunc("DELETE /api/v1/events/{id}", s.requireAuth(s.csrfProtect(s.handleDeleteEvent)))
+	mux.HandleFunc("PUT /api/v1/events/{id}/rsvp", s.requireAuth(s.csrfProtect(s.handleSetEventRSVP)))
+	mux.HandleFunc("DELETE /api/v1/events/{id}/rsvp", s.requireAuth(s.csrfProtect(s.handleRemoveEventRSVP)))
+	mux.HandleFunc("GET /api/v1/events/{id}/attendees", s.requireAuth(s.handleListEventAttendees))
 	mux.HandleFunc("GET /api/v1/bookmarks", s.requireAuth(s.handleListBookmarks))
 	mux.HandleFunc("GET /api/v1/ws", s.handleWebSocket)
 	mux.HandleFunc("GET /api/v1/calls/config", s.requireAuth(s.handleCallConfig))
