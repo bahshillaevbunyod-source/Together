@@ -87,6 +87,14 @@ type OptionalTime struct {
 	Value *time.Time
 }
 
+// ListFilter narrows the upcoming-events list. Query is a case-insensitive
+// substring match on title, location name and address; EventType is
+// in_person, online or empty for both.
+type ListFilter struct {
+	Query     string
+	EventType string
+}
+
 type Attendee struct {
 	ID          string    `json:"id"`
 	Username    string    `json:"username"`
@@ -99,7 +107,7 @@ type Attendee struct {
 type Repository interface {
 	Create(context.Context, CreateInput) (*Event, error)
 	Get(context.Context, string, string) (*Event, error)
-	List(context.Context, string, *Cursor, int, string, string) ([]Event, error)
+	List(context.Context, string, *Cursor, int, string, string, ListFilter) ([]Event, error)
 	Update(context.Context, string, string, UpdateInput) (*Event, error)
 	Delete(context.Context, string, string) error
 	SetRSVP(context.Context, string, string, string) (*Event, error)

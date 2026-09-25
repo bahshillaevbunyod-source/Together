@@ -290,6 +290,31 @@ WHERE u.id <> $1
 // id, username, display_name, avatar_url, country_code, city, native_language,
 // created_at, follower_count, score, country_rank.
 
+// DiscoverCountries implements Repository.DiscoverCountries over the shared
+// discoverCandidate set, so a country count always matches the people the
+// world discovery list returns for that country.
+func (r *PostgresRepository) DiscoverCountries(ctx context.Context, viewerID string) ([]CountryCount, error) {
+	rows, err := r.pool.Query(ctx, `
+SELECT c.country_code, count(*)
+FROM (`+discoverCandidate+`) c
+WHERE c.country_code IS NOT NULL
+GROUP BY c.country_code
+ORDER BY count(*) DESC, c.country_code ASC`, viewerID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := []CountryCount{}
+	for rows.Next() {
+		var c CountryCount
+		if err := rows.Scan(&c.CountryCode, &c.People); err != nil {
+			return nil, err
+		}
+		out = append(out, c)
+	}
+	return out, rows.Err()
+}
+
 // DiscoverUsers implements Repository.DiscoverUsers with opaque keyset
 // pagination. Ordering is deterministic per mode (id is always the final
 // tie-break), so pages never duplicate or skip rows.

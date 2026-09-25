@@ -284,6 +284,7 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	// over the {username} wildcard in the Go 1.22 mux, so it never collides.
 	mux.HandleFunc("GET /api/v1/users/search", s.requireAuth(s.handleUserSearch))
 	mux.HandleFunc("GET /api/v1/users/discover", s.requireAuth(s.handleUserDiscover))
+	mux.HandleFunc("GET /api/v1/world/countries", s.requireAuth(s.handleWorldCountries))
 
 	// Public routes (no auth required).
 	mux.HandleFunc("GET /api/v1/users/{username}", s.handlePublicProfile)

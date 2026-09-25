@@ -54,7 +54,7 @@ func (r *PostgresRepository) Get(ctx context.Context, id, viewer string) (*Event
 	return e, nil
 }
 
-func (r *PostgresRepository) List(ctx context.Context, viewer string, cur *Cursor, limit int, creator, rsvp string) ([]Event, error) {
+func (r *PostgresRepository) List(ctx context.Context, viewer string, cur *Cursor, limit int, creator, rsvp string, f ListFilter) ([]Event, error) {
 	args := []any{viewer}
 	n := 1
 	where := []string{`(e.visibility='public' OR e.creator_user_id=$1 OR (e.visibility='followers' AND EXISTS (SELECT 1 FROM follows f WHERE f.follower_id=$1 AND f.following_id=e.creator_user_id)))`, `NOT EXISTS (SELECT 1 FROM blocks b WHERE (b.blocker_id=$1 AND b.blocked_id=e.creator_user_id) OR (b.blocker_id=e.creator_user_id AND b.blocked_id=$1))`, `e.starts_at >= now()`}
@@ -68,6 +68,17 @@ func (r *PostgresRepository) List(ctx context.Context, viewer string, cur *Curso
 		where = append(where, "EXISTS (SELECT 1 FROM event_rsvps rx WHERE rx.event_id=e.id AND rx.user_id=$"+itoa(n)+" AND rx.status=$"+itoa(n+1)+")")
 		args = append(args, viewer, rsvp)
 		n++
+	}
+	if f.EventType != "" {
+		n++
+		where = append(where, "e.event_type=$"+itoa(n))
+		args = append(args, f.EventType)
+	}
+	if f.Query != "" {
+		n++
+		p := "$" + itoa(n)
+		where = append(where, `(e.title ILIKE `+p+` ESCAPE '\' OR e.location_name ILIKE `+p+` ESCAPE '\' OR e.location_address ILIKE `+p+` ESCAPE '\')`)
+		args = append(args, "%"+escapeLike(f.Query)+"%")
 	}
 	if cur != nil {
 		n++
@@ -91,6 +102,15 @@ func (r *PostgresRepository) List(ctx context.Context, viewer string, cur *Curso
 		out = append(out, e)
 	}
 	return out, rows.Err()
+}
+
+// escapeLike escapes LIKE metacharacters (\ % _) so user input is matched
+// literally. Pairs with the ESCAPE '\' clause in List.
+func escapeLike(s string) string {
+	s = strings.ReplaceAll(s, `\`, `\\`)
+	s = strings.ReplaceAll(s, "%", `\%`)
+	s = strings.ReplaceAll(s, "_", `\_`)
+	return s
 }
 
 func itoa(n int) string {

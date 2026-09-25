@@ -3,6 +3,8 @@ package server
 import (
 	"net/http"
 	"net/http/httptest"
+	"net/url"
+	"strings"
 	"testing"
 	"time"
 
@@ -67,5 +69,19 @@ func TestEventsRequireAuthentication(t *testing.T) {
 				t.Fatalf("expected 401, got %d", rec.Code)
 			}
 		})
+	}
+}
+
+func TestListEventsRejectsInvalidFilters(t *testing.T) {
+	srv := discoverServer(&fakeUserRepo{}, mkDiscoverUser("me-id", "me", "", ""))
+	long := strings.Repeat("я", maxEventQuery+1)
+	for _, q := range []string{"?type=bogus", "?q=" + url.QueryEscape(long)} {
+		req := httptest.NewRequest(http.MethodGet, "/api/v1/events"+q, nil)
+		req.AddCookie(&http.Cookie{Name: sessionCookieName, Value: "raw"})
+		rec := httptest.NewRecorder()
+		srv.Handler.ServeHTTP(rec, req)
+		if rec.Code != http.StatusBadRequest {
+			t.Fatalf("%s: expected 400, got %d", q[:10], rec.Code)
+		}
 	}
 }

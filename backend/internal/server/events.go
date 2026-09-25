@@ -11,7 +11,10 @@ import (
 	"together/backend/internal/event"
 )
 
-const maxEventBody = 32 << 10
+const (
+	maxEventBody  = 32 << 10
+	maxEventQuery = 100
+)
 
 type eventResponse struct {
 	ID              string             `json:"id"`
@@ -182,7 +185,16 @@ func (s *Server) handleListEvents(w http.ResponseWriter, r *http.Request) {
 		writeError(w, 400, "invalid rsvp")
 		return
 	}
-	items, err := s.events.List(r.Context(), me.ID, cur, limit+1, creator, rsvp)
+	filter := event.ListFilter{Query: strings.TrimSpace(r.URL.Query().Get("q")), EventType: r.URL.Query().Get("type")}
+	if len([]rune(filter.Query)) > maxEventQuery {
+		writeError(w, 400, "invalid query")
+		return
+	}
+	if filter.EventType != "" && filter.EventType != event.TypeInPerson && filter.EventType != event.TypeOnline {
+		writeError(w, 400, "invalid type")
+		return
+	}
+	items, err := s.events.List(r.Context(), me.ID, cur, limit+1, creator, rsvp, filter)
 	if err != nil {
 		s.internalError(w, "list events", err)
 		return

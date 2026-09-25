@@ -75,6 +75,9 @@ export interface EventInput {
 export interface EventListFilter {
   mine?: "created";
   rsvp?: RsvpStatus;
+  /** Case-insensitive match on title, venue and address (max 100 chars). */
+  q?: string;
+  type?: EventType;
   cursor?: string;
   limit?: number;
 }
@@ -86,6 +89,8 @@ export function getEvents(filter: EventListFilter = {}, signal?: AbortSignal): P
   const q = new URLSearchParams();
   if (filter.mine) q.set("mine", filter.mine);
   if (filter.rsvp) q.set("rsvp", filter.rsvp);
+  if (filter.q) q.set("q", filter.q);
+  if (filter.type) q.set("type", filter.type);
   if (filter.cursor) q.set("cursor", filter.cursor);
   if (filter.limit) q.set("limit", String(filter.limit));
   const qs = q.toString();

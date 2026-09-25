@@ -28,6 +28,9 @@ func TestPostgresEventsRoundTripAndCursor(t *testing.T) {
 	online, err := repo.Create(ctx, CreateInput{CreatorID: creator, Title: prefix+"-online", StartsAt: start.Add(time.Hour), Timezone: "UTC", EventType: TypeOnline, OnlineURL: &onlineURL, Visibility: VisibilityPublic}); if err != nil { t.Fatal(err) }
 	if inPerson.Description != nil || inPerson.EndsAt != nil || online.LocationName != nil { t.Fatal("nullable event fields were not preserved") }
 	got, err := repo.Get(ctx, inPerson.ID, creator); if err != nil || got.ID != inPerson.ID { t.Fatalf("get event: %v", err) }
-	items, err := repo.List(ctx, creator, nil, 1, "", ""); if err != nil || len(items) != 1 { t.Fatalf("list first page: err=%v items=%d", err, len(items)) }
-	page2, err := repo.List(ctx, creator, &Cursor{StartsAt: items[0].StartsAt, ID: items[0].ID}, 2, "", ""); if err != nil || len(page2) != 1 || page2[0].ID != online.ID { t.Fatalf("cursor page: err=%v items=%v", err, page2) }
+	items, err := repo.List(ctx, creator, nil, 1, "", "", ListFilter{}); if err != nil || len(items) != 1 { t.Fatalf("list first page: err=%v items=%d", err, len(items)) }
+	page2, err := repo.List(ctx, creator, &Cursor{StartsAt: items[0].StartsAt, ID: items[0].ID}, 2, "", "", ListFilter{}); if err != nil || len(page2) != 1 || page2[0].ID != online.ID { t.Fatalf("cursor page: err=%v items=%v", err, page2) }
+	onlineOnly, err := repo.List(ctx, creator, nil, 10, "", "", ListFilter{Query: prefix, EventType: TypeOnline}); if err != nil || len(onlineOnly) != 1 || onlineOnly[0].ID != online.ID { t.Fatalf("type filter: err=%v items=%v", err, onlineOnly) }
+	matched, err := repo.List(ctx, creator, nil, 10, "", "", ListFilter{Query: strings.ToUpper(prefix + "-in-person")}); if err != nil || len(matched) != 1 || matched[0].ID != inPerson.ID { t.Fatalf("query filter: err=%v items=%v", err, matched) }
+	none, err := repo.List(ctx, creator, nil, 10, "", "", ListFilter{Query: prefix + "%"}); if err != nil || len(none) != 0 { t.Fatalf("wildcards must be literal: err=%v items=%v", err, none) }
 }

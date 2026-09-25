@@ -7,7 +7,7 @@ import {
   ArrowRight,
   Bookmark,
   Calendar,
-  Compass,
+  Globe2,
   Home,
   Megaphone,
   MessageCircle,
@@ -40,7 +40,7 @@ const navItems: NavItem[] = [
   { labelKey: "navigation.calls", icon: Phone, href: "/calls", desktopOnly: true },
   { labelKey: "navigation.groups", icon: Users, href: "/groups", desktopOnly: true },
   { labelKey: "navigation.channels", icon: Megaphone, href: "/channels", desktopOnly: true },
-  { labelKey: "navigation.explore", icon: Compass },
+  { labelKey: "navigation.world", icon: Globe2, href: "/world", matchSubroutes: true },
   { labelKey: "navigation.events", icon: Calendar, href: "/events", matchSubroutes: true },
   { labelKey: "navigation.bookmarks", icon: Bookmark, href: "/bookmarks" },
   { labelKey: "navigation.profile", icon: User, href: "/profile" },
@@ -134,15 +134,13 @@ export function Sidebar() {
               <p className="mt-1 text-xs leading-snug text-white/80">
                 {t("world.meetDescription")}
               </p>
-              <button
-                type="button"
-                disabled
-                aria-disabled="true"
-                className="mt-3 inline-flex cursor-not-allowed items-center gap-1.5 rounded-full bg-foreground/80 px-3 py-1.5 text-xs font-medium text-white opacity-70"
+              <Link
+                href="/world"
+                className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/80 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-foreground"
               >
                 {t("world.exploreNow")}
-                <ArrowRight className="h-3.5 w-3.5" />
-              </button>
+                <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" />
+              </Link>
             </div>
           </div>
         </div>

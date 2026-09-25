@@ -182,6 +182,32 @@ func (f *fakeUserRepo) SearchUsers(_ context.Context, viewerID, query string, li
 	return out, nil
 }
 
+// DiscoverCountries mirrors user.PostgresRepository.DiscoverCountries: the
+// DiscoverUsers exclusions, grouped by country, count DESC then code ASC.
+func (f *fakeUserRepo) DiscoverCountries(_ context.Context, viewerID string) ([]user.CountryCount, error) {
+	if f.discoverErr != nil {
+		return nil, f.discoverErr
+	}
+	counts := map[string]int64{}
+	for _, u := range f.discoverPool {
+		if u.ID == viewerID || f.searchBlocked[u.ID] || f.followedByMe[u.ID] || u.CountryCode == nil {
+			continue
+		}
+		counts[*u.CountryCode]++
+	}
+	out := []user.CountryCount{}
+	for code, n := range counts {
+		out = append(out, user.CountryCount{CountryCode: code, People: n})
+	}
+	sort.Slice(out, func(i, j int) bool {
+		if out[i].People != out[j].People {
+			return out[i].People > out[j].People
+		}
+		return out[i].CountryCode < out[j].CountryCode
+	})
+	return out, nil
+}
+
 // DiscoverUsers mirrors the SQL contract in user.PostgresRepository.DiscoverUsers:
 // excludes self, blocked ids and already-followed ids; applies the world country
 // filter; ranks deterministically per mode; then offset/limit paginates. The

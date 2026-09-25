@@ -151,4 +151,14 @@ type Repository interface {
 	// excluding the viewer, blocked relationships (either direction) and users
 	// the viewer already follows. Ranking is deterministic per mode.
 	DiscoverUsers(ctx context.Context, p DiscoverParams) ([]DiscoverResult, error)
+	// DiscoverCountries counts, per stored country code, the same people
+	// DiscoverUsers would return to the viewer (same self/block/follow
+	// exclusions). Users without a country are not counted.
+	DiscoverCountries(ctx context.Context, viewerID string) ([]CountryCount, error)
+}
+
+// CountryCount is the number of discoverable people in one ISO country code.
+type CountryCount struct {
+	CountryCode string
+	People      int64
 }
