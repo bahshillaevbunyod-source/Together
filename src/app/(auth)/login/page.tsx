@@ -25,7 +25,8 @@ export default function LoginPage() {
   const [submitting, setSubmitting] = useState(false);
 
   const inputClass =
-    "h-11 w-full rounded-lg border border-border bg-background px-4 text-sm text-foreground placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+    // 16px text on phones prevents iOS Safari from zooming into focused inputs.
+    "h-12 w-full min-w-0 rounded-xl border border-border bg-background px-4 text-base text-foreground placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:h-11 sm:text-sm";
 
   const switchMode = (next: Mode) => {
     setMode(next);
@@ -75,8 +76,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-9rem)] items-center justify-center">
-      <div className="w-full max-w-md rounded-2xl border border-border bg-surface p-6 shadow-sm">
+    <div className="flex min-h-dvh flex-col items-center justify-center bg-background pb-[max(2rem,env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pt-[max(2rem,env(safe-area-inset-top))]">
+      <div className="w-full max-w-md rounded-3xl border border-border bg-surface p-5 shadow-sm sm:p-8">
         <div className="mb-6 flex flex-col items-center gap-2 text-center">
           <Image
             src="/images/together-logo.png"
@@ -85,7 +86,7 @@ export default function LoginPage() {
             height={48}
             className="h-12 w-12 object-contain"
           />
-          <h1 className="text-lg font-bold tracking-tight text-foreground">
+          <h1 className="text-xl font-bold tracking-tight text-foreground">
             {mode === "login"
               ? t("auth.welcomeBack")
               : t("auth.createAccountHeading")}
@@ -98,7 +99,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={() => switchMode("login")}
-            className={`flex-1 rounded-full py-1.5 font-medium transition-colors ${
+            className={`h-10 flex-1 rounded-full font-medium transition-colors ${
               mode === "login"
                 ? "bg-primary text-white"
                 : "text-muted hover:text-foreground"
@@ -109,7 +110,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={() => switchMode("register")}
-            className={`flex-1 rounded-full py-1.5 font-medium transition-colors ${
+            className={`h-10 flex-1 rounded-full font-medium transition-colors ${
               mode === "register"
                 ? "bg-primary text-white"
                 : "text-muted hover:text-foreground"
@@ -129,6 +130,7 @@ export default function LoginPage() {
                 onChange={(e) => setDisplayName(e.target.value)}
                 placeholder={t("edit.displayNameLabel")}
                 autoComplete="name"
+                enterKeyHint="next"
               />
               <input
                 className={inputClass}
@@ -137,6 +139,10 @@ export default function LoginPage() {
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder={t("auth.username")}
                 autoComplete="username"
+                autoCapitalize="none"
+                autoCorrect="off"
+                spellCheck={false}
+                enterKeyHint="next"
               />
             </>
           ) : null}
@@ -148,6 +154,11 @@ export default function LoginPage() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t("auth.email")}
             autoComplete="email"
+            inputMode="email"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
+            enterKeyHint="next"
           />
           <input
             className={inputClass}
@@ -156,6 +167,7 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder={t("auth.password")}
             autoComplete={mode === "login" ? "current-password" : "new-password"}
+            enterKeyHint={mode === "login" ? "go" : "next"}
           />
 
           {mode === "register" ? (
@@ -165,11 +177,15 @@ export default function LoginPage() {
               value={nativeLanguage}
               onChange={(e) => setNativeLanguage(e.target.value)}
               placeholder={t("auth.nativeLanguagePlaceholder")}
+              autoCapitalize="none"
+              autoCorrect="off"
+              spellCheck={false}
+              enterKeyHint="go"
             />
           ) : null}
 
           {error ? (
-            <p className="text-sm text-red-500" role="alert">
+            <p className="break-words text-sm text-red-500" role="alert">
               {error}
             </p>
           ) : null}
@@ -177,7 +193,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="mt-1 h-11 rounded-full bg-primary text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
+            className="mt-1 h-12 rounded-full bg-primary text-base font-medium sm:h-11 sm:text-sm text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
           >
             {submitting
               ? t("auth.pleaseWait")

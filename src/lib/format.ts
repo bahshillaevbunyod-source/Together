@@ -2,21 +2,27 @@ const MINUTE = 60;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 
-/** Turn an ISO timestamp into a short relative label (e.g. "2 hours ago"). */
-export function formatTimeAgo(iso: string): string {
-  const diff = Math.round((Date.now() - new Date(iso).getTime()) / 1000);
+// Relative time in the platform UI locale. Intl falls back to the runtime
+// (browser) locale for tags it does not support, so those use English instead.
+function relativeFormatter(locale: string): Intl.RelativeTimeFormat {
+  let tag = "en";
+  try {
+    if (Intl.RelativeTimeFormat.supportedLocalesOf([locale]).length > 0) tag = locale;
+  } catch {
+    // Invalid tag: keep English.
+  }
+  return new Intl.RelativeTimeFormat(tag, { numeric: "auto" });
+}
 
-  if (diff < MINUTE) return "just now";
-  if (diff < HOUR) {
-    const m = Math.floor(diff / MINUTE);
-    return `${m} ${m === 1 ? "minute" : "minutes"} ago`;
-  }
-  if (diff < DAY) {
-    const h = Math.floor(diff / HOUR);
-    return `${h} ${h === 1 ? "hour" : "hours"} ago`;
-  }
-  const d = Math.floor(diff / DAY);
-  return `${d} ${d === 1 ? "day" : "days"} ago`;
+/** Turn an ISO timestamp into a short relative label (e.g. "2 hours ago"). */
+export function formatTimeAgo(iso: string, locale = "en"): string {
+  const diff = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 1000));
+  const rtf = relativeFormatter(locale);
+
+  if (diff < MINUTE) return rtf.format(0, "second");
+  if (diff < HOUR) return rtf.format(-Math.floor(diff / MINUTE), "minute");
+  if (diff < DAY) return rtf.format(-Math.floor(diff / HOUR), "hour");
+  return rtf.format(-Math.floor(diff / DAY), "day");
 }
 
 /** Compact number formatting (2400 -> "2.4K", 1200000 -> "1.2M"). */

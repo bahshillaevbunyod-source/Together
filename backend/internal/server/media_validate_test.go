@@ -151,9 +151,60 @@ func TestValidateUploadedObjectInvalidMime(t *testing.T) {
 }
 
 func TestValidateUploadedObjectSizeOverLimit(t *testing.T) {
-	sr := &fakeStorageRepo{headInfo: &storage.ObjectInfo{ContentType: "image/png", SizeBytes: 16 << 20}}
+	sr := &fakeStorageRepo{headInfo: &storage.ObjectInfo{ContentType: "image/png", SizeBytes: maxPostImageBytes + 1}}
 	_, err := validateServer(sr).validateUploadedObject(context.Background(), "me-id", "users/me-id/uploads/x.png", "uploads")
 	if !errors.Is(err, errUnsupportedMedia) {
 		t.Fatalf("expected errUnsupportedMedia, got %v", err)
+	}
+}
+
+func TestValidateUploadedObjectAvatarSizeCeiling(t *testing.T) {
+	// A 70 MiB image is valid for posts/stories (100 MiB) but not as an avatar (60 MiB).
+	big := &storage.ObjectInfo{ContentType: "image/jpeg", SizeBytes: 70 << 20}
+	if _, err := validateServer(&fakeStorageRepo{headInfo: big}).validateUploadedObject(
+		context.Background(), "me-id", "users/me-id/avatars/a.jpg", "avatars"); err == nil {
+		t.Fatal("avatar 70 MiB must be rejected")
+	}
+	if _, err := validateServer(&fakeStorageRepo{headInfo: big}).validateUploadedObject(
+		context.Background(), "me-id", "users/me-id/uploads/a.jpg", "uploads"); err != nil {
+		t.Fatalf("post image 70 MiB should be accepted: %v", err)
+	}
+	atAvatar := &storage.ObjectInfo{ContentType: "image/jpeg", SizeBytes: maxAvatarImageBytes}
+	if _, err := validateServer(&fakeStorageRepo{headInfo: atAvatar}).validateUploadedObject(
+		context.Background(), "me-id", "users/me-id/avatars/a.jpg", "avatars"); err != nil {
+		t.Fatalf("avatar exactly 60 MiB should be accepted: %v", err)
+	}
+	tooBig := &storage.ObjectInfo{ContentType: "image/jpeg", SizeBytes: maxAvatarImageBytes + 1}
+	if _, err := validateServer(&fakeStorageRepo{headInfo: tooBig}).validateUploadedObject(
+		context.Background(), "me-id", "users/me-id/avatars/a.jpg", "avatars"); err == nil {
+		t.Fatal("avatar over 60 MiB must be rejected")
+	}
+}
+
+func TestValidateUploadedObjectPostStoryVideoCeiling(t *testing.T) {
+	ok := &storage.ObjectInfo{ContentType: "video/quicktime", SizeBytes: maxPostVideoBytes}
+	got, err := validateServer(&fakeStorageRepo{headInfo: ok}).validateUploadedObject(
+		context.Background(), "me-id", "users/me-id/private/v.mov", "private")
+	if err != nil || got.Type != media.TypeVideo {
+		t.Fatalf("250 MiB mov story video should be accepted as video: %v %+v", err, got)
+	}
+	tooBig := &storage.ObjectInfo{ContentType: "video/mp4", SizeBytes: maxPostVideoBytes + 1}
+	if _, err := validateServer(&fakeStorageRepo{headInfo: tooBig}).validateUploadedObject(
+		context.Background(), "me-id", "users/me-id/private/v.mp4", "private"); !errors.Is(err, errUnsupportedMedia) {
+		t.Fatalf("video over 250 MiB must be rejected, got %v", err)
+	}
+}
+
+func TestValidateUploadedObjectMessageLimitsUnchanged(t *testing.T) {
+	// Direct-message attachments keep the 15 MiB image ceiling even though
+	// they share the uploads/ and private/ namespaces with posts and stories.
+	img := &storage.ObjectInfo{ContentType: "image/jpeg", SizeBytes: 20 << 20}
+	if _, err := validateServer(&fakeStorageRepo{headInfo: img}).validateUploadedObjectWithLimits(
+		context.Background(), "me-id", "users/me-id/private/a.jpg", &messageMediaLimits, "uploads", "private"); !errors.Is(err, errUnsupportedMedia) {
+		t.Fatalf("20 MiB message image must be rejected, got %v", err)
+	}
+	if _, err := validateServer(&fakeStorageRepo{headInfo: img}).validateUploadedObject(
+		context.Background(), "me-id", "users/me-id/private/a.jpg", "private"); err != nil {
+		t.Fatalf("20 MiB story image should be accepted: %v", err)
 	}
 }

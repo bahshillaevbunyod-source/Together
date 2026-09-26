@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Bookmark,
@@ -11,11 +12,13 @@ import {
   Home,
   Megaphone,
   MessageCircle,
+  MoreHorizontal,
   Phone,
   Search,
   Settings,
   User,
   Users,
+  X,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,33 +30,33 @@ type NavItem = {
   /** Route this item navigates to; items without one are not yet wired. */
   href?: string;
   badge?: string;
-  /** Hidden from the compact mobile bottom bar (reached via Messages tabs). */
-  desktopOnly?: boolean;
+  /**
+   * Mobile placement: "primary" items are tabs in the bottom bar; "more" items
+   * live in the bottom bar's More sheet. Every routed item is reachable.
+   */
+  mobile: "primary" | "more";
   /** Also active on nested routes (e.g. /events/[eventId]). */
   matchSubroutes?: boolean;
 };
 
 const navItems: NavItem[] = [
-  { labelKey: "navigation.home", icon: Home, href: "/" },
-  { labelKey: "navigation.discover", icon: Search, href: "/discover" },
-  { labelKey: "navigation.messages", icon: MessageCircle, href: "/messages" },
-  { labelKey: "navigation.calls", icon: Phone, href: "/calls", desktopOnly: true },
-  { labelKey: "navigation.groups", icon: Users, href: "/groups", desktopOnly: true },
-  { labelKey: "navigation.channels", icon: Megaphone, href: "/channels", desktopOnly: true },
-  { labelKey: "navigation.world", icon: Globe2, href: "/world", matchSubroutes: true },
-  { labelKey: "navigation.events", icon: Calendar, href: "/events", matchSubroutes: true },
-  { labelKey: "navigation.bookmarks", icon: Bookmark, href: "/bookmarks" },
-  { labelKey: "navigation.profile", icon: User, href: "/profile" },
-  { labelKey: "navigation.settings", icon: Settings, href: "/settings" },
+  { labelKey: "navigation.home", icon: Home, href: "/", mobile: "primary" },
+  { labelKey: "navigation.discover", icon: Search, href: "/discover", mobile: "more" },
+  { labelKey: "navigation.messages", icon: MessageCircle, href: "/messages", mobile: "primary" },
+  { labelKey: "navigation.calls", icon: Phone, href: "/calls", mobile: "more" },
+  { labelKey: "navigation.groups", icon: Users, href: "/groups", mobile: "more" },
+  { labelKey: "navigation.channels", icon: Megaphone, href: "/channels", mobile: "more" },
+  { labelKey: "navigation.world", icon: Globe2, href: "/world", matchSubroutes: true, mobile: "primary" },
+  { labelKey: "navigation.events", icon: Calendar, href: "/events", matchSubroutes: true, mobile: "primary" },
+  { labelKey: "navigation.bookmarks", icon: Bookmark, href: "/bookmarks", mobile: "more" },
+  { labelKey: "navigation.profile", icon: User, href: "/profile", mobile: "more" },
+  { labelKey: "navigation.settings", icon: Settings, href: "/settings", mobile: "more" },
 ];
 
 // The real destinations are shared by the desktop sidebar and mobile nav so
 // responsive navigation cannot drift from the established route structure.
-const primaryNavItems = navItems.filter((item) => item.href && !item.desktopOnly);
-
-// Groups, Channels and Calls live inside the messaging area on mobile, so the
-// Messages tab stays highlighted there.
-const MESSAGING_PATHS = ["/messages", "/groups", "/channels", "/calls"];
+const primaryNavItems = navItems.filter((item) => item.href && item.mobile === "primary");
+const moreNavItems = navItems.filter((item) => item.href && item.mobile === "more");
 
 function isActive(pathname: string, item: NavItem): boolean {
   if (!item.href) return false;
@@ -149,39 +152,132 @@ export function Sidebar() {
   );
 }
 
+
+const tabClass = (active: boolean) =>
+  `flex min-h-12 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-0 py-1 text-[11px] font-medium transition-colors min-[360px]:text-xs ${
+    active ? "text-primary" : "text-muted hover:text-foreground"
+  }`;
+
+/**
+ * Mobile bottom bar: four primary destinations plus a More tab that opens a
+ * sheet with every other real destination. Fixed above the safe area; content
+ * clearance is handled by AppShell's bottom padding.
+ */
 export function MobileNavigation() {
   const pathname = usePathname();
   const { t } = useLanguage();
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreButtonRef = useRef<HTMLButtonElement | null>(null);
+  const sheetRef = useRef<HTMLDivElement | null>(null);
+  const moreActive = moreNavItems.some((item) => isActive(pathname, item));
+
+  // Close the sheet whenever navigation happens.
+  useEffect(() => {
+    setMoreOpen(false);
+  }, [pathname]);
+
+  // Escape closes; focus moves into the sheet and back to More on close;
+  // background scroll is locked only while the sheet is open.
+  useEffect(() => {
+    if (!moreOpen) return;
+    const button = moreButtonRef.current;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    sheetRef.current?.querySelector<HTMLElement>("a,button")?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMoreOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+      button?.focus();
+    };
+  }, [moreOpen]);
 
   return (
-    <nav
-      aria-label={t("navigation.primary")}
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-surface/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur lg:hidden"
-    >
-      <div className="app-mobile-nav mx-auto flex max-w-lg items-stretch justify-between">
-        {primaryNavItems.map((item) => {
-          const { labelKey, icon: Icon, href } = item;
-          const label = t(labelKey);
-          const active =
-            isActive(pathname, item) ||
-            (href === "/messages" && MESSAGING_PATHS.includes(pathname));
-          return (
-            <Link
-              key={labelKey}
-              href={href as string}
-              aria-current={active ? "page" : undefined}
-              className={`flex min-w-0 flex-1 flex-col items-center gap-0.5 rounded-xl px-1 py-1.5 text-[10px] font-medium transition-colors ${
-                active
-                  ? "bg-primary-soft text-primary"
-                  : "text-muted hover:bg-primary-soft/60 hover:text-foreground"
-              }`}
-            >
-              <Icon className="h-5 w-5 shrink-0" />
-              <span className="truncate">{label}</span>
-            </Link>
-          );
-        })}
-      </div>
-    </nav>
+    <>
+      <nav
+        aria-label={t("navigation.primary")}
+        className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-surface/95 pb-[env(safe-area-inset-bottom)] pl-[max(0.25rem,env(safe-area-inset-left))] pr-[max(0.25rem,env(safe-area-inset-right))] pt-1 backdrop-blur lg:hidden"
+      >
+        <div className="app-mobile-nav mx-auto flex max-w-lg items-stretch justify-between gap-0 pb-1">
+          {primaryNavItems.map((item) => {
+            const { labelKey, icon: Icon, href } = item;
+            const active = isActive(pathname, item);
+            return (
+              <Link key={labelKey} href={href as string} aria-current={active ? "page" : undefined} className={tabClass(active)}>
+                <span className={`flex h-7 w-12 items-center justify-center rounded-full transition-colors ${active ? "bg-primary-soft" : ""}`}>
+                  <Icon className="h-5 w-5 shrink-0" aria-hidden />
+                </span>
+                <span className="line-clamp-2 max-w-full hyphens-auto break-words text-center leading-tight">{t(labelKey)}</span>
+              </Link>
+            );
+          })}
+          <button
+            ref={moreButtonRef}
+            type="button"
+            onClick={() => setMoreOpen((open) => !open)}
+            aria-expanded={moreOpen}
+            aria-haspopup="dialog"
+            aria-controls="mobile-more-sheet"
+            className={tabClass(moreActive || moreOpen)}
+          >
+            <span className={`flex h-7 w-12 items-center justify-center rounded-full transition-colors ${moreActive || moreOpen ? "bg-primary-soft" : ""}`}>
+              <MoreHorizontal className="h-5 w-5 shrink-0" aria-hidden />
+            </span>
+            <span className="line-clamp-2 max-w-full hyphens-auto break-words text-center leading-tight">{t("navigation.more")}</span>
+          </button>
+        </div>
+      </nav>
+
+      {moreOpen ? (
+        <div className="fixed inset-0 z-50 flex items-end bg-black/40 lg:hidden" onClick={() => setMoreOpen(false)}>
+          <div
+            id="mobile-more-sheet"
+            ref={sheetRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("navigation.more")}
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[85dvh] w-full overflow-y-auto rounded-t-3xl border-t border-border bg-surface pb-[max(1rem,env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pt-2 shadow-xl"
+          >
+            <div className="mx-auto mb-2 h-1 w-10 rounded-full bg-border" aria-hidden />
+            <div className="mb-2 flex items-center justify-between">
+              <h2 className="text-base font-semibold text-foreground">{t("navigation.more")}</h2>
+              <button
+                type="button"
+                onClick={() => setMoreOpen(false)}
+                aria-label={t("profile.close")}
+                className="flex h-11 w-11 items-center justify-center rounded-full text-muted transition-colors hover:bg-background hover:text-foreground"
+              >
+                <X className="h-5 w-5" aria-hidden />
+              </button>
+            </div>
+            <ul className="grid grid-cols-3 gap-2">
+              {moreNavItems.map((item) => {
+                const { labelKey, icon: Icon, href } = item;
+                const active = isActive(pathname, item);
+                return (
+                  <li key={labelKey}>
+                    <Link
+                      href={href as string}
+                      aria-current={active ? "page" : undefined}
+                      onClick={() => setMoreOpen(false)}
+                      className={`flex min-h-20 flex-col items-center justify-center gap-1.5 rounded-2xl px-2 py-3 text-center text-xs font-medium transition-colors ${
+                        active ? "bg-primary-soft text-primary" : "bg-background text-foreground hover:bg-primary-soft/60"
+                      }`}
+                    >
+                      <Icon className="h-6 w-6 shrink-0" aria-hidden />
+                      <span className="line-clamp-2 w-full break-words leading-tight">{t(labelKey)}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }

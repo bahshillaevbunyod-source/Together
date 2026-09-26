@@ -67,6 +67,8 @@ func allPresent() map[string]bool {
 		"tbl:stories":                             true,
 		"tbl:story_views":                         true,
 		"tbl:message_attachments":                 true,
+		"tbl:story_likes":                         true,
+		"tbl:story_replies":                       true,
 	}
 }
 
@@ -112,5 +114,18 @@ func TestVerifyPropagatesQueryError(t *testing.T) {
 	_, err := Verify(context.Background(), fakeQueryer{err: pgx.ErrTxClosed})
 	if err == nil {
 		t.Fatal("expected error when the catalog query fails")
+	}
+}
+
+func TestVerifyDetectsMissingStoryInteractionTables(t *testing.T) {
+	p := allPresent()
+	delete(p, "tbl:story_likes")
+	delete(p, "tbl:story_replies")
+	missing, err := Verify(context.Background(), fakeQueryer{present: p})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if strings.Join(missing, ",") != "table story_likes,table story_replies" {
+		t.Fatalf("expected the 000032 tables to be reported, got %v", missing)
 	}
 }

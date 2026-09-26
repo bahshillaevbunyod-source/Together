@@ -19,6 +19,8 @@ import {
 } from "@/lib/api";
 import { FollowListModal } from "@/components/profile/FollowListModal";
 import { useLanguage } from "@/lib/language-context";
+import { formatMonthYear } from "@/lib/locale-format";
+import { countryName, languageName } from "@/lib/world/world-api";
 
 type Status = "loading" | "ready" | "notfound" | "error";
 
@@ -28,14 +30,8 @@ const FALLBACK_AVATAR =
     '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96"><circle cx="48" cy="48" r="48" fill="#d4d4d8"/></svg>',
   );
 
-function memberSince(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString(undefined, { month: "long", year: "numeric" });
-}
-
 export default function PublicProfilePage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const params = useParams<{ username: string }>();
   const router = useRouter();
   const username =
@@ -278,15 +274,18 @@ export default function PublicProfilePage() {
     );
   }
 
-  const location = [profile.city, profile.countryCode]
+  const location = [
+    profile.city,
+    profile.countryCode ? countryName(profile.countryCode.toUpperCase(), locale) : null,
+  ]
     .filter((v) => v && v.trim().length > 0)
     .join(", ");
-  const joined = memberSince(profile.createdAt);
+  const joined = formatMonthYear(profile.createdAt, locale);
 
   return (
     <div className="mx-auto max-w-2xl">
       {profile.isSelf ? (
-        <div className="mb-3 flex items-center justify-between rounded-xl border border-border bg-surface px-4 py-2 text-sm">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-xl border border-border bg-surface px-4 py-2 text-sm">
           <span className="text-muted">{t("profile.selfBanner")}</span>
           <Link href="/profile" className="text-primary hover:underline">
             {t("profile.goToYourProfile")}
@@ -294,124 +293,126 @@ export default function PublicProfilePage() {
         </div>
       ) : null}
 
-      <section className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-        <div className="flex items-start gap-4">
+      <section className="@container rounded-2xl border border-border bg-surface p-4 shadow-sm sm:p-6">
+        {/* One responsive grid (each control rendered once): narrow cards
+            stack identity, actions, stats; once the card itself is wide enough
+            (container query, so the desktop right rail is accounted for) the
+            actions sit right of the name and the stats under it. */}
+        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 @xl:grid-cols-[auto_minmax(0,1fr)_auto] @xl:items-start @xl:gap-y-0">
           <Image
             src={profile.avatarUrl ?? FALLBACK_AVATAR}
             alt={profile.displayName}
             width={96}
             height={96}
             unoptimized={Boolean(profile.avatarUrl)}
-            className="h-24 w-24 shrink-0 rounded-full object-cover"
+            className="h-20 w-20 shrink-0 rounded-full object-cover sm:h-24 sm:w-24 @xl:row-span-2"
           />
-          <div className="min-w-0 flex-1">
-            <div className="flex items-start justify-between gap-3">
-              <div className="min-w-0">
-                <h1 className="truncate text-xl font-bold tracking-tight text-foreground">
-                  {profile.displayName}
-                </h1>
-                <div className="text-sm text-muted">@{profile.username}</div>
-              </div>
-              {!profile.isSelf && !profile.isBlocked ? (
-                <div className="flex shrink-0 items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={onToggleFollow}
-                    disabled={followPending}
-                    aria-pressed={profile.isFollowing || profile.followRequested}
-                    className={`rounded-full px-5 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
-                      profile.isFollowing || profile.followRequested
-                        ? "border border-border text-foreground hover:bg-background"
-                        : "bg-primary text-white hover:bg-primary-hover"
-                    }`}
+          <div className="min-w-0">
+            <h1 className="line-clamp-2 break-words text-xl font-bold leading-tight tracking-tight text-foreground">
+              {profile.displayName}
+            </h1>
+            <div className="truncate text-sm text-muted">@{profile.username}</div>
+          </div>
+
+          {!profile.isSelf && !profile.isBlocked ? (
+            <div className="col-span-2 grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] gap-2 @xl:col-span-1 @xl:col-start-3 @xl:row-start-1 @xl:flex @xl:items-center">
+              <button
+                type="button"
+                onClick={onToggleFollow}
+                disabled={followPending}
+                aria-pressed={profile.isFollowing || profile.followRequested}
+                className={`h-11 min-w-0 truncate rounded-full px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 sm:h-9 sm:px-5 ${
+                  profile.isFollowing || profile.followRequested
+                    ? "border border-border text-foreground hover:bg-background"
+                    : "bg-primary text-white hover:bg-primary-hover"
+                }`}
+              >
+                {profile.isFollowing
+                  ? t("profile.followingState")
+                  : profile.followRequested
+                    ? t("profile.requested")
+                    : t("profile.follow")}
+              </button>
+              <button
+                type="button"
+                onClick={onMessage}
+                disabled={messagePending}
+                className="h-11 min-w-0 truncate rounded-full border border-border px-4 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50 sm:h-9 sm:px-5"
+              >
+                {messagePending ? "…" : t("profile.message")}
+              </button>
+              <div className="relative" ref={menuRef}>
+                <button
+                  type="button"
+                  aria-label={t("profile.moreOptions")}
+                  aria-haspopup="menu"
+                  aria-expanded={menuOpen}
+                  onClick={() => setMenuOpen((v) => !v)}
+                  className={`flex h-11 w-11 items-center justify-center rounded-full border border-border transition-colors hover:bg-background sm:h-9 sm:w-9 ${
+                    menuOpen ? "text-foreground" : "text-muted"
+                  }`}
+                >
+                  <MoreHorizontal className="h-5 w-5" />
+                </button>
+                {menuOpen ? (
+                  <div
+                    role="menu"
+                    className="absolute end-0 top-full z-20 mt-2 w-44 overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-lg"
                   >
-                    {profile.isFollowing
-                      ? t("profile.followingState")
-                      : profile.followRequested
-                        ? t("profile.requested")
-                        : t("profile.follow")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={onMessage}
-                    disabled={messagePending}
-                    className="rounded-full border border-border px-5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {messagePending ? "…" : t("profile.message")}
-                  </button>
-                  <div className="relative" ref={menuRef}>
                     <button
                       type="button"
-                      aria-label={t("profile.moreOptions")}
-                      aria-haspopup="menu"
-                      aria-expanded={menuOpen}
-                      onClick={() => setMenuOpen((v) => !v)}
-                      className={`flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors hover:bg-background ${
-                        menuOpen ? "text-foreground" : "text-muted"
-                      }`}
+                      role="menuitem"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        setBlockError(null);
+                        setConfirmBlock(true);
+                      }}
+                      className="flex min-h-11 w-full items-center gap-2.5 rounded-lg px-3 py-2 text-start text-sm text-red-600 transition-colors hover:bg-red-50"
                     >
-                      <MoreHorizontal className="h-5 w-5" />
+                      <Ban className="h-4 w-4 shrink-0" />
+                      {t("profile.blockUser")}
                     </button>
-                    {menuOpen ? (
-                      <div
-                        role="menu"
-                        className="absolute right-0 top-full z-20 mt-2 w-40 overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-lg"
-                      >
-                        <button
-                          type="button"
-                          role="menuitem"
-                          onClick={() => {
-                            setMenuOpen(false);
-                            setBlockError(null);
-                            setConfirmBlock(true);
-                          }}
-                          className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-red-600 transition-colors hover:bg-red-50"
-                        >
-                          <Ban className="h-4 w-4 shrink-0" />
-                          {t("profile.blockUser")}
-                        </button>
-                      </div>
-                    ) : null}
                   </div>
-                </div>
-              ) : null}
+                ) : null}
+              </div>
             </div>
+          ) : null}
 
-            <div className="mt-3 flex items-center gap-5 text-sm">
-              <button
-                type="button"
-                onClick={() => setFollowModal("followers")}
-                className="text-foreground transition-colors hover:text-primary"
-              >
-                <span className="font-semibold">{profile.followersCount}</span>{" "}
-                <span className="text-muted">{t("profile.followers")}</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setFollowModal("following")}
-                className="text-foreground transition-colors hover:text-primary"
-              >
-                <span className="font-semibold">{profile.followingCount}</span>{" "}
-                <span className="text-muted">{t("profile.following")}</span>
-              </button>
-            </div>
-
-            {followError || messageError ? (
-              <p className="mt-2 text-xs text-red-500" role="alert">
-                {followError ?? messageError}
-              </p>
-            ) : null}
+          {/* Stats: tappable blocks on phones, inline text from sm. */}
+          <div className="col-span-2 grid grid-cols-2 gap-2 text-sm sm:flex sm:items-center sm:gap-5 @xl:col-start-2 @xl:mt-3">
+            <button
+              type="button"
+              onClick={() => setFollowModal("followers")}
+              className="flex min-h-14 min-w-0 flex-col items-center justify-center rounded-xl bg-background px-2 py-2 text-foreground transition-colors hover:bg-primary-soft/60 sm:min-h-0 sm:flex-row sm:gap-1 sm:bg-transparent sm:p-0 sm:hover:bg-transparent sm:hover:text-primary"
+            >
+              <span className="text-base font-semibold leading-tight sm:text-sm">{profile.followersCount}</span>
+              <span className="max-w-full truncate text-xs text-muted sm:text-sm">{t("profile.followers")}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setFollowModal("following")}
+              className="flex min-h-14 min-w-0 flex-col items-center justify-center rounded-xl bg-background px-2 py-2 text-foreground transition-colors hover:bg-primary-soft/60 sm:min-h-0 sm:flex-row sm:gap-1 sm:bg-transparent sm:p-0 sm:hover:bg-transparent sm:hover:text-primary"
+            >
+              <span className="text-base font-semibold leading-tight sm:text-sm">{profile.followingCount}</span>
+              <span className="max-w-full truncate text-xs text-muted sm:text-sm">{t("profile.following")}</span>
+            </button>
           </div>
+
+          {followError || messageError ? (
+            <p className="col-span-2 break-words text-xs text-red-500 @xl:col-start-2 @xl:mt-2" role="alert">
+              {followError ?? messageError}
+            </p>
+          ) : null}
         </div>
 
         {/* Blocked state: a clean panel with the Unblock action. */}
         {profile.isBlocked ? (
-          <div className="mt-5 flex items-center gap-3 rounded-xl border border-border bg-background px-4 py-3">
+          <div className="mt-5 flex flex-wrap items-center gap-3 rounded-xl border border-border bg-background px-4 py-3 sm:flex-nowrap">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600">
               <Ban className="h-5 w-5" />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-foreground">
+              <p className="break-words text-sm font-semibold text-foreground">
                 {t("profile.blockedHeading", { name: profile.username })}
               </p>
               <p className="text-xs text-muted">
@@ -427,7 +428,7 @@ export default function PublicProfilePage() {
               type="button"
               onClick={onUnblock}
               disabled={blockPending}
-              className="shrink-0 rounded-full border border-border bg-surface px-5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-11 w-full shrink-0 rounded-full border border-border bg-surface px-5 text-sm font-medium text-foreground sm:h-9 sm:w-auto transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
             >
               {blockPending ? t("profile.unblocking") : t("profile.unblock")}
             </button>
@@ -435,26 +436,26 @@ export default function PublicProfilePage() {
         ) : null}
 
         {profile.bio ? (
-          <p className="mt-4 text-sm leading-relaxed text-foreground">
+          <p className="mt-4 whitespace-pre-line break-words text-sm leading-relaxed text-foreground">
             {profile.bio}
           </p>
         ) : null}
 
-        <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-2 border-t border-border pt-4 text-sm">
+        <dl className="mt-4 flex flex-col gap-2 border-t border-border pt-4 text-sm sm:flex-row sm:flex-wrap sm:gap-x-8">
           {location ? (
-            <div>
+            <div className="min-w-0">
               <dt className="text-muted-soft">{t("profile.location")}</dt>
-              <dd className="text-foreground">{location}</dd>
+              <dd className="break-words text-foreground">{location}</dd>
             </div>
           ) : null}
           <div>
             <dt className="text-muted-soft">{t("profile.nativeLanguage")}</dt>
-            <dd className="text-foreground">{profile.nativeLanguage}</dd>
+            <dd className="break-words text-foreground">{languageName(profile.nativeLanguage, locale)}</dd>
           </div>
           {joined ? (
-            <div>
+            <div className="min-w-0">
               <dt className="text-muted-soft">{t("profile.memberSince")}</dt>
-              <dd className="text-foreground">{joined}</dd>
+              <dd className="break-words text-foreground">{joined}</dd>
             </div>
           ) : null}
         </dl>

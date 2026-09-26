@@ -64,7 +64,7 @@ export default function AppGroupLayout({
   // render the app shell (avoids flashing protected UI).
   if (status !== "authenticated") {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background">
+      <div className="flex min-h-dvh flex-col items-center justify-center gap-3 bg-background">
         <Image
           src="/images/together-logo.png"
           alt="Together"
@@ -93,7 +93,7 @@ export default function AppGroupLayout({
 
   if (profileStatus === "error") {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background">
+      <div className="flex min-h-dvh flex-col items-center justify-center gap-3 bg-background">
         <span className="text-sm text-muted">{en["language.loadError"]}</span>
         <button
           type="button"
@@ -108,7 +108,7 @@ export default function AppGroupLayout({
 
   if (profileStatus !== "ready" || platformLanguage === null) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
+      <div className="flex min-h-dvh items-center justify-center bg-background">
         <span className="text-sm text-muted">{en["language.loading"]}</span>
       </div>
     );

@@ -591,7 +591,7 @@ function AddMembersDialog({
     >
       <div
         onMouseDown={(e) => e.stopPropagation()}
-        className="flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-2xl border border-border bg-surface shadow-xl sm:max-w-md sm:rounded-2xl"
+        className="flex max-h-[85dvh] w-full flex-col overflow-hidden rounded-t-2xl border border-border bg-surface shadow-xl sm:max-w-md sm:rounded-2xl"
       >
         <div className="flex items-center gap-2 border-b border-border px-4 py-3">
           <h2 className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">

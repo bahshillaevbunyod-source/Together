@@ -320,6 +320,10 @@ func (s *Server) registerRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/v1/stories/{id}", s.requireAuth(s.handleGetStory))
 	mux.HandleFunc("POST /api/v1/stories/{id}/view", s.requireAuth(s.csrfProtect(s.handleViewStory)))
 	mux.HandleFunc("DELETE /api/v1/stories/{id}", s.requireAuth(s.csrfProtect(s.handleDeleteStory)))
+	mux.HandleFunc("PUT /api/v1/stories/{id}/like", s.requireAuth(s.csrfProtect(s.handleLikeStory)))
+	mux.HandleFunc("DELETE /api/v1/stories/{id}/like", s.requireAuth(s.csrfProtect(s.handleUnlikeStory)))
+	mux.HandleFunc("GET /api/v1/stories/{id}/viewers", s.requireAuth(s.handleStoryViewers))
+	mux.HandleFunc("POST /api/v1/stories/{id}/reply", s.requireAuth(s.csrfProtect(s.handleStoryReply)))
 	mux.HandleFunc("GET /api/v1/users/{username}/stories", s.requireAuth(s.handleUserStories))
 
 	// Posts.

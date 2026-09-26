@@ -66,7 +66,7 @@ export function PostCard({
 
   const { user } = useAuth();
   const { replacePost, removePost } = useFeed();
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const isOwn = !!user?.id && author.id === user.id;
 
   // Own-post menu + edit + delete state.
@@ -367,11 +367,11 @@ export function PostCard({
         />
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <span className="font-semibold text-foreground">{author.name}</span>
+            <span className="min-w-0 break-words font-semibold text-foreground">{author.name}</span>
             {author.flag ? <span aria-hidden>{author.flag}</span> : null}
           </div>
-          <div className="text-xs text-muted">
-            {formatTimeAgo(createdAt)} · {location}
+          <div className="truncate text-xs text-muted">
+            {formatTimeAgo(createdAt, locale)} · {location}
           </div>
         </div>
         {isOwn ? (
@@ -418,22 +418,14 @@ export function PostCard({
               </div>
             ) : null}
           </div>
-        ) : (
-          <button
-            type="button"
-            aria-label={t("post.more")}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-muted-soft transition-colors hover:bg-background"
-          >
-            <MoreHorizontal className="h-5 w-5" />
-          </button>
-        )}
+        ) : null}
       </div>
 
       {/* Text (or inline editor for own posts) */}
       {post.originalPostId ? (
         <div className="mt-3 rounded-xl border border-border bg-background p-3">
           {originalStatus === "loading" ? <div className="h-10 animate-pulse rounded bg-surface" /> : null}
-          {originalStatus === "ready" && originalPost ? <Link href={`/post/${encodeURIComponent(originalPost.id)}`} className="block hover:opacity-80"><p className="text-sm font-semibold text-foreground">{originalPost.author.displayName}<span className="ml-1 text-xs font-normal text-muted">@{originalPost.author.username}</span></p>{originalPost.content ? <p className="mt-1 line-clamp-4 text-sm leading-relaxed text-foreground">{originalPost.content}</p> : null}</Link> : null}
+          {originalStatus === "ready" && originalPost ? <Link href={`/post/${encodeURIComponent(originalPost.id)}`} className="block hover:opacity-80"><p className="break-words text-sm font-semibold text-foreground">{originalPost.author.displayName}<span className="ms-1 break-all text-xs font-normal text-muted">@{originalPost.author.username}</span></p>{originalPost.content ? <p className="mt-1 line-clamp-4 whitespace-pre-line break-words text-sm leading-relaxed text-foreground">{originalPost.content}</p> : null}</Link> : null}
           {originalStatus === "unavailable" ? <p className="text-sm text-muted">{t("post.shareToProfile")}</p> : null}
         </div>
       ) : editing ? (
@@ -470,7 +462,7 @@ export function PostCard({
           </div>
         </div>
       ) : (
-        <p className="mt-3 text-sm leading-relaxed text-foreground">
+        <p className="mt-3 whitespace-pre-line break-words text-sm leading-relaxed text-foreground">
           {splitTopicText(primaryText).map((segment, index) =>
             segment.slug ? (
               <Link
@@ -515,7 +507,7 @@ export function PostCard({
           type="button"
           onClick={toggleLike}
           aria-pressed={liked}
-          className={`flex items-center gap-2 transition-colors ${
+          className={`flex min-h-10 items-center gap-2 transition-colors ${
             liked ? "text-primary" : "hover:text-foreground"
           }`}
         >
@@ -526,7 +518,7 @@ export function PostCard({
           type="button"
           onClick={() => setShowComments((prev) => !prev)}
           aria-expanded={showComments}
-          className={`flex items-center gap-2 transition-colors ${
+          className={`flex min-h-10 items-center gap-2 transition-colors ${
             showComments ? "text-primary" : "hover:text-foreground"
           }`}
         >
@@ -539,7 +531,7 @@ export function PostCard({
             onClick={() => setShareOpen((prev) => !prev)}
             aria-expanded={shareOpen}
             aria-haspopup="menu"
-            className={`flex items-center gap-2 transition-colors ${
+            className={`flex min-h-10 items-center gap-2 transition-colors ${
               shareOpen ? "text-primary" : "hover:text-foreground"
             }`}
           >
@@ -550,7 +542,7 @@ export function PostCard({
           {shareOpen ? (
             <div
               role="menu"
-              className="absolute left-0 top-full z-20 mt-2 w-52 overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-lg"
+              className="absolute start-0 top-full z-20 mt-2 w-52 overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-lg"
             >
               <button
                 type="button"
@@ -593,7 +585,7 @@ export function PostCard({
           onClick={toggleSave}
           aria-pressed={saved}
           aria-label={t("post.bookmark")}
-          className={`ml-auto flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
+          className={`ms-auto flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
             saved ? "text-primary" : "hover:text-foreground"
           }`}
         >
@@ -710,7 +702,7 @@ export function PostCard({
 // translated text by default with a per-comment "Show original" toggle. It never
 // translates in the browser — only displays what the backend provided.
 function CommentItem({ comment }: { comment: LocalComment }) {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [showOriginal, setShowOriginal] = useState(false);
 
   const translated = comment.translatedContent;
@@ -728,16 +720,16 @@ function CommentItem({ comment }: { comment: LocalComment }) {
   return (
     <li className="flex gap-2">
       <span className="h-8 w-8 shrink-0 rounded-full bg-background" />
-      <div className="rounded-2xl bg-background px-3 py-2">
-        <div className="flex items-center gap-1.5">
+      <div className="min-w-0 rounded-2xl bg-background px-3 py-2">
+        <div className="flex min-w-0 flex-wrap items-center gap-x-1.5">
           <span className="text-xs font-semibold text-foreground">
             {comment.author}
           </span>
           <span className="text-xs text-muted-soft">
-            {formatTimeAgo(comment.createdAt)}
+            {formatTimeAgo(comment.createdAt, locale)}
           </span>
         </div>
-        <div className="text-sm text-foreground">{primary}</div>
+        <div className="whitespace-pre-line break-words text-sm text-foreground">{primary}</div>
         {hasTranslation ? (
           <div className="mt-0.5 flex items-center gap-2 text-[10px] text-muted-soft">
             {langHint && !showOriginal ? <span>{langHint}</span> : null}

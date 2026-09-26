@@ -1,7 +1,7 @@
 # Together — Project Handoff
 
 Canonical workspace: `C:\Users\user\source\Together` (do **not** use `C:\Together`).
-Last synchronized with the repository: World V1 checkpoint `feat: complete world v1`.
+Last synchronized with the repository: final pre-demo V1 checkpoint review.
 
 > `PROJECT_AUDIT.md` is an older, backend-only audit written against a previous workspace (`C:\Together`, commits up to `eef878c`). It is kept for history; **this file is the current handoff document**. Engineering rules live in `AGENTS.md`.
 
@@ -27,7 +27,7 @@ Product rules:
 | Object storage | Cloudflare R2 (S3-compatible; presigned URLs; private attachments) |
 | Realtime | Existing WebSocket (`/api/v1/ws`, Gorilla WebSocket, per-user hub) |
 | Auth | Server-side session cookie (`together_session`, HttpOnly; SHA-256 token hashes in DB) |
-| Maps (World) | `maplibre-gl` ^5 with an OpenFreeMap vector style (no API key) — uncommitted |
+| Maps (World) | `maplibre-gl` ^5 with an OpenFreeMap vector style (no API key) |
 
 Supabase is **not** used for Auth, Storage or Realtime.
 
@@ -75,9 +75,11 @@ Status legend: **Checkpointed** = committed feature checkpoint. "Real smoke" is 
 | Groups V1 + Channels V1 | Checkpointed | `590813fabc537bb48d4d3429fc0cf927106f8f20` "feat: complete groups and channels v1" |
 | Calls V1 | Checkpointed, **real two-device smoke passed** | `bd3a44c` "feat: complete calls v1"; later fix `c66a916` "fix: remove duplicate community detail key" |
 | Events V1 | Checkpointed, **real browser smoke passed** | `1c7604228908eb5931dcd0ddc3e9e608216b47ea` "feat: complete events v1" |
-| World / Explore V1 | Checkpointed, **real authenticated browser smoke passed** | `feat: complete world v1` |
+| World / Explore V1 | Checkpointed, **real authenticated browser smoke passed** | `f4f1b81` "feat: complete world v1" |
+| Mobile / Responsive Pass | Completed for V1/demo scope | current pre-demo checkpoint |
+| Pre-demo QA | Completed | current pre-demo checkpoint |
 
-i18n: 192 dictionaries in `src/lib/i18n/locales/*.ts` (`en.ts` is the source); validate with `node scripts/validate-i18n.mjs`. With the uncommitted World keys the catalog is 486 keys per dictionary (463 at the Events checkpoint).
+i18n: 192 dictionaries in `src/lib/i18n/locales/*.ts` (`en.ts` is the source); validate with `node scripts/validate-i18n.mjs`. The current catalog contains 551 keys per dictionary.
 
 ## Calls V1
 
@@ -88,6 +90,21 @@ Implemented: `/calls` page and Sidebar Calls; voice and video calls; incoming ca
 **Real smoke passed on two physical devices:** Account A calls Account B → B receives the incoming call → B accepts → WebRTC connects → two-way audio and two-way video work.
 
 **Production TURN: DEFERRED.** ICE servers are provided to the client by the backend call configuration; no production TURN service is set up, so do not describe TURN as done. No call history is persisted.
+
+## Stories V1
+
+Stories V1 includes the polished full-screen viewer, landscape blurred-background presentation, custom video controls, tap navigation, hold-to-pause, auto-advance, mute/unmute, real deduplicated views, owner-only viewer lists, real likes/unlikes, real replies through existing DMs, and owner deletion.
+
+Story media limits are enforced through the upload and final-use paths: images up to 100 MiB; videos `video/mp4`, `video/quicktime`, or `video/webm`, up to 250 MiB and 60 seconds. HEIC remains unsupported. Story interaction authorization preserves ownership, visibility, block and expiry rules.
+
+## Media Limits
+
+- Profile avatar: images only, 60 MiB.
+- Posts: images only in V1, up to 8 photos, 100 MiB per image.
+- Stories: image 100 MiB; video 250 MiB and 60 seconds; supported video MIME types are `video/mp4`, `video/quicktime`, and `video/webm`.
+- Message attachments: existing limits unchanged.
+
+Uploads remain direct browser/device → private/presigned Cloudflare R2 PUT; media is not proxied through Next.js or Go. Phone smoke may use a temporary Quick Tunnel at process level; its URL is not part of application source or committed environment files.
 
 ## Events V1
 
@@ -159,16 +176,16 @@ The fix uses full-width/full-height sizing inside the already-sized parent. MapL
 
 ## Mobile / Responsive Status
 
-**PLANNED / NOT COMPLETED.** No dedicated responsive pass has been done yet. Individual features have mobile-aware layouts, but nothing is certified mobile-ready.
+**COMPLETED for V1/demo scope.** The pre-demo responsive pass covered the product surfaces and the audited viewport targets below.
 
-Planned audit viewports: **320, 375, 390, 430 px**. Areas requiring real mobile QA: Login, Register, onboarding, Home, Stories, Posts, Profile, Messages, Calls, Video Calls (call overlay portrait/landscape), Groups, Channels, Events, World (map mobile UX), Settings, mobile navigation, modals, forms, keyboard overlap, safe-area insets, horizontal overflow, button/touch-target sizes, dropdown positioning.
+Audited viewport targets: **320, 375, 390, 430 px**. The pass covered Login, Register, onboarding, Home, Stories, Posts, Profile, Messages, Calls, Video Calls, Groups, Channels, Events, World, Settings, mobile navigation, modals, forms, keyboard overlap, safe-area insets, horizontal overflow, button/touch-target sizes and dropdown positioning.
 
 ## Database / Migrations
 
 - Plain SQL files in `backend/migrations`, applied **manually** (no migration runner, no ledger in the repo).
-- Source contains `000001` … `000031` (latest: `000031_create_events` — `events`, `event_rsvps`; `000030_create_communities` — groups/channels).
+- Source contains `000001` … `000032` (latest: `000032_add_story_likes_and_replies` — `story_likes`, `story_replies`, and the story-view index; `000031_create_events` — `events`, `event_rsvps`).
 - World V1 adds **no migration** (it aggregates existing `users.country_code` and filters existing `events` columns).
-- Applied state of the remote Supabase database is **not tracked here**; migration `000031` was applied locally during Events development and **not** to remote as part of that work. Do not change remote Supabase without an explicit instruction.
+- Current development/test data is local PostgreSQL database `together_dev` via `DATABASE_URL`. The local schema already contains `story_likes` and `story_replies` with one row in each table and all three expected indexes. No migration history/version table is present in the repository or local public schema; this local database is ahead of the migration files, likely from an earlier local session. Migration `000032` remains the source of truth for fresh environments and its down migration refuses rollback when interaction rows exist. Remote Supabase remains intentionally untouched.
 
 ## Testing Philosophy
 
@@ -177,15 +194,15 @@ Planned audit viewports: **320, 375, 390, 430 px**. Areas requiring real mobile 
 Automated checks (`go test ./...`, `go vet ./...`, `npx tsc --noEmit`, `npx eslint .`, `node scripts/validate-i18n.mjs`, HTTP 200 route checks) are required but **do not replace real browser/device smoke tests**. Major features require a real smoke before their checkpoint is closed. Evidence:
 
 - Events had a real production DI bug (500s) despite earlier green automated validation.
-- World currently has a real blank-map bug despite passing typecheck, lint, Go tests and `/world` = 200.
+- World had a real blank-map bug caused by a collapsed MapLibre container; the full-height fix was verified in the real browser smoke.
 
 Report status precisely: *implemented* / *automated validation passed* / *real smoke passed* / *pending real smoke* / *deferred* / *known issue*.
 
 ## Current Git State
 
-- Branch: `main`. HEAD: `1c7604228908eb5931dcd0ddc3e9e608216b47ea` — "feat: complete events v1" (Events checkpoint, untouched).
+- Branch: `main`. HEAD: final pre-demo checkpoint based on `f4f1b81` — "feat: complete world v1".
 - Recent checkpoints: `1c76042` Events V1 → `c66a916` community detail key fix → `bd3a44c` Calls V1 → `590813f` Groups + Channels V1.
-- **Worktree is dirty with uncommitted World / Explore V1 work** (nothing staged):
+- **Final pre-demo checkpoint:** `feat: complete mobile and pre-demo v1 polish`.
   - Modified backend: `internal/event/{event.go,repository_postgres.go,repository_postgres_test.go}`, `internal/server/{auth_test.go,events.go,events_test.go,server.go}`, `internal/user/{repository.go,repository_postgres.go}`.
   - New backend: `internal/event/escape_test.go`, `internal/server/{world.go,world_test.go}`.
   - Modified frontend: `src/components/layout/{Sidebar.tsx,RightSidebar.tsx}`, `src/components/right-sidebar/WorldMapCard.tsx`, `src/lib/events-api.ts`, all 192 `src/lib/i18n/locales/*.ts`.
@@ -196,12 +213,21 @@ Report status precisely: *implemented* / *automated validation passed* / *real s
 
 ## Immediate Next Step
 
-World V1 is checkpointed. The next block is the Mobile / Responsive Pass.
+Together V1 is demo-ready at the current scope. The next step is the demo.
 
 ## Roadmap
 
-1. World V1 checkpoint complete.
-2. Mobile / Responsive Pass (320 / 375 / 390 / 430).
-3. Full product QA.
-4. Release polish (incl. deferred items as decided: production TURN, event notifications).
-5. Demo.
+1. V1 pre-demo checkpoint complete.
+2. Demo.
+
+## Known Deferred Items
+
+- Production TURN.
+- Event notifications.
+- Normalized Event geography.
+- Robust server-side video duration verification/transcoding.
+- Image thumbnails/optimization for very large feed photos.
+- HEIC conversion.
+- Story like notifications.
+- Chat-list Story reply preview enrichment.
+- Minor locale/native picker limitations.

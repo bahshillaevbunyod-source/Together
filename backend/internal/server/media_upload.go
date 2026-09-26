@@ -15,12 +15,63 @@ import (
 	"together/backend/internal/storage"
 )
 
+// Media size ceilings are contextual (binary MiB). Bytes always go browser ->
+// storage via presigned PUT (which binds the approved Content-Length), so no
+// app/proxy request body ever carries the file.
 const (
 	maxUploadBodyBytes = 1 << 20 // 1 MiB (metadata only)
-	maxImageBytes      = 15 << 20
-	maxVideoBytes      = 200 << 20
-	maxFileBytes       = 25 << 20
+	// Post and story media.
+	maxPostImageBytes = 100 << 20
+	maxPostVideoBytes = 250 << 20
+	// Profile photos only (purpose "avatar" / the avatars/ namespace).
+	maxAvatarImageBytes = 60 << 20
+	// Direct-message attachments keep their original ceilings.
+	maxImageBytes = 15 << 20
+	maxVideoBytes = 200 << 20
+	maxFileBytes  = 25 << 20
 )
+
+// mediaLimits is the per-type size policy for one upload context. A zero limit
+// means that media type is not allowed in the context.
+type mediaLimits struct {
+	Image, Video, File, Voice int64
+}
+
+var (
+	// postMediaLimits applies to posts and stories.
+	postMediaLimits = mediaLimits{Image: maxPostImageBytes, Video: maxPostVideoBytes, File: maxFileBytes, Voice: maxFileBytes}
+	// avatarMediaLimits: profile photos are images only.
+	avatarMediaLimits = mediaLimits{Image: maxAvatarImageBytes}
+	// messageMediaLimits applies to direct-message attachments (unchanged).
+	messageMediaLimits = mediaLimits{Image: maxImageBytes, Video: maxVideoBytes, File: maxFileBytes, Voice: maxFileBytes}
+)
+
+// limit returns the ceiling for a media type (0 = not allowed).
+func (l mediaLimits) limit(mediaType string) int64 {
+	switch mediaType {
+	case media.TypeImage:
+		return l.Image
+	case media.TypeVideo:
+		return l.Video
+	case "file":
+		return l.File
+	case "voice":
+		return l.Voice
+	}
+	return 0
+}
+
+// limitsForPurpose maps an upload-url purpose to its size policy.
+func limitsForPurpose(purpose string) mediaLimits {
+	switch purpose {
+	case "avatar":
+		return avatarMediaLimits
+	case "message":
+		return messageMediaLimits
+	default: // "", "post", "story"
+		return postMediaLimits
+	}
+}
 
 // allowed mime -> safe file extension, per media type.
 var imageMimeExt = map[string]string{
@@ -32,6 +83,9 @@ var imageMimeExt = map[string]string{
 var videoMimeExt = map[string]string{
 	"video/mp4":  "mp4",
 	"video/webm": "webm",
+	// iPhone camera default container (.mov). Played natively by Safari and by
+	// Chromium when the codec is H.264; HEVC playback depends on the device.
+	"video/quicktime": "mov",
 }
 
 var fileMimeExt = map[string]string{
@@ -51,9 +105,10 @@ type uploadURLRequest struct {
 	Type      string `json:"type"`
 	MimeType  string `json:"mimeType"`
 	SizeBytes int64  `json:"sizeBytes"`
-	// Purpose selects the storage namespace: "" or "post" -> post media,
-	// "avatar" -> avatars/ (profile photos). Kept optional for backward
-	// compatibility (existing post clients send no purpose).
+	// Purpose selects the storage namespace and size policy: "" or "post" ->
+	// post media, "story" -> private story media, "message" -> direct-message
+	// attachment, "avatar" -> avatars/ (profile photos). Kept optional for
+	// backward compatibility (existing post clients send no purpose).
 	Purpose string `json:"purpose"`
 	// Visibility is the intended post visibility for post uploads. It selects
 	// the storage class/bucket: "" or "public" -> public bucket (uploads/);
@@ -70,7 +125,10 @@ func uploadTarget(purpose, visibility string) (dir string, class storage.Class, 
 	case "avatar":
 		// Avatars are always public and unaffected by post visibility.
 		return "avatars", storage.ClassPublic, true
-	case "", "post":
+	case "story":
+		// Stories are always private media.
+		return "private", storage.ClassPrivate, true
+	case "", "post", "message":
 		switch visibility {
 		case "", post.VisibilityPublic:
 			return "uploads", storage.ClassPublic, true
@@ -120,7 +178,7 @@ func (s *Server) handleCreateUploadURL(w http.ResponseWriter, r *http.Request) {
 
 	// The extension is derived from the (validated) mime type — never from the
 	// client — and the size limit depends on the media type.
-	ext, ok := allowedExtension(req.Type, req.MimeType, req.SizeBytes)
+	ext, ok := allowedUploadExtension(req.Purpose, req.Type, req.MimeType, req.SizeBytes)
 	if !ok {
 		writeError(w, http.StatusBadRequest, "unsupported media type or size")
 		return
@@ -231,37 +289,38 @@ func (s *Server) handleConfirmUpload(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// allowedExtension validates type/mime/size and returns the safe extension.
+// allowedUploadExtension validates type/mime/size against the size policy of
+// the upload purpose and returns the safe extension.
+func allowedUploadExtension(purpose, mediaType, mimeType string, sizeBytes int64) (string, bool) {
+	return allowedExtensionWithLimits(limitsForPurpose(purpose), mediaType, mimeType, sizeBytes)
+}
+
+// allowedExtension validates type/mime/size under the post/story policy.
 func allowedExtension(mediaType, mimeType string, sizeBytes int64) (string, bool) {
+	return allowedExtensionWithLimits(postMediaLimits, mediaType, mimeType, sizeBytes)
+}
+
+func allowedExtensionWithLimits(limits mediaLimits, mediaType, mimeType string, sizeBytes int64) (string, bool) {
 	mimeType = normalizedMIME(mimeType)
+	var table map[string]string
 	switch mediaType {
 	case media.TypeImage:
-		ext, ok := imageMimeExt[mimeType]
-		if !ok || sizeBytes > maxImageBytes {
-			return "", false
-		}
-		return ext, true
+		table = imageMimeExt
 	case media.TypeVideo:
-		ext, ok := videoMimeExt[mimeType]
-		if !ok || sizeBytes > maxVideoBytes {
-			return "", false
-		}
-		return ext, true
+		table = videoMimeExt
 	case "file":
-		ext, ok := fileMimeExt[mimeType]
-		if !ok || sizeBytes > maxFileBytes {
-			return "", false
-		}
-		return ext, true
+		table = fileMimeExt
 	case "voice":
-		ext, ok := voiceMimeExt[mimeType]
-		if !ok || sizeBytes > maxFileBytes {
-			return "", false
-		}
-		return ext, true
+		table = voiceMimeExt
 	default:
 		return "", false
 	}
+	ext, ok := table[mimeType]
+	max := limits.limit(mediaType)
+	if !ok || max <= 0 || sizeBytes > max {
+		return "", false
+	}
+	return ext, true
 }
 
 func normalizedMIME(raw string) string {

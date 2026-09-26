@@ -22,6 +22,22 @@ export type Story = {
   media: StoryMedia;
   createdAt: string;
   viewed: boolean;
+  /** The current user's like on this story. */
+  likedByMe: boolean;
+  /** Other people's views; present only on the current user's own stories. */
+  viewCount?: number;
+};
+
+export type StoryViewer = {
+  user: StoryAuthor;
+  viewedAt: string;
+  liked: boolean;
+};
+
+export type StoryViewerPage = {
+  items: StoryViewer[];
+  total: number;
+  nextCursor: string;
 };
 
 export type StoryPage = {

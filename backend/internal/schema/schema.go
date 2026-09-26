@@ -44,6 +44,8 @@ var requiredTables = []string{
 	"stories",             // 000021
 	"story_views",         // 000022
 	"message_attachments", // 000027
+	"story_likes",         // 000032
+	"story_replies",       // 000032
 }
 
 // Verify returns the list of missing required schema objects (human-readable

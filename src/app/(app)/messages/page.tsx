@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { Bell, BellOff, ChevronLeft } from "lucide-react";
 
 import {
   ApiError,
@@ -41,7 +41,7 @@ export default function MessagesPage() {
 	const [searchResults, setSearchResults] = useState<{ conversationId: string; id: string; content: string; otherDisplayName: string }[]>([]);
   const { user } = useAuth();
   const { subscribeMessageCreated } = useRealtime();
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   // Zero the unread badge for a conversation once it has been read.
   const clearUnread = useCallback((id: string) => {
@@ -187,14 +187,16 @@ export default function MessagesPage() {
 	};
 
   return (
-    <div className="flex h-[calc(100vh-9rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+    // Phones/tablets: viewport minus header, shell padding, bottom nav and safe
+    // areas so the composer never sits under the mobile nav.
+    <div className="flex h-[calc(100dvh_-_10rem_-_env(safe-area-inset-top)_-_env(safe-area-inset-bottom))] min-h-[22rem] overflow-hidden rounded-2xl border border-border bg-surface shadow-sm sm:h-[calc(100dvh_-_10.5rem_-_env(safe-area-inset-top)_-_env(safe-area-inset-bottom))] lg:h-[calc(100dvh-9rem)]">
       {/* Conversation list */}
-      <div className={`${selected ? "hidden" : "flex"} w-full flex-col border-border sm:flex sm:w-80 sm:border-r`}>
+      <div className={`${selected ? "hidden" : "flex"} w-full flex-col border-border sm:flex sm:w-72 sm:shrink-0 sm:border-r xl:w-64 2xl:w-80`}>
         <div className="border-b border-border px-4 py-3">
           <MessagingTabs />
           <h1 className="mt-3 text-base font-semibold text-foreground">{t("navigation.messages")}</h1>
 		  <form onSubmit={runSearch} className="mt-2">
-			<input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search messages" className="h-9 w-full rounded-full bg-background px-3 text-sm text-foreground placeholder:text-muted-soft" />
+			<input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder={t("messages.searchPlaceholder")} aria-label={t("messages.searchPlaceholder")} className="h-10 w-full min-w-0 rounded-full bg-background px-3 text-base text-foreground placeholder:text-muted-soft sm:h-9 sm:text-sm" />
 		  </form>
 		  {searchResults.length > 0 ? <ul className="mt-2 max-h-40 overflow-y-auto rounded-lg border border-border bg-surface">{searchResults.map((result) => <li key={result.id}><button type="button" onClick={() => { setSelectedId(result.conversationId); setSearchResults([]); }} className="w-full px-3 py-2 text-left text-sm hover:bg-background"><span className="font-medium">{result.otherDisplayName}: </span><span className="text-muted">{result.content}</span></button></li>)}</ul> : null}
           <form onSubmit={openNew} className="mt-3 flex items-center gap-2">
@@ -203,7 +205,7 @@ export default function MessagesPage() {
               value={newUsername}
               onChange={(e) => setNewUsername(e.target.value)}
               placeholder={t("messages.startChatPlaceholder")}
-              className="h-9 flex-1 rounded-full bg-background px-3 text-sm text-foreground placeholder:text-muted-soft"
+              className="h-10 min-w-0 flex-1 rounded-full bg-background px-3 text-base text-foreground placeholder:text-muted-soft sm:h-9 sm:text-sm"
             />
             <button
               type="submit"
@@ -292,7 +294,7 @@ export default function MessagesPage() {
                           {c.otherUser.displayName}
                         </Link>
                         <span className="shrink-0 text-xs text-muted-soft">
-                          {formatTimeAgo(c.updatedAt)}
+                          {formatTimeAgo(c.updatedAt, locale)}
                         </span>
                       </span>
                       <span className="mt-0.5 flex items-center justify-between gap-2">
@@ -328,22 +330,22 @@ export default function MessagesPage() {
       </div>
 
       {/* Selected conversation */}
-      <div className={`${selected ? "flex" : "hidden"} flex-1 flex-col sm:flex`}>
+      <div className={`${selected ? "flex" : "hidden"} min-w-0 flex-1 flex-col sm:flex`}>
         {selected ? (
           <>
-            <div className="flex items-center gap-3 border-b border-border px-5 py-3">
+            <div className="flex min-w-0 items-center gap-1 border-b border-border px-2 py-2.5 sm:gap-3 sm:px-5 sm:py-3">
               <button
                 type="button"
                 onClick={() => setSelectedId(null)}
                 aria-label={t("messages.backAria")}
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-background sm:hidden"
+                className="flex h-10 w-9 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-background sm:hidden"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-5 w-5 rtl:rotate-180" />
               </button>
               <Link
                 href={`/u/${encodeURIComponent(selected.otherUser.username)}`}
                 aria-label={t("messages.viewProfileAria", { name: selected.otherUser.displayName })}
-                className="flex items-center gap-3 rounded-lg transition-colors hover:opacity-80"
+                className="flex min-w-0 flex-1 items-center gap-2 rounded-lg transition-colors hover:opacity-80 sm:gap-3"
               >
                 <Image
                   src={selected.otherUser.avatarUrl ?? FALLBACK_AVATAR}
@@ -351,21 +353,21 @@ export default function MessagesPage() {
                   width={40}
                   height={40}
                   unoptimized={Boolean(selected.otherUser.avatarUrl)}
-                  className="h-10 w-10 rounded-full object-cover"
+                  className="h-9 w-9 shrink-0 rounded-full object-cover sm:h-10 sm:w-10"
                 />
-                <div className="leading-tight">
-                  <div className="font-semibold text-foreground hover:underline">
+                <div className="min-w-0 leading-tight">
+                  <div className="truncate font-semibold text-foreground hover:underline">
                     {selected.otherUser.displayName}
                   </div>
-                  <div className="text-xs text-muted">
+                  <div className="truncate text-xs text-muted">
                     @{selected.otherUser.username}
                   </div>
                 </div>
               </Link>
-              <div className="ml-auto">
+              <div className="shrink-0">
                 <CallButtons conversationId={selected.id} peer={selected.otherUser} />
               </div>
-			  <button type="button" onClick={toggleMute} className="rounded-full px-3 py-1.5 text-xs text-muted hover:bg-background hover:text-foreground">{selected.muted ? "Unmute" : "Mute"}</button>
+			  <button type="button" onClick={toggleMute} aria-label={selected.muted ? t("community.unmute") : t("community.mute")} aria-pressed={selected.muted} className="flex h-10 w-9 shrink-0 items-center justify-center rounded-full text-muted hover:bg-background hover:text-foreground sm:h-9 sm:w-auto sm:px-3"><span className="sm:hidden" aria-hidden>{selected.muted ? <BellOff className="h-4 w-4" /> : <Bell className="h-4 w-4" />}</span><span className="hidden whitespace-nowrap text-xs sm:inline">{selected.muted ? t("community.unmute") : t("community.mute")}</span></button>
             </div>
             <ConversationThread
               key={selected.id}

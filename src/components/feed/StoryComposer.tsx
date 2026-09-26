@@ -5,22 +5,21 @@ import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import {
+  ApiError,
   confirmMediaUpload,
   createStory,
   requestMediaUploadUrl,
   uploadFileToPresignedUrl,
 } from "@/lib/api";
 import { useLanguage } from "@/lib/language-context";
-
-const MAX_IMAGE_BYTES = 15 * 1024 * 1024;
-const MAX_VIDEO_BYTES = 200 * 1024 * 1024;
-const ALLOWED_TYPES = new Set([
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "video/mp4",
-  "video/webm",
-]);
+import {
+  checkPostStoryMedia,
+  MAX_STORY_VIDEO_SECONDS,
+  MEDIA_ACCEPT,
+  readVideoDuration,
+  storageUploadErrorKey,
+  withEffectiveType,
+} from "@/lib/media-rules";
 
 export function StoryComposer({
   onClose,
@@ -38,6 +37,9 @@ export function StoryComposer({
   const [previewURL, setPreviewURL] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [checking, setChecking] = useState(false);
+  // Ignores a stale duration check when another file was picked meanwhile.
+  const pickRef = useRef(0);
 
   useEffect(() => {
     if (!file) {
@@ -57,15 +59,37 @@ export function StoryComposer({
     return () => document.removeEventListener("keydown", onKey);
   }, [onClose, uploading]);
 
-  const selectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const next = event.target.files?.[0] ?? null;
+  const selectFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = event.target.files?.[0] ?? null;
     event.target.value = "";
-    if (!next) return;
-    const maxBytes = next.type.startsWith("video/") ? MAX_VIDEO_BYTES : MAX_IMAGE_BYTES;
-    if (!ALLOWED_TYPES.has(next.type) || next.size <= 0 || next.size > maxBytes) {
+    if (!picked) return;
+    const pick = ++pickRef.current;
+    const check = checkPostStoryMedia(picked, true);
+    if (!check.ok) {
       setFile(null);
-      setError(t("stories.invalidMedia"));
+      setError(t(`media.${check.reason}`));
       return;
+    }
+    const next = withEffectiveType(picked);
+    if (check.kind === "video") {
+      // Enforce the 60-second limit before a potentially large upload.
+      setChecking(true);
+      setError(null);
+      setFile(null);
+      try {
+        const seconds = await readVideoDuration(next);
+        if (pick !== pickRef.current) return;
+        if (seconds > MAX_STORY_VIDEO_SECONDS + 0.5) {
+          setError(t("media.videoTooLong"));
+          return;
+        }
+      } catch {
+        if (pick !== pickRef.current) return;
+        setError(t("media.videoMetadataError"));
+        return;
+      } finally {
+        if (pick === pickRef.current) setChecking(false);
+      }
     }
     setError(null);
     setFile(next);
@@ -75,20 +99,33 @@ export function StoryComposer({
     if (!file || uploading) return;
     setUploading(true);
     setError(null);
+    let stage: "presign" | "upload" | "confirm" | "create" = "presign";
     try {
       const type = file.type.startsWith("video/") ? "video" : "image";
       const presign = await requestMediaUploadUrl({
         type,
         mimeType: file.type,
         sizeBytes: file.size,
+        purpose: "story",
         visibility: "private",
       });
+      stage = "upload";
       await uploadFileToPresignedUrl(presign.uploadUrl, file);
+      stage = "confirm";
       const confirmed = await confirmMediaUpload(presign.storageKey);
+      stage = "create";
       await createStory(confirmed.storageKey);
       onCreated();
-    } catch {
-      setError(t("stories.createError"));
+    } catch (err) {
+      setError(
+        stage === "presign" && err instanceof ApiError && err.status === 400
+          ? t("media.rejected")
+          : stage === "upload"
+            ? t(storageUploadErrorKey(err))
+            : stage === "confirm"
+              ? t("media.confirmFailed")
+              : t("stories.createError"),
+      );
     } finally {
       setUploading(false);
     }
@@ -124,7 +161,7 @@ export function StoryComposer({
         <input
           ref={inputRef}
           type="file"
-          accept="image/jpeg,image/png,image/webp,video/mp4,video/webm"
+          accept={MEDIA_ACCEPT}
           className="hidden"
           onChange={selectFile}
         />
@@ -147,10 +184,11 @@ export function StoryComposer({
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
+            disabled={checking}
             className="flex min-h-32 flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border px-4 text-center text-sm text-muted hover:bg-background focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <span className="font-medium text-foreground">{t("stories.chooseMedia")}</span>
-            <span className="text-xs text-muted-soft">{t("stories.mediaHint")}</span>
+            <span className="text-xs text-muted-soft">{checking ? t("media.checkingVideo") : t("stories.mediaRules")}</span>
           </button>
         )}
 
@@ -180,7 +218,7 @@ export function StoryComposer({
           <button
             type="button"
             onClick={submit}
-            disabled={!file || uploading}
+            disabled={!file || uploading || checking}
             className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
           >
             {uploading ? t("stories.uploading") : t("stories.upload")}

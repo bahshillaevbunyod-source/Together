@@ -161,7 +161,7 @@ export function GlobalSearch() {
               : undefined
           }
           placeholder={t("search.placeholder")}
-          className="h-11 w-full rounded-full border border-border bg-background pl-11 pr-16 text-sm text-foreground placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="h-11 w-full min-w-0 rounded-full border border-border bg-background pl-11 pr-4 text-base text-foreground sm:pr-16 sm:text-sm placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
         <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-md border border-border bg-surface px-2 py-0.5 text-xs text-muted-soft sm:block">
           {t("search.shortcut")}
@@ -173,7 +173,7 @@ export function GlobalSearch() {
             role="listbox"
             className="absolute left-0 right-0 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-border bg-surface shadow-xl"
           >
-            <div className="max-h-[min(70vh,420px)] overflow-y-auto py-1">
+            <div className="max-h-[min(70dvh,420px)] overflow-y-auto py-1">
               {status === "loading" ? (
                 <div className="flex items-center gap-2 px-4 py-6 text-sm text-muted">
                   <Loader2 className="h-4 w-4 animate-spin" />

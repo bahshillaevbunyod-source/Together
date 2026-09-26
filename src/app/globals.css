@@ -50,6 +50,19 @@
   }
 }
 
+/* --- Mobile form fields ------------------------------------------------------
+   iOS Safari zooms the page when a focused field uses a font smaller than 16px.
+   Many compact fields use text-sm, so on phone widths every text field is
+   raised to 16px. Unlayered on purpose so it wins over Tailwind utilities;
+   from the sm breakpoint up the compact sizes apply unchanged. */
+@media (max-width: 639.98px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
 /* --- Structural direction vs. text direction ---------------------------------
    RTL locales set <html dir="rtl"> so text, alignment, inputs and localized
    controls read right-to-left. But `dir` also reverses flex/grid ORDER, which

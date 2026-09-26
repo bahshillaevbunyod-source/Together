@@ -239,7 +239,7 @@ export function EventForm({
         role="dialog"
         aria-modal="true"
         aria-labelledby="event-form-title"
-        className="flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl border border-border bg-surface shadow-xl sm:max-w-lg sm:rounded-3xl"
+        className="flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-3xl border border-border bg-surface shadow-xl sm:max-w-lg sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
@@ -351,7 +351,7 @@ export function EventForm({
                       setForm((p) => ({ ...p, hasEnd: false, endDate: "", endTime: "" }));
                       setErrors((p) => ({ ...p, end: undefined }));
                     }}
-                    className="self-start text-xs font-medium text-muted hover:text-foreground"
+                    className="-my-1 min-h-9 self-start text-xs font-medium text-muted hover:text-foreground"
                   >
                     {t("events.removeEnd")}
                   </button>
@@ -360,7 +360,7 @@ export function EventForm({
                 <button
                   type="button"
                   onClick={() => setForm((p) => ({ ...p, hasEnd: true, endDate: p.endDate || p.startDate }))}
-                  className="self-start text-xs font-medium text-primary hover:underline"
+                  className="-my-1 min-h-9 self-start text-xs font-medium text-primary hover:underline"
                 >
                   + {t("events.addEnd")}
                 </button>

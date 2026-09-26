@@ -47,4 +47,26 @@ type Repository interface {
 
 	// HasViewed reports whether viewerID has already viewed storyID.
 	HasViewed(ctx context.Context, storyID, viewerID string) (bool, error)
+
+	// Like records the user's like on an ACTIVE story they did not author,
+	// idempotently. Reports whether a new like row was created.
+	Like(ctx context.Context, storyID, userID string) (bool, error)
+
+	// Unlike removes the user's like; reports whether a row was removed.
+	Unlike(ctx context.Context, storyID, userID string) (bool, error)
+
+	// ListViewers returns other people's views of a story (never the author,
+	// never a blocked pair), newest first, keyset-paginated, each with that
+	// viewer's like state. Callers must verify the caller owns the story.
+	ListViewers(ctx context.Context, storyID string, cur *ViewerCursor, limit int) ([]Viewer, error)
+
+	// CountViewers counts the same set ListViewers returns.
+	CountViewers(ctx context.Context, storyID string) (int, error)
+
+	// RecordReply links a created direct message to the story it replied to.
+	RecordReply(ctx context.Context, messageID, storyID string) error
+
+	// ReplyRefs returns, for the given message ids that are story replies, the
+	// referenced story id (nil when that story was deleted).
+	ReplyRefs(ctx context.Context, messageIDs []string) (map[string]*string, error)
 }

@@ -118,7 +118,7 @@ export function CreateCommunityDialog({
       <form
         onSubmit={onPrimary}
         onMouseDown={(e) => e.stopPropagation()}
-        className="flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-2xl border border-border bg-surface shadow-xl sm:max-h-[85vh] sm:max-w-md sm:rounded-2xl"
+        className="flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-2xl border border-border bg-surface shadow-xl sm:max-h-[85dvh] sm:max-w-md sm:rounded-2xl"
       >
         <div className="flex items-center gap-2 border-b border-border px-4 py-3">
           {step === "members" ? (

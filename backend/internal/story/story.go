@@ -72,4 +72,26 @@ type Item struct {
 	AuthorDisplayName string
 	AuthorAvatarURL   *string
 	Viewed            bool
+	// LikedByMe is the viewer's own like state.
+	LikedByMe bool
+	// ViewCount counts other people's views (never the author, never a blocked
+	// pair). It is computed only when the viewer is the author; 0 otherwise.
+	ViewCount int
+}
+
+// Viewer is one entry of a story's owner-only viewer list.
+type Viewer struct {
+	UserID      string
+	Username    string
+	DisplayName string
+	AvatarURL   *string
+	ViewedAt    time.Time
+	Liked       bool
+}
+
+// ViewerCursor is a keyset position in a viewer list, ordered
+// (viewed_at DESC, viewer_id DESC).
+type ViewerCursor struct {
+	ViewedAt time.Time
+	UserID   string
 }

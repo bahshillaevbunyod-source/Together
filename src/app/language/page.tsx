@@ -88,7 +88,7 @@ export default function LanguagePage() {
 
   if (status !== "authenticated") {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background">
+      <div className="flex min-h-dvh flex-col items-center justify-center gap-3 bg-background">
         <Image
           src="/images/together-logo.png"
           alt="Together"
@@ -117,7 +117,7 @@ export default function LanguagePage() {
 
   if (profileStatus === "loading" || platformLanguage !== null) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
+      <div className="flex min-h-dvh items-center justify-center bg-background">
         <span className="text-sm text-muted">{en["language.loading"]}</span>
       </div>
     );
@@ -125,7 +125,7 @@ export default function LanguagePage() {
 
   if (profileStatus === "error") {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background px-4 text-center">
+      <div className="flex min-h-dvh flex-col items-center justify-center gap-3 bg-background px-4 text-center">
         <p className="text-sm text-muted">{en["language.loadError"]}</p>
         <button
           type="button"
@@ -139,8 +139,8 @@ export default function LanguagePage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-4 py-10">
-      <section className="w-full max-w-xl rounded-2xl border border-border bg-surface p-6 shadow-sm sm:p-8">
+    <main className="flex min-h-dvh items-center justify-center bg-background pb-[max(2rem,env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pt-[max(2rem,env(safe-area-inset-top))]">
+      <section className="w-full max-w-xl rounded-3xl border border-border bg-surface p-5 shadow-sm sm:p-8">
         <div className="flex flex-col items-center text-center">
           <Image
             src="/images/together-logo.png"
@@ -165,11 +165,12 @@ export default function LanguagePage() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={en["language.search"]}
-            className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm text-foreground placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+            className="h-12 w-full min-w-0 rounded-xl border border-border bg-background px-4 text-base text-foreground placeholder:text-muted-soft focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:h-11 sm:text-sm"
           />
         </label>
 
-        <div className="mt-3 grid max-h-72 grid-cols-1 gap-2 overflow-y-auto sm:grid-cols-2">
+        {/* Capped by the dynamic viewport so Continue stays reachable on short phones. */}
+        <div className="mt-3 grid max-h-[min(18rem,40dvh)] grid-cols-1 gap-2 overflow-y-auto overscroll-contain sm:grid-cols-2">
           {languages.map((language) => {
             const selected = selectedLanguage === language.code;
             return (
@@ -181,14 +182,14 @@ export default function LanguagePage() {
                   setSaveError(null);
                 }}
                 aria-pressed={selected}
-                className={`rounded-lg border px-4 py-3 text-left text-sm transition-colors ${
+                className={`flex min-h-12 min-w-0 items-center rounded-xl border px-4 py-2.5 text-start text-sm transition-colors ${
                   selected
                     ? "border-primary bg-primary/10 text-foreground"
                     : "border-border bg-background text-foreground hover:border-primary/50"
                 }`}
               >
-                <span className="font-medium">{language.label}</span>
-                <span className="ml-2 text-muted-soft">{language.code}</span>
+                <span className="min-w-0 truncate font-medium">{language.label}</span>
+                <span className="ms-2 shrink-0 text-muted-soft">{language.code}</span>
               </button>
             );
           })}
@@ -198,7 +199,7 @@ export default function LanguagePage() {
         ) : null}
 
         {saveError ? (
-          <p className="mt-4 text-sm text-red-500" role="alert">
+          <p className="mt-4 break-words text-sm text-red-500" role="alert">
             {saveError}
           </p>
         ) : null}
@@ -207,7 +208,7 @@ export default function LanguagePage() {
           type="button"
           disabled={!selectedLanguage || saving}
           onClick={() => void onContinue()}
-          className="mt-6 w-full rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
+          className="mt-6 h-12 w-full rounded-full bg-primary px-5 text-base font-medium sm:h-11 sm:text-sm text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
         >
           {saving ? en["post.saving"] : en["language.continue"]}
         </button>

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -179,8 +180,8 @@ func TestUploadURLBadMime(t *testing.T) {
 }
 
 func TestUploadURLSizeOverLimit(t *testing.T) {
-	// 16MB image > 15MB limit
-	rec := uploadURL(uploadServer(&fakeStorageRepo{}), `{"type":"image","mimeType":"image/png","sizeBytes":16777216}`, true, true)
+	// Post image over the 100 MiB ceiling.
+	rec := uploadURL(uploadServer(&fakeStorageRepo{}), fmt.Sprintf(`{"type":"image","mimeType":"image/png","sizeBytes":%d}`, int64(maxPostImageBytes)+1), true, true)
 	if rec.Code != http.StatusBadRequest {
 		t.Fatalf("expected 400, got %d", rec.Code)
 	}
@@ -227,5 +228,85 @@ func TestUploadURLStorageError(t *testing.T) {
 	rec := uploadURL(uploadServer(&fakeStorageRepo{createErr: errForTest}), `{"type":"image","mimeType":"image/png","sizeBytes":1000}`, true, true)
 	if rec.Code != http.StatusInternalServerError {
 		t.Fatalf("expected 500, got %d", rec.Code)
+	}
+}
+
+func TestUploadURLAvatarAllowsUpTo60MB(t *testing.T) {
+	for _, tc := range []struct {
+		size int64
+		want int
+	}{
+		{maxAvatarImageBytes, http.StatusOK},             // exactly 60 MiB
+		{maxAvatarImageBytes + 1, http.StatusBadRequest}, // over the avatar ceiling
+	} {
+		body := fmt.Sprintf(`{"type":"image","mimeType":"image/jpeg","sizeBytes":%d,"purpose":"avatar"}`, tc.size)
+		rec := uploadURL(uploadServer(&fakeStorageRepo{}), body, true, true)
+		if rec.Code != tc.want {
+			t.Fatalf("avatar size %d: expected %d, got %d", tc.size, tc.want, rec.Code)
+		}
+	}
+}
+
+func TestUploadURLPostImageLimit100MiB(t *testing.T) {
+	for _, tc := range []struct {
+		purpose string
+		size    int64
+		want    int
+	}{
+		{"", 16 << 20, http.StatusOK},                          // previously rejected (15 MiB cap)
+		{"post", maxPostImageBytes, http.StatusOK},             // exactly 100 MiB
+		{"post", maxPostImageBytes + 1, http.StatusBadRequest}, // over 100 MiB
+		{"story", maxPostImageBytes, http.StatusOK},
+		{"story", maxPostImageBytes + 1, http.StatusBadRequest},
+	} {
+		body := fmt.Sprintf(`{"type":"image","mimeType":"image/jpeg","sizeBytes":%d,"purpose":%q}`, tc.size, tc.purpose)
+		if rec := uploadURL(uploadServer(&fakeStorageRepo{}), body, true, true); rec.Code != tc.want {
+			t.Fatalf("purpose %q image %d: expected %d, got %d", tc.purpose, tc.size, tc.want, rec.Code)
+		}
+	}
+}
+
+func TestUploadURLStoryVideoLimitAndQuickTime(t *testing.T) {
+	for _, tc := range []struct {
+		mime string
+		size int64
+		want int
+	}{
+		{"video/mp4", maxPostVideoBytes, http.StatusOK},             // exactly 250 MiB
+		{"video/mp4", maxPostVideoBytes + 1, http.StatusBadRequest}, // over 250 MiB
+		{"video/quicktime", 30 << 20, http.StatusOK},                // iPhone .mov
+		{"video/webm", 30 << 20, http.StatusOK},
+		{"video/x-matroska", 30 << 20, http.StatusBadRequest}, // not playable by browsers
+	} {
+		sr := &fakeStorageRepo{}
+		body := fmt.Sprintf(`{"type":"video","mimeType":%q,"sizeBytes":%d,"purpose":"story"}`, tc.mime, tc.size)
+		rec := uploadURL(uploadServer(sr), body, true, true)
+		if rec.Code != tc.want {
+			t.Fatalf("story video %s %d: expected %d, got %d", tc.mime, tc.size, tc.want, rec.Code)
+		}
+		if tc.want == http.StatusOK && (sr.lastCreateClass != storage.ClassPrivate || !strings.Contains(sr.lastKey, "/private/")) {
+			t.Fatalf("story media must be private, got class %q key %q", sr.lastCreateClass, sr.lastKey)
+		}
+	}
+}
+
+func TestUploadURLContextLimitsAreDistinct(t *testing.T) {
+	// 20 MiB image: post/story yes, message no (15 MiB), avatar yes (60 MiB).
+	// 70 MiB image: post/story yes, avatar no.
+	for _, tc := range []struct {
+		purpose, typ, mime string
+		size               int64
+		want               int
+	}{
+		{"message", "image", "image/jpeg", 20 << 20, http.StatusBadRequest},
+		{"message", "image", "image/jpeg", maxImageBytes, http.StatusOK},
+		{"avatar", "image", "image/jpeg", 70 << 20, http.StatusBadRequest},
+		{"post", "image", "image/jpeg", 70 << 20, http.StatusOK},
+		{"avatar", "video", "video/mp4", 1 << 20, http.StatusBadRequest}, // avatars are images only
+	} {
+		body := fmt.Sprintf(`{"type":%q,"mimeType":%q,"sizeBytes":%d,"purpose":%q}`, tc.typ, tc.mime, tc.size, tc.purpose)
+		if rec := uploadURL(uploadServer(&fakeStorageRepo{}), body, true, true); rec.Code != tc.want {
+			t.Fatalf("%s %s %d: expected %d, got %d", tc.purpose, tc.typ, tc.size, tc.want, rec.Code)
+		}
 	}
 }

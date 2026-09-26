@@ -253,9 +253,9 @@ export function CommunityHub({ kind }: { kind: CommunityKind }) {
   }, [kind, query, searchRetry]);
 
   return (
-    <div className="flex h-[calc(100vh-9rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+    <div className="flex h-[calc(100dvh_-_10rem_-_env(safe-area-inset-top)_-_env(safe-area-inset-bottom))] min-h-[22rem] overflow-hidden rounded-2xl border border-border bg-surface shadow-sm sm:h-[calc(100dvh_-_10.5rem_-_env(safe-area-inset-top)_-_env(safe-area-inset-bottom))] lg:h-[calc(100dvh-9rem)]">
       {/* List pane */}
-      <div className={`${selected ? "hidden" : "flex"} w-full flex-col border-border sm:flex sm:w-80 sm:shrink-0 sm:border-r`}>
+      <div className={`${selected ? "hidden" : "flex"} w-full flex-col border-border sm:flex sm:w-72 sm:shrink-0 sm:border-r xl:w-64 2xl:w-80`}>
         <div className="border-b border-border px-4 py-3">
           <MessagingTabs />
           <div className="mt-3 flex items-center justify-between gap-2">
@@ -494,7 +494,7 @@ function CommunityRow({
   /** Search results: show member count / membership instead of last message. */
   showMeta?: boolean;
 }) {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   return (
     <li>
       <button
@@ -510,7 +510,7 @@ function CommunityRow({
               <span className="truncate font-semibold text-foreground">{c.name}</span>
               {c.muted ? <BellOff className="h-3.5 w-3.5 shrink-0 text-muted-soft" aria-label={t("community.muted")} /> : null}
             </span>
-            {!showMeta ? <span className="shrink-0 text-xs text-muted-soft">{formatTimeAgo(c.updatedAt)}</span> : null}
+            {!showMeta ? <span className="shrink-0 text-xs text-muted-soft">{formatTimeAgo(c.updatedAt, locale)}</span> : null}
           </span>
           <span className="mt-0.5 flex items-center justify-between gap-2">
             {showMeta ? (

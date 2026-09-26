@@ -36,6 +36,9 @@ type storyResponse struct {
 	Media     storyMediaResponse  `json:"media"`
 	CreatedAt string              `json:"createdAt"`
 	Viewed    bool                `json:"viewed"`
+	LikedByMe bool                `json:"likedByMe"`
+	// ViewCount is present only on the viewer's own stories.
+	ViewCount *int `json:"viewCount,omitempty"`
 }
 
 type storyListResponse struct {
@@ -53,8 +56,15 @@ type storyListResponse struct {
 // unavailable" rather than turning into a misleading usable/leaking URL. The
 // story's metadata (type/mimeType/…) is still returned honestly.
 func (s *Server) storyItemToResponse(r *http.Request, it story.Item) storyResponse {
+	var viewCount *int
+	if me, ok := CurrentUser(r.Context()); ok && me.ID == it.AuthorID {
+		n := it.ViewCount
+		viewCount = &n
+	}
 	return storyResponse{
-		ID: it.ID,
+		LikedByMe: it.LikedByMe,
+		ViewCount: viewCount,
+		ID:        it.ID,
 		Author: storyAuthorResponse{
 			ID:          it.AuthorID,
 			Username:    it.AuthorUsername,
@@ -159,6 +169,7 @@ func (s *Server) handleCreateStory(w http.ResponseWriter, r *http.Request) {
 		},
 		CreatedAt: created.CreatedAt.Format(time.RFC3339),
 		Viewed:    false,
+		ViewCount: new(int),
 	}
 	writeJSON(w, http.StatusCreated, resp)
 }
@@ -286,7 +297,8 @@ func (s *Server) handleViewStory(w http.ResponseWriter, r *http.Request) {
 	// A view is recorded only for a story the viewer is authorized to see AND
 	// that is still active. If the story is inaccessible/expired/nonexistent,
 	// GetActiveVisible returns ErrNotFound and no story_views row is created.
-	if _, err := s.stories.GetActiveVisible(r.Context(), me.ID, id); err != nil {
+	it, err := s.stories.GetActiveVisible(r.Context(), me.ID, id)
+	if err != nil {
 		if errors.Is(err, story.ErrNotFound) {
 			writeError(w, http.StatusNotFound, "story not found")
 			return
@@ -295,8 +307,12 @@ func (s *Server) handleViewStory(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Idempotent: a repeat view (including the author viewing their own story)
-	// creates no duplicate row.
+	// The author viewing their own story is never a view.
+	if it.AuthorID == me.ID {
+		writeJSON(w, http.StatusOK, map[string]bool{"viewed": true})
+		return
+	}
+	// Idempotent: a repeat view creates no duplicate row.
 	if _, err := s.stories.RecordView(r.Context(), id, me.ID); err != nil {
 		writeError(w, http.StatusInternalServerError, "internal error")
 		return

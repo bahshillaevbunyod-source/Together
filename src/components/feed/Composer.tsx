@@ -24,12 +24,11 @@ import {
 import { mapApiPost } from "@/lib/map-post";
 import { useFeed } from "@/lib/feed-context";
 import { useAuth } from "@/lib/auth-context";
+import { checkPostStoryMedia, IMAGE_ACCEPT, storageUploadErrorKey, withEffectiveType } from "@/lib/media-rules";
 import { useLanguage, type TranslationKey } from "@/lib/language-context";
 
 // Client-side image constraints, mirroring the backend media policy. The picker
 // validates against these directly (never trusting the input `accept` alone).
-const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
-const MAX_IMAGE_BYTES = 15 * 1024 * 1024; // 15 MiB
 const MAX_IMAGES = 8; // product limit: at most 8 images per post
 const FALLBACK_AVATAR =
   "data:image/svg+xml;utf8," +
@@ -184,15 +183,16 @@ export function Composer() {
       return;
     }
 
+    // Posts are photo-only (V1). Each file is checked against the shared
+    // post/story rules (100 MiB); the server enforces the same policy.
     const valid: File[] = [];
-    let hadInvalid = false;
+    const reasons = new Set<string>();
     for (const f of files) {
-      if (ALLOWED_IMAGE_TYPES.includes(f.type) && f.size <= MAX_IMAGE_BYTES) {
-        valid.push(f);
-      } else {
-        hadInvalid = true;
-      }
+      const check = checkPostStoryMedia(f, false);
+      if (check.ok) valid.push(withEffectiveType(f));
+      else reasons.add(check.reason);
     }
+    const hadInvalid = reasons.size > 0;
 
     // Keep only what fits under the 8-image cap; the rest are dropped.
     const accepted = valid.slice(0, remaining);
@@ -211,7 +211,13 @@ export function Composer() {
 
     // Feedback priority: invalid types/sizes first, then the count cap.
     if (hadInvalid) {
-      showError(t("composer.invalidImages"));
+      showError(
+        reasons.size > 1
+          ? t("composer.invalidImages")
+          : reasons.has("imageTooLarge")
+            ? t("media.imageTooLarge")
+            : t("media.imageUnsupported"),
+      );
     } else if (truncated) {
       showError(t("composer.tooManyPhotos"));
     } else if (accepted.length > 0) {
@@ -242,8 +248,9 @@ export function Composer() {
 
     setPosting(true);
     clearError();
-    // Distinguishes an upload failure from a post-creation failure.
-    let reachedCreatePost = false;
+    // Which step failed decides the message: rejected request, storage
+    // upload, server-side verification, or post creation.
+    let stage: "presign" | "upload" | "confirm" | "create" = "presign";
     try {
       // Upload sequentially in selection order, reusing any already-completed
       // work (from a previous failed attempt) so nothing is uploaded twice.
@@ -254,6 +261,7 @@ export function Composer() {
         if (im.confirmed && im.storageKey) continue; // already done
 
         if (!im.storageKey) {
+          stage = "presign";
           const presign = await requestMediaUploadUrl({
             type: "image",
             mimeType: im.file.type,
@@ -261,11 +269,13 @@ export function Composer() {
             // Route the upload to the bucket matching the chosen visibility.
             visibility: backendVisibility[visibility],
           });
+          stage = "upload";
           await uploadFileToPresignedUrl(presign.uploadUrl, im.file);
           im.storageKey = presign.storageKey; // only after PUT succeeds
           patchImage(im.id, { storageKey: im.storageKey });
         }
 
+        stage = "confirm";
         await confirmMediaUpload(im.storageKey);
         im.confirmed = true;
         patchImage(im.id, { confirmed: true });
@@ -275,7 +285,7 @@ export function Composer() {
         .map((im) => im.storageKey)
         .filter((k): k is string => k !== null);
 
-      reachedCreatePost = true;
+      stage = "create";
       const created = await createPost({
         ...(trimmed ? { content: trimmed } : {}),
         visibility: backendVisibility[visibility],
@@ -295,8 +305,12 @@ export function Composer() {
       // a retry continues where it left off. Never delete R2 objects on failure.
       if (err instanceof ApiError && err.status === 401) {
         showError(t("composer.signIn"));
-      } else if (!reachedCreatePost) {
-        showError(t("composer.uploadFailed"));
+      } else if (stage === "presign") {
+        showError(err instanceof ApiError && err.status === 400 ? t("media.rejected") : t("composer.uploadFailed"));
+      } else if (stage === "upload") {
+        showError(t(storageUploadErrorKey(err)));
+      } else if (stage === "confirm") {
+        showError(t("media.confirmFailed"));
       } else {
         showError(t("composer.createFailed"));
       }
@@ -329,7 +343,7 @@ export function Composer() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" role="dialog" aria-modal="true" aria-label={t("post.title")} onMouseDown={() => { if (!posting) setOpen(false); }}>
-    <section className="max-h-[94vh] w-full overflow-y-auto rounded-t-2xl border border-border bg-surface p-4 shadow-xl sm:max-w-2xl sm:rounded-2xl sm:p-5" onMouseDown={(event) => event.stopPropagation()}>
+    <section className="max-h-[94dvh] w-full overflow-y-auto rounded-t-2xl border border-border bg-surface p-4 shadow-xl sm:max-w-2xl sm:rounded-2xl sm:p-5" onMouseDown={(event) => event.stopPropagation()}>
       <div className="mb-4 flex items-center justify-between border-b border-border pb-3">
         <div className="flex gap-1 rounded-lg bg-background p-1" role="tablist" aria-label={t("post.title")}>
           <button type="button" role="tab" aria-selected={mode === "post"} onClick={() => setMode("post")} disabled={posting} className={`rounded-md px-3 py-1.5 text-sm font-medium ${mode === "post" ? "bg-surface text-foreground shadow-sm" : "text-muted"}`}>{t("post.title")}</button>
@@ -399,7 +413,7 @@ export function Composer() {
         ref={fileInputRef}
         type="file"
         multiple
-        accept="image/jpeg,image/png,image/webp"
+        accept={IMAGE_ACCEPT}
         onChange={onFilesSelected}
         className="hidden"
       />

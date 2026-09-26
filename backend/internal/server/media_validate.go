@@ -31,7 +31,17 @@ type validatedMedia struct {
 // — those come from storage HeadObject. Reusable by any handler that turns an
 // upload into a media record; callers pass the dirs they permit so, e.g., post
 // creation can accept "uploads" only and never an avatar key.
+//
+// Size limits default by namespace: avatars/ uses the avatar policy, other
+// dirs the post/story policy. Callers with a stricter context (direct-message
+// attachments) use validateUploadedObjectWithLimits.
 func (s *Server) validateUploadedObject(ctx context.Context, userID, storageKey string, allowedDirs ...string) (*validatedMedia, error) {
+	return s.validateUploadedObjectWithLimits(ctx, userID, storageKey, nil, allowedDirs...)
+}
+
+// validateUploadedObjectWithLimits is validateUploadedObject with an explicit
+// size policy (nil = the namespace default).
+func (s *Server) validateUploadedObjectWithLimits(ctx context.Context, userID, storageKey string, limits *mediaLimits, allowedDirs ...string) (*validatedMedia, error) {
 	base := fmt.Sprintf("users/%s/", userID)
 	if !strings.HasPrefix(storageKey, base) {
 		return nil, errInvalidStorageKey
@@ -82,16 +92,14 @@ func (s *Server) validateUploadedObject(ctx context.Context, userID, storageKey 
 	if info.SizeBytes <= 0 {
 		return nil, errUnsupportedMedia
 	}
-	if mediaType == media.TypeImage && info.SizeBytes > maxImageBytes {
-		return nil, errUnsupportedMedia
+	policy := postMediaLimits
+	if dir == "avatars" {
+		policy = avatarMediaLimits
 	}
-	if mediaType == media.TypeVideo && info.SizeBytes > maxVideoBytes {
-		return nil, errUnsupportedMedia
+	if limits != nil {
+		policy = *limits
 	}
-	if mediaType == "file" && info.SizeBytes > maxFileBytes {
-		return nil, errUnsupportedMedia
-	}
-	if mediaType == "voice" && info.SizeBytes > maxFileBytes {
+	if max := policy.limit(mediaType); max <= 0 || info.SizeBytes > max {
 		return nil, errUnsupportedMedia
 	}
 

@@ -60,15 +60,18 @@ export default function WorldPage() {
   const totalPeople = useMemo(() => countries.reduce((sum, c) => sum + c.people, 0), [countries]);
 
   return (
-    <div className="-mx-4 -mt-4 flex flex-col sm:mx-0 sm:mt-0 sm:gap-4">
+    <div className="@container -mx-4 -mt-4 flex flex-col sm:mx-0 sm:mt-0 sm:gap-4">
       <header className="hidden px-4 sm:block sm:px-0">
         <h1 className="text-xl font-semibold text-foreground">{t("navigation.world")}</h1>
         <p className="mt-0.5 text-sm text-muted">{t("world.pageDescription")}</p>
       </header>
 
-      <div className="flex flex-col overflow-hidden sm:rounded-3xl sm:border sm:border-border sm:bg-surface sm:shadow-sm lg:grid lg:h-[calc(100vh-12rem)] lg:min-h-[560px] lg:grid-cols-[minmax(0,1fr)_380px]">
+      {/* Map and panel sit side by side only when the column itself is wide
+          enough (container query): with the desktop right rail the center
+          column can be too narrow, and a side-by-side split would crush the map. */}
+      <div className="flex flex-col overflow-hidden sm:rounded-3xl sm:border sm:border-border sm:bg-surface sm:shadow-sm @4xl:grid @4xl:h-[calc(100dvh-12rem)] @4xl:min-h-[560px] @4xl:grid-cols-[minmax(0,1fr)_380px]">
         {/* Map */}
-        <div className="relative h-[42vh] min-h-[260px] lg:h-full">
+        <div className="relative h-[42vh] min-h-[260px] @4xl:h-full">
           <WorldMap countries={countries} selected={selected} onSelect={select} />
           <div className="pointer-events-none absolute left-3 top-3 max-w-[70%]">
             <p className="pointer-events-auto rounded-full bg-surface/95 px-3 py-1.5 text-xs font-medium text-foreground shadow-sm">
@@ -80,7 +83,7 @@ export default function WorldPage() {
         </div>
 
         {/* Discovery panel: a bottom sheet on mobile, a side panel on desktop */}
-        <section className="relative z-10 -mt-5 flex min-h-[50vh] flex-col rounded-t-3xl border-t border-border bg-surface shadow-[0_-8px_24px_rgba(15,23,42,0.08)] sm:mt-0 sm:rounded-none sm:border-t-0 sm:shadow-none lg:min-h-0 lg:border-l">
+        <section className="relative z-10 -mt-5 flex min-h-[50vh] flex-col rounded-t-3xl border-t border-border bg-surface shadow-[0_-8px_24px_rgba(15,23,42,0.08)] sm:mt-0 sm:rounded-none sm:shadow-none @4xl:min-h-0 @4xl:border-l @4xl:border-t-0">
           <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-border sm:hidden" aria-hidden />
           <div className="px-4 pb-3 pt-3">
             <h1 className="mb-3 text-lg font-semibold text-foreground sm:hidden">{t("navigation.world")}</h1>

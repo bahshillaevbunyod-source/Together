@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"together/backend/internal/config"
+	"together/backend/internal/conversation"
 	"together/backend/internal/storage"
 	"together/backend/internal/story"
 	"together/backend/internal/user"
@@ -44,6 +45,62 @@ type fakeStoryRepo struct {
 	recordReturn bool
 	recordErr    error
 	lastView     [2]string // storyID, viewerID
+
+	byID    *story.Story
+	likes   map[string]bool // userID -> liked (single story)
+	viewers []story.Viewer
+	replies map[string]string // messageID -> storyID
+}
+
+// Compile-time check: the fake must satisfy the interface, otherwise New()
+// silently ignores it (dependencies are resolved by type switch).
+var _ story.Repository = (*fakeStoryRepo)(nil)
+
+func (f *fakeStoryRepo) Like(_ context.Context, _ string, userID string) (bool, error) {
+	if f.likes == nil {
+		f.likes = map[string]bool{}
+	}
+	if f.likes[userID] {
+		return false, nil
+	}
+	f.likes[userID] = true
+	return true, nil
+}
+
+func (f *fakeStoryRepo) Unlike(_ context.Context, _ string, userID string) (bool, error) {
+	was := f.likes[userID]
+	delete(f.likes, userID)
+	return was, nil
+}
+
+func (f *fakeStoryRepo) ListViewers(_ context.Context, _ string, _ *story.ViewerCursor, limit int) ([]story.Viewer, error) {
+	if len(f.viewers) > limit {
+		return f.viewers[:limit], nil
+	}
+	return f.viewers, nil
+}
+
+func (f *fakeStoryRepo) CountViewers(_ context.Context, _ string) (int, error) {
+	return len(f.viewers), nil
+}
+
+func (f *fakeStoryRepo) RecordReply(_ context.Context, messageID, storyID string) error {
+	if f.replies == nil {
+		f.replies = map[string]string{}
+	}
+	f.replies[messageID] = storyID
+	return nil
+}
+
+func (f *fakeStoryRepo) ReplyRefs(_ context.Context, ids []string) (map[string]*string, error) {
+	out := map[string]*string{}
+	for _, id := range ids {
+		if sid, ok := f.replies[id]; ok {
+			v := sid
+			out[id] = &v
+		}
+	}
+	return out, nil
 }
 
 func (f *fakeStoryRepo) Create(_ context.Context, in story.CreateInput) (*story.Story, error) {
@@ -55,6 +112,9 @@ func (f *fakeStoryRepo) Create(_ context.Context, in story.CreateInput) (*story.
 }
 
 func (f *fakeStoryRepo) GetByID(_ context.Context, _ string) (*story.Story, error) {
+	if f.byID != nil {
+		return f.byID, nil
+	}
 	return nil, story.ErrNotFound
 }
 
@@ -442,5 +502,186 @@ func TestDeleteStoryMalformedID(t *testing.T) {
 	rec := storyReq(srv, http.MethodDelete, "/api/v1/stories/nope", "", true, true)
 	if rec.Code != http.StatusNotFound {
 		t.Fatalf("expected 404 for malformed id, got %d", rec.Code)
+	}
+}
+
+// --- interactions: views / likes / viewer list ---------------------------
+
+func TestViewOwnStoryNotRecorded(t *testing.T) {
+	it := sampleItem(false)
+	it.AuthorID = "me-id"
+	repo := &fakeStoryRepo{gav: &it, recordReturn: true}
+	rec := storyReq(storyServer(nil, repo, nil, nil), http.MethodPost, "/api/v1/stories/"+goodStoryID+"/view", "", true, true)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", rec.Code)
+	}
+	if repo.lastView != [2]string{"", ""} {
+		t.Fatalf("the owner must never count as a viewer: %v", repo.lastView)
+	}
+}
+
+func TestLikeStoryTogglesAndRecordsView(t *testing.T) {
+	it := sampleItem(false)
+	repo := &fakeStoryRepo{gav: &it, recordReturn: true}
+	srv := storyServer(nil, repo, nil, nil)
+	for i := 0; i < 2; i++ { // repeated like stays a single like
+		rec := storyReq(srv, http.MethodPut, "/api/v1/stories/"+goodStoryID+"/like", "", true, true)
+		if rec.Code != http.StatusOK || !strings.Contains(rec.Body.String(), `"liked":true`) {
+			t.Fatalf("like: %d %s", rec.Code, rec.Body.String())
+		}
+	}
+	if len(repo.likes) != 1 || !repo.likes["me-id"] {
+		t.Fatalf("expected exactly one like by me: %v", repo.likes)
+	}
+	if repo.lastView != [2]string{goodStoryID, "me-id"} {
+		t.Fatalf("a like must also record the view: %v", repo.lastView)
+	}
+	rec := storyReq(srv, http.MethodDelete, "/api/v1/stories/"+goodStoryID+"/like", "", true, true)
+	if rec.Code != http.StatusOK || !strings.Contains(rec.Body.String(), `"liked":false`) || len(repo.likes) != 0 {
+		t.Fatalf("unlike: %d %s %v", rec.Code, rec.Body.String(), repo.likes)
+	}
+}
+
+func TestLikeOwnStoryRejected(t *testing.T) {
+	it := sampleItem(false)
+	it.AuthorID = "me-id"
+	repo := &fakeStoryRepo{gav: &it}
+	rec := storyReq(storyServer(nil, repo, nil, nil), http.MethodPut, "/api/v1/stories/"+goodStoryID+"/like", "", true, true)
+	if rec.Code != http.StatusBadRequest || len(repo.likes) != 0 {
+		t.Fatalf("self-like must be rejected: %d %v", rec.Code, repo.likes)
+	}
+}
+
+func TestLikeInaccessibleStoryNotFound(t *testing.T) {
+	repo := &fakeStoryRepo{gavErr: story.ErrNotFound}
+	rec := storyReq(storyServer(nil, repo, nil, nil), http.MethodPut, "/api/v1/stories/"+goodStoryID+"/like", "", true, true)
+	if rec.Code != http.StatusNotFound || len(repo.likes) != 0 {
+		t.Fatalf("expired/blocked/unknown story must 404 without a like: %d", rec.Code)
+	}
+}
+
+func TestLikeRequiresAuthAndOrigin(t *testing.T) {
+	it := sampleItem(false)
+	srv := storyServer(nil, &fakeStoryRepo{gav: &it}, nil, nil)
+	if rec := storyReq(srv, http.MethodPut, "/api/v1/stories/"+goodStoryID+"/like", "", false, true); rec.Code != http.StatusUnauthorized {
+		t.Fatalf("expected 401, got %d", rec.Code)
+	}
+	if rec := storyReq(srv, http.MethodPut, "/api/v1/stories/"+goodStoryID+"/like", "", true, false); rec.Code != http.StatusForbidden {
+		t.Fatalf("expected 403 without origin, got %d", rec.Code)
+	}
+}
+
+func TestViewersOwnerOnly(t *testing.T) {
+	repo := &fakeStoryRepo{
+		byID:    &story.Story{ID: goodStoryID, AuthorID: "author-id", CreatedAt: time.Now()},
+		viewers: []story.Viewer{{UserID: "v1", Username: "v1", DisplayName: "V1", ViewedAt: time.Now(), Liked: true}},
+	}
+	rec := storyReq(storyServer(nil, repo, nil, nil), http.MethodGet, "/api/v1/stories/"+goodStoryID+"/viewers", "", true, false)
+	if rec.Code != http.StatusNotFound || strings.Contains(rec.Body.String(), "v1") {
+		t.Fatalf("a non-owner must not see viewers: %d %s", rec.Code, rec.Body.String())
+	}
+}
+
+func TestViewersForOwnerIncludeLikes(t *testing.T) {
+	repo := &fakeStoryRepo{
+		byID: &story.Story{ID: goodStoryID, AuthorID: "me-id", CreatedAt: time.Now()},
+		viewers: []story.Viewer{
+			{UserID: "22222222-2222-4222-8222-222222222222", Username: "liker", DisplayName: "Liker", ViewedAt: time.Now(), Liked: true},
+			{UserID: "33333333-3333-4333-8333-333333333333", Username: "watcher", DisplayName: "Watcher", ViewedAt: time.Now().Add(-time.Minute)},
+		},
+	}
+	rec := storyReq(storyServer(nil, repo, nil, nil), http.MethodGet, "/api/v1/stories/"+goodStoryID+"/viewers", "", true, false)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", rec.Code)
+	}
+	body := rec.Body.String()
+	if !strings.Contains(body, `"total":2`) || !strings.Contains(body, `"username":"liker"`) || !strings.Contains(body, `"liked":true`) {
+		t.Fatalf("unexpected viewers body: %s", body)
+	}
+}
+
+func TestViewersExpiredStoryNotFound(t *testing.T) {
+	repo := &fakeStoryRepo{byID: &story.Story{ID: goodStoryID, AuthorID: "me-id", CreatedAt: time.Now().Add(-25 * time.Hour)}}
+	rec := storyReq(storyServer(nil, repo, nil, nil), http.MethodGet, "/api/v1/stories/"+goodStoryID+"/viewers", "", true, false)
+	if rec.Code != http.StatusNotFound {
+		t.Fatalf("expired story viewers must 404, got %d", rec.Code)
+	}
+}
+
+func TestOwnStoryResponseCarriesViewCountOthersDoNot(t *testing.T) {
+	own := sampleItem(false)
+	own.AuthorID = "me-id"
+	own.ViewCount = 3
+	rec := storyReq(storyServer(nil, &fakeStoryRepo{gav: &own}, nil, nil), http.MethodGet, "/api/v1/stories/"+goodStoryID, "", true, false)
+	if !strings.Contains(rec.Body.String(), `"viewCount":3`) {
+		t.Fatalf("owner must receive viewCount: %s", rec.Body.String())
+	}
+	other := sampleItem(false)
+	other.ViewCount = 3
+	rec = storyReq(storyServer(nil, &fakeStoryRepo{gav: &other}, nil, nil), http.MethodGet, "/api/v1/stories/"+goodStoryID, "", true, false)
+	if strings.Contains(rec.Body.String(), "viewCount") {
+		t.Fatalf("non-owner must not receive viewCount: %s", rec.Body.String())
+	}
+}
+
+// --- interactions: replies -----------------------------------------------
+
+func TestStoryReplyOwnStoryRejected(t *testing.T) {
+	it := sampleItem(false)
+	it.AuthorID = "me-id"
+	rec := storyReq(storyServer(nil, &fakeStoryRepo{gav: &it}, nil, nil), http.MethodPost, "/api/v1/stories/"+goodStoryID+"/reply", `{"content":"hi"}`, true, true)
+	if rec.Code != http.StatusBadRequest {
+		t.Fatalf("self-reply must be rejected, got %d", rec.Code)
+	}
+}
+
+func TestStoryReplyInaccessibleNotFound(t *testing.T) {
+	rec := storyReq(storyServer(nil, &fakeStoryRepo{gavErr: story.ErrNotFound}, nil, nil), http.MethodPost, "/api/v1/stories/"+goodStoryID+"/reply", `{"content":"hi"}`, true, true)
+	if rec.Code != http.StatusNotFound {
+		t.Fatalf("expected 404, got %d", rec.Code)
+	}
+}
+
+func TestStoryReplyBlockedForbidden(t *testing.T) {
+	it := sampleItem(false)
+	rec := storyReq(storyServer(nil, &fakeStoryRepo{gav: &it}, &fakeBlockRepo{hasBetween: true}, nil), http.MethodPost, "/api/v1/stories/"+goodStoryID+"/reply", `{"content":"hi"}`, true, true)
+	if rec.Code != http.StatusForbidden {
+		t.Fatalf("a block must forbid story replies, got %d", rec.Code)
+	}
+}
+
+func TestStoryReplyRequiresOrigin(t *testing.T) {
+	it := sampleItem(false)
+	rec := storyReq(storyServer(nil, &fakeStoryRepo{gav: &it}, nil, nil), http.MethodPost, "/api/v1/stories/"+goodStoryID+"/reply", `{"content":"hi"}`, true, false)
+	if rec.Code != http.StatusForbidden {
+		t.Fatalf("expected CSRF 403, got %d", rec.Code)
+	}
+}
+
+func TestStoryReplySendsDirectMessageLinkedToStory(t *testing.T) {
+	it := sampleItem(false)
+	repo := &fakeStoryRepo{gav: &it}
+	convs := &fakeConversationRepo{openConv: &conversation.Conversation{ID: "conv-1"}}
+	me := mkUser("me-id", "me_user")
+	users := &fakeUserRepo{byID: map[string]*user.User{"me-id": me}}
+	srv := New(
+		config.Config{Env: "test", Port: "8080", AppOrigin: testOrigin, MediaPublicBaseURL: "https://cdn.example.com/media"},
+		fakePinger{}, users, activeSession("me-id"), &fakeFollowRepo{}, &fakeBlockRepo{},
+		&fakePostRepo{}, &fakeLikeRepo{}, &fakeCommentRepo{}, &fakeMediaRepo{}, &fakeStorageRepo{},
+		&fakeBookmarkRepo{}, &fakeNotificationRepo{}, &fakePostCreate{}, &fakeFollowNotifier{},
+		&fakeLikeNotifier{}, &fakeCommentNotifier{}, convs, repo,
+	)
+	rec := storyReq(srv, http.MethodPost, "/api/v1/stories/"+goodStoryID+"/reply", `{"content":"Nice story!"}`, true, true)
+	if rec.Code != http.StatusCreated {
+		t.Fatalf("expected 201, got %d: %s", rec.Code, rec.Body.String())
+	}
+	if convs.lastContent != "Nice story!" || convs.lastSender != "me-id" {
+		t.Fatalf("reply must be sent as my message: %q %q", convs.lastContent, convs.lastSender)
+	}
+	if !strings.Contains(rec.Body.String(), `"conversationId":"conv-1"`) || !strings.Contains(rec.Body.String(), `"storyReply":{"storyId":"`+goodStoryID+`"}`) {
+		t.Fatalf("unexpected body: %s", rec.Body.String())
+	}
+	if len(repo.replies) != 1 {
+		t.Fatalf("reply must be linked to the story: %v", repo.replies)
 	}
 }

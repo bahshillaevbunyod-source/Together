@@ -32,13 +32,13 @@ export function MessagingTabs() {
             key={href}
             href={href}
             aria-current={active ? "page" : undefined}
-            className={`min-w-0 flex-1 truncate rounded-full px-2 py-1 text-center text-xs font-medium transition-colors ${
+            className={`flex h-9 min-w-0 flex-1 items-center justify-center rounded-full px-1 text-center text-[11px] font-medium transition-colors min-[360px]:text-xs sm:h-auto sm:px-2 sm:py-1 ${
               active
                 ? "bg-surface text-foreground shadow-sm"
                 : "text-muted hover:text-foreground"
             }`}
           >
-            {t(labelKey)}
+            <span className="truncate">{t(labelKey)}</span>
           </Link>
         );
       })}

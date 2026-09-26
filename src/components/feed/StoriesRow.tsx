@@ -98,6 +98,24 @@ export function StoriesRow() {
     setItems((current) => current.filter((item) => item.id !== storyID));
   }, []);
 
+  const setLiked = useCallback((storyID: string, liked: boolean) => {
+    setItems((current) =>
+      current.map((item) => (item.id === storyID ? { ...item, likedByMe: liked } : item)),
+    );
+  }, []);
+
+  // Step to the neighbouring person in the row; false when there is none.
+  const stepGroup = useCallback(
+    (delta: 1 | -1) => {
+      const i = groups.findIndex((group) => group.author.id === selectedAuthorID);
+      const next = i >= 0 ? groups[i + delta] : undefined;
+      if (!next) return false;
+      setSelectedAuthorID(next.author.id);
+      return true;
+    },
+    [groups, selectedAuthorID],
+  );
+
   return (
     <section className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
       <div className="flex min-h-[5.5rem] items-start gap-4 overflow-x-auto">
@@ -190,6 +208,9 @@ export function StoriesRow() {
           onClose={() => setSelectedAuthorID(null)}
           onViewed={markViewed}
           onDeleted={removeStory}
+          onLikedChange={setLiked}
+          onNextGroup={() => stepGroup(1)}
+          onPrevGroup={() => stepGroup(-1)}
         />
       ) : null}
     </section>

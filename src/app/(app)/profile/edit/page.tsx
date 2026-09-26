@@ -20,7 +20,7 @@ type Status = "loading" | "ready" | "error";
 
 // Client-side avatar constraints (mirrors the backend media policy).
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
-const MAX_IMAGE_BYTES = 15 * 1024 * 1024; // 15 MiB
+const MAX_IMAGE_BYTES = 60 * 1024 * 1024; // 60 MiB (backend maxAvatarImageBytes)
 
 // Map backend failures to a safe, friendly translation key (keyed on the stable
 // HTTP status, never on English copy). The caller resolves it via t().
@@ -61,7 +61,7 @@ export default function EditProfilePage() {
   const [error, setError] = useState<string | null>(null);
 
   const inputClass =
-    "h-11 w-full rounded-lg border border-border bg-background px-3 text-sm text-foreground placeholder:text-muted-soft transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
+    "h-12 w-full min-w-0 rounded-xl border border-border bg-background px-3 text-base text-foreground placeholder:text-muted-soft transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:h-11 sm:text-sm";
   const labelClass = "text-sm font-medium text-foreground";
 
   // Revoke the local preview object URL when replaced / on unmount.
@@ -221,7 +221,7 @@ export default function EditProfilePage() {
     <div className="mx-auto max-w-2xl">
       <section className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
         {/* Header */}
-        <div className="border-b border-border px-6 py-5">
+        <div className="border-b border-border px-4 py-4 sm:px-6 sm:py-5">
           <h1 className="text-lg font-bold tracking-tight text-foreground">
             {t("profile.edit")}
           </h1>
@@ -230,7 +230,7 @@ export default function EditProfilePage() {
           </p>
         </div>
 
-        <form onSubmit={onSave} className="flex flex-col gap-6 px-6 py-6">
+        <form onSubmit={onSave} className="flex flex-col gap-5 px-4 py-5 sm:gap-6 sm:px-6 sm:py-6">
           {/* Avatar */}
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
             <button
@@ -258,13 +258,13 @@ export default function EditProfilePage() {
               </span>
             </button>
 
-            <div className="flex flex-col items-center gap-2 sm:items-start">
-              <div className="flex items-center gap-2">
+            <div className="flex w-full min-w-0 flex-col items-center gap-2 sm:w-auto sm:flex-1 sm:items-start">
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start">
                 <button
                   type="button"
                   onClick={openPicker}
                   disabled={saving}
-                  className="rounded-full border border-border px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:opacity-50"
+                  className="h-10 rounded-full border border-border px-4 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:opacity-50"
                 >
                   {t("edit.changePhoto")}
                 </button>
@@ -273,20 +273,20 @@ export default function EditProfilePage() {
                     type="button"
                     onClick={removePhoto}
                     disabled={saving}
-                    className="rounded-full px-3 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
+                    className="h-10 rounded-full px-4 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
                   >
                     {t("edit.removePhoto")}
                   </button>
                 ) : null}
               </div>
-              <p className="text-xs text-muted-soft">{t("edit.photoConstraints")}</p>
+              <p className="text-center text-xs text-muted-soft sm:text-start">{t("edit.photoConstraints")}</p>
               {avatarError ? (
                 <div
                   role="alert"
-                  className="flex items-center gap-1.5 text-xs text-red-600"
+                  className="flex w-full items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs leading-snug text-red-700"
                 >
-                  <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                  <span>{avatarError}</span>
+                  <AlertCircle className="mt-px h-3.5 w-3.5 shrink-0 text-red-500" aria-hidden />
+                  <span className="min-w-0 break-words">{avatarError}</span>
                 </div>
               ) : null}
             </div>
@@ -322,7 +322,7 @@ export default function EditProfilePage() {
               onChange={(e) => setBio(e.target.value)}
               placeholder={t("edit.bioPlaceholder")}
               rows={3}
-              className="w-full resize-none rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-soft transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+              className="w-full min-w-0 resize-none rounded-xl border border-border bg-background px-3 py-2 text-base text-foreground placeholder:text-muted-soft transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:text-sm"
             />
           </label>
 
@@ -373,25 +373,25 @@ export default function EditProfilePage() {
           {error ? (
             <div
               role="alert"
-              className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+              className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
             >
-              <AlertCircle className="h-4 w-4 shrink-0 text-red-500" aria-hidden />
-              <span>{error}</span>
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-500" aria-hidden />
+              <span className="min-w-0 break-words">{error}</span>
             </div>
           ) : null}
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-3 border-t border-border pt-5">
+          <div className="flex flex-col-reverse gap-2 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-end sm:gap-3">
             <Link
               href="/profile"
-              className="rounded-full border border-border px-5 py-2 text-sm font-medium text-muted transition-colors hover:bg-background hover:text-foreground"
+              className="flex h-11 items-center justify-center rounded-full border border-border px-5 text-sm font-medium text-muted transition-colors hover:bg-background hover:text-foreground sm:h-10"
             >
               {t("post.cancel")}
             </Link>
             <button
               type="submit"
               disabled={saving}
-              className="rounded-full bg-primary px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary"
+              className="h-11 rounded-full bg-primary px-6 text-sm font-medium text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-primary sm:h-10"
             >
               {saving ? t("post.saving") : t("edit.saveChanges")}
             </button>

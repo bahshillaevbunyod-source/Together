@@ -197,7 +197,7 @@ export function CallOverlay() {
             </div>
           ) : null}
         </div>
-        <div className="relative flex items-start justify-center gap-6 bg-gradient-to-t from-black/60 to-transparent px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-10">
+        <div className="relative flex items-start justify-center gap-3 bg-gradient-to-t from-black/60 to-transparent px-3 min-[360px]:gap-6 min-[360px]:px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-10">
           {micButton}
           <RoundButton
             label={state.cameraEnabled ? t("calls.cameraOff") : t("calls.cameraOn")}

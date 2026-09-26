@@ -5,7 +5,7 @@
  * cookie is carried, and share one JSON/error handling path.
  */
 
-import type { Story, StoryPage } from "@/types/story";
+import type { Story, StoryPage, StoryViewerPage } from "@/types/story";
 
 /** Base URL of the Go backend. Override with NEXT_PUBLIC_API_BASE_URL. */
 const API_BASE_URL =
@@ -580,6 +580,8 @@ export interface ApiMessage {
    * who wrote them; direct-message payloads may omit it.
    */
   sender?: ApiMessageSender | null;
+  /** Set when the message was sent as a reply to a story (storyId null once deleted). */
+  storyReply?: { storyId: string | null } | null;
 }
 
 export interface ApiMessageSender {
@@ -644,7 +646,7 @@ export function sendMessage(
 
 export async function uploadMessageAttachment(file: File, attachmentType?: "image" | "file" | "voice"): Promise<{ storageKey: string; filename: string }> {
 	const type = attachmentType ?? (file.type.startsWith("image/") ? "image" : "file");
-	const upload = await requestMediaUploadUrl({ type, mimeType: file.type, sizeBytes: file.size, purpose: "post", visibility: "private" });
+	const upload = await requestMediaUploadUrl({ type, mimeType: file.type, sizeBytes: file.size, purpose: "message", visibility: "private" });
 	await uploadFileToPresignedUrl(upload.uploadUrl, file);
 	await confirmMediaUpload(upload.storageKey);
 	return { storageKey: upload.storageKey, filename: file.name };
@@ -969,6 +971,41 @@ export function deleteStory(id: string): Promise<{ deleted: boolean }> {
   );
 }
 
+/** Like or unlike another user's active story (idempotent on the server). */
+export function setStoryLiked(id: string, liked: boolean): Promise<{ liked: boolean }> {
+  return apiFetch<{ liked: boolean }>(
+    `/api/v1/stories/${encodeURIComponent(id)}/like`,
+    { method: liked ? "PUT" : "DELETE" },
+  );
+}
+
+/** Owner-only list of who viewed a story (with like state), newest first. */
+export function getStoryViewers(
+  id: string,
+  params: { cursor?: string; limit?: number } = {},
+  signal?: AbortSignal,
+): Promise<StoryViewerPage> {
+  const query = new URLSearchParams();
+  if (params.cursor) query.set("cursor", params.cursor);
+  if (params.limit) query.set("limit", String(params.limit));
+  const qs = query.toString();
+  return apiFetch<StoryViewerPage>(
+    `/api/v1/stories/${encodeURIComponent(id)}/viewers${qs ? `?${qs}` : ""}`,
+    { signal },
+  );
+}
+
+/** Reply to a story: sent as a real direct message to its author. */
+export function replyToStory(
+  id: string,
+  content: string,
+): Promise<{ conversationId: string; message: ApiMessage }> {
+  return apiFetch<{ conversationId: string; message: ApiMessage }>(
+    `/api/v1/stories/${encodeURIComponent(id)}/reply`,
+    { method: "POST", body: { content } },
+  );
+}
+
 /* ------------------------------ Media ----------------------------------- */
 
 /** Ask the backend for a presigned upload URL for one image. */
@@ -980,7 +1017,7 @@ export interface MediaUploadUrlInput {
    * Storage namespace: "post" (default) -> post media, "avatar" -> profile
    * photo. Omitting it keeps the existing post-upload behavior.
    */
-  purpose?: "post" | "avatar";
+  purpose?: "post" | "story" | "message" | "avatar";
   /**
    * Intended post visibility ("public" (default) | "followers" | "private").
    * Selects the storage bucket server-side: restricted visibilities upload to
@@ -1033,6 +1070,19 @@ export function confirmMediaUpload(
 }
 
 /**
+ * A failed direct-to-storage upload. "network": the request never completed
+ * (offline, dropped connection — or blocked by the browser, e.g. storage CORS,
+ * which is indistinguishable from JS). "rejected": storage answered with an
+ * HTTP error. Never carries the presigned URL.
+ */
+export class StorageUploadError extends Error {
+  constructor(public readonly kind: "network" | "rejected", public readonly status?: number) {
+    super("media upload failed");
+    this.name = "StorageUploadError";
+  }
+}
+
+/**
  * Upload the raw file bytes directly to object storage via a presigned URL.
  *
  * This request does NOT go to the Together backend: it is a cross-origin PUT to
@@ -1057,10 +1107,10 @@ export async function uploadFileToPresignedUrl(
     });
   } catch {
     // Never surface the presigned URL or underlying detail.
-    throw new Error("media upload failed");
+    throw new StorageUploadError("network");
   }
 
   if (!res.ok) {
-    throw new Error("media upload failed");
+    throw new StorageUploadError("rejected", res.status);
   }
 }

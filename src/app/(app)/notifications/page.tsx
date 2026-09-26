@@ -41,7 +41,7 @@ function actionTextKey(type: string): TranslationKey {
 }
 
 export default function NotificationsPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [items, setItems] = useState<ApiNotification[]>([]);
   const [status, setStatus] = useState<Status>("loading");
   const [nextCursor, setNextCursor] = useState("");
@@ -133,15 +133,15 @@ export default function NotificationsPage() {
   return (
     <div className="mx-auto w-full max-w-2xl">
       <section className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-        <header className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
-          <h1 className="text-xl font-semibold text-foreground">
+        <header className="flex items-center justify-between gap-3 border-b border-border px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+          <h1 className="min-w-0 truncate text-xl font-semibold text-foreground">
             {t("notifications.title")}
           </h1>
           <button
             type="button"
             onClick={() => void markAll()}
             disabled={!hasUnread || mutating}
-            className="text-sm font-medium text-primary transition-colors hover:underline disabled:cursor-not-allowed disabled:text-muted-soft disabled:no-underline"
+            className="min-h-10 shrink-0 rounded-full px-2 text-end text-sm font-medium text-primary transition-colors hover:underline disabled:cursor-not-allowed disabled:text-muted-soft disabled:no-underline"
           >
             {t("notifications.markAllRead")}
           </button>
@@ -197,7 +197,7 @@ export default function NotificationsPage() {
                       {t(actionTextKey(notification.type))}
                     </span>
                     <span className="mt-1 block text-xs text-muted-soft">
-                      {formatTimeAgo(notification.createdAt)}
+                      {formatTimeAgo(notification.createdAt, locale)}
                     </span>
                   </span>
                   {notification.readAt ? null : (

@@ -50,6 +50,8 @@ type messageResponse struct {
 	DeletedAt  *string                    `json:"deletedAt"`
 	Attachment *messageAttachmentResponse `json:"attachment"`
 	Sender     *messageSenderResponse     `json:"sender,omitempty"`
+	// StoryReply is set when the message was sent as a reply to a story.
+	StoryReply *messageStoryReplyResponse `json:"storyReply,omitempty"`
 
 	// Translation fields are null unless the viewer opted in and a translation
 	// succeeded. Content always holds the original, untranslated text.
@@ -58,6 +60,12 @@ type messageResponse struct {
 	SourceLanguageConfidence *float64 `json:"sourceLanguageConfidence"`
 	SourceLanguageResolution *string  `json:"sourceLanguageResolution"`
 	TargetLanguage           *string  `json:"targetLanguage"`
+}
+
+// messageStoryReplyResponse marks a story reply. StoryID is null once the
+// story was deleted (the label stays; the link does not).
+type messageStoryReplyResponse struct {
+	StoryID *string `json:"storyId"`
 }
 
 type messageSenderResponse struct {
@@ -307,6 +315,7 @@ func (s *Server) handleListMessages(w http.ResponseWriter, r *http.Request) {
 		s.applyTranslation(r.Context(), &resp, m.Content, targetLang)
 		items = append(items, resp)
 	}
+	s.attachStoryReplyRefs(r.Context(), items)
 
 	writeJSON(w, http.StatusOK, messageListResponse{Items: items, NextCursor: next})
 }
@@ -527,7 +536,7 @@ func (s *Server) handleCreateMessage(w http.ResponseWriter, r *http.Request) {
 	var recipientID string
 	var err error
 	if req.Attachment != nil {
-		confirmed, confirmErr := s.validateUploadedObject(r.Context(), me.ID, req.Attachment.StorageKey, "uploads", "private")
+		confirmed, confirmErr := s.validateUploadedObjectWithLimits(r.Context(), me.ID, req.Attachment.StorageKey, &messageMediaLimits, "uploads", "private")
 		if confirmErr != nil {
 			writeError(w, http.StatusBadRequest, "invalid attachment")
 			return

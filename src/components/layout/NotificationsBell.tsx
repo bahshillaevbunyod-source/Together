@@ -47,7 +47,7 @@ function actionTextKey(type: string): TranslationKey {
 }
 
 export function NotificationsBell() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState<ApiNotification[]>([]);
   const [status, setStatus] = useState<Status>("idle");
@@ -192,7 +192,7 @@ export function NotificationsBell() {
       {open ? (
         <div
           role="menu"
-          className="absolute right-0 top-full z-30 mt-2 w-80 overflow-hidden rounded-xl border border-border bg-surface shadow-lg"
+          className="fixed inset-x-3 top-[calc(4.5rem+env(safe-area-inset-top))] z-40 overflow-hidden rounded-xl border border-border bg-surface shadow-lg sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80"
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-3">
             <span className="text-sm font-semibold text-foreground">
@@ -202,13 +202,13 @@ export function NotificationsBell() {
               type="button"
               onClick={markAll}
               disabled={unread === 0}
-              className="text-xs text-primary transition-colors hover:underline disabled:cursor-not-allowed disabled:text-muted-soft disabled:no-underline"
+              className="-my-2 min-h-9 px-1 text-xs text-primary transition-colors hover:underline disabled:cursor-not-allowed disabled:text-muted-soft disabled:no-underline"
             >
               {t("notifications.markAllRead")}
             </button>
           </div>
 
-          <div className="max-h-96 overflow-y-auto">
+          <div className="max-h-[min(24rem,calc(100dvh-12rem))] overflow-y-auto">
             {status === "loading" ? (
               <p className="px-4 py-6 text-center text-sm text-muted">
                 {t("feed.loadingMore")}
@@ -258,7 +258,7 @@ export function NotificationsBell() {
                           {t(actionTextKey(n.type))}
                         </span>
                         <span className="mt-0.5 block text-xs text-muted-soft">
-                          {formatTimeAgo(n.createdAt)}
+                          {formatTimeAgo(n.createdAt, locale)}
                         </span>
                       </span>
                       {n.readAt ? null : (
@@ -313,7 +313,7 @@ export function NotificationsBell() {
             onClick={() => setOpen(false)}
             className="block border-t border-border px-4 py-3 text-center text-sm font-medium text-primary transition-colors hover:bg-background hover:underline"
           >
-            View all
+            {t("notifications.viewAll")}
           </Link>
         </div>
       ) : null}

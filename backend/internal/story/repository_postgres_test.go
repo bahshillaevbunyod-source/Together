@@ -24,6 +24,12 @@ var allQueries = map[string]string{
 	"canView":          canViewQuery,
 	"deleteOwn":        deleteOwnQuery,
 	"recordView":       recordViewQuery,
+	"like":             likeQuery,
+	"unlike":           unlikeQuery,
+	"listViewers":      listViewersQuery,
+	"countViewers":     countViewersQuery,
+	"recordReply":      recordReplyQuery,
+	"replyRefs":        replyRefsQuery,
 	"hasViewed":        hasViewedQuery,
 }
 
@@ -191,5 +197,37 @@ func TestGetByIDIsRawInternalLookup(t *testing.T) {
 		strings.Contains(getByIDQuery, "follows") ||
 		strings.Contains(getByIDQuery, "blocks") {
 		t.Fatal("getByID must be a raw lookup without access/expiry checks")
+	}
+}
+
+// Views and likes are only written for an ACTIVE story by someone other than
+// the author, idempotently (the primary key makes duplicates impossible).
+func TestViewAndLikeInsertsGuarded(t *testing.T) {
+	for name, q := range map[string]string{"recordView": recordViewQuery, "like": likeQuery} {
+		if !strings.Contains(q, "s.author_id <> $2") {
+			t.Fatalf("%s must exclude the author", name)
+		}
+		if !strings.Contains(q, sqlActiveWindow) {
+			t.Fatalf("%s must require an active story", name)
+		}
+		if !strings.Contains(q, "ON CONFLICT DO NOTHING") {
+			t.Fatalf("%s must be idempotent", name)
+		}
+	}
+}
+
+// The owner viewer list and its count exclude the author and blocked pairs,
+// and are keyset-ordered deterministically.
+func TestViewerListExcludesAuthorAndBlocks(t *testing.T) {
+	for name, q := range map[string]string{"listViewers": listViewersQuery, "countViewers": countViewersQuery} {
+		if !strings.Contains(q, "sv.viewer_id <> s.author_id") || !strings.Contains(q, "FROM blocks bl") {
+			t.Fatalf("%s must exclude the author and blocked pairs", name)
+		}
+	}
+	if !strings.Contains(listViewersQuery, "ORDER BY sv.viewed_at DESC, sv.viewer_id DESC") {
+		t.Fatal("viewer list must use a deterministic keyset order")
+	}
+	if !strings.Contains(sqlItemColumns, "CASE WHEN s.author_id = $1") {
+		t.Fatal("view counts must only be computed for the author")
 	}
 }

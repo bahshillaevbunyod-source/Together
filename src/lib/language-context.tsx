@@ -47,6 +47,7 @@ export function LanguageProvider({
 
   useEffect(() => {
     document.documentElement.dir = getDirection(locale);
+    document.documentElement.lang = locale;
   }, [locale]);
 
   const setLanguage = useCallback((language: string | null) => {

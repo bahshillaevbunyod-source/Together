@@ -13,6 +13,7 @@ import {
 } from "@/lib/api";
 import { LANGUAGES } from "@/lib/languages";
 import { useLanguage } from "@/lib/language-context";
+import { formatMonthYear } from "@/lib/locale-format";
 import { FollowListModal } from "@/components/profile/FollowListModal";
 import { FollowRequestsModal } from "@/components/profile/FollowRequestsModal";
 
@@ -23,12 +24,6 @@ const FALLBACK_AVATAR =
   encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112"><circle cx="56" cy="56" r="56" fill="#d4d4d8"/></svg>',
   );
-
-function memberSince(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
-}
 
 // Human-readable language name from a code (e.g. "en" -> "English"), rendered in
 // the resolved platform UI locale so the label matches the rest of the UI. The
@@ -47,11 +42,12 @@ function languageName(code: string, locale: string): string {
   return found ? found.label : code;
 }
 
-// Human-readable country name from an ISO code (e.g. "UZ" -> "Uzbekistan").
-function countryName(code: string): string {
+// Human-readable country name from an ISO code (e.g. "UZ" -> "Uzbekistan"),
+// in the platform UI locale like the language name above.
+function countryName(code: string, locale: string): string {
   if (!code) return "";
   try {
-    const name = new Intl.DisplayNames(["en"], { type: "region" }).of(
+    const name = new Intl.DisplayNames([locale, "en"], { type: "region" }).of(
       code.toUpperCase(),
     );
     if (name && name !== code.toUpperCase()) return name;
@@ -129,53 +125,52 @@ export default function ProfilePage() {
     );
   }
 
-  const location = [profile.city, countryName(profile.countryCode ?? "")]
+  const location = [profile.city, countryName(profile.countryCode ?? "", locale)]
     .filter((v) => v && v.trim().length > 0)
     .join(", ");
-  const joined = memberSince(profile.createdAt);
+  const joined = formatMonthYear(profile.createdAt, locale);
   const language = languageName(profile.nativeLanguage, locale);
 
   return (
     <div className="mx-auto max-w-2xl">
-      <section className="rounded-2xl border border-border bg-surface p-5 shadow-sm sm:p-6">
+      <section className="rounded-2xl border border-border bg-surface p-4 shadow-sm sm:p-6">
         {/* Identity */}
-        <div className="flex items-start gap-4 sm:gap-5">
+        <div className="flex items-center gap-4 sm:items-start sm:gap-5">
           <Image
             src={profile.avatarUrl ?? FALLBACK_AVATAR}
             alt={profile.displayName}
             width={112}
             height={112}
             unoptimized={Boolean(profile.avatarUrl)}
-            className="h-24 w-24 shrink-0 rounded-full object-cover sm:h-28 sm:w-28"
+            className="h-20 w-20 shrink-0 rounded-full object-cover sm:h-28 sm:w-28"
           />
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <h1 className="truncate text-2xl font-bold leading-tight tracking-tight text-foreground">
+                <h1 className="line-clamp-2 break-words text-xl font-bold leading-tight tracking-tight text-foreground sm:text-2xl">
                   {profile.displayName}
                 </h1>
                 <div className="truncate text-sm text-muted">
                   @{profile.username}
                 </div>
               </div>
+              {/* Desktop placement; phones get a full-width button below. */}
               <Link
                 href="/profile/edit"
-                className="shrink-0 rounded-full border border-border px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-background"
+                className="hidden h-10 shrink-0 items-center rounded-full border border-border px-4 text-sm font-medium text-foreground transition-colors hover:bg-background sm:inline-flex"
               >
                 {t("profile.edit")}
               </Link>
             </div>
 
-            {/* Compact stats */}
-            <div className="mt-3 flex items-center gap-6 text-sm">
+            {/* Stats (desktop: inline under the name) */}
+            <div className="mt-3 hidden items-center gap-6 text-sm sm:flex">
               <button
                 type="button"
                 onClick={() => setFollowModal("followers")}
                 className="transition-colors hover:text-primary"
               >
-                <span className="font-semibold text-foreground">
-                  {followers ?? "—"}
-                </span>{" "}
+                <span className="font-semibold text-foreground">{followers ?? "—"}</span>{" "}
                 <span className="text-muted">{t("profile.followers")}</span>
               </button>
               <button
@@ -183,54 +178,88 @@ export default function ProfilePage() {
                 onClick={() => setFollowModal("following")}
                 className="transition-colors hover:text-primary"
               >
-                <span className="font-semibold text-foreground">
-                  {following ?? "—"}
-                </span>{" "}
+                <span className="font-semibold text-foreground">{following ?? "—"}</span>{" "}
                 <span className="text-muted">{t("profile.following")}</span>
               </button>
+              {profile.isPrivate ? (
+                <button
+                  type="button"
+                  onClick={() => setRequestsOpen(true)}
+                  className="font-medium text-primary transition-colors hover:text-primary-hover"
+                >
+                  {t("profile.followRequests")}
+                </button>
+              ) : null}
             </div>
-
-            {/* Follow requests inbox entry — only for private accounts. */}
-            {profile.isPrivate ? (
-              <button
-                type="button"
-                onClick={() => setRequestsOpen(true)}
-                className="mt-2 text-sm font-medium text-primary transition-colors hover:text-primary-hover"
-              >
-                {t("profile.followRequests")}
-              </button>
-            ) : null}
           </div>
         </div>
 
+        {/* Stats (phones: tappable blocks, full width) */}
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:hidden">
+          <button
+            type="button"
+            onClick={() => setFollowModal("followers")}
+            className="flex min-h-14 flex-col items-center justify-center rounded-xl bg-background px-2 py-2 transition-colors hover:bg-primary-soft/60"
+          >
+            <span className="text-base font-semibold leading-tight text-foreground">{followers ?? "—"}</span>
+            <span className="max-w-full truncate text-xs text-muted">{t("profile.followers")}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setFollowModal("following")}
+            className="flex min-h-14 flex-col items-center justify-center rounded-xl bg-background px-2 py-2 transition-colors hover:bg-primary-soft/60"
+          >
+            <span className="text-base font-semibold leading-tight text-foreground">{following ?? "—"}</span>
+            <span className="max-w-full truncate text-xs text-muted">{t("profile.following")}</span>
+          </button>
+        </div>
+        {profile.isPrivate ? (
+          <button
+            type="button"
+            onClick={() => setRequestsOpen(true)}
+            className="mt-2 flex h-11 w-full items-center justify-center rounded-xl border border-border text-sm font-medium text-primary transition-colors hover:bg-primary-soft/60 sm:hidden"
+          >
+            {t("profile.followRequests")}
+          </button>
+        ) : null}
+
         {/* Bio, directly under identity */}
         {profile.bio ? (
-          <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-foreground">
+          <p className="mt-4 whitespace-pre-line break-words text-sm leading-relaxed text-foreground">
             {profile.bio}
           </p>
         ) : null}
 
-        {/* Secondary info: subtle, compact, single wrapping line */}
-        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-4 text-sm text-muted">
-          {location ? (
-            <span className="flex items-center gap-1.5">
-              <MapPin className="h-4 w-4 text-muted-soft" aria-hidden />
-              {location}
-            </span>
-          ) : null}
-          {language ? (
-            <span className="flex items-center gap-1.5">
-              <Globe className="h-4 w-4 text-muted-soft" aria-hidden />
-              {language}
-            </span>
-          ) : null}
-          {joined ? (
-            <span className="flex items-center gap-1.5">
-              <CalendarDays className="h-4 w-4 text-muted-soft" aria-hidden />
-              {t("profile.joined", { date: joined })}
-            </span>
-          ) : null}
-        </div>
+        <Link
+          href="/profile/edit"
+          className="mt-4 flex h-11 w-full items-center justify-center rounded-full border border-border text-sm font-medium text-foreground transition-colors hover:bg-background sm:hidden"
+        >
+          {t("profile.edit")}
+        </Link>
+
+        {/* Secondary info: stacked on phones, one wrapping line on desktop */}
+        {location || language || joined ? (
+          <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4 text-sm text-muted sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5">
+            {location ? (
+              <span className="flex min-w-0 items-center gap-1.5">
+                <MapPin className="h-4 w-4 shrink-0 text-muted-soft" aria-hidden />
+                <span className="min-w-0 break-words">{location}</span>
+              </span>
+            ) : null}
+            {language ? (
+              <span className="flex min-w-0 items-center gap-1.5">
+                <Globe className="h-4 w-4 shrink-0 text-muted-soft" aria-hidden />
+                <span className="min-w-0 break-words">{language}</span>
+              </span>
+            ) : null}
+            {joined ? (
+              <span className="flex min-w-0 items-center gap-1.5">
+                <CalendarDays className="h-4 w-4 shrink-0 text-muted-soft" aria-hidden />
+                <span className="min-w-0 break-words">{t("profile.joined", { date: joined })}</span>
+              </span>
+            ) : null}
+          </div>
+        ) : null}
       </section>
 
       {followModal ? (
